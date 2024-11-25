@@ -20,6 +20,24 @@ public class InventoryItem
 }
 
 [Serializable]
+public class Inventory
+{
+    public List<InventoryItem> Items;  // 아이템 목록
+
+    public Inventory()
+    {
+        Items = new List<InventoryItem>(); // 인벤토리 초기화
+    }
+
+    // 아이템 추가 (단순히 목록에 추가)
+    public void AddItem(string itemName, int quantity, string itemType, int slotIndex)
+    {
+        InventoryItem item = new InventoryItem(itemName, quantity, itemType, slotIndex);
+        Items.Add(item);
+    }
+}
+
+[Serializable]
 public class QuickSlotItem
 {
     public string ItemName;   // 아이템 이름
@@ -45,23 +63,23 @@ public class PlayerData
     public string NickName;               // 플레이어 닉네임
     public int Lv;                        // 레벨
     public int MineLv;                    // 광산 레벨
-    public List<InventoryItem> Inventory; // 인벤토리 아이템 목록
+    public Inventory PlayerInventory;     // 인벤토리
     public List<QuickSlotItem> QuickSlots; // 퀵슬롯 아이템 목록
 
     public PlayerData()
     {
-        // 리스트를 초기화
-        Inventory = new List<InventoryItem>();
+        // 플레이어의 인벤토리 초기화
+        PlayerInventory = new Inventory();
         QuickSlots = new List<QuickSlotItem>();
     }
 
-    // JSON 직렬화
+    // JSON 직렬화 (저장)
     public string ToJson()
     {
         return JsonUtility.ToJson(this, true); // 포맷을 예쁘게 저장
     }
 
-    // JSON 역직렬화
+    // JSON 역직렬화 (불러오기)
     public static PlayerData FromJson(string json)
     {
         return JsonUtility.FromJson<PlayerData>(json);
