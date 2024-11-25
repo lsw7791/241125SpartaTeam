@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class SpumPlayerManager : MonoBehaviour
 {
     public Vector3 _startPos;
     public int _columnNum;
