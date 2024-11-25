@@ -1,18 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TopDownController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Movement Settings")]
+    public float speed;
+
+    private Vector2 moveInput; 
+    private Rigidbody2D rb; 
+
+    private void Awake()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+    }
+    // 이동 
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        rb.velocity = moveInput * speed;
     }
 }
