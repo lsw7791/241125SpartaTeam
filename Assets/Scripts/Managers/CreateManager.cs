@@ -43,8 +43,10 @@ public class CreateManager : MonoSingleton<CreateManager>
 
         // Object Pool 초기화 (객체들을 미리 생성해서 Pool에 저장)
         InitializePool(minealPool, minealPrefab, maxMineralCount);
-        InitializeObject(player, playerPrefab);
+        player = InitializeObject(playerPrefab);
         player.SetActive(true);
+
+        GameObject monster = GetMonster(Vector3.zero);
     }
 
     // 몬스터 데이터 CSV에서 불러오기
@@ -76,14 +78,13 @@ public class CreateManager : MonoSingleton<CreateManager>
             Debug.LogError("CSV 파일을 찾을 수 없습니다: " + filePath);
         }
     }
-
-    // Object Pool에 객체 초기화
-    private void InitializeObject(GameObject thisObject, GameObject prefab)
-    {
-        GameObject obj = Instantiate(prefab);
-        DontDestroyOnLoad(obj);
-        obj.SetActive(false); // 초기에는 객체가 활성화되지 않도록 설정
-        thisObject = obj;
+    // ��ü Ǯ �ʱ�ȭ
+    private GameObject InitializeObject(GameObject prefab)
+    {    
+            GameObject obj = Instantiate(prefab);
+            DontDestroyOnLoad(obj);
+            obj.SetActive(false); // ��Ȱ��ȭ�Ͽ� Ǯ�� �ֱ�
+           return obj;
     }
 
     private void InitializePool(Queue<GameObject> pool, GameObject prefab, int count)
