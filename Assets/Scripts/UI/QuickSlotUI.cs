@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIQuickSlot : MonoBehaviour
+public class QuickSlotUI : MonoBehaviour
 {
     // 슬롯을 나타낼 이미지 배열
     public Image[] slotImages;

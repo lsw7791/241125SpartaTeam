@@ -4,8 +4,27 @@ using UnityEngine;
 
 public class UIManager : MonoSingleton<UIManager>
 {
+    public GameObject inventoryUI;
+    public GameObject mapUI;
+    public GameObject questUI;
+    public GameObject optionUI;
+
+    private GameObject canvasInstance;
+
     protected override void Awake()
     {
         base.Awake();
+
+        GameObject canvasPrefab = Resources.Load<GameObject>("Prefabs/UI/Canvas");
+
+        canvasInstance = Instantiate(canvasPrefab);
+        canvasInstance.transform.SetParent(this.transform);
+
+        Transform popupUI = canvasInstance.transform.Find("PopupUI");
+
+        inventoryUI = popupUI.Find("InventoryUI")?.gameObject;
+        mapUI = popupUI.Find("MapUI")?.gameObject;
+        questUI = popupUI.Find("QuestUI")?.gameObject;
+        optionUI = popupUI.Find("OptionUI")?.gameObject;
     }
 }

@@ -8,6 +8,25 @@ public class PlayerInput : MonoBehaviour
     private bool isQuestOpen = false;      // 퀘스트 상태 추적
     private bool isOptionsOpen = false;    // 옵션 상태 추적
 
+    [SerializeField] private GameObject inventoryUI; // 인벤토리 UI
+    [SerializeField] private GameObject mapUI;       // 맵 UI
+    [SerializeField] private GameObject questUI;     // 퀘스트 UI
+    [SerializeField] private GameObject optionUI;    // 옵션 UI
+
+    private void Awake()
+    {
+        inventoryUI = UIManager.Instance.inventoryUI;
+        mapUI = UIManager.Instance.mapUI;
+        questUI = UIManager.Instance.questUI;
+        optionUI = UIManager.Instance.optionUI;
+
+        // 초기에는 UI 비활성화
+        inventoryUI.SetActive(false);
+        mapUI.SetActive(false);
+        questUI.SetActive(false);
+        optionUI.SetActive(false);
+    }
+
     // 상호작용
     public void OnInteraction(InputAction.CallbackContext context)
     {
@@ -93,60 +112,28 @@ public class PlayerInput : MonoBehaviour
     private void ToggleInventory()
     {
         isInventoryOpen = !isInventoryOpen;
-
-        if (isInventoryOpen)
-        {
-            // inventoryUI.SetActive(true); 
-        }
-        else
-        {
-            // inventoryUI.SetActive(false);  
-        }
+        inventoryUI.SetActive(isInventoryOpen);
     }
 
     // 맵 토글
     private void ToggleMap()
     {
         isMapOpen = !isMapOpen;
-
-        if (isMapOpen)
-        {
-            // mapUI.SetActive(true);
-        }
-        else
-        {
-            // mapUI.SetActive(false);
-        }
+        mapUI.SetActive(isMapOpen);
     }
 
     // 퀘스트 토글
     private void ToggleQuest()
     {
         isQuestOpen = !isQuestOpen;
-
-        if (isQuestOpen)
-        {
-            // questUI.SetActive(true);
-        }
-        else
-        {
-            // questUI.SetActive(false);
-        }
+        questUI.SetActive(isQuestOpen);
     }
 
     // 옵션 토글
     private void ToggleOptions()
     {
         isOptionsOpen = !isOptionsOpen;
-
-        if (isOptionsOpen)
-        {
-            // optionsUI.SetActive(true);
-        }
-        else
-        {
-            // optionsUI.SetActive(false);
-        }
+        optionUI.SetActive(isOptionsOpen);
     }
 
     // 채집 로직
