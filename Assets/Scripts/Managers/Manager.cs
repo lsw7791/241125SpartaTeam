@@ -10,10 +10,9 @@ public class Manager : MonoBehaviour
     GameManager _GameManager = new GameManager();
     DataManager _DataManager = new DataManager();
     TimeManager _TimeManager = new TimeManager();
-    CreateManager _CreateManager = new CreateManager();
-    CoroutineManager _CorutineManager = new CoroutineManager();
-    UIManager _UIManager = new UIManager();
     SoundManager _SoundManager = new SoundManager();
+    CreateManager _CreateManager = new CreateManager();
+    UIManager _UIManager = new UIManager();
 
     public static Manager Instance
     {
@@ -25,8 +24,8 @@ public class Manager : MonoBehaviour
                 _instance = FindObjectOfType<Manager>();
                 if (_instance == null)
                 {
-                    GameObject go = new GameObject("GameManager");
-                    _instance = go.AddComponent<Manager>();
+                    GameObject manager = new GameObject("GameManager");
+                    _instance = manager.AddComponent<Manager>();
                 }
             }
             return _instance;
@@ -52,7 +51,6 @@ public class Manager : MonoBehaviour
         _DataManager.Init();
         _TimeManager.Init();
         _CreateManager.Init();
-        _CorutineManager.Init();
         _UIManager.Init();
         _SoundManager.Init();
     }
