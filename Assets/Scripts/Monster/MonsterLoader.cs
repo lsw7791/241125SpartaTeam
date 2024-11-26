@@ -20,13 +20,12 @@ public class MonsterLoader
 
             string[] values = lines[i].Trim().Split(',');
 
-            MonsterData monster = new MonsterData
-            {
-                Name = values[0],
-                Health = int.Parse(values[1]),
-                Speed = float.Parse(values[2]),
-                Damage = int.Parse(values[3])
-            };
+            MonsterData monster = new MonsterData(
+                values[0],
+                int.Parse(values[1]),
+                float.Parse(values[2]),
+                int.Parse(values[3])
+            );
 
             monsters.Add(monster);
         }
