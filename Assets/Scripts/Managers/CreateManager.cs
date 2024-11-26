@@ -1,38 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class CreateManager : MonoSingleton<CreateManager>
 {
     [SerializeField] GameObject playerPrefab;
-    [SerializeField] GameObject monsterPrefab;
+    [SerializeField] GameObject[] monsterPrefabs; // ëª¬ìŠ¤í„° í”„ë¦¬íŒ¹ ë°°ì—´
     [SerializeField] GameObject minealPrefab;
 
-    // ¸ó½ºÅÍ¿Í ¹Ì³×¶öÀ» À§ÇÑ °´Ã¼ Ç®
+    // Object Pool ë³€ìˆ˜ë“¤
     private Queue<GameObject> monsterPool;
     private Queue<GameObject> minealPool;
     GameObject player;
 
-    // ¸ó½ºÅÍ¿Í ¹Ì³×¶ö »ı¼º ÃÖ´ë °³¼ö
+    // Object Poolì— ìƒì„±í•  ìµœëŒ€ ê°œìˆ˜
     [SerializeField] private int maxMonsterCount = 10;
     [SerializeField] private int maxMineralCount = 10;
 
+    // ëª¬ìŠ¤í„° ë°ì´í„°ë¥¼ ë‹´ì„ ë¦¬ìŠ¤íŠ¸
+    private List<MonsterData> monsterDataList = new List<MonsterData>();
+
     private void Awake()
     {
-        // ÇÁ¸®ÆÕ ·Îµå
+        // í”„ë¦¬íŒ¹ ë¶ˆëŸ¬ì˜¤ê¸°
         playerPrefab = Resources.Load<GameObject>("Prefabs/TestPlayer");
-        monsterPrefab = Resources.Load<GameObject>("Prefabs/TestMonster");
         minealPrefab = Resources.Load<GameObject>("Prefabs/TestMineral");
+
+        // ëª¬ìŠ¤í„° í”„ë¦¬íŒ¹ì„ Resourcesì—ì„œ ë™ì ìœ¼ë¡œ ë¡œë“œ
+        monsterPrefabs = Resources.LoadAll<GameObject>("Prefabs/Monsters");
+
+        // CSV íŒŒì¼ì—ì„œ ëª¬ìŠ¤í„° ë°ì´í„° ë¶ˆëŸ¬ì˜¤ê¸°
+        LoadMonsterData();
     }
 
     private void Start()
     {
-        // °´Ã¼ Ç® ÃÊ±âÈ­
+        // Object Pool ì´ˆê¸°í™”
         monsterPool = new Queue<GameObject>();
         minealPool = new Queue<GameObject>();
         player = new GameObject();
-        // Ç® ÃÊ±âÈ­ (¹Ì¸® °´Ã¼¸¦ »ı¼ºÇÏ¿© Ç®¿¡ ³ÖÀ½)
-        InitializePool(monsterPool, monsterPrefab, maxMonsterCount);
+
+        // Object Pool ì´ˆê¸°í™” (ê°ì²´ë“¤ì„ ë¯¸ë¦¬ ìƒì„±í•´ì„œ Poolì— ì €ì¥)
         InitializePool(minealPool, minealPrefab, maxMineralCount);
         player = InitializeObject(playerPrefab);
         player.SetActive(true);
@@ -40,64 +49,122 @@ public class CreateManager : MonoSingleton<CreateManager>
         GameObject monster = GetMonster(Vector3.zero);
     }
 
-    // °´Ã¼ Ç® ÃÊ±âÈ­
+    // ëª¬ìŠ¤í„° ë°ì´í„° CSVì—ì„œ ë¶ˆëŸ¬ì˜¤ê¸°
+    private void LoadMonsterData()
+    {
+        string filePath = "Assets/Resources/SCV/MonsterData.csv"; // CSV íŒŒì¼ ê²½ë¡œ
+
+        // íŒŒì¼ì´ ì¡´ì¬í•˜ëŠ”ì§€ í™•ì¸
+        if (File.Exists(filePath))
+        {
+            string[] lines = File.ReadAllLines(filePath);
+            foreach (string line in lines)
+            {
+                string[] values = line.Split(',');
+
+                // CSVì—ì„œ ì´ë¦„, ì²´ë ¥, ìŠ¤í”¼ë“œ, ë°ë¯¸ì§€ ë°ì´í„°ë¥¼ ì½ì–´ì˜´
+                string name = values[0].Trim();
+                int health = int.Parse(values[1].Trim());
+                float speed = float.Parse(values[2].Trim());
+                int damage = int.Parse(values[3].Trim());
+
+                // ëª¬ìŠ¤í„° ë°ì´í„° ìƒì„±
+                MonsterData monsterData = new MonsterData(name, health, speed, damage);
+                monsterDataList.Add(monsterData);
+            }
+        }
+        else
+        {
+            Debug.LogError("CSV íŒŒì¼ì„ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤: " + filePath);
+        }
+    }
+    // ï¿½ï¿½Ã¼ Ç® ï¿½Ê±ï¿½È­
     private GameObject InitializeObject(GameObject prefab)
     {    
             GameObject obj = Instantiate(prefab);
             DontDestroyOnLoad(obj);
-            obj.SetActive(false); // ºñÈ°¼ºÈ­ÇÏ¿© Ç®¿¡ ³Ö±â
+            obj.SetActive(false); // ï¿½ï¿½È°ï¿½ï¿½È­ï¿½Ï¿ï¿½ Ç®ï¿½ï¿½ ï¿½Ö±ï¿½
            return obj;
     }
+
     private void InitializePool(Queue<GameObject> pool, GameObject prefab, int count)
     {
         for (int i = 0; i < count; i++)
         {
             GameObject obj = Instantiate(prefab);
             DontDestroyOnLoad(obj);
-            obj.SetActive(false); // ºñÈ°¼ºÈ­ÇÏ¿© Ç®¿¡ ³Ö±â
+            obj.SetActive(false); // ì´ˆê¸°ì—ëŠ” ê°ì²´ê°€ í™œì„±í™”ë˜ì§€ ì•Šë„ë¡ ì„¤ì •
             pool.Enqueue(obj);
         }
     }
 
-    // ¸ó½ºÅÍ °´Ã¼ Ç®¿¡¼­ ²¨³»±â
-    public GameObject GetMonster(Vector3 position)
+    // ëª¬ìŠ¤í„° ê°ì²´ë¥¼ Object Poolì—ì„œ ê°€ì ¸ì˜¤ê¸°
+    public GameObject GetMonster(Vector3 position, string monsterName)
     {
-        return GetObjectFromPool(monsterPool, monsterPrefab, position);
+        // CSVì—ì„œ ëª¬ìŠ¤í„° ë°ì´í„°ë¥¼ ì°¾ìŒ
+        MonsterData monsterData = monsterDataList.Find(m => m.Name == monsterName);
+
+        if (monsterData != null)
+        {
+            // í•´ë‹¹ ì´ë¦„ì˜ ëª¬ìŠ¤í„° ë°ì´í„°ë¥¼ ì°¾ìœ¼ë©´, í•´ë‹¹ í”„ë¦¬íŒ¹ì„ ì†Œí™˜
+            GameObject monsterPrefab = GetMonsterPrefabByName(monsterName);
+            if (monsterPrefab != null)
+            {
+                GameObject monster = Instantiate(monsterPrefab, position, Quaternion.identity);
+                monster.GetComponent<Monster>().Initialize(monsterData); // ëª¬ìŠ¤í„° ì´ˆê¸°í™”
+                return monster;
+            }
+        }
+
+        return null;
     }
 
-    // ¹Ì³×¶ö °´Ã¼ Ç®¿¡¼­ ²¨³»±â
+    // ëª¬ìŠ¤í„° ì´ë¦„ì— ë§ëŠ” í”„ë¦¬íŒ¹ì„ ì°¾ëŠ” ë©”ì„œë“œ
+    private GameObject GetMonsterPrefabByName(string monsterName)
+    {
+        foreach (GameObject prefab in monsterPrefabs)
+        {
+            if (prefab.name == monsterName)
+            {
+                return prefab;
+            }
+        }
+        return null;
+    }
+
+    // ê´‘ë¬¼ ê°ì²´ë¥¼ Object Poolì—ì„œ ê°€ì ¸ì˜¤ê¸°
     public GameObject GetMineral(Vector3 position)
     {
         return GetObjectFromPool(minealPool, minealPrefab, position);
     }
 
-    // Ç®¿¡¼­ °´Ã¼¸¦ ²¨³»´Â °øÅë ÇÔ¼ö
+    // Object Poolì—ì„œ ê°ì²´ë¥¼ êº¼ë‚´ëŠ” ë©”ì„œë“œ
     private GameObject GetObjectFromPool(Queue<GameObject> pool, GameObject prefab, Vector3 position)
     {
         GameObject obj;
 
         if (pool.Count > 0)
         {
-            // Ç®¿¡¼­ ²¨³½ °´Ã¼ È°¼ºÈ­
+            // Object Poolì—ì„œ ë¹„í™œì„±í™”ëœ ê°ì²´ë¥¼ í™œì„±í™”
             obj = pool.Dequeue();
             obj.SetActive(true);
         }
         else
         {
-            // Ç®¿¡ °´Ã¼°¡ ¾øÀ¸¸é »õ·Î »ı¼º
+            // Object Poolì´ ë¹„ì–´ìˆì„ ê²½ìš° ìƒˆë¡œìš´ ê°ì²´ ìƒì„±
             obj = Instantiate(prefab);
         }
 
-        // À§Ä¡ ¼³Á¤
+        // ìœ„ì¹˜ ì„¤ì •
         obj.transform.position = position;
 
         return obj;
     }
 
-    // Ç®¿¡ °´Ã¼ ¹İÈ¯
+    // Object Poolì— ê°ì²´ ë°˜í™˜
     public void ReturnObjectToPool(GameObject obj, Queue<GameObject> pool)
     {
-        obj.SetActive(false); // ºñÈ°¼ºÈ­
-        pool.Enqueue(obj);     // Ç®¿¡ ¹İÈ¯
+        obj.SetActive(false); // ë¹„í™œì„±í™”
+        pool.Enqueue(obj);     // Object Poolì— ë°˜í™˜
     }
 }
