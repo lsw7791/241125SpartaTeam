@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, IManager
 {
     public PlayerData PlayerData { get; private set; }
 
@@ -12,11 +12,16 @@ public class PlayerManager : MonoBehaviour
 
     public void SavePlayerData()
     {
-        SaveLoadManager.SavePlayerData(PlayerData);
+        SaveLoadManager.SavePlayerData(PlayerData); 
     }
 
     public void LoadPlayerData()
     {
         PlayerData = SaveLoadManager.LoadPlayerData();
+    }
+
+    public void Init()
+    {
+       
     }
 }

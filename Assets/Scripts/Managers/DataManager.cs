@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataManager : MonoBehaviour, IInitializable
+public class DataManager :  IManager
 {
     public void Init()
     {

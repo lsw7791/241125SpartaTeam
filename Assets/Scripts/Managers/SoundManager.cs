@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour, IInitializable
+public class SoundManager : MonoBehaviour, IManager
 {
     public void Init()
     {
