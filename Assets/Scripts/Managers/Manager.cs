@@ -6,7 +6,7 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
     static Manager _instance;
-    // °ÔÀÓ¸Å´ÏÀú¿¡ ¸ğµç ¸Å´ÏÀúµéÀÌ ¿¬°áµÇ¾îÀÖÀ½.
+    // ì—¬ëŸ¬ ë§¤ë‹ˆì €ë“¤ì„ ê´€ë¦¬í•  ì‹±ê¸€í†¤ í´ë˜ìŠ¤ì…ë‹ˆë‹¤.
     GameManager _GameManager = new GameManager();
     DataManager _DataManager = new DataManager();
     TimeManager _TimeManager = new TimeManager();
@@ -14,13 +14,12 @@ public class Manager : MonoBehaviour
     CoroutineManager _CorutineManager = new CoroutineManager();
     UIManager _UIManager = new UIManager();
     SoundManager _SoundManager = new SoundManager();
-    PlayerManager _PlayerManager = new PlayerManager();
 
     public static Manager Instance
     {
         get
         {
-            // ½Ì±ÛÅæ ÆĞÅÏ: _instance°¡ nullÀÏ °æ¿ì, ÇöÀç ¾À¿¡¼­ GameManager °´Ã¼¸¦ Ã£À½
+            // ì‹±ê¸€í†¤ íŒ¨í„´: _instanceê°€ nullì¸ ê²½ìš°, ì¡´ì¬í•˜ëŠ” GameManager ê°ì²´ë¥¼ ì°¾ìŒ
             if (_instance == null)
             {
                 _instance = FindObjectOfType<Manager>();
@@ -36,19 +35,19 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
-        // ½Ì±ÛÅæ ÀÎ½ºÅÏ½º°¡ ¿©·¯ ¹ø »ı¼ºµÇÁö ¾Êµµ·Ï ¹æÁö
+        // ì‹±ê¸€í†¤ ì¸ìŠ¤í„´ìŠ¤ê°€ ì´ë¯¸ ì¡´ì¬í•  ê²½ìš° ìƒˆë¡œìš´ ê°ì²´ë¥¼ íŒŒê´´
         if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
             return;
         }
         _instance = this;
-        DontDestroyOnLoad(gameObject); // ¾À ÀüÈ¯ ½Ã¿¡µµ GameManager¸¦ À¯Áö
+        DontDestroyOnLoad(gameObject); // ì”¬ ì „í™˜ ì‹œì—ë„ GameManagerë¥¼ ìœ ì§€
     }
 
     private void Start()
     {
-        // ¸Å´ÏÀúµéÀ» ´ë½Å ÃÊ±âÈ­ÇØÁà¾ßÇÔ -> ´Ù¸¥ ¸Å´ÏÀú´Â ¸ğ³ëºñÇìÀÌºñ¾î°¡ ¾øÀ¸¹Ç·Î
+        // ë§¤ë‹ˆì €ë“¤ì˜ ì´ˆê¸°í™” í•¨ìˆ˜ í˜¸ì¶œ -> ë‹¤ë¥¸ ë§¤ë‹ˆì €ë“¤ì˜ ì˜ì¡´ì„±ì„ ë°©ì§€í•˜ê¸° ìœ„í•´
         _GameManager.Init();
         _DataManager.Init();
         _TimeManager.Init();
@@ -56,6 +55,5 @@ public class Manager : MonoBehaviour
         _CorutineManager.Init();
         _UIManager.Init();
         _SoundManager.Init();
-        _PlayerManager.Init();
     }
 }
