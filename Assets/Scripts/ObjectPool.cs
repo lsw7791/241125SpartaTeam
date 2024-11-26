@@ -7,16 +7,12 @@ public class ObjectPool : MonoBehaviour
     // 풀에 저장할 오브젝트를 위한 변수
     public GameObject objectPrefab;
     public int poolSize = 10;
-    private Queue<GameObject> objectPool = new Queue<GameObject>();
-
     void Start()
     {
-        // 풀 초기화
-        InitializePool();
     }
 
     // 오브젝트 풀 초기화
-    private void InitializePool()
+    private void InitializePool(Queue<GameObject> objectPool)
     {
         for (int i = 0; i < poolSize; i++)
         {
@@ -28,7 +24,7 @@ public class ObjectPool : MonoBehaviour
     }
 
     // 풀에서 오브젝트 꺼내기
-    public GameObject GetObject()
+    public GameObject GetObject(Queue<GameObject> objectPool)
     {
         if (objectPool.Count > 0)
         {
@@ -47,7 +43,7 @@ public class ObjectPool : MonoBehaviour
     }
 
     // 사용이 끝난 오브젝트를 풀로 반환
-    public void ReturnObject(GameObject obj)
+    public void ReturnObject(GameObject obj, Queue<GameObject> objectPool)
     {
         obj.SetActive(false); // 비활성화
         objectPool.Enqueue(obj); // 풀에 반환
