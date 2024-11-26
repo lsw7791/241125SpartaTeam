@@ -34,17 +34,19 @@ public class CreateManager : MonoSingleton<CreateManager>
         // 풀 초기화 (미리 객체를 생성하여 풀에 넣음)
         InitializePool(monsterPool, monsterPrefab, maxMonsterCount);
         InitializePool(minealPool, minealPrefab, maxMineralCount);
-        InitializeObject(player, playerPrefab);
+        player = InitializeObject(playerPrefab);
         player.SetActive(true);
+
+        GameObject monster = GetMonster(Vector3.zero);
     }
 
     // 객체 풀 초기화
-    private void InitializeObject(GameObject thisObject,GameObject prefab)
+    private GameObject InitializeObject(GameObject prefab)
     {    
             GameObject obj = Instantiate(prefab);
             DontDestroyOnLoad(obj);
             obj.SetActive(false); // 비활성화하여 풀에 넣기
-            thisObject = obj;
+           return obj;
     }
     private void InitializePool(Queue<GameObject> pool, GameObject prefab, int count)
     {
