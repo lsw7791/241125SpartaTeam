@@ -1560,6 +1560,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ce1c049e4c44341abe88e2579bf983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentQuickSlot: 0
+  quickSlots:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!1 &3332842344908746626
 GameObject:
   m_ObjectHideFlags: 0

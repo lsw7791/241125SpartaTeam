@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 2622789073329592548}
   - component: {fileID: 4921384450454317428}
   - component: {fileID: 5774042548223665858}
+  - component: {fileID: 9152461551475030230}
   m_Layer: 5
   m_Name: Quickslot
   m_TagString: Untagged
@@ -334,6 +335,30 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &9152461551475030230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131330194541064316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a674ca259f2a14245bb75d41424e61f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotImages:
+  - {fileID: 3003157261317517234}
+  - {fileID: 1478789019979169551}
+  - {fileID: 3503982452040322576}
+  - {fileID: 8644947914571129458}
+  - {fileID: 1686069733559851576}
+  - {fileID: 3588766343540086054}
+  - {fileID: 7714944973466957966}
+  - {fileID: 8517602714871113791}
+  slotTexts: []
+  selectedSlotImage: {fileID: 0}
+  selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1198898418697098212
 GameObject:
   m_ObjectHideFlags: 0

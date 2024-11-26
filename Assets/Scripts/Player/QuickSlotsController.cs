@@ -3,68 +3,73 @@ using UnityEngine.InputSystem;
 
 public class QuickSlotsController : MonoBehaviour
 {
-    // 퀵슬롯 인덱스 변수 (1~8번 슬롯)
-    private int currentQuickSlot = 0;  // 현재 선택된 슬롯
-    private string[] quickSlots = new string[8];  // 각 퀵슬롯에 해당하는 아이템/스킬 저장
+    [SerializeField] private int currentQuickSlot = 0;  // 현재 선택된 슬롯
+    [SerializeField] private string[] quickSlots = new string[8];  // 슬롯 데이터
 
-    // 키보드 숫자 키 1~8번에 대응하는 입력을 받을 수 있도록 설정
     private void OnEnable()
     {
+        // 기본 슬롯 데이터를 설정
         for (int i = 0; i < quickSlots.Length; i++)
         {
-            quickSlots[i] = "Item" + (i + 1);  // 기본 값 설정 
+            quickSlots[i] = "Item" + (i + 1);
         }
     }
 
-    // 키보드 입력으로 퀵슬롯 선택 (1~8)
+    // 키보드 입력 처리
     public void OnQuickSlot(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            int keyNumber = (int)context.ReadValue<float>();
+            // 바인딩된 숫자를 읽어오기 위한 방법
+            string bindingName = context.control.displayName;
+
+            // 숫자 키 바인딩에 해당하는 값을 추출
+            int keyNumber = bindingName[0] - '0';  // '1' -> 1, '2' -> 2 등
             if (keyNumber >= 1 && keyNumber <= 8)
             {
                 currentQuickSlot = keyNumber - 1;  // 1~8을 0~7로 매핑
                 SelectQuickSlot(currentQuickSlot);
+                NotifySlotChange();  // UI 업데이트 호출
             }
         }
     }
 
-    // 마우스 휠로 퀵슬롯 스왑 (위로 올리면 +1, 아래로 내리면 -1)
+    // 퀵슬롯 선택
+    private void SelectQuickSlot(int slotIndex)
+    {
+        // 선택된 슬롯을 처리
+        string selectedItem = quickSlots[slotIndex];
+    }
+
+    // 마우스 휠 처리
     public void OnSwap(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             Vector2 scrollValue = context.ReadValue<Vector2>();
-            if (scrollValue.y > 0)  // 휠 위로 스크롤
-            {
+            if (scrollValue.y > 0)
                 NextSlot();
-            }
-            else if (scrollValue.y < 0)  // 휠 아래로 스크롤
-            {
+            else if (scrollValue.y < 0)
                 PreviousSlot();
-            }
         }
     }
 
-    // 퀵슬롯 선택 (선택된 슬롯의 아이템 출력)
-    private void SelectQuickSlot(int slotIndex)
-    {
-        string selectedItem = quickSlots[slotIndex];
-        Debug.Log("Selected Quick Slot: " + selectedItem);
-    }
-
-    // 퀵슬롯을 다음으로 순환
+    // 슬롯 변경 처리
     private void NextSlot()
     {
-        currentQuickSlot = (currentQuickSlot + 1) % quickSlots.Length;  // 슬롯 순환
-        SelectQuickSlot(currentQuickSlot);
+        currentQuickSlot = (currentQuickSlot + 1) % quickSlots.Length;
+        NotifySlotChange();
     }
 
-    // 퀵슬롯을 이전으로 순환
     private void PreviousSlot()
     {
-        currentQuickSlot = (currentQuickSlot - 1 + quickSlots.Length) % quickSlots.Length;  // 슬롯 순환
-        SelectQuickSlot(currentQuickSlot);
+        currentQuickSlot = (currentQuickSlot - 1 + quickSlots.Length) % quickSlots.Length;
+        NotifySlotChange();
+    }
+
+    // 이벤트 호출
+    private void NotifySlotChange()
+    {
+        EventBroker.NotifyQuickSlotChanged(currentQuickSlot);  // UI에 슬롯 변경 알림
     }
 }
