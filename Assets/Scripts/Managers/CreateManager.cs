@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class CreateManager : MonoSingleton<CreateManager>
 {
-    [SerializeField] GameObject player;
+    [SerializeField] GameObject playerPrefab;
     [SerializeField] GameObject monsterPrefab;
     [SerializeField] GameObject minealPrefab;
 
     // 몬스터와 미네랄을 위한 객체 풀
     private Queue<GameObject> monsterPool;
     private Queue<GameObject> minealPool;
+    GameObject player;
 
     // 몬스터와 미네랄 생성 최대 개수
     [SerializeField] private int maxMonsterCount = 10;
@@ -19,7 +20,7 @@ public class CreateManager : MonoSingleton<CreateManager>
     private void Awake()
     {
         // 프리팹 로드
-        player = Resources.Load<GameObject>("Prefabs/TestPlayer");
+        playerPrefab = Resources.Load<GameObject>("Prefabs/TestPlayer");
         monsterPrefab = Resources.Load<GameObject>("Prefabs/TestMonster");
         minealPrefab = Resources.Load<GameObject>("Prefabs/TestMineral");
     }
@@ -29,13 +30,22 @@ public class CreateManager : MonoSingleton<CreateManager>
         // 객체 풀 초기화
         monsterPool = new Queue<GameObject>();
         minealPool = new Queue<GameObject>();
-
+        player = new GameObject();
         // 풀 초기화 (미리 객체를 생성하여 풀에 넣음)
         InitializePool(monsterPool, monsterPrefab, maxMonsterCount);
         InitializePool(minealPool, minealPrefab, maxMineralCount);
+        InitializeObject(player, playerPrefab);
+        player.SetActive(true);
     }
 
     // 객체 풀 초기화
+    private void InitializeObject(GameObject thisObject,GameObject prefab)
+    {    
+            GameObject obj = Instantiate(prefab);
+            DontDestroyOnLoad(obj);
+            obj.SetActive(false); // 비활성화하여 풀에 넣기
+            thisObject = obj;
+    }
     private void InitializePool(Queue<GameObject> pool, GameObject prefab, int count)
     {
         for (int i = 0; i < count; i++)
