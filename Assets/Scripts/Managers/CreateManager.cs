@@ -46,7 +46,7 @@ public class CreateManager : MonoSingleton<CreateManager>
         player = InitializeObject(playerPrefab);
         player.SetActive(true);
 
-        GameObject monster = GetMonster(Vector3.zero);
+        GameObject monster = GetMonster(Vector3.zero,"BSW");
     }
 
     // 몬스터 데이터 CSV에서 불러오기
