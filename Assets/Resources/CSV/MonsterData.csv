@@ -1,2 +1,5 @@
-name,hp,speed,damage
+Name,Health,Speed,Damage
 Rat,10,2,5
+Goblin,10,2,5
+Orc,10,2,5
+Dragon,10,2,5

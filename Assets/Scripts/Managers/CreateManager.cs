@@ -6,13 +6,13 @@ using System.IO;
 public class CreateManager : MonoSingleton<CreateManager>
 {
     [SerializeField] GameObject playerPrefab;
-    [SerializeField] GameObject[] monsterPrefabs; // 몬스터 프리팹 배열
+    [SerializeField] GameObject goblinPrefab; // 몬스터 프리팹
     [SerializeField] GameObject minealPrefab;
 
     // Object Pool 변수들
     private Queue<GameObject> monsterPool;
     private Queue<GameObject> minealPool;
-    GameObject player;
+    private GameObject player;
 
     // Object Pool에 생성할 최대 개수
     [SerializeField] private int maxMonsterCount = 10;
@@ -21,17 +21,19 @@ public class CreateManager : MonoSingleton<CreateManager>
     // 몬스터 데이터를 담을 리스트
     private List<MonsterData> monsterDataList = new List<MonsterData>();
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         // 프리팹 불러오기
         playerPrefab = Resources.Load<GameObject>("Prefabs/TestPlayer");
         minealPrefab = Resources.Load<GameObject>("Prefabs/TestMineral");
 
         // 몬스터 프리팹을 Resources에서 동적으로 로드
-        monsterPrefabs = Resources.LoadAll<GameObject>("Prefabs/Monsters");
+        goblinPrefab = Resources.Load<GameObject>("Prefabs/Monsters/Goblin");  // 예시로 Goblin 프리팹 로드
 
-        // CSV 파일에서 몬스터 데이터 불러오기
-        LoadMonsterData();
+        // 몬스터 데이터를 DataManager에서 가져옴
+        monsterDataList = DataManager.Instance.GetMonsterDataList();  // DataManager에서 몬스터 데이터 리스트 가져오기
     }
 
     private void Start()
@@ -42,94 +44,55 @@ public class CreateManager : MonoSingleton<CreateManager>
         player = new GameObject();
 
         // Object Pool 초기화 (객체들을 미리 생성해서 Pool에 저장)
-        InitializePool(minealPool, minealPrefab, maxMineralCount);
-        player = InitializeObject(playerPrefab);
-        player.SetActive(true);
+        InitializePool(monsterPool, goblinPrefab, "Goblin", maxMineralCount);
 
-        GameObject monster = GetMonster(Vector3.zero,"BSW");
+        // 예시: Goblin 몬스터를 초기화하고 생성
+        GameObject goblin = InitializeObject(goblinPrefab,"Orc");
+        player = InitializeObject(playerPrefab, "Goblin");
+
+        player.SetActive(true);
     }
 
-    // 몬스터 데이터 CSV에서 불러오기
-    private void LoadMonsterData()
+    private GameObject InitializeObject(GameObject prefab, string name)
     {
-        string filePath = "Assets/Resources/SCV/MonsterData.csv"; // CSV 파일 경로
+        // GameObject를 생성하고 DataManager에서 필요한 정보를 통해 초기화
+        GameObject obj = Instantiate(prefab);
+        DontDestroyOnLoad(obj);
 
-        // 파일이 존재하는지 확인
-        if (File.Exists(filePath))
+        // 몬스터 데이터가 존재하면 해당 데이터로 몬스터를 초기화
+        if (prefab == goblinPrefab)
         {
-            string[] lines = File.ReadAllLines(filePath);
-            foreach (string line in lines)
+            MonsterData monsterData = DataManager.Instance.GetMonsterData(name); // "Goblin" 이름을 가진 몬스터 데이터 검색
+
+            if (monsterData != null)
             {
-                string[] values = line.Split(',');
-
-                // CSV에서 이름, 체력, 스피드, 데미지 데이터를 읽어옴
-                string name = values[0].Trim();
-                int health = int.Parse(values[1].Trim());
-                float speed = float.Parse(values[2].Trim());
-                int damage = int.Parse(values[3].Trim());
-
-                // 몬스터 데이터 생성
-                MonsterData monsterData = new MonsterData(name, health, speed, damage);
-                monsterDataList.Add(monsterData);
+                obj.GetComponent<Monster>().Initialize(monsterData); // 몬스터 초기화
             }
         }
-        else
-        {
-            Debug.LogError("CSV 파일을 찾을 수 없습니다: " + filePath);
-        }
-    }
-    // ��ü Ǯ �ʱ�ȭ
-    private GameObject InitializeObject(GameObject prefab)
-    {    
-            GameObject obj = Instantiate(prefab);
-            DontDestroyOnLoad(obj);
-            obj.SetActive(false); // ��Ȱ��ȭ�Ͽ� Ǯ�� �ֱ�
-           return obj;
+
+        obj.SetActive(false); // 초기에는 비활성화
+        return obj;
     }
 
-    private void InitializePool(Queue<GameObject> pool, GameObject prefab, int count)
+    private void InitializePool(Queue<GameObject> pool, GameObject prefab, string name,int count)
     {
         for (int i = 0; i < count; i++)
         {
             GameObject obj = Instantiate(prefab);
             DontDestroyOnLoad(obj);
+            // 몬스터 데이터가 존재하면 해당 데이터로 몬스터를 초기화
+            if (prefab == goblinPrefab)
+            {
+                MonsterData monsterData = DataManager.Instance.GetMonsterData(name); // "Goblin" 이름을 가진 몬스터 데이터 검색
+
+                if (monsterData != null)
+                {
+                    obj.GetComponent<Monster>().Initialize(monsterData); // 몬스터 초기화
+                }
+            }
             obj.SetActive(false); // 초기에는 객체가 활성화되지 않도록 설정
             pool.Enqueue(obj);
         }
-    }
-
-    // 몬스터 객체를 Object Pool에서 가져오기
-    public GameObject GetMonster(Vector3 position, string monsterName)
-    {
-        // CSV에서 몬스터 데이터를 찾음
-        MonsterData monsterData = monsterDataList.Find(m => m.Name == monsterName);
-
-        if (monsterData != null)
-        {
-            // 해당 이름의 몬스터 데이터를 찾으면, 해당 프리팹을 소환
-            GameObject monsterPrefab = GetMonsterPrefabByName(monsterName);
-            if (monsterPrefab != null)
-            {
-                GameObject monster = Instantiate(monsterPrefab, position, Quaternion.identity);
-                monster.GetComponent<Monster>().Initialize(monsterData); // 몬스터 초기화
-                return monster;
-            }
-        }
-
-        return null;
-    }
-
-    // 몬스터 이름에 맞는 프리팹을 찾는 메서드
-    private GameObject GetMonsterPrefabByName(string monsterName)
-    {
-        foreach (GameObject prefab in monsterPrefabs)
-        {
-            if (prefab.name == monsterName)
-            {
-                return prefab;
-            }
-        }
-        return null;
     }
 
     // 광물 객체를 Object Pool에서 가져오기
