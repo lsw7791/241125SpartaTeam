@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour, IManager
+public class SoundManager : MonoSingleton<TimeManager>
 {
-    public void Init()
-    {
-    }
 }

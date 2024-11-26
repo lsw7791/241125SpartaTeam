@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataManager :  IManager
+public class DataManager : MonoSingleton<DataManager>
 {
-    public void Init()
-    {
-    }
 }
