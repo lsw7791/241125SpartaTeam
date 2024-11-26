@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuickSlotUI : MonoBehaviour
+public class UIQuickSlot : MonoBehaviour
 {
     // 슬롯을 나타낼 이미지 배열
     public Image[] slotImages;
@@ -25,7 +25,6 @@ public class QuickSlotUI : MonoBehaviour
         quickSlotsController = FindObjectOfType<QuickSlotsController>();
 
         // 슬롯 초기화
-        InitializeSlots();
 
         // 초기 선택된 슬롯 업데이트
         if (slotImages.Length > 0)
@@ -34,15 +33,7 @@ public class QuickSlotUI : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        // QuickSlotsController의 선택된 슬롯에 맞춰 UI를 업데이트
-        if (quickSlotsController != null)
-        {
-            selectedSlotIndex = quickSlotsController.GetCurrentQuickSlot();
-            UpdateSlotHighlight();
-        }
-    }
+    
 
     // 슬롯 선택 처리
     private void UpdateSlotHighlight()
