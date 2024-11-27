@@ -8,10 +8,10 @@ public class PlayerInput : MonoBehaviour
     private bool isQuestOpen = false;      // 퀘스트 상태 추적
     private bool isOptionsOpen = false;    // 옵션 상태 추적
 
-    [SerializeField] private GameObject inventoryUI; // 인벤토리 UI
-    [SerializeField] private GameObject mapUI;       // 맵 UI
-    [SerializeField] private GameObject questUI;     // 퀘스트 UI
-    [SerializeField] private GameObject optionUI;    // 옵션 UI
+    [SerializeField] GameObject inventoryUI; // 인벤토리 UI
+    [SerializeField] GameObject mapUI;       // 맵 UI
+    [SerializeField] GameObject questUI;     // 퀘스트 UI
+    [SerializeField] GameObject optionUI;    // 옵션 UI
 
     private void Awake()
     {
