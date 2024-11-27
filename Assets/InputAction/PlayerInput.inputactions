@@ -294,7 +294,7 @@
                 {
                     "name": "",
                     "id": "64a09bdb-7310-4866-a980-be63b5e3b72e",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -305,7 +305,7 @@
                 {
                     "name": "",
                     "id": "ceefe522-3b34-4c48-bb60-ddf261ce393f",
-                    "path": "<Keyboard>/q",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
