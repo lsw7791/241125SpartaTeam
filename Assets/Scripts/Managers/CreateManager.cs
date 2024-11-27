@@ -48,9 +48,9 @@ public class CreateManager : MonoSingleton<CreateManager>
 
         // 예시: Goblin 몬스터를 초기화하고 생성
         GameObject goblin = InitializeObject(goblinPrefab,"Orc");
-        player = InitializeObject(playerPrefab, "Goblin");
+        //player = InitializeObject(playerPrefab, "Goblin");
 
-        player.SetActive(true);
+        //player.SetActive(true);
     }
 
     private GameObject InitializeObject(GameObject prefab, string name)
