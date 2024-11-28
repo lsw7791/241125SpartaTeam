@@ -2488,7 +2488,7 @@ GameObject:
   - component: {fileID: 6509989135016739643}
   - component: {fileID: 7074405511826205681}
   - component: {fileID: 5922531886547977401}
-  - component: {fileID: 4362487793135417099}
+  - component: {fileID: 7431627439214948596}
   m_Layer: 5
   m_Name: StatusUI
   m_TagString: Untagged
@@ -2558,7 +2558,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4362487793135417099
+--- !u!114 &7431627439214948596
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2567,7 +2567,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2229284150097268912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d15722958bfa49198503938e31ff85e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b2ccc0a5bd78e1489394f4909dad16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2389260819830911779
