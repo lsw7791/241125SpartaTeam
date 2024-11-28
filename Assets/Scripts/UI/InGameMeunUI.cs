@@ -11,8 +11,18 @@ public class InGameMenuUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     private RectTransform childRect; // 자식 오브젝트의 RectTransform
 
+    // UI 오브젝트들
+    public GameObject mapUI;         // 맵 UI
+    public GameObject inventoryUI;   // 인벤토리 UI
+    public GameObject optionUI;     // 옵션 UI
+    public GameObject statusUI;      // 스태터스 UI
+
     void Start()
     {
+        inventoryUI = UIManager.Instance.inventoryUI;
+        statusUI = UIManager.Instance.statusUI;
+        mapUI = UIManager.Instance.mapUI;
+        optionUI = UIManager.Instance.optionUI;
         childRect = childObject.GetComponent<RectTransform>();
         childObject.SetActive(false); // 처음에는 자식 오브젝트 비활성화
     }
@@ -32,5 +42,29 @@ public class InGameMenuUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         {
             childObject.SetActive(false); // 축소 후 비활성화
         });
+    }
+
+    // 맵 UI 토글
+    public void ToggleMapUI()
+    {
+        mapUI.SetActive(!mapUI.activeSelf); // 활성화/비활성화 토글
+    }
+
+    // 인벤토리 UI 토글
+    public void ToggleInventoryUI()
+    {
+        inventoryUI.SetActive(!inventoryUI.activeSelf); // 활성화/비활성화 토글
+    }
+
+    // 옵션 UI 토글
+    public void ToggleOptionUI()
+    {
+        optionUI.SetActive(!optionUI.activeSelf); // 활성화/비활성화 토글
+    }
+
+    // 스태터스 UI 토글
+    public void ToggleStatusUI()
+    {
+        statusUI.SetActive(!statusUI.activeSelf); // 활성화/비활성화 토글
     }
 }

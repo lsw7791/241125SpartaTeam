@@ -7,12 +7,16 @@ public class PlayerInput : MonoBehaviour
     private bool isInventoryOpen = false;  // 인벤토리 상태를 추적하는 변수
     private bool isMapOpen = false;        // 맵 상태 추적
     private bool isQuestOpen = false;      // 퀘스트 상태 추적
-    private bool isOptionsOpen = false;    // 옵션 상태 추적
+    private bool isOptionOpen = false;    // 옵션 상태 추적
+    private bool isStatusOpen = false;    // 옵션 상태 추적
+
 
     [SerializeField] GameObject inventoryUI; // 인벤토리 UI
     [SerializeField] GameObject mapUI;       // 맵 UI
     [SerializeField] GameObject questUI;     // 퀘스트 UI
     [SerializeField] GameObject optionUI;    // 옵션 UI
+    [SerializeField] GameObject statusUI;    // 옵션 UI
+
 
     private void Awake()
     {
@@ -20,6 +24,7 @@ public class PlayerInput : MonoBehaviour
         mapUI = UIManager.Instance.mapUI;
         questUI = UIManager.Instance.questUI;
         optionUI = UIManager.Instance.optionUI;
+        statusUI = UIManager.Instance.statusUI;
 
         // 초기에는 UI 비활성화
         inventoryUI.SetActive(false);
@@ -105,10 +110,16 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
-            ToggleOptions();
+            ToggleOption();
         }
     }
-
+    public void OnStatus(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            ToggleStatus();
+        }
+    }
     // 인벤토리 토글
     private void ToggleInventory()
     {
@@ -131,10 +142,38 @@ public class PlayerInput : MonoBehaviour
     }
 
     // 옵션 토글
-    private void ToggleOptions()
+    private void ToggleOption()
     {
-        isOptionsOpen = !isOptionsOpen;
-        optionUI.SetActive(isOptionsOpen);
+        // 활성화된 UI가 있는지 확인 (모든 UI 상태를 확인)
+        if (isInventoryOpen || isMapOpen || isQuestOpen || isOptionOpen || isStatusOpen)
+        {
+            // 활성화된 UI가 있으면 모두 비활성화
+            inventoryUI.SetActive(false);
+            mapUI.SetActive(false);
+            questUI.SetActive(false);
+            optionUI.SetActive(false);
+            statusUI.SetActive(false);
+
+            // 모든 UI 상태를 비활성화
+            isInventoryOpen = false;
+            isMapOpen = false;
+            isQuestOpen = false;
+            isOptionOpen = false;
+            isStatusOpen = false;
+        }
+        else
+        {
+            // 활성화된 UI가 없으면 옵션 UI만 활성화
+            optionUI.SetActive(true);
+            isOptionOpen = true;
+        }
+    }
+
+
+    private void ToggleStatus()
+    {
+        isStatusOpen = !isStatusOpen;
+        statusUI.SetActive(isStatusOpen);
     }
 
     // 채집 로직
