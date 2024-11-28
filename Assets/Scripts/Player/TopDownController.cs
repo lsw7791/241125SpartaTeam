@@ -28,6 +28,7 @@ public class TopDownController : MonoBehaviour
     public void CallLookEvent(Vector2 direction)
     {
         SendMessage("OnAim", direction);  // SendMessage로 OnAim 호출
+        OnLookEvent?.Invoke(direction);   // 이벤트를 통해 다른 메서드에서 OnLookEvent를 받을 수 있도록 호출
     }
 
     private void FixedUpdate()
@@ -35,12 +36,13 @@ public class TopDownController : MonoBehaviour
         rb.velocity = moveInput * speed;
     }
 
+    // Look 이벤트
     public void OnLook(InputValue value)
     {
         Vector2 newAim = value.Get<Vector2>();
         Vector2 worldPos = camera.ScreenToWorldPoint(newAim);
         newAim = (worldPos - (Vector2)transform.position).normalized;
 
-        CallLookEvent(newAim);  // SendMessage 방식으로 OnAim 호출
+        CallLookEvent(newAim);  // SendMessage 방식과 이벤트 방식 모두 호출
     }
 }

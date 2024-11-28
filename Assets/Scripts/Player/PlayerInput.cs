@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -164,5 +165,13 @@ public class PlayerInput : MonoBehaviour
     private void PerformPadding()
     {
         // 막기 로직 추가
+    }
+
+    // "Look" 이벤트 호출을 SendMessage 방식으로 처리
+    public void OnLook(InputValue value)
+    {
+        Vector2 newAim = value.Get<Vector2>();
+        SendMessage("OnAim", newAim);  // SendMessage로 OnAim 호출
+        Debug.Log("호출완료");
     }
 }
