@@ -1,25 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
 
 public class PlayerInput : MonoBehaviour
 {
-    private bool isInventoryOpen = false;  // 인벤토리 상태를 추적하는 변수
-    private bool isMapOpen = false;        // 맵 상태 추적
-    private bool isQuestOpen = false;      // 퀘스트 상태 추적
-    private bool isOptionOpen = false;    // 옵션 상태 추적
-    private bool isStatusOpen = false;    // 옵션 상태 추적
-
-
+    // UI 상태 변수는 이제 UIManager에서 직접 참조하므로 필요 없음
     [SerializeField] GameObject inventoryUI; // 인벤토리 UI
     [SerializeField] GameObject mapUI;       // 맵 UI
     [SerializeField] GameObject questUI;     // 퀘스트 UI
     [SerializeField] GameObject optionUI;    // 옵션 UI
-    [SerializeField] GameObject statusUI;    // 옵션 UI
-
+    [SerializeField] GameObject statusUI;    // 스태터스 UI
 
     private void Awake()
     {
+        // UIManager의 변수들은 싱글톤을 통해 바로 접근 가능
         inventoryUI = UIManager.Instance.inventoryUI;
         mapUI = UIManager.Instance.mapUI;
         questUI = UIManager.Instance.questUI;
@@ -78,7 +71,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    // 인벤토리
+    // 인벤토리 토글
     public void OnInventory(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -87,7 +80,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    // 맵
+    // 맵 토글
     public void OnMap(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -96,7 +89,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    // 퀘스트
+    // 퀘스트 토글
     public void OnQuest(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -105,7 +98,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    // 옵션
+    // 옵션 토글
     public void OnOption(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -113,6 +106,8 @@ public class PlayerInput : MonoBehaviour
             ToggleOption();
         }
     }
+
+    // 스태터스 토글
     public void OnStatus(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -120,60 +115,52 @@ public class PlayerInput : MonoBehaviour
             ToggleStatus();
         }
     }
+
     // 인벤토리 토글
     private void ToggleInventory()
     {
-        isInventoryOpen = !isInventoryOpen;
-        inventoryUI.SetActive(isInventoryOpen);
+        bool isInventoryOpen = !UIManager.Instance.isInventoryOpen;
+        UIManager.Instance.inventoryUI.SetActive(isInventoryOpen);
+        UIManager.Instance.isInventoryOpen = isInventoryOpen;
     }
 
     // 맵 토글
     private void ToggleMap()
     {
-        isMapOpen = !isMapOpen;
-        mapUI.SetActive(isMapOpen);
+        bool isMapOpen = !UIManager.Instance.isMapOpen;
+        UIManager.Instance.mapUI.SetActive(isMapOpen);
+        UIManager.Instance.isMapOpen = isMapOpen;
     }
 
     // 퀘스트 토글
     private void ToggleQuest()
     {
-        isQuestOpen = !isQuestOpen;
-        questUI.SetActive(isQuestOpen);
+        bool isQuestOpen = !UIManager.Instance.isQuestOpen;
+        UIManager.Instance.questUI.SetActive(isQuestOpen);
+        UIManager.Instance.isQuestOpen = isQuestOpen;
     }
 
     // 옵션 토글
     private void ToggleOption()
     {
-        // 활성화된 UI가 있는지 확인 (모든 UI 상태를 확인)
-        if (isInventoryOpen || isMapOpen || isQuestOpen || isOptionOpen || isStatusOpen)
+        if (UIManager.Instance.isInventoryOpen || UIManager.Instance.isMapOpen || UIManager.Instance.isQuestOpen || UIManager.Instance.isStatusOpen)
         {
-            // 활성화된 UI가 있으면 모두 비활성화
-            inventoryUI.SetActive(false);
-            mapUI.SetActive(false);
-            questUI.SetActive(false);
-            optionUI.SetActive(false);
-            statusUI.SetActive(false);
-
-            // 모든 UI 상태를 비활성화
-            isInventoryOpen = false;
-            isMapOpen = false;
-            isQuestOpen = false;
-            isOptionOpen = false;
-            isStatusOpen = false;
+            UIManager.Instance.CloseAllUIs(); // 모든 UI 닫기
         }
         else
         {
-            // 활성화된 UI가 없으면 옵션 UI만 활성화
-            optionUI.SetActive(true);
-            isOptionOpen = true;
+            bool isOptionOpen = !UIManager.Instance.isOptionOpen;
+            UIManager.Instance.optionUI.SetActive(isOptionOpen);
+            UIManager.Instance.isOptionOpen = isOptionOpen;
         }
     }
 
-
+    // 스태터스 토글
     private void ToggleStatus()
     {
-        isStatusOpen = !isStatusOpen;
-        statusUI.SetActive(isStatusOpen);
+        bool isStatusOpen = !UIManager.Instance.isStatusOpen;
+        UIManager.Instance.statusUI.SetActive(isStatusOpen);
+        UIManager.Instance.isStatusOpen = isStatusOpen;
     }
 
     // 채집 로직

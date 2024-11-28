@@ -11,22 +11,13 @@ public class InGameMenuUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     private RectTransform childRect; // 자식 오브젝트의 RectTransform
 
-    // UI 오브젝트들
-    public GameObject mapUI;         // 맵 UI
-    public GameObject inventoryUI;   // 인벤토리 UI
-    public GameObject optionUI;     // 옵션 UI
-    public GameObject statusUI;      // 스태터스 UI
 
     void Start()
     {
-        inventoryUI = UIManager.Instance.inventoryUI;
-        statusUI = UIManager.Instance.statusUI;
-        mapUI = UIManager.Instance.mapUI;
-        optionUI = UIManager.Instance.optionUI;
         childRect = childObject.GetComponent<RectTransform>();
         childObject.SetActive(false); // 처음에는 자식 오브젝트 비활성화
     }
-
+    
     // 마우스가 부모 오브젝트에 들어갔을 때
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -47,24 +38,26 @@ public class InGameMenuUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     // 맵 UI 토글
     public void ToggleMapUI()
     {
-        mapUI.SetActive(!mapUI.activeSelf); // 활성화/비활성화 토글
+        UIManager.Instance.isMapOpen = !UIManager.Instance.isMapOpen; // 상태 토글
+        UIManager.Instance.mapUI.SetActive(UIManager.Instance.isMapOpen); // UI 활성화/비활성화
     }
 
-    // 인벤토리 UI 토글
     public void ToggleInventoryUI()
     {
-        inventoryUI.SetActive(!inventoryUI.activeSelf); // 활성화/비활성화 토글
+        UIManager.Instance.isInventoryOpen = !UIManager.Instance.isInventoryOpen; // 상태 토글
+        UIManager.Instance.inventoryUI.SetActive(UIManager.Instance.isInventoryOpen); // UI 활성화/비활성화
     }
-
-    // 옵션 UI 토글
+    
     public void ToggleOptionUI()
     {
-        optionUI.SetActive(!optionUI.activeSelf); // 활성화/비활성화 토글
+        UIManager.Instance.isOptionOpen = !UIManager.Instance.isOptionOpen; // 상태 토글
+        UIManager.Instance.optionUI.SetActive(UIManager.Instance.isOptionOpen); // UI 활성화/비활성화
     }
 
-    // 스태터스 UI 토글
     public void ToggleStatusUI()
     {
-        statusUI.SetActive(!statusUI.activeSelf); // 활성화/비활성화 토글
+        UIManager.Instance.isStatusOpen = !UIManager.Instance.isStatusOpen; // 상태 토글
+        UIManager.Instance.statusUI.SetActive(UIManager.Instance.isStatusOpen); // UI 활성화/비활성화
     }
+
 }
