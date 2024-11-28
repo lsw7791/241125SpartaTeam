@@ -10,7 +10,7 @@ using UnityEngine;
         Arrow,
         Staff
     }
-public class PlayerCurrent : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [SerializeField] int _currentHP;                        // 체력
     [SerializeField] int _currentStamina;                   // 스태미나
@@ -19,6 +19,7 @@ public class PlayerCurrent : MonoBehaviour
     [SerializeField] int _currentSpeed;                     // 이동 속도
     [SerializeField] float _currentATKSpeed;             // 공격 속도
     [SerializeField] int _currentDef;                       // 방어력
+    [SerializeField] int _currentWeaponType;                       // 무기종류
 
     [SerializeField] string NickName;               // 플레이어 닉네임
 

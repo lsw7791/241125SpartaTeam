@@ -44,53 +44,69 @@ public class CreateManager : MonoSingleton<CreateManager>
         player = new GameObject();
 
         // Object Pool 초기화 (객체들을 미리 생성해서 Pool에 저장)
-        InitializePool(monsterPool, goblinPrefab, "Goblin", maxMineralCount);
+        InitializePool<Monster>(monsterPool, goblinPrefab, "Goblin", maxMonsterCount);
 
         // 예시: Goblin 몬스터를 초기화하고 생성
-        GameObject goblin = InitializeObject(goblinPrefab,"Orc");
-        //player = InitializeObject(playerPrefab, "Goblin");
+        GameObject goblin = InitializeObject<Monster>(goblinPrefab, "Goblin");
+        player = InitializeObject<Player>(playerPrefab, "Player");
 
-        //player.SetActive(true);
+        goblin.SetActive(true);  // 예시로 Goblin을 활성화
+        player.SetActive(true);  // 플레이어 활성화
     }
 
-    private GameObject InitializeObject(GameObject prefab, string name)
+    private GameObject InitializeObject<T>(GameObject prefab, string name) where T : MonoBehaviour
     {
         // GameObject를 생성하고 DataManager에서 필요한 정보를 통해 초기화
         GameObject obj = Instantiate(prefab);
         DontDestroyOnLoad(obj);
 
-        // 몬스터 데이터가 존재하면 해당 데이터로 몬스터를 초기화
-        if (prefab == goblinPrefab)
+        // T 타입의 컴포넌트를 가져와 초기화
+        T component = obj.GetComponent<T>();
+        if (component != null)
         {
-            MonsterData monsterData = DataManager.Instance.GetMonsterData(name); // "Goblin" 이름을 가진 몬스터 데이터 검색
-
-            if (monsterData != null)
+            // 예시: 만약 T가 Monster라면, 몬스터 데이터로 초기화
+            if (typeof(T) == typeof(Monster))
             {
-                obj.GetComponent<Monster>().Initialize(monsterData); // 몬스터 초기화
+                MonsterData monsterData = DataManager.Instance.GetMonsterData(name);
+                if (monsterData != null)
+                {
+                    (component as Monster).Initialize(monsterData); // Monster 초기화
+                }
             }
+            // T 타입이 다른 객체라면 그에 맞는 초기화 작업을 추가하면 된다.
+            // 예: (component as Weapon).Initialize(weaponData);
         }
 
-        obj.SetActive(false); // 초기에는 비활성화
+        obj.SetActive(false); // 초기에는 객체가 비활성화됨
         return obj;
     }
 
-    private void InitializePool(Queue<GameObject> pool, GameObject prefab, string name,int count)
+    private void InitializePool<T>(Queue<GameObject> pool, GameObject prefab, string name, int count) where T : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
             GameObject obj = Instantiate(prefab);
             DontDestroyOnLoad(obj);
-            // 몬스터 데이터가 존재하면 해당 데이터로 몬스터를 초기화
-            if (prefab == goblinPrefab)
-            {
-                MonsterData monsterData = DataManager.Instance.GetMonsterData(name); // "Goblin" 이름을 가진 몬스터 데이터 검색
 
-                if (monsterData != null)
+            // T 타입의 객체에 대해 초기화 작업을 한다면, 해당 컴포넌트를 가져온 후 초기화
+            T component = obj.GetComponent<T>();
+            if (component != null)
+            {
+                // 예시: 만약 T가 Monster라면, 데이터 초기화
+                if (typeof(T) == typeof(Monster))
                 {
-                    obj.GetComponent<Monster>().Initialize(monsterData); // 몬스터 초기화
+                    MonsterData monsterData = DataManager.Instance.GetMonsterData(name);
+                    if (monsterData != null)
+                    {
+                        (component as Monster).Initialize(monsterData); // 컴포넌트를 캐스팅하여 초기화
+                    }
                 }
+
+                // T 타입이 다른 클래스라면 그에 맞는 초기화 작업을 추가하면 된다.
+                // 예: (component as Weapon).Initialize(weaponData);
             }
-            obj.SetActive(false); // 초기에는 객체가 활성화되지 않도록 설정
+
+            obj.SetActive(false); // 초기에는 객체가 비활성화되도록 설정
             pool.Enqueue(obj);
         }
     }
