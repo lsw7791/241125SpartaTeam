@@ -12,16 +12,16 @@ using UnityEngine;
     }
 public class Player : MonoBehaviour
 {
+    [SerializeField] string NickName;               // 플레이어 닉네임
+
     [SerializeField] int _currentHP;                        // 체력
     [SerializeField] int _currentStamina;                   // 스태미나
     [SerializeField] int _currentGold;                      // 골드
     [SerializeField] int _currentDamage;                    // 공격력
     [SerializeField] int _currentSpeed;                     // 이동 속도
-    [SerializeField] float _currentATKSpeed;             // 공격 속도
+    [SerializeField] float _currentATKSpeed;                // 공격 속도
     [SerializeField] int _currentDef;                       // 방어력
-    [SerializeField] int _currentWeaponType;                       // 무기종류
-
-    [SerializeField] string NickName;               // 플레이어 닉네임
+    [SerializeField] int _currentWeaponType;                // 무기종류
 
     [SerializeField] float _movingLV;
     [SerializeField] float _makingLV;

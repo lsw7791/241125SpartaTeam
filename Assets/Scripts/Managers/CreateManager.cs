@@ -54,33 +54,58 @@ public class CreateManager : MonoSingleton<CreateManager>
         player.SetActive(true);  // 플레이어 활성화
     }
 
+    // 게임 오브젝트를 초기화하는 메서드
     private GameObject InitializeObject<T>(GameObject prefab, string name) where T : MonoBehaviour
     {
-        // GameObject를 생성하고 DataManager에서 필요한 정보를 통해 초기화
         GameObject obj = Instantiate(prefab);
         DontDestroyOnLoad(obj);
 
-        // T 타입의 컴포넌트를 가져와 초기화
+        // T 타입의 컴포넌트를 가져와서 초기화
         T component = obj.GetComponent<T>();
         if (component != null)
         {
-            // 예시: 만약 T가 Monster라면, 몬스터 데이터로 초기화
-            if (typeof(T) == typeof(Monster))
-            {
-                MonsterData monsterData = DataManager.Instance.GetMonsterData(name);
-                if (monsterData != null)
-                {
-                    (component as Monster).Initialize(monsterData); // Monster 초기화
-                }
-            }
-            // T 타입이 다른 객체라면 그에 맞는 초기화 작업을 추가하면 된다.
-            // 예: (component as Weapon).Initialize(weaponData);
+            InitializeData(component, name);  // 데이터 초기화 분리된 메서드 호출
         }
 
-        obj.SetActive(false); // 초기에는 객체가 비활성화됨
+        obj.SetActive(false);  // 초기에는 비활성화됨
         return obj;
     }
 
+    // 데이터 초기화를 분리한 메서드
+    private void InitializeData<T>(T component, string name) where T : MonoBehaviour
+    {
+        // T 타입에 맞는 데이터 초기화
+        if (typeof(T) == typeof(Monster))
+        {
+            // 몬스터 데이터 초기화
+            MonsterData monsterData = DataManager.Instance.GetMonsterData(name);
+            if (monsterData != null)
+            {
+                (component as Monster).Initialize(monsterData);
+            }
+        }
+        //else if (typeof(T) == typeof(Player))
+        //{
+        //    // 플레이어 데이터 초기화
+        //    PlayerData playerData = DataManager.Instance.GetPlayerData(name);
+        //    if (playerData != null)
+        //    {
+        //        (component as Player).Initialize(playerData);
+        //    }
+        //}
+        //else if (typeof(T) == typeof(Weapon))
+        //{
+        //    // 무기 데이터 초기화
+        //    WeaponData weaponData = DataManager.Instance.GetWeaponData(name);
+        //    if (weaponData != null)
+        //    {
+        //        (component as Weapon).Initialize(weaponData);
+        //    }
+        //}
+        // 여기에 추가적인 타입을 위한 데이터 초기화 코드 추가 가능
+    }
+
+    // Object Pool 초기화 메서드
     private void InitializePool<T>(Queue<GameObject> pool, GameObject prefab, string name, int count) where T : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
@@ -92,18 +117,7 @@ public class CreateManager : MonoSingleton<CreateManager>
             T component = obj.GetComponent<T>();
             if (component != null)
             {
-                // 예시: 만약 T가 Monster라면, 데이터 초기화
-                if (typeof(T) == typeof(Monster))
-                {
-                    MonsterData monsterData = DataManager.Instance.GetMonsterData(name);
-                    if (monsterData != null)
-                    {
-                        (component as Monster).Initialize(monsterData); // 컴포넌트를 캐스팅하여 초기화
-                    }
-                }
-
-                // T 타입이 다른 클래스라면 그에 맞는 초기화 작업을 추가하면 된다.
-                // 예: (component as Weapon).Initialize(weaponData);
+                InitializeData(component, name);  // 데이터 초기화 호출
             }
 
             obj.SetActive(false); // 초기에는 객체가 비활성화되도록 설정
