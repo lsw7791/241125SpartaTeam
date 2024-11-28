@@ -1,7 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+    enum WeaponType
+    {
+        MinigTool,
+        SmallWP,
+        MediumWP,
+        BigWP,
+        Arrow,
+        Staff
+    }
 public class PlayerCurrent : MonoBehaviour
 {
     [SerializeField] int _currentHP;                        // 체력
@@ -21,6 +29,26 @@ public class PlayerCurrent : MonoBehaviour
     [SerializeField] float _arrowWPLV;
     [SerializeField] float _staffWPLV;
 
-    public Inventory PlayerInventory;     // 인벤토리
+    public PlayerInventory _playerInventory;     // 인벤토리
     public List<QuickSlotItem> QuickSlots; // 퀵슬롯 아이템 목록
 }
+public class PlayerInventory : MonoBehaviour
+{
+    [SerializeField] int _equipWeaponType;  // 주무기
+    [SerializeField] int _equipSubWPType;  // 보조무기
+    [SerializeField] int _equipHeadType;  // 머리
+    [SerializeField] int _equipShirtType;  // 몸통
+    [SerializeField] int _equipPantsType;  // 바지
+    [SerializeField] int _equipArmorType;  // 방어구
+    [SerializeField] int _equipCloakType;  // 망토
+
+
+
+
+
+}
+public class PlayerQuickSlot : MonoBehaviour
+{
+
+}
+
