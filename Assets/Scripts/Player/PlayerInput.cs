@@ -185,7 +185,6 @@ public class PlayerInput : MonoBehaviour
     // 공격 로직
     private void PerformAttack()
     {
-        // 공격 로직 추가
     }
 
     // 상호작용 로직

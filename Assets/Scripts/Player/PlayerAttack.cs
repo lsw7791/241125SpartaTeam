@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     enum AttackType
     {
-        MiningTool,
+        MinigTool,
         SmallWP,
         MediumWP,
         BigWP,
