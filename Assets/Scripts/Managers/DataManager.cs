@@ -50,7 +50,14 @@ public class DataManager : MonoSingleton<DataManager>
     {
         return _MonsterData.Find(m => m.Name == name);
     }
-
+    public MonsterData GetPlayerData(string name)
+    {
+        return _MonsterData.Find(m => m.Name == name);
+    }
+    public MonsterData GetWeaponData(string name)
+    {
+        return _MonsterData.Find(m => m.Name == name);
+    }
     // 몬스터 데이터 리스트 반환
     public List<MonsterData> GetMonsterDataList()
     {
