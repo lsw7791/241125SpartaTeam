@@ -103,6 +103,8 @@ MonoBehaviour:
   health: 0
   speed: 0
   damage: 0
+  detectionRange: 0
+  attackRange: 0
 --- !u!114 &3131933923667785821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,10 +117,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a574f2b6b3b93cf49aa9f6f5352e38fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  detectionRange: 10
-  attackRange: 1.5
+  moveSpeed: 0
+  detectionRange: 0
+  attackRange: 0
   player: {fileID: 0}
+  damage: 0
 --- !u!61 &7970354608917521288
 BoxCollider2D:
   m_ObjectHideFlags: 0

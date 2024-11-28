@@ -34,7 +34,9 @@ public class DataManager : MonoSingleton<DataManager>
                 values[0], // 이름
                 int.Parse(values[1]), // 체력
                 float.Parse(values[2]), // 공격력
-                int.Parse(values[3]) // 레벨
+                int.Parse(values[3]), // 레벨
+                float.Parse(values[4]), // 탐색 범위
+                float.Parse(values[5]) // 공격 범위
             );
 
             monsters.Add(monster);
