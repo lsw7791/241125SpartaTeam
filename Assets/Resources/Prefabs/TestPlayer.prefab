@@ -391,6 +391,7 @@ GameObject:
   - component: {fileID: 9028419295178868291}
   - component: {fileID: 8307571058901756721}
   - component: {fileID: 9103636101208835098}
+  - component: {fileID: 3535479949116907831}
   m_Layer: 0
   m_Name: UnitRoot
   m_TagString: Untagged
@@ -448,6 +449,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3535479949116907831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074020692218767500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1edeb6650bda6143a33b526bcad5a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimRotation: {fileID: 0}
 --- !u!1 &2316263067602181005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,6 +1572,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 77cae6b9-3012-4855-80aa-8cce2d7c3293
     m_ActionName: Player/Option[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1410143922358874806}
+        m_TargetAssemblyTypeName: TopDownController, Assembly-CSharp
+        m_MethodName: OnLook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 05bcbd08-d6a8-4202-a5a2-bdfb7c0480a1
+    m_ActionName: Player/Look[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1663,8 +1693,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c7da0a5a137994db31038c05c21fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armRenderer: {fileID: 0}
   armPivot: {fileID: 3115614810158819991}
-  characterTransform: {fileID: 9028419295178868291}
 --- !u!1 &3332842344908746626
 GameObject:
   m_ObjectHideFlags: 0

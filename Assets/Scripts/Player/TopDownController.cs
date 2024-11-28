@@ -1,14 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
 
 public class TopDownController : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float speed;
-    public event Action<Vector2> OnLookEvent;
-
-    private Vector2 moveInput;
+    public float speed = 5f;   // 이동 속도
+    private Vector2 moveInput; // 이동 입력값
     private Rigidbody2D rb;
     private Camera camera;
 
@@ -18,31 +15,42 @@ public class TopDownController : MonoBehaviour
         camera = Camera.main;
     }
 
-    // 이동
+    // 이동 처리
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
     }
 
-    // OnLookEvent 이벤트 호출 대신 SendMessage를 사용하여 호출
-    public void CallLookEvent(Vector2 direction)
+    // 마우스 위치에 따른 회전 처리
+    public void OnLook(InputAction.CallbackContext context)
     {
-        SendMessage("OnAim", direction);  // SendMessage로 OnAim 호출
-        OnLookEvent?.Invoke(direction);   // 이벤트를 통해 다른 메서드에서 OnLookEvent를 받을 수 있도록 호출
+        if (context.performed)
+        {
+            Vector2 mouseScreenPos = context.ReadValue<Vector2>(); // 마우스 화면 좌표
+            Vector2 mouseWorldPos = camera.ScreenToWorldPoint(mouseScreenPos); // 월드 좌표로 변환
+
+            // 플레이어와 마우스 위치를 비교하여 좌우 반전
+            FlipRotation(mouseWorldPos);
+        }
+    }
+
+    private void FlipRotation(Vector2 mouseWorldPos)
+    {
+        // 마우스 위치가 플레이어의 위치보다 왼쪽에 있으면 Y축 회전 180도로 설정
+        if (mouseWorldPos.x < transform.position.x)
+        {
+            // 왼쪽을 바라보게 (회전)
+            transform.rotation = Quaternion.Euler(0, 0, 0);  // Y축 회전 180도
+        }
+        else
+        {
+            // 오른쪽을 바라보게 (회전 취소)
+            transform.rotation = Quaternion.Euler(0, 180, 0);    // 기본 회전 (Y축 0도)
+        }
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = moveInput * speed;
-    }
-
-    // Look 이벤트
-    public void OnLook(InputValue value)
-    {
-        Vector2 newAim = value.Get<Vector2>();
-        Vector2 worldPos = camera.ScreenToWorldPoint(newAim);
-        newAim = (worldPos - (Vector2)transform.position).normalized;
-
-        CallLookEvent(newAim);  // SendMessage 방식과 이벤트 방식 모두 호출
+        rb.velocity = moveInput * speed; // 이동 처리
     }
 }
