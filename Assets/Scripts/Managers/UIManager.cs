@@ -8,6 +8,8 @@ public class UIManager : MonoSingleton<UIManager>
     public GameObject mapUI;
     public GameObject questUI;
     public GameObject optionUI;
+    public GameObject statusUI;
+
 
     private GameObject canvasInstance;
 
@@ -26,5 +28,7 @@ public class UIManager : MonoSingleton<UIManager>
         mapUI = popupUI.Find("MapUI")?.gameObject;
         questUI = popupUI.Find("QuestUI")?.gameObject;
         optionUI = popupUI.Find("OptionUI")?.gameObject;
+        statusUI = popupUI.Find("StatusUI")?.gameObject;
+
     }
 }
