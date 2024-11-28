@@ -1,0 +1,15 @@
+Name ,Type,Damage,Upgrade,Def
+SwordA,Weapon,10,0,0
+SwordB,Weapon,15,0,0
+SwordC,Weapon,20,0,0
+SheildA,Secondary,0,0,10
+SheildB,Secondary,0,0,15
+SheildC,Secondary,0,0,20
+AxeA,Weapon,10,0,0
+AxeB,Weapon,15,0,0
+AxeC,Weapon,20,0,0
+BowA,Weapon,10,0,0
+BowB,Weapon,15,0,0
+BowC,Weapon,20,0,0
+StaffA,Weapon,10,0,0
+StaffB,Weapon,15,0,0
