@@ -58,7 +58,8 @@ public class MonsterAI : MonoBehaviour
             // 공격 범위에 들어왔으면 공격 행동
             AttackPlayer();
         }
-        else if (distanceToPlayer <= detectionRange)
+
+        if (distanceToPlayer <= detectionRange)
         {
             // 감지 범위에 들어왔으면 플레이어를 추적
             ChasePlayer();
