@@ -1,32 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class MonsterAI : MonoBehaviour
 {
+    private Monster monster;
+
     [Header("Targeting")]
-    public float moveSpeed = 2f;           // 몬스터의 이동 속도
-    public float detectionRange = 1f;     // 플레이어를 감지할 수 있는 범위
-    public float attackRange = 0.5f;       // 공격 범위
-    public Transform player;               // 추적할 플레이어
+    [SerializeField]
+    private float moveSpeed;           // 몬스터의 이동 속도
+    public float detectionRange;     // 플레이어를 감지할 수 있는 범위
+    public float attackRange;       // 공격 범위
+    [SerializeField]
+    private Transform player;               // 추적할 플레이어
     private Vector3 initialPosition;       // 몬스터의 초기 위치
     private SpriteRenderer spriteRenderer;
 
     [Header("Attack")]
-    public float damage = 2f;
+    [SerializeField]
+    private float damage;
     public float delayTime = 2f;
     public float curTime = 0f;
+
+    [Header("Condition")]
+    [SerializeField]
+    private int health;
+    private bool isDie = false;
 
     private void Start()
     {
         // 몬스터의 초기 위치 저장
         initialPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        monster = GetComponent<Monster>();
+
+        Initialize();
     }
 
     private void Update()
     {
-        if(player == null)
+        Dead();
+
+        if(isDie == true)
+        {
+            return;
+        }
+
+        if (player == null)
         {
             ReturnToInitialPosition();
             return;
@@ -50,8 +71,21 @@ public class MonsterAI : MonoBehaviour
         {
             // 플레이어가 범위 밖에 있으면 초기 위치로 돌아가기
             //ReturnToInitialPosition();
-            player = null;
+            if(player != null)
+            {
+                player = null;
+                Debug.Log("추격 종료");
+            }
         }
+    }
+
+    private void Initialize()
+    {
+        moveSpeed = monster.Speed;
+        damage = monster.Damage;
+        detectionRange = monster.DetectionRange;
+        attackRange = monster.AttackRange;
+        health = monster.Health;
     }
 
     private void ChasePlayer()
@@ -83,6 +117,16 @@ public class MonsterAI : MonoBehaviour
         transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
         spriteRenderer.flipX = direction.x < 0;
         //player = null;
+    }
+
+    private void Dead()
+    {
+        if(health  <= 0)
+        {
+            //CreateManager.Instance.ReturnObjectToPool(gameObject);
+            gameObject.SetActive(false);
+            isDie = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
