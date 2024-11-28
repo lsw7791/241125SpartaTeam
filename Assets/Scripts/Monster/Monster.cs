@@ -18,6 +18,8 @@ public class Monster : MonoBehaviour
     public float DetectionRange => detectionRange;
     public float AttackRange => attackRange;
 
+    public bool isDie = false;
+
     // Initialize 메서드에서 값을 설정
     public void Initialize(MonsterData data)
     {

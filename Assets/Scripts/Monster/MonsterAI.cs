@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
+using System;
 using UnityEngine;
 
 public class MonsterAI : MonoBehaviour
@@ -19,20 +17,21 @@ public class MonsterAI : MonoBehaviour
 
     [Header("Attack")]
     [SerializeField]
-    private float damage;
+    private int damage;
     public float delayTime = 2f;
     public float curTime = 0f;
 
-    [Header("Condition")]
-    [SerializeField]
-    private int health;
-    private bool isDie = false;
+    public event Action<int> OnAttackComend;
 
     private void Start()
     {
         // 몬스터의 초기 위치 저장
         initialPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void OnEnable()
+    {
         monster = GetComponent<Monster>();
 
         Initialize();
@@ -40,9 +39,7 @@ public class MonsterAI : MonoBehaviour
 
     private void Update()
     {
-        Dead();
-
-        if(isDie == true)
+        if(monster.isDie == true)
         {
             return;
         }
@@ -85,7 +82,6 @@ public class MonsterAI : MonoBehaviour
         damage = monster.Damage;
         detectionRange = monster.DetectionRange;
         attackRange = monster.AttackRange;
-        health = monster.Health;
     }
 
     private void ChasePlayer()
@@ -105,6 +101,7 @@ public class MonsterAI : MonoBehaviour
             curTime = 0f;
 
             // 플레이어 공격 (간단한 공격 애니메이션 또는 로직 삽입)
+            //OnAttackComend?.Invoke(damage);
             Debug.Log("플레이어를 공격합니다!");
             // 예: 공격 애니메이션 실행 또는 플레이어 체력 감소 등의 행동을 여기에 추가
         }
@@ -117,16 +114,6 @@ public class MonsterAI : MonoBehaviour
         transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
         spriteRenderer.flipX = direction.x < 0;
         //player = null;
-    }
-
-    private void Dead()
-    {
-        if(health  <= 0)
-        {
-            //CreateManager.Instance.ReturnObjectToPool(gameObject);
-            gameObject.SetActive(false);
-            isDie = true;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
