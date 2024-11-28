@@ -8,11 +8,15 @@ public class PlayerInput : MonoBehaviour
     private bool isMapOpen = false;        // 맵 상태 추적
     private bool isQuestOpen = false;      // 퀘스트 상태 추적
     private bool isOptionsOpen = false;    // 옵션 상태 추적
+    private bool isMasteryOpen = false;    // 옵션 상태 추적
+
 
     [SerializeField] GameObject inventoryUI; // 인벤토리 UI
     [SerializeField] GameObject mapUI;       // 맵 UI
     [SerializeField] GameObject questUI;     // 퀘스트 UI
     [SerializeField] GameObject optionUI;    // 옵션 UI
+    [SerializeField] GameObject statusUI;    // 옵션 UI
+
 
     private void Awake()
     {
@@ -20,6 +24,7 @@ public class PlayerInput : MonoBehaviour
         mapUI = UIManager.Instance.mapUI;
         questUI = UIManager.Instance.questUI;
         optionUI = UIManager.Instance.optionUI;
+        statusUI = UIManager.Instance.statusUI;
 
         // 초기에는 UI 비활성화
         inventoryUI.SetActive(false);
@@ -108,7 +113,13 @@ public class PlayerInput : MonoBehaviour
             ToggleOptions();
         }
     }
-
+    public void OnMastery(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            ToggleStatus();
+        }
+    }
     // 인벤토리 토글
     private void ToggleInventory()
     {
@@ -135,6 +146,11 @@ public class PlayerInput : MonoBehaviour
     {
         isOptionsOpen = !isOptionsOpen;
         optionUI.SetActive(isOptionsOpen);
+    }
+    private void ToggleStatus()
+    {
+        isMasteryOpen = !isMasteryOpen;
+        statusUI.SetActive(isMasteryOpen);
     }
 
     // 채집 로직
