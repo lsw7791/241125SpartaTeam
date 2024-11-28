@@ -1,6 +1,6 @@
 Name ,Type,Damage,Upgrade,Def
-?,??,10,0,10
-??,????,10,0,10
-??,??,10,0,10
-?,??,10,0,10
-???,??,10,0,10
+Sword,Weapon,10,0,0
+Sheild,Secondary,10,0,0
+Axe,Weapon,10,0,0
+Bow,Weapon,10,0,0
+Staff,Weapon,10,0,0
