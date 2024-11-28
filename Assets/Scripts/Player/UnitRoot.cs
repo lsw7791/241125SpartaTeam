@@ -1,26 +1,20 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UnitRoot : MonoBehaviour
 {
-    [SerializeField] private TopDownAimRotation aimRotation;  // 팔 회전 스크립트 참조
-
-    // "OnAim" 메서드를 SendMessage로 호출하면 이 메서드가 실행됩니다.
-    private void OnAim(Vector2 direction)
+    public void FlipRotation(Vector2 mouseWorldPos)
     {
-        aimRotation.RotateArm(direction);  // 팔 회전 처리
-    }
-
-    public void RotateUnitRoot(bool value)
-    {
-        if (value)
+        // 마우스 위치가 플레이어의 위치보다 왼쪽에 있으면 Y축 회전 180도로 설정
+        if (mouseWorldPos.x < transform.position.x)
         {
-            // 본체의 회전: 180° 회전
-            transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+            // 왼쪽을 바라보게 (회전)
+            transform.rotation = Quaternion.Euler(0, 0, 0);  // Y축 회전 180도
         }
         else
         {
-            // 본체의 회전: 0° 회전
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            // 오른쪽을 바라보게 (회전 취소)
+            transform.rotation = Quaternion.Euler(0, 180, 0);    // 기본 회전 (Y축 0도)
         }
     }
 }
