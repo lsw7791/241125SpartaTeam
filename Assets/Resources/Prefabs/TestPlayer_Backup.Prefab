@@ -395,6 +395,7 @@ GameObject:
   - component: {fileID: 8307571058901756721}
   - component: {fileID: 9103636101208835098}
   - component: {fileID: 3535479949116907831}
+  - component: {fileID: 4781453865398898431}
   m_Layer: 0
   m_Name: UnitRoot
   m_TagString: Untagged
@@ -441,7 +442,7 @@ Animator:
   m_GameObject: {fileID: 2074020692218767500}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c2fc0aafc4ba14749a6cc196ffeb52b8, type: 2}
+  m_Controller: {fileID: 9100000, guid: e9358c226bb09e24da9c5f7064768810, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -462,6 +463,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1edeb6650bda6143a33b526bcad5a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4781453865398898431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074020692218767500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c940f6332e75c634993e7cfe61638e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2316263067602181005
@@ -1318,7 +1331,7 @@ GameObject:
   - component: {fileID: 555898900720893638}
   - component: {fileID: 1865780032156894266}
   m_Layer: 5
-  m_Name: TestPlayer
+  m_Name: TestPlayer_Backup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1781,6 +1794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b8e60a739ff1b4abab5b1099d667d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NickName: 
   _currentHP: 0
   _currentStamina: 0
   _currentGold: 0
@@ -1789,7 +1803,6 @@ MonoBehaviour:
   _currentATKSpeed: 0
   _currentDef: 0
   _currentWeaponType: 0
-  NickName: 
   _movingLV: 0
   _makingLV: 0
   _minigWPLV: 0

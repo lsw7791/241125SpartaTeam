@@ -13,4 +13,8 @@ public class PlayerAnimationController : MonoBehaviour
     {
         _animator.SetBool("1_Move", isMoving);
     }
+    public void TriggerAttackAnimation()
+    {
+        _animator.SetTrigger("2_Attack");
+    }
 }
