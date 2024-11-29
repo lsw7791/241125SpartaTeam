@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MainData;
-public class CreatureDataManager : Creature1Data
+public class CreatureDataManager : CreatureData
 {
-    public Creature1Data GetItemData(int id)
+    public CreatureData GetItemData(int id)
     {
-        return Creature1DataMap[id];
+        return CreatureDataMap[id];
     }
 
-    public List<Creature1Data> GetItemDataByType()
+    public List<CreatureData> GetItemDataByType()
     {
         //return Creature1DataList.FindAll(x=> x.type == 1)
         return null;
