@@ -58,6 +58,8 @@ namespace CreatureData
 
 		public System.Int32 Id;
 		public System.String Name;
+		public System.String Desc;
+		public System.Int32 Tier;
 		public System.Int32 Attack;
 		public System.Int32 Defense;
 		public System.Int32 Hp;
@@ -65,6 +67,9 @@ namespace CreatureData
 		public System.Single DetectionRange;
 		public System.Single AttackRange;
 		public System.Single MoveSpeed;
+		public System.Single LadderDrop;
+		public System.Single ResourceDrop;
+		public System.Int32 GoldDrop;
   
 
 #region fuctions

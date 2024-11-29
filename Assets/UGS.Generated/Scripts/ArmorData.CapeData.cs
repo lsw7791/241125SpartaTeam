@@ -61,6 +61,10 @@ namespace ArmorData
 		public System.Single Speed;
 		public System.Int32 ArrowAttack;
 		public System.Int32 StaffAttack;
+		public System.Int32 ResourceM;
+		public System.Int32 ResourceL;
+		public System.Int32 ResourceR;
+		public System.Int32 ResourceJ;
   
 
 #region fuctions
