@@ -14,42 +14,42 @@ using System.Reflection;
 using UnityEngine;
 
 
-namespace ArmorData
+namespace DropTable
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class ArmorData : ITable
+    public partial class MineDropTable : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<ArmorData> loadedList, Dictionary<int, ArmorData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<MineDropTable> loadedList, Dictionary<int, MineDropTable> loadedDictionary);
 
         static bool isLoaded = false;
-        static string spreadSheetID = "1l9qTBFPT296Gpu7p1cO3dRnpV2pspaW3JGOFmX4sLWQ"; // it is file id
-        static string sheetID = "810767177"; // it is sheet id
+        static string spreadSheetID = "1IJ3aNIQpcLlNi16pGeetrq5ieXE6ExfkbMW2-aDaSxA"; // it is file id
+        static string sheetID = "24327621"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, ArmorData> ArmorDataMap = new Dictionary<int, ArmorData>();  
-        public static List<ArmorData> ArmorDataList = new List<ArmorData>();   
+        public static Dictionary<int, MineDropTable> MineDropTableMap = new Dictionary<int, MineDropTable>();  
+        public static List<MineDropTable> MineDropTableList = new List<MineDropTable>();   
 
         /// <summary>
-        /// Get ArmorData List 
+        /// Get MineDropTable List 
         /// Auto Load
         /// </summary>
-        public static List<ArmorData> GetList()
+        public static List<MineDropTable> GetList()
         {{
            if (isLoaded == false) Load();
-           return ArmorDataList;
+           return MineDropTableList;
         }}
 
         /// <summary>
-        /// Get ArmorData Dictionary, keyType is your sheet A1 field type.
+        /// Get MineDropTable Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, ArmorData>  GetDictionary()
+        public static Dictionary<int, MineDropTable>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return ArmorDataMap;
+           return MineDropTableMap;
         }}
 
     
@@ -58,14 +58,7 @@ namespace ArmorData
 
 		public System.Int32 Id;
 		public System.String Name;
-		public System.String Desc;
-		public System.Int32 Tier;
-		public System.Int32 HP;
-		public System.Int32 DEF;
-		public System.Int32 ResourceM;
-		public System.Int32 ResourceL;
-		public System.Int32 ResourceR;
-		public System.Int32 ResourceJ;
+		public System.Int32 Mine;
   
 
 #region fuctions
@@ -76,12 +69,12 @@ namespace ArmorData
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("ArmorData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("MineDropTable is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
 
-            string text = reader.ReadData("ArmorData"); 
+            string text = reader.ReadData("DropTable"); 
             if (text != null)
             {
                 var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ReadSpreadSheetResult>(text);
@@ -92,7 +85,7 @@ namespace ArmorData
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<ArmorData>, Dictionary<int, ArmorData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<MineDropTable>, Dictionary<int, MineDropTable>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -120,14 +113,14 @@ namespace ArmorData
                
 
 
-    public static (List<ArmorData> list, Dictionary<int, ArmorData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, ArmorData> Map = new Dictionary<int, ArmorData>();
-            List<ArmorData> List = new List<ArmorData>();     
+    public static (List<MineDropTable> list, Dictionary<int, MineDropTable> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, MineDropTable> Map = new Dictionary<int, MineDropTable>();
+            List<MineDropTable> List = new List<MineDropTable>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(ArmorData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(MineDropTable).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["ArmorData"];
+            var sheet = jsonObject["MineDropTable"];
 
             foreach (var column in sheet.Keys)
             {
@@ -146,7 +139,7 @@ namespace ArmorData
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            ArmorData instance = new ArmorData();
+                            MineDropTable instance = new MineDropTable();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -187,8 +180,8 @@ namespace ArmorData
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            ArmorDataList = List;
-                            ArmorDataMap = Map;
+                            MineDropTableList = List;
+                            MineDropTableMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -198,10 +191,10 @@ namespace ArmorData
 
  
 
-        public static void Write(ArmorData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(MineDropTable data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(ArmorData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(MineDropTable).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

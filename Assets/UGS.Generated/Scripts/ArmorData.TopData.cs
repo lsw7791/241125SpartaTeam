@@ -58,7 +58,14 @@ namespace ArmorData
 
 		public System.Int32 Id;
 		public System.String Name;
+		public System.String Desc;
+		public System.Int32 Tier;
 		public System.Int32 HP;
+		public System.Int32 DEF;
+		public System.Int32 ResourceM;
+		public System.Int32 ResourceL;
+		public System.Int32 ResourceR;
+		public System.Int32 ResourceJ;
   
 
 #region fuctions
