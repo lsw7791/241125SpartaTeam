@@ -14,42 +14,42 @@ using System.Reflection;
 using UnityEngine;
 
 
-namespace ArmorData
+namespace CreatureData
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class ArmorData : ITable
+    public partial class MonsterData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<ArmorData> loadedList, Dictionary<int, ArmorData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<MonsterData> loadedList, Dictionary<int, MonsterData> loadedDictionary);
 
         static bool isLoaded = false;
-        static string spreadSheetID = "1l9qTBFPT296Gpu7p1cO3dRnpV2pspaW3JGOFmX4sLWQ"; // it is file id
-        static string sheetID = "810767177"; // it is sheet id
+        static string spreadSheetID = "1Sz3Kv5nO1_GAihyO8PmVxOo1gB35jmPIwO3Kb0fOqT8"; // it is file id
+        static string sheetID = "0"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, ArmorData> ArmorDataMap = new Dictionary<int, ArmorData>();  
-        public static List<ArmorData> ArmorDataList = new List<ArmorData>();   
+        public static Dictionary<int, MonsterData> MonsterDataMap = new Dictionary<int, MonsterData>();  
+        public static List<MonsterData> MonsterDataList = new List<MonsterData>();   
 
         /// <summary>
-        /// Get ArmorData List 
+        /// Get MonsterData List 
         /// Auto Load
         /// </summary>
-        public static List<ArmorData> GetList()
+        public static List<MonsterData> GetList()
         {{
            if (isLoaded == false) Load();
-           return ArmorDataList;
+           return MonsterDataList;
         }}
 
         /// <summary>
-        /// Get ArmorData Dictionary, keyType is your sheet A1 field type.
+        /// Get MonsterData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, ArmorData>  GetDictionary()
+        public static Dictionary<int, MonsterData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return ArmorDataMap;
+           return MonsterDataMap;
         }}
 
     
@@ -60,12 +60,16 @@ namespace ArmorData
 		public System.String Name;
 		public System.String Desc;
 		public System.Int32 Tier;
-		public System.Int32 HP;
-		public System.Int32 DEF;
-		public System.Int32 ResourceM;
-		public System.Int32 ResourceL;
-		public System.Int32 ResourceR;
-		public System.Int32 ResourceJ;
+		public System.Int32 Attack;
+		public System.Int32 Defense;
+		public System.Int32 Hp;
+		public System.Single AttackSpeed;
+		public System.Single DetectionRange;
+		public System.Single AttackRange;
+		public System.Single MoveSpeed;
+		public System.Single LadderDrop;
+		public System.Single ResourceDrop;
+		public System.Int32 GoldDrop;
   
 
 #region fuctions
@@ -76,12 +80,12 @@ namespace ArmorData
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("ArmorData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("MonsterData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
 
-            string text = reader.ReadData("ArmorData"); 
+            string text = reader.ReadData("CreatureData"); 
             if (text != null)
             {
                 var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ReadSpreadSheetResult>(text);
@@ -92,7 +96,7 @@ namespace ArmorData
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<ArmorData>, Dictionary<int, ArmorData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<MonsterData>, Dictionary<int, MonsterData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -120,14 +124,14 @@ namespace ArmorData
                
 
 
-    public static (List<ArmorData> list, Dictionary<int, ArmorData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, ArmorData> Map = new Dictionary<int, ArmorData>();
-            List<ArmorData> List = new List<ArmorData>();     
+    public static (List<MonsterData> list, Dictionary<int, MonsterData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, MonsterData> Map = new Dictionary<int, MonsterData>();
+            List<MonsterData> List = new List<MonsterData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(ArmorData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(MonsterData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["ArmorData"];
+            var sheet = jsonObject["MonsterData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -146,7 +150,7 @@ namespace ArmorData
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            ArmorData instance = new ArmorData();
+                            MonsterData instance = new MonsterData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -187,8 +191,8 @@ namespace ArmorData
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            ArmorDataList = List;
-                            ArmorDataMap = Map;
+                            MonsterDataList = List;
+                            MonsterDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -198,10 +202,10 @@ namespace ArmorData
 
  
 
-        public static void Write(ArmorData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(MonsterData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(ArmorData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(MonsterData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {
