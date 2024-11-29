@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class DataManager : SingleTon<DataManager>
 {
-    public ToolDataManager tool;
+    public ItemDataManager item;
     public CreatureDataManager creature;
-    public ResourceDataManager resource;
+    public TableDataManager table;
     public PotionDataManager potion;
 
     public void Initialize()
@@ -15,9 +15,9 @@ public class DataManager : SingleTon<DataManager>
         Debug.Log("시작전");
         UnityGoogleSheet.LoadAllData();
         Debug.Log("시작후");
-        tool = new ToolDataManager();
+        item = new ItemDataManager();
         creature = new CreatureDataManager();
-        resource = new ResourceDataManager();
+        table = new TableDataManager();
         potion = new PotionDataManager();
 
     }

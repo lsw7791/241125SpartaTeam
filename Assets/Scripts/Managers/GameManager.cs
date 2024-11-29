@@ -11,7 +11,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         DataManager.Instance.Initialize();
 
-        ToolData testTool = DataManager.Instance.tool.GetItemData(1);
+        ItemData testTool = DataManager.Instance.item.GetData(1);
         Debug.Log(testTool.name);
     }
     private void Start()

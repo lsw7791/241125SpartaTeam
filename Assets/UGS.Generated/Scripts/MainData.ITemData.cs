@@ -17,10 +17,10 @@ using UnityEngine;
 namespace MainData
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class ITemData : ITable
+    public partial class ItemData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<ITemData> loadedList, Dictionary<int, ITemData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<ItemData> loadedList, Dictionary<int, ItemData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1Daaes6kJu0aN1dc6gYH59jZtRFLFk24qEeAlCETDpTw"; // it is file id
@@ -29,27 +29,27 @@ namespace MainData
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, ITemData> ITemDataMap = new Dictionary<int, ITemData>();  
-        public static List<ITemData> ITemDataList = new List<ITemData>();   
+        public static Dictionary<int, ItemData> ItemDataMap = new Dictionary<int, ItemData>();  
+        public static List<ItemData> ItemDataList = new List<ItemData>();   
 
         /// <summary>
-        /// Get ITemData List 
+        /// Get ItemData List 
         /// Auto Load
         /// </summary>
-        public static List<ITemData> GetList()
+        public static List<ItemData> GetList()
         {{
            if (isLoaded == false) Load();
-           return ITemDataList;
+           return ItemDataList;
         }}
 
         /// <summary>
-        /// Get ITemData Dictionary, keyType is your sheet A1 field type.
+        /// Get ItemData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, ITemData>  GetDictionary()
+        public static Dictionary<int, ItemData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return ITemDataMap;
+           return ItemDataMap;
         }}
 
     
@@ -79,7 +79,7 @@ namespace MainData
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("ITemData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("ItemData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -95,7 +95,7 @@ namespace MainData
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<ITemData>, Dictionary<int, ITemData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<ItemData>, Dictionary<int, ItemData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -123,14 +123,14 @@ namespace MainData
                
 
 
-    public static (List<ITemData> list, Dictionary<int, ITemData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, ITemData> Map = new Dictionary<int, ITemData>();
-            List<ITemData> List = new List<ITemData>();     
+    public static (List<ItemData> list, Dictionary<int, ItemData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, ItemData> Map = new Dictionary<int, ItemData>();
+            List<ItemData> List = new List<ItemData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(ITemData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(ItemData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["ITemData"];
+            var sheet = jsonObject["ItemData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -149,7 +149,7 @@ namespace MainData
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            ITemData instance = new ITemData();
+                            ItemData instance = new ItemData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -190,8 +190,8 @@ namespace MainData
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            ITemDataList = List;
-                            ITemDataMap = Map;
+                            ItemDataList = List;
+                            ItemDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -201,10 +201,10 @@ namespace MainData
 
  
 
-        public static void Write(ITemData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(ItemData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(ITemData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(ItemData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {
