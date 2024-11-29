@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -134,7 +134,3031 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: blacksmith-smelter_2
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 777
+        width: 113
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4de25d59c8d407148bb5dd2bdd4dfb0e
+      internalID: -51731187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_3
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 777
+        width: 102
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fceb9f4ed895b9d4da91dc37c8299ee2
+      internalID: -1515332141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_4
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 779
+        width: 60
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c49f0a601eeef4eae51a91b0f6fdd7
+      internalID: -1060460619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_5
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 780
+        width: 51
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a2c4a62e065a13439bc1eadcebb8d3b
+      internalID: -214997035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_6
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 713
+        width: 44
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95c27521b000ba7468854ee2759f7937
+      internalID: -1779306457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_7
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 717
+        width: 43
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf15c6a8d8671ce45855fe97ae4a58c9
+      internalID: 1986175529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_8
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 721
+        width: 40
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0148ab75bee0114497ee30fc935a49c
+      internalID: -1878265071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_9
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 729
+        width: 36
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9c4b07d8507a5e49aa70503d921f24a
+      internalID: 1720549810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_10
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 711
+        width: 91
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17b4974236375f9479005b95177c6d41
+      internalID: 780314860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_11
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 713
+        width: 67
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4533d51804de564fbf0f7484f59e7ed
+      internalID: -203503712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_12
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 717
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de1af1f1d362ecd448c7e2fbd8409dcc
+      internalID: -1103204947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_13
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 725
+        width: 30
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0d48b8ced718e444b4f552b9a4a5279
+      internalID: 1578140305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_14
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 713
+        width: 120
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78c4b152a7174b740a249d8bd3d6dae8
+      internalID: -2078163308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 679
+        width: 8
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efcd925e335c59d47a45b9ce3f492b67
+      internalID: -1402943603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_16
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 680
+        width: 7
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b8df279d115ae04d95ea7e4c21271e2
+      internalID: 659888530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_17
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 681
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90820d1bbf9e5c34d9cab60846913d27
+      internalID: 579777227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_18
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 688
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c012839dd4be7a245b0ddfc88efadc89
+      internalID: 339956576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_19
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 679
+        width: 8
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c33341129fd8a7a47b8b7e6059eb9ce3
+      internalID: 1045502491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_20
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 680
+        width: 7
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f8b688a2e8f27145b13dd6b7b00ae8d
+      internalID: -1520494158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_21
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 681
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1e5d19c23100b343b88c8443a247770
+      internalID: 1091236116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_22
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 688
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0dff38226730e4459c700410386810d
+      internalID: 1484133037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_23
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 672
+        width: 28
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22eff73450f667f49a642206b6dd0118
+      internalID: 1468341433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 608
+        width: 320
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9185d82f09a5bdb49865fbe5dc9089ed
+      internalID: 1726266549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_25
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 629
+        width: 49
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d4034748d09bc340a2d2aaae108c40f
+      internalID: -1619172813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_26
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 655
+        width: 64
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8f67856bf4a36f4690b3522e6a6cc71
+      internalID: -1343772003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_27
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 624
+        width: 49
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ad7fe0da20899d4a9c394b8e0f0bb09
+      internalID: 212872021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_28
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 625
+        width: 96
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d25b01a7d7813143bb5c7649f647e3f
+      internalID: -1753115535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 546
+        width: 384
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de43c675e01606247b697c436cce40fc
+      internalID: -900629958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_30
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 579
+        width: 30
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a44d3111278414086586758470ab03
+      internalID: 468290535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_31
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 579
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6db7a8a951025d0438f8f59abd52bdb0
+      internalID: 1686800647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_32
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 578
+        width: 46
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a303743feca8c5742adfaec064e20587
+      internalID: -607462256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_33
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 560
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d05468e8fe416744bae1309c43c30709
+      internalID: 1515682261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_34
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 560
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bd2e4ebaa3388e458e2204a7f0b978c
+      internalID: -871476123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_35
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 544
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91c988d1cf1669543ad09ab12ba011bf
+      internalID: -1771673668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_36
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 544
+        width: 29
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aa5c9317745cda4fa8a6f455ce57ee4
+      internalID: 647285654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_37
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 560
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11d4c32f2a497254bab1bf5147f3eb78
+      internalID: 1432299660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_38
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 554
+        width: 57
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a84a1a1b09592446a632ec9149d12a0
+      internalID: 1440432233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_39
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 554
+        width: 60
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c7ca7a42a3f6764e8a25b4be2bff67b
+      internalID: 1230071195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_40
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 497
+        width: 29
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f0d384d7ff2ce4ba148f0cbd6c3d42
+      internalID: -401219981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_41
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 492
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec1618859be815c49b81c5530065233a
+      internalID: 614560114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_42
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 485
+        width: 15
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed3d97c66068f7948a37141683629fe1
+      internalID: -1605357328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_43
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 482
+        width: 6
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e12ac58a6d5627b4a84c32752ac11b4b
+      internalID: -1366014096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_44
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 497
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b63a4445ebf44d4f9f94c3b716df849
+      internalID: -460117140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_45
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 492
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 691e7f242fafea34094abcb0f87efde3
+      internalID: 2011898995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_46
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 485
+        width: 15
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c383a14f7cc52ae459a4d1995f997eb6
+      internalID: -1280961177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_47
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 482
+        width: 6
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 635e1664f63889d4abc0b309f100e974
+      internalID: -180229660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_48
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 452
+        width: 61
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5786bbb8b81bed64b822b8c34accc9d3
+      internalID: -306381375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_49
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 452
+        width: 61
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7299ffefea2d7cb479107f6d30e1bf54
+      internalID: 972565773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_50
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 480
+        width: 63
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c151df1f1c244f4bbe9c74d892581ee
+      internalID: -1157353930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_51
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 480
+        width: 63
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bcbdeda2424abb499d48cfdb3265ef0
+      internalID: 734635975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_52
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 482
+        width: 60
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6628b95a0201934d866df3d9e1e14b6
+      internalID: -567961980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_53
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 482
+        width: 58
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c54378a329b2132408d6c5b3958be7d1
+      internalID: 457314615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_54
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 459
+        width: 13
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 265b6dde45181e3418a9d9a59e0345fd
+      internalID: 1157877250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_55
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 458
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4679205588dd38341ac99ceb158e6a67
+      internalID: -436946120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_56
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 459
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68bc69961f84d6244b247eddc556ca08
+      internalID: -817854841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_57
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 459
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da735dc464036f542b7278a90e682b61
+      internalID: -1597054883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_58
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 459
+        width: 26
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 298ce983fc87ed34bb13b1cec17e4e6e
+      internalID: -106118002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_59
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 458
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a18c98a4543c043b27f771f795ad28
+      internalID: -288827125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_60
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 459
+        width: 13
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfa6b39eecb61e641aa706da3b898eb9
+      internalID: 194570161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_61
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 459
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7e33c0a70d86be489a72c4dbb33688a
+      internalID: 1114520183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_62
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 459
+        width: 13
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91828a230346d254395c6aa5b801d2a6
+      internalID: -1280360591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_63
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 461
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17a3136ffa5608b418499934968a1157
+      internalID: 1318088198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_64
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 450
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e81adb575d3835d40afc93126b450f35
+      internalID: -1259626675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_65
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 462
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c7226a86dabdbf429de350432cadd11
+      internalID: 2076772892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_66
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 455
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1782dd03b4d7e0d49a0ab3f1ee95886c
+      internalID: 10594053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_67
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 452
+        width: 13
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79d3be939b838f74cacab3318734f0ad
+      internalID: -1692868746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_68
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 450
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dbf790b48eda4b4b87d07f1db29e0e2
+      internalID: 1283956228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_69
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 454
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afffde9513a94404ba3eef41fc9fe38a
+      internalID: -2101291821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_70
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 456
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bc36c539732a0245a3f092260a02c50
+      internalID: -747164522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_71
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 463
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74425f3bc7055f34da1aa4dd69769adf
+      internalID: -1494135416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_72
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 460
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e1689e6c305fce43bf351c56933d96b
+      internalID: 843146462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_73
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 455
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d144f82bdf5505d4ba228dfb6f3748d3
+      internalID: 400176229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_74
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 449
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fa327ccce8b78440bc987648e7b26fa
+      internalID: 1477999364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_75
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 460
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63f99e109c4505e41851305bfc212de8
+      internalID: 1773103181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_76
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 450
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25632d104d80d5141b43f97d52124279
+      internalID: -2126930482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_77
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 452
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7c60961210a70e4480f2279eb42e201
+      internalID: -1694228118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_78
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 419
+        width: 43
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 931b0dc77321b3a40b9b6501805b7cdb
+      internalID: -2046951206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_79
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 419
+        width: 43
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aab502526583a644a9687ff6295d2cd
+      internalID: -185605366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_80
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 419
+        width: 75
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44508f56aee61af4eb6763875890dcac
+      internalID: 78854621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_81
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 424
+        width: 4
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d7b9fb2ca2e6ea4d9b5aa9d580b0de3
+      internalID: 142413805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_82
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 423
+        width: 5
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfb59d5f78f95c447b9efd4f2290532b
+      internalID: -1298926689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_83
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 423
+        width: 5
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d5c250e5d853b144a8b3bac3662d53e
+      internalID: -1490130567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_84
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 422
+        width: 11
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dba3de684ad4b845b08380e2663f9fd
+      internalID: -1421183369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_85
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 424
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa303651d3e78184696a8592ba8502e0
+      internalID: -1511719062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_86
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 432
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fae9be8818e36e64a8627ac08bef85b3
+      internalID: 167304584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_87
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 423
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6db24773d39bb2e4b96fc632fbf92a09
+      internalID: -1437929133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_88
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 423
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76d75c6f5626db94e9b21c51050506b1
+      internalID: -1453388888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_89
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 424
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bac821bc8a907cd4eaa6da5ad24d23c9
+      internalID: 1281155804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_90
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 417
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbcba38a53da9e34fb3da72f6e24c1cf
+      internalID: -1725354917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_91
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 431
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71876e44e155e944dac2bbfabf1e8c7e
+      internalID: -1124391785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_92
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 425
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9766d9cf162b8734690feaa031937030
+      internalID: -1254292247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_93
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 422
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 321f577fcb603ae4890c5b882c3f4f43
+      internalID: 35566393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_94
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 429
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89a0510f7a1d00d46bfda79d3afb15df
+      internalID: -680707774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_95
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 425
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 108bd429e099b54488de0b1c36290dfb
+      internalID: 176598784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_96
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 425
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 292320b7ff19ecd4b815a5320029c5ec
+      internalID: 1949882834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_97
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 427
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbe23b60807ea504a882682de46b8849
+      internalID: -1828936600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_98
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 419
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b986110e07a066408f0c6059b88e908
+      internalID: -1159859561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_99
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 417
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb4dd2cd7e79dfe478118d7e85ac7157
+      internalID: 1024312427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_100
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 435
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1fbf450df0796d47ba360b7be7ba2e8
+      internalID: 159796015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_101
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 419
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e10c7fae55e814489861a54bfde3966
+      internalID: 1675370473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_102
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 420
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66d24cb27dbc7184fa02a4350cacfa66
+      internalID: -697461054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_103
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 421
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9977f549c6bcb394a924c40055c45ea4
+      internalID: 1455740694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_104
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 420
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3e9ac6242f1dc14c8ccada4c18b8353
+      internalID: 1322115752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_105
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 387
+        width: 43
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ba9609da1bea5449b645c5610f720c4
+      internalID: 1548467541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_106
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 387
+        width: 43
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d7c567631807d14086ed9d7d73c276e
+      internalID: -180723748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_107
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 387
+        width: 43
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52b67fd381820c345be84a3269e5afbe
+      internalID: -1653795002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_108
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 359
+        width: 63
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76cc459922b9f704a8face8f26ac7149
+      internalID: -365235871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_109
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 399
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ffac5dbb2e1834396bc923be294c11
+      internalID: -299165669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_110
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 403
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abb672c47581e2e46be3d856b0458883
+      internalID: 1045760864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_111
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 375
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c92fce008938c414fb717c58bd9f47fd
+      internalID: -1956904764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_112
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 373
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fa9a378599f0f74aa4fcf9d217e6133
+      internalID: 1650104494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_113
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 373
+        width: 25
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8cc58b04fda11b46a654618b7d4861e
+      internalID: -1790517826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_114
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 371
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a1e7a3f18b1b3444a151ebfad2e6103
+      internalID: -213539486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_115
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 363
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc6ca3574c4072741abb7ae594974551
+      internalID: -395525748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_116
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 366
+        width: 60
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1764f77f5f623ba479568b0bcedd0e9d
+      internalID: -1105197601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_117
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 371
+        width: 58
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c5aca35cc75be7458fc1cec06d8e9ac
+      internalID: -1479590595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_118
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 366
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18d03fc5da4f3db4fb6a5ca6cd80f1bb
+      internalID: 193790287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_119
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 366
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 722f5300a32b7374eb60260e25ebdadd
+      internalID: -62269947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_120
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 213
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 183c3912bbc0721409bce571ac182750
+      internalID: 1470639644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_121
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 176
+        width: 47
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09ee349c8b3aeb5448a45450ef8bb4fc
+      internalID: 1917878306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_122
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 176
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07bf5cac578d1354f88db8a22817589a
+      internalID: 1866092340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_123
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 176
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16e9075126574c04690e013d5b642d52
+      internalID: 490348772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_124
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 175
+        width: 17
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e209eca683f4cd14986be599788485d9
+      internalID: 1923710100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_125
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 130
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 186cba2507423e844ade0522de550f28
+      internalID: 340146740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_126
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b68bf9838e542a4c80edcf8bf14a670
+      internalID: -1639128383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_127
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7292418d728c144292045dde6638797
+      internalID: 1000210253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_128
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 130
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16240304528ab234fa8d59436550533f
+      internalID: 1517336717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_1
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 832
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fdf1f8ef0ca01a42aa346513018124a
+      internalID: 1295462506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_129
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 832
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec39fd4bb570fb54c86e8437015a2042
+      internalID: -165471727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_130
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 832
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93c73d932003f69499c83be99d134d6a
+      internalID: -1693669789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_131
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 832
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a271dbb0e51ebdd4094779faf268eac2
+      internalID: -1891481597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_132
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 895
+        width: 64
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c2344f3c631e804cacc051353d30d9d
+      internalID: 1279003598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_133
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 895
+        width: 64
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7200e7e8d447de468028706efcc8b79
+      internalID: -1048105109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_134
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 895
+        width: 64
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d25dc7bcccb4dfe4eadbf97338cd946a
+      internalID: -1029875296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_135
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 895
+        width: 64
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5ed40dc8a5f9604db8f801bbff4b7cd
+      internalID: -124493471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 801
+        width: 64
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c67e9079d0125ce4088df3e8e81dd333
+      internalID: 1744784023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_136
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 864
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 178c30d3f4cb78745b5d08636edb17ec
+      internalID: 1455045397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_137
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 801
+        width: 64
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc5c838ba91a64c41983723a1c9c813e
+      internalID: -2012418811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_138
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 64
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bac24c79e30b552489d99d92b7f79545
+      internalID: -61886214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_139
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 768
+        width: 64
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33809fc45f69f71498e70c9744395f24
+      internalID: 531298963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_140
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 801
+        width: 64
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc965163ea65fa74f8c2f4203c89bb17
+      internalID: -408960185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_141
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 864
+        width: 17
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2da7459da48b1341b6b6e6312dda3ae
+      internalID: -1877685013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_142
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 801
+        width: 64
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 607b588208fa18b429ebaea48d93aa87
+      internalID: -1352361908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith-smelter_143
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 768
+        width: 64
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f27d58a3f4b0f45438f770da3165affa
+      internalID: -1085076320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +3169,151 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      blacksmith-smelter_0: 1744784023
+      blacksmith-smelter_1: 1295462506
+      blacksmith-smelter_10: 780314860
+      blacksmith-smelter_100: 159796015
+      blacksmith-smelter_101: 1675370473
+      blacksmith-smelter_102: -697461054
+      blacksmith-smelter_103: 1455740694
+      blacksmith-smelter_104: 1322115752
+      blacksmith-smelter_105: 1548467541
+      blacksmith-smelter_106: -180723748
+      blacksmith-smelter_107: -1653795002
+      blacksmith-smelter_108: -365235871
+      blacksmith-smelter_109: -299165669
+      blacksmith-smelter_11: -203503712
+      blacksmith-smelter_110: 1045760864
+      blacksmith-smelter_111: -1956904764
+      blacksmith-smelter_112: 1650104494
+      blacksmith-smelter_113: -1790517826
+      blacksmith-smelter_114: -213539486
+      blacksmith-smelter_115: -395525748
+      blacksmith-smelter_116: -1105197601
+      blacksmith-smelter_117: -1479590595
+      blacksmith-smelter_118: 193790287
+      blacksmith-smelter_119: -62269947
+      blacksmith-smelter_12: -1103204947
+      blacksmith-smelter_120: 1470639644
+      blacksmith-smelter_121: 1917878306
+      blacksmith-smelter_122: 1866092340
+      blacksmith-smelter_123: 490348772
+      blacksmith-smelter_124: 1923710100
+      blacksmith-smelter_125: 340146740
+      blacksmith-smelter_126: -1639128383
+      blacksmith-smelter_127: 1000210253
+      blacksmith-smelter_128: 1517336717
+      blacksmith-smelter_129: -165471727
+      blacksmith-smelter_13: 1578140305
+      blacksmith-smelter_130: -1693669789
+      blacksmith-smelter_131: -1891481597
+      blacksmith-smelter_132: 1279003598
+      blacksmith-smelter_133: -1048105109
+      blacksmith-smelter_134: -1029875296
+      blacksmith-smelter_135: -124493471
+      blacksmith-smelter_136: 1455045397
+      blacksmith-smelter_137: -2012418811
+      blacksmith-smelter_138: -61886214
+      blacksmith-smelter_139: 531298963
+      blacksmith-smelter_14: -2078163308
+      blacksmith-smelter_140: -408960185
+      blacksmith-smelter_141: -1877685013
+      blacksmith-smelter_142: -1352361908
+      blacksmith-smelter_143: -1085076320
+      blacksmith-smelter_15: -1402943603
+      blacksmith-smelter_16: 659888530
+      blacksmith-smelter_17: 579777227
+      blacksmith-smelter_18: 339956576
+      blacksmith-smelter_19: 1045502491
+      blacksmith-smelter_2: -51731187
+      blacksmith-smelter_20: -1520494158
+      blacksmith-smelter_21: 1091236116
+      blacksmith-smelter_22: 1484133037
+      blacksmith-smelter_23: 1468341433
+      blacksmith-smelter_24: 1726266549
+      blacksmith-smelter_25: -1619172813
+      blacksmith-smelter_26: -1343772003
+      blacksmith-smelter_27: 212872021
+      blacksmith-smelter_28: -1753115535
+      blacksmith-smelter_29: -900629958
+      blacksmith-smelter_3: -1515332141
+      blacksmith-smelter_30: 468290535
+      blacksmith-smelter_31: 1686800647
+      blacksmith-smelter_32: -607462256
+      blacksmith-smelter_33: 1515682261
+      blacksmith-smelter_34: -871476123
+      blacksmith-smelter_35: -1771673668
+      blacksmith-smelter_36: 647285654
+      blacksmith-smelter_37: 1432299660
+      blacksmith-smelter_38: 1440432233
+      blacksmith-smelter_39: 1230071195
+      blacksmith-smelter_4: -1060460619
+      blacksmith-smelter_40: -401219981
+      blacksmith-smelter_41: 614560114
+      blacksmith-smelter_42: -1605357328
+      blacksmith-smelter_43: -1366014096
+      blacksmith-smelter_44: -460117140
+      blacksmith-smelter_45: 2011898995
+      blacksmith-smelter_46: -1280961177
+      blacksmith-smelter_47: -180229660
+      blacksmith-smelter_48: -306381375
+      blacksmith-smelter_49: 972565773
+      blacksmith-smelter_5: -214997035
+      blacksmith-smelter_50: -1157353930
+      blacksmith-smelter_51: 734635975
+      blacksmith-smelter_52: -567961980
+      blacksmith-smelter_53: 457314615
+      blacksmith-smelter_54: 1157877250
+      blacksmith-smelter_55: -436946120
+      blacksmith-smelter_56: -817854841
+      blacksmith-smelter_57: -1597054883
+      blacksmith-smelter_58: -106118002
+      blacksmith-smelter_59: -288827125
+      blacksmith-smelter_6: -1779306457
+      blacksmith-smelter_60: 194570161
+      blacksmith-smelter_61: 1114520183
+      blacksmith-smelter_62: -1280360591
+      blacksmith-smelter_63: 1318088198
+      blacksmith-smelter_64: -1259626675
+      blacksmith-smelter_65: 2076772892
+      blacksmith-smelter_66: 10594053
+      blacksmith-smelter_67: -1692868746
+      blacksmith-smelter_68: 1283956228
+      blacksmith-smelter_69: -2101291821
+      blacksmith-smelter_7: 1986175529
+      blacksmith-smelter_70: -747164522
+      blacksmith-smelter_71: -1494135416
+      blacksmith-smelter_72: 843146462
+      blacksmith-smelter_73: 400176229
+      blacksmith-smelter_74: 1477999364
+      blacksmith-smelter_75: 1773103181
+      blacksmith-smelter_76: -2126930482
+      blacksmith-smelter_77: -1694228118
+      blacksmith-smelter_78: -2046951206
+      blacksmith-smelter_79: -185605366
+      blacksmith-smelter_8: -1878265071
+      blacksmith-smelter_80: 78854621
+      blacksmith-smelter_81: 142413805
+      blacksmith-smelter_82: -1298926689
+      blacksmith-smelter_83: -1490130567
+      blacksmith-smelter_84: -1421183369
+      blacksmith-smelter_85: -1511719062
+      blacksmith-smelter_86: 167304584
+      blacksmith-smelter_87: -1437929133
+      blacksmith-smelter_88: -1453388888
+      blacksmith-smelter_89: 1281155804
+      blacksmith-smelter_9: 1720549810
+      blacksmith-smelter_90: -1725354917
+      blacksmith-smelter_91: -1124391785
+      blacksmith-smelter_92: -1254292247
+      blacksmith-smelter_93: 35566393
+      blacksmith-smelter_94: -680707774
+      blacksmith-smelter_95: 176598784
+      blacksmith-smelter_96: 1949882834
+      blacksmith-smelter_97: -1828936600
+      blacksmith-smelter_98: -1159859561
+      blacksmith-smelter_99: 1024312427
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

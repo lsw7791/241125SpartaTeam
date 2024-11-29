@@ -58,8 +58,12 @@ namespace CreatureData
 
 		public System.Int32 Id;
 		public System.String Name;
+		public System.Int32 Tier;
+		public System.String Desc;
+		public System.Int32 SellGold;
 		public System.Int32 Defense;
 		public System.Int32 Hp;
+		public System.Single MineDrop;
   
 
 #region fuctions

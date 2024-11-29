@@ -10,8 +10,12 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] GameObject optionUI;    // 옵션 UI
     [SerializeField] GameObject statusUI;    // 스태터스 UI
 
+    private PlayerAnimationController _playerAnimationController;
+
     private void Awake()
     {
+        _playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
+
         // UIManager의 변수들은 싱글톤을 통해 바로 접근 가능
         inventoryUI = UIManager.Instance.inventoryUI;
         mapUI = UIManager.Instance.mapUI;
@@ -49,6 +53,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
+            _playerAnimationController.TriggerAttackAnimation();
             PerformAttack();
         }
     }

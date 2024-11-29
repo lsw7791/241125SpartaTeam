@@ -10,11 +10,14 @@ public class TopDownController : MonoBehaviour
     private Camera camera;
     private UnitRoot unitRoot;
     private TopDownAimRotation topDownAimRotation;
+    private PlayerAnimationController _playerAnimationController;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         unitRoot = GetComponentInChildren<UnitRoot>();
         topDownAimRotation =GetComponent<TopDownAimRotation>();
+        _playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
         camera = Camera.main;
     }
 
@@ -22,6 +25,8 @@ public class TopDownController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        bool isMoving = moveInput.sqrMagnitude > 0; // 벡터 크기로 이동 여부 판단
+        _playerAnimationController.SetMoveAnimation(isMoving);
     }
 
     // 마우스 위치에 따른 회전 처리
