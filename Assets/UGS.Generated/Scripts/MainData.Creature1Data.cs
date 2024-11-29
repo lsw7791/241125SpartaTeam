@@ -17,39 +17,39 @@ using UnityEngine;
 namespace MainData
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class PotionData : ITable
+    public partial class Creature1Data : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<PotionData> loadedList, Dictionary<int, PotionData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<Creature1Data> loadedList, Dictionary<int, Creature1Data> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1Daaes6kJu0aN1dc6gYH59jZtRFLFk24qEeAlCETDpTw"; // it is file id
-        static string sheetID = "512432130"; // it is sheet id
+        static string sheetID = "1719505911"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, PotionData> PotionDataMap = new Dictionary<int, PotionData>();  
-        public static List<PotionData> PotionDataList = new List<PotionData>();   
+        public static Dictionary<int, Creature1Data> Creature1DataMap = new Dictionary<int, Creature1Data>();  
+        public static List<Creature1Data> Creature1DataList = new List<Creature1Data>();   
 
         /// <summary>
-        /// Get PotionData List 
+        /// Get Creature1Data List 
         /// Auto Load
         /// </summary>
-        public static List<PotionData> GetList()
+        public static List<Creature1Data> GetList()
         {{
            if (isLoaded == false) Load();
-           return PotionDataList;
+           return Creature1DataList;
         }}
 
         /// <summary>
-        /// Get PotionData Dictionary, keyType is your sheet A1 field type.
+        /// Get Creature1Data Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, PotionData>  GetDictionary()
+        public static Dictionary<int, Creature1Data>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return PotionDataMap;
+           return Creature1DataMap;
         }}
 
     
@@ -59,12 +59,18 @@ namespace MainData
 		public System.Int32 id;
 		public System.Int32 type;
 		public System.String name;
-		public System.Int32 tier;
 		public System.String desc;
-		public System.Int32 buy;
-		public System.Int32 sell;
+		public System.Int32 tier;
+		public System.Int32 attack;
+		public System.Int32 defense;
 		public System.Int32 health;
-		public System.Int32 stamina;
+		public System.Single attackSpeed;
+		public System.Single detectionRange;
+		public System.Single attackRange;
+		public System.Single moveSpeed;
+		public System.Single ladderDrop;
+		public System.Single resourceDrop;
+		public System.Int32 goldDrop;
   
 
 #region fuctions
@@ -75,7 +81,7 @@ namespace MainData
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("PotionData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("Creature1Data is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -91,7 +97,7 @@ namespace MainData
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<PotionData>, Dictionary<int, PotionData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<Creature1Data>, Dictionary<int, Creature1Data>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -119,14 +125,14 @@ namespace MainData
                
 
 
-    public static (List<PotionData> list, Dictionary<int, PotionData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, PotionData> Map = new Dictionary<int, PotionData>();
-            List<PotionData> List = new List<PotionData>();     
+    public static (List<Creature1Data> list, Dictionary<int, Creature1Data> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, Creature1Data> Map = new Dictionary<int, Creature1Data>();
+            List<Creature1Data> List = new List<Creature1Data>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(PotionData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(Creature1Data).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["PotionData"];
+            var sheet = jsonObject["Creature1Data"];
 
             foreach (var column in sheet.Keys)
             {
@@ -145,7 +151,7 @@ namespace MainData
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            PotionData instance = new PotionData();
+                            Creature1Data instance = new Creature1Data();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -186,8 +192,8 @@ namespace MainData
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            PotionDataList = List;
-                            PotionDataMap = Map;
+                            Creature1DataList = List;
+                            Creature1DataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -197,10 +203,10 @@ namespace MainData
 
  
 
-        public static void Write(PotionData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(Creature1Data data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(PotionData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(Creature1Data).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

@@ -56,21 +56,21 @@ namespace MainData
 
 /* Fields. */
 
-		public System.Int32 Id;
-		public System.Int32 Type;
-		public System.String Name;
-		public System.String Desc;
-		public System.Int32 Tier;
-		public System.Int32 Attack;
-		public System.Int32 Defense;
-		public System.Int32 Hp;
-		public System.Single AttackSpeed;
-		public System.Single DetectionRange;
-		public System.Single AttackRange;
-		public System.Single MoveSpeed;
-		public System.Single LadderDrop;
-		public System.Single ResourceDrop;
-		public System.Int32 GoldDrop;
+		public System.Int32 id;
+		public System.Int32 type;
+		public System.String name;
+		public System.String desc;
+		public System.Int32 tier;
+		public System.Int32 attack;
+		public System.Int32 defense;
+		public System.Int32 health;
+		public System.Single attackSpeed;
+		public System.Single detectionRange;
+		public System.Single attackRange;
+		public System.Single moveSpeed;
+		public System.Single ladderDrop;
+		public System.Single resourceDrop;
+		public System.Int32 goldDrop;
   
 
 #region fuctions
@@ -188,7 +188,7 @@ namespace MainData
                               
                             }
                             List.Add(instance); 
-                            Map.Add(instance.Id, instance);
+                            Map.Add(instance.id, instance);
                         }
                         if(isLoaded == false || forceReload)
                         { 

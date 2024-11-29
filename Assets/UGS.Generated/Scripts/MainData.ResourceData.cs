@@ -56,15 +56,15 @@ namespace MainData
 
 /* Fields. */
 
-		public System.Int32 Id;
-		public System.Int32 Type;
-		public System.String Name;
-		public System.Int32 Tier;
-		public System.String Desc;
-		public System.Int32 SellGold;
-		public System.Int32 Defense;
-		public System.Int32 Hp;
-		public System.Single MineDrop;
+		public System.Int32 id;
+		public System.Int32 type;
+		public System.String name;
+		public System.Int32 tier;
+		public System.String desc;
+		public System.Int32 sell;
+		public System.Int32 defense;
+		public System.Int32 health;
+		public System.Single drop;
   
 
 #region fuctions
@@ -182,7 +182,7 @@ namespace MainData
                               
                             }
                             List.Add(instance); 
-                            Map.Add(instance.Id, instance);
+                            Map.Add(instance.id, instance);
                         }
                         if(isLoaded == false || forceReload)
                         { 
