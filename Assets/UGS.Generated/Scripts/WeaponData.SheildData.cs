@@ -58,7 +58,15 @@ namespace WeaponData
 
 		public System.Int32 Id;
 		public System.String Name;
-		public System.Int32 Defense;
+		public System.String Desc;
+		public System.Int32 Tier;
+		public System.Int32 Attack;
+		public System.Single AttackSpeed;
+		public System.Int32 MiningAttack;
+		public System.Int32 ResourceM;
+		public System.Int32 ResourceL;
+		public System.Int32 ResourceR;
+		public System.Int32 ResourceJ;
   
 
 #region fuctions
