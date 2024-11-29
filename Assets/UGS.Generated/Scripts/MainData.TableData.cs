@@ -17,39 +17,39 @@ using UnityEngine;
 namespace MainData
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class CreatureData : ITable
+    public partial class TableData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<CreatureData> loadedList, Dictionary<int, CreatureData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<TableData> loadedList, Dictionary<int, TableData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1Daaes6kJu0aN1dc6gYH59jZtRFLFk24qEeAlCETDpTw"; // it is file id
-        static string sheetID = "1719505911"; // it is sheet id
+        static string sheetID = "810405307"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, CreatureData> CreatureDataMap = new Dictionary<int, CreatureData>();  
-        public static List<CreatureData> CreatureDataList = new List<CreatureData>();   
+        public static Dictionary<int, TableData> TableDataMap = new Dictionary<int, TableData>();  
+        public static List<TableData> TableDataList = new List<TableData>();   
 
         /// <summary>
-        /// Get CreatureData List 
+        /// Get TableData List 
         /// Auto Load
         /// </summary>
-        public static List<CreatureData> GetList()
+        public static List<TableData> GetList()
         {{
            if (isLoaded == false) Load();
-           return CreatureDataList;
+           return TableDataList;
         }}
 
         /// <summary>
-        /// Get CreatureData Dictionary, keyType is your sheet A1 field type.
+        /// Get TableData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, CreatureData>  GetDictionary()
+        public static Dictionary<int, TableData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return CreatureDataMap;
+           return TableDataMap;
         }}
 
     
@@ -61,14 +61,11 @@ namespace MainData
 		public System.String name;
 		public System.String desc;
 		public System.Int32 tier;
-		public System.Int32 attack;
-		public System.Int32 defense;
-		public System.Int32 health;
-		public System.Single attackSpeed;
-		public System.Single detectionRange;
-		public System.Single attackRange;
-		public System.Single moveSpeed;
-		public System.Single Drop;
+		public System.Int32 gold;
+		public System.Int32 resourceMine;
+		public System.Int32 resourceLadder;
+		public System.Int32 resourceOther;
+		public System.Int32 resourceJewel;
   
 
 #region fuctions
@@ -79,7 +76,7 @@ namespace MainData
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("CreatureData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("TableData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -95,7 +92,7 @@ namespace MainData
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<CreatureData>, Dictionary<int, CreatureData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<TableData>, Dictionary<int, TableData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -123,14 +120,14 @@ namespace MainData
                
 
 
-    public static (List<CreatureData> list, Dictionary<int, CreatureData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, CreatureData> Map = new Dictionary<int, CreatureData>();
-            List<CreatureData> List = new List<CreatureData>();     
+    public static (List<TableData> list, Dictionary<int, TableData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, TableData> Map = new Dictionary<int, TableData>();
+            List<TableData> List = new List<TableData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(CreatureData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(TableData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["CreatureData"];
+            var sheet = jsonObject["TableData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -149,7 +146,7 @@ namespace MainData
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            CreatureData instance = new CreatureData();
+                            TableData instance = new TableData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -190,8 +187,8 @@ namespace MainData
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            CreatureDataList = List;
-                            CreatureDataMap = Map;
+                            TableDataList = List;
+                            TableDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -201,10 +198,10 @@ namespace MainData
 
  
 
-        public static void Write(CreatureData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(TableData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(CreatureData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(TableData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

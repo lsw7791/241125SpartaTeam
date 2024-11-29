@@ -57,7 +57,7 @@ namespace MainData
 /* Fields. */
 
 		public System.Int32 id;
-		public System.Int32 type;
+		public System.Int32 itemType;
 		public System.String name;
 		public System.Int32 tier;
 		public System.String desc;
