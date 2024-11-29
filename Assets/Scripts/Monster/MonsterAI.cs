@@ -113,7 +113,7 @@ public class MonsterAI : MonoBehaviour
         // 몬스터가 초기 위치로 돌아가는 행동
         Vector3 direction = (initialPosition - transform.position).normalized;
         transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
-        spriteRenderer.flipX = direction.x < 0;
+        spriteRenderer.flipX = direction.x < 0.1f;
         //player = null;
     }
 
