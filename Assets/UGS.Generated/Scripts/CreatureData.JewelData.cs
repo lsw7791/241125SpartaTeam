@@ -17,39 +17,39 @@ using UnityEngine;
 namespace CreatureData
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class MineData : ITable
+    public partial class JewelData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<MineData> loadedList, Dictionary<int, MineData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<JewelData> loadedList, Dictionary<int, JewelData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1Sz3Kv5nO1_GAihyO8PmVxOo1gB35jmPIwO3Kb0fOqT8"; // it is file id
-        static string sheetID = "1186116620"; // it is sheet id
+        static string sheetID = "1185471288"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, MineData> MineDataMap = new Dictionary<int, MineData>();  
-        public static List<MineData> MineDataList = new List<MineData>();   
+        public static Dictionary<int, JewelData> JewelDataMap = new Dictionary<int, JewelData>();  
+        public static List<JewelData> JewelDataList = new List<JewelData>();   
 
         /// <summary>
-        /// Get MineData List 
+        /// Get JewelData List 
         /// Auto Load
         /// </summary>
-        public static List<MineData> GetList()
+        public static List<JewelData> GetList()
         {{
            if (isLoaded == false) Load();
-           return MineDataList;
+           return JewelDataList;
         }}
 
         /// <summary>
-        /// Get MineData Dictionary, keyType is your sheet A1 field type.
+        /// Get JewelData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, MineData>  GetDictionary()
+        public static Dictionary<int, JewelData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return MineDataMap;
+           return JewelDataMap;
         }}
 
     
@@ -74,7 +74,7 @@ namespace CreatureData
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("MineData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("JewelData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -90,7 +90,7 @@ namespace CreatureData
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<MineData>, Dictionary<int, MineData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<JewelData>, Dictionary<int, JewelData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -118,14 +118,14 @@ namespace CreatureData
                
 
 
-    public static (List<MineData> list, Dictionary<int, MineData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, MineData> Map = new Dictionary<int, MineData>();
-            List<MineData> List = new List<MineData>();     
+    public static (List<JewelData> list, Dictionary<int, JewelData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, JewelData> Map = new Dictionary<int, JewelData>();
+            List<JewelData> List = new List<JewelData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(MineData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(JewelData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["MineData"];
+            var sheet = jsonObject["JewelData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -144,7 +144,7 @@ namespace CreatureData
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            MineData instance = new MineData();
+                            JewelData instance = new JewelData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -185,8 +185,8 @@ namespace CreatureData
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            MineDataList = List;
-                            MineDataMap = Map;
+                            JewelDataList = List;
+                            JewelDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -196,10 +196,10 @@ namespace CreatureData
 
  
 
-        public static void Write(MineData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(JewelData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(MineData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(JewelData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

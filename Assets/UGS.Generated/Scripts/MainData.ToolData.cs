@@ -14,42 +14,42 @@ using System.Reflection;
 using UnityEngine;
 
 
-namespace CreatureData
+namespace MainData
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class MineData : ITable
+    public partial class ToolData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<MineData> loadedList, Dictionary<int, MineData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<ToolData> loadedList, Dictionary<int, ToolData> loadedDictionary);
 
         static bool isLoaded = false;
-        static string spreadSheetID = "1Sz3Kv5nO1_GAihyO8PmVxOo1gB35jmPIwO3Kb0fOqT8"; // it is file id
-        static string sheetID = "1186116620"; // it is sheet id
+        static string spreadSheetID = "1Daaes6kJu0aN1dc6gYH59jZtRFLFk24qEeAlCETDpTw"; // it is file id
+        static string sheetID = "0"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, MineData> MineDataMap = new Dictionary<int, MineData>();  
-        public static List<MineData> MineDataList = new List<MineData>();   
+        public static Dictionary<int, ToolData> ToolDataMap = new Dictionary<int, ToolData>();  
+        public static List<ToolData> ToolDataList = new List<ToolData>();   
 
         /// <summary>
-        /// Get MineData List 
+        /// Get ToolData List 
         /// Auto Load
         /// </summary>
-        public static List<MineData> GetList()
+        public static List<ToolData> GetList()
         {{
            if (isLoaded == false) Load();
-           return MineDataList;
+           return ToolDataList;
         }}
 
         /// <summary>
-        /// Get MineData Dictionary, keyType is your sheet A1 field type.
+        /// Get ToolData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, MineData>  GetDictionary()
+        public static Dictionary<int, ToolData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return MineDataMap;
+           return ToolDataMap;
         }}
 
     
@@ -57,13 +57,20 @@ namespace CreatureData
 /* Fields. */
 
 		public System.Int32 Id;
+		public System.Int32 Type;
 		public System.String Name;
-		public System.Int32 Tier;
 		public System.String Desc;
-		public System.Int32 SellGold;
-		public System.Int32 Defense;
-		public System.Int32 Hp;
-		public System.Single MineDrop;
+		public System.Int32 Tier;
+		public System.Int32 HP;
+		public System.Int32 DEF;
+		public System.Int32 PAttack;
+		public System.Int32 MAttack;
+		public System.Single AttackSpeed;
+		public System.Int32 MiningAttack;
+		public System.Int32 ResourceM;
+		public System.Int32 ResourceL;
+		public System.Int32 ResourceO;
+		public System.Int32 ResourceJ;
   
 
 #region fuctions
@@ -74,12 +81,12 @@ namespace CreatureData
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("MineData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("ToolData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
 
-            string text = reader.ReadData("CreatureData"); 
+            string text = reader.ReadData("MainData"); 
             if (text != null)
             {
                 var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ReadSpreadSheetResult>(text);
@@ -90,7 +97,7 @@ namespace CreatureData
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<MineData>, Dictionary<int, MineData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<ToolData>, Dictionary<int, ToolData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -118,14 +125,14 @@ namespace CreatureData
                
 
 
-    public static (List<MineData> list, Dictionary<int, MineData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, MineData> Map = new Dictionary<int, MineData>();
-            List<MineData> List = new List<MineData>();     
+    public static (List<ToolData> list, Dictionary<int, ToolData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, ToolData> Map = new Dictionary<int, ToolData>();
+            List<ToolData> List = new List<ToolData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(MineData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(ToolData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["MineData"];
+            var sheet = jsonObject["ToolData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -144,7 +151,7 @@ namespace CreatureData
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            MineData instance = new MineData();
+                            ToolData instance = new ToolData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -185,8 +192,8 @@ namespace CreatureData
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            MineDataList = List;
-                            MineDataMap = Map;
+                            ToolDataList = List;
+                            ToolDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -196,10 +203,10 @@ namespace CreatureData
 
  
 
-        public static void Write(MineData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(ToolData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(MineData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(ToolData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

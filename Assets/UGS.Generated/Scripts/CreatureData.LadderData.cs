@@ -17,39 +17,39 @@ using UnityEngine;
 namespace CreatureData
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class MineData : ITable
+    public partial class LadderData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<MineData> loadedList, Dictionary<int, MineData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<LadderData> loadedList, Dictionary<int, LadderData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1Sz3Kv5nO1_GAihyO8PmVxOo1gB35jmPIwO3Kb0fOqT8"; // it is file id
-        static string sheetID = "1186116620"; // it is sheet id
+        static string sheetID = "9611194"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, MineData> MineDataMap = new Dictionary<int, MineData>();  
-        public static List<MineData> MineDataList = new List<MineData>();   
+        public static Dictionary<int, LadderData> LadderDataMap = new Dictionary<int, LadderData>();  
+        public static List<LadderData> LadderDataList = new List<LadderData>();   
 
         /// <summary>
-        /// Get MineData List 
+        /// Get LadderData List 
         /// Auto Load
         /// </summary>
-        public static List<MineData> GetList()
+        public static List<LadderData> GetList()
         {{
            if (isLoaded == false) Load();
-           return MineDataList;
+           return LadderDataList;
         }}
 
         /// <summary>
-        /// Get MineData Dictionary, keyType is your sheet A1 field type.
+        /// Get LadderData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, MineData>  GetDictionary()
+        public static Dictionary<int, LadderData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return MineDataMap;
+           return LadderDataMap;
         }}
 
     
@@ -61,9 +61,6 @@ namespace CreatureData
 		public System.Int32 Tier;
 		public System.String Desc;
 		public System.Int32 SellGold;
-		public System.Int32 Defense;
-		public System.Int32 Hp;
-		public System.Single MineDrop;
   
 
 #region fuctions
@@ -74,7 +71,7 @@ namespace CreatureData
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("MineData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("LadderData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -90,7 +87,7 @@ namespace CreatureData
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<MineData>, Dictionary<int, MineData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<LadderData>, Dictionary<int, LadderData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -118,14 +115,14 @@ namespace CreatureData
                
 
 
-    public static (List<MineData> list, Dictionary<int, MineData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, MineData> Map = new Dictionary<int, MineData>();
-            List<MineData> List = new List<MineData>();     
+    public static (List<LadderData> list, Dictionary<int, LadderData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, LadderData> Map = new Dictionary<int, LadderData>();
+            List<LadderData> List = new List<LadderData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(MineData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(LadderData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["MineData"];
+            var sheet = jsonObject["LadderData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -144,7 +141,7 @@ namespace CreatureData
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            MineData instance = new MineData();
+                            LadderData instance = new LadderData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -185,8 +182,8 @@ namespace CreatureData
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            MineDataList = List;
-                            MineDataMap = Map;
+                            LadderDataList = List;
+                            LadderDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -196,10 +193,10 @@ namespace CreatureData
 
  
 
-        public static void Write(MineData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(LadderData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(MineData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(LadderData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

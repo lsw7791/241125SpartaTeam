@@ -1,8 +1,10 @@
-ï»¿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    // Inspectorì—ì„œ ê°’ì„ ë³´ì´ë„ë¡ ì„¤ì •
+    // Inspector¿¡¼­ °ªÀ» º¸ÀÌµµ·Ï ¼³Á¤
     [SerializeField] private string monsterName;
     [SerializeField] private int health;
     [SerializeField] private float speed;
@@ -10,7 +12,7 @@ public class Monster : MonoBehaviour
     [SerializeField] private float detectionRange;
     [SerializeField] private float attackRange;
 
-    // public getterë¡œ ê°’ì„ ì ‘ê·¼í•  ìˆ˜ ìˆë„ë¡ í•˜ì—¬ ì™¸ë¶€ì—ì„œ ì‚¬ìš©í•  ìˆ˜ ìˆë„ë¡ í•¨
+    // public getter·Î °ªÀ» Á¢±ÙÇÒ ¼ö ÀÖµµ·Ï ÇÏ¿© ¿ÜºÎ¿¡¼­ »ç¿ëÇÒ ¼ö ÀÖµµ·Ï ÇÔ
     public string MonsterName => monsterName;
     public int Health => health;
     public float Speed => speed;
@@ -20,14 +22,14 @@ public class Monster : MonoBehaviour
 
     public bool isDie = false;
 
-    // Initialize ë©”ì„œë“œì—ì„œ ê°’ì„ ì„¤ì •
-    public void Initialize(MonsterData data)
-    {
-        monsterName = data.Name;
-        health = data.Health;
-        speed = data.Speed;
-        damage = data.Damage;
-        detectionRange = data.DetectionRange;
-        attackRange = data.AttackRange;
-    }
+    // Initialize ¸Ş¼­µå¿¡¼­ °ªÀ» ¼³Á¤
+    //public void Initialize(MonsterData data)
+    //{
+    //    monsterName = data.Name;
+    //    health = data.Health;
+    //    speed = data.Speed;
+    //    damage = data.Damage;
+    //    detectionRange = data.DetectionRange;
+    //    attackRange = data.AttackRange;
+    //}
 }
