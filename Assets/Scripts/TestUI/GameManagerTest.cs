@@ -16,7 +16,7 @@ public class GameManagerTest : MonoSingleton<GameManagerTest>
 
         if (SceneManager.GetActiveScene().name == "TestTitleSceen")
         {
-            UIManagerTest.Instance.Show<TitleUITest>();
+            UIManagerTest.Instance.OpenUI<TitleUITest>();
         }
     }
 
@@ -24,11 +24,11 @@ public class GameManagerTest : MonoSingleton<GameManagerTest>
     {
         if (scene.name == "TestInGameSceen")
         {
-            UIManagerTest.Instance.Show<InGameUITest>();
+            UIManagerTest.Instance.OpenUI<InGameUITest>();
         }
         else if (scene.name == "TestTitleSceen")
         {
-            UIManagerTest.Instance.Show<TitleUITest>();
+            UIManagerTest.Instance.OpenUI<TitleUITest>();
         }
     }
 }

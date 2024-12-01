@@ -1,110 +1,56 @@
+using Constants;
 using System.Collections.Generic;
-using Tripolygon.UModelerX.Runtime.MessagePack.Formatters;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIManagerTest : MonoSingleton<UIManagerTest>
 {
-    [SerializeField] private Transform canvas;
+    private Dictionary<string, UIBaseTest> _uiList = new Dictionary<string, UIBaseTest>();
 
-    public static float ScreenWidth = 1920;
-    public static float ScreenHeight = 1080;
-
-    private Dictionary<string, UIBaseTest> uiList = new Dictionary<string, UIBaseTest>();
-
-    public T Show<T>() where T : UIBaseTest
+    public T GetUI<T>() where T : UIBaseTest
     {
-        RemoveNull();
+        var uiName = typeof(T).Name;
 
-        string uiName = typeof(T).ToString();
-        uiList.TryGetValue(uiName, out UIBaseTest ui);
-
-        if (ui == null)
-        {
-            uiList.Remove(uiName);
-            var uiObject = Resources.Load<UIBaseTest>($"Prefabs/UITest/{uiName}");
-
-            ui = Load<T>(uiObject, uiName);
-            uiList.Add(uiName, ui);
-        }
-
-        ui.gameObject.SetActive(true);
-        return (T)ui;
+        if (_uiList.TryGetValue(uiName, out var value) && value != null)
+            return value as T;
+        else
+            return CreateUI<T>();
     }
 
-    private T Load<T>(UIBaseTest prefab, string uiName) where T : UIBaseTest
+    private T CreateUI<T>() where T : UIBaseTest
     {
-        var newCanvasObject = new GameObject($"{uiName} Canvas");
+        var uiName = typeof(T).Name;
 
-        //newCanvasObject.transform.SetParent(transform);
+        T uiRes = Resources.Load<T>($"{PathInfo.UIPath}{uiName}");
 
-        var canvas = newCanvasObject.AddComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        var outUi = Instantiate(uiRes);
+        outUi.name = outUi.name.Replace("(Clone)", "");
 
-        var canvasScaler = newCanvasObject.AddComponent<CanvasScaler>();
-        canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        canvasScaler.referenceResolution = new Vector2(ScreenWidth, ScreenHeight);
-
-        newCanvasObject.gameObject.AddComponent<GraphicRaycaster>();
-
-        var ui = Instantiate(prefab, newCanvasObject.transform);
-        ui.name = ui.name.Replace("(Clone)", "");
-
-        var result = ui.GetComponent<T>();
-        result.canvas = canvas;
-        result.canvas.sortingOrder = uiList.Count;
-
-        return result;
+        return outUi;
     }
 
-    public T Get<T>() where T : UIBaseTest
+    public bool IsExistUI<T>() where T : UIBaseTest
     {
-        string uiName = typeof(T).ToString();
-        uiList.TryGetValue(uiName, out UIBaseTest ui);
-
-        if(ui == null)
-        {
-            Debug.LogError($"{uiName} don't exist");
-            return default;
-        }
-
-        return (T)ui;
+        var uiName = typeof(T).Name;
+        return _uiList.ContainsKey(uiName) && _uiList[uiName] != null;
     }
 
-    public void Hide<T>()
+    public T OpenUI<T>() where T : UIBaseTest
     {
-        string uiName = typeof(T).ToString();
-        Hide(uiName);
+        T ui = GetUI<T>();
+        ui.Open();
+        return ui;
     }
 
-    public void Hide(string uiName)
+    public T CloseUI<T>() where T : UIBaseTest
     {
-        uiList.TryGetValue(uiName, out UIBaseTest ui);
+        T ui = GetUI<T>();
+        ui.Close();
 
-        if(ui == null)
-        {
-            return;
-        }
-
-        DestroyImmediate(ui.canvas.gameObject);
-        uiList.Remove(uiName);
+        return ui;
     }
 
-    private void RemoveNull()
-    { // 리스트에 null이 있는지 확인
-        List<string> tempList = new List<string>(uiList.Count);
-
-        foreach (var temp in uiList)
-        {
-            if (temp.Value == null)
-            {
-                tempList.Add(temp.Key);
-            }
-        }
-
-        foreach (var temp in tempList)
-        {
-            uiList.Remove(temp);
-        }
+    public void Clear()
+    {
+        _uiList.Clear();
     }
 }

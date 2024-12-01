@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7872274859989698905}
   - component: {fileID: 2103875904397518283}
   m_Layer: 5
-  m_Name: QuestUI
+  m_Name: QuestUITest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

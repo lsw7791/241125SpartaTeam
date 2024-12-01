@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class UIBaseTest : MonoBehaviour
 {
-    public Canvas canvas;
-
-
-    public void Hide()
+    public void Open()
     {
-        UIManagerTest.Instance.Hide(gameObject.name);
+        gameObject.SetActive(true);
+    }
+
+    public void Close()
+    {
+        Destroy(gameObject);
     }
 }
