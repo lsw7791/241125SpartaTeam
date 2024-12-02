@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OptionUITest : UIBaseTest
 {
-    // Start is called before the first frame update
-    void Start()
+    public void CloseUI()
     {
-        
-    }
+        OptionUITest myUI = this;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        myUI.Close();
     }
 }

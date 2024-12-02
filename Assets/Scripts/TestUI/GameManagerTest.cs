@@ -22,6 +22,8 @@ public class GameManagerTest : MonoSingleton<GameManagerTest>
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        UIManagerTest.Instance.Init();
+
         if (scene.name == "TestInGameSceen")
         {
             UIManagerTest.Instance.OpenUI<InGameUITest>();
