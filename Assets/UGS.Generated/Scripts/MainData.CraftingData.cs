@@ -17,10 +17,10 @@ using UnityEngine;
 namespace MainData
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class TableData : ITable
+    public partial class CraftingData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<TableData> loadedList, Dictionary<int, TableData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<CraftingData> loadedList, Dictionary<int, CraftingData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1Daaes6kJu0aN1dc6gYH59jZtRFLFk24qEeAlCETDpTw"; // it is file id
@@ -29,27 +29,27 @@ namespace MainData
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, TableData> TableDataMap = new Dictionary<int, TableData>();  
-        public static List<TableData> TableDataList = new List<TableData>();   
+        public static Dictionary<int, CraftingData> CraftingDataMap = new Dictionary<int, CraftingData>();  
+        public static List<CraftingData> CraftingDataList = new List<CraftingData>();   
 
         /// <summary>
-        /// Get TableData List 
+        /// Get CraftingData List 
         /// Auto Load
         /// </summary>
-        public static List<TableData> GetList()
+        public static List<CraftingData> GetList()
         {{
            if (isLoaded == false) Load();
-           return TableDataList;
+           return CraftingDataList;
         }}
 
         /// <summary>
-        /// Get TableData Dictionary, keyType is your sheet A1 field type.
+        /// Get CraftingData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, TableData>  GetDictionary()
+        public static Dictionary<int, CraftingData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return TableDataMap;
+           return CraftingDataMap;
         }}
 
     
@@ -57,9 +57,7 @@ namespace MainData
 /* Fields. */
 
 		public System.Int32 id;
-		public TableType tableData;
-		public System.String name;
-		public System.String desc;
+		public System.Int32 ItemID;
 		public System.Int32 tier;
 		public System.Int32 gold;
 		public System.Int32 resourceMine;
@@ -76,7 +74,7 @@ namespace MainData
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("TableData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("CraftingData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -92,7 +90,7 @@ namespace MainData
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<TableData>, Dictionary<int, TableData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<CraftingData>, Dictionary<int, CraftingData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -120,14 +118,14 @@ namespace MainData
                
 
 
-    public static (List<TableData> list, Dictionary<int, TableData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, TableData> Map = new Dictionary<int, TableData>();
-            List<TableData> List = new List<TableData>();     
+    public static (List<CraftingData> list, Dictionary<int, CraftingData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, CraftingData> Map = new Dictionary<int, CraftingData>();
+            List<CraftingData> List = new List<CraftingData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(TableData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(CraftingData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["TableData"];
+            var sheet = jsonObject["CraftingData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -146,7 +144,7 @@ namespace MainData
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            TableData instance = new TableData();
+                            CraftingData instance = new CraftingData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -187,8 +185,8 @@ namespace MainData
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            TableDataList = List;
-                            TableDataMap = Map;
+                            CraftingDataList = List;
+                            CraftingDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -198,10 +196,10 @@ namespace MainData
 
  
 
-        public static void Write(TableData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(CraftingData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(TableData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(CraftingData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

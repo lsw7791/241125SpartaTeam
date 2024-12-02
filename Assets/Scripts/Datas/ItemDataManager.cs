@@ -20,7 +20,9 @@ public enum ItemType
     Jewel,
     Ladder,
     Other,
-    Gold
+    Gold,
+    HealthPotion,
+    StaminaPotion
 }
 public class ItemDataManager : ItemData
 {
@@ -33,11 +35,6 @@ public class ItemDataManager : ItemData
     {
         //return ItemDataList.FindAll(x=> x.type == 1)
         return null;
-    }
-    public List<ItemData> GetAllData(int id)
-    {
-
-        return new List<ItemData>();
     }
 
 }
