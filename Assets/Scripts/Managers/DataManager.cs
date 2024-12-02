@@ -7,16 +7,14 @@ public class DataManager : SingleTon<DataManager>
 {
     public ItemDataManager item;
     public CreatureDataManager creature;
-    public CraftingDataManager table;
+    public CraftingDataManager crafting;
 
     public void Initialize()
     {
-        Debug.Log("시작전");
         UnityGoogleSheet.LoadAllData();
-        Debug.Log("시작후");
         item = new ItemDataManager();
         creature = new CreatureDataManager();
-        table = new CraftingDataManager();
+        crafting = new CraftingDataManager();
 
     }
 }

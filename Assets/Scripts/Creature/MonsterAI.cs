@@ -7,17 +7,12 @@ public class MonsterAI : MonoBehaviour
 
     [Header("Targeting")]
     [SerializeField]
-    private float moveSpeed;           // 몬스터의 이동 속도
-    public float detectionRange;     // 플레이어를 감지할 수 있는 범위
-    public float attackRange;       // 공격 범위
-    [SerializeField]
     private Transform player;               // 추적할 플레이어
     private Vector3 initialPosition;       // 몬스터의 초기 위치
     private SpriteRenderer spriteRenderer;
 
     [Header("Attack")]
     [SerializeField]
-    private int damage;
     public float delayTime = 2f;
     public float curTime = 0f;
 
@@ -25,16 +20,10 @@ public class MonsterAI : MonoBehaviour
 
     private void Start()
     {
+        monster = GetComponent<Monster>();
         // 몬스터의 초기 위치 저장
         initialPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    private void OnEnable()
-    {
-        monster = GetComponent<Monster>();
-
-        Initialize();
     }
 
     private void Update()
@@ -53,12 +42,12 @@ public class MonsterAI : MonoBehaviour
         // 몬스터가 플레이어를 감지하는 범위 내에 있다면 추적
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (distanceToPlayer <= attackRange)
+        if (distanceToPlayer <= monster.creatureAttackRange)
         {
             // 공격 범위에 들어왔으면 공격 행동
             AttackPlayer();
         }
-        else if (distanceToPlayer <= detectionRange)
+        else if (distanceToPlayer <= monster.creatureDetectionRange)
         {
             // 감지 범위에 들어왔으면 플레이어를 추적
             ChasePlayer();
@@ -67,7 +56,7 @@ public class MonsterAI : MonoBehaviour
         else
         {
             // 플레이어가 범위 밖에 있으면 초기 위치로 돌아가기
-            //ReturnToInitialPosition();
+            ReturnToInitialPosition();
             if(player != null)
             {
                 player = null;
@@ -76,19 +65,12 @@ public class MonsterAI : MonoBehaviour
         }
     }
 
-    private void Initialize()
-    {
-        moveSpeed = monster.Speed;
-        damage = monster.Damage;
-        detectionRange = monster.DetectionRange;
-        attackRange = monster.AttackRange;
-    }
 
     private void ChasePlayer()
     {
         // 플레이어 방향으로 이동
         Vector3 direction = (player.position - transform.position).normalized;
-        transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(direction * monster.creatureMoveSpeed * Time.deltaTime, Space.World);
 
         spriteRenderer.flipX = direction.x <= 0;
     }
@@ -111,7 +93,7 @@ public class MonsterAI : MonoBehaviour
     {
         // 몬스터가 초기 위치로 돌아가는 행동
         Vector3 direction = (initialPosition - transform.position).normalized;
-        transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(direction * monster.creatureMoveSpeed * Time.deltaTime, Space.World);
         spriteRenderer.flipX = direction.x < 0;
         //player = null;
     }

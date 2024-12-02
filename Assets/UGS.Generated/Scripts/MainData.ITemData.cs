@@ -57,8 +57,8 @@ namespace MainData
 /* Fields. */
 
 		public System.Int32 id;
-		public System.Int32 ItemID;
-		public ItemType itemData;
+		public System.Int32 itemID;
+		public ItemType itemType;
 		public System.String name;
 		public System.String desc;
 		public System.Int32 tier;
@@ -67,11 +67,11 @@ namespace MainData
 		public System.Int32 defense;
 		public System.Int32 attackP;
 		public System.Int32 attackM;
-		public System.Single attackSpeed;
 		public System.Int32 attackMining;
-		public System.Single drop;
 		public System.Int32 sell;
 		public System.Int32 buy;
+		public System.Single speed;
+		public System.Single drop;
   
 
 #region fuctions
