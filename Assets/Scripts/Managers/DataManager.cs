@@ -7,8 +7,7 @@ public class DataManager : SingleTon<DataManager>
 {
     public ItemDataManager item;
     public CreatureDataManager creature;
-    public TableDataManager table;
-    public PotionDataManager potion;
+    public CraftingDataManager table;
 
     public void Initialize()
     {
@@ -17,8 +16,7 @@ public class DataManager : SingleTon<DataManager>
         Debug.Log("½ÃÀÛÈÄ");
         item = new ItemDataManager();
         creature = new CreatureDataManager();
-        table = new TableDataManager();
-        potion = new PotionDataManager();
+        table = new CraftingDataManager();
 
     }
 }
