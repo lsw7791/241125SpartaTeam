@@ -57,7 +57,8 @@ namespace MainData
 /* Fields. */
 
 		public System.Int32 id;
-		public CreatureType creatureData;
+		public System.Int32 creatureID;
+		public CreatureType creatureType;
 		public System.String name;
 		public System.String desc;
 		public System.Int32 tier;
@@ -68,7 +69,7 @@ namespace MainData
 		public System.Single detectionRange;
 		public System.Single attackRange;
 		public System.Single moveSpeed;
-		public System.Single Drop;
+		public System.Single drop;
   
 
 #region fuctions
