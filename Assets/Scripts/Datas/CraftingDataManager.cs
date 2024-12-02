@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TableDataManager : TableData
+public class CraftingDataManager : CraftingData
 {
-    public TableData GetData(int id)
+    public CraftingData GetData(int id)
     {
-        return TableDataMap[id];
+        return CraftingDataMap[id];
     }
 
-    public List<TableData> GetDataByType()
+    public List<CraftingData> GetDataByType()
     {
         //return TableDataList.FindAll(x=> x.type == 1)
         return null;
