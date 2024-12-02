@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MineData : ICreature
 {
-    public int monsterid;
+    public int id;
     public int creatureid;
     public CreatureType creatureType;
     public string creatureName;
@@ -22,7 +22,7 @@ public class MineData : ICreature
     public bool isDie;
     public void Initialize(int creatureid)
     {
-        monsterid = DataManager.Instance.creature.GetData(creatureid).id;
+        id = DataManager.Instance.creature.GetData(creatureid).id;
         creatureType = DataManager.Instance.creature.GetData(creatureid).creatureType;
         creatureName = DataManager.Instance.creature.GetData(creatureid).name;
         creatureDesc = DataManager.Instance.creature.GetData(creatureid).desc;

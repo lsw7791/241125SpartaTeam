@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9141665789532574678}
   - component: {fileID: 7656142714056762797}
-  - component: {fileID: 4394712601861785651}
   - component: {fileID: 3131933923667785821}
   - component: {fileID: 7970354608917521288}
+  - component: {fileID: 658380143935366654}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -88,25 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4394712601861785651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087532890236348039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6435756da3fc44e8d89b5999655bfa65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterName: 
-  health: 0
-  speed: 0
-  damage: 0
-  detectionRange: 0
-  attackRange: 0
-  isDie: 0
 --- !u!114 &3131933923667785821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,11 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a574f2b6b3b93cf49aa9f6f5352e38fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  detectionRange: 0
-  attackRange: 0
   player: {fileID: 0}
-  damage: 0
   delayTime: 2
   curTime: 0
 --- !u!61 &7970354608917521288
@@ -171,6 +148,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0
+--- !u!114 &658380143935366654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087532890236348039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3157ef725d87d40af2beb470853a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentID: 0
+  currentType: 0
+  currentName: 
+  currentDesc: 
+  currentTier: 0
+  currentAttack: 0
+  currentDefense: 0
+  currentHealth: 0
+  currentAttackSpeed: 0
+  currentDetectionRange: 0
+  currentAttackRange: 0
+  currentMoveSpeed: 0
+  currentDrop: 0
 --- !u!1 &5118655380222574118
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +182,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1570642855393870421}
-  - component: {fileID: 5055385966454225520}
   - component: {fileID: 8600334848812023046}
   m_Layer: 0
   m_Name: HitCollider
@@ -204,19 +205,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 9141665789532574678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5055385966454225520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5118655380222574118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df785f0433b9df64f8c49f7fda15beac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
 --- !u!61 &8600334848812023046
 BoxCollider2D:
   m_ObjectHideFlags: 0

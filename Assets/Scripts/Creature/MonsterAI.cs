@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MonsterAI : MonoBehaviour
 {
-    private MonsterData monster;
+    private Monster monster;
 
     [Header("Targeting")]
     [SerializeField]
@@ -20,7 +20,7 @@ public class MonsterAI : MonoBehaviour
 
     private void Start()
     {
-        monster = GetComponent<MonsterData>();
+        monster = GetComponent<Monster>();
         // 몬스터의 초기 위치 저장
         initialPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -28,10 +28,6 @@ public class MonsterAI : MonoBehaviour
 
     private void Update()
     {
-        if(monster.isDie == true)
-        {
-            return;
-        }
 
         if (player == null)
         {
@@ -42,12 +38,12 @@ public class MonsterAI : MonoBehaviour
         // 몬스터가 플레이어를 감지하는 범위 내에 있다면 추적
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (distanceToPlayer <= monster.creatureAttackRange)
+        if (distanceToPlayer <= monster.currentAttackRange)
         {
             // 공격 범위에 들어왔으면 공격 행동
             AttackPlayer();
         }
-        else if (distanceToPlayer <= monster.creatureDetectionRange)
+        else if (distanceToPlayer <= monster.currentDetectionRange)
         {
             // 감지 범위에 들어왔으면 플레이어를 추적
             ChasePlayer();
@@ -70,7 +66,7 @@ public class MonsterAI : MonoBehaviour
     {
         // 플레이어 방향으로 이동
         Vector3 direction = (player.position - transform.position).normalized;
-        transform.Translate(direction * monster.creatureMoveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(direction * monster.currentMoveSpeed * Time.deltaTime, Space.World);
 
         spriteRenderer.flipX = direction.x <= 0;
     }
@@ -93,7 +89,7 @@ public class MonsterAI : MonoBehaviour
     {
         // 몬스터가 초기 위치로 돌아가는 행동
         Vector3 direction = (initialPosition - transform.position).normalized;
-        transform.Translate(direction * monster.creatureMoveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(direction * monster.currentMoveSpeed * Time.deltaTime, Space.World);
         spriteRenderer.flipX = direction.x < 0;
         //player = null;
     }
