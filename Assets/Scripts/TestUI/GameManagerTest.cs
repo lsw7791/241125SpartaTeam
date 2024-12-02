@@ -14,23 +14,11 @@ public class GameManagerTest : MonoSingleton<GameManagerTest>
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        if (SceneManager.GetActiveScene().name == "TestTitleSceen")
-        {
-            UIManagerTest.Instance.OpenUI<TitleUITest>();
-        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        UIManagerTest.Instance.Init();
+        //UIManagerTest.Instance.Init();
 
-        if (scene.name == "TestInGameSceen")
-        {
-            UIManagerTest.Instance.OpenUI<InGameUITest>();
-        }
-        else if (scene.name == "TestTitleSceen")
-        {
-            UIManagerTest.Instance.OpenUI<TitleUITest>();
-        }
     }
 }

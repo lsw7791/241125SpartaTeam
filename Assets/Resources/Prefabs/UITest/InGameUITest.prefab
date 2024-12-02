@@ -1190,6 +1190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806130766f4e23440ba15b32a3b3b19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  rectTransform: {fileID: 0}
   childObject: {fileID: 764778865319514454}
   expandDuration: 0.3
   startScale: 0.5

@@ -1148,8 +1148,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 100490282942028933}
-        m_TargetAssemblyTypeName: StatusUITest, Assembly-CSharp
-        m_MethodName: CloseUI
+        m_TargetAssemblyTypeName: UIBaseTest, Assembly-CSharp
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1554,4 +1554,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 0}
-  _statusUi: {fileID: 0}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TitleUITest : UIBaseTest
+public class TitleUITest : MonoBehaviour
 {
     public void GameStart()
     {

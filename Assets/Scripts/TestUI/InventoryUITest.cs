@@ -5,13 +5,6 @@ using UnityEngine.UI;
 
 public class InventoryUITest : UIBaseTest
 {
-    public void CloseUI()
-    {
-        InventoryUITest myUI = this;
-
-        myUI.Close();
-    }
-
     private void ClearList()
     {
         

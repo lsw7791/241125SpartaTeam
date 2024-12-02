@@ -1261,8 +1261,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2817552486276219937}
-        m_TargetAssemblyTypeName: InventoryUITest, Assembly-CSharp
-        m_MethodName: CloseUI
+        m_TargetAssemblyTypeName: UIBaseTest, Assembly-CSharp
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2635,7 +2635,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 0}
-  _btnInventory: {fileID: 0}
 --- !u!1 &5157317637418215683
 GameObject:
   m_ObjectHideFlags: 0

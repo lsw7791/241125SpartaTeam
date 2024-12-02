@@ -35,29 +35,29 @@ public class InGameMenuUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         });
     }
 
-    // 맵 UI 토글
-    public void ToggleMapUI()
-    {
-        UIManager.Instance.isMapOpen = !UIManager.Instance.isMapOpen; // 상태 토글
-        UIManager.Instance.mapUI.SetActive(UIManager.Instance.isMapOpen); // UI 활성화/비활성화
-    }
+    //// 맵 UI 토글
+    //public void ToggleMapUI()
+    //{
+    //    UIManager.Instance.isMapOpen = !UIManager.Instance.isMapOpen; // 상태 토글
+    //    UIManager.Instance.mapUI.SetActive(UIManager.Instance.isMapOpen); // UI 활성화/비활성화
+    //}
 
-    public void ToggleInventoryUI()
-    {
-        UIManager.Instance.isInventoryOpen = !UIManager.Instance.isInventoryOpen; // 상태 토글
-        UIManager.Instance.inventoryUI.SetActive(UIManager.Instance.isInventoryOpen); // UI 활성화/비활성화
-    }
+    //public void ToggleInventoryUI()
+    //{
+    //    UIManager.Instance.isInventoryOpen = !UIManager.Instance.isInventoryOpen; // 상태 토글
+    //    UIManager.Instance.inventoryUI.SetActive(UIManager.Instance.isInventoryOpen); // UI 활성화/비활성화
+    //}
     
-    public void ToggleOptionUI()
-    {
-        UIManager.Instance.isOptionOpen = !UIManager.Instance.isOptionOpen; // 상태 토글
-        UIManager.Instance.optionUI.SetActive(UIManager.Instance.isOptionOpen); // UI 활성화/비활성화
-    }
+    //public void ToggleOptionUI()
+    //{
+    //    UIManager.Instance.isOptionOpen = !UIManager.Instance.isOptionOpen; // 상태 토글
+    //    UIManager.Instance.optionUI.SetActive(UIManager.Instance.isOptionOpen); // UI 활성화/비활성화
+    //}
 
-    public void ToggleStatusUI()
-    {
-        UIManager.Instance.isStatusOpen = !UIManager.Instance.isStatusOpen; // 상태 토글
-        UIManager.Instance.statusUI.SetActive(UIManager.Instance.isStatusOpen); // UI 활성화/비활성화
-    }
+    //public void ToggleStatusUI()
+    //{
+    //    UIManager.Instance.isStatusOpen = !UIManager.Instance.isStatusOpen; // 상태 토글
+    //    UIManager.Instance.statusUI.SetActive(UIManager.Instance.isStatusOpen); // UI 활성화/비활성화
+    //}
 
 }

@@ -12,6 +12,8 @@ using UnityEngine.EventSystems;
 
 public abstract  class UIBaseTest : MonoBehaviour, IDraggable, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
+    //public Canvas canvas;
+
     public RectTransform rectTransform;
     private Vector2 offset;
 
@@ -28,7 +30,7 @@ public abstract  class UIBaseTest : MonoBehaviour, IDraggable, IPointerDownHandl
 
     public void Close()
     {
-        //Destroy(gameObject);
+        //UIManagerTest.Instance.Hide(gameObject.name);
         gameObject.SetActive(false);
         CloseProcedure();
     }

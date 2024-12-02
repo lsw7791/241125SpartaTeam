@@ -5,10 +5,5 @@ using UnityEngine.UI;
 
 public class StatusUITest : UIBaseTest
 {
-    public void CloseUI()
-    {
-        StatusUITest myUI = this;
-
-        myUI.Close();
-    }
+    
 }
