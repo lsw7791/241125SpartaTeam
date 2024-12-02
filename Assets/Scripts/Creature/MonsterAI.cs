@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MonsterAI : MonoBehaviour
 {
-    private Monster monster;
+    private MonsterData monster;
 
     [Header("Targeting")]
     [SerializeField]
@@ -20,7 +20,7 @@ public class MonsterAI : MonoBehaviour
 
     private void Start()
     {
-        monster = GetComponent<Monster>();
+        monster = GetComponent<MonsterData>();
         // 몬스터의 초기 위치 저장
         initialPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
