@@ -1,51 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-    enum WeaponType
-    {
-        MinigTool,
-        SmallWP,
-        MediumWP,
-        BigWP,
-        Arrow,
-        Staff
-    }
+
 public class Player : MonoBehaviour
 {
-    [SerializeField] string NickName;               // 플레이어 닉네임
+    [SerializeField] private string NickName;
 
-    [SerializeField] int _currentHP;                        // 체력
-    [SerializeField] int _currentStamina;                   // 스태미나
-    [SerializeField] int _currentGold;                      // 골드
-    [SerializeField] int _currentDamage;                    // 공격력
-    [SerializeField] int _currentSpeed;                     // 이동 속도
-    [SerializeField] float _currentATKSpeed;                // 공격 속도
-    [SerializeField] int _currentDef;                       // 방어력
-    [SerializeField] int _currentWeaponType;                // 무기종류
+    [SerializeField] private PlayerStats stats;  // 플레이어의 스탯 (PlayerStats)
+    [SerializeField] private Inventory inventory;  // 플레이어의 인벤토리 (Inventory)
 
-    [SerializeField] float _movingLV;
-    [SerializeField] float _makingLV;
-    [SerializeField] float _minigWPLV;
-    [SerializeField] float _nearWPLV;
-    [SerializeField] float _arrowWPLV;
-    [SerializeField] float _staffWPLV;
+    // QuickSlots 프로퍼티 추가
+    public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경
 
-    public PlayerInventory _playerInventory;     // 인벤토리
-    public List<QuickSlotItem> QuickSlots; // 퀵슬롯 아이템 목록
+    public delegate void PlayerDataSavedHandler();
+    public event PlayerDataSavedHandler OnPlayerDataSaved;
+
+    public Player()
+    {
+        stats = new PlayerStats();
+        inventory = new Inventory();
+        QuickSlots = new QuickSlot();  // QuickSlot 객체로 초기화
+    }
+
+    // 데이터를 저장하는 메서드
+    public void SaveData(IPlayerRepository repository)
+    {
+        PlayerSaveLoad.SavePlayerData(this, repository);
+        OnPlayerDataSaved?.Invoke(); // 저장 완료 후 이벤트 발생
+    }
+
+    // 데이터를 로드하는 메서드
+    public void LoadData(IPlayerRepository repository)
+    {
+        PlayerSaveLoad.LoadPlayerData(this, repository);
+    }
+
+    // 인벤토리 관련
+    public void AddItemToInventory(string itemID, string itemName, int quantity, string itemType, int? slotIndex = null)
+    {
+        inventory.AddItem(itemID, itemName, quantity, itemType, slotIndex);  // 아이템 추가
+    }
+
+    public void RemoveItemFromInventory(string itemID, int quantity)
+    {
+        inventory.RemoveItem(itemID, quantity);  // 아이템 제거
+    }
+
+    public InventoryItem GetItemFromInventory(string itemID)
+    {
+        return inventory.GetItem(itemID);  // 아이템 조회
+    }
+
+    // 프로퍼티
+    public PlayerStats Stats => stats;
+    public Inventory Inventory => inventory;  // 인벤토리 반환
+    public string PlayerNickName { get => NickName; set => NickName = value; }
 }
-public class PlayerInventory : MonoBehaviour
-{
-    [SerializeField] int _equipWeaponType;  // 주무기
-    [SerializeField] int _equipSubWPType;  // 보조무기
-    [SerializeField] int _equipHeadType;  // 머리
-    [SerializeField] int _equipShirtType;  // 몸통
-    [SerializeField] int _equipPantsType;  // 바지
-    [SerializeField] int _equipArmorType;  // 방어구
-    [SerializeField] int _equipCloakType;  // 망토
-
-}
-public class PlayerQuickSlot : MonoBehaviour
-{
-
-}
-
