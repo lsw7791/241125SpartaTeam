@@ -15,6 +15,5 @@ public class DataManager : SingleTon<DataManager>
         item = new ItemDataManager();
         creature = new CreatureDataManager();
         crafting = new CraftingDataManager();
-
     }
 }

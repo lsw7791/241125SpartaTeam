@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MonsterData : ICreature
 {
-    public int monsterid;
+    public int id;
     public int creatureid;
     public CreatureType creatureType;
     public string creatureName;
@@ -20,10 +20,10 @@ public class MonsterData : ICreature
     public float creatureMoveSpeed;
     public float creatureDrop;
 
-    public bool isDie;
+  
     public void Initialize(int creatureid)
     {
-        monsterid = DataManager.Instance.creature.GetData(creatureid).id;
+        id = DataManager.Instance.creature.GetData(creatureid).id;
         creatureType = DataManager.Instance.creature.GetData(creatureid).creatureType;
         creatureName = DataManager.Instance.creature.GetData(creatureid).name;
         creatureDesc = DataManager.Instance.creature.GetData(creatureid).desc;
@@ -36,7 +36,5 @@ public class MonsterData : ICreature
         creatureAttackRange = DataManager.Instance.creature.GetData(creatureid).attackRange;
         creatureMoveSpeed = DataManager.Instance.creature.GetData(creatureid).moveSpeed;
         creatureDrop = DataManager.Instance.creature.GetData(creatureid).drop;
-
-        isDie = true;
     }
 }

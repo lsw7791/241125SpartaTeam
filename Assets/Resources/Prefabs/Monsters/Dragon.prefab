@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5838374526928521122}
   - component: {fileID: 6283461280232865038}
-  - component: {fileID: 9073720993791602767}
+  - component: {fileID: 7436005686030986320}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9073720993791602767
+--- !u!114 &7436005686030986320
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,6 +94,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 8388946488899675888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6435756da3fc44e8d89b5999655bfa65, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f3157ef725d87d40af2beb470853a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentID: 0
+  currentType: 0
+  currentName: 
+  currentDesc: 
+  currentTier: 0
+  currentAttack: 0
+  currentDefense: 0
+  currentHealth: 0
+  currentAttackSpeed: 0
+  currentDetectionRange: 0
+  currentAttackRange: 0
+  currentMoveSpeed: 0
+  currentDrop: 0
