@@ -3,11 +3,10 @@ using UnityEngine;
 public class MonsterController : MonoBehaviour
 {
     private Monster monster;
-
-    [Header("Condition")]
-    [SerializeField]
-    private int health;
-
+    private void Awake()
+    {
+        monster = GetComponent<Monster>();
+    }
     private void Start()
     {
         //GameManager.Instance.플레이어.공격이벤트 += HitDamage;
@@ -16,20 +15,13 @@ public class MonsterController : MonoBehaviour
     private void OnEnable()
     {
         monster = GetComponentInParent<Monster>();
-
-        Initialize();
-    }
-
-    private void Initialize()
-    {
-        health = monster.Health;
     }
 
     public void HitDamage(int damage)
     {
-        health -= damage;
+        monster.creatureHealth -= damage;
 
-        if (health <= 0)
+        if (monster.creatureHealth <= 0)
         {
             Dead();
         }
@@ -38,7 +30,7 @@ public class MonsterController : MonoBehaviour
     private void Dead()
     {
         //CreateManager.Instance.ReturnObjectToPool(gameObject);
-        monster.gameObject.SetActive(false);
+        //monster.gameObject.SetActive(false);
         monster.isDie = true;
     }
 

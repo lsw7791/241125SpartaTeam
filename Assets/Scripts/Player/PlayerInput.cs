@@ -70,9 +70,15 @@ public class PlayerInput : MonoBehaviour
     // 패딩
     public void OnPadding(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.started)
         {
-            PerformPadding();
+            _playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화
+            PerformPaddingStart(); // 패딩 동작 시작
+        }
+        else if (context.canceled)
+        {
+            _playerAnimationController.SetPaddingAnimation(false); // 애니메이션 비활성화
+            PerformPaddingEnd(); // 패딩 동작 종료
         }
     }
 
@@ -192,8 +198,15 @@ public class PlayerInput : MonoBehaviour
     }
 
     // 패딩(막기) 로직
-    private void PerformPadding()
+    private void PerformPaddingStart()
     {
-        // 막기 로직 추가
+        // 막기 동작 시작 시 실행할 로직
+        Debug.Log("Padding started!");
+    }
+
+    private void PerformPaddingEnd()
+    {
+        // 막기 동작 종료 시 실행할 로직
+        Debug.Log("Padding ended!");
     }
 }
