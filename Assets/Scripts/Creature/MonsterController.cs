@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
-    private Monster monster;
+    private MonsterData monster;
     private void Awake()
     {
-        monster = GetComponent<Monster>();
+        monster = GetComponent<MonsterData>();
     }
     private void Start()
     {
@@ -14,7 +14,7 @@ public class MonsterController : MonoBehaviour
 
     private void OnEnable()
     {
-        monster = GetComponentInParent<Monster>();
+        monster = GetComponentInParent<MonsterData>();
     }
 
     public void HitDamage(int damage)

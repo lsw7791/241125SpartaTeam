@@ -6,6 +6,7 @@ using Tripolygon.UModeler.UI.ViewModels;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    //public ObjectPool<Monster> monsterPool;  // 적을 관리할 풀
     protected override void Awake()
     {
         base.Awake();
@@ -21,7 +22,7 @@ public class GameManager : MonoSingleton<GameManager>
         }
         ItemManager.Instance.Initialize(items);
 
-        Monster monster = new Monster();
+        MonsterData monster = new MonsterData();
         monster.Initialize(2);
         Debug.Log(monster.creatureName);
     }
