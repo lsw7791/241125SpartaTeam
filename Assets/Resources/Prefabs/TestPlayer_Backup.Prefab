@@ -477,6 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c940f6332e75c634993e7cfe61638e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equippedWeapon: {fileID: 0}
 --- !u!1 &2316263067602181005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,21 +1795,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b8e60a739ff1b4abab5b1099d667d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NickName: 
-  _currentHP: 0
-  _currentStamina: 0
-  _currentGold: 0
-  _currentDamage: 0
-  _currentSpeed: 0
-  _currentATKSpeed: 0
-  _currentDef: 0
-  _currentWeaponType: 0
-  _movingLV: 0
-  _makingLV: 0
-  _minigWPLV: 0
-  _nearWPLV: 0
-  _arrowWPLV: 0
-  _staffWPLV: 0
+  NickName: "\uD14C\uC2A4\uD2B8"
+  _currentHP: 1
+  _currentStamina: 1
+  _currentGold: 1
+  _currentDamage: 1
+  _currentSpeed: 1
+  _currentATKSpeed: 1
+  _currentDef: 1
+  _currentWeaponType: 1
+  _movingLV: 1
+  _makingLV: 1
+  _minigWPLV: 1
+  _nearWPLV: 1
+  _arrowWPLV: 1
+  _staffWPLV: 1
   _playerInventory: {fileID: 0}
   QuickSlots: []
 --- !u!114 &1865780032156894266

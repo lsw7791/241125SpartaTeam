@@ -43,10 +43,6 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] int _equipArmorType;  // 방어구
     [SerializeField] int _equipCloakType;  // 망토
 
-
-
-
-
 }
 public class PlayerQuickSlot : MonoBehaviour
 {

@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using UnityEngine;
 
-public static class SaveLoad
+public static class PlayerSaveLoad
 {
     // 저장 경로 설정
     private static string SavePath => Path.Combine(Application.persistentDataPath, "PlayerData.json");
