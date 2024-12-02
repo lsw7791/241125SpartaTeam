@@ -6,7 +6,7 @@ using Tripolygon.UModeler.UI.ViewModels;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    //public ObjectPool<Monster> monsterPool;  // 利阑 包府且 钱
+    public ObjectPool<Monster> monsterPool;  // 利阑 包府且 钱
     protected override void Awake()
     {
         base.Awake();
