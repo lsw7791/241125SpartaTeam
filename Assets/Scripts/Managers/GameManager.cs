@@ -14,14 +14,11 @@ public class GameManager : MonoSingleton<GameManager>
         ItemData testItem = DataManager.Instance.item.GetData(2);
         Debug.Log(testItem.itemData);
 
-        TableData testtable = DataManager.Instance.table.GetData(2);
-        Debug.Log(testtable.tableData);
+        CraftingData testtable = DataManager.Instance.table.GetData(2);
+        Debug.Log(testtable.tier);
 
         CreatureData testcreature = DataManager.Instance.creature.GetData(2);
         Debug.Log(testcreature.creatureData);
-
-        PotionData testpotion = DataManager.Instance.potion.GetData(2);
-        Debug.Log(testpotion.potionData);
     }
     private void Start()
     {
