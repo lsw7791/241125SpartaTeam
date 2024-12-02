@@ -1,9 +1,6 @@
 using Constants;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManagerTest : MonoSingleton<UIManagerTest>
@@ -93,8 +90,19 @@ public class UIManagerTest : MonoSingleton<UIManagerTest>
     //    _uiList.Remove(uiName);
     //}
 
+    public void CloseAllUIs()
+    { // 활성화 되어있는 모든 PopupUI 비활성화
+        foreach (var ui in _uiList.Values)
+        {
+            if (ui != null && ui.gameObject.activeSelf)
+            {
+                ui.Close();
+            }
+        }
+    }
+
     public void Clear()
-    { // 이걸로 모든 Ui가 지워지는지 확인 필요
+    {
         _uiList.Clear();
     }
 
