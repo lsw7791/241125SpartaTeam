@@ -477,6 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c940f6332e75c634993e7cfe61638e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equippedWeapon: {fileID: 0}
 --- !u!1 &2316263067602181005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,7 +1333,7 @@ GameObject:
   - component: {fileID: 1865780032156894266}
   m_Layer: 5
   m_Name: TestPlayer_Backup
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
