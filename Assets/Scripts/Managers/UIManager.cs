@@ -73,15 +73,49 @@ public class UIManager : MonoSingleton<UIManager>
     { // 활성화 되어있는 모든 PopupUI 비활성화
         foreach (var ui in _uiList.Values)
         {
-            if (ui != null && ui.gameObject.activeSelf)
+            if (ui?.gameObject.activeSelf == true)
             {
                 ui.Close();
             }
         }
     }
 
+    public bool ActiveUI()
+    { // 활성화된 UI가 하나라도 있는지 확인
+        foreach (var ui in _uiList.Values)
+        {
+            if (ui?.gameObject.activeSelf == true)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void Clear()
     {
         _uiList.Clear();
+    }
+
+    // UI 토글 통합
+    public void ToggleUI<T>() where T : UIBase
+    {
+        if (IsExistUI<T>())
+        {
+            var ui = GetUI<T>();
+            if (ui.gameObject.activeSelf)
+            {
+                ui.Close();
+            }
+            else
+            {
+                ui.Open();
+            }
+        }
+        else
+        {
+            OpenUI<T>();
+        }
     }
 }
