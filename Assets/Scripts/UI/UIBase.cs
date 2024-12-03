@@ -1,19 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//public interface IDraggable
-//{
-//    void OnPointerDown(PointerEventData eventData);
-//    void OnDrag(PointerEventData eventData);
-//    void OnPointerUp(PointerEventData eventData);
-//}
-
-public abstract  class UIBaseTest : MonoBehaviour, IDraggable, IPointerDownHandler, IDragHandler, IPointerUpHandler
+public interface IDraggable
 {
-    //public Canvas canvas;
+    void OnPointerDown(PointerEventData eventData);
+    void OnDrag(PointerEventData eventData);
+    void OnPointerUp(PointerEventData eventData);
+}
 
+public abstract class UIBase : MonoBehaviour, IDraggable, IPointerDownHandler, IDragHandler, IPointerUpHandler
+{
     public RectTransform rectTransform;
     private Vector2 offset;
 
@@ -30,19 +26,18 @@ public abstract  class UIBaseTest : MonoBehaviour, IDraggable, IPointerDownHandl
 
     public void Close()
     {
-        //UIManagerTest.Instance.Hide(gameObject.name);
         gameObject.SetActive(false);
         CloseProcedure();
     }
 
     protected virtual void OpenProcedure()
     { // 생성 시 추가 변경사항
-        
+
     }
 
     protected virtual void CloseProcedure()
     { // 비활성화 시 추가 변경 사항
-        
+
     }
 
     // 드래그 시작 시 호출

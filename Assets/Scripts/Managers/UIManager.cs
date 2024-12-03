@@ -1,53 +1,87 @@
+using Constants;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoSingleton<UIManager>
 {
-    public GameObject inventoryUI;
-    public GameObject mapUI;
-    public GameObject questUI;
-    public GameObject optionUI;
-    public GameObject statusUI;
+    private Dictionary<string, UIBase> _uiList = new();
 
-    public bool isInventoryOpen = false;  // 인벤토리 상태를 추적하는 변수
-    public bool isMapOpen = false;        // 맵 상태 추적
-    public bool isQuestOpen = false;      // 퀘스트 상태 추적
-    public bool isOptionOpen = false;     // 옵션 상태 추적
-    public bool isStatusOpen = false;     // 스태터스 상태 추적
+    public static float ScreenWidth = 1920;
+    public static float ScreenHeight = 1080;
 
-    private GameObject canvasInstance;
-
-    protected override void Awake()
+    public T GetUI<T>() where T : UIBase
     {
-        base.Awake();
-
-        GameObject canvasPrefab = Resources.Load<GameObject>("Prefabs/UI/Canvas");
-        canvasInstance = Instantiate(canvasPrefab);
-        canvasInstance.transform.SetParent(this.transform);
-
-        Transform popupUI = canvasInstance.transform.Find("PopupUI");
-
-        inventoryUI = popupUI.Find("InventoryUI")?.gameObject;
-        mapUI = popupUI.Find("MapUI")?.gameObject;
-        questUI = popupUI.Find("QuestUI")?.gameObject;
-        optionUI = popupUI.Find("OptionUI")?.gameObject;
-        statusUI = popupUI.Find("StatusUI")?.gameObject;
+        var uiName = typeof(T).Name;
+        // dic 체크
+        if (IsExistUI<T>()) // 있다 -> 반환
+            return _uiList[uiName] as T;
+        else // 없다 -> 새로 생성 반환
+            return CreateUI<T>();
     }
 
-    // esc 키로 모든 UI 닫기
-    public void CloseAllUIs()
+    private T CreateUI<T>() where T : UIBase
     {
-        // 모든 UI를 비활성화
-        inventoryUI.SetActive(false);
-        mapUI.SetActive(false);
-        questUI.SetActive(false);
-        optionUI.SetActive(false);
-        statusUI.SetActive(false);
+        var uiName = typeof(T).Name;
 
-        // UI 상태 값을 false로 설정
-        isInventoryOpen = false;
-        isMapOpen = false;
-        isQuestOpen = false;
-        isOptionOpen = false;
-        isStatusOpen = false;
+        var newCanvasObject = new GameObject($"{uiName} Canvas");
+
+        var canvas = newCanvasObject.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+
+        var canvasScaler = newCanvasObject.AddComponent<CanvasScaler>();
+        canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        canvasScaler.referenceResolution = new Vector2(ScreenWidth, ScreenHeight);
+
+        newCanvasObject.gameObject.AddComponent<GraphicRaycaster>();
+
+        T uiRes = Resources.Load<T>($"{PathInfo.UIPath}{uiName}");
+
+        var outUi = Instantiate(uiRes, newCanvasObject.transform);
+        outUi.name = outUi.name.Replace("(Clone)", "");
+
+        if (IsExistUI<T>())
+            _uiList[uiName] = outUi;
+        else
+            _uiList.Add(uiName, outUi);
+
+        return outUi;
+    }
+
+    public bool IsExistUI<T>() where T : UIBase
+    { // null 체크 반환
+        var uiName = typeof(T).Name;
+        return _uiList.ContainsKey(uiName) && _uiList[uiName] != null;
+    }
+
+    public T OpenUI<T>() where T : UIBase
+    { // 생성
+        T ui = GetUI<T>();
+        ui.Open();
+        return ui;
+    }
+
+    public T CloseUI<T>() where T : UIBase
+    {
+        T ui = GetUI<T>();
+        ui.Close();
+
+        return ui;
+    }
+
+    public void CloseAllUIs()
+    { // 활성화 되어있는 모든 PopupUI 비활성화
+        foreach (var ui in _uiList.Values)
+        {
+            if (ui != null && ui.gameObject.activeSelf)
+            {
+                ui.Close();
+            }
+        }
+    }
+
+    public void Clear()
+    {
+        _uiList.Clear();
     }
 }

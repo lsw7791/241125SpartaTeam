@@ -632,9 +632,9 @@ GameObject:
   - component: {fileID: 2925364919687565362}
   - component: {fileID: 5854144468629607923}
   - component: {fileID: 4887764912074014786}
-  - component: {fileID: 2350522774155666991}
+  - component: {fileID: 4889648619374949797}
   m_Layer: 5
-  m_Name: OptionUITest
+  m_Name: OptionUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -711,7 +711,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2350522774155666991
+--- !u!114 &4889648619374949797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 670625175736521037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e339f2115ddc17e48a207897c18dabdc, type: 3}
+  m_Script: {fileID: 11500000, guid: ee9df08d4e97745b8b89d981fad1814f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 0}
@@ -2496,8 +2496,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2350522774155666991}
-        m_TargetAssemblyTypeName: UIBaseTest, Assembly-CSharp
+      - m_Target: {fileID: 4889648619374949797}
+        m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
         m_MethodName: Close
         m_Mode: 1
         m_Arguments:

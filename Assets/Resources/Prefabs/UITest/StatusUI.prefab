@@ -1147,8 +1147,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 100490282942028933}
-        m_TargetAssemblyTypeName: UIBaseTest, Assembly-CSharp
+      - m_Target: {fileID: 1413605550104353733}
+        m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
         m_MethodName: Close
         m_Mode: 1
         m_Arguments:
@@ -1471,9 +1471,9 @@ GameObject:
   - component: {fileID: 7982275892500670454}
   - component: {fileID: 6466214432947427842}
   - component: {fileID: 3901605727147052441}
-  - component: {fileID: 100490282942028933}
+  - component: {fileID: 1413605550104353733}
   m_Layer: 5
-  m_Name: StatusUITest
+  m_Name: StatusUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1541,7 +1541,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &100490282942028933
+--- !u!114 &1413605550104353733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1550,7 +1550,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8912544431725524982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3885dee2d96a29846846878f8dc458ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b2ccc0a5bd78e1489394f4909dad16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 0}

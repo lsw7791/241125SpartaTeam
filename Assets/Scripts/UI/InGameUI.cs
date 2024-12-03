@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InGameUITest : MonoBehaviour
+public class InGameUI : MonoBehaviour
 {
     [SerializeField] private Button _btnMap;
     [SerializeField] private Button _btnStatus;
@@ -12,22 +12,22 @@ public class InGameUITest : MonoBehaviour
     {
         _btnMap.onClick.AddListener(() =>
         {
-            UIManagerTest.Instance.OpenUI<MapUITest>();
+            UIManager.Instance.OpenUI<MapUI>();
         });
 
         _btnStatus.onClick.AddListener(() =>
         {
-            UIManagerTest.Instance.OpenUI<StatusUITest>();
+            UIManager.Instance.OpenUI<StatusUI>();
         });
 
         _btnInventory.onClick.AddListener(() =>
         {
-            UIManagerTest.Instance.OpenUI<InventoryUITest>();
+            UIManager.Instance.OpenUI<InventoryUI>();
         });
 
         _btnOption.onClick.AddListener(() =>
         {
-            UIManagerTest.Instance.OpenUI<OptionUITest>();
+            UIManager.Instance.OpenUI<OptionUI>();
         });
     }
 }

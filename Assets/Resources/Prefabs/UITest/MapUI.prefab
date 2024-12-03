@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 497860704389046551}
   - component: {fileID: 3870578824442817976}
   - component: {fileID: 3534219944391597016}
-  - component: {fileID: 8684525298713830756}
+  - component: {fileID: 8669484851314234092}
   m_Layer: 5
-  m_Name: MapUITest
+  m_Name: MapUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8684525298713830756
+--- !u!114 &8669484851314234092
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,6 +85,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3275638793881925232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5e795d09b8f27448ab11694fe3500b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 2043ceb9627264cdb900baf7e026e1b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 0}
