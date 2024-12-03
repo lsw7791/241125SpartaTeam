@@ -5,12 +5,10 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private PlayerAnimationController _playerAnimationController;
-    //[SerializeField] private PlayerAttack _playerAttack;
 
     private void Awake()
     {
         _playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
-       // _playerAttack = GetComponent<PlayerAttack>();
     }
 
     // 상호작용
@@ -156,7 +154,12 @@ public class PlayerInput : MonoBehaviour
     // 공격 로직
     private void PerformAttack()
     {
+        // PlayerWeapon에 있는 ActivateWeaponCollider()를 호출하여 콜라이더 활성화
+        PlayerWeapon playerWeapon = EquipManager.Instance.WeaponObject.GetComponent<PlayerWeapon>();
+        playerWeapon.ActivateWeaponCollider();  // 콜라이더 활성화
 
+        // 일정 시간 후 콜라이더 비활성화
+        StartCoroutine(playerWeapon.DisableColliderAfterAttack());
     }
 
     // 상호작용 로직
