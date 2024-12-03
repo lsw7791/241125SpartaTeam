@@ -35,7 +35,7 @@ public class PlayerInput : MonoBehaviour
         if (context.performed)
         {
             _playerAnimationController.TriggerAttackAnimation();
-            PerformAttack();
+            //PerformAttack();
         }
     }
 
