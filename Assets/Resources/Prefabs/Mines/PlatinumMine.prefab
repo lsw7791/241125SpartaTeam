@@ -191,8 +191,8 @@ GameObject:
   m_Component:
   - component: {fileID: 431153908909230752}
   - component: {fileID: 6475272548416249476}
-  - component: {fileID: 1383126137096952424}
   - component: {fileID: 9118412717877999909}
+  - component: {fileID: -6072860879651182223}
   m_Layer: 0
   m_Name: PlatinumMine
   m_TagString: Untagged
@@ -252,29 +252,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
---- !u!114 &1383126137096952424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7139128028108358238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5dbd73847739241abadcbf30bfd718, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  creatureid: 0
-  creatureType: 0
-  creatureName: 
-  creatureDesc: 
-  creatureTier: 0
-  creatureDefense: 0
-  creatureHealth: 0
-  creatureDrop: 0
-  currentHealth: 0
-  isDie: 0
 --- !u!114 &9118412717877999909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,3 +264,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85970c34af858d46a4559085f1d3897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6072860879651182223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7139128028108358238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6435756da3fc44e8d89b5999655bfa65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  creatureid: 0
+  creatureType: 0
+  creatureName: 
+  creatureDesc: 
+  creatureTier: 0
+  creatureAttack: 0
+  creatureDefense: 0
+  creatureHealth: 0
+  creatureAttackSpeed: 0
+  creatureDetectionRange: 0
+  creatureAttackRange: 0
+  creatureMoveSpeed: 0
+  creatureDrop: 0
+  currentHealth: 0
+  isDie: 0

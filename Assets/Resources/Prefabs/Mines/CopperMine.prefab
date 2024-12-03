@@ -191,8 +191,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2233288650755925243}
   - component: {fileID: 9157828632024140926}
-  - component: {fileID: 3658018380514451145}
   - component: {fileID: 5664464616160972191}
+  - component: {fileID: 4775833711781951427}
   m_Layer: 0
   m_Name: CopperMine
   m_TagString: Untagged
@@ -252,29 +252,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
---- !u!114 &3658018380514451145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4091610807057348963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5dbd73847739241abadcbf30bfd718, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  creatureid: 0
-  creatureType: 0
-  creatureName: 
-  creatureDesc: 
-  creatureTier: 0
-  creatureDefense: 0
-  creatureHealth: 0
-  creatureDrop: 0
-  currentHealth: 0
-  isDie: 0
 --- !u!114 &5664464616160972191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,3 +264,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85970c34af858d46a4559085f1d3897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4775833711781951427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4091610807057348963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6435756da3fc44e8d89b5999655bfa65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  creatureid: 0
+  creatureType: 0
+  creatureName: 
+  creatureDesc: 
+  creatureTier: 0
+  creatureAttack: 0
+  creatureDefense: 0
+  creatureHealth: 0
+  creatureAttackSpeed: 0
+  creatureDetectionRange: 0
+  creatureAttackRange: 0
+  creatureMoveSpeed: 0
+  creatureDrop: 0
+  currentHealth: 0
+  isDie: 0

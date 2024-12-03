@@ -25,7 +25,7 @@ public class Monster : MonoBehaviour
         if (gameManager.monsterPool != null)
         {
             // 몬스터를 풀에 반환 (creatureId로 구별)
-            gameManager.monsterPool.ReturnMonster(monsterData.creatureid, gameObject);
+            gameManager.monsterPool.ReturnMonster(monsterData.id, gameObject);
         }
         else
         {

@@ -6,8 +6,9 @@ using GoogleSheet.Core.Type;
 [UGS(typeof(CreatureType))]
 public enum CreatureType
 {
-    MonsterMelee = 1,//근거리
-    MonsterRanged,//원거리
+    MeleeMonster = 1,//근거리
+    RangedMonster,//원거리
+    ChargedMonster, //돌진
    Mine,
    Jewel
 }
