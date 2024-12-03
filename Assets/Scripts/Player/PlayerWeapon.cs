@@ -41,18 +41,23 @@ public class PlayerWeapon : MonoBehaviour
         Rigidbody2D arrowRb = arrow.GetComponent<Rigidbody2D>();
 
         // 마우스 위치와 발사 위치 차이 계산
-        Vector3 direction = (Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - _aoSpawnPoint.position);
-        direction.z = 0;  // Z축 방향 값 제거 (2D 게임에서 Z값은 필요없음)
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector2 direction = new Vector2(mousePosition.x - _aoSpawnPoint.position.x, mousePosition.y - _aoSpawnPoint.position.y);  // Vector2로 계산
 
         // 방향 벡터를 정규화하여 일정한 속도로 발사
         direction.Normalize();  // 벡터의 크기를 1로 만듬
         arrowRb.velocity = direction * 15f;  // 일정한 속도로 발사
+
+        // 발사체가 마우스를 향하도록 회전 (화살이 자연스럽게 마우스를 향하도록)
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;  // 각도 계산
+        arrow.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 180));  // 회전 적용
 
         // 충돌 처리 - 화살이 충돌 시 데미지 적용
         arrow.AddComponent<ProjectileCollisionHandler>().Initialize(_player.Stats.Damage);
 
         Debug.Log("Fired Arrow!");
     }
+
 
     // 파이어볼 발사
     public void FireFireball()
@@ -61,18 +66,23 @@ public class PlayerWeapon : MonoBehaviour
         Rigidbody2D fireballRb = fireball.GetComponent<Rigidbody2D>();
 
         // 마우스 위치와 발사 위치 차이 계산
-        Vector3 direction = (Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - _aoSpawnPoint.position);
-        direction.z = 0;  // Z축 방향 값 제거 (2D 게임에서 Z값은 필요없음)
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector2 direction = new Vector2(mousePosition.x - _aoSpawnPoint.position.x, mousePosition.y - _aoSpawnPoint.position.y);  // Vector2로 계산
 
         // 방향 벡터를 정규화하여 일정한 속도로 발사
         direction.Normalize();  // 벡터의 크기를 1로 만듬
         fireballRb.velocity = direction * 15f;  // 일정한 속도로 발사
+
+        // 발사체가 마우스를 향하도록 회전 (파이어볼이 자연스럽게 마우스를 향하도록)
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;  // 각도 계산
+        fireball.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 180));  // 회전 적용
 
         // 충돌 처리 - 파이어볼이 충돌 시 데미지 적용
         fireball.AddComponent<ProjectileCollisionHandler>().Initialize(_player.Stats.Damage);
 
         Debug.Log("Fired Fireball!");
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
