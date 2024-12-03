@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 1123130211477434622}
   - component: {fileID: 7580290482239932787}
   - component: {fileID: 1014510026933247830}
+  - component: {fileID: 5299451972431777908}
   m_Layer: 0
   m_Name: R_Weapon
   m_TagString: Untagged
@@ -184,6 +185,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6be8427abb93941a3c27c79ec18ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 555898900720893638}
+  _weapon: {fileID: 5057688274015716384, guid: 011289f3fed617a43afc7f16f830160a, type: 3}
+--- !u!70 &5299451972431777908
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372932772457697975}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.046874996, y: 0.34375}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &398726067947126383
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +338,56 @@ Transform:
   - {fileID: 8532705198858327599}
   m_Father: {fileID: 5740654486729823481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &921285842356503062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4045323888127368804}
+  - component: {fileID: 7868402610351722750}
+  m_Layer: 5
+  m_Name: EquipManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4045323888127368804
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921285842356503062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 699848379783944811}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7868402610351722750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921285842356503062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5c6732db8ddf04893e6699342f0710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponObject: {fileID: 372932772457697975}
+  EquipedWeapon: {fileID: 2122898619868642046, guid: 760978d325e69c14585cce556beb560c, type: 3}
 --- !u!1 &1700527193647500101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,6 +1452,7 @@ RectTransform:
   m_Children:
   - {fileID: 9028419295178868291}
   - {fileID: 3115614810158819991}
+  - {fileID: 4045323888127368804}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 1, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1720,7 +1809,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerAnimationController: {fileID: 0}
-  _playerAttack: {fileID: 0}
 --- !u!114 &7124084177162484945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1806,14 +1894,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NickName: "\uD14C\uC2A4\uD2B8"
   stats:
-    MaxHP: 0
-    CurrentHP: 0
-    Stamina: 0
-    Gold: 0
-    Damage: 0
-    Speed: 0
-    AttackSpeed: 0
-    Defense: 0
+    MaxHP: 100
+    CurrentHP: 100
+    Stamina: 100
+    Gold: 5
+    Damage: 5
+    Speed: 5
+    AttackSpeed: 5
+    Defense: 5
     WeaponType: 0
   inventory:
     Items: []

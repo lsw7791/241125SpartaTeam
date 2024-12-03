@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private PlayerAnimationController _playerAnimationController;
-    [SerializeField] private PlayerAttack _playerAttack;
+    //[SerializeField] private PlayerAttack _playerAttack;
 
     private void Awake()
     {
         _playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
-        _playerAttack = GetComponent<PlayerAttack>();
+       // _playerAttack = GetComponent<PlayerAttack>();
     }
 
     // 상호작용
