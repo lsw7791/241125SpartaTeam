@@ -161,7 +161,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -15
-  m_Sprite: {fileID: 21300000, guid: 865a7131292ca4737a2713362d123c94, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -169,7 +169,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1014510026933247830
@@ -186,10 +186,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 555898900720893638}
   _weapon: {fileID: 5057688274015716384, guid: 011289f3fed617a43afc7f16f830160a, type: 3}
-  _AttackObjects:
+  _attackObjects:
   - {fileID: 4493029942455348064, guid: 59cef3b5f829fb4459773cf4797d18d2, type: 3}
   - {fileID: 2718856006269825222, guid: 77e1c58752a0bd041a500203bfb9030f, type: 3}
-  _aoSpwanPoint: {fileID: 251166210364883726}
+  _aoSpawnPoint: {fileID: 251166210364883726}
 --- !u!70 &5299451972431777908
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponObject: {fileID: 372932772457697975}
-  EquipedWeapon: {fileID: 4495520731714119144, guid: f896e6c3e1469534087108b669c845ff, type: 3}
+  EquipedWeapon: {fileID: 7686798280577365106, guid: 0554c3cfcd11cfb43afd1f911aea5150, type: 3}
 --- !u!1 &1700527193647500101
 GameObject:
   m_ObjectHideFlags: 0
@@ -3339,7 +3339,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6521465118034710578}
   m_LocalRotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3347,7 +3347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.006, y: 0.286}
+  m_AnchoredPosition: {x: -0.334, y: 0.165}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6661665880757606928
