@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MineData : ICreature
+public class MineData : MonoBehaviour, ICreature
 {
     public int id;
     public int creatureid;
@@ -10,32 +8,37 @@ public class MineData : ICreature
     public string creatureName;
     public string creatureDesc;
     public int creatureTier;
-    public int creatureAttack;
     public int creatureDefense;
     public int creatureHealth;
-    public float creatureAttackSpeed;
-    public float creatureDetectionRange;
-    public float creatureAttackRange;
-    public float creatureMoveSpeed;
     public float creatureDrop;
 
+    public int currentHealth;
     public bool isDie;
-    public void Initialize(int creatureid)
-    {
-        id = DataManager.Instance.creature.GetData(creatureid).id;
-        creatureType = DataManager.Instance.creature.GetData(creatureid).creatureType;
-        creatureName = DataManager.Instance.creature.GetData(creatureid).name;
-        creatureDesc = DataManager.Instance.creature.GetData(creatureid).desc;
-        creatureTier = DataManager.Instance.creature.GetData(creatureid).tier;
-        creatureAttack = DataManager.Instance.creature.GetData(creatureid).attack;
-        creatureDefense = DataManager.Instance.creature.GetData(creatureid).defense;
-        creatureHealth = DataManager.Instance.creature.GetData(creatureid).health;
-        creatureAttackSpeed = DataManager.Instance.creature.GetData(creatureid).attackSpeed;
-        creatureDetectionRange = DataManager.Instance.creature.GetData(creatureid).detectionRange;
-        creatureAttackRange = DataManager.Instance.creature.GetData(creatureid).attackRange;
-        creatureMoveSpeed = DataManager.Instance.creature.GetData(creatureid).moveSpeed;
-        creatureDrop = DataManager.Instance.creature.GetData(creatureid).drop;
 
-        isDie = true;
+    // 광물 초기화
+    public void Initialize(int creatureId)
+    {
+        this.creatureid = creatureId;
+
+        // DataManager에서 데이터를 가져오고 몬스터 속성 초기화
+        var data = DataManager.Instance.creature.GetData(creatureId);
+        id = data.id;
+        creatureType = data.creatureType;
+        creatureName = data.name;
+        creatureDesc = data.desc;
+        creatureTier = data.tier;
+        creatureDefense = data.defense;
+        creatureHealth = data.health;
+        creatureDrop = data.drop;
+
+        currentHealth = creatureHealth;
+        isDie = false;
+    }
+
+    // 풀로 반환될 때 상태 리셋
+    public void ResetStatus()
+    {
+        currentHealth = creatureHealth;  // 최대 체력으로 리셋
+        isDie = false;  // 죽지 않은 상태로 리셋
     }
 }
