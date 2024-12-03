@@ -12,22 +12,22 @@ public class InGameUI : MonoBehaviour
     {
         _btnMap.onClick.AddListener(() =>
         {
-            UIManager.Instance.OpenUI<MapUI>();
+            UIManager.Instance.ToggleUI<MapUI>();
         });
 
         _btnStatus.onClick.AddListener(() =>
         {
-            UIManager.Instance.OpenUI<StatusUI>();
+            UIManager.Instance.ToggleUI<StatusUI>();
         });
 
         _btnInventory.onClick.AddListener(() =>
         {
-            UIManager.Instance.OpenUI<InventoryUI>();
+            UIManager.Instance.ToggleUI<InventoryUI>();
         });
 
         _btnOption.onClick.AddListener(() =>
         {
-            UIManager.Instance.OpenUI<OptionUI>();
+            UIManager.Instance.ToggleUI<OptionUI>();
         });
     }
 }

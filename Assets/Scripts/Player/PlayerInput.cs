@@ -4,12 +4,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] GameObject inventoryUI; // 인벤토리 UI
-    [SerializeField] GameObject mapUI;       // 맵 UI
-    [SerializeField] GameObject questUI;     // 퀘스트 UI
-    [SerializeField] GameObject optionUI;    // 옵션 UI
-    [SerializeField] GameObject statusUI;    // 스태터스 UI
-
     private PlayerAnimationController _playerAnimationController;
 
     private void Awake()
@@ -117,88 +111,38 @@ public class PlayerInput : MonoBehaviour
     // 인벤토리 토글
     private void ToggleInventory()
     {
-        if (!UIManager.Instance.IsExistUI<InventoryUI>())
-        {
-            inventoryUI = UIManager.Instance.OpenUI<InventoryUI>().gameObject;
-            return;
-        }
-        else
-        {
-            bool isInventoryOpen = !inventoryUI.activeSelf;
-
-            inventoryUI.SetActive(isInventoryOpen);
-        }
+        UIManager.Instance.ToggleUI<InventoryUI>();
     }
 
     // 맵 토글
     private void ToggleMap()
     {
-        if (!UIManager.Instance.IsExistUI<MapUI>())
-        {
-            mapUI = UIManager.Instance.OpenUI<MapUI>().gameObject;
-            return;
-        }
-        else
-        {
-            bool isMapOpen = !mapUI.activeSelf;
-
-            mapUI.SetActive(isMapOpen);
-        }
+        UIManager.Instance.ToggleUI<MapUI>();
     }
 
     // 퀘스트 토글
     private void ToggleQuest()
     {
-        if (!UIManager.Instance.IsExistUI<QuestUI>())
-        {
-            questUI = UIManager.Instance.OpenUI<QuestUI>().gameObject;
-            return;
-        }
-        else
-        {
-            bool isQuestOpen = !questUI.activeSelf;
-
-            questUI.SetActive(isQuestOpen);
-        }
+        UIManager.Instance.ToggleUI<QuestUI>();
     }
 
     // 옵션 토글
     private void ToggleOption()
     {
-        if (inventoryUI.activeSelf || mapUI.activeSelf || questUI.activeSelf || statusUI.activeSelf)
+        if (UIManager.Instance.ActiveUI())
         {
             UIManager.Instance.CloseAllUIs(); // 모든 UI 닫기
         }
         else
         {
-            if (!UIManager.Instance.IsExistUI<OptionUI>())
-            {
-                optionUI = UIManager.Instance.OpenUI<OptionUI>().gameObject;
-                return;
-            }
-            else
-            {
-                bool isOptionOpen = !optionUI.activeSelf;
-
-                optionUI.SetActive(isOptionOpen);
-            }
+            UIManager.Instance.ToggleUI<OptionUI>();
         }
     }
 
     // 스태터스 토글
     private void ToggleStatus()
     {
-        if (!UIManager.Instance.IsExistUI<StatusUI>())
-        {
-            statusUI = UIManager.Instance.OpenUI<StatusUI>().gameObject;
-            return;
-        }
-        else
-        {
-            bool isStatusOpen = !statusUI.activeSelf;
-
-            statusUI.SetActive(isStatusOpen);
-        }
+        UIManager.Instance.ToggleUI<StatusUI>();
     }
 
     // 채집 로직
