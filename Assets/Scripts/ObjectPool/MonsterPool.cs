@@ -49,7 +49,7 @@ public class MonsterPool : MonoBehaviour
         }
         else
         {
-            // 풀에 몬스터가 없으면 새로 생성
+            // 풀에 몬스터가 없으면 새로 생성 (성능 최적화를 위해 최소한의 로드를 고려할 수 있음)
             GameObject newMonster = Instantiate(Resources.Load(monsterType) as GameObject);
             return newMonster;
         }
@@ -67,6 +67,15 @@ public class MonsterPool : MonoBehaviour
             monsterData.ResetStatus();  // 상태 리셋 (currentHealth, isDie)
         }
 
-        monsterPools[monsterType].Enqueue(monster);  // 풀에 반환
+        // 풀에 반환
+        if (monsterPools.ContainsKey(monsterType))
+        {
+            monsterPools[monsterType].Enqueue(monster);
+        }
+        else
+        {
+            // 풀에 해당 몬스터 타입이 없다면 에러 처리 (풀에 추가하거나, 새로운 풀 생성 가능)
+            Debug.LogWarning($"Monster pool for type {monsterType} does not exist.");
+        }
     }
 }

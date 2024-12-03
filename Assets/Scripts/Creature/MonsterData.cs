@@ -1,4 +1,3 @@
-using MainData;
 using UnityEngine;
 
 public class MonsterData : MonoBehaviour, ICreature
@@ -26,20 +25,21 @@ public class MonsterData : MonoBehaviour, ICreature
     {
         this.creatureid = creatureId;
 
-        // 몬스터 데이터 초기화 (creatureId를 통해 데이터 설정)
-        id = DataManager.Instance.creature.GetData(creatureId).id;
-        creatureType = DataManager.Instance.creature.GetData(creatureId).creatureType;
-        creatureName = DataManager.Instance.creature.GetData(creatureId).name;
-        creatureDesc = DataManager.Instance.creature.GetData(creatureId).desc;
-        creatureTier = DataManager.Instance.creature.GetData(creatureId).tier;
-        creatureAttack = DataManager.Instance.creature.GetData(creatureId).attack;
-        creatureDefense = DataManager.Instance.creature.GetData(creatureId).defense;
-        creatureHealth = DataManager.Instance.creature.GetData(creatureId).health;
-        creatureAttackSpeed = DataManager.Instance.creature.GetData(creatureId).attackSpeed;
-        creatureDetectionRange = DataManager.Instance.creature.GetData(creatureId).detectionRange;
-        creatureAttackRange = DataManager.Instance.creature.GetData(creatureId).attackRange;
-        creatureMoveSpeed = DataManager.Instance.creature.GetData(creatureId).moveSpeed;
-        creatureDrop = DataManager.Instance.creature.GetData(creatureId).drop;
+        // DataManager에서 데이터를 가져오고 몬스터 속성 초기화
+        var data = DataManager.Instance.creature.GetData(creatureId);
+        id = data.id;
+        creatureType = data.creatureType;
+        creatureName = data.name;
+        creatureDesc = data.desc;
+        creatureTier = data.tier;
+        creatureAttack = data.attack;
+        creatureDefense = data.defense;
+        creatureHealth = data.health;
+        creatureAttackSpeed = data.attackSpeed;
+        creatureDetectionRange = data.detectionRange;
+        creatureAttackRange = data.attackRange;
+        creatureMoveSpeed = data.moveSpeed;
+        creatureDrop = data.drop;
 
         currentHealth = creatureHealth;
         isDie = false;

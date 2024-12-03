@@ -1,7 +1,9 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class MonsterAI : MonoBehaviour
+public class ChargeAI : MonoBehaviour
 {
     private MonsterData monsterData;
 
@@ -14,13 +16,19 @@ public class MonsterAI : MonoBehaviour
     [Header("Attack")]
     [SerializeField]
     public float curTime = 0f;
+    [SerializeField]
+    private float chargeDelay = 1f;        // 돌진 전 대기 시간 1초
+
+    private Vector3 chargeTargetPosition; // 돌진 목표 위치 (돌진 시작 시 플레이어 위치 기록)
+    private bool isCharging = false;      // 돌진 상태를 추적하는 변수
+    private float chargeStartTime = 0f;   // 돌진 시작 시간을 추적
 
     // 몬스터 상태를 Enum으로 관리
     private enum MonsterState
     {
         Idle,        // 대기
         Chasing,     // 추적 중
-        Attacking,   // 공격 중
+        Attacking,   // 공격 중 (돌진)
         Returning    // 초기 위치로 돌아감
     }
 
@@ -29,16 +37,13 @@ public class MonsterAI : MonoBehaviour
     private void Start()
     {
         monsterData = GetComponent<MonsterData>();
-        // 몬스터의 초기 위치 저장
         initialPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        // 플레이어 초기 설정 (필요한 경우만, 이후 OnTriggerEnter2D에서 설정되도록 할 수 있음)
         playerTransform = GameObject.FindWithTag("Player")?.transform;
     }
 
     private void FixedUpdate()
     {
-        // playerTransform이 null이면 추적할 플레이어가 없다는 의미로 초기 위치로 돌아감
         if (playerTransform == null)
         {
             currentState = MonsterState.Returning;
@@ -46,7 +51,6 @@ public class MonsterAI : MonoBehaviour
             return;
         }
 
-        // 몬스터가 플레이어와의 거리를 계산
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
 
         switch (currentState)
@@ -70,7 +74,7 @@ public class MonsterAI : MonoBehaviour
                 break;
 
             case MonsterState.Attacking:
-                AttackPlayer();
+                ChargePlayer();
                 break;
 
             case MonsterState.Returning:
@@ -87,51 +91,56 @@ public class MonsterAI : MonoBehaviour
         }
     }
 
-    private void AttackPlayer()
+    private void ChargePlayer()
     {
-        curTime += Time.deltaTime;
-        if (curTime >= monsterData.creatureAttackSpeed)
+        if (!isCharging)
         {
-            curTime = 0f;
+            isCharging = true;
+            chargeStartTime = Time.time;  // 돌진 시작 시간 기록
+            chargeTargetPosition = playerTransform.position;  // 플레이어의 현재 위치 저장
+            Debug.Log("돌진 준비 중...");
+        }
 
-            // 공격이 끝나면 상태를 Chasing으로 변경
+        // 대기 시간이 지난 후에 돌진 시작
+        if (Time.time - chargeStartTime >= chargeDelay)
+        {
+            Vector3 direction = (chargeTargetPosition - transform.position).normalized;
+            transform.Translate(direction * monsterData.creatureMoveSpeed * 3 * Time.deltaTime, Space.World); // 3배 빠르게 돌진
+
+            spriteRenderer.flipX = direction.x <= 0;
+
+            // 돌진 후 상태를 Chasing으로 변경
             currentState = MonsterState.Chasing;
 
-            // 플레이어 공격 (간단한 공격 애니메이션 또는 로직 삽입)
-            Debug.Log("플레이어를 공격합니다!");
+            // 플레이어에게 피해를 입히는 로직 (피해량이나 상태 변화 등을 처리할 수 있음)
+            Debug.Log("플레이어에게 피해를 입혔습니다!");
         }
     }
 
     private void ReturnToInitialPosition()
     {
-        Debug.Log("초기 위치로 이동합니다!");
-
-        // 몬스터가 초기 위치로 돌아가는 행동
         Vector3 direction = (initialPosition - transform.position).normalized;
 
-        // 몬스터가 초기 위치에 거의 도달한 경우, 이동을 멈추고 방향 반전 안함
-        if (Vector3.Distance(transform.position, initialPosition) > 0.1f)  // 0.1f는 거의 도달했다고 판단할 수 있는 최소 거리
+        if (Vector3.Distance(transform.position, initialPosition) > 0.1f)
         {
             transform.Translate(direction * monsterData.creatureMoveSpeed * Time.deltaTime, Space.World);
-            spriteRenderer.flipX = direction.x < 0;  // 이동 중에만 방향을 바꿈
+            spriteRenderer.flipX = direction.x < 0;
         }
     }
+
     private void ChasePlayer()
     {
-        Debug.Log("플레이어를 추적합니다!");
-
         Vector3 direction = (playerTransform.position - transform.position).normalized;
         transform.Translate(direction * monsterData.creatureMoveSpeed * Time.deltaTime, Space.World);
-
         spriteRenderer.flipX = direction.x <= 0;
-    }   
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 플레이어와 충돌 시 플레이어 추적 시작
         if (collision.CompareTag("Player"))
         {
             playerTransform = collision.transform;
-            currentState = MonsterState.Chasing;
+            currentState = MonsterState.Chasing;  // 플레이어와 접촉 시 추적 상태로 변경
         }
     }
 }
