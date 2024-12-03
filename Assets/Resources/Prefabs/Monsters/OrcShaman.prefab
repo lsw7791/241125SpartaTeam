@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2507237071167543818}
   - component: {fileID: 3120675961869419971}
   - component: {fileID: -7808808522940984572}
+  - component: {fileID: 8885282190152906650}
   m_Layer: 0
   m_Name: OrcShaman
   m_TagString: Untagged
@@ -189,3 +190,24 @@ MonoBehaviour:
   curTime: 0
   projectilePrefab: {fileID: 0}
   attackPoint: {fileID: 0}
+--- !u!95 &8885282190152906650
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119695289609748891}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b3a8b53ac86f444479954d0a23317952, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
