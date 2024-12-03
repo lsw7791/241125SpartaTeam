@@ -57,7 +57,6 @@ namespace MainData
 /* Fields. */
 
 		public System.Int32 id;
-		public System.Int32 creatureID;
 		public CreatureType creatureType;
 		public System.String name;
 		public System.String desc;
