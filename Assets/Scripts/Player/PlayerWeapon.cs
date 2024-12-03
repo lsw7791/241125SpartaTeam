@@ -48,6 +48,9 @@ public class PlayerWeapon : MonoBehaviour
         direction.Normalize();  // 벡터의 크기를 1로 만듬
         arrowRb.velocity = direction * 15f;  // 일정한 속도로 발사
 
+        // 충돌 처리 - 화살이 충돌 시 데미지 적용
+        arrow.AddComponent<ProjectileCollisionHandler>().Initialize(_player.Stats.Damage);
+
         Debug.Log("Fired Arrow!");
     }
 
@@ -65,10 +68,11 @@ public class PlayerWeapon : MonoBehaviour
         direction.Normalize();  // 벡터의 크기를 1로 만듬
         fireballRb.velocity = direction * 15f;  // 일정한 속도로 발사
 
+        // 충돌 처리 - 파이어볼이 충돌 시 데미지 적용
+        fireball.AddComponent<ProjectileCollisionHandler>().Initialize(_player.Stats.Damage);
+
         Debug.Log("Fired Fireball!");
     }
-
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
