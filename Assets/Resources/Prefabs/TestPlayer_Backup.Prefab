@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1123130211477434622}
   - component: {fileID: 7580290482239932787}
+  - component: {fileID: 1014510026933247830}
   m_Layer: 0
   m_Name: R_Weapon
   m_TagString: Untagged
@@ -171,6 +172,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1014510026933247830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372932772457697975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6be8427abb93941a3c27c79ec18ffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &398726067947126383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,7 +1343,6 @@ GameObject:
   - component: {fileID: 2410555183368427773}
   - component: {fileID: 364827635563421761}
   - component: {fileID: 555898900720893638}
-  - component: {fileID: 1865780032156894266}
   m_Layer: 5
   m_Name: TestPlayer_Backup
   m_TagString: Player
@@ -1707,11 +1719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35b06f6500834c7bba01057967c155d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryUI: {fileID: 0}
-  mapUI: {fileID: 0}
-  questUI: {fileID: 0}
-  optionUI: {fileID: 0}
-  statusUI: {fileID: 0}
+  _playerAnimationController: {fileID: 0}
+  _playerAttack: {fileID: 0}
 --- !u!114 &7124084177162484945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1796,35 +1805,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NickName: "\uD14C\uC2A4\uD2B8"
-  _currentHP: 1
-  _currentStamina: 1
-  _currentGold: 1
-  _currentDamage: 1
-  _currentSpeed: 1
-  _currentATKSpeed: 1
-  _currentDef: 1
-  _currentWeaponType: 1
-  _movingLV: 1
-  _makingLV: 1
-  _minigWPLV: 1
-  _nearWPLV: 1
-  _arrowWPLV: 1
-  _staffWPLV: 1
-  _playerInventory: {fileID: 0}
-  QuickSlots: []
---- !u!114 &1865780032156894266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2945325161001838183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c6be8427abb93941a3c27c79ec18ffc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCurrent: {fileID: 0}
+  stats:
+    MaxHP: 0
+    CurrentHP: 0
+    Stamina: 0
+    Gold: 0
+    Damage: 0
+    Speed: 0
+    AttackSpeed: 0
+    Defense: 0
+    WeaponType: 0
+  inventory:
+    Items: []
 --- !u!1 &3332842344908746626
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7279057779054117095}
   - component: {fileID: 4165501986845157673}
   m_Layer: 0
-  m_Name: SheildC
+  m_Name: ShieldC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
