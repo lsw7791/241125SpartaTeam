@@ -19,7 +19,7 @@ public class PlayerAnimationController : MonoBehaviour
     public void TriggerAttackAnimation()
     {
         // 장착된 무기가 없거나 태그가 설정되지 않은 경우 기본값으로 "Attack_Melee" 사용
-        string weaponTag = equippedWeapon?.tag ?? "Melee";
+        string weaponTag = EquipManager.Instance.EquipedWeapon?.tag ?? "Melee";
 
         switch (weaponTag)
         {
