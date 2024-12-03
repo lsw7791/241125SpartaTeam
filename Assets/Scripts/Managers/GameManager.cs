@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    [SerializeField] public GameObject goblinPrefab;  // ∞Ì∫Ì∏∞ «¡∏Æ∆’
+    [SerializeField] public GameObject goblinPrefab;  // ∏ÛΩ∫≈Õ «¡∏Æ∆’
     [SerializeField] public GameObject lizardPrefab;
     [SerializeField] public GameObject zombiePrefab;
     [SerializeField] public GameObject orcShamanPrefab;
@@ -15,12 +15,20 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] public GameObject necromancerPrefab;
     [SerializeField] public GameObject demonPrefab;
 
-    public MonsterPool monsterPool;
+    [SerializeField] public GameObject stoneMine; //±§ºÆ «¡∏Æ∆’
+    [SerializeField] public GameObject copperMine;
+    [SerializeField] public GameObject ironMine;
+    [SerializeField] public GameObject goldMine;
+    [SerializeField] public GameObject platinumMine;
+    [SerializeField] public GameObject ignisMine;
+
+
+    public MonsterPool monsterPool;// ∏ÛΩ∫≈Õ «Æ
 
     protected override void Awake()
     {
         base.Awake();
-        // «¡∏Æ∆’ ∑ŒµÂ
+        // ∏ÛΩ∫≈Õ «¡∏Æ∆’ ∑ŒµÂ
         goblinPrefab = Resources.Load<GameObject>("Prefabs/Monsters/Goblin");
         lizardPrefab = Resources.Load<GameObject>("Prefabs/Monsters/Lizard");
         zombiePrefab = Resources.Load<GameObject>("Prefabs/Monsters/Zombie");
@@ -33,6 +41,17 @@ public class GameManager : MonoSingleton<GameManager>
         knightPrefab = Resources.Load<GameObject>("Prefabs/Monsters/Knight");
         necromancerPrefab = Resources.Load<GameObject>("Prefabs/Monsters/Necromancer");
         demonPrefab = Resources.Load<GameObject>("Prefabs/Monsters/Demon");
+        
+        // ±§ºÆ «¡∏Æ∆’ ∑ŒµÂ
+        stoneMine = Resources.Load<GameObject>("Prefabs/Mines/StoneMine");
+        copperMine = Resources.Load<GameObject>("Prefabs/Mines/CopperMine");
+        ironMine = Resources.Load<GameObject>("Prefabs/Mines/IronMine");
+        goldMine = Resources.Load<GameObject>("Prefabs/Mines/GoldMine");
+        platinumMine = Resources.Load<GameObject>("Prefabs/Mines/PlatinumMine");
+        ignisMine = Resources.Load<GameObject>("Prefabs/Mines/IgnisMine");
+
+
+
     }
 
     private void Start()
@@ -55,7 +74,17 @@ public class GameManager : MonoSingleton<GameManager>
         monsterPool.InitializeMonsterPool(11, necromancerPrefab, 5);  // Necromancer
         monsterPool.InitializeMonsterPool(12, demonPrefab, 5);  // Demon
 
+        monsterPool.InitializeMonsterPool(101, stoneMine, 5);  // stoneMine
+        monsterPool.InitializeMonsterPool(102, copperMine, 5);  // stoneMine
+        monsterPool.InitializeMonsterPool(103, ironMine, 5);  // stoneMine
+        monsterPool.InitializeMonsterPool(104, goldMine, 5);  // stoneMine
+        monsterPool.InitializeMonsterPool(105, platinumMine, 5);  // stoneMine
+        monsterPool.InitializeMonsterPool(106, ignisMine, 5);  // stoneMine
+
+
         SpawnMonster(1, new Vector2(1f, 1f));
+        
+
     }
 
     void SpawnMonster(int creatureId, Vector2 position)

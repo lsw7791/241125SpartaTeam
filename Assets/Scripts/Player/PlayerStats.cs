@@ -1,7 +1,8 @@
 [System.Serializable]
 public class PlayerStats
 {
-    public int HP;               // HP
+    public int MaxHP;               // HP
+    public int CurrentHP;               // HP
     public int Stamina;          // Stamina
     public int Gold;             // Gold
     public int Damage;           // Damage

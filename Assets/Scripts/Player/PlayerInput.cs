@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    private PlayerAnimationController _playerAnimationController;
+    [SerializeField] private PlayerAnimationController _playerAnimationController;
 
     private void Awake()
     {
@@ -35,7 +35,7 @@ public class PlayerInput : MonoBehaviour
         if (context.performed)
         {
             _playerAnimationController.TriggerAttackAnimation();
-            PerformAttack();
+            //PerformAttack();
         }
     }
 
@@ -154,6 +154,9 @@ public class PlayerInput : MonoBehaviour
     // 공격 로직
     private void PerformAttack()
     {
+        // PlayerWeapon에 있는 ActivateWeaponCollider()를 호출하여 콜라이더 활성화
+      //  PlayerWeapon playerWeapon = EquipManager.Instance.WeaponObject.GetComponent<PlayerWeapon>();
+
     }
 
     // 상호작용 로직

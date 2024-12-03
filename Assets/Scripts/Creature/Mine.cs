@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
-    MineData mineData;  // 몬스터 데이터
+    MonsterData monsterData;  // 몬스터 데이터
     GameManager gameManager;   // 게임 매니저
     MineFull minefull;
     private void Awake()
     {
-        mineData = GetComponent<MineData>();  // MonsterData 컴포넌트 가져오기
+        monsterData = GetComponent<MonsterData>();  // MonsterData 컴포넌트 가져오기
         gameManager = GameManager.Instance;  // 게임 매니저 인스턴스 가져오기
         minefull = GetComponentInChildren<MineFull>();
     }
@@ -26,8 +26,11 @@ public class Mine : MonoBehaviour
             yield return new WaitForSeconds(30f);
 
             // SetActive 호출
-            minefull.ObjectSetActive(true);
-            mineData.isDie = false;
+            if (monsterData.isDie == true)
+            {
+                minefull.ObjectSetActive(true);
+                monsterData.isDie = false;
+            }
         }
     }
     public void IsDie()
@@ -35,12 +38,12 @@ public class Mine : MonoBehaviour
     }
     public void GetDamaged(int damage)
     {
-        int temp = mineData.creatureDefense - damage;
+        int temp = monsterData.creatureDefense - damage;
         if (temp >= 0) return;
-        mineData.currentHealth -= temp;
-        if(mineData.currentHealth <= 0)
+        monsterData.currentHealth -= temp;
+        if(monsterData.currentHealth <= 0)
         {
-            mineData.isDie = true;
+            monsterData.isDie = true;
             minefull.ObjectSetActive(false);
         }
     }

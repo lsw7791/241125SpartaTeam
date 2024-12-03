@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3414843868993948463}
   m_Layer: 0
   m_Name: BowA
-  m_TagString: Untagged
+  m_TagString: Bow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

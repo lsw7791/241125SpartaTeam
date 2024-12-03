@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour,IDamageable
 {
     [SerializeField] private string NickName;
 
@@ -49,6 +49,21 @@ public class Player : MonoBehaviour
         return inventory.GetItem(itemID);  // 아이템 조회
     }
 
+    public void TakeDamage(int damage)
+    {
+        stats.CurrentHP -= damage;
+
+        if (stats.CurrentHP <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Debug.Log($"{NickName} has died.");
+        // 추가적인 죽음 처리 로직 (예: 게임 오버 화면)
+    }
     // 프로퍼티
     public PlayerStats Stats => stats;
     public Inventory Inventory => inventory;  // 인벤토리 반환
