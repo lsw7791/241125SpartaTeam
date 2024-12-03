@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!224 &626582864 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 699848379783944811, guid: 89f1ddb5fa5e34dfd80d0ac53f517499, type: 3}
-  m_PrefabInstance: {fileID: 1915089097}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &646551369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -257,119 +252,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!1001 &1211014978
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 658380143935366654, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: currentID
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 658380143935366654, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: currentDesc
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 658380143935366654, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: currentDrop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 658380143935366654, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: currentName
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 658380143935366654, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: currentTier
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 658380143935366654, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: currentType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 658380143935366654, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: currentAttack
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 658380143935366654, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: currentHealth
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 658380143935366654, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: currentDefense
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 658380143935366654, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: currentMoveSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 658380143935366654, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: currentAttackRange
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 658380143935366654, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: currentAttackSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 658380143935366654, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: currentDetectionRange
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1087532890236348039, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: m_Name
-      value: Goblin
-      objectReference: {fileID: 0}
-    - target: {fileID: 3131933923667785821, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 626582864}
-    - target: {fileID: 9141665789532574678, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141665789532574678, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141665789532574678, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141665789532574678, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141665789532574678, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141665789532574678, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141665789532574678, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141665789532574678, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141665789532574678, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141665789532574678, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
 --- !u!1 &1279212145
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,6 +449,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6219176014362419435, guid: 619b7bb9050178a4bbf4c716a1e770c3, type: 3}
+      propertyPath: arrowPrefab
+      value: 
+      objectReference: {fileID: 4130134849073055458, guid: 0cce90599259148fcb93ab2a81d344f8, type: 3}
+    - target: {fileID: 6219176014362419435, guid: 619b7bb9050178a4bbf4c716a1e770c3, type: 3}
+      propertyPath: goblinPrefab
+      value: 
+      objectReference: {fileID: 1087532890236348039, guid: 13a7fd9ee8d994a648cdc3dd6721bf83, type: 3}
     - target: {fileID: 6600429633410187734, guid: 619b7bb9050178a4bbf4c716a1e770c3, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -685,4 +575,3 @@ SceneRoots:
   - {fileID: 2111002528}
   - {fileID: 3835855659464863044}
   - {fileID: 1915089097}
-  - {fileID: 1211014978}
