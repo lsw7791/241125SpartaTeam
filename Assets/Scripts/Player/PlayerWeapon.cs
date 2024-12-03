@@ -37,26 +37,38 @@ public class PlayerWeapon : MonoBehaviour
     // 화살 발사
     public void FireArrow()
     {
-        if (_attackObjects.Length > 0 && _attackObjects[0] != null)
-        {
-            GameObject arrow = Instantiate(_attackObjects[0], _aoSpawnPoint.position, Quaternion.identity);
-            Vector3 direction = (Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - _aoSpawnPoint.position).normalized;
-            arrow.GetComponent<Rigidbody2D>().velocity = direction * 10f;  // 속도는 적절히 설정
-            Debug.Log("Fired Arrow!");
-        }
+        GameObject arrow = Instantiate(_attackObjects[0], _aoSpawnPoint.position, Quaternion.identity);
+        Rigidbody2D arrowRb = arrow.GetComponent<Rigidbody2D>();
+
+        // 마우스 위치와 발사 위치 차이 계산
+        Vector3 direction = (Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - _aoSpawnPoint.position);
+        direction.z = 0;  // Z축 방향 값 제거 (2D 게임에서 Z값은 필요없음)
+
+        // 방향 벡터를 정규화하여 일정한 속도로 발사
+        direction.Normalize();  // 벡터의 크기를 1로 만듬
+        arrowRb.velocity = direction * 15f;  // 일정한 속도로 발사
+
+        Debug.Log("Fired Arrow!");
     }
 
     // 파이어볼 발사
     public void FireFireball()
     {
-        if (_attackObjects.Length > 1 && _attackObjects[1] != null)
-        {
-            GameObject fireball = Instantiate(_attackObjects[1], _aoSpawnPoint.position, Quaternion.identity);
-            Vector3 direction = (Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - _aoSpawnPoint.position).normalized;
-            fireball.GetComponent<Rigidbody2D>().velocity = direction * 5f;  // 속도는 적절히 설정
-            Debug.Log("Fired Fireball!");
-        }
+        GameObject fireball = Instantiate(_attackObjects[1], _aoSpawnPoint.position, Quaternion.identity);
+        Rigidbody2D fireballRb = fireball.GetComponent<Rigidbody2D>();
+
+        // 마우스 위치와 발사 위치 차이 계산
+        Vector3 direction = (Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - _aoSpawnPoint.position);
+        direction.z = 0;  // Z축 방향 값 제거 (2D 게임에서 Z값은 필요없음)
+
+        // 방향 벡터를 정규화하여 일정한 속도로 발사
+        direction.Normalize();  // 벡터의 크기를 1로 만듬
+        fireballRb.velocity = direction * 15f;  // 일정한 속도로 발사
+
+        Debug.Log("Fired Fireball!");
     }
+
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
