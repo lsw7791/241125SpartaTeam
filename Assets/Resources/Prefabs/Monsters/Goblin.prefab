@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3131933923667785821}
   - component: {fileID: 7970354608917521288}
   - component: {fileID: 658380143935366654}
+  - component: {fileID: 503313074460704794}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -161,18 +162,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentID: 0
-  currentType: 0
-  currentName: 
-  currentDesc: 
+  currentType: 1
+  currentName: 0
+  currentDesc: 0
   currentTier: 0
   currentAttack: 0
   currentDefense: 0
   currentHealth: 0
+  MaxHealth: 0
   currentAttackSpeed: 0
   currentDetectionRange: 0
   currentAttackRange: 0
   currentMoveSpeed: 0
   currentDrop: 0
+--- !u!114 &503313074460704794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087532890236348039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6435756da3fc44e8d89b5999655bfa65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  creatureid: 0
+  creatureType: 0
+  creatureName: 
+  creatureDesc: 
+  creatureTier: 0
+  creatureAttack: 0
+  creatureDefense: 0
+  creatureHealth: 0
+  creatureAttackSpeed: 0
+  creatureDetectionRange: 0
+  creatureAttackRange: 0
+  creatureMoveSpeed: 0
+  creatureDrop: 0
+  currentHealth: 0
 --- !u!1 &5118655380222574118
 GameObject:
   m_ObjectHideFlags: 0

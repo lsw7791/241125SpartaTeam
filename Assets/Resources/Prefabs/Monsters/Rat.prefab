@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2951943558710915892}
   - component: {fileID: 9036598540038580775}
   - component: {fileID: 6258800417139281772}
+  - component: {fileID: 2867791519227367174}
   m_Layer: 0
   m_Name: Rat
   m_TagString: Untagged
@@ -105,8 +106,36 @@ MonoBehaviour:
   currentAttack: 0
   currentDefense: 0
   currentHealth: 0
+  MaxHealth: 0
   currentAttackSpeed: 0
   currentDetectionRange: 0
   currentAttackRange: 0
   currentMoveSpeed: 0
   currentDrop: 0
+--- !u!114 &2867791519227367174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130134849073055458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6435756da3fc44e8d89b5999655bfa65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  creatureid: 0
+  creatureType: 0
+  creatureName: 
+  creatureDesc: 
+  creatureTier: 0
+  creatureAttack: 0
+  creatureDefense: 0
+  creatureHealth: 0
+  creatureAttackSpeed: 0
+  creatureDetectionRange: 0
+  creatureAttackRange: 0
+  creatureMoveSpeed: 0
+  creatureDrop: 0
+  currentHealth: 0
