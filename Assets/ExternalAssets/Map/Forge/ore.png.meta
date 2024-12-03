@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,7 +134,1666 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: coal_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 481
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc73f99d9644ceb4b83381e7c4323b37
+      internalID: -1101987522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: copper_0
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 481
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a2c6619ab56d594f830e1654e24ea33
+      internalID: -2081374293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platinum_0
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 481
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03ae5e387bd18234aaa47bd7220dadf7
+      internalID: 1040702175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ignis_0
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 481
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1e1956f41311e54bb0330632a34644b
+      internalID: -203902107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iron_0
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 481
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65ecdb51f3144fc44859443c5ff8d3ce
+      internalID: -1895535200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold_0
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 481
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c26bb9af5f42bf647b13613f6a8db3be
+      internalID: -438542404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stone_1
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 449
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be2e811a84eb007419a0a729f2eb31e0
+      internalID: 181317325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platinum_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 449
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d22a89e0198ed5e47b3363e13f64580c
+      internalID: -1006598160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ignis_1
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 449
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86bd1da895525ee43a07a5dac4152df8
+      internalID: 867961258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iron_1
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 449
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f00adf475bcc51a419de0a4a85f3edb7
+      internalID: 584003835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold_1
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 449
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ed729bcc614c96419c3ffb3524fd561
+      internalID: 300620906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: copper_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 417
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81ff9ed297cc5b74e997e54c0d486959
+      internalID: 1157306727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platinum_2
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 417
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68199580ccdca264fb3fa8c51de071e3
+      internalID: -118282192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ignis_2
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 417
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bc76d7acee93ea4c972c0d24fa900fb
+      internalID: -436001479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iron_2
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 417
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be1dd7e4237c0b5459e85f0f3e09443f
+      internalID: -1321475489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold_2
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 417
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7710faf776d1d344b4efb9f32817632
+      internalID: -271651111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stone_2
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 417
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f64b7f68c3be54d43b110596e2ec75e0
+      internalID: -840806386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coal_3
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 385
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70ffd68a10c7c4844adaddd9178bc671
+      internalID: 557866063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: copper_3
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 385
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f377bb5d8eac8814da425c81f201d28f
+      internalID: -496077019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platinum_3
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 385
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb288ee398de0434f93b16621959eb9f
+      internalID: -1449276904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ignis_3
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 385
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d71a1c906d5eb449afaa464e268d47e
+      internalID: -593085845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iron_3
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 385
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f40b819865928d74ca3ae3ef6979a680
+      internalID: -1718524465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold_3
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 385
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f290e49daac72a4db209a7f135eadcf
+      internalID: -829045307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stone_3
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 385
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d31c8f29961ad54f99ef728e9f6e31b
+      internalID: 1968136497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coal_4
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 354
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6be9c969d9a76f429c3ed143f1c2b7d
+      internalID: -2051019799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: copper_4
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 353
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28820051c6314dc47bcbca7926c78bd4
+      internalID: 1665260247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platinum_4
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 353
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6cfadb738875e14994de3f26a95b3f8
+      internalID: -2107557564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ignis_4
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 353
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7219395967ec0941a6f4d3c5d42f233
+      internalID: -1654577278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iron_4
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 353
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ab7cd6f628ecc043878c24692ff7bd6
+      internalID: -1103983226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold_4
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 353
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91750c2193daaad4f9ad4cd0d5230fb1
+      internalID: -1503094038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stone_4
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 353
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc5955add8dbdfa4c96b59e14f4f0abd
+      internalID: 1479846394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platinum_5
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 321
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e59abd20340c2324296471fb74af80f3
+      internalID: -1586543760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ignis_5
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 321
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44ea9351d3188da4f85753835ba4f512
+      internalID: -1518382905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iron_5
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 321
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dd1c4922b596f14eaa3ab06cea1b5f3
+      internalID: 245212924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold_5
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 321
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5e98f658e31ec541acc4a129763b153
+      internalID: -834179339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stone_5
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 321
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db285f270c0ed514aa551c81d40a773f
+      internalID: -1210882386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coal_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 289
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 698c6694ddb190b4b971f9027d5f819f
+      internalID: -1751525221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: copper_6
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 289
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84973a6087526fc40a87542304d346de
+      internalID: 1388927024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platinum_6
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 289
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 273b22cd949f8d44fa27c2442c06aa84
+      internalID: 1449531690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ignis_6
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 289
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efe2a538ecb573747bc4219eaac9c3f5
+      internalID: 142496409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iron_6
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 289
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5f7879afa3019d4cabf814cd7c60a8e
+      internalID: 2108342860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold_6
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 289
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8f047cd26362af4eaeec40ed58533a6
+      internalID: 829610155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stone_6
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 289
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e562a41106de014dba788a97fb15698
+      internalID: 2060289005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coal_7
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 257
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46d281938da793b408aa8b95598bb847
+      internalID: -2056837703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: copper_7
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 257
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06a2755d11d92b644a301fa22d8f3525
+      internalID: 1835555095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platinum_7
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 258
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a03292be1cf3b841906057a9f04e12f
+      internalID: 730402047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ignis_7
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 257
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfb821923c980af4e95e6c315f1c5f63
+      internalID: 561582889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iron_7
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 257
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3d0b95222699ff46a7510cc3a5dfd05
+      internalID: 729008806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold_7
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 257
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36da86a559002454cb4b9d28245c8579
+      internalID: -313755876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stone_7
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 257
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e8b786b69d6e94baa6accf5dea910c
+      internalID: -2106790161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platinum_8
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 233
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d19a9e5fb90641b4fa4e47f620fe4269
+      internalID: 405327059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ignis_8
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 233
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0410cafca6c83a409610c6f18863e74
+      internalID: -856260458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iron_8
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 233
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45674848cdac3ca42a4e8a5915b52bf6
+      internalID: 1620706819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold_8
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 233
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05adf39f38d883d4b8e914d124ee5d5a
+      internalID: -1775818226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coal_9
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 199
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1880fb2ea190bb4dab187d82350aac9
+      internalID: -546889450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: copper_9
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 199
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 156f4f689c4a5df47bf7bf8ef1468d3f
+      internalID: 1002274504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platinum_9
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 199
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1ce350771d24904b84e1f0549ca5f6d
+      internalID: 227050067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ignis_9
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 199
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53f3e129086e4434bbd317fc47f4928e
+      internalID: 1402751098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iron_9
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 199
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b3b251b5fb15ca4f8c49a6170cda325
+      internalID: -787738284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold_9
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 199
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d61a25aebd351f247aebf6542496e7f5
+      internalID: -382728853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coal_12
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 212
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de971bacbefb7574b9bca2bf65d02f2d
+      internalID: -1424051653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coal_10
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 171
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79bf9a77db88a8740b2b20a5ad1fca3b
+      internalID: -241093748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: copper_10
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 170
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b3d3452a69894343b9bcb438a35c2a6
+      internalID: -1818109747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platinum_10
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 170
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d6661b0f12ad644ba607870d0507fde
+      internalID: -833266998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ignis_10
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 170
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce2eae80bad86ac48bd13bd0e93d46b2
+      internalID: 882680361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iron_10
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 170
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08f7c7e3a7224e0418c8864e58f21c37
+      internalID: -1100100974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold_10
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 170
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9454641c6ccdb4398a560723f32ba0
+      internalID: -696853582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coal_11
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 137
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2abf2bcbf61294540af562ebd7028676
+      internalID: 29124672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: copper_11
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 136
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0dbbf05ca35cc34ba11abc6fbe8a842
+      internalID: 1119935642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platinum_11
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 136
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fff56ec41288c00429b4d3bc62938712
+      internalID: 1997505150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ignis_11
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 136
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fafa54d3c335ae94bb6ec9a1169ddaf9
+      internalID: -1342206807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: iron_11
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 136
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a09a52962b3c1dc478264e928cbd668f
+      internalID: -339648061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold_11
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 136
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe35b2a138f706e4d97ea2dba417ad0b
+      internalID: -1647061037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trea_1
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 136
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60f5575b29e4705499ede676294619b0
+      internalID: -2054069981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trea_2
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 136
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf641c6604ae8e546bd3ed9aab61da83
+      internalID: 720418584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: forge_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6657244d08beec14caadd390581b80a6
+      internalID: -1680290377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: forge_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cec489068f55d5419f9906e2b459721
+      internalID: 1973588897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: forge_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d669a7bc910b24c9079a49d9397e13
+      internalID: -1583449597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: forge_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f14f6925b2494c84e99c5b1b6e4d7edc
+      internalID: 333196136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +1804,87 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Trea_1: -2054069981
+      Trea_2: 720418584
+      coal_0: -1101987522
+      coal_10: -241093748
+      coal_11: 29124672
+      coal_12: -1424051653
+      coal_3: 557866063
+      coal_4: -2051019799
+      coal_6: -1751525221
+      coal_7: -2056837703
+      coal_9: -546889450
+      copper_0: -2081374293
+      copper_10: -1818109747
+      copper_11: 1119935642
+      copper_2: 1157306727
+      copper_3: -496077019
+      copper_4: 1665260247
+      copper_6: 1388927024
+      copper_7: 1835555095
+      copper_9: 1002274504
+      forge_0: -1680290377
+      forge_1: 1973588897
+      forge_2: -1583449597
+      forge_3: 333196136
+      gold_0: -438542404
+      gold_1: 300620906
+      gold_10: -696853582
+      gold_11: -1647061037
+      gold_2: -271651111
+      gold_3: -829045307
+      gold_4: -1503094038
+      gold_5: -834179339
+      gold_6: 829610155
+      gold_7: -313755876
+      gold_8: -1775818226
+      gold_9: -382728853
+      ignis_0: -203902107
+      ignis_1: 867961258
+      ignis_10: 882680361
+      ignis_11: -1342206807
+      ignis_2: -436001479
+      ignis_3: -593085845
+      ignis_4: -1654577278
+      ignis_5: -1518382905
+      ignis_6: 142496409
+      ignis_7: 561582889
+      ignis_8: -856260458
+      ignis_9: 1402751098
+      iron_0: -1895535200
+      iron_1: 584003835
+      iron_10: -1100100974
+      iron_11: -339648061
+      iron_2: -1321475489
+      iron_3: -1718524465
+      iron_4: -1103983226
+      iron_5: 245212924
+      iron_6: 2108342860
+      iron_7: 729008806
+      iron_8: 1620706819
+      iron_9: -787738284
+      ore_76: 720418584
+      platinum_0: 1040702175
+      platinum_1: -1006598160
+      platinum_10: -833266998
+      platinum_11: 1997505150
+      platinum_2: -118282192
+      platinum_3: -1449276904
+      platinum_4: -2107557564
+      platinum_5: -1586543760
+      platinum_6: 1449531690
+      platinum_7: 730402047
+      platinum_8: 405327059
+      platinum_9: 227050067
+      stone_1: 181317325
+      stone_2: -840806386
+      stone_3: 1968136497
+      stone_4: 1479846394
+      stone_5: -1210882386
+      stone_6: 2060289005
+      stone_7: -2106790161
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
