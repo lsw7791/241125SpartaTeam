@@ -155,11 +155,8 @@ public class PlayerInput : MonoBehaviour
     private void PerformAttack()
     {
         // PlayerWeapon에 있는 ActivateWeaponCollider()를 호출하여 콜라이더 활성화
-        PlayerWeapon playerWeapon = EquipManager.Instance.WeaponObject.GetComponent<PlayerWeapon>();
-        playerWeapon.ActivateWeaponCollider();  // 콜라이더 활성화
+      //  PlayerWeapon playerWeapon = EquipManager.Instance.WeaponObject.GetComponent<PlayerWeapon>();
 
-        // 일정 시간 후 콜라이더 비활성화
-        StartCoroutine(playerWeapon.DisableColliderAfterAttack());
     }
 
     // 상호작용 로직

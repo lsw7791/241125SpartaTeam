@@ -26,13 +26,13 @@ public class PlayerWeapon : MonoBehaviour
         Debug.Log("Weapon Collider Activated!");
     }
 
-    // 일정 시간 후 무기의 콜라이더를 비활성화하는 코루틴
-    public IEnumerator DisableColliderAfterAttack()
+    // 무기 콜라이더 비활성화
+    public void DeactivateWeaponCollider()
     {
-        yield return new WaitForSeconds(0.2f);  // 공격 후 잠시 기다림
-        _weaponCollider.enabled = false;  // 콜라이더 비활성화
+        _weaponCollider.enabled = false; // 공격 종료 시 콜라이더 비활성화
         Debug.Log("Weapon Collider Deactivated!");
     }
+
 
     // 화살 발사
     public void FireArrow()
@@ -83,9 +83,11 @@ public class PlayerWeapon : MonoBehaviour
         Debug.Log("Fired Fireball!");
     }
 
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // 무기의 콜라이더가 비활성화된 상태라면 데미지 처리를 하지 않음
+        if (!_weaponCollider.enabled) return;
+
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
         if (damageable != null)
         {
@@ -94,4 +96,5 @@ public class PlayerWeapon : MonoBehaviour
             Debug.Log($"Player dealt {_player.Stats.Damage} damage to {damageable.GetType().Name}");
         }
     }
+
 }
