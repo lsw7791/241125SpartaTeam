@@ -7,7 +7,7 @@ using Tripolygon.UModeler.UI.ViewModels;
 public class GameManager : MonoSingleton<GameManager>
 {
     [SerializeField]private GameObject goblinPrefab;  // 고블린 프리팹
-    private MonsterPool monsterPool;
+    private MonsterPool goblinPool;
 
     protected override void Awake()
     {
@@ -27,20 +27,20 @@ public class GameManager : MonoSingleton<GameManager>
         ItemManager.Instance.Initialize(items);
 
 
-        monsterPool = new MonsterPool();
-        monsterPool.InitializeMonsterPool("Goblin", goblinPrefab, 10, 1);  // 고블린 풀 초기화
+        goblinPool = new MonsterPool();
+        goblinPool.InitializeMonsterPool("Goblin", goblinPrefab, 10, 1);  // 고블린 풀 초기화
 
         SpawnGoblin(new Vector2(1f, 1f));
     }
 
     void SpawnGoblin(Vector2 position)
     {
-        GameObject goblin = monsterPool.GetMonster("Goblin");  // 고블린 생성
+        GameObject goblin = goblinPool.GetMonster("Goblin");  // 고블린 생성
         goblin.transform.position = position;  // 위치 설정
     }
 
     void ReturnGoblin(GameObject goblin)
     {
-        monsterPool.ReturnMonster("Goblin", goblin);  // 고블린을 풀에 반환
+        goblinPool.ReturnMonster("Goblin", goblin);  // 고블린을 풀에 반환
     }
 }
