@@ -4,11 +4,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    private PlayerAnimationController _playerAnimationController;
+    [SerializeField] private PlayerAnimationController _playerAnimationController;
+    [SerializeField] private PlayerAttack _playerAttack;
 
     private void Awake()
     {
         _playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
+        _playerAttack = GetComponent<PlayerAttack>();
     }
 
     // 상호작용
@@ -154,6 +156,7 @@ public class PlayerInput : MonoBehaviour
     // 공격 로직
     private void PerformAttack()
     {
+
     }
 
     // 상호작용 로직

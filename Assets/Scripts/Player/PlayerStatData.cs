@@ -1,7 +1,10 @@
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
+
 [System.Serializable]
 public class PlayerStatsData
 {
-    public int HP;
+    public int MaxHP;
+    public int CurrentHP;
     public int Stamina;
     public int Gold;
     public int Damage;
@@ -15,7 +18,8 @@ public class PlayerStatsData
     {
         return new PlayerStatsData
         {
-            HP = stats.HP,
+            MaxHP = stats.MaxHP,
+            CurrentHP = stats.CurrentHP,
             Stamina = stats.Stamina,
             Gold = stats.Gold,
             Damage = stats.Damage,
@@ -31,7 +35,8 @@ public class PlayerStatsData
     {
         return new PlayerStats
         {
-            HP = data.HP,
+            MaxHP = data.MaxHP,
+            CurrentHP = data.CurrentHP,
             Stamina = data.Stamina,
             Gold = data.Gold,
             Damage = data.Damage,

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerData
 {
     public string NickName;
+    public int MaxHP;
     public int CurrentHP;
     public int CurrentStamina;
     public int CurrentGold;

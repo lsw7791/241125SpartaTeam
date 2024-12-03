@@ -12,7 +12,8 @@ public static class PlayerSaveLoad
         PlayerData data = new PlayerData
         {
             NickName = player.PlayerNickName,  // 닉네임 저장
-            CurrentHP = player.Stats.HP,
+            MaxHP = player.Stats.MaxHP,
+            CurrentHP = player.Stats.CurrentHP,
             CurrentStamina = player.Stats.Stamina,
             CurrentGold = player.Stats.Gold,
             CurrentDamage = player.Stats.Damage,
@@ -24,7 +25,8 @@ public static class PlayerSaveLoad
 
             Stats = new PlayerStatsData
             {
-                HP = player.Stats.HP,
+                MaxHP = player.Stats.MaxHP,
+                CurrentHP = player.Stats.CurrentHP,
                 Stamina = player.Stats.Stamina,
                 Damage = player.Stats.Damage,
                 Speed = player.Stats.Speed,
@@ -66,7 +68,8 @@ public static class PlayerSaveLoad
         PlayerData data = PlayerData.FromJson(json);
 
         // PlayerStats 로드
-        player.Stats.HP = data.CurrentHP;
+        player.Stats.MaxHP = data.MaxHP;
+        player.Stats.CurrentHP = data.CurrentHP;
         player.Stats.Stamina = data.CurrentStamina;
         player.Stats.Damage = data.CurrentDamage;
         player.Stats.Speed = data.CurrentSpeed;

@@ -15,10 +15,8 @@ public class Monster : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            HitDamage(1);  // 플레이어와 충돌 시 데미지 처리
-        }
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+        damageable.TakeDamage(monsterData.creatureAttack);  // 데미지 처리
     }
 
     // 몬스터가 죽었을 때 호출되는 함수
@@ -38,7 +36,7 @@ public class Monster : MonoBehaviour
     }
 
     // 데미지를 입을 때 호출되는 함수
-    public void HitDamage(int damage)
+    public void TakeDamage(int damage)
     {
         monsterData.currentHealth -= damage;
 
