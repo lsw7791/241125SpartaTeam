@@ -104,7 +104,7 @@ public class GameManager : MonoSingleton<GameManager>
         Debug.Log("SpawnMonster전");
 
         // 예시로 고블린 몬스터를 생성
-        SpawnMonster(goblinPool, new Vector2(1f, 1f));
+        //SpawnMonster(goblinPool, new Vector2(1f, 1f));
     }
 
     void SpawnMonster(MonsterPool pool, Vector2 position)
