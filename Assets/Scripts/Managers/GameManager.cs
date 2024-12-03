@@ -2,24 +2,25 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    [SerializeField] private GameObject goblinPrefab;  // 고블린 프리팹
-    [SerializeField] private GameObject lizardPrefab;
-    [SerializeField] private GameObject zombiePrefab;
-    [SerializeField] private GameObject orcShamanPrefab;
-    [SerializeField] private GameObject BigzombiePrefab;
-    [SerializeField] private GameObject ImpPrefab;
-    [SerializeField] private GameObject skeletPrefab;
-    [SerializeField] private GameObject iceZombiePrefab;
-    [SerializeField] private GameObject ogrePrefab;
-    [SerializeField] private GameObject knightPrefab;
-    [SerializeField] private GameObject necromancerPrefab;
-    [SerializeField] private GameObject demonPrefab;
+    [SerializeField] public GameObject goblinPrefab;  // 고블린 프리팹
+    [SerializeField] public GameObject lizardPrefab;
+    [SerializeField] public GameObject zombiePrefab;
+    [SerializeField] public GameObject orcShamanPrefab;
+    [SerializeField] public GameObject BigzombiePrefab;
+    [SerializeField] public GameObject ImpPrefab;
+    [SerializeField] public GameObject skeletPrefab;
+    [SerializeField] public GameObject iceZombiePrefab;
+    [SerializeField] public GameObject ogrePrefab;
+    [SerializeField] public GameObject knightPrefab;
+    [SerializeField] public GameObject necromancerPrefab;
+    [SerializeField] public GameObject demonPrefab;
 
-    private MonsterPool monsterPool;
+    public MonsterPool monsterPool;
 
     protected override void Awake()
     {
         base.Awake();
+        // 프리팹 로드
         goblinPrefab = Resources.Load<GameObject>("Prefabs/Monsters/Goblin");
         lizardPrefab = Resources.Load<GameObject>("Prefabs/Monsters/Lizard");
         zombiePrefab = Resources.Load<GameObject>("Prefabs/Monsters/Zombie");
@@ -40,35 +41,30 @@ public class GameManager : MonoSingleton<GameManager>
 
         monsterPool = new MonsterPool();
 
-        // 몬스터 풀 초기화 (여기서 풀을 생성합니다)
-        monsterPool.InitializeMonsterPool("Goblin", goblinPrefab, 5, 1);
-        monsterPool.InitializeMonsterPool("Lizard", lizardPrefab, 5, 2);
-        monsterPool.InitializeMonsterPool("Zombie", zombiePrefab, 5, 3);
-        monsterPool.InitializeMonsterPool("OrcShaman", orcShamanPrefab, 5, 4);
-        monsterPool.InitializeMonsterPool("BigZombie", BigzombiePrefab, 5, 5);
-        monsterPool.InitializeMonsterPool("Imp", ImpPrefab, 5, 6);
-        monsterPool.InitializeMonsterPool("Skelet", skeletPrefab, 5, 7);
-        monsterPool.InitializeMonsterPool("IceZombie", iceZombiePrefab, 5, 8);
-        monsterPool.InitializeMonsterPool("Ogre", ogrePrefab, 5, 9);
-        monsterPool.InitializeMonsterPool("Knight", knightPrefab, 5, 10);
-        monsterPool.InitializeMonsterPool("Necromancer", necromancerPrefab, 5, 11);
-        monsterPool.InitializeMonsterPool("Demon", demonPrefab, 5, 12);
+        // 몬스터 풀 초기화 (각 몬스터 타입에 대해 풀을 생성)
+        monsterPool.InitializeMonsterPool(1, goblinPrefab, 5);  // Goblin
+        monsterPool.InitializeMonsterPool(2, zombiePrefab, 5);  // Zombie
+        monsterPool.InitializeMonsterPool(3, ImpPrefab, 5);  // Imp
+        monsterPool.InitializeMonsterPool(4, lizardPrefab, 5);  // Lizard
+        monsterPool.InitializeMonsterPool(5, orcShamanPrefab, 5);  // OrcShaman
+        monsterPool.InitializeMonsterPool(6, BigzombiePrefab, 5);  // BigZombie
+        monsterPool.InitializeMonsterPool(7, skeletPrefab, 5);  // Skelet
+        monsterPool.InitializeMonsterPool(8, iceZombiePrefab, 5);  // IceZombie
+        monsterPool.InitializeMonsterPool(9, ogrePrefab, 5);  // Ogre
+        monsterPool.InitializeMonsterPool(10, knightPrefab, 5);  // Knight
+        monsterPool.InitializeMonsterPool(11, necromancerPrefab, 5);  // Necromancer
+        monsterPool.InitializeMonsterPool(12, demonPrefab, 5);  // Demon
 
-
-
-        // 예시로 고블린 몬스터를 생성하고, 위치를 설정합니다
-        SpawnMonster("Goblin", new Vector2(1f, 1f));
-        SpawnMonster("Zombie", new Vector2(3f, 3f));
+        SpawnMonster(1, new Vector2(1f, 1f));
     }
 
-    void SpawnMonster(string monsterType, Vector2 position)
+    void SpawnMonster(int creatureId, Vector2 position)
     {
-
         // 몬스터를 풀에서 가져옵니다
-        GameObject monster = monsterPool.GetMonster(monsterType, position);
+        GameObject monster = monsterPool.GetMonster(creatureId, position);
         if (monster != null)
         {
-
+            // 몬스터가 성공적으로 생성된 경우 추가 처리 가능
         }
     }
 }
