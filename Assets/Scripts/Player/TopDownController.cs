@@ -50,6 +50,13 @@ public class TopDownController : MonoBehaviour
         this.enabled = false;
 
     }
+    public void Revive()
+    {
+        UIManager.Instance.deathUI.SetActive(false);
+        _playerAnimationController.isDeath = false;
+        speed = 3.5f;
+        this.enabled = true;
+    }
 
     private void FixedUpdate()
     {

@@ -68,6 +68,7 @@ public class Player : MonoBehaviour,IDamageable
     public void Die()
     {
         _topDownController.TriggerDeath();
+        UIManager.Instance.deathUI.SetActive(true);
         Debug.Log($"{NickName} has died.");
     }
     // 프로퍼티

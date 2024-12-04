@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoSingleton<UIManager>
 {
+    public GameObject deathUI;
+
     private Dictionary<string, UIBase> _uiList = new();
 
     public static float ScreenWidth = 1920;
