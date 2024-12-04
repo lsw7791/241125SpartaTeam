@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Monster : MonoBehaviour, IDamageable
 {
@@ -68,7 +69,7 @@ public class Monster : MonoBehaviour, IDamageable
                     GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
 
                     // 아이템 스프라이트 로드
-                    Sprite itemSprite = Resources.Load<Sprite>(itemData.spritePath);
+                    Sprite itemSprite = Resources.Load<Sprite>("Prefabs/Images/Ladder");
                     if (itemSprite == null)
                     {
                         Debug.LogWarning($"Sprite not found at {itemData.spritePath}, using default sprite.");
