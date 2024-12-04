@@ -12,6 +12,7 @@ public class PlayerWeapon : MonoBehaviour
 
     private void Awake()
     {
+        Player.Instance._playerWeapon = this;
         _weapon = this.gameObject;
         EquipManager.Instance.WeaponObject = _weapon;
         _weaponCollider = _weapon.GetComponent<Collider2D>();  // 무기의 Collider2D 가져오기
