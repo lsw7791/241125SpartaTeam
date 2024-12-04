@@ -13,10 +13,17 @@ public class EquipManager : MonoSingleton<EquipManager>
     //public GameObject _equipedCape;
     //public GameObject _equipedShield;
 
+    [SerializeField] private int RWeaponID;
+    [SerializeField] private int LWeaponID;
+    [SerializeField] private int topID;
+    [SerializeField] private int bottomID;
+    [SerializeField] private int helmetID;
+    [SerializeField] private int armorID;
+    [SerializeField] private int capeID;
+
 
     private SpriteRenderer _weaponSpriteRenderer; // WeaponObject의 SpriteRenderer
-
-    private void Awake()
+    protected override void Awake()
     {
         // WeaponObject의 SpriteRenderer 컴포넌트를 가져오기
         _weaponSpriteRenderer = WeaponObject.GetComponent<SpriteRenderer>();
