@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerWeapon : MonoBehaviour
 {
-    [SerializeField] Player _player;
     [SerializeField] GameObject _weapon; // 현재 무기를 나타내는 오브젝트
     private Collider2D _weaponCollider;
     [SerializeField] GameObject[] _attackObjects; // 0번: 화살, 1번: 파이어볼
@@ -13,6 +12,7 @@ public class PlayerWeapon : MonoBehaviour
 
     private void Awake()
     {
+        Player.Instance._playerWeapon = this;
         _weapon = this.gameObject;
         EquipManager.Instance.WeaponObject = _weapon;
         _weaponCollider = _weapon.GetComponent<Collider2D>();  // 무기의 Collider2D 가져오기
@@ -53,7 +53,7 @@ public class PlayerWeapon : MonoBehaviour
         arrow.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 180));  // 회전 적용
 
         // 충돌 처리 - 화살이 충돌 시 데미지 적용
-        arrow.AddComponent<ProjectileCollisionHandler>().Initialize(_player.Stats.Damage);
+        arrow.AddComponent<ProjectileCollisionHandler>().Initialize(Player.Instance.Stats.Damage);
 
         Debug.Log("Fired Arrow!");
     }
@@ -78,7 +78,7 @@ public class PlayerWeapon : MonoBehaviour
         fireball.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 180));  // 회전 적용
 
         // 충돌 처리 - 파이어볼이 충돌 시 데미지 적용
-        fireball.AddComponent<ProjectileCollisionHandler>().Initialize(_player.Stats.Damage);
+        fireball.AddComponent<ProjectileCollisionHandler>().Initialize(Player.Instance.Stats.Damage);
 
         Debug.Log("Fired Fireball!");
     }
@@ -92,8 +92,8 @@ public class PlayerWeapon : MonoBehaviour
         if (damageable != null)
         {
             // 플레이어가 충돌한 오브젝트가 IDamageable을 구현한 경우
-            damageable.TakeDamage(_player.Stats.Damage);  // 데미지 처리
-            Debug.Log($"Player dealt {_player.Stats.Damage} damage to {damageable.GetType().Name}");
+            damageable.TakeDamage(Player.Instance.Stats.Damage);  // 데미지 처리
+            Debug.Log($"Player dealt {Player.Instance.Stats.Damage} damage to {damageable.GetType().Name}");
         }
     }
 

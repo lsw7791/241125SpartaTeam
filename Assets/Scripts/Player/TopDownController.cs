@@ -9,14 +9,13 @@ public class TopDownController : MonoBehaviour
     private Rigidbody2D rb;
     private Camera camera;
     private TopDownAimRotation topDownAimRotation;
-    private PlayerAnimationController _playerAnimationController;
     private bool isDeath = false;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         topDownAimRotation =GetComponent<TopDownAimRotation>();
-        _playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
+        Player.Instance._topDownController = this;
         camera = Camera.main;
     }
 
@@ -26,7 +25,7 @@ public class TopDownController : MonoBehaviour
         if (isDeath) return;
         moveInput = context.ReadValue<Vector2>();
         bool isMoving = moveInput.sqrMagnitude > 0; // 벡터 크기로 이동 여부 판단
-        _playerAnimationController.SetMoveAnimation(isMoving);
+        Player.Instance._playerAnimationController.SetMoveAnimation(isMoving);
     }
 
     // 마우스 위치에 따른 회전 처리
@@ -38,22 +37,22 @@ public class TopDownController : MonoBehaviour
             Vector2 mouseWorldPos = camera.ScreenToWorldPoint(mouseScreenPos); // 월드 좌표로 변환
             Vector2 direction =(Vector2)transform.position - mouseWorldPos;
             // 플레이어와 마우스 위치를 비교하여 좌우 반전
-            _playerAnimationController.FlipRotation(mouseWorldPos);
+            Player.Instance._playerAnimationController.FlipRotation(mouseWorldPos);
             topDownAimRotation.RotateArm(direction);
         }
     }
     public void TriggerDeath()
     {
-        _playerAnimationController.isDeath = true;
+        Player.Instance._playerAnimationController.isDeath = true;
         speed = 0f;
-        _playerAnimationController.TriggerDeathAnimation(); // 죽음 애니메이션 실행
+        Player.Instance._playerAnimationController.TriggerDeathAnimation(); // 죽음 애니메이션 실행
         this.enabled = false;
 
     }
     public void Revive()
     {
         UIManager.Instance.deathUI.SetActive(false);
-        _playerAnimationController.isDeath = false;
+        Player.Instance._playerAnimationController.isDeath = false;
         speed = 3.5f;
         this.enabled = true;
     }
