@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public class GameManager : MonoSingleton<GameManager>
 {
     [SerializeField] public GameObject goblinPrefab;  // 몬스터 프리팹
@@ -51,22 +51,40 @@ public class GameManager : MonoSingleton<GameManager>
         ignisMine = Resources.Load<GameObject>("Prefabs/Mines/IgnisMine");
 
 
+        DataManager.Instance.Initialize();
+
+        List<ItemInstance> items = new List<ItemInstance>(); // JSON파일에 저장된 유저 아이템 정보를 읽어서 넘겨준다.
+        {
+            new ItemInstance { id = 1, itemid = 1, count = 1, enhance = 0 };
+            new ItemInstance { id = 2, itemid = 1, count = 1, enhance = 3 };
+            new ItemInstance { id = 3, itemid = 2, count = 1, enhance = 0 };
+            new ItemInstance { id = 4, itemid = 3, count = 1, enhance = 0 };
+
+        }
+        ItemManager.Instance.Initialize(items);
 
     }
 
     private void Start()
     {
-        DataManager.Instance.Initialize();
+        GameObject objectPoolGroup = new GameObject();
+        objectPoolGroup.name = "objectPoolGroup";
+        objectPoolGroup.AddComponent<MonsterPool>();
 
-        monsterPool = new MonsterPool();
+        if (!objectPoolGroup.TryGetComponent(out monsterPool))
+        {
+            objectPoolGroup.AddComponent<MonsterPool>();
+        }
+
+        //monsterPool = new MonsterPool();
 
         // 몬스터 풀 초기화 (각 몬스터 타입에 대해 풀을 생성)
         monsterPool.InitializeMonsterPool(1, goblinPrefab, 5);  // Goblin
-        monsterPool.InitializeMonsterPool(2, zombiePrefab, 5);  // Zombie
-        monsterPool.InitializeMonsterPool(3, ImpPrefab, 5);  // Imp
-        monsterPool.InitializeMonsterPool(4, lizardPrefab, 5);  // Lizard
-        monsterPool.InitializeMonsterPool(5, orcShamanPrefab, 5);  // OrcShaman
-        monsterPool.InitializeMonsterPool(6, BigzombiePrefab, 5);  // BigZombie
+        monsterPool.InitializeMonsterPool(2, lizardPrefab, 5);  // Lizard
+        monsterPool.InitializeMonsterPool(3, zombiePrefab, 5);  // Zombie
+        monsterPool.InitializeMonsterPool(4, orcShamanPrefab, 5);  // OrcShaman
+        monsterPool.InitializeMonsterPool(5, BigzombiePrefab, 5);  // BigZombie
+        monsterPool.InitializeMonsterPool(6, ImpPrefab, 5);  // Imp
         monsterPool.InitializeMonsterPool(7, skeletPrefab, 5);  // Skelet
         monsterPool.InitializeMonsterPool(8, iceZombiePrefab, 5);  // IceZombie
         monsterPool.InitializeMonsterPool(9, ogrePrefab, 5);  // Ogre
