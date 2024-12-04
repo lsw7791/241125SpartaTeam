@@ -63,6 +63,7 @@ namespace MainData
 		public System.Int32 resourceLadder;
 		public System.Int32 resourceOther;
 		public System.Int32 resourceJewel;
+		public System.String imagePath;
   
 
 #region fuctions

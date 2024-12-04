@@ -1,44 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-public class RangeAI : MonoBehaviour
+public class RangeAI : MonsterAI
 {
-    private MonsterData monsterData;
-
-    [Header("Targeting")]
-    [SerializeField]
-    private Transform playerTransform;               // 추적할 플레이어
-    private Vector3 initialPosition;       // 몬스터의 초기 위치
-    private SpriteRenderer spriteRenderer;
-
-    [Header("Attack")]
-    [SerializeField]
-    private float curTime = 0f;                       // 공격 쿨타임
+    [Header("Attack - Range")]
     [SerializeField]
     private GameObject projectilePrefab;              // 발사할 투사체
     [SerializeField]
     private Transform attackPoint;                   // 투사체 발사 위치
-
-    // 몬스터 상태를 Enum으로 관리
-    private enum MonsterState
-    {
-        Idle,        // 대기
-        Chasing,     // 추적 중
-        Attacking,   // 공격 중
-        Returning    // 초기 위치로 돌아감
-    }
-
-    private MonsterState currentState = MonsterState.Idle;  // 현재 상태
-
-    private void Start()
-    {
-        monsterData = GetComponent<MonsterData>();
-        initialPosition = transform.position;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        playerTransform = GameObject.FindWithTag("Player")?.transform;
-    }
 
     private void FixedUpdate()
     {
@@ -89,9 +57,9 @@ public class RangeAI : MonoBehaviour
         }
     }
 
-    private void AttackPlayer()
+    protected override void AttackPlayer()
     {
-        curTime += Time.deltaTime;
+        base.AttackPlayer();
         if (curTime >= monsterData.creatureAttackSpeed)
         {
             curTime = 0f;
@@ -120,34 +88,6 @@ public class RangeAI : MonoBehaviour
             {
                 rb.velocity = direction * monsterData.creatureAttackSpeed;
             }
-        }
-    }
-
-    private void ReturnToInitialPosition()
-    {
-        Vector3 direction = (initialPosition - transform.position).normalized;
-
-        if (Vector3.Distance(transform.position, initialPosition) > 0.1f)
-        {
-            transform.Translate(direction * monsterData.creatureMoveSpeed * Time.deltaTime, Space.World);
-            spriteRenderer.flipX = direction.x < 0;
-        }
-    }
-
-    private void ChasePlayer()
-    {
-        Vector3 direction = (playerTransform.position - transform.position).normalized;
-        transform.Translate(direction * monsterData.creatureMoveSpeed * Time.deltaTime, Space.World);
-
-        spriteRenderer.flipX = direction.x <= 0;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            playerTransform = collision.transform;
-            currentState = MonsterState.Chasing;
         }
     }
 }

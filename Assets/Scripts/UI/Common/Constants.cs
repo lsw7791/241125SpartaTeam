@@ -7,7 +7,7 @@ namespace Constants
 
     public class PathInfo
     {
-        public const string UIPath = "Prefabs/UITest/";
+        public const string UIPath = "Prefabs/UI/";
         //public const string SpritePath = "Sprite/";
     }
 }
