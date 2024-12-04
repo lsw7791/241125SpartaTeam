@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterData : MonoBehaviour, ICreature
@@ -14,7 +15,7 @@ public class MonsterData : MonoBehaviour, ICreature
     public float creatureDetectionRange;
     public float creatureAttackRange;
     public float creatureMoveSpeed;
-    public float creatureDrop;
+    public List<int> creaturedropItemIds;   // 드랍할 아이템 ID 리스트
 
     public int currentHealth;
     public bool isDie;
@@ -38,10 +39,7 @@ public class MonsterData : MonoBehaviour, ICreature
         creatureDetectionRange = data.detectionRange;
         creatureAttackRange = data.attackRange;
         creatureMoveSpeed = data.moveSpeed;
-        creatureDrop = data.drop;
-
-        currentHealth = creatureHealth;
-        isDie = false;
+        creaturedropItemIds = new List<int>(data.dropItemIds);
     }
 
     // 풀로 반환될 때 상태 리셋

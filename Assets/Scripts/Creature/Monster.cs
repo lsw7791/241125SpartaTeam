@@ -4,8 +4,6 @@ public class Monster : MonoBehaviour, IDamageable
 {
     MonsterData monsterData;  // 몬스터 데이터
 
-    [SerializeField] GameObject[] dropItem;
-
     private void Awake()
     {
         monsterData = GetComponent<MonsterData>();  // MonsterData 컴포넌트 가져오기
@@ -26,7 +24,7 @@ public class Monster : MonoBehaviour, IDamageable
 
         monsterData.isDie = true;  // 몬스터 죽음 처리
         Debug.Log($"Monster {monsterData.creatureName} has died.");
-        Drop();
+        DropItems();  // 아이템 드랍 함수 호출
     }
 
     // 데미지를 입을 때 호출되는 함수
@@ -46,22 +44,36 @@ public class Monster : MonoBehaviour, IDamageable
         }
     }
 
-    void Drop()
+    // 몬스터가 죽을 때 호출되는 드랍 아이템 생성 함수
+    public void DropItems()
     {
-        int randomItemCount = Random.Range( 0, dropItem.Length );
+        Debug.Log($"Monster {monsterData.creatureName} is dropping items.");
 
-        if (randomItemCount != 0)
+        foreach (int itemId in monsterData.creaturedropItemIds)
         {
-            for (int i = 0; i < randomItemCount; i++)
+            Debug.Log($"Attempting to get item data for ID: {itemId}");
+
+            var itemData = DataManager.Instance.GetItemDataById(itemId);
+
+            if (itemData != null)
             {
-                int randomItem = Random.Range(0, dropItem.Length);
+                Debug.Log($"Found item data for ID {itemId}: {itemData.name}");
 
-                GameObject itemObject = Instantiate(dropItem[randomItem]);
-                if (itemObject.TryGetComponent<TestItem>(out var outItem))
+                GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabsPath);
+
+                if (itemPrefab != null)
                 {
-                    outItem.DropPosition(transform.position);
+                    Debug.Log($"Instantiating item prefab at {itemData.prefabsPath}");
+                    Instantiate(itemPrefab, transform.position, Quaternion.identity);
                 }
-
+                else
+                {
+                    Debug.LogError($"Item prefab not found for item ID {itemId} at path {itemData.prefabsPath}");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"No item data found for item ID {itemId}");
             }
         }
     }

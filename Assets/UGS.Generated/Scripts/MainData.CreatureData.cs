@@ -69,6 +69,7 @@ namespace MainData
 		public System.Single attackRange;
 		public System.Single moveSpeed;
 		public System.Single drop;
+		public System.Collections.Generic.List<Int32> dropItemIds;
   
 
 #region fuctions
