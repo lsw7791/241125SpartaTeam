@@ -61,7 +61,6 @@ public class ChargeAI : MonsterAI
 
     protected override void AttackPlayer()
     {
-        
         if (!isCharging)
         {
             isCharging = true;

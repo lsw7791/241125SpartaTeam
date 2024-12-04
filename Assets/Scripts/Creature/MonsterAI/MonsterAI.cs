@@ -70,4 +70,12 @@ public class MonsterAI : MonoBehaviour
             // 플레이어와 접촉 시 추적 상태로 변경
         }
     }
+
+    private void Attack(Player inPlayer)
+    {
+        // 몬스터가 플레이어에게 데미지를 줄 때
+        int damage = monsterData.creatureAttack;
+        Debug.Log($"Monster dealt {damage} damage to {inPlayer.PlayerNickName}");
+        inPlayer.TakeDamage(damage);  // 데미지 처리
+    }
 }
