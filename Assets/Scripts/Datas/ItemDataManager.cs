@@ -26,6 +26,10 @@ public enum ItemType
 }
 public class ItemDataManager : ItemData
 {
+    public List<ItemData> GetItemDatas()
+    {
+        return ItemDataList;
+    }
     public ItemData GetData(int id)
     {
         return ItemDataMap[id];
