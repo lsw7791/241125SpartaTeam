@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public class GameManager : MonoSingleton<GameManager>
 {
     [SerializeField] public GameObject goblinPrefab;  // 몬스터 프리팹
@@ -51,12 +51,23 @@ public class GameManager : MonoSingleton<GameManager>
         ignisMine = Resources.Load<GameObject>("Prefabs/Mines/IgnisMine");
 
 
+        DataManager.Instance.Initialize();
+
+        List<ItemInstance> items = new List<ItemInstance>(); // JSON파일에 저장된 유저 아이템 정보를 읽어서 넘겨준다.
+        {
+            new ItemInstance { id = 1, itemid = 1, count = 1, enhance = 0 };
+            new ItemInstance { id = 2, itemid = 1, count = 1, enhance = 3 };
+            new ItemInstance { id = 3, itemid = 2, count = 1, enhance = 0 };
+            new ItemInstance { id = 4, itemid = 3, count = 1, enhance = 0 };
+
+        }
+        ItemManager.Instance.Initialize(items);
 
     }
 
     private void Start()
     {
-        DataManager.Instance.Initialize();
+
 
         monsterPool = new MonsterPool();
 

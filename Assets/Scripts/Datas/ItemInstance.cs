@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemInstance : MonoBehaviour
 {
     public int id; //서버에서 발급해주는 아이템
-    public int itemid; //기획 데이터에 있는 아이템
+    public int itemid; //기획 데이터에 있는 아이템 아이디
     public ItemType itemtype;
     public string itemname;
     public string itemdesc;
