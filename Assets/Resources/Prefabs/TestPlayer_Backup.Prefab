@@ -184,7 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6be8427abb93941a3c27c79ec18ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 555898900720893638}
   _weapon: {fileID: 5057688274015716384, guid: 011289f3fed617a43afc7f16f830160a, type: 3}
   _attackObjects:
   - {fileID: 4493029942455348064, guid: 59cef3b5f829fb4459773cf4797d18d2, type: 3}
@@ -390,7 +389,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponObject: {fileID: 372932772457697975}
-  EquipedWeapon: {fileID: 7686798280577365106, guid: 0554c3cfcd11cfb43afd1f911aea5150, type: 3}
+  EquipedWeapon: {fileID: 4438039351013864645, guid: 95828482b733fa44c98f814045a32b75, type: 3}
+  RWeaponID: 0
+  LWeaponID: 0
+  topID: 0
+  bottomID: 0
+  helmetID: 0
+  armorID: 0
+  capeID: 0
 --- !u!1 &1700527193647500101
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +504,6 @@ GameObject:
   - component: {fileID: 9028419295178868291}
   - component: {fileID: 8307571058901756721}
   - component: {fileID: 9103636101208835098}
-  - component: {fileID: 3535479949116907831}
   - component: {fileID: 4781453865398898431}
   m_Layer: 0
   m_Name: UnitRoot
@@ -557,18 +562,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3535479949116907831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2074020692218767500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1edeb6650bda6143a33b526bcad5a18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4781453865398898431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,7 +574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c940f6332e75c634993e7cfe61638e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedWeapon: {fileID: 0}
 --- !u!1 &2316263067602181005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,7 +1714,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35b06f6500834c7bba01057967c155d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerAnimationController: {fileID: 0}
 --- !u!114 &7124084177162484945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1809,7 +1800,7 @@ MonoBehaviour:
   NickName: "\uD14C\uC2A4\uD2B8"
   stats:
     MaxHP: 100
-    CurrentHP: 100
+    CurrentHP: 1
     Stamina: 100
     Gold: 5
     Damage: 5
@@ -1819,6 +1810,10 @@ MonoBehaviour:
     WeaponType: 0
   inventory:
     Items: []
+  _topDownController: {fileID: 0}
+  _playerAnimationController: {fileID: 0}
+  _playerWeapon: {fileID: 0}
+  _playerCamera: {fileID: 0}
 --- !u!1 &3332842344908746626
 GameObject:
   m_ObjectHideFlags: 0

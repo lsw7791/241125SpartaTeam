@@ -7,11 +7,13 @@ public class PlayerAnimationController : MonoBehaviour
     private Animator _animator;
 
 
-    void Start()
-    {
-        _animator = GetComponent<Animator>();
-    }
 
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();   
+        Player.Instance._playerAnimationController = this;
+    }
     public void SetMoveAnimation(bool isMoving)
     {
         _animator.SetBool("Move", isMoving);
