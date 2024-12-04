@@ -91,7 +91,8 @@ public static class PlayerSaveLoad
         player.Inventory.Items.Clear();
         foreach (string itemID in data.Inventory.ItemIDs)
         {
-            player.Inventory.AddItem(itemID, "Item Name", 1, "ItemType");  // ItemName과 ItemType은 예시로 설정
+            // 예시로 itemSprite를 null로 설정
+            player.Inventory.AddItem(itemID, "Item Name", 1, "ItemType", null);  // ItemName과 ItemType은 예시로 설정
         }
 
         Debug.Log("플레이어 데이터 로드 완료");

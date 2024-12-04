@@ -28,8 +28,9 @@ public class InventoryData
         Inventory inventory = new Inventory();
         foreach (var itemID in data.ItemIDs)
         {
-            inventory.AddItem(itemID, "ItemName", 1, "ItemType");  // 예시로 아이템 이름과 타입을 설정
+            inventory.AddItem(itemID, "ItemName", 1, "ItemType", null);  // itemSprite에 기본값 null 설정
         }
         return inventory;
     }
+
 }

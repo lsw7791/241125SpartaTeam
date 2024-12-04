@@ -72,6 +72,7 @@ namespace MainData
 		public System.Single speed;
 		public System.Single drop;
 		public System.String prefabsPath;
+		public System.String spritePath;
   
 
 #region fuctions

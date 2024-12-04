@@ -18,13 +18,13 @@ public abstract class UIBase : MonoBehaviour, IDraggable, IPointerDownHandler, I
         rectTransform = GetComponent<RectTransform>();
     }
 
-    public void Open()
+    public virtual void Open()
     {
         gameObject.SetActive(true);
         OpenProcedure();
     }
 
-    public void Close()
+    public virtual void Close()
     {
         gameObject.SetActive(false);
         CloseProcedure();

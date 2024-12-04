@@ -1,47 +1,58 @@
-using System;
 using System.Collections.Generic;
+using System;
+using UnityEngine;
 
 [Serializable]
 public class Inventory
 {
     public List<InventoryItem> Items; // 아이템 목록
+    public event Action OnInventoryChanged; // 인벤토리 변경 이벤트
 
     public Inventory()
     {
-        Items = new List<InventoryItem>(); // 초기화
+        Items = new List<InventoryItem>();
     }
 
-    // 아이템 추가
-    public void AddItem(string itemID, string itemName, int quantity, string itemType, int? slotIndex = null)
+    // 아이템 추가 메서드
+    public void AddItem(string itemID, string itemName, int quantity, string itemType, Sprite itemSprite)
     {
-        // 이미 존재하는 아이템인지 확인
         InventoryItem existingItem = Items.Find(item => item.ItemID == itemID);
+
         if (existingItem != null)
         {
             existingItem.Quantity += quantity; // 수량 증가
         }
         else
         {
-            // 새 아이템 추가
-            InventoryItem newItem = new InventoryItem(itemID, itemName, quantity, itemType, slotIndex);
-            Items.Add(newItem);
+            Items.Add(new InventoryItem(itemID, itemName, quantity, itemType, null, itemSprite));
         }
+
+        OnInventoryChanged?.Invoke(); // UI 갱신 이벤트 호출
     }
 
-    // 아이템 제거
+    // 아이템 조회 메서드 추가
+    public InventoryItem GetItem(string itemID)
+    {
+        return Items.Find(item => item.ItemID == itemID); // 해당 ID의 아이템 반환
+    }
+
+    // 아이템 목록 반환
+    public List<InventoryItem> GetItems()
+    {
+        return Items;
+    }
+
+    // 아이템 제거 메서드
     public void RemoveItem(string itemID, int quantity)
     {
         InventoryItem item = Items.Find(i => i.ItemID == itemID);
         if (item != null)
         {
             item.Quantity -= quantity;
-            if (item.Quantity <= 0) Items.Remove(item); // 수량이 0 이하로 떨어지면 아이템 제거
+            if (item.Quantity <= 0)
+                Items.Remove(item);
         }
-    }
 
-    // 특정 아이템 검색
-    public InventoryItem GetItem(string itemID)
-    {
-        return Items.Find(item => item.ItemID == itemID);
+        OnInventoryChanged?.Invoke();
     }
 }
