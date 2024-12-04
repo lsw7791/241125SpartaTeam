@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour,IDamageable
+public class Player : MonoSingleton<Player>,IDamageable
 {
     [SerializeField] string NickName;
 
-    [SerializeField] PlayerStats stats;  // 플레이어의 스탯 (PlayerStats)
-    [SerializeField] Inventory inventory;  // 플레이어의 인벤토리 (Inventory)
-    [SerializeField] TopDownController _topDownController;
+    public PlayerStats stats;  // 플레이어의 스탯 (PlayerStats)
+    public Inventory inventory;  // 플레이어의 인벤토리 (Inventory)
+    public TopDownController _topDownController;
+    public PlayerAnimationController _playerAnimationController;
+    public PlayerWeapon _playerWeapon;
+    public PlayerCamera _playerCamera;
 
     // QuickSlots 프로퍼티 추가
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경
