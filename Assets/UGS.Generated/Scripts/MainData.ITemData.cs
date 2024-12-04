@@ -71,6 +71,7 @@ namespace MainData
 		public System.Int32 buy;
 		public System.Single speed;
 		public System.Single drop;
+		public System.String image;
   
 
 #region fuctions
