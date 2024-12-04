@@ -2,16 +2,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour,IDamageable
 {
-    [SerializeField] private string NickName;
+    [SerializeField] string NickName;
 
-    [SerializeField] private PlayerStats stats;  // 플레이어의 스탯 (PlayerStats)
-    [SerializeField] private Inventory inventory;  // 플레이어의 인벤토리 (Inventory)
+    [SerializeField] PlayerStats stats;  // 플레이어의 스탯 (PlayerStats)
+    [SerializeField] Inventory inventory;  // 플레이어의 인벤토리 (Inventory)
+    [SerializeField] TopDownController _topDownController;
 
     // QuickSlots 프로퍼티 추가
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경
 
     public delegate void PlayerDataSavedHandler();
     public event PlayerDataSavedHandler OnPlayerDataSaved;
+
 
     public Player()
     {
@@ -20,6 +22,10 @@ public class Player : MonoBehaviour,IDamageable
         QuickSlots = new QuickSlot();  // QuickSlot 객체로 초기화
     }
 
+    private void Awake()
+    {
+        _topDownController = GetComponent<TopDownController>();
+    }
     // 데이터를 저장하는 메서드
     public void SaveData(IPlayerRepository repository)
     {
@@ -61,8 +67,9 @@ public class Player : MonoBehaviour,IDamageable
 
     public void Die()
     {
+        _topDownController.TriggerDeath();
+        UIManager.Instance.deathUI.SetActive(true);
         Debug.Log($"{NickName} has died.");
-        // 추가적인 죽음 처리 로직 (예: 게임 오버 화면)
     }
     // 프로퍼티
     public PlayerStats Stats => stats;

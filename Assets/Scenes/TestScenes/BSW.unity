@@ -261,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7412132859155227532, guid: 8c859b149de384d85b42c7a44a92da1a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8728135290080278366, guid: 8c859b149de384d85b42c7a44a92da1a, type: 3}
       propertyPath: m_IsActive
@@ -693,6 +693,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGameUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4937191311353672466, guid: fb10a66af9bbd144f8074a52ec725839, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6554886867034283103, guid: fb10a66af9bbd144f8074a52ec725839, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -889,6 +893,10 @@ PrefabInstance:
     - target: {fileID: 2945325161001838183, guid: 89f1ddb5fa5e34dfd80d0ac53f517499, type: 3}
       propertyPath: m_Name
       value: TestPlayer_Backup
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945325161001838183, guid: 89f1ddb5fa5e34dfd80d0ac53f517499, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7868402610351722750, guid: 89f1ddb5fa5e34dfd80d0ac53f517499, type: 3}
       propertyPath: EquipedWeapon
