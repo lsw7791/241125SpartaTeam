@@ -4,12 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] private PlayerAnimationController _playerAnimationController;
 
-    private void Awake()
-    {
-        _playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
-    }
 
     // 상호작용
     public void OnInteraction(InputAction.CallbackContext context)
@@ -34,7 +29,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
-            _playerAnimationController.TriggerAttackAnimation();
+            Player.Instance._playerAnimationController.TriggerAttackAnimation();
             //PerformAttack();
         }
     }
@@ -53,12 +48,12 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.started)
         {
-            _playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화
+            Player.Instance._playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화
             PerformPaddingStart(); // 패딩 동작 시작
         }
         else if (context.canceled)
         {
-            _playerAnimationController.SetPaddingAnimation(false); // 애니메이션 비활성화
+            Player.Instance._playerAnimationController.SetPaddingAnimation(false); // 애니메이션 비활성화
             PerformPaddingEnd(); // 패딩 동작 종료
         }
     }
