@@ -21,11 +21,11 @@ public class MeeleAI : MonsterAI
                 break;
 
             case MonsterState.Chasing:
-                if (distanceToPlayer <= monsterData.creatureAttackRange)
+                if (distanceToPlayer <= DataManager.Instance.creature.GetAttackRange(monster.id))
                 {
                     currentState = MonsterState.Attacking;
                 }
-                else if (distanceToPlayer > monsterData.creatureDetectionRange)
+                else if (distanceToPlayer > DataManager.Instance.creature.GetDetectionRange(monster.id))
                 {
                     currentState = MonsterState.Returning;
                 }
@@ -40,14 +40,14 @@ public class MeeleAI : MonsterAI
                 break;
 
             case MonsterState.Returning:
-                if (distanceToPlayer > monsterData.creatureDetectionRange)
+                if (distanceToPlayer > DataManager.Instance.creature.GetDetectionRange(monster.id))
                 {
                     ReturnToInitialPosition();
                 }
                 break;
         }
 
-        if (distanceToPlayer <= monsterData.creatureDetectionRange && currentState != MonsterState.Attacking)
+        if (distanceToPlayer <= DataManager.Instance.creature.GetDetectionRange(monster.id) && currentState != MonsterState.Attacking)
         {
             currentState = MonsterState.Chasing;
         }
@@ -56,7 +56,7 @@ public class MeeleAI : MonsterAI
     protected override void AttackPlayer()
     {
         base.AttackPlayer();
-        if (curTime >= monsterData.creatureAttackSpeed)
+        if (curTime >= DataManager.Instance.creature.GetAttackSpeed(monster.id))
         {
             curTime = 0f;
 

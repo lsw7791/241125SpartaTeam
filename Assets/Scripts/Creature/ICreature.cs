@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface ICreature
 {
-    public void Initialize(int creatureid);
-
+    public void ResetStatus();
+    public void DropItems();
+    void TakeDamage(int damage);
+    void Die();
 }

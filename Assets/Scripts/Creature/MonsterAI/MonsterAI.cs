@@ -11,7 +11,7 @@ public enum MonsterState
 
 public class MonsterAI : MonoBehaviour
 {
-    protected MonsterData monsterData;
+    protected Monster monster;
 
     [Header("Targeting")]
     [SerializeField]
@@ -28,7 +28,7 @@ public class MonsterAI : MonoBehaviour
 
     private void Start()
     {
-        monsterData = GetComponent<MonsterData>();
+        monster = GetComponent<Monster>();
         initialPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerTransform = GameObject.FindWithTag("Player")?.transform;
@@ -47,7 +47,7 @@ public class MonsterAI : MonoBehaviour
         // 몬스터가 초기 위치에 거의 도달한 경우, 이동을 멈추고 방향 반전 안함
         if (Vector3.Distance(transform.position, initialPosition) > 0.1f)  // 0.1f는 거의 도달했다고 판단할 수 있는 최소 거리
         {
-            transform.Translate(direction * monsterData.creatureMoveSpeed * Time.deltaTime, Space.World);
+            transform.Translate(direction * DataManager.Instance.creature.GetMoveSpeed(monster.id) * Time.deltaTime, Space.World);
             spriteRenderer.flipX = direction.x < 0;  // 이동 중에만 방향을 바꿈
         }
     }
@@ -55,7 +55,7 @@ public class MonsterAI : MonoBehaviour
     protected void ChasePlayer()
     {
         Vector3 direction = (playerTransform.position - transform.position).normalized;
-        transform.Translate(direction * monsterData.creatureMoveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(direction * DataManager.Instance.creature.GetMoveSpeed(monster.id) * Time.deltaTime, Space.World);
 
         spriteRenderer.flipX = direction.x <= 0;
     }
@@ -74,7 +74,7 @@ public class MonsterAI : MonoBehaviour
     private void Attack(Player inPlayer)
     {
         // 몬스터가 플레이어에게 데미지를 줄 때
-        int damage = monsterData.creatureAttack;
+        int damage = DataManager.Instance.creature.GetAttack(monster.id);
         Debug.Log($"Monster dealt {damage} damage to {inPlayer.PlayerNickName}");
         inPlayer.TakeDamage(damage);  // 데미지 처리
     }

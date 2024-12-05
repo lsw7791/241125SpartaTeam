@@ -24,4 +24,60 @@ public class CreatureDataManager : CreatureData
         //return CreatureDataList.FindAll(x=> x.type == 1)
         return null;
     }
+    public CreatureType GetType(int id)
+    {
+        return CreatureDataMap[id].creatureType;
+    }
+    public string GetName(int id)
+    {
+        return CreatureDataMap[id].name;
+    }
+    public string GetDesc(int id)
+    {
+        return CreatureDataMap[id].desc;
+    }
+    public int GetTier(int id)
+    {
+        return CreatureDataMap[id].tier;
+    }
+    public int GetAttack(int id)
+    {
+        return CreatureDataMap[id].attack;
+    }
+    public int GetDefense(int id)
+    {
+        return CreatureDataMap[id].defense;
+    }
+    public int GetHealth(int id)
+    {
+        return CreatureDataMap[id].health;
+    }
+    public float GetAttackSpeed(int id)
+    {
+        return CreatureDataMap[id].attackSpeed;
+    }
+    public float GetDetectionRange(int id)
+    {
+        return CreatureDataMap[id].detectionRange;
+    }
+    public float GetAttackRange(int id)
+    {
+        return CreatureDataMap[id].attackRange;
+    }
+    public float GetMoveSpeed(int id)
+    {
+        return CreatureDataMap[id].moveSpeed;
+    }
+    public float GetDrop(int id)
+    {
+        return CreatureDataMap[id].drop;
+    }
+    public List<int> GetDropItemIds(int id)
+    {
+        return CreatureDataMap[id].dropItemIds;
+    }
+    //public string GetPrefabsPath(int prefabsPath)
+    //{
+    //    return CreatureDataMap[id].prefabsPath;
+    //}
 }

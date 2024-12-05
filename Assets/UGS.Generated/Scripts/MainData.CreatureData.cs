@@ -70,6 +70,7 @@ namespace MainData
 		public System.Single moveSpeed;
 		public System.Single drop;
 		public System.Collections.Generic.List<Int32> dropItemIds;
+		public System.String prefabsPath;
   
 
 #region fuctions

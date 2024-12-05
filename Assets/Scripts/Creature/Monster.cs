@@ -1,56 +1,52 @@
+using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class Monster : MonoBehaviour, IDamageable
+public class Monster : MonoBehaviour, ICreature
 {
-    MonsterData monsterData;  // 몬스터 데이터
-
-    private void Awake()
-    {
-        monsterData = GetComponent<MonsterData>();  // MonsterData 컴포넌트 가져오기
-    }
+    [SerializeField]private int currentHealth;
+    [SerializeField]private bool isDie;
+    [SerializeField] public int id;
 
     // 몬스터가 죽었을 때 호출되는 함수
+
     public void Die()
     {
         if (GameManager.Instance.monsterPool != null)
         {
             // 몬스터의 종류를 구분해서 풀에 반환 (creatureId로 구별)
-            GameManager.Instance.monsterPool.ReturnMonster(monsterData.id, gameObject);
+            GameManager.Instance.monsterPool.ReturnMonster(id, gameObject);
         }
         else
         {
             Debug.LogWarning("MonsterPool is not found.");
         }
 
-        monsterData.isDie = true;  // 몬스터 죽음 처리
-        Debug.Log($"Monster {monsterData.creatureName} has died.");
+        isDie = true;  // 몬스터 죽음 처리
         DropItems();  // 아이템 드랍 함수 호출
     }
 
     // 데미지를 입을 때 호출되는 함수
     public void TakeDamage(int damage)
     {
-        Debug.Log($"Monster {monsterData.creatureName} takes {damage} damage.");
-        monsterData.currentHealth -= damage;
+        currentHealth -= damage;
 
-        if (monsterData.currentHealth <= 0)
+        if (currentHealth <= 0)
         {
-            Debug.Log($"Monster {monsterData.creatureName} has been defeated.");
             Die();  // 체력이 0 이하가 되면 죽음 처리
         }
         else
         {
-            Debug.Log($"Monster {monsterData.creatureName} remaining health: {monsterData.currentHealth}");
+            Debug.Log($"Monster {DataManager.Instance.creature.GetName(id)} remaining health: {currentHealth}");
         }
     }
 
     // 몬스터가 죽을 때 호출되는 드랍 아이템 생성 함수
     public void DropItems()
     {
-        Debug.Log($"Monster {monsterData.creatureName} is dropping items.");
+        Debug.Log($"Monster {DataManager.Instance.creature.GetName(id)} is dropping items.");
 
-        foreach (int itemId in monsterData.creaturedropItemIds)
+        foreach (int itemId in DataManager.Instance.creature.GetDropItemIds(id))
         {
             Debug.Log($"Attempting to get item data for ID: {itemId}");
 
@@ -92,5 +88,10 @@ public class Monster : MonoBehaviour, IDamageable
                 Debug.LogWarning($"No item data found for item ID {itemId}");
             }
         }
+    }
+    public void ResetStatus()
+    {
+        currentHealth = DataManager.Instance.creature.GetHealth(id);  // 최대 체력으로 리셋
+        isDie = false;  // 죽지 않은 상태로 리셋
     }
 }

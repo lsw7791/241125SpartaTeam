@@ -8,10 +8,12 @@ public class MonsterPool : MonoBehaviour
     private Dictionary<int, int> poolSizes = new Dictionary<int, int>();  // 각 몬스터의 creatureId를 기준으로 초기 풀 크기 저장
     private const int MAX_POOL_SIZE = 20;  // 풀의 최대 크기 제한
     private GameManager gameManager;
+    private GameObject monsterPrefab;
     // 풀 초기화 (creatureId와 데이터를 함께 초기화)
     private void Awake()
     {
         gameManager = GameManager.Instance;
+        monsterPrefab = Resources.Load<GameObject>("Prefabs/Monsters/Monster");
     }
     public void InitializeMonsterPool(int creatureId, GameObject prefab, int poolSize)
     {
@@ -23,10 +25,11 @@ public class MonsterPool : MonoBehaviour
             obj.SetActive(false);  // 비활성화 상태로 추가
 
             // 몬스터 데이터 초기화 (creatureId를 받아서 초기화)
-            MonsterData monsterData = obj.GetComponent<MonsterData>();
-            if (monsterData != null)
+            Monster monster = obj.GetComponent<Monster>();
+            if (monster != null)
             {
-                monsterData.Initialize(creatureId);  // creatureId로 몬스터 데이터 초기화
+                monster.id = creatureId;// creatureId로 몬스터 데이터 초기화
+                monster.ResetStatus();
             }
 
             poolQueue.Enqueue(obj);
@@ -45,10 +48,10 @@ public class MonsterPool : MonoBehaviour
             monsterObj.SetActive(true);  // 활성화
 
             // 몬스터의 데이터와 상태 초기화 (풀에서 가져올 때 리셋)
-            MonsterData monsterData = monsterObj.GetComponent<MonsterData>();
-            if (monsterData != null)
+            Monster monster = monsterObj.GetComponent<Monster>();
+            if (monster != null)
             {
-                monsterData.ResetStatus();  // 풀에서 반환된 몬스터 상태 리셋
+                monster.ResetStatus();  // 풀에서 반환된 몬스터 상태 리셋
             }
 
             monsterObj.transform.position = position;  // 위치 설정
@@ -88,7 +91,7 @@ public class MonsterPool : MonoBehaviour
         monster.SetActive(false);  // 비활성화
 
         // 몬스터의 상태 리셋
-        MonsterData monsterData = monster.GetComponent<MonsterData>();
+        Monster monsterData = monster.GetComponent<Monster>();
         if (monsterData != null)
         {
             monsterData.ResetStatus();  // 상태 리셋 (currentHealth, isDie)

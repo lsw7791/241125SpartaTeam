@@ -27,11 +27,11 @@ public class ChargeAI : MonsterAI
                 break;
 
             case MonsterState.Chasing:
-                if (distanceToPlayer <= monsterData.creatureAttackRange)
+                if (distanceToPlayer <= DataManager.Instance.creature.GetAttackRange(monster.id))
                 {
                     currentState = MonsterState.Attacking;
                 }
-                else if (distanceToPlayer > monsterData.creatureDetectionRange)
+                else if (distanceToPlayer > DataManager.Instance.creature.GetDetectionRange(monster.id))
                 {
                     currentState = MonsterState.Returning;
                 }
@@ -46,14 +46,14 @@ public class ChargeAI : MonsterAI
                 break;
 
             case MonsterState.Returning:
-                if (distanceToPlayer > monsterData.creatureDetectionRange)
+                if (distanceToPlayer > DataManager.Instance.creature.GetDetectionRange(monster.id))
                 {
                     ReturnToInitialPosition();
                 }
                 break;
         }
 
-        if (distanceToPlayer <= monsterData.creatureDetectionRange && currentState != MonsterState.Attacking)
+        if (distanceToPlayer <= DataManager.Instance.creature.GetDetectionRange(monster.id) && currentState != MonsterState.Attacking)
         {
             currentState = MonsterState.Chasing;
         }
@@ -73,7 +73,7 @@ public class ChargeAI : MonsterAI
         if (Time.time - chargeStartTime >= chargeDelay)
         {
             Vector3 direction = (chargeTargetPosition - transform.position).normalized;
-            transform.Translate(direction * monsterData.creatureMoveSpeed * 3 * Time.deltaTime, Space.World); // 3배 빠르게 돌진
+            transform.Translate(direction * DataManager.Instance.creature.GetMoveSpeed(monster.id) * 3 * Time.deltaTime, Space.World); // 3배 빠르게 돌진
 
             spriteRenderer.flipX = direction.x <= 0;
 

@@ -64,9 +64,9 @@ namespace MainData
 		public System.Int32 health;
 		public System.Int32 stamina;
 		public System.Int32 defense;
-		public System.Int32 attackP;
+		public System.Int32 attack;
 		public System.Int32 attackM;
-		public System.Int32 attackMining;
+		public System.Int32 attackMine;
 		public System.Int32 sell;
 		public System.Int32 buy;
 		public System.Single speed;
