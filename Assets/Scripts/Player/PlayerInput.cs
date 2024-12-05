@@ -77,11 +77,11 @@ public class PlayerInput : MonoBehaviour
     }
 
     // 퀘스트 토글
-    public void OnQuest(InputAction.CallbackContext context)
+    public void OnCraft(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            ToggleQuest();
+            ToggleCraft();
         }
     }
 
@@ -116,9 +116,9 @@ public class PlayerInput : MonoBehaviour
     }
 
     // 퀘스트 토글
-    private void ToggleQuest()
+    private void ToggleCraft()
     {
-        UIManager.Instance.ToggleUI<QuestUI>();
+        UIManager.Instance.ToggleUI<CraftUI>();
     }
 
     // 옵션 토글
