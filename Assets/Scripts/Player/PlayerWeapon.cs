@@ -88,7 +88,7 @@ public class PlayerWeapon : MonoBehaviour
         // 무기의 콜라이더가 비활성화된 상태라면 데미지 처리를 하지 않음
         if (!_weaponCollider.enabled) return;
 
-        if (collision.gameObject.TryGetComponent<ICreature>(out var outTarget))
+        if (collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
         {
             // 플레이어가 충돌한 오브젝트가 IDamageable을 구현한 경우
             outTarget.TakeDamage(Player.Instance.Stats.Damage);  // 데미지 처리
