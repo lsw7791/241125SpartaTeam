@@ -646,10 +646,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestPlayer_Backup
       objectReference: {fileID: 0}
-    - target: {fileID: 7868402610351722750, guid: 89f1ddb5fa5e34dfd80d0ac53f517499, type: 3}
-      propertyPath: EquipedWeapon
-      value: 
-      objectReference: {fileID: 5739922636550024348, guid: c2077c1b78ebce74fb7003f6a0cb9707, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -801,7 +797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1053576004
 RectTransform:
   m_ObjectHideFlags: 0
