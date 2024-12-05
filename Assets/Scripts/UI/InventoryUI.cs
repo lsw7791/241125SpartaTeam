@@ -25,9 +25,6 @@ public class InventoryUI : UIBase
     }
 
 
-    /// <summary>
-    /// 인벤토리 UI 슬롯을 생성합니다.
-    /// </summary>
     private void InitializeSlots()
     {
         // 기존 슬롯 제거
@@ -45,9 +42,6 @@ public class InventoryUI : UIBase
         }
     }
 
-    /// <summary>
-    /// 인벤토리 변경에 따라 UI를 갱신합니다.
-    /// </summary>
     private void Refresh()
     {
 
@@ -65,7 +59,7 @@ public class InventoryUI : UIBase
             else
             {
                 // 빈 슬롯 처리
-                slotComponent.ClearSlot(emptySlotSprite);
+                slotComponent.ClearSlot();
             }
         }
     }
