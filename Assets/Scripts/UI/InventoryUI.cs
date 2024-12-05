@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class InventoryUI : UIBase
 {
-    private Inventory _inventory; // 인벤토리 참조
     private List<GameObject> _slots = new List<GameObject>(); // 슬롯 UI 목록
 
     public Transform slotContainer; // 슬롯 부모 객체
@@ -11,26 +10,20 @@ public class InventoryUI : UIBase
 
     public Sprite emptySlotSprite;  // 빈 슬롯 이미지
 
-    /// <summary>
-    /// UI를 초기화하고, 인벤토리 변경 이벤트를 구독합니다.
-    /// </summary>
-    /// <param name="inventory">플레이어의 인벤토리</param>
+    private void Awake()
+    {
+        Setup(Player.Instance.inventory);
+    }
     public void Setup(Inventory inventory)
     {
-        // 기존 이벤트 구독 제거 (중복 방지)
-        if (_inventory != null)
-        {
-            _inventory.OnInventoryChanged -= Refresh;
-        }
 
-        // 새로운 인벤토리 설정 및 이벤트 구독
-        _inventory = inventory;
-        _inventory.OnInventoryChanged += Refresh;
+        Player.Instance.inventory.OnInventoryChanged += Refresh;
 
         // 슬롯 생성 및 초기화
         InitializeSlots();
         Refresh(); // 초기 UI 갱신
     }
+
 
     /// <summary>
     /// 인벤토리 UI 슬롯을 생성합니다.
@@ -57,10 +50,8 @@ public class InventoryUI : UIBase
     /// </summary>
     private void Refresh()
     {
-        if (_inventory == null || _slots == null)
-            return;
 
-        var items = _inventory.GetItems(); // 아이템 리스트 받아오기
+        var items = Player.Instance.inventory.GetItems(); // 아이템 리스트 받아오기
 
         for (int i = 0; i < _slots.Count; i++)
         {
@@ -79,14 +70,4 @@ public class InventoryUI : UIBase
         }
     }
 
-    /// <summary>
-    /// 오브젝트 파괴 시 이벤트 구독을 해제합니다.
-    /// </summary>
-    private void OnDestroy()
-    {
-        if (_inventory != null)
-        {
-            _inventory.OnInventoryChanged -= Refresh;
-        }
-    }
 }
