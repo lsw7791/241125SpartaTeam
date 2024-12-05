@@ -10,8 +10,9 @@ public class InventoryUI : UIBase
 
     private Inventory inventory;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         inventory = Player.Instance.Inventory;  // 플레이어의 인벤토리 참조
     }
 

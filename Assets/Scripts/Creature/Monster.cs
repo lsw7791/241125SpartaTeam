@@ -62,14 +62,14 @@ public class Monster : MonoBehaviour, IDamageable
                 Debug.Log($"Item prefab path: {itemData.prefabsPath}");
 
                 // 아이템 프리팹 로드
-                GameObject itemPrefab = Resources.Load<GameObject>("Prefabs/Items/Ladder");
+                GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabsPath);
                 if (itemPrefab != null)
                 {
                     Debug.Log($"Instantiating item prefab at {itemData.prefabsPath}");
                     GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
 
                     // 아이템 스프라이트 로드
-                    Sprite itemSprite = Resources.Load<Sprite>("Prefabs/Images/Ladder");
+                    Sprite itemSprite = Resources.Load<Sprite>(itemData.spritePath);
                     if (itemSprite == null)
                     {
                         Debug.LogWarning($"Sprite not found at {itemData.spritePath}, using default sprite.");

@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponObject: {fileID: 372932772457697975}
-  EquipedWeapon: {fileID: 4438039351013864645, guid: 95828482b733fa44c98f814045a32b75, type: 3}
+  EquipedWeapon: {fileID: 5739922636550024348, guid: c2077c1b78ebce74fb7003f6a0cb9707, type: 3}
   RWeaponID: 0
   LWeaponID: 0
   topID: 0
