@@ -8,15 +8,12 @@ public class Monster : MonoBehaviour, ICreature
     [SerializeField]private int currentHealth;
     [SerializeField]private bool isDie;
     [SerializeField] public int id { get; private set; }
-    BoxCollider2D boxCollider2D;
     // 몬스터가 죽었을 때 호출되는 함수
     public void SetMonsterComponent(int value)
     {
         id = value;
-        boxCollider2D = GetComponent<BoxCollider2D>();
-        //boxCollider2D.offset = new Vector2(, (int)value);
-        ResetStatus();
-
+        ResetStatus();// 스텟 초기화
+        GameObject MonsterPrefab = Resources.Load<GameObject>("Prefabs/Monsters/Goblin");
     }
     public void Die()
     {
