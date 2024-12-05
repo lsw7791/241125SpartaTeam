@@ -3,6 +3,7 @@ using System.Collections.Generic;
 public class GameManager : MonoSingleton<GameManager>
 {
     public MonsterPool monsterPool;// 몬스터 풀
+
     //public ProjectilePool projectilePool; // 발사체 풀
     protected override void Awake()
     {
