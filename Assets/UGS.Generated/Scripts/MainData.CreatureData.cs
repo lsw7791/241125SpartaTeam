@@ -73,7 +73,10 @@ namespace MainData
 		public System.String prefabsPath;
 		public System.String spritePath;
 		public System.String animatorPath;
-		public System.Collections.Generic.List<Int32> collider2D;
+		public System.Single offsetX;
+		public System.Single offsetY;
+		public System.Single sizeX;
+		public System.Single sizeY;
   
 
 #region fuctions

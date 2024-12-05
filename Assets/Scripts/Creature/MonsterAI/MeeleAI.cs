@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class MeeleAI : MonsterAI
 {
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+
         // playerTransform이 null이면 추적할 플레이어가 없다는 의미로 초기 위치로 돌아감
         if (playerTransform == null)
         {

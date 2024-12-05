@@ -31,9 +31,17 @@ public class MonsterAI : MonoBehaviour
         monster = GetComponent<Monster>();
         initialPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        playerTransform = GameObject.FindWithTag("Player")?.transform;
-        // 맵을 씬으로 나눈다고 하지 않았던가?
+        playerTransform = Player.Instance?.transform;
     }
+
+    protected virtual void FixedUpdate()
+    {
+        if(Player.Instance._playerAnimationController.isDeath)
+        {
+            playerTransform = null;
+        }
+    }
+
     protected virtual void AttackPlayer()
     {
         curTime += Time.deltaTime;
@@ -49,6 +57,8 @@ public class MonsterAI : MonoBehaviour
         {
             transform.Translate(direction * DataManager.Instance.creature.GetMoveSpeed(monster.id) * Time.deltaTime, Space.World);
             spriteRenderer.flipX = direction.x < 0;  // 이동 중에만 방향을 바꿈
+
+            currentState = MonsterState.Idle;
         }
     }
 
@@ -60,16 +70,16 @@ public class MonsterAI : MonoBehaviour
         spriteRenderer.flipX = direction.x <= 0;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    { // 애 사용 안하고 있음
-        // 플레이어와 충돌 시 플레이어 추적 시작
-        if (collision.TryGetComponent<Player>(out var outPlayer))
-        {
-            playerTransform = collision.transform;
-            currentState = MonsterState.Chasing;
-            // 플레이어와 접촉 시 추적 상태로 변경
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{ // 애 사용 안하고 있음
+    //    // 플레이어와 충돌 시 플레이어 추적 시작
+    //    if (collision.TryGetComponent<Player>(out var outPlayer))
+    //    {
+    //        playerTransform = collision.transform;
+    //        currentState = MonsterState.Chasing;
+    //        // 플레이어와 접촉 시 추적 상태로 변경
+    //    }
+    //}
 
     private void Attack(Player inPlayer)
     {

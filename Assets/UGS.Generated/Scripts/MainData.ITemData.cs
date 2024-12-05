@@ -70,7 +70,6 @@ namespace MainData
 		public System.Int32 sell;
 		public System.Int32 buy;
 		public System.Single speed;
-		public System.Single drop;
 		public System.String prefabsPath;
 		public System.String spritePath;
   
