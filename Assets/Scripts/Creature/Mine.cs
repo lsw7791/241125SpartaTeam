@@ -53,10 +53,10 @@ public class Mine : MonoBehaviour, ICreature
     }
     public void Die()
     {
-        if (GameManager.Instance.monsterPool != null)
+        if (SpawnManager.Instance.monsterPool != null)
         {
             // 몬스터의 종류를 구분해서 풀에 반환 (creatureId로 구별)
-            GameManager.Instance.monsterPool.ReturnMonster(id, gameObject);
+            SpawnManager.Instance.monsterPool.ReturnMonster(id, gameObject);
         }
         else
         {
