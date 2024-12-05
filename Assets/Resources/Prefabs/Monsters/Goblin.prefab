@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7656142714056762797}
   - component: {fileID: 3131933923667785821}
   - component: {fileID: 658380143935366654}
-  - component: {fileID: 503313074460704794}
   - component: {fileID: 4467120117265488242}
   - component: {fileID: -5277253562613049673}
   m_Layer: 0
@@ -115,38 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3157ef725d87d40af2beb470853a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropItem:
-  - {fileID: 1329635983773602927, guid: 5ebbb4281ed91494a9ce6bdaafaa9cc6, type: 3}
-  - {fileID: 4597196983332853825, guid: 165d9398f2555654693b60798e94ccb2, type: 3}
-  - {fileID: 6731572672689791235, guid: 3f9b93f48f6cf864d8798b5efb1453ed, type: 3}
-  - {fileID: 2700245836473193817, guid: 79055738cf5413a4c86ab586bdc34633, type: 3}
---- !u!114 &503313074460704794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087532890236348039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6435756da3fc44e8d89b5999655bfa65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  creatureType: 0
-  creatureName: 
-  creatureDesc: 
-  creatureTier: 0
-  creatureAttack: 0
-  creatureDefense: 0
-  creatureHealth: 0
-  creatureAttackSpeed: 0
-  creatureDetectionRange: 0
-  creatureAttackRange: 0
-  creatureMoveSpeed: 0
-  creatureDrop: 0
   currentHealth: 0
   isDie: 0
+  id: 0
 --- !u!61 &4467120117265488242
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4761027037224170309}
   - component: {fileID: 2145251835393613975}
   - component: {fileID: 8405643791356805492}
-  - component: {fileID: 8250641587791711376}
   - component: {fileID: 3730264629332621575}
   - component: {fileID: -8654409089390416807}
   m_Layer: 0
@@ -115,34 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3157ef725d87d40af2beb470853a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8250641587791711376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2698521004006730288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6435756da3fc44e8d89b5999655bfa65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  creatureid: 0
-  creatureType: 0
-  creatureName: 
-  creatureDesc: 
-  creatureTier: 0
-  creatureAttack: 0
-  creatureDefense: 0
-  creatureHealth: 0
-  creatureAttackSpeed: 0
-  creatureDetectionRange: 0
-  creatureAttackRange: 0
-  creatureMoveSpeed: 0
-  creatureDrop: 0
   currentHealth: 0
   isDie: 0
+  id: 0
 --- !u!61 &3730264629332621575
 BoxCollider2D:
   m_ObjectHideFlags: 0
