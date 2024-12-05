@@ -86,12 +86,12 @@ public class GameManager : MonoSingleton<GameManager>
         monsterPool.InitializeMonsterPool(11, necromancerPrefab, 5);  // Necromancer
         monsterPool.InitializeMonsterPool(12, demonPrefab, 5);  // Demon
 
-        monsterPool.InitializeMonsterPool(13, stoneMine, 5);  // stoneMine
-        monsterPool.InitializeMonsterPool(14, copperMine, 5);  // stoneMine
-        monsterPool.InitializeMonsterPool(15, ironMine, 5);  // stoneMine
-        monsterPool.InitializeMonsterPool(16, goldMine, 5);  // stoneMine
-        monsterPool.InitializeMonsterPool(17, platinumMine, 5);  // stoneMine
-        monsterPool.InitializeMonsterPool(18, ignisMine, 5);  // stoneMine
+        //monsterPool.InitializeMonsterPool(13, stoneMine, 5);  // stoneMine
+        //monsterPool.InitializeMonsterPool(14, copperMine, 5);  // stoneMine
+        //monsterPool.InitializeMonsterPool(15, ironMine, 5);  // stoneMine
+        //monsterPool.InitializeMonsterPool(16, goldMine, 5);  // stoneMine
+        //monsterPool.InitializeMonsterPool(17, platinumMine, 5);  // stoneMine
+        //monsterPool.InitializeMonsterPool(18, ignisMine, 5);  // stoneMine
 
 
         SpawnMonster(1, new Vector2(1f, 1f));

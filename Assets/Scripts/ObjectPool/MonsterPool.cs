@@ -86,21 +86,21 @@ public class MonsterPool : MonoBehaviour
     }
 
     // 몬스터를 풀에 반환하는 함수 (creatureId 기준)
-    public void ReturnMonster(int creatureId, GameObject monster)
+    public void ReturnMonster(int creatureId, GameObject thisObject)
     {
-        monster.SetActive(false);  // 비활성화
+        thisObject.SetActive(false);  // 비활성화
 
         // 몬스터의 상태 리셋
-        Monster monsterData = monster.GetComponent<Monster>();
-        if (monsterData != null)
+        Monster monster = thisObject.GetComponent<Monster>();
+        if (thisObject.GetComponent<Monster>() != null)
         {
-            monsterData.ResetStatus();  // 상태 리셋 (currentHealth, isDie)
+            monster.ResetStatus();  // 상태 리셋 (currentHealth, isDie)
         }
 
         // 풀에 반환
         if (monsterPools.ContainsKey(creatureId))
         {
-            monsterPools[creatureId].Enqueue(monster);
+            monsterPools[creatureId].Enqueue(thisObject);
         }
         else
         {
