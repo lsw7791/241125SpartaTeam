@@ -1803,7 +1803,7 @@ MonoBehaviour:
     CurrentHP: 1
     Stamina: 100
     Gold: 5
-    Damage: 5
+    Damage: 1000
     Speed: 5
     AttackSpeed: 5
     Defense: 5
