@@ -5,14 +5,25 @@ using UnityEngine;
 
 public class SpawnManager : MonoSingleton<SpawnManager>
 {
+    public MonsterPool monsterPool;// 몬스터 풀
+    public void Initialize()
+    {
+        GameObject objectPoolGroup = new GameObject();
+        objectPoolGroup.name = "objectPoolGroup";
+        objectPoolGroup.AddComponent<MonsterPool>();
+
+        if (!objectPoolGroup.TryGetComponent(out monsterPool))
+        {
+            objectPoolGroup.AddComponent<MonsterPool>();
+        }
+    }
     private void Start()
     {
         SpawnPool();
-        SpawnMonster(1, new Vector2(1f, 1f));
-        SpawnMonster(4, new Vector2(2f, 1f));
-        SpawnMonster(5, new Vector2(3f, 1f));
+        monsterPool.GetMonster(1, new Vector2(1f, 1f));
+        monsterPool.GetMonster(4, new Vector2(2f, 1f));
+        monsterPool.GetMonster(5, new Vector2(3f, 1f));
     }
-    public MonsterPool monsterPool;// 몬스터 풀
     public void SpawnPool()
     {
         // 몬스터 풀 초기화 (각 몬스터 타입에 대해 풀을 생성)
@@ -28,25 +39,5 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         monsterPool.InitializeMonsterPool(10, 5);  // Knight
         monsterPool.InitializeMonsterPool(11, 5);  // Necromancer
         monsterPool.InitializeMonsterPool(12, 5);  // Demon
-    }
-    public void Initialize()
-    {
-        GameObject objectPoolGroup = new GameObject();
-        objectPoolGroup.name = "objectPoolGroup";
-        objectPoolGroup.AddComponent<MonsterPool>();
-
-        if (!objectPoolGroup.TryGetComponent(out monsterPool))
-        {
-            objectPoolGroup.AddComponent<MonsterPool>();
-        }
-    }
-    public void SpawnMonster(int creatureId, Vector2 position)
-    {
-        // 몬스터를 풀에서 가져옵니다
-        GameObject monster = monsterPool.GetMonster(creatureId, position);
-        if (monster != null)
-        {
-            // 몬스터가 성공적으로 생성된 경우 추가 처리 가능
-        }
-    }
+    }   
 }
