@@ -19,12 +19,11 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     }
     private void Start()
     {
-        SpawnPool();
+        SpawnMonsterPool();
         monsterPool.GetMonster(1, new Vector2(1f, 1f));
-        monsterPool.GetMonster(4, new Vector2(2f, 1f));
-        monsterPool.GetMonster(5, new Vector2(3f, 1f));
+
     }
-    public void SpawnPool()
+    public void SpawnMonsterPool()
     {
         // 몬스터 풀 초기화 (각 몬스터 타입에 대해 풀을 생성)
         monsterPool.InitializeMonsterPool(1, 5);  // Goblin
@@ -39,5 +38,11 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         monsterPool.InitializeMonsterPool(10, 5);  // Knight
         monsterPool.InitializeMonsterPool(11, 5);  // Necromancer
         monsterPool.InitializeMonsterPool(12, 5);  // Demon
-    }   
+
+        GameObject mine1 = monsterPool.InitializeMine(13, new Vector2(2f,2f));
+        GameObject mine2 = monsterPool.InitializeMine(14, new Vector2(2f, 1f));
+        GameObject mine3 = monsterPool.InitializeMine(15, new Vector2(2f, 0f));
+
+
+    }
 }

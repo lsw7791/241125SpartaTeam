@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class MonsterPool : MonoBehaviour
@@ -14,6 +15,16 @@ public class MonsterPool : MonoBehaviour
     {
         gameManager = GameManager.Instance;
         monsterPrefab = Resources.Load<GameObject>("Prefabs/Monster");
+    }
+    public GameObject InitializeMine(int creatureId, Vector2 position)
+    {
+        if(creatureId <13) return null;// 몬스터 소환 못하게 막기
+            GameObject minePrefab = Resources.Load<GameObject>(DataManager.Instance.creature.GetPrefabsPath(creatureId));
+            GameObject obj = Instantiate(minePrefab);
+            Mine mine = obj.GetComponent<Mine>();
+            mine.SetComponent(creatureId);// 몬스터 모든 데이터 초기화
+            obj.transform.position = position;
+        return obj;
     }
     public void InitializeMonsterPool(int creatureId, int poolSize)
     {      
@@ -31,7 +42,7 @@ public class MonsterPool : MonoBehaviour
                 GameObject child = Instantiate(childPrefab);
                 child.transform.SetParent(obj.transform);  // obj가 부모가 되도록 설정
                 child.transform.localPosition = Vector3.zero;  // 자식의 위치를 부모의 (0, 0, 0)으로 설정 (필요시 조정)
-                monster.SetMonsterComponent(creatureId);// 몬스터 모든 데이터 초기화
+                monster.SetComponent(creatureId);// 몬스터 모든 데이터 초기화
 
             }
             poolQueue.Enqueue(obj);

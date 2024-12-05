@@ -33,6 +33,7 @@ public class Mine : MonoBehaviour, ICreature
             {
                 minefull.ObjectSetActive(true);
                 isDie = false;
+                ResetStatus();
             }
         }
     }
@@ -64,6 +65,8 @@ public class Mine : MonoBehaviour, ICreature
         }
 
         isDie = true;  // 몬스터 죽음 처리
+        minefull.ObjectSetActive(false);
+
         Debug.Log($"Monster {DataManager.Instance.creature.GetName(id)} has died.");
         DropItems();  // 아이템 드랍 함수 호출
     }
@@ -118,5 +121,10 @@ public class Mine : MonoBehaviour, ICreature
     {
         currentHealth = DataManager.Instance.creature.GetHealth(id);  // 최대 체력으로 리셋
         isDie = false;  // 죽지 않은 상태로 리셋
+    }
+    public void SetComponent(int value)
+    {
+        id = value;
+        ResetStatus();// 스텟 초기화
     }
 }
