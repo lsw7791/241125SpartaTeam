@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
@@ -6,10 +7,14 @@ public class Monster : MonoBehaviour, ICreature
 {
     [SerializeField]private int currentHealth;
     [SerializeField]private bool isDie;
-    [SerializeField] public int id;
-
+    [SerializeField] public int id { get; private set; }
     // 몬스터가 죽었을 때 호출되는 함수
-
+    public void SetMonsterComponent(int value)
+    {
+        id = value;
+        ResetStatus();// 스텟 초기화
+        GameObject MonsterPrefab = Resources.Load<GameObject>("Prefabs/Monsters/Goblin");
+    }
     public void Die()
     {
         if (GameManager.Instance.monsterPool != null)
