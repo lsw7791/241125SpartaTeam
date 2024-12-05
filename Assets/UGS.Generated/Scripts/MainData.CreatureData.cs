@@ -71,6 +71,8 @@ namespace MainData
 		public System.Single drop;
 		public System.Collections.Generic.List<Int32> dropItemIds;
 		public System.String prefabsPath;
+		public System.String spritePath;
+		public System.String animatorPath;
 		public System.Collections.Generic.List<Int32> collider2D;
   
 
