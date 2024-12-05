@@ -72,18 +72,18 @@ public class GameManager : MonoSingleton<GameManager>
         }
 
         // 몬스터 풀 초기화 (각 몬스터 타입에 대해 풀을 생성)
-        monsterPool.InitializeMonsterPool(1, goblinPrefab, 5);  // Goblin
-        monsterPool.InitializeMonsterPool(2, lizardPrefab, 5);  // Lizard
-        monsterPool.InitializeMonsterPool(3, zombiePrefab, 5);  // Zombie
-        monsterPool.InitializeMonsterPool(4, orcShamanPrefab, 5);  // OrcShaman
-        monsterPool.InitializeMonsterPool(5, BigzombiePrefab, 5);  // BigZombie
-        monsterPool.InitializeMonsterPool(6, ImpPrefab, 5);  // Imp
-        monsterPool.InitializeMonsterPool(7, skeletPrefab, 5);  // Skelet
-        monsterPool.InitializeMonsterPool(8, iceZombiePrefab, 5);  // IceZombie
-        monsterPool.InitializeMonsterPool(9, ogrePrefab, 5);  // Ogre
-        monsterPool.InitializeMonsterPool(10, knightPrefab, 5);  // Knight
-        monsterPool.InitializeMonsterPool(11, necromancerPrefab, 5);  // Necromancer
-        monsterPool.InitializeMonsterPool(12, demonPrefab, 5);  // Demon
+        monsterPool.InitializeMonsterPool(1, 5);  // Goblin
+        monsterPool.InitializeMonsterPool(2, 5);  // Lizard
+        monsterPool.InitializeMonsterPool(3, 5);  // Zombie
+        monsterPool.InitializeMonsterPool(4, 5);  // OrcShaman
+        monsterPool.InitializeMonsterPool(5, 5);  // BigZombie
+        monsterPool.InitializeMonsterPool(6, 5);  // Imp
+        monsterPool.InitializeMonsterPool(7, 5);  // Skelet
+        monsterPool.InitializeMonsterPool(8, 5);  // IceZombie
+        monsterPool.InitializeMonsterPool(9, 5);  // Ogre
+        monsterPool.InitializeMonsterPool(10, 5);  // Knight
+        monsterPool.InitializeMonsterPool(11, 5);  // Necromancer
+        monsterPool.InitializeMonsterPool(12, 5);  // Demon
 
         //monsterPool.InitializeMonsterPool(13, stoneMine, 5);  // stoneMine
         //monsterPool.InitializeMonsterPool(14, copperMine, 5);  // stoneMine

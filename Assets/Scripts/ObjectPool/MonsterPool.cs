@@ -13,25 +13,27 @@ public class MonsterPool : MonoBehaviour
     private void Awake()
     {
         gameManager = GameManager.Instance;
-        monsterPrefab = Resources.Load<GameObject>("Prefabs/Monsters/Monster");
+        monsterPrefab = Resources.Load<GameObject>("Prefabs/Monster");
     }
-    public void InitializeMonsterPool(int creatureId, GameObject prefab, int poolSize)
-    {
+    public void InitializeMonsterPool(int creatureId, int poolSize)
+    {      
         Queue<GameObject> poolQueue = new Queue<GameObject>();
 
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject obj = Instantiate(prefab);
+            GameObject obj = Instantiate(monsterPrefab);
             obj.SetActive(false);  // 비활성화 상태로 추가
-
             // 몬스터 데이터 초기화 (creatureId를 받아서 초기화)
             Monster monster = obj.GetComponent<Monster>();
             if (monster != null)
             {
-                monster.id = creatureId;// creatureId로 몬스터 데이터 초기화
-                monster.ResetStatus();
-            }
+                GameObject childPrefab = Resources.Load<GameObject>(DataManager.Instance.creature.GetPrefabsPath(creatureId));
+                GameObject child = Instantiate(childPrefab);
+                child.transform.SetParent(obj.transform);  // obj가 부모가 되도록 설정
+                child.transform.localPosition = Vector3.zero;  // 자식의 위치를 부모의 (0, 0, 0)으로 설정 (필요시 조정)
+                monster.SetMonsterComponent(creatureId);// 몬스터 모든 데이터 초기화
 
+            }
             poolQueue.Enqueue(obj);
         }
 
@@ -51,6 +53,7 @@ public class MonsterPool : MonoBehaviour
             Monster monster = monsterObj.GetComponent<Monster>();
             if (monster != null)
             {
+
                 monster.ResetStatus();  // 풀에서 반환된 몬스터 상태 리셋
             }
 

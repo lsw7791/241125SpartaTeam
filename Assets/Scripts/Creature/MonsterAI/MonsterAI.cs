@@ -28,7 +28,7 @@ public class MonsterAI : MonoBehaviour
 
     private void Start()
     {
-        monster = GetComponent<Monster>();
+        monster = GetComponentInParent<Monster>();
         initialPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerTransform = Player.Instance?.transform;
