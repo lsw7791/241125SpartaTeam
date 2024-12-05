@@ -22,7 +22,7 @@ public class ProjectileCollisionHandler : MonoBehaviour
         Destroy(gameObject);  // 발사체가 충돌하면 바로 사라짐
 
         // 충돌한 객체가 IDamageable을 구현한 경우 데미지를 적용
-        if (collision.gameObject.TryGetComponent<ICreature>(out var outTarget))
+        if (collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
         {
             outTarget.TakeDamage(_damage);  // 데미지 처리
             Debug.Log($"Projectile dealt {_damage} damage to {outTarget.GetType().Name}");
