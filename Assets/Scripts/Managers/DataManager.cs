@@ -10,10 +10,15 @@ public class DataManager : SingleTon<DataManager>
 
     public void Initialize()
     {
+        Debug.Log("Initializing ItemDataManager...");
+
+        // 데이터 로드
         UnityGoogleSheet.LoadAllData();
         item = new ItemDataManager();
         creature = new CreatureDataManager();
         crafting = new CraftingDataManager();
+
+        Debug.Log("ItemDataManager initialized.");
     }
 
 

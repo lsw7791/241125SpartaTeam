@@ -23,14 +23,12 @@ public class PlayerWeapon : MonoBehaviour
     public void ActivateWeaponCollider()
     {
         _weaponCollider.enabled = true;  // 공격 시 콜라이더 활성화
-        Debug.Log("Weapon Collider Activated!");
     }
 
     // 무기 콜라이더 비활성화
     public void DeactivateWeaponCollider()
     {
         _weaponCollider.enabled = false; // 공격 종료 시 콜라이더 비활성화
-        Debug.Log("Weapon Collider Deactivated!");
     }
 
 
