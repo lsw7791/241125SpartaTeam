@@ -17,7 +17,7 @@ public class MonsterAI : MonoBehaviour
     [SerializeField]
     protected Transform playerTransform;                 // 추적할 플레이어
     protected Vector3 initialPosition;                   // 몬스터의 초기 위치
-    protected SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;    
 
     [Header("Attack")]
     [SerializeField]
