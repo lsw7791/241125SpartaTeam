@@ -35,7 +35,6 @@ public static class PlayerSaveLoad
                 WeaponType = player.Stats.WeaponType
             },
 
-            Inventory = new InventoryData()
         };
 
         // QuickSlotItems 저장 (QuickSlotItem 객체로 저장)
@@ -47,7 +46,7 @@ public static class PlayerSaveLoad
         // 인벤토리 아이템도 저장
         foreach (InventoryItem item in player.Inventory.Items)
         {
-            data.Inventory.ItemIDs.Add(item.ItemID.ToString());  // InventoryItem에서 ItemID는 string으로 저장
+            //data.Inventory.ItemIDs.Add(item.ItemID.ToString());  // InventoryItem에서 ItemID는 string으로 저장
         }
 
         string json = data.ToJson();
@@ -89,11 +88,11 @@ public static class PlayerSaveLoad
 
         // Inventory 아이템 로드
         player.Inventory.Items.Clear();
-        foreach (string itemID in data.Inventory.ItemIDs)
-        {
-            // 예시로 itemSprite를 null로 설정
-            player.Inventory.AddItem(itemID, "Item Name", 1, "ItemType", null);  // ItemName과 ItemType은 예시로 설정
-        }
+        //foreach (string itemID in data.Inventory.ItemIDs)
+        //{
+        //    // 예시로 itemSprite를 null로 설정
+        //    player.Inventory.AddItem(itemID, "Item Name", 1, "ItemType", null);  // ItemName과 ItemType은 예시로 설정
+        //}
 
         Debug.Log("플레이어 데이터 로드 완료");
     }
