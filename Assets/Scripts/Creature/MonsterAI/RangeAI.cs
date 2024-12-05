@@ -89,7 +89,6 @@ public class RangeAI : MonsterAI
             // 투사체에 방향을 부여
             if (projectile.TryGetComponent<Projectile>(out var outProjectile))
             {
-                outProjectile.damage = DataManager.Instance.creature.GetAttack(monster.id);
                 projectile.TryGetComponent<Rigidbody2D>(out var outRigidbody2D);
                 outProjectile.Initialize(enemyLayer);
                 // 플레이어 방향으로 투사체 발사

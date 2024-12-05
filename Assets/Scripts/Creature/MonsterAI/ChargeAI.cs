@@ -67,7 +67,7 @@ public class ChargeAI : MonsterAI
         if (!isCharging)
         {
             isCharging = true;
-            chargeStartTime = Time.time;  // 돌진 시작 시간 기록
+            chargeStartTime += Time.time;  // 돌진 시작 시간 기록
             chargeTargetPosition = playerTransform.position;  // 플레이어의 현재 위치 저장
             Debug.Log("돌진 준비 중...");
         }

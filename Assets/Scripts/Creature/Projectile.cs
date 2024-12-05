@@ -3,7 +3,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float lifeTime = 10f;  // 투사체 생존 시간
-    public int damage;      // 투사체 데미지
+    public int damage = 3;      // 투사체 데미지
 
     public LayerMask targetLayer; // 감지 대상 레이어마스크
 
