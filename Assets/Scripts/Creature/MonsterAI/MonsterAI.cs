@@ -57,8 +57,6 @@ public class MonsterAI : MonoBehaviour
         {
             transform.Translate(direction * DataManager.Instance.creature.GetMoveSpeed(monster.id) * Time.deltaTime, Space.World);
             spriteRenderer.flipX = direction.x < 0;  // 이동 중에만 방향을 바꿈
-
-            currentState = MonsterState.Idle;
         }
     }
 
