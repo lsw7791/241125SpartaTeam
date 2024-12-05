@@ -7,7 +7,7 @@ public class InventorySlot : MonoBehaviour
 
     public void Initialize(ItemInstance item)
     {
-        itemImage.sprite = item.icon; // 아이템의 아이콘 설정
+        //itemImage.sprite = item.icon; // 아이템의 아이콘 설정
         itemImage.enabled = true;    // 이미지 표시
     }
 
