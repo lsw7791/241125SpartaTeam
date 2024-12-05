@@ -11,14 +11,15 @@ public class TestItem : MonoBehaviour
     {
         itemData = data;
         itemSprite = sprite; // 스프라이트 데이터 저장
+        Debug.Log($"Item set: {itemData.name} - {itemData.desc}");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Player>(out var outPlayer))
+        // 플레이어와의 충돌인지 확인
+        if (collision.CompareTag("Player"))
         {
-
-            // 아이템을 인벤토리에 추가 (스프라이트 포함)
+            // 아이템을 인벤토리에 추가 (싱글톤을 활용)
             Player.Instance.AddItemToInventory(
                 itemData.id.ToString(),
                 itemData.name,
@@ -30,4 +31,5 @@ public class TestItem : MonoBehaviour
             Destroy(gameObject); // 아이템 제거
         }
     }
+
 }
