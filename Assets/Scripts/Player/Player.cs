@@ -43,7 +43,7 @@ public class Player : MonoSingleton<Player>, IDamageable
     }
 
     // 인벤토리 관련: 스프라이트 포함
-    public void AddItemToInventory(string itemID, string itemName, int quantity, string itemType, Sprite itemSprite, int? slotIndex = null)
+    public void AddItemToInventory(string itemID, string itemName, int quantity, string itemType, Sprite itemSprite)
     {
         inventory.AddItem(itemID, itemName, quantity, itemType, itemSprite);  // 스프라이트 포함
     }
