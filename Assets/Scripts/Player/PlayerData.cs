@@ -18,7 +18,6 @@ public class PlayerData
 
     // PlayerStats와 Inventory 추가
     public PlayerStatsData Stats;  // PlayerStats의 데이터를 저장
-    public InventoryData Inventory; // PlayerInventory의 데이터를 저장
 
     // JSON 직렬화
     public string ToJson()
