@@ -8,4 +8,5 @@ public interface ICreature
     public void DropItems();
     void TakeDamage(int damage);
     void Die();
+    void SetComponent(int value);
 }

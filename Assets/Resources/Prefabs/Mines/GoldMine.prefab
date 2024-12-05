@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4954004172510956965}
   - component: {fileID: 876243754099968414}
   - component: {fileID: 434963654633313506}
+  - component: {fileID: 3361300903417517218}
   m_Layer: 0
   m_Name: MIneFull
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 300620906, guid: 0c48a87e68c9f4ffc8b82b70736cacb9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -97,49 +98,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b492d79343f74f84e9c02e9d37d01f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7370978927638959767
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3549485722979248990}
-  - component: {fileID: 3771369977647663856}
-  - component: {fileID: 113355969173661423}
-  - component: {fileID: -3579145509399372566}
-  m_Layer: 0
-  m_Name: GoldMine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3549485722979248990
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7370978927638959767}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4954004172510956965}
-  - {fileID: 2559482193121370920}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &3771369977647663856
+--- !u!58 &3361300903417517218
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7370978927638959767}
+  m_GameObject: {fileID: 3806597434529015211}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -167,8 +132,42 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6
---- !u!114 &113355969173661423
+  m_Radius: 0.15
+--- !u!1 &7370978927638959767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3549485722979248990}
+  - component: {fileID: 5489900262782949265}
+  m_Layer: 0
+  m_Name: GoldMine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3549485722979248990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7370978927638959767}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4954004172510956965}
+  - {fileID: 2559482193121370920}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5489900262782949265
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,34 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85970c34af858d46a4559085f1d3897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-3579145509399372566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7370978927638959767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6435756da3fc44e8d89b5999655bfa65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  creatureid: 0
-  creatureType: 0
-  creatureName: 
-  creatureDesc: 
-  creatureTier: 0
-  creatureAttack: 0
-  creatureDefense: 0
-  creatureHealth: 0
-  creatureAttackSpeed: 0
-  creatureDetectionRange: 0
-  creatureAttackRange: 0
-  creatureMoveSpeed: 0
-  creatureDrop: 0
   currentHealth: 0
   isDie: 0
+  id: 0
 --- !u!1 &7506043860937155581
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +254,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1503094038, guid: 0c48a87e68c9f4ffc8b82b70736cacb9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
