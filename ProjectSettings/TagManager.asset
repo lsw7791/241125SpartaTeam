@@ -7,6 +7,9 @@ TagManager:
   - Bow
   - Staff
   - Shield
+  - Weapon
+  - Monster
+  - Mine
   layers:
   - Default
   - TransparentFX

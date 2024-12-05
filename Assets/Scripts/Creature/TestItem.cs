@@ -11,14 +11,12 @@ public class TestItem : MonoBehaviour
     {
         itemData = data;
         itemSprite = sprite; // 스프라이트 데이터 저장
-        Debug.Log($"Item set: {itemData.name} - {itemData.desc}");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Player>(out var outPlayer))
         {
-            Debug.Log($"Player picked up: {itemData.name}");
 
             // 아이템을 인벤토리에 추가 (스프라이트 포함)
             Player.Instance.AddItemToInventory(

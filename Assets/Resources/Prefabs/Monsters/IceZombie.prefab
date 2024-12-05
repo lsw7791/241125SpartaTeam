@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4691992021252810146}
   m_Layer: 0
   m_Name: IceZombie
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,6 +148,9 @@ MonoBehaviour:
   curTime: 0
   projectilePrefab: {fileID: 0}
   attackPoint: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!95 &4691992021252810146
 Animator:
   serializedVersion: 5
