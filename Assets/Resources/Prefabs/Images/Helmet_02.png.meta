@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 287cba57eb7cecb4fa1d255403bc8791
+guid: 213e9f7939031435897ad8047a033882
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8876508137973978904
-    second: Body
-  - first:
-      213: -2384050728755203925
-    second: Left
-  - first:
-      213: 1280680924109167244
-    second: Right
+      213: 7024299019002798086
+    second: Helmet_1_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -30,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -48,14 +42,14 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 9
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -78,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 32
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -91,7 +85,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 32
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -104,22 +98,22 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: iPhone
-    maxTextureSize: 32
+    maxTextureSize: 128
     resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureFormat: 4
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 32
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
@@ -130,7 +124,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
-    maxTextureSize: 32
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -145,64 +139,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Body
+      name: Helmet_1_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 12
-        width: 10
-        height: 6
-      alignment: 9
-      pivot: {x: 0.6, y: 0.5833333}
+        x: 0
+        y: 0
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8179dc92f11bf2b70800000000000000
-      internalID: 8876508137973978904
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Left
-      rect:
-        serializedVersion: 2
-        x: 22
-        y: 15
-        width: 5
-        height: 4
-      alignment: 9
-      pivot: {x: 0.3, y: 0.75}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ba0f8025e762aeed0800000000000000
-      internalID: -2384050728755203925
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Right
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 15
-        width: 5
-        height: 4
-      alignment: 9
-      pivot: {x: 0.9, y: 0.875}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c8a5520e384e5c110800000000000000
-      internalID: 1280680924109167244
+      spriteID: 
+      internalID: 7024299019002798086
       vertices: []
       indices: 
       edges: []
@@ -218,9 +170,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Body: 8876508137973978904
-      Left: -2384050728755203925
-      Right: 1280680924109167244
+      Helmet_1_0: 7024299019002798086
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
