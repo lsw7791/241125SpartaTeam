@@ -33,6 +33,7 @@ public class Mine : MonoBehaviour, ICreature
             {
                 minefull.ObjectSetActive(true);
                 isDie = false;
+                ResetStatus();
             }
         }
     }
@@ -53,10 +54,10 @@ public class Mine : MonoBehaviour, ICreature
     }
     public void Die()
     {
-        if (GameManager.Instance.monsterPool != null)
+        if (SpawnManager.Instance.monsterPool != null)
         {
             // 몬스터의 종류를 구분해서 풀에 반환 (creatureId로 구별)
-            GameManager.Instance.monsterPool.ReturnMonster(id, gameObject);
+            SpawnManager.Instance.monsterPool.ReturnMonster(id, gameObject);
         }
         else
         {
@@ -64,6 +65,8 @@ public class Mine : MonoBehaviour, ICreature
         }
 
         isDie = true;  // 몬스터 죽음 처리
+        minefull.ObjectSetActive(false);
+
         Debug.Log($"Monster {DataManager.Instance.creature.GetName(id)} has died.");
         DropItems();  // 아이템 드랍 함수 호출
     }
@@ -118,5 +121,10 @@ public class Mine : MonoBehaviour, ICreature
     {
         currentHealth = DataManager.Instance.creature.GetHealth(id);  // 최대 체력으로 리셋
         isDie = false;  // 죽지 않은 상태로 리셋
+    }
+    public void SetComponent(int value)
+    {
+        id = value;
+        ResetStatus();// 스텟 초기화
     }
 }

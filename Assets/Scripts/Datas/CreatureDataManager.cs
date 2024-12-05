@@ -80,26 +80,4 @@ public class CreatureDataManager : CreatureData
     {
         return CreatureDataMap[id].prefabsPath;
     }
-    public string GetSpritePath(int id)
-    {
-        return CreatureDataMap[id].spritePath;
-    }
-    public string GetAnimatorPath(int id)
-    {
-        return CreatureDataMap[id].animatorPath;
-    }
-    public Vector2 GetColliderOffsetXY(int id)
-    {
-        Vector2 value = new Vector2(CreatureDataMap[id].offsetX,CreatureDataMap[id].offsetY);
-        return value;
-    }
-    public Vector2 GetColliderSizeXY(int id)
-    {
-        Vector2 value = new Vector2(CreatureDataMap[id].sizeX, CreatureDataMap[id].sizeY);
-        return value;
-    }
-    public float GetColliderRadius(int id)
-    {
-        return CreatureDataMap[id].offsetX;
-    }
 }
