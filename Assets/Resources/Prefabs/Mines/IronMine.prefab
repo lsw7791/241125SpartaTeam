@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3353214575377254055}
   - component: {fileID: 1819460492149313089}
-  - component: {fileID: 6269101876276598423}
-  - component: {fileID: -5365671673490455486}
   m_Layer: 0
   m_Name: IronMine
   m_TagString: Untagged
@@ -71,46 +69,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
---- !u!114 &6269101876276598423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5680830849289324242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f85970c34af858d46a4559085f1d3897, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-5365671673490455486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5680830849289324242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6435756da3fc44e8d89b5999655bfa65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  creatureid: 0
-  creatureType: 0
-  creatureName: 
-  creatureDesc: 
-  creatureTier: 0
-  creatureAttack: 0
-  creatureDefense: 0
-  creatureHealth: 0
-  creatureAttackSpeed: 0
-  creatureDetectionRange: 0
-  creatureAttackRange: 0
-  creatureMoveSpeed: 0
-  creatureDrop: 0
-  currentHealth: 0
-  isDie: 0
 --- !u!1 &7819509053590826840
 GameObject:
   m_ObjectHideFlags: 0
