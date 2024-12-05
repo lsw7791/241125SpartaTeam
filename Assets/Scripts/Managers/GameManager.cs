@@ -87,9 +87,9 @@ public class GameManager : MonoSingleton<GameManager>
         //monsterPool.InitializeMonsterPool(18, ignisMine, 5);  // stoneMine
 
 
-        //SpawnMonster(1, new Vector2(1f, 1f));
+        SpawnMonster(1, new Vector2(1f, 1f));
         SpawnMonster(4, new Vector2(2f, 1f));
-        //SpawnMonster(5, new Vector2(3f, 1f));
+        SpawnMonster(5, new Vector2(3f, 1f));
     }
 
     void SpawnMonster(int creatureId, Vector2 position)

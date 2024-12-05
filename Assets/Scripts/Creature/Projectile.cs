@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // TODO :: 생성시 데이터에서 동적으로 값 받아오기
-    public float lifeTime = 3f;  // 투사체 생존 시간
-    public int damage = 10;      // 투사체 데미지
+    public float lifeTime = 10f;  // 투사체 생존 시간
+    public int damage;      // 투사체 데미지
 
     public LayerMask targetLayer; // 감지 대상 레이어마스크
 
@@ -16,7 +15,7 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         //Invoke("DeSpenObject", lifeTime);
-        Destroy(gameObject, 10);
+        Destroy(gameObject, lifeTime);
     }
 
     void DeSpenObject()
