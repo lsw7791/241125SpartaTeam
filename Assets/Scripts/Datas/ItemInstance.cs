@@ -5,23 +5,22 @@ using UnityEngine;
 public class ItemInstance : MonoBehaviour
 {
     public int id; //서버에서 발급해주는 아이템
-    public int itemid; //기획 데이터에 있는 아이템 아이디
-    public ItemType itemtype;
-    public string itemname;
-    public string itemdesc;
-    public int itemtier;
-    public int itemhealth;
-    public int itemstamina;
-    public int itemdefense;
-    public int itemattackp;
-    public int itemattackm;
-    public int itemattackmining;
-    public int itemsell;
-    public int itembuy;
-    public float itemSpeed;
-    public float itemdrop;
-
-    public int count; // how many Items
-    public int enhance; // 강화등급
+    public int itemId; //기획 데이터에 있는 아이템 아이디
+    public ItemType type;
+    public string name;
+    public string desc;
+    public int tier;
+    public int health;
+    public int stamina;
+    public int defense;
+    public int attack;
+    public int attackM;
+    public int attackMine;
+    public int sell;
+    public int buy;
+    public float speed;
+    public float drop;
+    public string prefabsPath;
+    public string imagePath;
 
 }
