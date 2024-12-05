@@ -61,8 +61,8 @@ public class Monster : MonoBehaviour, ICreature
             // 랜덤한 드롭 위치 생성
             Vector3 randomOffset = new Vector3(
                 Random.Range(-dropRange, dropRange),
-                0f, // 높이(y)는 그대로 유지
-                Random.Range(-dropRange, dropRange)
+                Random.Range(-dropRange, dropRange),
+                transform.position.z
             );
             Vector3 dropPosition = transform.position + randomOffset;
 
