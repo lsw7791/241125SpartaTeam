@@ -24,6 +24,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 
     public MonsterPool monsterPool;// 몬스터 풀
+    public ProjectilePool projectilePool; // 발사체 풀
 
     protected override void Awake()
     {
@@ -61,16 +62,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
-        GameObject objectPoolGroup = new GameObject();
-        objectPoolGroup.name = "objectPoolGroup";
-        objectPoolGroup.AddComponent<MonsterPool>();
-
-        if (!objectPoolGroup.TryGetComponent(out monsterPool))
-        {
-            objectPoolGroup.AddComponent<MonsterPool>();
-        }
-
-        //monsterPool = new MonsterPool();
+        monsterPool = GroupSpawn("Enemy").AddComponent<MonsterPool>();
+        projectilePool = GroupSpawn("Projectile").AddComponent<ProjectilePool>();
 
         // 몬스터 풀 초기화 (각 몬스터 타입에 대해 풀을 생성)
         monsterPool.InitializeMonsterPool(1, goblinPrefab, 5);  // Goblin
@@ -94,9 +87,9 @@ public class GameManager : MonoSingleton<GameManager>
         //monsterPool.InitializeMonsterPool(18, ignisMine, 5);  // stoneMine
 
 
-        SpawnMonster(1, new Vector2(1f, 1f));
-        
-
+        //SpawnMonster(1, new Vector2(1f, 1f));
+        SpawnMonster(4, new Vector2(2f, 1f));
+        //SpawnMonster(5, new Vector2(3f, 1f));
     }
 
     void SpawnMonster(int creatureId, Vector2 position)
@@ -107,5 +100,13 @@ public class GameManager : MonoSingleton<GameManager>
         {
             // 몬스터가 성공적으로 생성된 경우 추가 처리 가능
         }
+    }
+
+    GameObject GroupSpawn(string inGroupName)
+    {
+        GameObject outPoolGroup = new GameObject();
+        outPoolGroup.name = $"{inGroupName} PoolGroup";
+
+        return outPoolGroup;
     }
 }

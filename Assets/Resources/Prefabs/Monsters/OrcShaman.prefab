@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3120675961869419971}
   - component: {fileID: -7808808522940984572}
   - component: {fileID: 8885282190152906650}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OrcShaman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,8 +162,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
   curTime: 0
-  projectilePrefab: {fileID: 0}
-  attackPoint: {fileID: 0}
+  projectilePrefab: {fileID: 2718856006269825222, guid: 77e1c58752a0bd041a500203bfb9030f, type: 3}
+  attackPoint: {fileID: 7387730638300440181}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 640
 --- !u!95 &8885282190152906650
 Animator:
   serializedVersion: 5

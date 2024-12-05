@@ -10,8 +10,11 @@ public class ChargeAI : MonsterAI
     private bool isCharging = false;      // 돌진 상태를 추적하는 변수
     private float chargeStartTime = 0f;   // 돌진 시작 시간을 추적
 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+
+        // playerTransform이 null이면 추적할 플레이어가 없다는 의미로 초기 위치로 돌아감
         if (playerTransform == null)
         {
             currentState = MonsterState.Returning;
