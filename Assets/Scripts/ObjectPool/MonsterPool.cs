@@ -28,8 +28,7 @@ public class MonsterPool : MonoBehaviour
             Monster monster = obj.GetComponent<Monster>();
             if (monster != null)
             {
-                monster.id = creatureId;// creatureId로 몬스터 데이터 초기화
-                monster.ResetStatus();
+                monster.SetMonsterComponent(creatureId);// 몬스터 모든 데이터 초기화
             }
 
             poolQueue.Enqueue(obj);
