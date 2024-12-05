@@ -1,61 +1,49 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
 public class InventoryUI : UIBase
 {
-    [SerializeField] private Transform itemListContainer;  // 아이템 리스트를 표시할 UI 컨테이너
-    [SerializeField] private GameObject itemSlotPrefab;    // 아이템 슬롯의 프리팹
+    private const int TotalSlots = 12; // 슬롯 개수 고정
+    private List<ItemInstance> _items;
+    private List<GameObject> _slots;
 
-    private Inventory inventory;
+    public Transform slotContainer; // 슬롯 부모 객체
+    public GameObject slotPrefab;   // 슬롯 프리팹
 
-    protected override void Awake()
+    public Sprite emptySlotSprite;  // 빈 슬롯에 사용할 이미지
+
+    public void Initialize(List<ItemInstance> items)
     {
-        base.Awake();
-        inventory = Player.Instance.Inventory;  // 플레이어의 인벤토리 참조
+        _items = items;
+        CreateSlots();  // 고정된 슬롯 생성
+        Refresh();
     }
 
-    public override void Open()
+    private void CreateSlots()
     {
-        base.Open();  // UIBase의 Open 메서드 호출
-        UpdateInventoryUI();  // 인벤토리 UI 갱신
-    }
-
-    public override void Close()
-    {
-        base.Close();  // UIBase의 Close 메서드 호출
-    }
-
-    // 인벤토리 UI 업데이트
-    public void UpdateInventoryUI()
-    {
-        // 기존 아이템 리스트 삭제
-        foreach (Transform child in itemListContainer)
+        for (int i = 0; i < TotalSlots; i++)
         {
-            Destroy(child.gameObject);
+            GameObject slot = Instantiate(slotPrefab, slotContainer);
+            _slots.Add(slot);
         }
+    }
 
-        // 현재 인벤토리 아이템들을 아이템 슬롯으로 변환하여 표시
-        List<InventoryItem> inventoryItems = inventory.GetItems();  // 인벤토리 아이템 목록 가져오기
-
-        foreach (var item in inventoryItems)
+    private void Refresh()
+    {
+        // 슬롯 초기화
+        for (int i = 0; i < TotalSlots; i++)
         {
-            // 슬롯 생성
-            GameObject itemSlot = Instantiate(itemSlotPrefab, itemListContainer);
+            var slotComponent = _slots[i].GetComponent<InventorySlot>();
 
-            // TextMeshProUGUI 컴포넌트에 아이템 이름과 갯수 표시
-            TextMeshProUGUI itemText = itemSlot.GetComponentInChildren<TextMeshProUGUI>();  // TextMeshProUGUI로 변경
-            if (itemText != null)
+            if (i < _items.Count)
             {
-                itemText.text = $"{item.ItemName} x{item.Quantity}";  // 아이템 이름과 수량
+                // 아이템이 있는 경우 슬롯에 아이템 표시
+                slotComponent.Initialize(_items[i]);
             }
-
-            // 아이콘 이미지 컴포넌트에 아이템 아이콘 설정
-            Image itemIcon = itemSlot.GetComponentInChildren<Image>();
-            if (itemIcon != null && item.ItemIcon != null)
+            else
             {
-                itemIcon.sprite = item.ItemIcon;  // 아이템 아이콘 설정
+                // 아이템이 없는 경우 빈 슬롯으로 설정
+                slotComponent.ClearSlot(emptySlotSprite);
             }
         }
     }
