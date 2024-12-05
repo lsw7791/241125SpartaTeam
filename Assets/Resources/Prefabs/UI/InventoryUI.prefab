@@ -2010,7 +2010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d15722958bfa49198503938e31ff85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTransform: {fileID: 0}
+  rectTransform: {fileID: 3712293098154734666}
   slotContainer: {fileID: 8164360139419117570}
   slotPrefab: {fileID: 4481820763286981204, guid: 468ae4f84ac9dd94186859605a2c1a1d, type: 3}
   emptySlotSprite: {fileID: 0}
