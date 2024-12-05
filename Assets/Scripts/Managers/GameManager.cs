@@ -24,6 +24,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 
     public MonsterPool monsterPool;// 몬스터 풀
+    //public ProjectilePool projectilePool; // 발사체 풀
 
     protected override void Awake()
     {
@@ -70,8 +71,6 @@ public class GameManager : MonoSingleton<GameManager>
             objectPoolGroup.AddComponent<MonsterPool>();
         }
 
-        //monsterPool = new MonsterPool();
-
         // 몬스터 풀 초기화 (각 몬스터 타입에 대해 풀을 생성)
         monsterPool.InitializeMonsterPool(1, 5);  // Goblin
         monsterPool.InitializeMonsterPool(2, 5);  // Lizard
@@ -95,8 +94,8 @@ public class GameManager : MonoSingleton<GameManager>
 
 
         SpawnMonster(1, new Vector2(1f, 1f));
-        
-
+        SpawnMonster(4, new Vector2(2f, 1f));
+        SpawnMonster(5, new Vector2(3f, 1f));
     }
 
     void SpawnMonster(int creatureId, Vector2 position)

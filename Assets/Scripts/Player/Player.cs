@@ -73,7 +73,7 @@ public class Player : MonoSingleton<Player>, IDamageable
     public void Die()
     {
         _topDownController.TriggerDeath();
-        UIManager.Instance.deathUI.SetActive(true);
+        //UIManager.Instance.deathUI.SetActive(true);
         Debug.Log($"{NickName} has died.");
     }
 
