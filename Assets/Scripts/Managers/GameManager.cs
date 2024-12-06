@@ -2,7 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 public class GameManager : MonoSingleton<GameManager>
 {
-    GameObject miniCameraPrefab;
+    GameObject miniCamera;
+    GameObject playerObject;
+    public Player player;
     protected override void Awake()
     {
         base.Awake();
@@ -12,12 +14,12 @@ public class GameManager : MonoSingleton<GameManager>
        
         ItemManager.Instance.Initialize(items);
         SpawnManager.Instance.Initialize();
-        miniCameraPrefab = Resources.Load<GameObject>("Prefabs/Cameras/MinimapCamera");
     }
     private void Start()
     {
-        GameObject miniCamera = Instantiate(miniCameraPrefab);
+        miniCamera = Instantiate(Resources.Load<GameObject>("Prefabs/Cameras/MinimapCamera"));
+        playerObject = Instantiate(Resources.Load<GameObject>("Prefabs/TestPlayer_Backup"));
+        player = playerObject.GetComponent<Player>();
 
-        Player player = new Player();
     }
 }

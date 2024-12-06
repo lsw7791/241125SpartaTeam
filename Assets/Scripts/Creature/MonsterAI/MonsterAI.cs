@@ -35,12 +35,12 @@ public class MonsterAI : MonoBehaviour
         monster = GetComponentInParent<Monster>();
         initialPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        playerTransform = Player.Instance?.transform;
+        playerTransform = GameManager.Instance.player?.transform;
     }
 
     protected virtual void FixedUpdate()
     {
-        if(Player.Instance._playerAnimationController.isDeath)
+        if(GameManager.Instance.player._playerAnimationController.isDeath)
         {
             playerTransform = null;
         }
@@ -79,7 +79,7 @@ public class MonsterAI : MonoBehaviour
     {
         if (collision.CompareTag("Weapon")) // 辟芭府
         {
-            monster.TakeDamage(Player.Instance.stats.Damage); // 单固瘤 贸府
+            monster.TakeDamage(GameManager.Instance.player.stats.Damage); // 单固瘤 贸府
         }
     }
 

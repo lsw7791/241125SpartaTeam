@@ -20,7 +20,6 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         {
             objectPoolGroup.AddComponent<MonsterPool>();
         }
-        Player player = new Player();
     }
     private void Start()
     {

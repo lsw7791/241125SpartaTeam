@@ -13,7 +13,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void Awake()
     {
-        Player.Instance._playerCamera = this;
+        GameManager.Instance.player._playerCamera = this;
     }
     void Start()
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoSingleton<Player>, IDamageable
+public class Player : MonoBehaviour,IDamageable
 {
     [SerializeField] private string NickName;
 
@@ -24,9 +24,8 @@ public class Player : MonoSingleton<Player>, IDamageable
         QuickSlots = new QuickSlot();  // QuickSlot ∞¥√º √ ±‚»≠
     }
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         _topDownController = GetComponent<TopDownController>();
     }
 
