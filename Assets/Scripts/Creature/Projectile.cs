@@ -30,9 +30,13 @@ public class Projectile : MonoBehaviour
         if (IsLayerMatched(targetLayer.value, collision.gameObject.layer))
         {
             // TODO :: 데미지 관련은 플레이어 쪽에서 한다고 함
-            if (collision.TryGetComponent<IDamageable>(out var outtarget))
+            if (collision.TryGetComponent<IDamageable>(out var outPlayer))
             { // 레이어를 거치고 왔기 때문에 몬스터와 플레이어의 혼동은 없음
-                outtarget.TakeDamage(damage); // 데미지 처리
+                outPlayer.TakeDamage(damage); // 데미지 처리
+            }
+            else if(collision.TryGetComponent<ICreature>(out var outEnemy))
+            {
+                outEnemy.TakeDamage(damage); // 데미지 처리
             }
             // 벽도 레이어를 추가해 발사체 제거
             //DeSpenObject();      // 투사체 파괴
