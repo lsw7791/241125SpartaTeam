@@ -17,5 +17,7 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         GameObject miniCamera = Instantiate(miniCameraPrefab);
+
+        Player player = new Player();
     }
 }

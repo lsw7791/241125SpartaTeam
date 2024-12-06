@@ -6,6 +6,10 @@ using UnityEngine;
 public class SpawnManager : MonoSingleton<SpawnManager>
 {
     public MonsterPool monsterPool;// 몬스터 풀
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     public void Initialize()
     {
         GameObject objectPoolGroup = new GameObject();
@@ -16,6 +20,7 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         {
             objectPoolGroup.AddComponent<MonsterPool>();
         }
+        Player player = new Player();
     }
     private void Start()
     {
