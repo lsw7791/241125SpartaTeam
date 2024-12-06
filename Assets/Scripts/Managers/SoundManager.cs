@@ -18,12 +18,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip clickSfx;
     [SerializeField] private AudioClip itemSfx;
 
-
-      public SoundManager()
-    {
-    }
-    
-
     private void Start()
     {
         SetAudioSource();
