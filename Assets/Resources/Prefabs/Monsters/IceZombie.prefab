@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6257829402681093734}
   - component: {fileID: -5934529494136091522}
   - component: {fileID: 4691992021252810146}
+  - component: {fileID: 6860265342707834116}
   m_Layer: 0
   m_Name: IceZombie
   m_TagString: Monster
@@ -145,12 +146,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
-  curTime: 0
-  projectilePrefab: {fileID: 0}
-  attackPoint: {fileID: 0}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 0
+  curTime: 0
+  projectilePrefab: {fileID: 0}
+  attackPoint: {fileID: 0}
 --- !u!95 &4691992021252810146
 Animator:
   serializedVersion: 5
@@ -172,3 +173,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &6860265342707834116
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727059919326803391}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
