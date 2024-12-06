@@ -7,7 +7,6 @@ public class GameManager : MonoSingleton<GameManager>
     public SoundManager soundManager;
     public UIManager uIManager;
     public SpawnManager spawnManager;
-    GameObject miniCamera;
     GameObject playerObject;
     GameObject SoundManagerObject;
     public Player player;
@@ -24,7 +23,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         playerObject = Instantiate(Resources.Load<GameObject>("Prefabs/TestPlayer_Backup"));
         player = playerObject.GetComponent<Player>();
-        miniCamera = Instantiate(Resources.Load<GameObject>("Prefabs/Cameras/MinimapCamera"));
+        GameObject miniCamera = Instantiate(Resources.Load<GameObject>("Prefabs/Cameras/MinimapCamera"));
         //SpawnManager.Instance.Initialize();
         spawnManager = new SpawnManager();
         spawnManager.Initialize();
