@@ -9,14 +9,9 @@ public class PlayerCamera : MonoBehaviour
     public float smoothTime = 0.3f; // 카메라 이동 부드러움 정도를 결정하는 값 (작을수록 더 부드럽고, 커질수록 더 빠르게 이동)
 
     private Vector3 velocity = Vector3.zero;  // 카메라의 현재 속도
-
-
-    private void Awake()
-    {
-        GameManager.Instance.player._playerCamera = this;
-    }
     void Start()
     {
+        GameManager.Instance.player._playerCamera = this;
         if (mainCamera == null)
         {
             mainCamera = Camera.main;

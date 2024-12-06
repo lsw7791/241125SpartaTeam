@@ -10,7 +10,7 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] GameObject[] _attackObjects; // 0번: 화살, 1번: 파이어볼
     [SerializeField] RectTransform _aoSpawnPoint; // 발사 위치
 
-    private void Awake()
+    private void Start()
     {
         GameManager.Instance.player._playerWeapon = this;
         _weapon = this.gameObject;

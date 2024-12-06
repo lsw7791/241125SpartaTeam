@@ -15,7 +15,6 @@ public class TopDownController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         topDownAimRotation =GetComponent<TopDownAimRotation>();
-        GameManager.Instance.player._topDownController = this;
         camera = Camera.main;
     }
 

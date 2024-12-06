@@ -28,14 +28,13 @@ public class MonsterAI : MonoBehaviour
     protected float curTime = 0f;                         // 공격 쿨타임
 
     protected MonsterState currentState = MonsterState.Idle;  // 현재 상태
-
-
     private void Start()
-    {rb = GetComponent<Rigidbody2D>();
+    {
+        rb = GetComponent<Rigidbody2D>();
         monster = GetComponentInParent<Monster>();
-        initialPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        playerTransform = GameManager.Instance.player?.transform;
+        initialPosition = transform.position;
+        playerTransform = GameManager.Instance.player.gameObject.transform;
     }
 
     protected virtual void FixedUpdate()

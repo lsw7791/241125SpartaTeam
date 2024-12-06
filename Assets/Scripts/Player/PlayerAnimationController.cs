@@ -8,10 +8,12 @@ public class PlayerAnimationController : MonoBehaviour
 
 
 
-
     private void Awake()
     {
-        _animator = GetComponent<Animator>();   
+        _animator = GetComponent<Animator>();
+    }
+    private void Start()
+    {  
         GameManager.Instance.player._playerAnimationController = this;
     }
     public void SetMoveAnimation(bool isMoving)
