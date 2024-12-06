@@ -17,10 +17,10 @@ public class Monster : MonoBehaviour, ICreature
     }
     public void Die()
     {
-        if (SpawnManager.Instance.monsterPool != null)
+        if (GameManager.Instance.spawnManager.monsterPool != null)
         {
             // 몬스터의 종류를 구분해서 풀에 반환 (creatureId로 구별)
-            SpawnManager.Instance.monsterPool.ReturnMonster(id, gameObject);
+            GameManager.Instance.spawnManager.monsterPool.ReturnMonster(id, gameObject);
         }
         else
         {
@@ -56,7 +56,7 @@ public class Monster : MonoBehaviour, ICreature
         {
             // 아이템 데이터와 프리팹 로드
             var itemData = GameManager.Instance.dataManager.GetItemDataById(itemId);
-            GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabsPath);
+            GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabPath);
 
             // 랜덤한 드롭 위치 생성
             Vector3 randomOffset = new Vector3(

@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using UGS;
 using UnityEngine;
 
-public class SpawnManager : MonoSingleton<SpawnManager>
+public class SpawnManager : MonoBehaviour
 {
     public MonsterPool monsterPool;// 몬스터 풀
-    protected override void Awake()
-    {
-        base.Awake();
-    }
     public void Initialize()
     {
         GameObject objectPoolGroup = new GameObject();
@@ -20,14 +16,11 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         {
             objectPoolGroup.AddComponent<MonsterPool>();
         }
-    }
-    private void Start()
-    {
+
         SpawnMonsterPool();
         monsterPool.GetMonster(1, new Vector2(1f, 1f));
         monsterPool.GetMonster(4, new Vector2(1f, 2f));
         monsterPool.GetMonster(5, new Vector2(1f, 3f));
-
     }
     public void SpawnMonsterPool()
     {

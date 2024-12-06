@@ -78,6 +78,6 @@ public class CreatureDataManager : CreatureData
     }
     public string GetPrefabsPath(int id)
     {
-        return CreatureDataMap[id].prefabsPath;
+        return CreatureDataMap[id].prefabPath;
     }
 }
