@@ -5,9 +5,9 @@ using UnityEngine;
 public class DeathUI : MonoBehaviour
 {
     // Start is called before the first frame update
-    private void Awake()
+    private void Start()
     {
-        UIManager.Instance.deathUI = this.gameObject;
+        GameManager.Instance.uIManager.deathUI = this.gameObject;
         this.gameObject.SetActive(false);
     }
 

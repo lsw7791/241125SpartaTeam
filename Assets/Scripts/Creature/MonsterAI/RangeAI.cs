@@ -28,11 +28,11 @@ public class RangeAI : MonsterAI
                 break;
 
             case MonsterState.Chasing:
-                if (distanceToPlayer <= DataManager.Instance.creature.GetAttackRange(monster.id))
+                if (distanceToPlayer <= GameManager.Instance.dataManager.creature.GetAttackRange(monster.id))
                 {
                     currentState = MonsterState.Attacking;
                 }
-                else if (distanceToPlayer > DataManager.Instance.creature.GetDetectionRange(monster.id))
+                else if (distanceToPlayer > GameManager.Instance.dataManager.creature.GetDetectionRange(monster.id))
                 {
                     currentState = MonsterState.Returning;
                 }
@@ -47,14 +47,14 @@ public class RangeAI : MonsterAI
                 break;
 
             case MonsterState.Returning:
-                if (distanceToPlayer > DataManager.Instance.creature.GetDetectionRange(monster.id))
+                if (distanceToPlayer > GameManager.Instance.dataManager.creature.GetDetectionRange(monster.id))
                 {
                     ReturnToInitialPosition();
                 }
                 break;
         }
 
-        if (distanceToPlayer <= DataManager.Instance.creature.GetDetectionRange(monster.id) && currentState != MonsterState.Attacking)
+        if (distanceToPlayer <= GameManager.Instance.dataManager.creature.GetDetectionRange(monster.id) && currentState != MonsterState.Attacking)
         {
             currentState = MonsterState.Chasing;
         }
@@ -63,7 +63,7 @@ public class RangeAI : MonsterAI
     protected override void AttackPlayer()
     {
         base.AttackPlayer();
-        if (curTime >= DataManager.Instance.creature.GetAttackSpeed(monster.id))
+        if (curTime >= GameManager.Instance.dataManager.creature.GetAttackSpeed(monster.id))
         {
             curTime = 0f;
 
@@ -87,12 +87,12 @@ public class RangeAI : MonsterAI
             // 투사체에 방향을 부여
             if (projectile.TryGetComponent<Projectile>(out var outProjectile))
             {
-                outProjectile.damage = DataManager.Instance.creature.GetAttack(monster.id);
+                outProjectile.damage = GameManager.Instance.dataManager.creature.GetAttack(monster.id);
                 projectile.TryGetComponent<Rigidbody2D>(out var outRigidbody2D);
                 outProjectile.Initialize(enemyLayer);
                 // 플레이어 방향으로 투사체 발사
                 Vector3 direction = (playerTransform.position - attackPoint.position).normalized;
-                outRigidbody2D.velocity = direction * DataManager.Instance.creature.GetAttackSpeed(monster.id);
+                outRigidbody2D.velocity = direction * GameManager.Instance.dataManager.creature.GetAttackSpeed(monster.id);
             }
         }
     }

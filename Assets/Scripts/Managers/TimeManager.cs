@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManager : MonoSingleton<TimeManager>
+public class TimeManager : MonoBehaviour
 {
-    protected override void Awake()
-    {
-        base.Awake();
-    }
+  
 }

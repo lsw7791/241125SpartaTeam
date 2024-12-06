@@ -2,13 +2,13 @@ using MainData;
 using UGS;
 using UnityEngine;
 
-public class DataManager : SingleTon<DataManager>
+public class DataManager
 {
     public ItemDataManager item;
     public CreatureDataManager creature;
     public CraftingDataManager crafting;
     
-    public void Initialize()
+    public DataManager()
     {
         Debug.Log("Initializing ItemDataManager...");
         // 데이터 로드

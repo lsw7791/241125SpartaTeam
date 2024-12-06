@@ -19,7 +19,7 @@ public class MonsterPool : MonoBehaviour
     public GameObject InitializeMine(int creatureId, Vector2 position)
     {
         if(creatureId <13) return null;// 몬스터 소환 못하게 막기
-            GameObject minePrefab = Resources.Load<GameObject>(DataManager.Instance.creature.GetPrefabsPath(creatureId));
+            GameObject minePrefab = Resources.Load<GameObject>(GameManager.Instance.dataManager.creature.GetPrefabsPath(creatureId));
             GameObject obj = Instantiate(minePrefab);
             Mine mine = obj.GetComponent<Mine>();
             mine.SetComponent(creatureId);// 몬스터 모든 데이터 초기화
@@ -38,7 +38,7 @@ public class MonsterPool : MonoBehaviour
             Monster monster = obj.GetComponent<Monster>();
             if (monster != null)
             {
-                GameObject childPrefab = Resources.Load<GameObject>(DataManager.Instance.creature.GetPrefabsPath(creatureId));
+                GameObject childPrefab = Resources.Load<GameObject>(GameManager.Instance.dataManager.creature.GetPrefabsPath(creatureId));
                 GameObject child = Instantiate(childPrefab);
                 child.transform.SetParent(obj.transform);  // obj가 부모가 되도록 설정
                 child.transform.localPosition = Vector3.zero;  // 자식의 위치를 부모의 (0, 0, 0)으로 설정 (필요시 조정)
@@ -126,7 +126,7 @@ public class MonsterPool : MonoBehaviour
     // creatureId에 해당하는 프리팹을 가져오는 함수
     private GameObject GetPrefabByCreatureId(int creatureId)
     {
-        GameObject childPrefab = Resources.Load<GameObject>(DataManager.Instance.creature.GetPrefabsPath(creatureId));
+        GameObject childPrefab = Resources.Load<GameObject>(GameManager.Instance.dataManager.creature.GetPrefabsPath(creatureId));
         return childPrefab;
     }
 }
