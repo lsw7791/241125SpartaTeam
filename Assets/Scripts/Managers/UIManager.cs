@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoSingleton<UIManager>
+public class UIManager : MonoBehaviour
 {
     public GameObject deathUI;
 
@@ -12,10 +12,7 @@ public class UIManager : MonoSingleton<UIManager>
     public static float ScreenWidth = 1920;
     public static float ScreenHeight = 1080;
 
-    protected override void Awake()
-    {
-        
-    }
+
     public T GetUI<T>() where T : UIBase
     {
         var uiName = typeof(T).Name;
