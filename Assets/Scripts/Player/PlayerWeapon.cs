@@ -10,9 +10,9 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] GameObject[] _attackObjects; // 0번: 화살, 1번: 파이어볼
     [SerializeField] RectTransform _aoSpawnPoint; // 발사 위치
 
-    private void Awake()
+    private void Start()
     {
-        Player.Instance._playerWeapon = this;
+        GameManager.Instance.player._playerWeapon = this;
         _weapon = this.gameObject;
         EquipManager.Instance.WeaponObject = _weapon;
         _weaponCollider = _weapon.GetComponent<Collider2D>();  // 무기의 Collider2D 가져오기
@@ -51,7 +51,7 @@ public class PlayerWeapon : MonoBehaviour
         arrow.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 180));  // 회전 적용
 
         // 충돌 처리 - 화살이 충돌 시 데미지 적용
-        arrow.AddComponent<ProjectileCollisionHandler>().Initialize(Player.Instance.Stats.Damage);
+        arrow.AddComponent<ProjectileCollisionHandler>().Initialize(GameManager.Instance.player.Stats.Damage);
 
         Debug.Log("Fired Arrow!");
     }
@@ -76,7 +76,7 @@ public class PlayerWeapon : MonoBehaviour
         fireball.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 180));  // 회전 적용
 
         // 충돌 처리 - 파이어볼이 충돌 시 데미지 적용
-        fireball.AddComponent<ProjectileCollisionHandler>().Initialize(Player.Instance.Stats.Damage);
+        fireball.AddComponent<ProjectileCollisionHandler>().Initialize(GameManager.Instance.player.Stats.Damage);
 
         Debug.Log("Fired Fireball!");
     }
@@ -89,8 +89,8 @@ public class PlayerWeapon : MonoBehaviour
         if (collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
         {
             // 플레이어가 충돌한 오브젝트가 IDamageable을 구현한 경우
-            outTarget.TakeDamage(Player.Instance.Stats.Damage);  // 데미지 처리
-            Debug.Log($"Player dealt {Player.Instance.Stats.Damage} damage to {outTarget.GetType().Name}");
+            outTarget.TakeDamage(GameManager.Instance.player.Stats.Damage);  // 데미지 처리
+            Debug.Log($"Player dealt {GameManager.Instance.player.Stats.Damage} damage to {outTarget.GetType().Name}");
         }
     }
 }

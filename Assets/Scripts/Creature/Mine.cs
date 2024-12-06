@@ -45,7 +45,7 @@ public class Mine : MonoBehaviour, ICreature
             PlayerWeapon playerWeapon = collision.collider.GetComponent<PlayerWeapon>();
 
             // 데미지를 받는 메서드 호출
-            TakeDamage(Player.Instance.Stats.Damage);
+            TakeDamage(GameManager.Instance.player.Stats.Damage);
         }
     }
     public void TakeDamage(int damage)

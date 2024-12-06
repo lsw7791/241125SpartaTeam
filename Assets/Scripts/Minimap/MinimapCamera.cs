@@ -10,9 +10,11 @@ public class MinimapCamera : MonoBehaviour
     public float maxSize = 30f; // 최대 미니맵 사이즈
     public float sizeChangeAmount = 1f; // 크기 조정량
     private void Awake()
-    {
-       
+    {    
         minimapCamera = GetComponent<Camera>();
+    }
+    private void Start()
+    {
         // "Player" 태그가 붙은 첫 번째 오브젝트 찾기
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -20,8 +22,6 @@ public class MinimapCamera : MonoBehaviour
         {
             Debug.LogError("Player 오브젝트를 찾을 수 없습니다. 'Player' 태그가 붙은 오브젝트가 필요합니다.");
         }
-
-        // RenderTexture를 코드에서 동적으로 불러오기 (파일 경로로)
         minimapTexture = Resources.Load<RenderTexture>("Prefabs/Cameras/MinimapRenderTexture");
 
         if (minimapTexture == null)
@@ -34,7 +34,6 @@ public class MinimapCamera : MonoBehaviour
         {
             minimapCamera.targetTexture = minimapTexture;
         }
-
     }
     private void Update()
     {

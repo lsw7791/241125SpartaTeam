@@ -53,7 +53,6 @@ public class Inventory
             if (item.Quantity <= 0)
                 Items.Remove(item);
         }
-
         OnInventoryChanged?.Invoke();
     }
 }

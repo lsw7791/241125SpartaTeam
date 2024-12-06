@@ -28,19 +28,18 @@ public class MonsterAI : MonoBehaviour
     protected float curTime = 0f;                         // 공격 쿨타임
 
     protected MonsterState currentState = MonsterState.Idle;  // 현재 상태
-
-
     private void Start()
-    {rb = GetComponent<Rigidbody2D>();
+    {
+        rb = GetComponent<Rigidbody2D>();
         monster = GetComponentInParent<Monster>();
-        initialPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        playerTransform = Player.Instance?.transform;
+        initialPosition = transform.position;
+        playerTransform = GameManager.Instance.player.gameObject.transform;
     }
 
     protected virtual void FixedUpdate()
     {
-        if(Player.Instance._playerAnimationController.isDeath)
+        if(GameManager.Instance.player._playerAnimationController.isDeath)
         {
             playerTransform = null;
         }
@@ -79,7 +78,7 @@ public class MonsterAI : MonoBehaviour
     {
         if (collision.CompareTag("Weapon")) // 근거리
         {
-            monster.TakeDamage(Player.Instance.stats.Damage); // 데미지 처리
+            monster.TakeDamage(GameManager.Instance.player.stats.Damage); // 데미지 처리
         }
     }
 
