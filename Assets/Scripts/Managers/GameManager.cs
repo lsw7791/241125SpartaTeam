@@ -6,6 +6,7 @@ public class GameManager : MonoSingleton<GameManager>
     public CraftingManager craftingManager;
     public SoundManager soundManager;
     public UIManager uIManager;
+
     GameObject miniCamera;
     GameObject playerObject;
     GameObject SoundManagerObject;

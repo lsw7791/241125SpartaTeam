@@ -1,4 +1,5 @@
 using MainData;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CraftingManager : MonoBehaviour
@@ -53,17 +54,32 @@ public class CraftingManager : MonoBehaviour
         }
 
         // 재료 확인
-        if (!InventoryManager.Instance.HasRequiredMaterials(requiredMaterials))
+        if (!HasRequiredMaterials(requiredMaterials))
         {
             Debug.Log("재료가 부족합니다!");
             return false;
         }
 
         // 재료 소비 및 아이템 생성
-        InventoryManager.Instance.ConsumeMaterials(requiredMaterials);
-        InventoryManager.Instance.AddItem(selectedItemId, 1);
+        ConsumeMaterials(requiredMaterials);
+        AddItem(selectedItemId, 1);
 
         Debug.Log($"아이템 ID {selectedItemId} 제작 성공!");
         return true;
+    }
+    public bool HasRequiredMaterials(Dictionary<int, int> requiredMaterials)
+    {
+        // 재료 확인 로직 구현
+        return true;
+    }
+
+    public void ConsumeMaterials(Dictionary<int, int> requiredMaterials)
+    {
+        // 재료 차감 로직 구현
+    }
+
+    public void AddItem(int id, int quantity)
+    {
+        // 인벤토리에 아이템 추가 로직 구현
     }
 }
