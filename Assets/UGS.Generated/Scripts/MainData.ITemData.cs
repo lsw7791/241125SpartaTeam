@@ -57,6 +57,7 @@ namespace MainData
 /* Fields. */
 
 		public System.Int32 id;
+		public System.Int32 itemId;
 		public ItemType itemType;
 		public System.String name;
 		public System.String desc;
@@ -70,7 +71,7 @@ namespace MainData
 		public System.Int32 sell;
 		public System.Int32 buy;
 		public System.Single speed;
-		public System.String prefabsPath;
+		public System.String prefabPath;
 		public System.String spritePath;
   
 

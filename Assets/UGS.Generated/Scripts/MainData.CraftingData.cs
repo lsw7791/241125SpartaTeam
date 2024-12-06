@@ -57,6 +57,7 @@ namespace MainData
 /* Fields. */
 
 		public System.Int32 id;
+		public System.String name;
 		public System.Int32 tier;
 		public System.Int32 gold;
 		public System.Int32 resourceMine;
