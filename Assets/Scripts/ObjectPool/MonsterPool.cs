@@ -8,14 +8,7 @@ public class MonsterPool : MonoBehaviour
     private Dictionary<int, Queue<GameObject>> monsterPools = new Dictionary<int, Queue<GameObject>>();
     private Dictionary<int, int> poolSizes = new Dictionary<int, int>();  // 각 몬스터의 creatureId를 기준으로 초기 풀 크기 저장
     private const int MAX_POOL_SIZE = 20;  // 풀의 최대 크기 제한
-    private GameManager gameManager;
-    private GameObject monsterPrefab;
     // 풀 초기화 (creatureId와 데이터를 함께 초기화)
-    private void Awake()
-    {
-        gameManager = GameManager.Instance;
-        monsterPrefab = Resources.Load<GameObject>("Prefabs/Monster");
-    }
     public GameObject InitializeMine(int creatureId, Vector2 position)
     {
         if(creatureId <13) return null;// 몬스터 소환 못하게 막기
@@ -32,7 +25,7 @@ public class MonsterPool : MonoBehaviour
 
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject obj = Instantiate(monsterPrefab);
+            GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/Monster"));
             obj.SetActive(false);  // 비활성화 상태로 추가
             // 몬스터 데이터 초기화 (creatureId를 받아서 초기화)
             Monster monster = obj.GetComponent<Monster>();

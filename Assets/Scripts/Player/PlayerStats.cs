@@ -1,3 +1,5 @@
+using UnityEngine.PlayerLoop;
+
 [System.Serializable]
 public class PlayerStats
 {
@@ -10,4 +12,19 @@ public class PlayerStats
     public float AttackSpeed;    // Attack Speed
     public int Defense;          // Defense
     public int WeaponType;       // Weapon Type (¿¹: 0 = Sword, 1 = Bow µî)
+    public bool isDie;
+
+    public void Initialize()
+    {
+        MaxHP = 100;
+        CurrentHP = MaxHP;
+        Stamina = 100;
+        Gold = 1000;
+        Damage = 10;
+        Speed = 1;
+        AttackSpeed = 1;
+        Defense = 1;
+        WeaponType = 0;
+        isDie = false;
+    }
 }

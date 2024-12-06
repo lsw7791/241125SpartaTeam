@@ -42,7 +42,7 @@ public class TopDownController : MonoBehaviour
     }
     public void TriggerDeath()
     {
-        GameManager.Instance.player._playerAnimationController.isDeath = true;
+        GameManager.Instance.player.stats.isDie = true;
         speed = 0f;
         GameManager.Instance.player._playerAnimationController.TriggerDeathAnimation(); // 죽음 애니메이션 실행
         this.enabled = false;
@@ -51,7 +51,7 @@ public class TopDownController : MonoBehaviour
     public void Revive()
     {
         GameManager.Instance.uIManager.deathUI.SetActive(false);
-        GameManager.Instance.player._playerAnimationController.isDeath = false;
+        GameManager.Instance.player.stats.isDie = false;
         speed = 3.5f;
         this.enabled = true;
     }
