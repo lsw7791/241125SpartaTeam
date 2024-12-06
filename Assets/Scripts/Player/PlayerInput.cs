@@ -106,38 +106,38 @@ public class PlayerInput : MonoBehaviour
     // 인벤토리 토글
     private void ToggleInventory()
     {
-        UIManager.Instance.ToggleUI<InventoryUI>();
+        GameManager.Instance.uIManager.ToggleUI<InventoryUI>();
     }
 
     // 맵 토글
     private void ToggleMap()
     {
-        UIManager.Instance.ToggleUI<MapUI>();
+        GameManager.Instance.uIManager.ToggleUI<MapUI>();
     }
 
     // 퀘스트 토글
     private void ToggleCraft()
     {
-        UIManager.Instance.ToggleUI<CraftUI>();
+        GameManager.Instance.uIManager.ToggleUI<CraftUI>();
     }
 
     // 옵션 토글
     private void ToggleOption()
     {
-        if (UIManager.Instance.ActiveUI())
+        if (GameManager.Instance.uIManager.ActiveUI())
         {
-            UIManager.Instance.CloseAllUIs(); // 모든 UI 닫기
+            GameManager.Instance.uIManager.CloseAllUIs(); // 모든 UI 닫기
         }
         else
         {
-            UIManager.Instance.ToggleUI<OptionUI>();
+            GameManager.Instance.uIManager.ToggleUI<OptionUI>();
         }
     }
 
     // 스태터스 토글
     private void ToggleStatus()
     {
-        UIManager.Instance.ToggleUI<StatusUI>();
+        GameManager.Instance.uIManager.ToggleUI<StatusUI>();
     }
 
     // 채집 로직
