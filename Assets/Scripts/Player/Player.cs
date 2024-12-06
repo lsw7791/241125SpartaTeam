@@ -24,8 +24,9 @@ public class Player : MonoSingleton<Player>, IDamageable
         QuickSlots = new QuickSlot();  // QuickSlot ∞¥√º √ ±‚»≠
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _topDownController = GetComponent<TopDownController>();
     }
 
