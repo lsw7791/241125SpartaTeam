@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class CraftingManager : MonoBehaviour
 {
-    public static CraftingManager Instance;
+    //public static CraftingManager Instance;
 
     private int selectedItemId = -1;  // 선택된 아이템의 ID
 
-    private void Awake()
-    {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-    }
+    //private void Awake()
+    //{
+    //    if (Instance == null) Instance = this;
+    //    else Destroy(gameObject);
+    //}
 
     // 아이템 선택 시 처리
     public void SelectItem(int itemId)
@@ -20,7 +20,7 @@ public class CraftingManager : MonoBehaviour
         Debug.Log($"아이템 ID {itemId} 선택됨");
 
         // 선택된 아이템의 정보를 UI에 반영하거나 다른 처리를 할 수 있습니다.
-        CraftingData selectedData = DataManager.Instance.crafting.GetData(itemId);
+        CraftingData selectedData = GameManager.Instance.dataManager.crafting.GetData(itemId);
         if (selectedData != null)
         {
             // 선택된 아이템에 대한 정보 표시 등을 추가
@@ -37,7 +37,7 @@ public class CraftingManager : MonoBehaviour
             return false;
         }
 
-        var requiredMaterials = DataManager.Instance.crafting.GetRequiredMaterials(selectedItemId);
+        var requiredMaterials = GameManager.Instance.dataManager.crafting.GetRequiredMaterials(selectedItemId);
 
         if (requiredMaterials == null || requiredMaterials.Count == 0)
         {

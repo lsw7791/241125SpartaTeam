@@ -63,9 +63,9 @@ public class Mine : MonoBehaviour, ICreature
     public void DropItems()
     {
 
-        foreach (int itemId in DataManager.Instance.creature.GetDropItemIds(id))
+        foreach (int itemId in GameManager.Instance.dataManager.creature.GetDropItemIds(id))
         {
-            var itemData = DataManager.Instance.GetItemDataById(itemId);
+            var itemData = GameManager.Instance.dataManager.GetItemDataById(itemId);
 
             if (itemData != null)
             {
@@ -90,7 +90,7 @@ public class Mine : MonoBehaviour, ICreature
     }
     public void ResetStatus()
     {
-        currentHealth = DataManager.Instance.creature.GetHealth(id);  // 최대 체력으로 리셋
+        currentHealth = GameManager.Instance.dataManager.creature.GetHealth(id);  // 최대 체력으로 리셋
         isDie = false;  // 죽지 않은 상태로 리셋
     }
     public void SetComponent(int value)

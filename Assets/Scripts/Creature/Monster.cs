@@ -42,7 +42,7 @@ public class Monster : MonoBehaviour, ICreature
         }
         else
         {
-            Debug.Log($"Monster {DataManager.Instance.creature.GetName(id)} remaining health: {currentHealth}");
+            Debug.Log($"Monster {GameManager.Instance.dataManager.creature.GetName(id)} remaining health: {currentHealth}");
         }
     }
 
@@ -52,10 +52,10 @@ public class Monster : MonoBehaviour, ICreature
         // 드롭 위치의 랜덤 범위 설정 (x, z 축 기준)
         float dropRange = 1.5f;
 
-        foreach (int itemId in DataManager.Instance.creature.GetDropItemIds(id))
+        foreach (int itemId in GameManager.Instance.dataManager.creature.GetDropItemIds(id))
         {
             // 아이템 데이터와 프리팹 로드
-            var itemData = DataManager.Instance.GetItemDataById(itemId);
+            var itemData = GameManager.Instance.dataManager.GetItemDataById(itemId);
             GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabsPath);
 
             // 랜덤한 드롭 위치 생성
@@ -81,7 +81,7 @@ public class Monster : MonoBehaviour, ICreature
 
     public void ResetStatus()
     {
-        currentHealth = DataManager.Instance.creature.GetHealth(id);  // 최대 체력으로 리셋
+        currentHealth = GameManager.Instance.dataManager.creature.GetHealth(id);  // 최대 체력으로 리셋
         isDie = false;  // 죽지 않은 상태로 리셋
     }
 }

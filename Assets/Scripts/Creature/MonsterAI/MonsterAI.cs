@@ -58,7 +58,7 @@ public class MonsterAI : MonoBehaviour
         // 몬스터가 초기 위치에 거의 도달한 경우, 이동을 멈추고 방향 반전 안함
         if (Vector3.Distance(transform.position, initialPosition) > 0.1f)  // 0.1f는 거의 도달했다고 판단할 수 있는 최소 거리
         {
-            transform.Translate(direction * DataManager.Instance.creature.GetMoveSpeed(monster.id) * Time.deltaTime, Space.World);
+            transform.Translate(direction * GameManager.Instance.dataManager.creature.GetMoveSpeed(monster.id) * Time.deltaTime, Space.World);
             spriteRenderer.flipX = direction.x < 0;  // 이동 중에만 방향을 바꿈
         }
     }
@@ -68,7 +68,7 @@ public class MonsterAI : MonoBehaviour
         if (isMove)
         {
             Vector3 direction = (playerTransform.position - transform.position).normalized;
-            transform.Translate(direction * DataManager.Instance.creature.GetMoveSpeed(monster.id) * Time.deltaTime, Space.World);
+            transform.Translate(direction * GameManager.Instance.dataManager.creature.GetMoveSpeed(monster.id) * Time.deltaTime, Space.World);
 
             spriteRenderer.flipX = direction.x <= 0;
         }
