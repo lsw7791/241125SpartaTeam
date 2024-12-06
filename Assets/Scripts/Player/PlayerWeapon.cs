@@ -10,6 +10,9 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] GameObject[] _attackObjects; // 0번: 화살, 1번: 파이어볼
     [SerializeField] RectTransform _aoSpawnPoint; // 발사 위치
 
+    [SerializeField]
+    protected LayerMask layerMask; // 적군 레이어마스크
+
     private void Start()
     {
         GameManager.Instance.player._playerWeapon = this;
@@ -51,7 +54,8 @@ public class PlayerWeapon : MonoBehaviour
         arrow.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 180));  // 회전 적용
 
         // 충돌 처리 - 화살이 충돌 시 데미지 적용
-        arrow.AddComponent<ProjectileCollisionHandler>().Initialize(GameManager.Instance.player.Stats.Damage);
+        arrow.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile);
+        outProjectile.Initialize(layerMask, GameManager.Instance.player.Stats.Damage);
 
         Debug.Log("Fired Arrow!");
     }
@@ -76,21 +80,22 @@ public class PlayerWeapon : MonoBehaviour
         fireball.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 180));  // 회전 적용
 
         // 충돌 처리 - 파이어볼이 충돌 시 데미지 적용
-        fireball.AddComponent<ProjectileCollisionHandler>().Initialize(GameManager.Instance.player.Stats.Damage);
+        fireball.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile);
+        outProjectile.Initialize(layerMask, GameManager.Instance.player.Stats.Damage);
 
         Debug.Log("Fired Fireball!");
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // 무기의 콜라이더가 비활성화된 상태라면 데미지 처리를 하지 않음
-        if (!_weaponCollider.enabled) return;
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    // 무기의 콜라이더가 비활성화된 상태라면 데미지 처리를 하지 않음
+    //    if (!_weaponCollider.enabled) return;
 
-        if (collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
-        {
-            // 플레이어가 충돌한 오브젝트가 IDamageable을 구현한 경우
-            outTarget.TakeDamage(GameManager.Instance.player.Stats.Damage);  // 데미지 처리
-            Debug.Log($"Player dealt {GameManager.Instance.player.Stats.Damage} damage to {outTarget.GetType().Name}");
-        }
-    }
+    //    if (collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
+    //    {
+    //        // 플레이어가 충돌한 오브젝트가 IDamageable을 구현한 경우
+    //        outTarget.TakeDamage(GameManager.Instance.player.Stats.Damage);  // 데미지 처리
+    //        Debug.Log($"Player dealt {GameManager.Instance.player.Stats.Damage} damage to {outTarget.GetType().Name}");
+    //    }
+    //}
 }
