@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4487959784436109803}
   - component: {fileID: -8650308324458918963}
   - component: {fileID: -353152042986798867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BigZombie
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
-  enemyLayer:
+  layerMask:
     serializedVersion: 2
     m_Bits: 640
   curTime: 0

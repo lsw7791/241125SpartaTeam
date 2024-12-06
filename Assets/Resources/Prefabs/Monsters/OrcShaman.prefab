@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
-  enemyLayer:
+  layerMask:
     serializedVersion: 2
     m_Bits: 640
   curTime: 0
