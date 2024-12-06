@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoSingleton<SoundManager>
+public class SoundManager : MonoBehaviour
 {
     private GameObject _bgmObj;
     private GameObject _sfxObj;
@@ -18,15 +18,16 @@ public class SoundManager : MonoSingleton<SoundManager>
     [SerializeField] private AudioClip clickSfx;
     [SerializeField] private AudioClip itemSfx;
 
-    protected override void Awake()
+
+      public SoundManager()
     {
-        base.Awake();
-        SetAudioSource();
-        SetAudioClip();
     }
+    
 
     private void Start()
     {
+        SetAudioSource();
+        SetAudioClip();
         _bgmSource.volume = 0.5f;
         _sfxSource.volume = 0.5f;
         //PlayBGM(bgmClip); // BGM 시작 시 사용할 수 있도록 설정 (옵션)

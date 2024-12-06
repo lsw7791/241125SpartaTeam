@@ -4,9 +4,10 @@ public class GameManager : MonoSingleton<GameManager>
 {
     public DataManager dataManager;
     public CraftingManager craftingManager;
-
+    public SoundManager soundManager;
     GameObject miniCamera;
     GameObject playerObject;
+    GameObject SoundManagerObject;
     public Player player;
     protected override void Awake()
     {
@@ -23,5 +24,6 @@ public class GameManager : MonoSingleton<GameManager>
         player = playerObject.GetComponent<Player>();
         miniCamera = Instantiate(Resources.Load<GameObject>("Prefabs/Cameras/MinimapCamera"));
         SpawnManager.Instance.Initialize();
+        soundManager = GetComponentInChildren<SoundManager>();
     }
 }
