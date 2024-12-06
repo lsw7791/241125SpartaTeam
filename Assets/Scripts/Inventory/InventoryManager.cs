@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class InventoryManager : MonoSingleton<InventoryManager>
 {
-    
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     public bool HasRequiredMaterials(Dictionary<int, int> requiredMaterials)
     {
         // 재료 확인 로직 구현
