@@ -19,7 +19,7 @@ public class PlayerStats
         MaxHP = 100;
         CurrentHP = MaxHP;
         Stamina = 100;
-        Gold = 1000;
+        Gold = 0;
         Damage = 10;
         Speed = 1;
         AttackSpeed = 1;
