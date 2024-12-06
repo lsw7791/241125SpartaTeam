@@ -56,7 +56,7 @@ public class Monster : MonoBehaviour, ICreature
         {
             // 아이템 데이터와 프리팹 로드
             var itemData = GameManager.Instance.dataManager.GetItemDataById(itemId);
-            GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabsPath);
+            GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabPath);
 
             // 랜덤한 드롭 위치 생성
             Vector3 randomOffset = new Vector3(
