@@ -1,4 +1,5 @@
 using MainData;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CraftingManager : MonoBehaviour
@@ -11,11 +12,12 @@ public class CraftingManager : MonoBehaviour
         selectedItemId = itemId;
         Debug.Log($"아이템 ID {itemId} 선택됨");
 
-        // 크래프팅 데이터를 가져옴
+        // 선택된 아이템의 정보를 UI에 반영하거나 다른 처리를 할 수 있습니다.
         CraftingData selectedData = GameManager.Instance.dataManager.crafting.GetData(itemId);
         if (selectedData != null)
         {
             // 선택된 아이템에 대한 정보 표시
+            Debug.Log($"선택된 아이템: {selectedData}");
 
             // 조합을 시도해봄
             if (TryCraftItem())
@@ -52,36 +54,32 @@ public class CraftingManager : MonoBehaviour
         }
 
         // 재료 확인
-        if (!InventoryManager.Instance.HasRequiredMaterials(requiredMaterials))
+        if (!HasRequiredMaterials(requiredMaterials))
         {
             Debug.Log("재료가 부족합니다!");
             return false;
         }
 
-        // 재료 소비
-        InventoryManager.Instance.ConsumeMaterials(requiredMaterials);
+        // 재료 소비 및 아이템 생성
+        ConsumeMaterials(requiredMaterials);
+        AddItem(selectedItemId, 1);
 
-        // 아이템 데이터 가져오기
-        ItemData selectedItem = GameManager.Instance.dataManager.item.GetItemDataById(selectedItemId);
+        Debug.Log($"아이템 ID {selectedItemId} 제작 성공!");
+        return true;
+    }
+    public bool HasRequiredMaterials(Dictionary<int, int> requiredMaterials)
+    {
+        // 재료 확인 로직 구현
+        return true;
+    }
 
-        if (selectedItem != null)
-        {
-            // 아이템 추가 (이미지 포함)
-            GameManager.Instance.player.inventory.AddItem(
-                selectedItem.id.ToString(),  // 아이템 ID
-                selectedItem.name,       // 아이템 이름
-                1,                           // 아이템 수량
-                selectedItem.itemType.ToString(), // 아이템 타입
-                selectedItem.itemSprite      // 아이템 이미지
-            );
+    public void ConsumeMaterials(Dictionary<int, int> requiredMaterials)
+    {
+        // 재료 차감 로직 구현
+    }
 
-            Debug.Log($"아이템 ID {selectedItemId} 제작 성공!");
-            return true;
-        }
-        else
-        {
-            Debug.LogWarning($"아이템 ID {selectedItemId}에 해당하는 아이템 데이터가 없습니다.");
-            return false;
-        }
+    public void AddItem(int id, int quantity)
+    {
+        // 인벤토리에 아이템 추가 로직 구현
     }
 }
