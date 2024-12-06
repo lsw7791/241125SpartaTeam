@@ -43,9 +43,9 @@ public class Player : MonoBehaviour,IDamageable
     }
 
     // 인벤토리 관련: 스프라이트 포함
-    public void AddItemToInventory(string itemID, string itemName, int quantity, string itemType, Sprite itemSprite)
+    public void AddItemToInventory(string itemID, string itemName, int quantity, string itemType, string imagePath)
     {
-        inventory.AddItem(itemID, itemName, quantity, itemType, itemSprite);  // 스프라이트 포함
+        inventory.AddItem(itemID, itemName, quantity, itemType, imagePath);  // 스프라이트 포함
     }
 
     public void RemoveItemFromInventory(string itemID, int quantity)

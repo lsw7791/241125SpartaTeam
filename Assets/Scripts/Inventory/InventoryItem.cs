@@ -9,12 +9,22 @@ public class InventoryItem
     public string ItemType;  // 아이템 타입
     public Sprite ItemIcon;  // 아이템 아이콘 (Sprite)
 
-    public InventoryItem(string itemID, string itemName, int quantity, string itemType, Sprite itemIcon = null)
+    // 생성자
+    public InventoryItem(string itemID, string itemName, int quantity, string itemType, string iconPath = "")
     {
         ItemID = itemID;
         ItemName = itemName;
         Quantity = quantity;
         ItemType = itemType;
-        ItemIcon = itemIcon;  // 아이콘 설정
+        ItemIcon = LoadItemIcon(iconPath);  // 아이콘 로드
+    }
+
+    // 아이콘 로드 함수
+    private Sprite LoadItemIcon(string iconPath)
+    {
+        // Resources 폴더 내에서 이미지 로드
+        Sprite icon = Resources.Load<Sprite>(iconPath);
+
+        return icon;  // 아이콘 반환
     }
 }

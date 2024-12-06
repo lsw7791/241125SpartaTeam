@@ -14,7 +14,7 @@ public class Inventory
     }
 
     // 아이템 추가 메서드
-    public void AddItem(string itemID, string itemName, int quantity, string itemType, Sprite itemSprite)
+    public void AddItem(string itemID, string itemName, int quantity, string itemType, string imagePath = "")
     {
         InventoryItem existingItem = Items.Find(item => item.ItemID == itemID);
 
@@ -24,7 +24,7 @@ public class Inventory
         }
         else
         {
-            Items.Add(new InventoryItem(itemID, itemName, quantity, itemType, itemSprite));
+            Items.Add(new InventoryItem(itemID, itemName, quantity, itemType, imagePath));  // 경로로 아이콘 설정
         }
 
         OnInventoryChanged?.Invoke();
