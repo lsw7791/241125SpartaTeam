@@ -35,11 +35,12 @@ public class MonsterAI : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         initialPosition = transform.position;
         playerTransform = GameManager.Instance.player.gameObject.transform;
+
     }
 
     protected virtual void FixedUpdate()
     {
-        if(GameManager.Instance.player._playerAnimationController.isDeath)
+        if(GameManager.Instance.player.stats.isDie)
         {
             playerTransform = null;
         }

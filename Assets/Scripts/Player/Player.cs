@@ -20,6 +20,7 @@ public class Player : MonoBehaviour,IDamageable
     public Player()
     {
         stats = new PlayerStats();
+        stats.Initialize();
         inventory = new Inventory();
         QuickSlots = new QuickSlot();  // QuickSlot ∞¥√º √ ±‚»≠
     }

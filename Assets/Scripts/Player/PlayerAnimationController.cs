@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
-    public bool isDeath { get; set; } // 죽음 상태 여부
 
     private Animator _animator;
 
@@ -25,7 +24,7 @@ public class PlayerAnimationController : MonoBehaviour
 
         string weaponTag = EquipManager.Instance.EquipedWeapon?.tag ?? "Melee";
 
-        if (isDeath) return;
+        if (GameManager.Instance.player.stats.isDie) return;
 
         switch (weaponTag)
         {
