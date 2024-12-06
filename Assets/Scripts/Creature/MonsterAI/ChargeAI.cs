@@ -1,21 +1,27 @@
+using System.Collections;
 using UnityEngine;
 
 public class ChargeAI : MonsterAI
 {
     [Header("Attack - Charge")]
     [SerializeField]
-    private float chargeDelay = 1f;        // 돌진 전 대기 시간 1초
+    private float chargeDelay = 5f; // 돌진 준비 시간
+    [SerializeField]
+    private float chargeDuration = 10f; // 돌진 지속 시간
 
-    private Vector3 chargeTargetPosition; // 돌진 목표 위치 (돌진 시작 시 플레이어 위치 기록)
-    private bool isCharging = false;      // 돌진 상태를 추적하는 변수
-    private float chargeStartTime = 0f;   // 돌진 시작 시간을 추적
+    private Vector3 chargeTargetPosition; // 돌진 목표 위치
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
 
+        if (currentState == MonsterState.Attacking)
+        {
+            return;
+        }
+
         // playerTransform이 null이면 추적할 플레이어가 없다는 의미로 초기 위치로 돌아감
-        if (playerTransform == null)
+        if (playerTransform == null && currentState != MonsterState.Attacking)
         {
             currentState = MonsterState.Returning;
             ReturnToInitialPosition();
@@ -27,12 +33,23 @@ public class ChargeAI : MonsterAI
         switch (currentState)
         {
             case MonsterState.Idle:
+                if (distanceToPlayer <= DataManager.Instance.creature.GetDetectionRange(monster.id))
+                {
+                    currentState = MonsterState.Chasing;
+                }
                 break;
 
             case MonsterState.Chasing:
                 if (distanceToPlayer <= DataManager.Instance.creature.GetAttackRange(monster.id))
                 {
-                    currentState = MonsterState.Attacking;
+                    curTime += Time.fixedDeltaTime;
+                    // 대기 시간이 지난 후에 돌진 시작
+                    if (curTime >= chargeDelay)
+                    {
+                        currentState = MonsterState.Attacking;
+                        chargeTargetPosition = playerTransform.position; // 플레이어의 마지막 위치 저장
+                        StartCoroutine(ChargeAttack());
+                    }
                 }
                 else if (distanceToPlayer > DataManager.Instance.creature.GetDetectionRange(monster.id))
                 {
@@ -44,47 +61,70 @@ public class ChargeAI : MonsterAI
                 }
                 break;
 
-            case MonsterState.Attacking:
-                AttackPlayer();
-                break;
-
             case MonsterState.Returning:
-                if (distanceToPlayer > DataManager.Instance.creature.GetDetectionRange(monster.id))
+                if (distanceToPlayer <= DataManager.Instance.creature.GetDetectionRange(monster.id))
+                {
+                    currentState = MonsterState.Chasing;
+                }
+                else
                 {
                     ReturnToInitialPosition();
                 }
                 break;
         }
+    }
 
-        if (distanceToPlayer <= DataManager.Instance.creature.GetDetectionRange(monster.id) && currentState != MonsterState.Attacking)
+    private IEnumerator ChargeAttack()
+    {
+        Debug.Log("돌진 준비 중...");
+        isMove = false; // 이동 통제
+        rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(2f); // 준비 시간 대기
+
+        Debug.Log("돌진 시작!");
+        float elapsedTime = 0f;
+        Vector3 direction = (chargeTargetPosition - transform.position).normalized;
+
+        while (elapsedTime < chargeDuration)
         {
-            currentState = MonsterState.Chasing;
+            if(isMove)
+            {
+                break;
+            }
+
+            transform.Translate(direction * DataManager.Instance.creature.GetMoveSpeed(monster.id) * 20f * Time.deltaTime, Space.World);
+            spriteRenderer.flipX = direction.x < 0;
+            elapsedTime += Time.fixedDeltaTime;
+            yield return new WaitForSeconds(Time.fixedDeltaTime);
+        }
+
+        Debug.Log("돌진 종료!");
+        rb.velocity = Vector2.zero;
+        isMove = true; // 이동 재개
+        curTime = 0f;
+        currentState = MonsterState.Chasing;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(!isMove && transform.position.magnitude != 0)
+        {
+            // targetLayer에 포함되는 레이어인지 확인
+            if (IsLayerMatched(enemyLayer.value, collision.gameObject.layer))
+            {
+                StopCoroutine(ChargeAttack());
+                Debug.Log("돌진 종료!");
+                rb.velocity = Vector2.zero;
+                isMove = true; // 이동 재개
+                curTime = 0f;
+                currentState = MonsterState.Chasing;
+            }
         }
     }
 
-    protected override void AttackPlayer()
+    // 레이어가 일치하는지 확인하는 메소드
+    private bool IsLayerMatched(LayerMask layerMask, int objectLayer)
     {
-        if (!isCharging)
-        {
-            isCharging = true;
-            chargeStartTime += Time.time;  // 돌진 시작 시간 기록
-            chargeTargetPosition = playerTransform.position;  // 플레이어의 현재 위치 저장
-            Debug.Log("돌진 준비 중...");
-        }
-
-        // 대기 시간이 지난 후에 돌진 시작
-        if (Time.time - chargeStartTime >= chargeDelay)
-        {
-            Vector3 direction = (chargeTargetPosition - transform.position).normalized;
-            transform.Translate(direction * DataManager.Instance.creature.GetMoveSpeed(monster.id) * 3 * Time.deltaTime, Space.World); // 3배 빠르게 돌진
-
-            spriteRenderer.flipX = direction.x <= 0;
-
-            // 돌진 후 상태를 Chasing으로 변경
-            currentState = MonsterState.Chasing;
-
-            // 플레이어에게 피해를 입히는 로직 (피해량이나 상태 변화 등을 처리할 수 있음)
-            Debug.Log("플레이어에게 피해를 입혔습니다!");
-        }
+        return layerMask == (layerMask | (1 << objectLayer));
     }
 }

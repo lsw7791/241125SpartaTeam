@@ -7,8 +7,6 @@ public class RangeAI : MonsterAI
     private GameObject projectilePrefab;              // 발사할 투사체
     [SerializeField]
     private Transform attackPoint;                   // 투사체 발사 위치
-    [SerializeField]
-    private LayerMask enemyLayer; // 적군 레이어마스크
 
     protected override void FixedUpdate()
     {
