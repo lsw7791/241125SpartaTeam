@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class MonsterPool : MonoBehaviour
@@ -13,25 +14,37 @@ public class MonsterPool : MonoBehaviour
     private void Awake()
     {
         gameManager = GameManager.Instance;
-        monsterPrefab = Resources.Load<GameObject>("Prefabs/Monsters/Monster");
+        monsterPrefab = Resources.Load<GameObject>("Prefabs/Monster");
     }
-    public void InitializeMonsterPool(int creatureId, GameObject prefab, int poolSize)
+    public GameObject InitializeMine(int creatureId, Vector2 position)
     {
+        if(creatureId <13) return null;// 몬스터 소환 못하게 막기
+            GameObject minePrefab = Resources.Load<GameObject>(DataManager.Instance.creature.GetPrefabsPath(creatureId));
+            GameObject obj = Instantiate(minePrefab);
+            Mine mine = obj.GetComponent<Mine>();
+            mine.SetComponent(creatureId);// 몬스터 모든 데이터 초기화
+            obj.transform.position = position;
+        return obj;
+    }
+    public void InitializeMonsterPool(int creatureId, int poolSize)
+    {      
         Queue<GameObject> poolQueue = new Queue<GameObject>();
 
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject obj = Instantiate(prefab);
+            GameObject obj = Instantiate(monsterPrefab);
             obj.SetActive(false);  // 비활성화 상태로 추가
-
             // 몬스터 데이터 초기화 (creatureId를 받아서 초기화)
             Monster monster = obj.GetComponent<Monster>();
             if (monster != null)
             {
-                monster.id = creatureId;// creatureId로 몬스터 데이터 초기화
-                monster.ResetStatus();
-            }
+                GameObject childPrefab = Resources.Load<GameObject>(DataManager.Instance.creature.GetPrefabsPath(creatureId));
+                GameObject child = Instantiate(childPrefab);
+                child.transform.SetParent(obj.transform);  // obj가 부모가 되도록 설정
+                child.transform.localPosition = Vector3.zero;  // 자식의 위치를 부모의 (0, 0, 0)으로 설정 (필요시 조정)
+                monster.SetComponent(creatureId);// 몬스터 모든 데이터 초기화
 
+            }
             poolQueue.Enqueue(obj);
         }
 
@@ -51,6 +64,7 @@ public class MonsterPool : MonoBehaviour
             Monster monster = monsterObj.GetComponent<Monster>();
             if (monster != null)
             {
+
                 monster.ResetStatus();  // 풀에서 반환된 몬스터 상태 리셋
             }
 
@@ -86,21 +100,21 @@ public class MonsterPool : MonoBehaviour
     }
 
     // 몬스터를 풀에 반환하는 함수 (creatureId 기준)
-    public void ReturnMonster(int creatureId, GameObject monster)
+    public void ReturnMonster(int creatureId, GameObject thisObject)
     {
-        monster.SetActive(false);  // 비활성화
+        thisObject.SetActive(false);  // 비활성화
 
         // 몬스터의 상태 리셋
-        Monster monsterData = monster.GetComponent<Monster>();
-        if (monsterData != null)
+        Monster monster = thisObject.GetComponent<Monster>();
+        if (thisObject.GetComponent<Monster>() != null)
         {
-            monsterData.ResetStatus();  // 상태 리셋 (currentHealth, isDie)
+            monster.ResetStatus();  // 상태 리셋 (currentHealth, isDie)
         }
 
         // 풀에 반환
         if (monsterPools.ContainsKey(creatureId))
         {
-            monsterPools[creatureId].Enqueue(monster);
+            monsterPools[creatureId].Enqueue(thisObject);
         }
         else
         {
@@ -112,30 +126,7 @@ public class MonsterPool : MonoBehaviour
     // creatureId에 해당하는 프리팹을 가져오는 함수
     private GameObject GetPrefabByCreatureId(int creatureId)
     {
-        switch (creatureId)
-        {
-            case 1: return gameManager.goblinPrefab;
-            case 2: return gameManager.zombiePrefab;
-            case 3: return gameManager.ImpPrefab;
-            case 4: return gameManager.lizardPrefab;
-            case 5: return gameManager.orcShamanPrefab;
-            case 6: return gameManager.BigzombiePrefab;
-            case 7: return gameManager.skeletPrefab;
-            case 8: return gameManager.iceZombiePrefab;
-            case 9: return gameManager.ogrePrefab;
-            case 10: return gameManager.knightPrefab;
-            case 11: return gameManager.necromancerPrefab;
-            case 12: return gameManager.demonPrefab;
-
-            // 광석 프리팹 반환 추가
-            case 101: return gameManager.stoneMine;  // 예시: 101번 id가 StoneMine을 참조
-            case 102: return gameManager.copperMine; // 예시: 102번 id가 CopperMine을 참조
-            case 103: return gameManager.ironMine;   // 예시: 103번 id가 IronMine을 참조
-            case 104: return gameManager.goldMine;   // 예시: 104번 id가 GoldMine을 참조
-            case 105: return gameManager.platinumMine; // 예시: 105번 id가 PlatinumMine을 참조
-            case 106: return gameManager.ignisMine;  // 예시: 106번 id가 IgnisMine을 참조
-
-            default: return null;  // 해당하는 creatureId나 광석Id가 없을 경우 null 반환
-        }
+        GameObject childPrefab = Resources.Load<GameObject>(DataManager.Instance.creature.GetPrefabsPath(creatureId));
+        return childPrefab;
     }
 }

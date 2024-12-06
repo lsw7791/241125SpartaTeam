@@ -1606,7 +1606,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 991965106786202352}
         m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
-        m_MethodName: OnQuest
+        m_MethodName: OnCraft
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1803,7 +1803,7 @@ MonoBehaviour:
     CurrentHP: 1
     Stamina: 100
     Gold: 5
-    Damage: 5
+    Damage: 1000
     Speed: 5
     AttackSpeed: 5
     Defense: 5

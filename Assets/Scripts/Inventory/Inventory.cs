@@ -20,15 +20,16 @@ public class Inventory
 
         if (existingItem != null)
         {
-            existingItem.Quantity += quantity; // 수량 증가
+            existingItem.Quantity += quantity;
         }
         else
         {
-            Items.Add(new InventoryItem(itemID, itemName, quantity, itemType, null, itemSprite));
+            Items.Add(new InventoryItem(itemID, itemName, quantity, itemType, itemSprite));
         }
 
-        OnInventoryChanged?.Invoke(); // UI 갱신 이벤트 호출
+        OnInventoryChanged?.Invoke();
     }
+
 
     // 아이템 조회 메서드 추가
     public InventoryItem GetItem(string itemID)

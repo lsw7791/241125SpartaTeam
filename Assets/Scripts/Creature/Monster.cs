@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
@@ -6,16 +7,19 @@ public class Monster : MonoBehaviour, ICreature
 {
     [SerializeField]private int currentHealth;
     [SerializeField]private bool isDie;
-    [SerializeField] public int id;
-
+    [SerializeField] public int id { get; private set; }
     // 몬스터가 죽었을 때 호출되는 함수
-
+    public void SetComponent(int value)
+    {
+        id = value;
+        ResetStatus();// 스텟 초기화
+    }
     public void Die()
     {
-        if (GameManager.Instance.monsterPool != null)
+        if (SpawnManager.Instance.monsterPool != null)
         {
             // 몬스터의 종류를 구분해서 풀에 반환 (creatureId로 구별)
-            GameManager.Instance.monsterPool.ReturnMonster(id, gameObject);
+            SpawnManager.Instance.monsterPool.ReturnMonster(id, gameObject);
         }
         else
         {
@@ -44,51 +48,36 @@ public class Monster : MonoBehaviour, ICreature
     // 몬스터가 죽을 때 호출되는 드랍 아이템 생성 함수
     public void DropItems()
     {
-        Debug.Log($"Monster {DataManager.Instance.creature.GetName(id)} is dropping items.");
+        // 드롭 위치의 랜덤 범위 설정 (x, z 축 기준)
+        float dropRange = 1.5f;
 
         foreach (int itemId in DataManager.Instance.creature.GetDropItemIds(id))
         {
-            Debug.Log($"Attempting to get item data for ID: {itemId}");
-
+            // 아이템 데이터와 프리팹 로드
             var itemData = DataManager.Instance.GetItemDataById(itemId);
+            GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabsPath);
 
-            if (itemData != null)
-            {
-                Debug.Log($"Found item data for ID {itemId}: {itemData.name}");
-                Debug.Log($"Item prefab path: {itemData.prefabsPath}");
+            // 랜덤한 드롭 위치 생성
+            Vector3 randomOffset = new Vector3(
+                Random.Range(-dropRange, dropRange),
+                0f, // 높이(y)는 그대로 유지
+                Random.Range(-dropRange, dropRange)
+            );
+            Vector3 dropPosition = transform.position + randomOffset;
 
-                // 아이템 프리팹 로드
-                GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabsPath);
-                if (itemPrefab != null)
-                {
-                    Debug.Log($"Instantiating item prefab at {itemData.prefabsPath}");
-                    GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
+            // 아이템 인스턴스 생성
+            GameObject item = Instantiate(itemPrefab, dropPosition, Quaternion.identity);
 
-                    // 아이템 스프라이트 로드
-                    Sprite itemSprite = Resources.Load<Sprite>(itemData.spritePath);
-                    if (itemSprite == null)
-                    {
-                        Debug.LogWarning($"Sprite not found at {itemData.spritePath}, using default sprite.");
-                    }
+            // 아이템 스프라이트 로드
+            Sprite itemSprite = Resources.Load<Sprite>(itemData.spritePath);
 
-                    // 아이템 데이터 설정
-                    TestItem testItem = item.GetComponent<TestItem>();
-                    if (testItem != null)
-                    {
-                        testItem.SetData(itemData, itemSprite);  // 아이템 데이터와 스프라이트 설정
-                    }
-                }
-                else
-                {
-                    Debug.LogError($"Item prefab not found for item ID {itemId} at path {itemData.prefabsPath}");
-                }
-            }
-            else
-            {
-                Debug.LogWarning($"No item data found for item ID {itemId}");
-            }
+            // 아이템 데이터 설정
+            TestItem testItem = item.GetComponent<TestItem>();
+            testItem.SetData(itemData, itemSprite);
         }
     }
+
+
     public void ResetStatus()
     {
         currentHealth = DataManager.Instance.creature.GetHealth(id);  // 최대 체력으로 리셋

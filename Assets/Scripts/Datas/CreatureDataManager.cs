@@ -76,8 +76,8 @@ public class CreatureDataManager : CreatureData
     {
         return CreatureDataMap[id].dropItemIds;
     }
-    //public string GetPrefabsPath(int prefabsPath)
-    //{
-    //    return CreatureDataMap[id].prefabsPath;
-    //}
+    public string GetPrefabsPath(int id)
+    {
+        return CreatureDataMap[id].prefabsPath;
+    }
 }

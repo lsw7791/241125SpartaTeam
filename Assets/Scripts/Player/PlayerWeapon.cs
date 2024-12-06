@@ -23,14 +23,12 @@ public class PlayerWeapon : MonoBehaviour
     public void ActivateWeaponCollider()
     {
         _weaponCollider.enabled = true;  // 공격 시 콜라이더 활성화
-        Debug.Log("Weapon Collider Activated!");
     }
 
     // 무기 콜라이더 비활성화
     public void DeactivateWeaponCollider()
     {
         _weaponCollider.enabled = false; // 공격 종료 시 콜라이더 비활성화
-        Debug.Log("Weapon Collider Deactivated!");
     }
 
 
@@ -88,13 +86,11 @@ public class PlayerWeapon : MonoBehaviour
         // 무기의 콜라이더가 비활성화된 상태라면 데미지 처리를 하지 않음
         if (!_weaponCollider.enabled) return;
 
-        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
-        if (damageable != null)
+        if (collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
         {
             // 플레이어가 충돌한 오브젝트가 IDamageable을 구현한 경우
-            damageable.TakeDamage(Player.Instance.Stats.Damage);  // 데미지 처리
-            Debug.Log($"Player dealt {Player.Instance.Stats.Damage} damage to {damageable.GetType().Name}");
+            outTarget.TakeDamage(Player.Instance.Stats.Damage);  // 데미지 처리
+            Debug.Log($"Player dealt {Player.Instance.Stats.Damage} damage to {outTarget.GetType().Name}");
         }
     }
-
 }

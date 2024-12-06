@@ -87,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Quest",
+                    "name": "Craft",
                     "type": "Button",
                     "id": "689fdb2c-e3d5-45ca-88cf-c3772c5f3dd1",
                     "expectedControlType": "Button",
@@ -360,7 +360,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Quest",
+                    "action": "Craft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

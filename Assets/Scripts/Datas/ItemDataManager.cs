@@ -43,7 +43,6 @@ public class ItemDataManager : ItemData
             return ItemDataMap[id];
         }
 
-        Debug.LogWarning($"Item with ID {id} not found.");
         return null;
     }
 
@@ -74,7 +73,6 @@ public class ItemDataManager : ItemData
             return validItems[randomIndex];
         }
 
-        Debug.LogWarning("No valid drop items found.");
         return null;
     }
 
@@ -83,11 +81,9 @@ public class ItemDataManager : ItemData
     {
         if (ItemDataMap.ContainsKey(itemId))
         {
-            Debug.Log($"ItemData found for ID {itemId}: {ItemDataMap[itemId].name}");
             return ItemDataMap[itemId];
         }
 
-        Debug.LogWarning($"Item with ID {itemId} not found in ItemDataMap.");
         return null;
     }
 

@@ -7,9 +7,14 @@ public class RangeAI : MonsterAI
     private GameObject projectilePrefab;              // 발사할 투사체
     [SerializeField]
     private Transform attackPoint;                   // 투사체 발사 위치
+    [SerializeField]
+    private LayerMask enemyLayer; // 적군 레이어마스크
 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+
+        // playerTransform이 null이면 추적할 플레이어가 없다는 의미로 초기 위치로 돌아감
         if (playerTransform == null)
         {
             currentState = MonsterState.Returning;
@@ -78,15 +83,18 @@ public class RangeAI : MonsterAI
     {
         if (projectilePrefab != null && attackPoint != null)
         {
-            // 플레이어 방향으로 투사체 발사
-            Vector3 direction = (playerTransform.position - attackPoint.position).normalized;
             GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, Quaternion.identity);
+            //GameManager.Instance.projectilePool.GetProjectile();
 
             // 투사체에 방향을 부여
-            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (projectile.TryGetComponent<Projectile>(out var outProjectile))
             {
-                rb.velocity = direction * DataManager.Instance.creature.GetAttackSpeed(monster.id);
+                outProjectile.damage = DataManager.Instance.creature.GetAttack(monster.id);
+                projectile.TryGetComponent<Rigidbody2D>(out var outRigidbody2D);
+                outProjectile.Initialize(enemyLayer);
+                // 플레이어 방향으로 투사체 발사
+                Vector3 direction = (playerTransform.position - attackPoint.position).normalized;
+                outRigidbody2D.velocity = direction * DataManager.Instance.creature.GetAttackSpeed(monster.id);
             }
         }
     }

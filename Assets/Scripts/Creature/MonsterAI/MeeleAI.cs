@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class MeeleAI : MonsterAI
 {
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+
         // playerTransform이 null이면 추적할 플레이어가 없다는 의미로 초기 위치로 돌아감
         if (playerTransform == null)
         {
@@ -64,7 +66,6 @@ public class MeeleAI : MonsterAI
             currentState = MonsterState.Chasing;
 
             // 플레이어 공격 (간단한 공격 애니메이션 또는 로직 삽입)
-            Debug.Log("플레이어를 공격합니다!");
 
         }
     }

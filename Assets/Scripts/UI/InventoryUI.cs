@@ -1,61 +1,66 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
 public class InventoryUI : UIBase
 {
-    [SerializeField] private Transform itemListContainer;  // 아이템 리스트를 표시할 UI 컨테이너
-    [SerializeField] private GameObject itemSlotPrefab;    // 아이템 슬롯의 프리팹
+    private List<GameObject> _slots = new List<GameObject>(); // 슬롯 UI 목록
 
-    private Inventory inventory;
+    public Transform slotContainer; // 슬롯 부모 객체
+    public GameObject slotPrefab;   // 슬롯 프리팹
 
-    protected override void Awake()
+    public Sprite emptySlotSprite;  // 빈 슬롯 이미지
+
+   //인벤토리가 끄고 켤때마다가 아니라 실시간으로 업데이트되는 기능이 구현되어야함
+    private void OnEnable()
     {
-        base.Awake();
-        inventory = Player.Instance.Inventory;  // 플레이어의 인벤토리 참조
+        Setup(Player.Instance.inventory);
     }
 
-    public override void Open()
+    public void Setup(Inventory inventory)
     {
-        base.Open();  // UIBase의 Open 메서드 호출
-        UpdateInventoryUI();  // 인벤토리 UI 갱신
+        // 기존 이벤트 등록 제거
+        Player.Instance.inventory.OnInventoryChanged -= Refresh;
+
+        // 새 이벤트 등록
+        Player.Instance.inventory.OnInventoryChanged += Refresh;
+
+        // 슬롯 생성 및 초기화
+        InitializeSlots();
+        Refresh(); // 초기 UI 갱신
     }
 
-    public override void Close()
+    private void InitializeSlots()
     {
-        base.Close();  // UIBase의 Close 메서드 호출
-    }
-
-    // 인벤토리 UI 업데이트
-    public void UpdateInventoryUI()
-    {
-        // 기존 아이템 리스트 삭제
-        foreach (Transform child in itemListContainer)
+        foreach (var slot in _slots)
         {
-            Destroy(child.gameObject);
+            Destroy(slot);
         }
+        _slots.Clear();
 
-        // 현재 인벤토리 아이템들을 아이템 슬롯으로 변환하여 표시
-        List<InventoryItem> inventoryItems = inventory.GetItems();  // 인벤토리 아이템 목록 가져오기
-
-        foreach (var item in inventoryItems)
+        for (int i = 0; i < 12; i++) // 슬롯 수 고정 (필요시 수정 가능)
         {
-            // 슬롯 생성
-            GameObject itemSlot = Instantiate(itemSlotPrefab, itemListContainer);
+            GameObject slot = Instantiate(slotPrefab, slotContainer);
+            _slots.Add(slot);
+        }
+    }
 
-            // TextMeshProUGUI 컴포넌트에 아이템 이름과 갯수 표시
-            TextMeshProUGUI itemText = itemSlot.GetComponentInChildren<TextMeshProUGUI>();  // TextMeshProUGUI로 변경
-            if (itemText != null)
+    private void Refresh()
+    {
+        Debug.Log($"Inventory Refresh 호출 at {Time.time}");
+
+        var items = Player.Instance.inventory.GetItems(); // 아이템 리스트 받아오기
+
+        for (int i = 0; i < _slots.Count; i++)
+        {
+            var slotComponent = _slots[i].GetComponent<InventorySlot>();
+
+            if (i < items.Count)
             {
-                itemText.text = $"{item.ItemName} x{item.Quantity}";  // 아이템 이름과 수량
+                slotComponent.Initialize(items[i]);
             }
-
-            // 아이콘 이미지 컴포넌트에 아이템 아이콘 설정
-            Image itemIcon = itemSlot.GetComponentInChildren<Image>();
-            if (itemIcon != null && item.ItemIcon != null)
+            else
             {
-                itemIcon.sprite = item.ItemIcon;  // 아이템 아이콘 설정
+                slotComponent.ClearSlot();
             }
         }
     }
