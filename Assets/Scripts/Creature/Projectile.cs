@@ -3,7 +3,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float lifeTime = 10f;  // 투사체 생존 시간
-    public int damage = 3;      // 투사체 데미지
+    public int damage;      // 투사체 데미지
 
     public LayerMask targetLayer; // 감지 대상 레이어마스크
 
@@ -20,6 +20,7 @@ public class Projectile : MonoBehaviour
 
     void DeSpenObject()
     {
+        // TODO :: ID로 구현
         //GameManager.Instance.projectilePool.ReturnProjectile(gameObject.name, gameObject);
     }
 
@@ -28,9 +29,10 @@ public class Projectile : MonoBehaviour
         // targetLayer에 포함되는 레이어인지 확인
         if (IsLayerMatched(targetLayer.value, collision.gameObject.layer))
         {
-            if (collision.TryGetComponent<IDamageable>(out var outTarget))
+            // TODO :: 데미지 관련은 플레이어 쪽에서 한다고 함
+            if (collision.TryGetComponent<IDamageable>(out var outtarget))
             { // 레이어를 거치고 왔기 때문에 몬스터와 플레이어의 혼동은 없음
-                outTarget.TakeDamage(damage); // 데미지 처리
+                outtarget.TakeDamage(damage); // 데미지 처리
             }
             // 벽도 레이어를 추가해 발사체 제거
             //DeSpenObject();      // 투사체 파괴

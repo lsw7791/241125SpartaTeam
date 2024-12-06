@@ -21,6 +21,8 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     {
         SpawnMonsterPool();
         monsterPool.GetMonster(1, new Vector2(1f, 1f));
+        monsterPool.GetMonster(4, new Vector2(1f, 2f));
+        monsterPool.GetMonster(5, new Vector2(1f, 3f));
 
     }
     public void SpawnMonsterPool()
