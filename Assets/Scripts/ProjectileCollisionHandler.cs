@@ -20,14 +20,14 @@ public class ProjectileCollisionHandler : MonoBehaviour
 
     private void Start()
     {
-        //Invoke("DeSpenObject", lifeTime);
-        Destroy(gameObject, _lifeTime);
+        Invoke("DeSpenObject", _lifeTime);
+        //Destroy(gameObject, _lifeTime);
     }
 
     private void DeSpenObject()
     {
         // TODO :: ID로 구현
-        //SpawnManager.Instance.projectilePool.ReturnProjectile(gameObject.GetType().Name, gameObject);
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,14 +44,9 @@ public class ProjectileCollisionHandler : MonoBehaviour
                 outEnemy.TakeDamage(_damage); // 데미지 처리
             }
             // 벽도 레이어를 추가해 발사체 제거
-            //DeSpenObject();      // 투사체 파괴
+            DeSpenObject();      // 투사체 파괴
 
-            Destroy(gameObject);
-        }
-        else if (collision.transform.parent != null && collision.transform.parent.TryGetComponent<ICreature>(out var outMine))
-        { // 몬스터는 돌진 몬스터 빼고는 채광 데미지가 없을거같으니까
-            outMine.TakeDamage(_mineDamage); // 데미지 처리
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 
