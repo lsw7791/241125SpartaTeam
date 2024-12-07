@@ -81,9 +81,9 @@ public class RangeAI : MonsterAI
     {
         if (projectilePrefab != null && attackPoint != null)
         {
-            GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, Quaternion.identity);
-            //GameManager.Instance.projectilePool.GetProjectile();
-
+            //GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, Quaternion.identity);
+            GameObject projectile = GameManager.Instance.spawnManager.projectilePool.SpawnFromPool("TestEnemyRangeAttack");
+            projectile.transform.position = attackPoint.position;
             // 투사체에 방향을 부여
             if (projectile.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile))
             {

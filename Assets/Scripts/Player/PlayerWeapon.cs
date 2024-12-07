@@ -38,7 +38,15 @@ public class PlayerWeapon : MonoBehaviour
     // 화살 발사
     public void FireArrow()
     {
-        GameObject arrow = Instantiate(_attackObjects[0], _aoSpawnPoint.position, Quaternion.identity);
+        //GameObject arrow = Instantiate(_attackObjects[0], _aoSpawnPoint.position, Quaternion.identity);
+        GameObject arrow = GameManager.Instance.spawnManager.projectilePool.SpawnFromPool("Arrow");
+        if (arrow == null)
+        {
+            Debug.LogError("Arrow could not be spawned from pool.");
+            return;
+        }
+
+        arrow.transform.position = _aoSpawnPoint.position;
         Rigidbody2D arrowRb = arrow.GetComponent<Rigidbody2D>();
 
         // 마우스 위치와 발사 위치 차이 계산
@@ -64,7 +72,15 @@ public class PlayerWeapon : MonoBehaviour
     // 파이어볼 발사
     public void FireFireball()
     {
-        GameObject fireball = Instantiate(_attackObjects[1], _aoSpawnPoint.position, Quaternion.identity);
+        //GameObject fireball = Instantiate(_attackObjects[1], _aoSpawnPoint.position, Quaternion.identity);
+        GameObject fireball = GameManager.Instance.spawnManager.projectilePool.SpawnFromPool("FireBall");
+        if (fireball == null)
+        {
+            Debug.LogError("Arrow could not be spawned from pool.");
+            return;
+        }
+
+        fireball.transform.position = _aoSpawnPoint.position;
         Rigidbody2D fireballRb = fireball.GetComponent<Rigidbody2D>();
 
         // 마우스 위치와 발사 위치 차이 계산
@@ -86,16 +102,16 @@ public class PlayerWeapon : MonoBehaviour
         Debug.Log("Fired Fireball!");
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    // 무기의 콜라이더가 비활성화된 상태라면 데미지 처리를 하지 않음
-    //    if (!_weaponCollider.enabled) return;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // 무기의 콜라이더가 비활성화된 상태라면 데미지 처리를 하지 않음
+        if (!_weaponCollider.enabled) return;
 
-    //    if (collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
-    //    {
-    //        // 플레이어가 충돌한 오브젝트가 IDamageable을 구현한 경우
-    //        outTarget.TakeDamage(GameManager.Instance.player.Stats.Damage);  // 데미지 처리
-    //        Debug.Log($"Player dealt {GameManager.Instance.player.Stats.Damage} damage to {outTarget.GetType().Name}");
-    //    }
-    //}
+        if (collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
+        {
+            // 플레이어가 충돌한 오브젝트가 IDamageable을 구현한 경우
+            outTarget.TakeDamage(GameManager.Instance.player.Stats.Damage);  // 데미지 처리
+            Debug.Log($"Player dealt {GameManager.Instance.player.Stats.Damage} damage to {outTarget.GetType().Name}");
+        }
+    }
 }
