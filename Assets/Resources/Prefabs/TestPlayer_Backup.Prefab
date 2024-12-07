@@ -191,7 +191,7 @@ MonoBehaviour:
   _aoSpawnPoint: {fileID: 251166210364883726}
   layerMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 1792
 --- !u!70 &5299451972431777908
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1811,6 +1811,7 @@ MonoBehaviour:
     AttackSpeed: 5
     Defense: 5
     WeaponType: 0
+    isDie: 0
   inventory:
     Items: []
   _topDownController: {fileID: 0}
