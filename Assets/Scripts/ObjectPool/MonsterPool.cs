@@ -13,7 +13,7 @@ public class MonsterPool : MonoBehaviour
     {
         if(creatureId <13) return null;// 몬스터 소환 못하게 막기
             GameObject minePrefab = Resources.Load<GameObject>(GameManager.Instance.dataManager.creature.GetPrefabsPath(creatureId));
-            GameObject obj = Instantiate(minePrefab);
+            GameObject obj = Instantiate(minePrefab, transform);
             Mine mine = obj.GetComponent<Mine>();
             mine.SetComponent(creatureId);// 몬스터 모든 데이터 초기화
             obj.transform.position = position;
@@ -25,14 +25,14 @@ public class MonsterPool : MonoBehaviour
 
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/Monster"));
+            GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/Monster"), transform);
             obj.SetActive(false);  // 비활성화 상태로 추가
             // 몬스터 데이터 초기화 (creatureId를 받아서 초기화)
             Monster monster = obj.GetComponent<Monster>();
             if (monster != null)
             {
                 GameObject childPrefab = Resources.Load<GameObject>(GameManager.Instance.dataManager.creature.GetPrefabsPath(creatureId));
-                GameObject child = Instantiate(childPrefab);
+                GameObject child = Instantiate(childPrefab, transform);
                 child.transform.SetParent(obj.transform);  // obj가 부모가 되도록 설정
                 child.transform.localPosition = Vector3.zero;  // 자식의 위치를 부모의 (0, 0, 0)으로 설정 (필요시 조정)
                 monster.SetComponent(creatureId);// 몬스터 모든 데이터 초기화
@@ -73,7 +73,7 @@ public class MonsterPool : MonoBehaviour
                 GameObject prefab = GetPrefabByCreatureId(creatureId);  // creatureId로 프리팹을 가져옴
                 if (prefab != null)
                 {
-                    GameObject newMonster = Instantiate(prefab);
+                    GameObject newMonster = Instantiate(prefab, transform);
                     newMonster.transform.position = position;  // 위치 설정
 
                     return newMonster;

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3353214575377254055}
   - component: {fileID: 2496986125397973148}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IronMine
   m_TagString: Mine
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2368025897053422813}
   - component: {fileID: 274934258413026765}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Empty
   m_TagString: Mine
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 6584899051131677196}
   - component: {fileID: 2078308132269402199}
   - component: {fileID: 5589409572086085012}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MIneFull
   m_TagString: Mine
   m_Icon: {fileID: 0}

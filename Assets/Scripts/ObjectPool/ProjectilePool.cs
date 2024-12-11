@@ -4,38 +4,43 @@ using UnityEngine;
 
 public class ProjectilePool : MonoBehaviour
 {
-    private Dictionary<string, Queue<GameObject>> projectilePools = new Dictionary<string, Queue<GameObject>>();
+    private Dictionary<string, Queue<GameObject>> _projectilePools = new();
 
-    public void InitializeProjectilePool(string projectileType, GameObject prefab, int poolSize)
+    public void InitializeProjectilePool(string inProjectileType, int inPoolSize)
     {
         Queue<GameObject> poolQueue = new Queue<GameObject>();
-        for (int i = 0; i < poolSize; i++)
+        for (int i = 0; i < inPoolSize; i++)
         {
-            GameObject obj = Instantiate(prefab);
-            obj.SetActive(false);  // 비활성화 상태로 추가
-            poolQueue.Enqueue(obj);
+            GameObject newObject = Instantiate(Resources.Load<GameObject>($"Prefabs/AttackObjects/{inProjectileType}"), transform);
+            newObject.SetActive(false);  // 비활성화 상태로 추가
+            poolQueue.Enqueue(newObject);
         }
-        projectilePools[projectileType] = poolQueue;
+        _projectilePools.Add(inProjectileType, poolQueue);
     }
 
-    public GameObject GetProjectile(string projectileType)
-    {
-        if (projectilePools.ContainsKey(projectileType) && projectilePools[projectileType].Count > 0)
-        {
-            GameObject projectile = projectilePools[projectileType].Dequeue();
-            projectile.SetActive(true);  // 활성화
-            return projectile;
-        }
-        else
-        {
-            // 풀에 투사체가 없으면 새로 생성
-            return Instantiate(Resources.Load(projectileType) as GameObject);
-        }
-    }
 
-    public void ReturnProjectile(string projectileType, GameObject projectile)
+    public GameObject SpawnFromPool(string inTag)
     {
-        projectile.SetActive(false);  // 비활성화
-        projectilePools[projectileType].Enqueue(projectile);  // 풀에 반환
+        if (!_projectilePools.TryGetValue(inTag, out var objectPool))
+        {
+            return null;
+        }
+        for (int i = 0; i < objectPool.Count; i++)
+        {
+            GameObject outObject = objectPool.Dequeue();
+            objectPool.Enqueue(outObject);
+
+            if (!outObject.activeInHierarchy)
+            {
+                outObject.SetActive(true);
+                return outObject;
+            }
+        }
+
+        GameObject outNewObject = Instantiate(objectPool.Peek(), transform);
+        outNewObject.SetActive(true);
+        objectPool.Enqueue(outNewObject);
+
+        return outNewObject;
     }
 }

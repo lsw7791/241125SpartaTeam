@@ -21,7 +21,7 @@ public class MonsterAI : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     protected bool isMove = true;
     [SerializeField]
-    protected LayerMask enemyLayer; // 적군 레이어마스크
+    protected LayerMask layerMask; // 적군 레이어마스크
 
     [Header("Attack")]
     [SerializeField]

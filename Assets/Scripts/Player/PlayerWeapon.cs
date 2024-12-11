@@ -10,6 +10,9 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] GameObject[] _attackObjects; // 0번: 화살, 1번: 파이어볼
     [SerializeField] RectTransform _aoSpawnPoint; // 발사 위치
 
+    [SerializeField]
+    protected LayerMask layerMask; // 적군 레이어마스크
+
     private void Start()
     {
         GameManager.Instance.player._playerWeapon = this;
@@ -35,7 +38,15 @@ public class PlayerWeapon : MonoBehaviour
     // 화살 발사
     public void FireArrow()
     {
-        GameObject arrow = Instantiate(_attackObjects[0], _aoSpawnPoint.position, Quaternion.identity);
+        //GameObject arrow = Instantiate(_attackObjects[0], _aoSpawnPoint.position, Quaternion.identity);
+        GameObject arrow = GameManager.Instance.spawnManager.projectilePool.SpawnFromPool("Arrow");
+        if (arrow == null)
+        {
+            Debug.LogError("Arrow could not be spawned from pool.");
+            return;
+        }
+
+        arrow.transform.position = _aoSpawnPoint.position;
         Rigidbody2D arrowRb = arrow.GetComponent<Rigidbody2D>();
 
         // 마우스 위치와 발사 위치 차이 계산
@@ -51,7 +62,8 @@ public class PlayerWeapon : MonoBehaviour
         arrow.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 180));  // 회전 적용
 
         // 충돌 처리 - 화살이 충돌 시 데미지 적용
-        arrow.AddComponent<ProjectileCollisionHandler>().Initialize(GameManager.Instance.player.Stats.Damage);
+        arrow.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile);
+        outProjectile.Initialize(layerMask, GameManager.Instance.player.Stats.Damage);
 
         Debug.Log("Fired Arrow!");
     }
@@ -60,7 +72,15 @@ public class PlayerWeapon : MonoBehaviour
     // 파이어볼 발사
     public void FireFireball()
     {
-        GameObject fireball = Instantiate(_attackObjects[1], _aoSpawnPoint.position, Quaternion.identity);
+        //GameObject fireball = Instantiate(_attackObjects[1], _aoSpawnPoint.position, Quaternion.identity);
+        GameObject fireball = GameManager.Instance.spawnManager.projectilePool.SpawnFromPool("FireBall");
+        if (fireball == null)
+        {
+            Debug.LogError("Arrow could not be spawned from pool.");
+            return;
+        }
+
+        fireball.transform.position = _aoSpawnPoint.position;
         Rigidbody2D fireballRb = fireball.GetComponent<Rigidbody2D>();
 
         // 마우스 위치와 발사 위치 차이 계산
@@ -76,7 +96,8 @@ public class PlayerWeapon : MonoBehaviour
         fireball.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 180));  // 회전 적용
 
         // 충돌 처리 - 파이어볼이 충돌 시 데미지 적용
-        fireball.AddComponent<ProjectileCollisionHandler>().Initialize(GameManager.Instance.player.Stats.Damage);
+        fireball.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile);
+        outProjectile.Initialize(layerMask, GameManager.Instance.player.Stats.Damage);
 
         Debug.Log("Fired Fireball!");
     }

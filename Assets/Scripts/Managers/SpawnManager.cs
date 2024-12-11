@@ -6,18 +6,15 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public MonsterPool monsterPool;// 몬스터 풀
+    public ProjectilePool projectilePool;// 몬스터 풀
+
     public void Initialize()
     {
-        GameObject objectPoolGroup = new GameObject();
-        objectPoolGroup.name = "objectPoolGroup";
-        objectPoolGroup.AddComponent<MonsterPool>();
-
-        if (!objectPoolGroup.TryGetComponent(out monsterPool))
-        {
-            objectPoolGroup.AddComponent<MonsterPool>();
-        }
+        monsterPool = GroupSpawn("Monster").AddComponent<MonsterPool>();
+        projectilePool = GroupSpawn("Projectile").AddComponent<ProjectilePool>();
 
         SpawnMonsterPool();
+        SpawnProjectilePool();
         monsterPool.GetMonster(1, new Vector2(1f, 1f));
         monsterPool.GetMonster(4, new Vector2(1f, 2f));
         monsterPool.GetMonster(5, new Vector2(1f, 3f));
@@ -38,10 +35,24 @@ public class SpawnManager : MonoBehaviour
         monsterPool.InitializeMonsterPool(11, 5);  // Necromancer
         monsterPool.InitializeMonsterPool(12, 5);  // Demon
 
-        GameObject mine1 = monsterPool.InitializeMine(13, new Vector2(2f,2f));
+        GameObject mine1 = monsterPool.InitializeMine(13, new Vector2(2f, 2f));
         GameObject mine2 = monsterPool.InitializeMine(14, new Vector2(2f, 1f));
         GameObject mine3 = monsterPool.InitializeMine(15, new Vector2(2f, 0f));
 
 
+    }
+
+    public void SpawnProjectilePool()
+    {
+        projectilePool.InitializeProjectilePool("Arrow", 5);
+        projectilePool.InitializeProjectilePool("FireBall", 5);
+        projectilePool.InitializeProjectilePool("TestEnemyRangeAttack", 5);
+    }
+
+    GameObject GroupSpawn(string inGroupName)
+    {
+        GameObject outPoolGroup = new GameObject();
+        outPoolGroup.name = $"{inGroupName} PoolGroup";
+        return outPoolGroup;
     }
 }
