@@ -7,14 +7,17 @@ public class GameManager : MonoSingleton<GameManager>
     public SoundManager soundManager;
     public UIManager uIManager;
     public SpawnManager spawnManager;
+    public SceneController sceneController;
     GameObject playerObject;
     GameObject SoundManagerObject;
     public Player player;
+    public int stageNum;
     protected override void Awake()
     {
         base.Awake();
         dataManager = new DataManager();
         craftingManager = new CraftingManager();
+        sceneController =new SceneController();
         List<ItemInstance> items = new List<ItemInstance>(); // JSON파일에 저장된 유저 아이템 정보를 읽어서 넘겨준다.
         ItemManager.Instance.Initialize(items);
 
@@ -31,7 +34,6 @@ public class GameManager : MonoSingleton<GameManager>
         uIManager = new UIManager();
         soundManager = GetComponentInChildren<SoundManager>();
     }
-
     //GameObject ManagerSpawn(string inManagerName)
     //{
     //    GameObject outManager = new GameObject();

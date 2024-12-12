@@ -7,7 +7,7 @@ public class DataManager
     public ItemDataManager item;
     public CreatureDataManager creature;
     public CraftingDataManager crafting;
-    
+    public SceneDataManager scene;
     public DataManager()
     {
         Debug.Log("Initializing ItemDataManager...");
@@ -16,6 +16,7 @@ public class DataManager
         item = new ItemDataManager();
         creature = new CreatureDataManager();
         crafting = new CraftingDataManager();
+        scene = new SceneDataManager();
         Debug.Log("ItemDataManager initialized.");
     }
 

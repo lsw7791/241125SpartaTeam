@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/TestScenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/TestScenes/TitleScene.unity
@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScenes/InGameScene.unity
     guid: f140100e942c806499a3eaa7daa054b0
+  - enabled: 1
+    path: Assets/Scenes/Village.unity
+    guid: 9b992c704bd10404889951b03897f191
+  - enabled: 1
+    path: Assets/Scenes/Forest.unity
+    guid: cd670887ba8ff4d659a13541f7b1c213
   m_configObjects: {}
