@@ -70,7 +70,7 @@ public class Mine : MonoBehaviour, ICreature
             if (itemData != null)
             {
                 // 아이템 프리팹 로드
-                GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabsPath);
+                GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabPath);
                 if (itemPrefab != null)
                 {
                     GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);

@@ -107,10 +107,10 @@ public class ChargeAI : MonsterAI
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(!isMove && transform.position.magnitude != 0)
+        if (!isMove && transform.position.magnitude != 0)
         {
             // targetLayer에 포함되는 레이어인지 확인
-            if (IsLayerMatched(enemyLayer.value, collision.gameObject.layer))
+            if (IsLayerMatched(layerMask.value, collision.gameObject.layer))
             {
                 StopCoroutine(ChargeAttack());
                 Debug.Log("돌진 종료!");

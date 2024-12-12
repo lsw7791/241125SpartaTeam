@@ -6,7 +6,7 @@ public class GameManager : MonoSingleton<GameManager>
     public CraftingManager craftingManager;
     public SoundManager soundManager;
     public UIManager uIManager;
-
+    public SpawnManager spawnManager;
     GameObject miniCamera;
     GameObject playerObject;
     GameObject SoundManagerObject;
@@ -25,8 +25,18 @@ public class GameManager : MonoSingleton<GameManager>
         playerObject = Instantiate(Resources.Load<GameObject>("Prefabs/TestPlayer_Backup"));
         player = playerObject.GetComponent<Player>();
         miniCamera = Instantiate(Resources.Load<GameObject>("Prefabs/Cameras/MinimapCamera"));
-        SpawnManager.Instance.Initialize();
+        //SpawnManager.Instance.Initialize();
+        //spawnManager = ManagerSpawn("Spawn").AddComponent<SpawnManager>();
+        spawnManager = new SpawnManager();
+        spawnManager.Initialize();
         uIManager = new UIManager();
         soundManager = GetComponentInChildren<SoundManager>();
     }
+
+    //GameObject ManagerSpawn(string inManagerName)
+    //{
+    //    GameObject outManager = new GameObject();
+    //    outManager.name = $"{inManagerName} Manager";
+    //    return outManager;
+    //}
 }

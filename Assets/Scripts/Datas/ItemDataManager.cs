@@ -7,28 +7,28 @@ using GoogleSheet.Core.Type;
 [UGS(typeof(ItemType))]
 public enum ItemType
 {
-    Sword = 1,
-    Bow,
-    Staff,
-    Shield,
-    Pickaxe,
-    Helmet,
-    Top,
-    Bottom,
-    Armor,
-    Cape,
-    Mine,
-    Jewel,
-    Ladder,
-    Other,
-    Gold,
-    HealthPotion,
-    StaminaPotion
+    Sword = 1,         // 검
+    Bow,               // 활
+    Staff,             // 지팡이
+    Shield,            // 방패
+    Pickaxe,           // 곡괭이
+    Helmet,            // 헬멧
+    Top,               // 상의
+    Bottom,            // 하의
+    Armor,             // 갑옷
+    Cape,              // 망토
+    Mine,              // 광산
+    Jewel,             // 보석
+    Ladder,            // 사다리
+    Other,             // 기타
+    Gold,              // 재화
+    HealthPotion,      // 체력 포션
+    StaminaPotion      // 스태미나 포션
 }
 
 // 아이템 데이터를 관리하는 매니저 클래스
 public class ItemDataManager : ItemData
-{
+{ // 아이템 데이터 관리 및 반환
     // 모든 아이템 데이터를 반환
     public List<ItemData> GetItemDatas()
     {
@@ -75,16 +75,4 @@ public class ItemDataManager : ItemData
 
         return null;
     }
-
-    // 특정 ID의 아이템 데이터를 반환 (추가된 메서드)
-    public ItemData GetItemDataById(int itemId)
-    {
-        if (ItemDataMap.ContainsKey(itemId))
-        {
-            return ItemDataMap[itemId];
-        }
-
-        return null;
-    }
-
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8353290763099545994}
   - component: {fileID: -8336982552567409854}
   - component: {fileID: 4028148031619201833}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Demon
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -146,9 +146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
-  enemyLayer:
+  layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 640
   curTime: 0
   chargeDelay: 1
   chargeDuration: 4

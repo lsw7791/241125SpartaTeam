@@ -17,10 +17,10 @@ public class Monster : MonoBehaviour, ICreature
     }
     public void Die()
     {
-        if (SpawnManager.Instance.monsterPool != null)
+        if (GameManager.Instance.spawnManager.monsterPool != null)
         {
             // 몬스터의 종류를 구분해서 풀에 반환 (creatureId로 구별)
-            SpawnManager.Instance.monsterPool.ReturnMonster(id, gameObject);
+            GameManager.Instance.spawnManager.monsterPool.ReturnMonster(id, gameObject);
         }
         else
         {

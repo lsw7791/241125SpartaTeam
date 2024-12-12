@@ -21,7 +21,7 @@ public class MonsterAI : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     protected bool isMove = true;
     [SerializeField]
-    protected LayerMask enemyLayer; // 적군 레이어마스크
+    protected LayerMask layerMask; // 적군 레이어마스크
 
     [Header("Attack")]
     [SerializeField]
@@ -35,11 +35,12 @@ public class MonsterAI : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         initialPosition = transform.position;
         playerTransform = GameManager.Instance.player.gameObject.transform;
+
     }
 
     protected virtual void FixedUpdate()
     {
-        if(GameManager.Instance.player._playerAnimationController.isDeath)
+        if(GameManager.Instance.player.stats.isDie)
         {
             playerTransform = null;
         }

@@ -24,7 +24,7 @@ public class DataManager
     public ItemData GetItemDataById(int itemId)
     {
         Debug.Log($"Requesting ItemData for ID: {itemId}");
-        var itemData = item.GetItemDataById(itemId);
+        var itemData = item.GetData(itemId);
 
         if (itemData == null)
         {

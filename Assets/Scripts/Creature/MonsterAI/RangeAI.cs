@@ -81,18 +81,22 @@ public class RangeAI : MonsterAI
     {
         if (projectilePrefab != null && attackPoint != null)
         {
-            GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, Quaternion.identity);
-            //GameManager.Instance.projectilePool.GetProjectile();
-
+            //GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, Quaternion.identity);
+            GameObject projectile = GameManager.Instance.spawnManager.projectilePool.SpawnFromPool("TestEnemyRangeAttack");
+            projectile.transform.position = attackPoint.position;
             // 투사체에 방향을 부여
-            if (projectile.TryGetComponent<Projectile>(out var outProjectile))
+            if (projectile.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile))
             {
-                outProjectile.damage = GameManager.Instance.dataManager.creature.GetAttack(monster.id);
                 projectile.TryGetComponent<Rigidbody2D>(out var outRigidbody2D);
-                outProjectile.Initialize(enemyLayer);
+                outProjectile.Initialize(layerMask, GameManager.Instance.dataManager.creature.GetAttack(monster.id));
                 // 플레이어 방향으로 투사체 발사
-                Vector3 direction = (playerTransform.position - attackPoint.position).normalized;
+                Vector3 direction = (playerTransform.position - attackPoint.position);
+                direction.Normalize();
                 outRigidbody2D.velocity = direction * GameManager.Instance.dataManager.creature.GetAttackSpeed(monster.id);
+
+                // 발사체가 타겟을 향하도록 회전
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;  // 각도 계산
+                outProjectile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 180));  // 회전 적용
             }
         }
     }
