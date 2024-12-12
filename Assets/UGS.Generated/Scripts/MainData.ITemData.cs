@@ -29,10 +29,9 @@ namespace MainData
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, ItemData> ItemDataMap = new Dictionary<int, ItemData>();
-        // ID와 데이터
-        public static List<ItemData> ItemDataList = new List<ItemData>();
-        // 모든 아이템 데이터를 리스트 형태로 저장
+        public static Dictionary<int, ItemData> ItemDataMap = new Dictionary<int, ItemData>();  
+        public static List<ItemData> ItemDataList = new List<ItemData>();   
+
         /// <summary>
         /// Get ItemData List 
         /// Auto Load
@@ -58,7 +57,6 @@ namespace MainData
 /* Fields. */
 
 		public System.Int32 id;
-		public System.Int32 itemId;
 		public ItemType itemType;
 		public System.String name;
 		public System.String desc;
