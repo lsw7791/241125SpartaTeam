@@ -22,7 +22,7 @@ public class TestItem : MonoBehaviour
                 itemData.id.ToString(),
                 itemData.name,
                 1,
-                itemData.itemType.ToString(),
+                itemData.itemType,
                 itemSprite
             );
 

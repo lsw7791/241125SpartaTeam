@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public class Inventory
 {
-    public List<InventoryItem> Items; // 아이템 목록
+    public List<InventoryItem> Items; // 플레이어의 인벤토리 아이템 목록
     public event Action OnInventoryChanged; // 인벤토리 변경 이벤트
 
     public Inventory()
@@ -14,17 +14,19 @@ public class Inventory
     }
 
     // 아이템 추가 메서드
-    public void AddItem(string itemID, string itemName, int quantity, string itemType, Sprite itemSprite)
+    public void AddItem(string itemID, string itemName, int quantity, ItemType itemType, Sprite itemSprite)
     {
         InventoryItem existingItem = Items.Find(item => item.ItemID == itemID);
-
-        if (existingItem != null)
-        {
+        // 동일한 itemID를 가진 아이템 탐색
+        if (existingItem != null && (int)itemType > 10)
+        { // 인벤토리 내에 동일한 itemID가 있고 장비 아이템이 아니라면
             existingItem.Quantity += quantity;
+            // 찾은 아이템이 있다면 수량 증가
         }
         else
         {
             Items.Add(new InventoryItem(itemID, itemName, quantity, itemType, itemSprite));
+            // 동일한 itemID 없거나 장비 아이템이라면 리스트에 추가
         }
 
         OnInventoryChanged?.Invoke();

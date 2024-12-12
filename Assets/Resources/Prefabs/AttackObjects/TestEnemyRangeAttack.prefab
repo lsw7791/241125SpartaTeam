@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5009459275336837069}
   - component: {fileID: 736075204628065016}
   - component: {fileID: 8053213991127677543}
-  - component: {fileID: 5671114913766545499}
+  - component: {fileID: 5107735689682133864}
   m_Layer: 0
   m_Name: TestEnemyRangeAttack
   m_TagString: Untagged
@@ -149,7 +149,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.08
---- !u!114 &5671114913766545499
+--- !u!114 &5107735689682133864
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,11 +158,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6186730234316284038}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e48afa631ff844438c8299c112465af, type: 3}
+  m_Script: {fileID: 11500000, guid: f56ca9f8bff3869469ed93793013e395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 3
-  damage: 10
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 0

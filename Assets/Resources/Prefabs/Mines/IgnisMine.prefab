@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6288110093633183037}
   - component: {fileID: 4900294351767483320}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IgnisMine
   m_TagString: Mine
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 3806999395043575905}
   - component: {fileID: 7511635253010446132}
   - component: {fileID: 2542879623225220243}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MIneFull
   m_TagString: Mine
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5231720358438901570}
   - component: {fileID: 6970340548533422746}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Empty
   m_TagString: Mine
   m_Icon: {fileID: 0}

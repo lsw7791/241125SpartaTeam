@@ -25,9 +25,17 @@ public class GameManager : MonoSingleton<GameManager>
         player = playerObject.GetComponent<Player>();
         GameObject miniCamera = Instantiate(Resources.Load<GameObject>("Prefabs/Cameras/MinimapCamera"));
         //SpawnManager.Instance.Initialize();
+        //spawnManager = ManagerSpawn("Spawn").AddComponent<SpawnManager>();
         spawnManager = new SpawnManager();
         spawnManager.Initialize();
         uIManager = new UIManager();
         soundManager = GetComponentInChildren<SoundManager>();
     }
+
+    //GameObject ManagerSpawn(string inManagerName)
+    //{
+    //    GameObject outManager = new GameObject();
+    //    outManager.name = $"{inManagerName} Manager";
+    //    return outManager;
+    //}
 }

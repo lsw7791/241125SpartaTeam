@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1527467978479205095}
   - component: {fileID: 2017569060600494312}
   - component: {fileID: 4692596881115890556}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MIneFull
   m_TagString: Mine
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5593571296297005916}
   - component: {fileID: 6648343122455642427}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StoneMine
   m_TagString: Mine
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5134437304644428286}
   - component: {fileID: 6020766406516756433}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Empty
   m_TagString: Mine
   m_Icon: {fileID: 0}

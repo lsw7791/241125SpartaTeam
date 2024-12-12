@@ -44,18 +44,18 @@ public class Player : MonoBehaviour,IDamageable
     }
 
     // 인벤토리 관련: 스프라이트 포함
-    public void AddItemToInventory(string itemID, string itemName, int quantity, string itemType, Sprite itemSprite)
-    {
+    public void AddItemToInventory(string itemID, string itemName, int quantity, ItemType itemType, Sprite itemSprite)
+    { // 이템을 인벤토리에 추가
         inventory.AddItem(itemID, itemName, quantity, itemType, itemSprite);  // 스프라이트 포함
     }
 
     public void RemoveItemFromInventory(string itemID, int quantity)
-    {
+    { // 지정된 수량만큼 제거
         inventory.RemoveItem(itemID, quantity);  // 아이템 제거
     }
 
     public InventoryItem GetItemFromInventory(string itemID)
-    {
+    { // 특정 아이템을 검색
         return inventory.GetItem(itemID);  // 아이템 조회
     }
 
