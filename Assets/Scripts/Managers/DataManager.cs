@@ -1,4 +1,5 @@
 using MainData;
+using System.Collections.Generic;
 using UGS;
 using UnityEngine;
 
@@ -37,5 +38,19 @@ public class DataManager
 
         return itemData;
     }
+    public List<ItemData> GetItemsForShop()
+    {
+        List<ItemData> items = new List<ItemData>();
 
+        for (int i = 90; i <= 95; i++)
+        {
+            ItemData itemData = GetItemDataById(i);
+            if (itemData != null)
+            {
+                items.Add(itemData);
+            }
+        }
+
+        return items;
+    }
 }

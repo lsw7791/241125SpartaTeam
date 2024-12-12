@@ -11,6 +11,8 @@ public class GameManager : MonoSingleton<GameManager>
     GameObject playerObject;
     GameObject SoundManagerObject;
     public Player player;
+    public IInteractable InteractableObject { get; set; } // 현재 상호작용 가능한 객체
+
     protected override void Awake()
     {
         base.Awake();

@@ -157,7 +157,7 @@ public class PlayerInput : MonoBehaviour
     // 상호작용 로직
     private void Interact()
     {
-        // 상호작용 로직 추가
+        GameManager.Instance.InteractableObject.Interact();
     }
 
     // 구르기 로직
