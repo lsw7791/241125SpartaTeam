@@ -171,10 +171,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3790255501156962416, guid: 66f0ab533919a4e2592a94febeba779b, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4057608478168779507, guid: 66f0ab533919a4e2592a94febeba779b, type: 3}
       propertyPath: m_Name
       value: village
@@ -309,9 +305,8 @@ MonoBehaviour:
   soundManager: {fileID: 0}
   uIManager: {fileID: 0}
   spawnManager: {fileID: 0}
-  sceneController: {fileID: 0}
   player: {fileID: 0}
-  stageNum: 0
+  sceneNum: 0
 --- !u!4 &1564596978
 Transform:
   m_ObjectHideFlags: 0
@@ -413,6 +408,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2491812582798576993, guid: fb10a66af9bbd144f8074a52ec725839, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491812582798576993, guid: fb10a66af9bbd144f8074a52ec725839, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491812582798576993, guid: fb10a66af9bbd144f8074a52ec725839, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491812582798576993, guid: fb10a66af9bbd144f8074a52ec725839, type: 3}
+      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2491812582798576993, guid: fb10a66af9bbd144f8074a52ec725839, type: 3}
