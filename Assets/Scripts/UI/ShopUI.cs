@@ -2,49 +2,51 @@ using MainData;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ShopUI : UIBase
 {
-    public GameObject itemPrefab;  // 아이템 UI 프리팹
-    public Transform itemsParent;  // 아이템들이 배치될 부모 객체
+    public ShopType shopType; // 상점 타입
+    public GameObject itemPrefab;
+    public Transform itemsParent;
     public TMP_Text _hasGold;
+    public ScrollRect scrollRect;  // 스크롤 Rect
 
     private void Awake()
     {
         base.Awake();
         _hasGold.text = $"{GameManager.Instance.player.stats.Gold}";
-
-        // 프리팹 로드 확인
         itemPrefab = Resources.Load<GameObject>("Prefabs/UI/ShopSlot");
-        SetupShopUI();
+    }
+
+    // 상점 타입을 설정하고 UI 업데이트
+    public void SetShopType(ShopType newShopType)
+    {
+        shopType = newShopType;  // 새로운 상점 타입 설정
+        SetupShopUI();  // 상점 UI 설정
     }
 
     public void SetupShopUI()
     {
-        List<ItemData> items = GameManager.Instance.dataManager.GetItemsForShop();
-        Debug.Log("Items count: " + items.Count); // 아이템 수 확인
+        // 현재 상점 타입에 따라 아이템 불러오기
+        List<ItemData> items = GameManager.Instance.dataManager.shop.GetItems(shopType);
 
-        if (items.Count == 0)
+        // 기존 아이템을 제거하고 새로운 아이템을 표시
+        foreach (Transform child in itemsParent)
         {
-            Debug.LogWarning("No items found for the shop.");
-            return;
+            Destroy(child.gameObject);
         }
 
-        // 아이템을 동적으로 생성하여 UI에 추가
         foreach (ItemData itemData in items)
         {
-            Debug.Log("Item: " + itemData.name); // 각 아이템 데이터 확인
-
-            // 아이템 UI 슬롯 생성
             GameObject itemObject = Instantiate(itemPrefab, itemsParent);
-
-            // 생성된 슬롯에서 ShopSlot 컴포넌트를 찾아서 데이터를 설정
             ShopSlot shopSlot = itemObject.GetComponent<ShopSlot>();
             if (shopSlot != null)
             {
-                shopSlot.Setup(itemData); // 아이템 데이터를 슬롯에 설정
+                shopSlot.Setup(itemData);
             }
         }
-    }
 
+        LayoutRebuilder.ForceRebuildLayoutImmediate(itemsParent.GetComponent<RectTransform>());
+    }
 }
