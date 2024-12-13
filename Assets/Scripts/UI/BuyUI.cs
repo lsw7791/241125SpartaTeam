@@ -45,7 +45,11 @@ public class BuyUI : UIBase
     {
         _inputFieldParent.SetActive(isActive); // 수량 입력 필드 부모 객체 활성화/비활성화
     }
-
+    private void UpdateGoldDisplay()
+    {
+        // 보유 골드 텍스트 업데이트
+        //_hasGold.text = $"보유골드: {GameManager.Instance.player.stats.Gold}";
+    }
     public void PurchaseItem(ItemData itemData)
     {
         // 수량 입력값을 가져오기
@@ -67,9 +71,9 @@ public class BuyUI : UIBase
             // 골드 차감
             GameManager.Instance.player.stats.Gold -= totalCost;
 
-            // 완료 메시지
-            _text.text = $"구매 완료!";
-
+            ShopUI shopUI;
+            shopUI = GameManager.Instance.uIManager.GetUI<ShopUI>();
+            shopUI._hasGold.text = GameManager.Instance.player.stats.Gold.ToString();
             // 스프라이트 경로에서 Sprite 객체를 로드
             Sprite itemSprite = Resources.Load<Sprite>(itemData.spritePath);
 

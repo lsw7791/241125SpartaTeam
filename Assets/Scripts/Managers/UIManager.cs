@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject deathUI;
 
     private Dictionary<string, UIBase> _uiList = new();
 
