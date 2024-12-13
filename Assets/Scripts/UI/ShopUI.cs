@@ -1,22 +1,21 @@
 using MainData;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShopUI : UIBase
 {
     public GameObject itemPrefab;  // 아이템 UI 프리팹
     public Transform itemsParent;  // 아이템들이 배치될 부모 객체
-    public BuyUI buyUI;           // BuyUI 인스턴스 (구매 UI)
+    public TMP_Text _hasGold;
 
     private void Awake()
     {
         base.Awake();
+        _hasGold.text = $"{GameManager.Instance.player.stats.Gold}";
+
         // 프리팹 로드 확인
         itemPrefab = Resources.Load<GameObject>("Prefabs/UI/ShopSlot");
-        if (itemPrefab == null)
-        {
-            Debug.LogError("Item prefab is not found!");
-        }
         SetupShopUI();
     }
 
@@ -44,23 +43,8 @@ public class ShopUI : UIBase
             if (shopSlot != null)
             {
                 shopSlot.Setup(itemData); // 아이템 데이터를 슬롯에 설정
-                // 슬롯 클릭 시 OnItemClick 이벤트 구독
-                shopSlot.OnItemClick += OnItemClicked; // 클릭 이벤트 등록
-            }
-            else
-            {
-                Debug.LogError("ShopSlot component not found on the instantiated itemPrefab.");
             }
         }
     }
 
-    // 아이템 클릭 시 BuyUI 활성화 및 데이터 전달
-    private void OnItemClicked(ItemData itemData)
-    {
-        if (buyUI != null)
-        {
-            buyUI.gameObject.SetActive(true); // BuyUI 활성화
-            buyUI.SetUp(itemData); // 해당 아이템 데이터 전달
-        }
-    }
 }
