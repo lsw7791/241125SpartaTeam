@@ -1801,7 +1801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b8e60a739ff1b4abab5b1099d667d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NickName: "\uC2B9\uC6B0\uB2D8\uAC1C\uACE0\uC218"
+  NickName: "\uCD98\uC2DD\uC774"
   stats:
     MaxHP: 100
     CurrentHP: 1
