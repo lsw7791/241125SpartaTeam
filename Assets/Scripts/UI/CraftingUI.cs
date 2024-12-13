@@ -32,6 +32,7 @@ public class CraftingUI : UIBase
      * 조합 완성템 데이터
      * 조합 확률
      * 재료 아이템 (인벤토리 데이터)
+     * 완성 아이템의 티어 별로 재료 아이템 티어 받아오기
      * 조합 버튼
      * 되돌아가기 버튼
      */
@@ -40,6 +41,10 @@ public class CraftingUI : UIBase
     [SerializeField]
     private Image _productImage;
 
+
+    [SerializeField]
+    private Image[] _craftItemImage;
+
     public void Init(CraftingData inData)
     {
         craftingData = inData;
@@ -47,5 +52,25 @@ public class CraftingUI : UIBase
         Debug.Log(craftingData.name);
         Sprite itemSprite = Resources.Load<Sprite>(craftingData.imagePath);
         _productImage.sprite = itemSprite;
+
+        for (int i = 0; i < _craftItemImage.Length; i++)
+        {
+
+            foreach (int itemId in GameManager.Instance.dataManager.crafting.GetCraftItemIds(craftingData.id))
+            {
+                if (itemId != 0)
+                {
+                    _craftItemImage[i].gameObject.SetActive(true);
+                    _craftItemImage[i].sprite = null;
+                    var itemData = GameManager.Instance.dataManager.GetItemDataById(itemId);
+
+                    _craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
+                }
+                else
+                {
+                    _craftItemImage[i].gameObject.SetActive(false);
+                }
+            }
+        }
     }
 }
