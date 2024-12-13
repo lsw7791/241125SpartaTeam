@@ -14,7 +14,7 @@ public class Inventory
     }
 
     // 아이템 추가 메서드
-    public void AddItem(string itemID, string itemName, int quantity, ItemType itemType, Sprite itemSprite)
+    public void AddItem(int itemID, string itemName, int quantity, ItemType itemType, Sprite itemSprite)
     {
         InventoryItem existingItem = Items.Find(item => item.ItemID == itemID);
         // 동일한 itemID를 가진 아이템 탐색
@@ -34,7 +34,7 @@ public class Inventory
 
 
     // 아이템 조회 메서드 추가
-    public InventoryItem GetItem(string itemID)
+    public InventoryItem GetItem(int itemID)
     {
         return Items.Find(item => item.ItemID == itemID); // 해당 ID의 아이템 반환
     }
@@ -46,7 +46,7 @@ public class Inventory
     }
 
     // 아이템 제거 메서드
-    public void RemoveItem(string itemID, int quantity)
+    public void RemoveItem(int itemID, int quantity)
     {
         InventoryItem item = Items.Find(i => i.ItemID == itemID);
         if (item != null)

@@ -2,6 +2,8 @@ using MainData;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 
 public class CraftingUI : UIBase
 {
@@ -32,6 +34,7 @@ public class CraftingUI : UIBase
      * 조합 완성템 데이터
      * 조합 확률
      * 재료 아이템 (인벤토리 데이터)
+     * 완성 아이템의 티어 별로 재료 아이템 티어 받아오기
      * 조합 버튼
      * 되돌아가기 버튼
      */
@@ -39,13 +42,44 @@ public class CraftingUI : UIBase
     private CraftingData craftingData;
     [SerializeField]
     private Image _productImage;
+    [SerializeField]
+    private TMP_Text _productText;
+
+    [SerializeField]
+    private Image[] _craftItemImage;
+    [SerializeField]
+    private TMP_Text[] _craftItemText;
 
     public void Init(CraftingData inData)
     {
         craftingData = inData;
 
-        Debug.Log(craftingData.name);
+        //Debug.Log(craftingData.name);
         Sprite itemSprite = Resources.Load<Sprite>(craftingData.imagePath);
         _productImage.sprite = itemSprite;
+        _productText.text = craftingData.name;
+
+        for (int i = 0; i < _craftItemImage.Length; i++)
+        {
+            foreach (int itemId in GameManager.Instance.dataManager.crafting.GetCraftItemIds(craftingData.id))
+            {
+                if (itemId != 0)
+                {
+                    int count = GameManager.Instance.dataManager.crafting.GetCraftCountIds(craftingData.id)[i];
+                    _craftItemImage[i].gameObject.SetActive(true);
+                    _craftItemImage[i].sprite = null;
+                    var itemData = GameManager.Instance.dataManager.GetItemDataById(itemId);
+
+                    _craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
+
+                    _craftItemText[i].TryGetComponent<TMP_Text>(out var outCraftItemText);
+                    outCraftItemText.text = $"{GameManager.Instance.player.inventory.GetItem(itemData.id)} / {count}\n{itemData.name}";
+                }
+                else
+                {
+                    _craftItemImage[i].gameObject.SetActive(false);
+                }
+            }
+        }
     }
 }

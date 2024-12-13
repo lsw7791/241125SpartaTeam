@@ -19,7 +19,7 @@ public class TestItem : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             GameManager.Instance.player.AddItemToInventory(
-                itemData.id.ToString(),
+                itemData.id,
                 itemData.name,
                 1,
                 itemData.itemType,

@@ -44,9 +44,8 @@ public class CraftingManager : MonoBehaviour
             return false;
         }
 
-        // 필요한 재료 정보를 가져옴
         var requiredMaterials = GameManager.Instance.dataManager.crafting.GetRequiredMaterials(selectedItemId);
-
+         // 제작에 필요한 재료 아이템의 갯수 정보 가져오기
         if (requiredMaterials == null || requiredMaterials.Count == 0)
         {
             Debug.LogWarning($"ID {selectedItemId}에 필요한 재료 정보가 없습니다.");

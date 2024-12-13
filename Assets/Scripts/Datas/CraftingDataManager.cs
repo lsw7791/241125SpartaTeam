@@ -29,7 +29,7 @@ public class CraftingDataManager : CraftingData
         return CraftingDataList.FindAll(data => data.tier == tier);
     }
 
-    // 특정 아이템에 필요한 재료 정보를 반환
+    // 특정 아이템에 필요한 재료 정보를 반환 <- 어떻게 가져오지?
     public Dictionary<int, int> GetRequiredMaterials(int id)
     {
         var data = GetData(id);
@@ -43,5 +43,15 @@ public class CraftingDataManager : CraftingData
         if (data.resourceJewel > 0) materials.Add(4, data.resourceJewel);  // 자원 4: 보석
 
         return materials;
+    }
+
+    public List<int> GetCraftItemIds(int id)
+    {
+        return CraftingDataMap[id].matter;
+    }
+
+    public List<int> GetCraftCountIds(int id)
+    {
+        return CraftingDataMap[id].count;
     }
 }
