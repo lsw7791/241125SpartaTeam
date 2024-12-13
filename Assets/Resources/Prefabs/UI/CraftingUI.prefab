@@ -539,6 +539,7 @@ MonoBehaviour:
   - {fileID: 4274136206230225175}
   - {fileID: 6444731472106404723}
   - {fileID: 8710783639698621023}
+  craftResultButton: {fileID: 8114120984566302753}
 --- !u!1 &2804474937593787061
 GameObject:
   m_ObjectHideFlags: 0

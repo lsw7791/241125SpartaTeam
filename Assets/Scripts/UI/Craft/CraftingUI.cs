@@ -19,12 +19,11 @@ public class CraftingUI : UIBase
     [SerializeField]
     private TMP_Text[] _craftItemText;
 
+    [SerializeField]
     private Button craftResultButton; // 조합 버튼
 
     private void Start()
     {
-        craftResultButton = GetComponent<Button>();
-
         craftResultButton.onClick.AddListener(() =>
         {
             CraftResultUI craftResultUI = GameManager.Instance.uIManager.OpenUI<CraftResultUI>();
@@ -47,6 +46,11 @@ public class CraftingUI : UIBase
     {
         craftingData = inData;
 
+        for (int i = 0; i < _craftItemImage.Length; i++)
+        {
+            _craftItemImage[i].gameObject.SetActive(false);
+        }
+
         Sprite itemSprite = Resources.Load<Sprite>(craftingData.imagePath);
         _productImage.sprite = itemSprite;
         _productText.text = craftingData.name;
@@ -58,7 +62,6 @@ public class CraftingUI : UIBase
             _craftItemImage[i].sprite = null;
             _craftItemText[i].TryGetComponent<TMP_Text>(out var outCraftItemText);
             outCraftItemText.text = null;
-            _craftItemImage[i].gameObject.SetActive(false);
 
             if (craftItemList[i] != 0)
             {
@@ -68,6 +71,11 @@ public class CraftingUI : UIBase
 
                 _craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
                 outCraftItemText.text = $"{GameManager.Instance.player.inventory.GetItemCount(itemData.id)} / {count}\n{itemData.name}";
+            }
+            else
+            {
+                _craftItemImage[i].sprite = null;
+                outCraftItemText.text = null;
             }
         }
     }
