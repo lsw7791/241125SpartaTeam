@@ -9,6 +9,7 @@ public class ShopNPC : NPCBase
     {
         // ShopUI를 열고 해당 상점 타입 전달
         ShopUI shopUI = GameManager.Instance.uIManager.GetUI<ShopUI>();
+        GameManager.Instance.uIManager.ToggleUI<ShopUI>();
         shopUI.SetShopType(shopType); // ShopUI 초기화
     }
 }
