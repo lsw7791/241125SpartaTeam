@@ -25,34 +25,34 @@ public class CraftingUI : MonoBehaviour
             };
         }
 
-        PopulateCraftingUI(craftingDataList);  // UI에 아이템을 채우기
+        //PopulateCraftingUI(craftingDataList);  // UI에 아이템을 채우기
     }
 
     // UI에 아이템 목록을 채우는 메소드
-    public void PopulateCraftingUI(List<CraftingData> dataList)
-    {
-        // 기존 UI 초기화
-        foreach (Transform child in craftingPanel)
-        {
-            Destroy(child.gameObject);
-        }
+    //public void PopulateCraftingUI(List<CraftingData> dataList)
+    //{
+    //    // 기존 UI 초기화
+    //    foreach (Transform child in craftingPanel)
+    //    {
+    //        Destroy(child.gameObject);
+    //    }
 
-        // 데이터 기반으로 UI 생성
-        foreach (var data in dataList)
-        {
-            // 슬롯 생성
-            GameObject slot = Instantiate(craftingSlotPrefab, craftingPanel);
+    //    // 데이터 기반으로 UI 생성
+    //    foreach (var data in dataList)
+    //    {
+    //        // 슬롯 생성
+    //        GameObject slot = Instantiate(craftingSlotPrefab, craftingPanel);
 
-            // 슬롯에 아이템 데이터 적용
-            CraftingSlot slotScript = slot.GetComponent<CraftingSlot>();
-            if (slotScript != null)
-            {
-                slotScript.Setup(data); // 슬롯에 아이템 설정
-            }
-            else
-            {
-                Debug.LogError("CraftingSlot 스크립트가 프리팹에 없습니다.");
-            }
-        }
-    }
+    //        // 슬롯에 아이템 데이터 적용
+    //        CraftingSlot slotScript = slot.GetComponent<CraftingSlot>();
+    //        if (slotScript != null)
+    //        {
+    //            slotScript.Setup(data); // 슬롯에 아이템 설정
+    //        }
+    //        else
+    //        {
+    //            Debug.LogError("CraftingSlot 스크립트가 프리팹에 없습니다.");
+    //        }
+    //    }
+    //}
 }
