@@ -50,7 +50,7 @@ public class TopDownController : MonoBehaviour
     }
     public void Revive()
     {
-        GameManager.Instance.uIManager.deathUI.SetActive(false);
+        GameManager.Instance.uIManager.ToggleUI<DeathUI>();
         GameManager.Instance.player.stats.isDie = false;
         speed = 3.5f;
         this.enabled = true;
