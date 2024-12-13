@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3502253100359873179}
   - component: {fileID: 4715850039795728393}
   - component: {fileID: 4679877400868454428}
-  - component: {fileID: -873485890189829710}
+  - component: {fileID: 6821351778058261099}
   - component: {fileID: 4709320346356149417}
   m_Layer: 5
   m_Name: CraftingSlot
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-873485890189829710
+--- !u!114 &6821351778058261099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,7 +91,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemImage: {fileID: 4679877400868454428}
   itemName: {fileID: 0}
-  craftButton: {fileID: 4709320346356149417}
 --- !u!114 &4709320346356149417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,16 +134,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4679877400868454428}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -873485890189829710}
-        m_TargetAssemblyTypeName: CraftingSlot, Assembly-CSharp
-        m_MethodName: OnCraftButtonClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
