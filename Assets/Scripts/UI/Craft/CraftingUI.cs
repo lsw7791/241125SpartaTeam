@@ -19,15 +19,16 @@ public class CraftingUI : UIBase
     [SerializeField]
     private TMP_Text[] _craftItemText;
 
-    private Button craftButton; // 조합 버튼
+    private Button craftResultButton; // 조합 버튼
 
     private void Start()
     {
-        craftButton = GetComponent<Button>();
+        craftResultButton = GetComponent<Button>();
 
-        craftButton.onClick.AddListener(() =>
+        craftResultButton.onClick.AddListener(() =>
         {
-            //CraftingUI craftingUI = GameManager.Instance.uIManager.CloseUI<CraftingUI>();
+            CraftResultUI craftResultUI = GameManager.Instance.uIManager.OpenUI<CraftResultUI>();
+            GameManager.Instance.uIManager.CloseUI<CraftingUI>();
             // 제작 결과 팝업 실행
             // 제작에 성공하였습니다!
             // 제작된 아이템 이미지
