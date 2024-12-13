@@ -54,10 +54,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6a11c4182bde045af27775bc3de44e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemNameText: {fileID: 1306869837129490050}
+  itemPriceText: {fileID: 5534658223537380191}
   icon: {fileID: 2247631099932639476}
-  name: {fileID: 1306869837129490050}
-  desc: {fileID: 8586859354531245816}
-  gold: {fileID: 5534658223537380191}
+  itemDescText: {fileID: 8586859354531245816}
+  buyButton: {fileID: 6636379087171307508}
 --- !u!222 &5707341801442635477
 CanvasRenderer:
   m_ObjectHideFlags: 0
