@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathUI : MonoBehaviour
+public class DeathUI : UIBase
 {
     // Start is called before the first frame update
     private void Start()
     {
-        GameManager.Instance.uIManager.deathUI = this.gameObject;
         this.gameObject.SetActive(false);
     }
 
