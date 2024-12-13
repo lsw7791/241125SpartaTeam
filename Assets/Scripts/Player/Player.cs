@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour,IDamageable
 {
-    [SerializeField] private string NickName;
+    [SerializeField] public string NickName;
 
     public PlayerStats stats;  // 플레이어의 스탯
     public Inventory inventory;  // 플레이어의 인벤토리

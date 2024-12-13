@@ -1801,12 +1801,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b8e60a739ff1b4abab5b1099d667d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NickName: "\uD14C\uC2A4\uD2B8"
+  NickName: "\uC2B9\uC6B0\uB2D8\uAC1C\uACE0\uC218"
   stats:
     MaxHP: 100
     CurrentHP: 1
     Stamina: 100
-    Gold: 5
+    Gold: 1000
     Damage: 1000
     Speed: 5
     AttackSpeed: 5
