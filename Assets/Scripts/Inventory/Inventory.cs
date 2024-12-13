@@ -39,6 +39,18 @@ public class Inventory
         return Items.Find(item => item.ItemID == itemID); // 해당 ID의 아이템 반환
     }
 
+    public int GetItemCount(int itemID)
+    {
+        InventoryItem existingItem = Items.Find(item => item.ItemID == itemID);
+        // 동일한 itemID를 가진 아이템 탐색
+        if (existingItem != null)
+        { // 인벤토리 내에 동일한 itemID가 있고 장비 아이템이 아니라면
+            return existingItem.Quantity;
+            // 찾은 아이템이 있다면 수량 증가
+        }
+        return 0;
+    }
+
     // 아이템 목록 반환
     public List<InventoryItem> GetItems()
     {

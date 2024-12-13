@@ -54,31 +54,27 @@ public class CraftingUI : UIBase
     {
         craftingData = inData;
 
-        //Debug.Log(craftingData.name);
         Sprite itemSprite = Resources.Load<Sprite>(craftingData.imagePath);
         _productImage.sprite = itemSprite;
         _productText.text = craftingData.name;
 
-        for (int i = 0; i < _craftItemImage.Length; i++)
+        List<int> craftItemList = GameManager.Instance.dataManager.crafting.GetCraftItemIds(craftingData.id);
+
+        for(int i = 0; i < craftItemList.Count; i++)
         {
-            foreach (int itemId in GameManager.Instance.dataManager.crafting.GetCraftItemIds(craftingData.id))
+            _craftItemImage[i].sprite = null;
+            _craftItemText[i].TryGetComponent<TMP_Text>(out var outCraftItemText);
+            outCraftItemText.text = null;
+            _craftItemImage[i].gameObject.SetActive(false);
+
+            if (craftItemList[i] != 0)
             {
-                if (itemId != 0)
-                {
-                    int count = GameManager.Instance.dataManager.crafting.GetCraftCountIds(craftingData.id)[i];
-                    _craftItemImage[i].gameObject.SetActive(true);
-                    _craftItemImage[i].sprite = null;
-                    var itemData = GameManager.Instance.dataManager.GetItemDataById(itemId);
+                int count = GameManager.Instance.dataManager.crafting.GetCraftCountIds(craftingData.id)[i];
+                _craftItemImage[i].gameObject.SetActive(true);
+                var itemData = GameManager.Instance.dataManager.GetItemDataById(craftItemList[i]);
 
-                    _craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
-
-                    _craftItemText[i].TryGetComponent<TMP_Text>(out var outCraftItemText);
-                    outCraftItemText.text = $"{GameManager.Instance.player.inventory.GetItem(itemData.id)} / {count}\n{itemData.name}";
-                }
-                else
-                {
-                    _craftItemImage[i].gameObject.SetActive(false);
-                }
+                _craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
+                outCraftItemText.text = $"{GameManager.Instance.player.inventory.GetItemCount(itemData.id)} / {count}\n{itemData.name}";
             }
         }
     }

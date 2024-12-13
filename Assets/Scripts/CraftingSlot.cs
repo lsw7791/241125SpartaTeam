@@ -13,7 +13,8 @@ public class CraftingSlot : MonoBehaviour
 
         craftButton.onClick.AddListener(() =>
         {
-            CraftingUI craftingUI = GameManager.Instance.uIManager.OpenUI<CraftingUI>();
+            CraftingUI craftingUI = GameManager.Instance.uIManager.CloseUI<CraftingUI>();
+            craftingUI = GameManager.Instance.uIManager.OpenUI<CraftingUI>();
             craftingUI.Init(craftingData);
         });
     }
