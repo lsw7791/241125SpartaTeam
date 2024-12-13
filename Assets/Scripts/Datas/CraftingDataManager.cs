@@ -49,4 +49,9 @@ public class CraftingDataManager : CraftingData
     {
         return CraftingDataMap[id].matter;
     }
+
+    public List<int> GetCraftCountIds(int id)
+    {
+        return CraftingDataMap[id].count;
+    }
 }

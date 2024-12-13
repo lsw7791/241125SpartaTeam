@@ -79,7 +79,7 @@ public class BuyUI : UIBase
 
             // 아이템을 인벤토리에 추가
             GameManager.Instance.player.inventory.AddItem(
-                itemData.id.ToString(),  // 아이템 ID를 문자열로 변환
+                itemData.id,  // 아이템 ID를 문자열로 변환
                 itemData.name,           // 아이템 이름
                 quantity,                // 구매한 수량
                 itemData.itemType,       // 아이템 타입

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 
 public class CraftingUI : UIBase
 {
@@ -64,6 +65,7 @@ public class CraftingUI : UIBase
             {
                 if (itemId != 0)
                 {
+                    int count = GameManager.Instance.dataManager.crafting.GetCraftCountIds(craftingData.id)[i];
                     _craftItemImage[i].gameObject.SetActive(true);
                     _craftItemImage[i].sprite = null;
                     var itemData = GameManager.Instance.dataManager.GetItemDataById(itemId);
@@ -71,7 +73,7 @@ public class CraftingUI : UIBase
                     _craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
 
                     _craftItemText[i].TryGetComponent<TMP_Text>(out var outCraftItemText);
-                    outCraftItemText.text = itemData.name;
+                    outCraftItemText.text = $"{GameManager.Instance.player.inventory.GetItem(itemData.id)} / {count}\n{itemData.name}";
                 }
                 else
                 {
