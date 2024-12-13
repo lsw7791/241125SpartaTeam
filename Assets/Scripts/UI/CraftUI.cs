@@ -34,15 +34,12 @@ public class CraftUI : UIBase
         // 데이터 기반으로 UI 생성
         foreach (var data in dataList)
         {
-            // 슬롯 생성
-            //GameObject slot = Instantiate(craftingSlotPrefab, craftingPanel);
-            GameObject slot = new GameObject();
-            slot.name = $"{data.name} Slot";
+            GameObject newSlot = SlotObject(data);
+            Image itemImage = newSlot.AddComponent<Image>();
 
-            slot.transform.parent = craftingPanel;
-            Image itemImage =  slot.AddComponent<Image>();
             // 슬롯에 아이템 데이터 적용
-            CraftingSlot slotScript = slot.AddComponent<CraftingSlot>();
+            CraftingSlot slotScript = newSlot.AddComponent<CraftingSlot>();
+            slotScript.Init(data);
 
             if (slotScript != null)
             {
@@ -51,16 +48,10 @@ public class CraftUI : UIBase
 
                 if (itemSprite != null)
                 {
-                    //slotScript.Setup(data, itemSprite); // 슬롯에 데이터와 스프라이트 설정
                     if (itemImage != null && itemSprite != null)
                     {
                         itemImage.sprite = itemSprite;
                     }
-
-                    //if (itemName != null)
-                    //{
-                    //    itemName.text = data != null ? data.name : "아이템 없음";
-                    //}
                 }
                 else
                 {
@@ -72,5 +63,16 @@ public class CraftUI : UIBase
                 Debug.LogError("CraftingSlot 스크립트가 프리팹에 없습니다.");
             }
         }
+    }
+
+    private GameObject SlotObject(CraftingData inData)
+    {
+        GameObject outSlot = new GameObject();
+        outSlot.name = $"{inData.name} Slot";
+
+        outSlot.transform.parent = craftingPanel;
+        outSlot.AddComponent<Button>();
+
+        return outSlot;
     }
 }
