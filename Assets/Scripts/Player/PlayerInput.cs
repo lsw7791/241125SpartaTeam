@@ -157,6 +157,10 @@ public class PlayerInput : MonoBehaviour
     // 상호작용 로직
     private void Interact()
     {
+        if(GameManager.Instance.InteractableObject == null)
+        {
+            return;
+        }
         GameManager.Instance.InteractableObject.Interact();
     }
 

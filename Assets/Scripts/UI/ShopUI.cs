@@ -9,6 +9,7 @@ public class ShopUI : UIBase
 
     private void Awake()
     {
+        base.Awake();
         // 프리팹 로드 확인
         itemPrefab = Resources.Load<GameObject>("Prefabs/UI/ShopSlot");
         if (itemPrefab == null)
