@@ -11,6 +11,7 @@ public class GameManager : MonoSingleton<GameManager>
     public SpawnManager spawnManager;
     GameObject SoundManagerObject;
     public Player player;
+    public int sceneNum;
     public IInteractable InteractableObject { get; set; } // 현재 상호작용 가능한 객체
     protected override void Awake()
     {
@@ -19,22 +20,22 @@ public class GameManager : MonoSingleton<GameManager>
         if (craftingManager == null) craftingManager = gameObject.AddComponent<CraftingManager>();
         List<ItemInstance> items = new List<ItemInstance>(); // JSON파일에 저장된 유저 아이템 정보를 읽어서 넘겨준다.
         ItemManager.Instance.Initialize(items);
-
+        sceneNum = 2;
     }
     private void Start()
     {      
         SceneManager.sceneLoaded += OnSceneLoaded;
-        Instantiate(2);
+        Instantiate(sceneNum);
     }
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {      
         if (scene.name == dataManager.scene.GetMapTo(2))// TO Forest
         {
-            Instantiate(1);
+            Instantiate(sceneNum);
         }
         else if (scene.name == dataManager.scene.GetMapTo(1))//To 마을
         {
-            Instantiate(2);
+            Instantiate(sceneNum);
         }
     }
     void Instantiate(int mapNum)
