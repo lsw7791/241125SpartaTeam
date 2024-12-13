@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InventoryUI : UIBase
 {
@@ -9,8 +10,15 @@ public class InventoryUI : UIBase
     public GameObject slotPrefab;   // 슬롯 프리팹
 
     public Sprite emptySlotSprite;  // 빈 슬롯 이미지
+    [SerializeField] TMP_Text _playerName;
+    [SerializeField] TMP_Text _hasGold;
 
-   //인벤토리가 끄고 켤때마다가 아니라 실시간으로 업데이트되는 기능이 구현되어야함
+    private void Awake()
+    {
+        base.Awake();
+        _playerName.text = GameManager.Instance.player.NickName;
+    }
+    //인벤토리가 끄고 켤때마다가 아니라 실시간으로 업데이트되는 기능이 구현되어야함
     private void OnEnable()
     {
         Setup(GameManager.Instance.player.inventory);
@@ -46,6 +54,8 @@ public class InventoryUI : UIBase
 
     private void Refresh()
     {
+        _hasGold.text = GameManager.Instance.player.stats.Gold.ToString();
+
         Debug.Log($"Inventory Refresh 호출 at {Time.time}");
 
         var items = GameManager.Instance.player.inventory.GetItems(); // 아이템 리스트 받아오기
