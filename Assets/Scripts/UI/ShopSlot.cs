@@ -21,4 +21,9 @@ public class ShopSlot : MonoBehaviour
         desc.text = itemData.desc; // 아이템 설명
         gold.text = $"{itemData.buy} 골드"; // 아이템 가격
     }
+
+    public void OnclickedSlot()
+    {
+        GameManager.Instance.uIManager.ToggleUI<BuyUI>();
+    }
 }
