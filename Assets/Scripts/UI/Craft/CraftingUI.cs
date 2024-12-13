@@ -7,37 +7,6 @@ using UnityEditorInternal.Profiling.Memory.Experimental;
 
 public class CraftingUI : UIBase
 {
-    //[SerializeField] private Transform craftingPanel; // 조합창의 부모 패널
-    //[SerializeField] private GameObject craftingSlotPrefab; // 조합 슬롯 UI 프리팹
-    //[SerializeField] private List<CraftingData> craftingDataList; // 아이템 데이터 목록
-
-    //private void Start()
-    //{
-    //    // 아이템 데이터가 없으면 기본 데이터 할당
-    //    if (craftingDataList == null || craftingDataList.Count == 0)
-    //    {
-    //        craftingDataList = new List<CraftingData>
-    //        {
-    //            new CraftingData { id = 1, tier = 1, imagePath = "Prefabs/Equips/Weapon/Sword/Sword_1" },
-    //            new CraftingData { id = 2, tier = 2, imagePath = "Prefabs/Equips/Weapon/Sword/Sword_2" },
-    //            new CraftingData { id = 3, tier = 3, imagePath = "Prefabs/Equips/Weapon/Sword/Sword_3" },
-    //            new CraftingData { id = 4, tier = 4, imagePath = "Prefabs/Equips/Weapon/Sword/Sword_4" },
-    //            new CraftingData { id = 5, tier = 5, imagePath = "Prefabs/Equips/Weapon/Sword/Sword_5" },
-    //            new CraftingData { id = 6, tier = 6, imagePath = "Prefabs/Equips/Weapon/Sword/Sword_6" }
-    //        };
-    //    }
-
-    //    //PopulateCraftingUI(craftingDataList);  // UI에 아이템을 채우기
-    //}
-
-    /*
-     * 조합 완성템 데이터
-     * 조합 확률
-     * 재료 아이템 (인벤토리 데이터)
-     * 완성 아이템의 티어 별로 재료 아이템 티어 받아오기
-     * 조합 버튼
-     * 되돌아가기 버튼
-     */
     [SerializeField]
     private CraftingData craftingData;
     [SerializeField]
@@ -49,6 +18,29 @@ public class CraftingUI : UIBase
     private Image[] _craftItemImage;
     [SerializeField]
     private TMP_Text[] _craftItemText;
+
+    private Button craftButton; // 조합 버튼
+
+    private void Start()
+    {
+        craftButton = GetComponent<Button>();
+
+        craftButton.onClick.AddListener(() =>
+        {
+            //CraftingUI craftingUI = GameManager.Instance.uIManager.CloseUI<CraftingUI>();
+            // 제작 결과 팝업 실행
+            // 제작에 성공하였습니다!
+            // 제작된 아이템 이미지
+            // 사용한 재료 이미지와 갯수
+            // 닫기 버튼
+            // "30초 후 자동으로 창이 닫힙니다."
+            // 현재 제작 UI 자동으로 닫힘
+            // 제작된 아이템 인벤토리로 이동
+            // 제작에 실패하였습니다..
+            // 재료가 부족한 것 같습니다.
+            // 부족한 재료 이미지와 갯수
+        });
+    }
 
     public void Init(CraftingData inData)
     {
