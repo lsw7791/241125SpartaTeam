@@ -29,14 +29,10 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {      
-        if (scene.name == dataManager.scene.GetMapTo(2))// TO Forest
+        if (scene.name == dataManager.scene.GetMapTo(sceneNum))// TO Forest
         {
             Instantiate(sceneNum);
-        }
-        else if (scene.name == dataManager.scene.GetMapTo(1))//To ¸¶À»
-        {
-            Instantiate(sceneNum);
-        }
+        }       
     }
     void Instantiate(int mapNum)
     {
