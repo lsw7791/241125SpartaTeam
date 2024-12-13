@@ -56,8 +56,6 @@ public class InventoryUI : UIBase
     {
         _hasGold.text = GameManager.Instance.player.stats.Gold.ToString();
 
-        Debug.Log($"Inventory Refresh 호출 at {Time.time}");
-
         var items = GameManager.Instance.player.inventory.GetItems(); // 아이템 리스트 받아오기
 
         for (int i = 0; i < _slots.Count; i++)
