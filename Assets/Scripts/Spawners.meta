@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/NPC/PotionNPC.prefab.meta
+guid: c99af5b850b6dea43bd4f22621e00cac
+PrefabImporter:
+========
+guid: 126e5c2365264234f9eaa6378f46ae70
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> dev:Assets/Scripts/Spawners.meta
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

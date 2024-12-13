@@ -104,8 +104,6 @@ public class PlayerWeapon : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // 무기의 콜라이더가 비활성화된 상태라면 데미지 처리를 하지 않음
-        if (!_weaponCollider.enabled) return;
 
         if (collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
         {
