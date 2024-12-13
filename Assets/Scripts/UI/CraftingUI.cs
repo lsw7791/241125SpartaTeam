@@ -2,6 +2,7 @@ using MainData;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CraftingUI : UIBase
 {
@@ -40,22 +41,25 @@ public class CraftingUI : UIBase
     private CraftingData craftingData;
     [SerializeField]
     private Image _productImage;
-
+    [SerializeField]
+    private TMP_Text _productText;
 
     [SerializeField]
     private Image[] _craftItemImage;
+    [SerializeField]
+    private TMP_Text[] _craftItemText;
 
     public void Init(CraftingData inData)
     {
         craftingData = inData;
 
-        Debug.Log(craftingData.name);
+        //Debug.Log(craftingData.name);
         Sprite itemSprite = Resources.Load<Sprite>(craftingData.imagePath);
         _productImage.sprite = itemSprite;
+        _productText.text = craftingData.name;
 
         for (int i = 0; i < _craftItemImage.Length; i++)
         {
-
             foreach (int itemId in GameManager.Instance.dataManager.crafting.GetCraftItemIds(craftingData.id))
             {
                 if (itemId != 0)
@@ -65,6 +69,9 @@ public class CraftingUI : UIBase
                     var itemData = GameManager.Instance.dataManager.GetItemDataById(itemId);
 
                     _craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
+
+                    _craftItemText[i].TryGetComponent<TMP_Text>(out var outCraftItemText);
+                    outCraftItemText.text = itemData.name;
                 }
                 else
                 {
