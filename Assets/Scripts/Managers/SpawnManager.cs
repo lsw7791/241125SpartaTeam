@@ -62,6 +62,20 @@ public class SpawnManager : MonoBehaviour
         monsterPool.GetMonster(5, new Vector2(1f, 3f));
         Mine123();
     }
+    public void StageMine2()
+    {
+        monsterPool.GetMonster(1, new Vector2(1f, 1f));
+        monsterPool.GetMonster(4, new Vector2(1f, 2f));
+        monsterPool.GetMonster(5, new Vector2(1f, 3f));
+        Mine123();
+    }
+    public void StageMine3()
+    {
+        monsterPool.GetMonster(1, new Vector2(1f, 1f));
+        monsterPool.GetMonster(4, new Vector2(1f, 2f));
+        monsterPool.GetMonster(5, new Vector2(1f, 3f));
+        Mine123();
+    }
     public void Mine123()
     {
         GameObject mine1 = monsterPool.InitializeMine(13, new Vector2(2f, 2f));
