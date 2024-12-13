@@ -57,30 +57,25 @@ public class SpawnManager : MonoBehaviour
     }
     public void StageMine1()
     {
-        monsterPool.GetMonster(1, new Vector2(1f, 1f));
-        monsterPool.GetMonster(4, new Vector2(1f, 2f));
-        monsterPool.GetMonster(5, new Vector2(1f, 3f));
-        Mine123();
+        monsterPool.GetMonster(1, new Vector2(24.5f, 13.5f));
+        monsterPool.GetMonster(1, new Vector2(26f, 13.5f));
+        monsterPool.GetMonster(1, new Vector2(25f, 12.5f));
+        monsterPool.GetMonster(1, new Vector2(26.5f, 12.5f));
+
+        monsterPool.GetMonster(7, new Vector2(45f, 12.5f));
+        monsterPool.GetMonster(7, new Vector2(46f, 13.5f));
+        monsterPool.GetMonster(7, new Vector2(47f, 14.5f));
+
+        GameObject mine1 = monsterPool.InitializeMine(13, new Vector2(29f, 23f));
+        GameObject mine2 = monsterPool.InitializeMine(13, new Vector2(33f, 23f));
     }
     public void StageMine2()
     {
-        monsterPool.GetMonster(1, new Vector2(1f, 1f));
-        monsterPool.GetMonster(4, new Vector2(1f, 2f));
-        monsterPool.GetMonster(5, new Vector2(1f, 3f));
-        Mine123();
+       
     }
     public void StageMine3()
     {
-        monsterPool.GetMonster(1, new Vector2(1f, 1f));
-        monsterPool.GetMonster(4, new Vector2(1f, 2f));
-        monsterPool.GetMonster(5, new Vector2(1f, 3f));
-        Mine123();
-    }
-    public void Mine123()
-    {
-        GameObject mine1 = monsterPool.InitializeMine(13, new Vector2(2f, 2f));
-        GameObject mine2 = monsterPool.InitializeMine(14, new Vector2(2f, 1f));
-        GameObject mine3 = monsterPool.InitializeMine(15, new Vector2(2f, 0f));
+       
     }
     public void SpawnProjectilePool()
     {
