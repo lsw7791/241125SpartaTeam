@@ -9,30 +9,14 @@ public class CraftingManager : MonoBehaviour
     // 아이템 선택 시 처리
     public void SelectItem(int itemId)
     {
+        if (itemId == -1)
+        {
+            return;
+        }
+
         selectedItemId = itemId;
-        Debug.Log($"아이템 ID {itemId} 선택됨");
 
-        // 선택된 아이템의 정보를 UI에 반영하거나 다른 처리를 할 수 있습니다.
         CraftingData selectedData = GameManager.Instance.dataManager.crafting.GetData(itemId);
-        if (selectedData != null)
-        {
-            // 선택된 아이템에 대한 정보 표시
-            Debug.Log($"선택된 아이템: {selectedData}");
-
-            // 조합을 시도해봄
-            if (TryCraftItem())
-            {
-                Debug.Log($"아이템 ID {itemId} 제작 성공!");
-            }
-            else
-            {
-                Debug.Log("아이템 제작 실패 또는 재료 부족.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("선택된 아이템이 유효하지 않습니다.");
-        }
     }
 
     // 선택된 아이템을 조합하는 메서드
@@ -44,41 +28,58 @@ public class CraftingManager : MonoBehaviour
             return false;
         }
 
+        // 선택된 아이템에 필요한 재료를 가져옵니다.
         var requiredMaterials = GameManager.Instance.dataManager.crafting.GetRequiredMaterials(selectedItemId);
-         // 제작에 필요한 재료 아이템의 갯수 정보 가져오기
-        if (requiredMaterials == null || requiredMaterials.Count == 0)
+
+        // 필요한 재료 목록 확인 (0 갯수는 예외 처리)
+        List<int> missingMaterials = new List<int>();
+        foreach (var material in requiredMaterials)
         {
-            Debug.LogWarning($"ID {selectedItemId}에 필요한 재료 정보가 없습니다.");
-            return false;
+            if (material.Value > 0) // 재료 수가 0이 아닌 것만 확인
+            {
+                int playerItemCount = GameManager.Instance.player.inventory.GetItemCount(material.Key);
+                if (playerItemCount < material.Value)
+                {
+                    missingMaterials.Add(material.Key); // 부족한 재료 추가
+                }
+            }
         }
 
-        // 재료 확인
-        if (!HasRequiredMaterials(requiredMaterials))
+        if (missingMaterials.Count > 0)
         {
-            Debug.Log("재료가 부족합니다!");
+            Debug.Log("재료가 부족합니다: " + string.Join(", ", missingMaterials));
             return false;
         }
 
         // 재료 소비 및 아이템 생성
         ConsumeMaterials(requiredMaterials);
-        AddItem(selectedItemId, 1);
+        AddItemToInventory(selectedItemId);  // 아이템을 인벤토리에 추가
 
         Debug.Log($"아이템 ID {selectedItemId} 제작 성공!");
         return true;
     }
-    public bool HasRequiredMaterials(Dictionary<int, int> requiredMaterials)
-    {
-        // 재료 확인 로직 구현
-        return true;
-    }
 
+    // 재료 소비
     public void ConsumeMaterials(Dictionary<int, int> requiredMaterials)
     {
-        // 재료 차감 로직 구현
+        foreach (var material in requiredMaterials)
+        {
+            if (material.Value > 0)
+            {
+                GameManager.Instance.player.inventory.RemoveItem(material.Key, material.Value);
+                Debug.Log($"{material.Value}개 {material.Key} 아이템 사용됨.");
+            }
+        }
     }
 
-    public void AddItem(int id, int quantity)
+    // 아이템을 인벤토리에 추가
+    public void AddItemToInventory(int id)
     {
-        // 인벤토리에 아이템 추가 로직 구현
+        ItemData itemData = GameManager.Instance.dataManager.GetItemDataById(id);
+        if (itemData != null)
+        {
+            GameManager.Instance.player.inventory.AddItem(id, itemData.name, 1, itemData.itemType, Resources.Load<Sprite>(itemData.spritePath));
+            Debug.Log($"아이템 ID {id} 추가됨.");
+        }
     }
 }

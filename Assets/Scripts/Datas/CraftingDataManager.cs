@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CraftingDataManager : CraftingData
 {
-
-   
     // 특정 아이템 ID에 해당하는 크래프팅 데이터를 반환합니다.
     public CraftingData GetData(int id)
     {
@@ -29,7 +27,7 @@ public class CraftingDataManager : CraftingData
         return CraftingDataList.FindAll(data => data.tier == tier);
     }
 
-    // 특정 아이템에 필요한 재료 정보를 반환 <- 어떻게 가져오지?
+    // 특정 아이템에 필요한 재료 정보를 반환 (matter와 count를 기반으로)
     public Dictionary<int, int> GetRequiredMaterials(int id)
     {
         var data = GetData(id);
@@ -37,10 +35,21 @@ public class CraftingDataManager : CraftingData
 
         var materials = new Dictionary<int, int>();
 
-        if (data.resourceMine > 0) materials.Add(1, data.resourceMine);  // 자원 1: 광물
-        if (data.resourceLadder > 0) materials.Add(2, data.resourceLadder);  // 자원 2: 가죽
-        if (data.resourceOther > 0) materials.Add(3, data.resourceOther);  // 자원 3: 기타
-        if (data.resourceJewel > 0) materials.Add(4, data.resourceJewel);  // 자원 4: 보석
+        // matter와 count 리스트를 기반으로 재료 정보를 동적으로 추가
+        List<int> matter = data.matter; // 자원 종류
+        List<int> count = data.count;   // 자원 갯수
+
+        for (int i = 0; i < matter.Count; i++)
+        {
+            int itemId = matter[i];  // 자원 아이디
+            int itemCount = count[i]; // 해당 자원의 필요한 수량
+
+            // 재료가 있는 경우만 추가
+            if (itemCount > 0)
+            {
+                materials.Add(itemId, itemCount);
+            }
+        }
 
         return materials;
     }

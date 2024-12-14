@@ -62,10 +62,6 @@ namespace MainData
 		public System.Int32 gold;
 		public System.Collections.Generic.List<Int32> matter;
 		public System.Collections.Generic.List<Int32> count;
-		public System.Int32 resourceMine;
-		public System.Int32 resourceLadder;
-		public System.Int32 resourceOther;
-		public System.Int32 resourceJewel;
 		public System.String imagePath;
   
 

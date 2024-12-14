@@ -22,5 +22,11 @@ public class CraftingSlot : MonoBehaviour
     public void Init(CraftingData inCraftingData)
     {
         craftingData = inCraftingData;
+
+        // 이미지 업데이트 (아이템 이미지가 포함된 경우)
+        Image itemImage = GetComponentInChildren<Image>();
+        Sprite sprite = Resources.Load<Sprite>(craftingData.imagePath);
+        itemImage.sprite = sprite; // craftingData에서 경로로 아이콘을 로드하여 설정
     }
+
 }
