@@ -18,15 +18,6 @@ public class ShopUI : UIBase
         _hasGold.text = $"{GameManager.Instance.player.stats.Gold}";
         itemPrefab = Resources.Load<GameObject>("Prefabs/UI/ShopSlot");
     }
-    private void OnEnable()
-    {
-        setRectPosition();
-    }
-    public void setRectPosition()
-    {
-        float x = ScrollContent.anchoredPosition.x;
-        ScrollContent.anchoredPosition = new Vector3(x, 0, 0);
-    }
     // 상점 타입을 설정하고 UI 업데이트
     public void SetShopType(ShopType newShopType)
     {
@@ -34,6 +25,10 @@ public class ShopUI : UIBase
         SetupShopUI();  // 상점 UI 설정
     }
 
+    private void OnEnable()
+    {
+        ScrollContent.anchoredPosition = new Vector2(ScrollContent.anchoredPosition.x, 0);
+    }
 
     public void SetupShopUI()
     {
