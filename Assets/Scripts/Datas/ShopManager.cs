@@ -36,12 +36,15 @@ public class ShopManager : MonoBehaviour
                 break;
 
             case ShopType.ArmorShop:
-                // ArmorShop 아이템 처리
+                for (int i = 31; i <= 60; i++) // 방어구 아이템 ID 설정
+                {
+                    ItemData itemData = GameManager.Instance.dataManager.GetItemDataById(i);
+                    items.Add(itemData);
+                }
                 break;
         }
 
         return items;
     }
 }
-
 
