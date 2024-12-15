@@ -24,12 +24,14 @@ public class CraftingUI : UIBase
             if (GameManager.Instance.craftingManager.TryCraftItem())
             {
                 // 조합 성공
+                GameManager.Instance.uIManager.CloseUI<CraftingUI>();
                 CraftResultUI craftResultUI = GameManager.Instance.uIManager.OpenUI<CraftResultUI>();
                 craftResultUI.ShowSuccess(craftingData);
             }
             else
             {
                 // 조합 실패
+                GameManager.Instance.uIManager.CloseUI<CraftingUI>();
                 CraftResultUI craftResultUI = GameManager.Instance.uIManager.OpenUI<CraftResultUI>();
                 craftResultUI.ShowFailure(craftingData);
             }
