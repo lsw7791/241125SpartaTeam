@@ -9,6 +9,7 @@ public class CraftingUI : UIBase
     [SerializeField] private CraftingData craftingData;
     [SerializeField] private Image _productImage;
     [SerializeField] private TMP_Text _productText;
+
     [SerializeField] private Image[] _craftItemImage;
     [SerializeField] private TMP_Text[] _craftItemText;
     [SerializeField] private Button craftResultButton; // 조합 버튼
@@ -65,5 +66,14 @@ public class CraftingUI : UIBase
                 _craftItemText[i].text = $"{GameManager.Instance.player.inventory.GetItemCount(itemData.id)} / {count}\n{itemData.name}";
             }
         }
+    }
+
+    private int Craft(int inCraftResultCount, int inCraftItemCount, int inInventoryItemCount)
+    {
+        if (inCraftItemCount == inInventoryItemCount)
+        {
+            inCraftResultCount++;
+        }
+        return inCraftResultCount;
     }
 }
