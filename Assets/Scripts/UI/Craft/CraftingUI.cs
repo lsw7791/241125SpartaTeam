@@ -12,6 +12,7 @@ public class CraftingUI : UIBase
 
     [SerializeField] private Image[] _craftItemImage;
     [SerializeField] private TMP_Text[] _craftItemText;
+
     [SerializeField] private Button craftResultButton; // 조합 버튼
 
     private void Start()
