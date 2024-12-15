@@ -7,7 +7,6 @@ using System.Collections.Generic;
 public class CraftResultUI : UIBase
 {
     [SerializeField] private TMP_Text resultText;
-    [SerializeField] private Image resultImage;
     [SerializeField] private TMP_Text messageText;
 
     [SerializeField] private CraftingData craftingData;
@@ -39,9 +38,8 @@ public class CraftResultUI : UIBase
         maxTime = 10;
 
         resultText.text = "제작에 성공하였습니다!";
-        // 아이템을 인벤토리로 이동하는 로직 필요
-        // 예: 인벤토리 추가
-
+        
+        GameManager.Instance.craftingManager.AddToInventory();
         Init(data, true);
     }
 

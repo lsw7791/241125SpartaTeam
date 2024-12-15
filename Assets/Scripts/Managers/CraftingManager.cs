@@ -53,7 +53,7 @@ public class CraftingManager : MonoBehaviour
 
         // 재료 소비 및 아이템 생성
         ConsumeMaterials(requiredMaterials);
-        AddItemToInventory(selectedItemId);  // 아이템을 인벤토리에 추가
+        //AddItemToInventory(selectedItemId);  // 아이템을 인벤토리에 추가
 
         Debug.Log($"아이템 ID {selectedItemId} 제작 성공!");
         return true;
@@ -72,14 +72,24 @@ public class CraftingManager : MonoBehaviour
         }
     }
 
-    // 아이템을 인벤토리에 추가
-    public void AddItemToInventory(int id)
+    //// 아이템을 인벤토리에 추가
+    //public void AddItemToInventory(int id)
+    //{
+    //    ItemData itemData = GameManager.Instance.dataManager.GetItemDataById(id);
+    //    if (itemData != null)
+    //    {
+    //        GameManager.Instance.player.inventory.AddItem(id, itemData.name, 1, itemData.itemType, Resources.Load<Sprite>(itemData.spritePath));
+    //        Debug.Log($"아이템 ID {id} 추가됨.");
+    //    }
+    //}
+
+    public void AddToInventory()
     {
-        ItemData itemData = GameManager.Instance.dataManager.GetItemDataById(id);
+        ItemData itemData = GameManager.Instance.dataManager.GetItemDataById(selectedItemId);
         if (itemData != null)
         {
-            GameManager.Instance.player.inventory.AddItem(id, itemData.name, 1, itemData.itemType, Resources.Load<Sprite>(itemData.spritePath));
-            Debug.Log($"아이템 ID {id} 추가됨.");
+            GameManager.Instance.player.inventory.AddItem(selectedItemId, itemData.name, 1, itemData.itemType, Resources.Load<Sprite>(itemData.spritePath));
+            //Debug.Log($"아이템 ID {selectedItemId} 추가됨.");
         }
     }
 }
