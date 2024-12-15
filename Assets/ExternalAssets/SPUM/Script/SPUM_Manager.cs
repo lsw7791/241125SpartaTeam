@@ -37,7 +37,7 @@ public class SPUM_Manager : MonoBehaviour
     public List<string> SpritePackageNameList = new();
     [Header("Manager")]
     [SerializeField] public SPUM_AnimationManager animationManager;
-    [SerializeField] public SPUM_UIManager UIManager;
+    [SerializeField] public CharacterCreationManager UIManager;
     [SerializeField] public SPUM_PaginationManager paginationManager;
 
 #if UNITY_EDITOR

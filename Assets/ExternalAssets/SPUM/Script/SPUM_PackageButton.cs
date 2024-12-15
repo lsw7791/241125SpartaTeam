@@ -10,7 +10,7 @@ public class SPUM_PackageButton : MonoBehaviour
     public int _index; // 패키지의 인덱스
     public Text _title; // 패키지의 이름
     public Toggle PackageToggleButton;
-    public SPUM_UIManager _Manager;
+    public CharacterCreationManager _Manager;
 
     #if UNITY_EDITOR
     void Start()
@@ -18,7 +18,7 @@ public class SPUM_PackageButton : MonoBehaviour
         PackageToggleButton.GetComponent<SPUM_PackageButton>();
     }
 
-    public void SetInit(int index, string PackageName, SPUM_UIManager manager, SPUM_SpriteButtonST button)
+    public void SetInit(int index, string PackageName, CharacterCreationManager manager, SPUM_SpriteButtonST button)
     {
         _Manager = manager;
         _title.text = PackageName;
