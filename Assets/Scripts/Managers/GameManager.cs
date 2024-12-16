@@ -9,6 +9,7 @@ public class GameManager : MonoSingleton<GameManager>
     public SoundManager soundManager;
     public UIManager uIManager;
     public SpawnManager spawnManager;
+    public CharacterSlotManager slotManager;
     GameObject SoundManagerObject;
     public Player player;
     public int sceneNum;
@@ -16,12 +17,19 @@ public class GameManager : MonoSingleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
+
+        // 데이터 매니저와 슬롯 매니저 초기화
         dataManager = new DataManager();
+        slotManager = new CharacterSlotManager();
+
+        // 다른 매니저 초기화
         if (craftingManager == null) craftingManager = gameObject.AddComponent<CraftingManager>();
-        List<ItemInstance> items = new List<ItemInstance>(); // JSON파일에 저장된 유저 아이템 정보를 읽어서 넘겨준다.
+        List<ItemInstance> items = new List<ItemInstance>();
         ItemManager.Instance.Initialize(items);
+
         sceneNum = 2;
     }
+
     private void Start()
     {      
         SceneManager.sceneLoaded += OnSceneLoaded;

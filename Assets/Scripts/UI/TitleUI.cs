@@ -11,7 +11,7 @@ public class TitleUI : MonoBehaviour
     public void LoadGame()
     {
         Debug.Log("게임 불러오기");
-        SceneManager.LoadScene("InGameScene");
+        GameManager.Instance.uIManager.ToggleUI<CharacterSlotUI>();
 
     }
 

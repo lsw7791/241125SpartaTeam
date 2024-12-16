@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour,IDamageable
 {
-    [SerializeField] public string NickName;
+    public string nickName;
 
     public PlayerStats stats;  // 플레이어의 스탯
     public Inventory inventory;  // 플레이어의 인벤토리
@@ -75,11 +75,11 @@ public class Player : MonoBehaviour,IDamageable
     {
         _topDownController.TriggerDeath();
         //UIManager.Instance.deathUI.SetActive(true);
-        Debug.Log($"{NickName} has died.");
+        Debug.Log($"{nickName} has died.");
     }
 
     // 프로퍼티
     public PlayerStats Stats => stats;
     public Inventory Inventory => inventory;  // 인벤토리 반환
-    public string PlayerNickName { get => NickName; set => NickName = value; }
+    public string PlayerNickName { get => nickName; set => nickName = value; }
 }
