@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,12 +33,15 @@ public class TopDownController : MonoBehaviour
     {
         if (context.performed)
         {
+            if(camera!=null)
+            {
             Vector2 mouseScreenPos = context.ReadValue<Vector2>(); // 마우스 화면 좌표
             Vector2 mouseWorldPos = camera.ScreenToWorldPoint(mouseScreenPos); // 월드 좌표로 변환
             Vector2 direction =(Vector2)transform.position - mouseWorldPos;
             // 플레이어와 마우스 위치를 비교하여 좌우 반전
             GameManager.Instance.player._playerAnimationController.FlipRotation(mouseWorldPos);
             topDownAimRotation.RotateArm(direction);
+            }
         }
     }
     public void TriggerDeath()
