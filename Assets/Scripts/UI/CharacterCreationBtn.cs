@@ -42,13 +42,18 @@ public class CharacterCreationBtn : MonoBehaviour
             Stats = new PlayerStatsData()
         };
 
-        // 기존 데이터 로드 후 추가
-        var characters = GameManager.Instance.DataManager.GetAllPlayerData();
-        characters.Add(newPlayer);
-        GameManager.Instance.SavePlayerData(characters);  // 데이터 저장
+        // 캐릭터 리스트에 추가
+        GameManager.Instance.DataManager.CharacterList.AddCharacter(newPlayer);
 
-        Debug.Log($"캐릭터 {nickname} 생성 완료!");
-        nicknameInputField.text = "";
+        // 리스트 디버깅
+        var allCharacters = GameManager.Instance.DataManager.CharacterList.GetAllLists();
+        Debug.Log($"현재 캐릭터 리스트: {allCharacters.Count}개");
+        foreach (var character in allCharacters)
+        {
+            Debug.Log($"캐릭터 닉네임: {character}");
+        }
 
+        // 슬롯 UI 갱신
     }
+
 }

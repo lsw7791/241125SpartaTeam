@@ -25,7 +25,7 @@ public class GameManager : MonoSingleton<GameManager>
         // FilePlayerRepository를 사용해 CharacterList 초기화
         Repository = new FilePlayerRepository();
         // 데이터 매니저 초기화
-        DataManager = new DataManager(Repository);
+        DataManager = new DataManager();
         Debug.Log("CharacterList 객체 생성 후");
 
         // 다른 매니저 초기화
@@ -88,8 +88,8 @@ public class GameManager : MonoSingleton<GameManager>
     }
 
     // 데이터 관련 메서드
-    public void SavePlayerData(List<PlayerData> data)
-    {
-        Repository.SavePlayerData(data);
-    }
+    //public void SavePlayerData(List<PlayerData> data)
+    //{
+    //    Repository.SavePlayerData(data);
+    //}
 }

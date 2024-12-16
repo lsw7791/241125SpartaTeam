@@ -225,8 +225,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 0}
-  _slotParent: {fileID: 8719709472531484014}
-  _slotPrefab: {fileID: 0}
+  slotParent: {fileID: 8719709472531484014}
+  slotPrefab: {fileID: 0}
 --- !u!1 &5059604242285161079
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class DataManager
     public ShopManager Shop;
     public CharacterList CharacterList;
 
-    public DataManager(IPlayerRepository repository)
+    public DataManager()
     {
         // 데이터 로드
         UnityGoogleSheet.LoadAllData();
@@ -24,8 +24,8 @@ public class DataManager
         Scene = new SceneDataManager();
         Shop = new ShopManager();
 
-        // CharacterList 초기화 (repository 사용)
-        CharacterList = new CharacterList(repository);
+        // CharacterList 초기화
+        CharacterList = new CharacterList();
     }
 
     // 아이템 ID를 통해 아이템 데이터 조회
@@ -39,5 +39,23 @@ public class DataManager
     public List<PlayerData> GetAllPlayerData()
     {
         return CharacterList.GetAllLists();
+    }
+
+    // 새로운 캐릭터 추가
+    public void AddCharacter(PlayerData newCharacter)
+    {
+        CharacterList.AddCharacter(newCharacter); // CharacterList에서 관리
+    }
+
+    // 캐릭터 데이터를 저장
+    public void SaveCharacterData()
+    {
+        CharacterList.SaveListsData();
+    }
+
+    // 캐릭터 데이터를 로드
+    public void LoadCharacterData()
+    {
+        CharacterList.LoadListsData();
     }
 }
