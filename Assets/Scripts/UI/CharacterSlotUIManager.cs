@@ -6,14 +6,10 @@ public class CharacterSlotUIManager : MonoBehaviour
 {
     public GameObject slotPrefab;  // 슬롯 UI 프리팹
     public Transform slotParent;  // 슬롯 부모
-    private GameManager gameManager;  // GameManager 참조
     private List<GameObject> slotObjects = new List<GameObject>();  // 슬롯 객체 리스트
 
     void Awake()
     {
-        // GameManager 참조
-        gameManager = GameManager.Instance;
-
         // slotParent가 에디터에서 할당되지 않았다면, 오류 처리
         if (slotParent == null)
         {
@@ -26,13 +22,13 @@ public class CharacterSlotUIManager : MonoBehaviour
 
     public void LoadSlots()
     {
-        if (gameManager == null)
+        if (GameManager.Instance == null)
         {
             Debug.LogError("GameManager가 초기화되지 않았습니다!");
             return;
         }
 
-        List<PlayerData> loadedCharacters = gameManager.GetAllPlayerData();  // 데이터 로드
+        List<PlayerData> loadedCharacters = GameManager.Instance.GetAllPlayerData();  // 데이터 로드
 
         // 기존 슬롯 UI 제거
         foreach (Transform child in slotParent)
@@ -57,7 +53,7 @@ public class CharacterSlotUIManager : MonoBehaviour
     private void OnSlotSelected(PlayerData selectedCharacter)
     {
         Debug.Log($"캐릭터 {selectedCharacter.NickName} 선택됨!");
-        gameManager.StartGame(selectedCharacter);
+        GameManager.Instance.StartGame(selectedCharacter);
     }
 
     // UI 업데이트 메서드

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using static UGS.Editor.GoogleDriveExplorerGUI;
 
 public interface IPlayerRepository
 {
@@ -11,18 +10,18 @@ public interface IPlayerRepository
 
 public class FilePlayerRepository : IPlayerRepository
 {
-    private string filePath;  // 파일 경로만 사용
+    private string filePath;
 
     // 생성자에서 persistentDataPath를 사용하지 않음
     public FilePlayerRepository()
     {
-        // 생성자에서는 아무 것도 하지 않음
+        Debug.Log("FilePlayerRepository 생성자 호출");  // 생성자 호출 로그
     }
 
     // Initialize() 메서드에서 persistentDataPath 사용
     public void Initialize()
     {
-        // Application.persistentDataPath를 사용할 때는 Awake나 Start에서 호출해야 합니다.
+        Debug.Log("FilePlayerRepository Initialize 호출");  // Initialize 호출 로그
         filePath = Path.Combine(Application.persistentDataPath, "playerData.json");
 
         if (!File.Exists(filePath))

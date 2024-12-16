@@ -20,13 +20,14 @@ public class GameManager : MonoSingleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
+        Debug.Log("GameManager Awake 호출");
 
         // 데이터 매니저와 슬롯 매니저 초기화
         dataManager = new DataManager();
 
         // FilePlayerRepository를 사용해 CharacterSlotManager 초기화
         repository = new FilePlayerRepository();
-        (repository as FilePlayerRepository).Initialize();
+        Debug.Log("FilePlayerRepository 객체 생성 후");
         characterSlotManager = new CharacterSlotManager(repository);
 
         // 슬롯 UI 매니저가 에디터에서 할당되지 않았다면
@@ -45,6 +46,13 @@ public class GameManager : MonoSingleton<GameManager>
 
     void Start()
     {
+        // FilePlayerRepository 초기화는 Start()에서 호출
+        if (repository is FilePlayerRepository fileRepo)
+        {
+            Debug.Log("FilePlayerRepository Initialize 호출");
+            fileRepo.Initialize();  // Initialize 호출
+        }
+
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         // 슬롯 UI 매니저에 데이터 연동
@@ -55,6 +63,17 @@ public class GameManager : MonoSingleton<GameManager>
 
         Instantiate(sceneNum);
     }
+
+    public List<PlayerData> GetAllPlayerData()
+    {
+        if (repository == null)
+        {
+            Debug.Log("repository가 초기화되지 않았습니다!");
+            return new List<PlayerData>();
+        }
+        return repository.LoadPlayerData();
+    }
+
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -93,11 +112,7 @@ public class GameManager : MonoSingleton<GameManager>
     }
 
     // 데이터 관련 메서드
-    public List<PlayerData> GetAllPlayerData()
-    {
-        return repository.LoadPlayerData();
-    }
-
+  
     public void SavePlayerData(List<PlayerData> data)
     {
         repository.SavePlayerData(data);
