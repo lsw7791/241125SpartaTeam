@@ -74,11 +74,8 @@ public class ShopUI : UIBase
         foreach (ItemData itemData in items)
         {
             GameObject itemObject = Instantiate(itemPrefab, itemsParent);
-            ShopSlot shopSlot = itemObject.GetComponent<ShopSlot>();
-            if (shopSlot != null)
-            {
-                shopSlot.Setup(itemData);
-            }
+            itemObject.TryGetComponent<ShopSlot>(out var shopslot);
+            shopslot.Setup(itemData);
         }
     }
 

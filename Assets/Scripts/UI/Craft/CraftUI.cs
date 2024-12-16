@@ -41,7 +41,7 @@ public class CraftUI : UIBase
                 GameManager.Instance.craftingManager.SelectItem(data.id);
 
                 // 선택된 아이템을 보여주는 UI를 업데이트
-                CraftingUI craftingUI = GameManager.Instance.uIManager.OpenUI<CraftingUI>();
+                CraftingUI craftingUI = UIManager.Instance.OpenUI<CraftingUI>();
                 craftingUI.Init(data);
             });
         }

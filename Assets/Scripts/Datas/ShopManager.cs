@@ -20,7 +20,7 @@ public class ShopManager : MonoBehaviour
         switch (shopType)
         {
             case ShopType.PotionShop:
-                for (int i = 90; i <= 95; i++)
+                for (int i = 89; i <= 94; i++)
                 {
                     ItemData itemData = GameManager.Instance.dataManager.GetItemDataById(i);
                     items.Add(itemData);
@@ -28,7 +28,7 @@ public class ShopManager : MonoBehaviour
                 break;
 
             case ShopType.WeaponShop:
-                for (int i = 96; i <= 106; i++)
+                for (int i = 95; i <= 105; i++)
                 {
                     ItemData itemData = GameManager.Instance.dataManager.GetItemDataById(i);
                     items.Add(itemData);

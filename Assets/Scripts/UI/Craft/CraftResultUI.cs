@@ -29,7 +29,7 @@ public class CraftResultUI : UIBase
         }
         else
         {
-            GameManager.Instance.uIManager.CloseUI<CraftResultUI>();
+            UIManager.Instance.CloseUI<CraftResultUI>();
         }
     }
 

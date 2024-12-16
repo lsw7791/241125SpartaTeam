@@ -7,7 +7,6 @@ public class GameManager : MonoSingleton<GameManager>
     public DataManager dataManager;
     public CraftingManager craftingManager;
     public SoundManager soundManager;
-    public UIManager uIManager;
     public SpawnManager spawnManager;
     public CharacterSlotManager slotManager;
     GameObject SoundManagerObject;
@@ -47,7 +46,6 @@ public class GameManager : MonoSingleton<GameManager>
     {
         GameObject miniCamera = Instantiate(Resources.Load<GameObject>("Prefabs/Cameras/MinimapCamera"));
         if(spawnManager==null)spawnManager = gameObject.AddComponent<SpawnManager>();
-        if(uIManager ==null) uIManager = gameObject.AddComponent<UIManager>();
         if (soundManager == null) soundManager = gameObject.AddComponent<SoundManager>();
         spawnManager.SpawnPlayer(mapNum);
         spawnManager.Initialize(mapNum);
