@@ -9,7 +9,6 @@ public class GameManager : MonoSingleton<GameManager>
     public SoundManager soundManager;
     public UIManager uIManager;
     public SpawnManager spawnManager;
-    public SaveLoadManager saveLoadManager;
     GameObject SoundManagerObject;
     public Player player;
     public int sceneNum;
@@ -41,8 +40,6 @@ public class GameManager : MonoSingleton<GameManager>
         if(spawnManager==null)spawnManager = gameObject.AddComponent<SpawnManager>();
         if(uIManager ==null) uIManager = gameObject.AddComponent<UIManager>();
         if (soundManager == null) soundManager = gameObject.AddComponent<SoundManager>();
-        if (saveLoadManager == null) saveLoadManager = gameObject.AddComponent<SaveLoadManager>();
-
         GameManager.Instance.spawnManager.SpawnPlayer(mapNum);
         spawnManager.Initialize(mapNum);
     }
