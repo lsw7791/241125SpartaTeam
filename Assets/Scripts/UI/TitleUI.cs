@@ -6,7 +6,7 @@ public class TitleUI : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("게임 시작");
-        SceneManager.LoadScene("PlayerCreation");
+        SceneManager.LoadScene("CharacterCreation");
     }
     public void LoadGame()
     {
