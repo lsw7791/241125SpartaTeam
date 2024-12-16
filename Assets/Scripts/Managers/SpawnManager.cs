@@ -18,7 +18,14 @@ public class SpawnManager : MonoBehaviour
 
     public void Initialize(int mapNum)
     {
+        if(projectilePool==null)
+        {
         projectilePool = GroupSpawn("Projectile").AddComponent<ProjectilePool>();
+        }
+        if (spawner1 != null) Destroy(spawner1);
+        if (spawner2 != null) Destroy(spawner2);
+        if (spawner3 != null) Destroy(spawner3);
+
         SpawnProjectilePool();
         SpawnMonsterPool();
         switch (mapNum)
