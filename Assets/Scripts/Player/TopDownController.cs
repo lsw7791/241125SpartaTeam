@@ -15,7 +15,7 @@ public class TopDownController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        topDownAimRotation =GetComponent<TopDownAimRotation>();
+        topDownAimRotation = GetComponent<TopDownAimRotation>();
         camera = Camera.main;
     }
 
@@ -33,6 +33,8 @@ public class TopDownController : MonoBehaviour
     {
         if (context.performed)
         {
+            if(camera==null)
+                camera = Camera.main;
             if(camera!=null)
             {
             Vector2 mouseScreenPos = context.ReadValue<Vector2>(); // 마우스 화면 좌표
