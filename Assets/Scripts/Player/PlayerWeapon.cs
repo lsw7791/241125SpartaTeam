@@ -111,5 +111,9 @@ public class PlayerWeapon : MonoBehaviour
             outTarget.TakeDamage(GameManager.Instance.player.Stats.Damage);  // 데미지 처리
             Debug.Log($"Player dealt {GameManager.Instance.player.Stats.Damage} damage to {outTarget.GetType().Name}");
         }
+        else
+        {
+            return;
+        }
     }
 }
