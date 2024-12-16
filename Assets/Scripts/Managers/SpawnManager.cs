@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviour
             case 5://마인3
                 if (spawner3 == null) spawner1 = gameObject.AddComponent<Spawner>();
                 StageMine3();
-                break;
+                break;           
             case 24: //캐릭터 셀렉션
                 playerObject.SetActive(false);
                 break;
