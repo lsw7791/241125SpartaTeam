@@ -48,4 +48,5 @@ public class CharacterSlotUI : UIBase
         Debug.Log($"캐릭터 {selectedCharacter.NickName} 선택됨!");
         // 게임 시작 로직 (예: 게임 매니저로 캐릭터 데이터 전달)
     }
+
 }
