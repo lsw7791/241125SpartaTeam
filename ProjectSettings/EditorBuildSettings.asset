@@ -27,16 +27,16 @@ EditorBuildSettings:
     path: Assets/Scenes/Mine3.unity
     guid: 47550ae3f0088174889bb2d2061084cf
   - enabled: 1
-    path: Assets/Scenes/NpcRoom1.unity
+    path: Assets/Scenes/NPCRoom1.unity
     guid: a0dc1a10ff01d974894c6a94ecd1416d
   - enabled: 1
-    path: Assets/Scenes/NpcRoom2.unity
+    path: Assets/Scenes/NPCRoom2.unity
     guid: b33c986f79959054fa1e6cce5ce5c37c
   - enabled: 1
-    path: Assets/Scenes/NpcRoom3.unity
+    path: Assets/Scenes/NPCRoom3.unity
     guid: ce68025f289a99c4abaa594da2428e94
   - enabled: 1
-    path: Assets/Scenes/NpcRoom4.unity
+    path: Assets/Scenes/NPCRoom4.unity
     guid: 642df7c0be872e846aac901ea4166e0a
   - enabled: 1
     path: Assets/Scenes/House.unity
