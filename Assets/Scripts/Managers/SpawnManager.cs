@@ -28,6 +28,7 @@ public class SpawnManager : MonoBehaviour
 
         SpawnProjectilePool();
         SpawnMonsterPool();
+        SetPlayerPosition(mapNum);
         switch (mapNum)
         {
             case 1://마을
@@ -45,6 +46,9 @@ public class SpawnManager : MonoBehaviour
             case 5://마인3
                 if (spawner3 == null) spawner1 = gameObject.AddComponent<Spawner>();
                 StageMine3();
+                break;
+            case 24: //캐릭터 셀렉션
+                playerObject.SetActive(false);
                 break;
             default:
                 break;
@@ -124,6 +128,8 @@ public class SpawnManager : MonoBehaviour
         playerObject = Instantiate(Resources.Load<GameObject>("Prefabs/TestPlayer_Backup"));
         GameManager.Instance.player = playerObject.GetComponent<Player>();
         DontDestroyOnLoad(playerObject);
+        playerObject.SetActive(false);
+
         return playerObject;
     }
     public GameObject SpawnPlayer(int mapNum)
@@ -136,13 +142,18 @@ public class SpawnManager : MonoBehaviour
 
             // 씬 전환 시 파괴되지 않게 설정
             DontDestroyOnLoad(playerObject);
-
+            playerObject.SetActive(false);
             return playerObject;
         }
         else
         {
             return null;
         }
+    }
+    public void SetPlayerPosition(int mapNum)
+    {
+        playerObject.SetActive(true);
+        playerObject.transform.position= GameManager.Instance.dataManager.scene.GetMoveTransform(mapNum);
     }
 
 }

@@ -32,7 +32,6 @@ public class PlayerCamera : MonoBehaviour
         }
         // 목표 위치는 플레이어의 위치 + 오프셋 (Z는 고정)
         Vector3 targetPosition = new Vector3(transform.position.x, transform.position.y, -10);
-
         // 카메라를 부드럽게 목표 위치로 이동
         mainCamera.transform.position = Vector3.SmoothDamp(
             mainCamera.transform.position,  // 현재 위치

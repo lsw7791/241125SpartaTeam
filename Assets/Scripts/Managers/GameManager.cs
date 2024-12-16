@@ -27,7 +27,7 @@ public class GameManager : MonoSingleton<GameManager>
         List<ItemInstance> items = new List<ItemInstance>();
         ItemManager.Instance.Initialize(items);
 
-        sceneNum = 2;
+        sceneNum = 24;
     }
 
     private void Start()
@@ -36,7 +36,8 @@ public class GameManager : MonoSingleton<GameManager>
         Instantiate(sceneNum);
     }
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {      
+    {
+        spawnManager.playerObject.SetActive(false);
         if (scene.name == dataManager.scene.GetMapTo(sceneNum))// TO Forest
         {
             Instantiate(sceneNum);
