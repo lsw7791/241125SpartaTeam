@@ -40,7 +40,7 @@ public class GameManager : MonoSingleton<GameManager>
         if(spawnManager==null)spawnManager = gameObject.AddComponent<SpawnManager>();
         if(uIManager ==null) uIManager = gameObject.AddComponent<UIManager>();
         if (soundManager == null) soundManager = gameObject.AddComponent<SoundManager>();
-        GameManager.Instance.spawnManager.SpawnPlayer(mapNum);
+        spawnManager.SpawnPlayer(mapNum);
         spawnManager.Initialize(mapNum);
     }
     public void LoadScene(string sceneName)
