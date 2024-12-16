@@ -13,15 +13,15 @@ public class InventoryUI : UIBase
     [SerializeField] TMP_Text _playerName;
     [SerializeField] TMP_Text _hasGold;
 
-    private void Awake()
-    {
-        base.Awake();
-        _playerName.text = GameManager.Instance.player.NickName;
-    }
+    //private void Awake()
+    //{
+    //    _playerName.text = GameManager.Instance.player.NickName;
+    //}
     //인벤토리가 끄고 켤때마다가 아니라 실시간으로 업데이트되는 기능이 구현되어야함
     private void OnEnable()
     {
         Setup(GameManager.Instance.player.inventory);
+        _playerName.text = GameManager.Instance.player.NickName;
     }
 
     public void Setup(Inventory inventory)
