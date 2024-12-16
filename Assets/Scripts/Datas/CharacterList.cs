@@ -4,12 +4,11 @@ using UnityEngine;
 public class CharacterList
 {
     private List<PlayerData> _characterList = new List<PlayerData>();
-    private IPlayerRepository repository;
 
     public CharacterList(IPlayerRepository repository)
     {
-        this.repository = repository;
-        LoadListsData();
+        GameManager.Instance.Repository = repository;
+        LoadListsData();  // 저장소에서 데이터 로드
     }
 
     // 새로운 캐릭터 추가
@@ -21,8 +20,8 @@ public class CharacterList
             return;
         }
 
-        _characterList.Add(newPlayer);
-        SaveListsData();
+        _characterList.Add(newPlayer);  // 메모리에 추가
+        SaveListsData();  // 저장소에 반영
         Debug.Log($"캐릭터 {newPlayer.NickName} 추가 완료!");
     }
 
@@ -35,15 +34,15 @@ public class CharacterList
     // 데이터 저장
     public void SaveListsData()
     {
-        repository.SavePlayerData(_characterList);
-        Debug.Log("슬롯 데이터 저장 완료!");
+        GameManager.Instance.Repository.SavePlayerData(_characterList);  // 저장소에 저장
+        Debug.Log("캐릭터 데이터 저장 완료!");
     }
 
     // 데이터 로드
     public void LoadListsData()
     {
-        _characterList = repository.LoadPlayerData();
-        Debug.Log("슬롯 데이터 로드 완료!");
+        _characterList = GameManager.Instance.Repository.LoadPlayerData();  // 저장소에서 불러오기
+        Debug.Log("캐릭터 데이터 로드 완료!");
     }
 
     // 특정 슬롯에서 캐릭터 데이터 반환

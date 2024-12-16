@@ -8,8 +8,8 @@ public class SceneType4 : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            GameManager.Instance.sceneNum = 4;
-            GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.sceneNum));
+            GameManager.Instance.SceneNum = 4;
+            GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
         }
     }
 }

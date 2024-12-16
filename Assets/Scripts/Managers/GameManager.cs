@@ -11,9 +11,9 @@ public class GameManager : MonoSingleton<GameManager>
     GameObject SoundManagerObject;
     public Player Player;
     private PlayerData _currentPlayer;
-    public int sceneNum;
+    public int SceneNum;
     public IInteractable InteractableObject { get; set; }
-    public IPlayerRepository repository;
+    public IPlayerRepository Repository;
 
     // CharacterList를 GameManager에서 관리
 
@@ -23,9 +23,9 @@ public class GameManager : MonoSingleton<GameManager>
         Debug.Log("GameManager Awake 호출");
 
         // FilePlayerRepository를 사용해 CharacterList 초기화
-        repository = new FilePlayerRepository();
+        Repository = new FilePlayerRepository();
         // 데이터 매니저 초기화
-        DataManager = new DataManager(repository);
+        DataManager = new DataManager(Repository);
         Debug.Log("CharacterList 객체 생성 후");
 
         // 다른 매니저 초기화
@@ -33,13 +33,13 @@ public class GameManager : MonoSingleton<GameManager>
         List<ItemInstance> items = new List<ItemInstance>();
         ItemManager.Instance.Initialize(items);
 
-        sceneNum = 24;
+        SceneNum = 24;
     }
 
     void Start()
     {
         // FilePlayerRepository 초기화는 Start()에서 호출
-        if (repository is FilePlayerRepository fileRepo)
+        if (Repository is FilePlayerRepository fileRepo)
         {
             Debug.Log("FilePlayerRepository Initialize 호출");
             fileRepo.Initialize();  // Initialize 호출
@@ -47,16 +47,16 @@ public class GameManager : MonoSingleton<GameManager>
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        Instantiate(sceneNum);
+        Instantiate(SceneNum);
     }
 
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SpawnManager.playerObject.SetActive(false);
-        if (scene.name == DataManager.Scene.GetMapTo(sceneNum)) // TO Forest
+        if (scene.name == DataManager.Scene.GetMapTo(SceneNum)) // TO Forest
         {
-            Instantiate(sceneNum);
+            Instantiate(SceneNum);
         }
     }
 
@@ -90,6 +90,6 @@ public class GameManager : MonoSingleton<GameManager>
     // 데이터 관련 메서드
     public void SavePlayerData(List<PlayerData> data)
     {
-        repository.SavePlayerData(data);
+        Repository.SavePlayerData(data);
     }
 }
