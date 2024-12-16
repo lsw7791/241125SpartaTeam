@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -8,14 +8,12 @@ public class GameManager : MonoSingleton<GameManager>
     public CraftingManager craftingManager;
     public SoundManager soundManager;
     public SpawnManager spawnManager;
-    public CharacterSlotUIManager slotUIManager;
-    public CharacterSlotManager characterSlotManager;
     GameObject SoundManagerObject;
     public Player player;
     private PlayerData _currentPlayer;
     public int sceneNum;
-    public IInteractable InteractableObject { get; set; } // 현재 상호작용 가능한 객체
-    public IPlayerRepository repository; // 데이터 저장소
+    public IInteractable InteractableObject { get; set; }
+    public IPlayerRepository repository;
 
     protected override void Awake()
     {
@@ -28,13 +26,6 @@ public class GameManager : MonoSingleton<GameManager>
         // FilePlayerRepository를 사용해 CharacterSlotManager 초기화
         repository = new FilePlayerRepository();
         Debug.Log("FilePlayerRepository 객체 생성 후");
-        characterSlotManager = new CharacterSlotManager(repository);
-
-        // 슬롯 UI 매니저가 에디터에서 할당되지 않았다면
-        if (slotUIManager == null)
-        {
-            Debug.LogError("CharacterSlotUIManager가 할당되지 않았습니다! 에디터에서 할당해 주세요.");
-        }
 
         // 다른 매니저 초기화
         if (craftingManager == null) craftingManager = gameObject.AddComponent<CraftingManager>();
@@ -55,12 +46,6 @@ public class GameManager : MonoSingleton<GameManager>
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        // 슬롯 UI 매니저에 데이터 연동
-        if (slotUIManager != null)
-        {
-            slotUIManager.UpdateSlotUI(characterSlotManager.GetAllSlotData());
-        }
-
         Instantiate(sceneNum);
     }
 
@@ -73,7 +58,6 @@ public class GameManager : MonoSingleton<GameManager>
         }
         return repository.LoadPlayerData();
     }
-
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -112,7 +96,6 @@ public class GameManager : MonoSingleton<GameManager>
     }
 
     // 데이터 관련 메서드
-  
     public void SavePlayerData(List<PlayerData> data)
     {
         repository.SavePlayerData(data);

@@ -4,24 +4,24 @@ using UnityEngine;
 
 public interface IPlayerRepository
 {
-    void SavePlayerData(List<PlayerData> data);  // List<PlayerData> 받도록 수정
-    List<PlayerData> LoadPlayerData();  // List<PlayerData> 반환하도록 수정
+    void SavePlayerData(List<PlayerData> data);  // 데이터를 저장하는 메서드
+    List<PlayerData> LoadPlayerData();  // 데이터를 불러오는 메서드
 }
 
 public class FilePlayerRepository : IPlayerRepository
 {
     private string filePath;
 
-    // 생성자에서 persistentDataPath를 사용하지 않음
     public FilePlayerRepository()
     {
-        Debug.Log("FilePlayerRepository 생성자 호출");  // 생성자 호출 로그
+        // 생성자에서 초기화는 하지 않음
+        Debug.Log("FilePlayerRepository 생성자 호출");
     }
 
-    // Initialize() 메서드에서 persistentDataPath 사용
+    // Initialize 메서드 추가
     public void Initialize()
     {
-        Debug.Log("FilePlayerRepository Initialize 호출");  // Initialize 호출 로그
+        Debug.Log("FilePlayerRepository Initialize 호출");
         filePath = Path.Combine(Application.persistentDataPath, "playerData.json");
 
         if (!File.Exists(filePath))
@@ -50,7 +50,7 @@ public class FilePlayerRepository : IPlayerRepository
     }
 }
 
-// PlayerData 리스트를 래핑하는 클래스 추가 (JsonUtility에서 리스트를 직렬화할 수 있도록)
+
 [System.Serializable]
 public class PlayerDataListWrapper
 {

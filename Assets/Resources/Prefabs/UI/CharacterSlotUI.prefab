@@ -146,7 +146,6 @@ GameObject:
   - component: {fileID: 9112834048955794283}
   - component: {fileID: 5534951055165484065}
   - component: {fileID: 49209621672283014}
-  - component: {fileID: 3393350302525703480}
   - component: {fileID: 7117303147730720933}
   m_Layer: 5
   m_Name: CharacterSlotUI
@@ -227,20 +226,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 0}
   _exitBtn: {fileID: 6124756162704973874}
---- !u!114 &3393350302525703480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2571152250458531546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 981af009a0d6b1c4ea6d1b735b9fa0a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotPrefab: {fileID: 9211026759226948547, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
-  slotParent: {fileID: 6949523279099212393}
 --- !u!114 &7117303147730720933
 MonoBehaviour:
   m_ObjectHideFlags: 0

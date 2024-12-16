@@ -50,7 +50,5 @@ public class CharacterCreationBtn : MonoBehaviour
         Debug.Log($"캐릭터 {nickname} 생성 완료!");
         nicknameInputField.text = "";
 
-        // UI 갱신
-        GameManager.Instance.slotUIManager.LoadSlots();
     }
 }
