@@ -43,7 +43,7 @@ public class CharacterCreationBtn : MonoBehaviour
         };
 
         // 기존 데이터 로드 후 추가
-        var characters = GameManager.Instance.GetAllPlayerData();
+        var characters = GameManager.Instance.DataManager.GetAllPlayerData();
         characters.Add(newPlayer);
         GameManager.Instance.SavePlayerData(characters);  // 데이터 저장
 

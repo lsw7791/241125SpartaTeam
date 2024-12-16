@@ -126,7 +126,7 @@ public class SpawnManager : MonoBehaviour
     GameObject SpawnPlayer() 
     {
         playerObject = Instantiate(Resources.Load<GameObject>("Prefabs/TestPlayer_Backup"));
-        GameManager.Instance.player = playerObject.GetComponent<Player>();
+        GameManager.Instance.Player = playerObject.GetComponent<Player>();
         DontDestroyOnLoad(playerObject);
         playerObject.SetActive(false);
 
@@ -134,11 +134,11 @@ public class SpawnManager : MonoBehaviour
     }
     public GameObject SpawnPlayer(int mapNum)
     {
-        if (GameManager.Instance.player == null)
+        if (GameManager.Instance.Player == null)
         {
             playerObject = Instantiate(Resources.Load<GameObject>("Prefabs/TestPlayer_Backup"));
-            GameManager.Instance.player = playerObject.GetComponent<Player>();
-            playerObject.transform.position = GameManager.Instance.dataManager.scene.GetMoveTransform(mapNum);
+            GameManager.Instance.Player = playerObject.GetComponent<Player>();
+            playerObject.transform.position = GameManager.Instance.DataManager.Scene.GetMoveTransform(mapNum);
 
             // 씬 전환 시 파괴되지 않게 설정
             DontDestroyOnLoad(playerObject);
@@ -153,7 +153,7 @@ public class SpawnManager : MonoBehaviour
     public void SetPlayerPosition(int mapNum)
     {
         playerObject.SetActive(true);
-        playerObject.transform.position= GameManager.Instance.dataManager.scene.GetMoveTransform(mapNum);
+        playerObject.transform.position= GameManager.Instance.DataManager.Scene.GetMoveTransform(mapNum);
     }
 
 }

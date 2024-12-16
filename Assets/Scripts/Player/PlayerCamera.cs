@@ -11,7 +11,7 @@ public class PlayerCamera : MonoBehaviour
     private Vector3 velocity = Vector3.zero;  // 카메라의 현재 속도
     void Start()
     {
-        GameManager.Instance.player._playerCamera = this;
+        GameManager.Instance.Player._playerCamera = this;
         if (mainCamera == null)
         {
             mainCamera = Camera.main;

@@ -4,31 +4,32 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    public DataManager dataManager;
-    public CraftingManager craftingManager;
-    public SoundManager soundManager;
-    public SpawnManager spawnManager;
+    public DataManager DataManager;
+    public CraftingManager CraftingManager;
+    public SoundManager SoundManager;
+    public SpawnManager SpawnManager;
     GameObject SoundManagerObject;
-    public Player player;
+    public Player Player;
     private PlayerData _currentPlayer;
     public int sceneNum;
     public IInteractable InteractableObject { get; set; }
     public IPlayerRepository repository;
+
+    // CharacterList를 GameManager에서 관리
 
     protected override void Awake()
     {
         base.Awake();
         Debug.Log("GameManager Awake 호출");
 
-        // 데이터 매니저와 슬롯 매니저 초기화
-        dataManager = new DataManager();
-
-        // FilePlayerRepository를 사용해 CharacterSlotManager 초기화
+        // FilePlayerRepository를 사용해 CharacterList 초기화
         repository = new FilePlayerRepository();
-        Debug.Log("FilePlayerRepository 객체 생성 후");
+        // 데이터 매니저 초기화
+        DataManager = new DataManager(repository);
+        Debug.Log("CharacterList 객체 생성 후");
 
         // 다른 매니저 초기화
-        if (craftingManager == null) craftingManager = gameObject.AddComponent<CraftingManager>();
+        if (CraftingManager == null) CraftingManager = gameObject.AddComponent<CraftingManager>();
         List<ItemInstance> items = new List<ItemInstance>();
         ItemManager.Instance.Initialize(items);
 
@@ -49,20 +50,11 @@ public class GameManager : MonoSingleton<GameManager>
         Instantiate(sceneNum);
     }
 
-    public List<PlayerData> GetAllPlayerData()
-    {
-        if (repository == null)
-        {
-            Debug.Log("repository가 초기화되지 않았습니다!");
-            return new List<PlayerData>();
-        }
-        return repository.LoadPlayerData();
-    }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        spawnManager.playerObject.SetActive(false);
-        if (scene.name == dataManager.scene.GetMapTo(sceneNum)) // TO Forest
+        SpawnManager.playerObject.SetActive(false);
+        if (scene.name == DataManager.Scene.GetMapTo(sceneNum)) // TO Forest
         {
             Instantiate(sceneNum);
         }
@@ -71,10 +63,10 @@ public class GameManager : MonoSingleton<GameManager>
     void Instantiate(int mapNum)
     {
         GameObject miniCamera = Instantiate(Resources.Load<GameObject>("Prefabs/Cameras/MinimapCamera"));
-        if (spawnManager == null) spawnManager = gameObject.AddComponent<SpawnManager>();
-        if (soundManager == null) soundManager = gameObject.AddComponent<SoundManager>();
-        spawnManager.SpawnPlayer(mapNum);
-        spawnManager.Initialize(mapNum);
+        if (SpawnManager == null) SpawnManager = gameObject.AddComponent<SpawnManager>();
+        if (SoundManager == null) SoundManager = gameObject.AddComponent<SoundManager>();
+        SpawnManager.SpawnPlayer(mapNum);
+        SpawnManager.Initialize(mapNum);
     }
 
     public void LoadScene(string sceneName)

@@ -16,7 +16,7 @@ public class CraftingManager : MonoBehaviour
 
         selectedItemId = itemId;
 
-        CraftingData selectedData = GameManager.Instance.dataManager.crafting.GetData(itemId);
+        CraftingData selectedData = GameManager.Instance.DataManager.Crafting.GetData(itemId);
     }
 
     // 선택된 아이템을 조합하는 메서드
@@ -29,7 +29,7 @@ public class CraftingManager : MonoBehaviour
         }
 
         // 선택된 아이템에 필요한 재료를 가져옵니다.
-        var requiredMaterials = GameManager.Instance.dataManager.crafting.GetRequiredMaterials(selectedItemId);
+        var requiredMaterials = GameManager.Instance.DataManager.Crafting.GetRequiredMaterials(selectedItemId);
 
         // 필요한 재료 목록 확인 (0 갯수는 예외 처리)
         List<int> missingMaterials = new List<int>();
@@ -37,7 +37,7 @@ public class CraftingManager : MonoBehaviour
         {
             if (material.Value > 0) // 재료 수가 0이 아닌 것만 확인
             {
-                int playerItemCount = GameManager.Instance.player.inventory.GetItemCount(material.Key);
+                int playerItemCount = GameManager.Instance.Player.inventory.GetItemCount(material.Key);
                 if (playerItemCount < material.Value)
                 {
                     missingMaterials.Add(material.Key); // 부족한 재료 추가
@@ -66,7 +66,7 @@ public class CraftingManager : MonoBehaviour
         {
             if (material.Value > 0)
             {
-                GameManager.Instance.player.inventory.RemoveItem(material.Key, material.Value);
+                GameManager.Instance.Player.inventory.RemoveItem(material.Key, material.Value);
                 Debug.Log($"{material.Value}개 {material.Key} 아이템 사용됨.");
             }
         }
@@ -85,10 +85,10 @@ public class CraftingManager : MonoBehaviour
 
     public void AddToInventory()
     {
-        ItemData itemData = GameManager.Instance.dataManager.GetItemDataById(selectedItemId);
+        ItemData itemData = GameManager.Instance.DataManager.GetItemDataById(selectedItemId);
         if (itemData != null)
         {
-            GameManager.Instance.player.inventory.AddItem(selectedItemId, itemData.name, 1, itemData.itemType, Resources.Load<Sprite>(itemData.spritePath));
+            GameManager.Instance.Player.inventory.AddItem(selectedItemId, itemData.name, 1, itemData.itemType, Resources.Load<Sprite>(itemData.spritePath));
             //Debug.Log($"아이템 ID {selectedItemId} 추가됨.");
         }
     }

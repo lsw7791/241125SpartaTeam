@@ -16,7 +16,7 @@ public class MinimapCamera : MonoBehaviour
     private void Start()
     {
         // "Player" 태그가 붙은 첫 번째 오브젝트 찾기
-        player = GameManager.Instance.spawnManager.playerObject.transform;
+        player = GameManager.Instance.SpawnManager.playerObject.transform;
 
         if (player == null)
         {
@@ -39,7 +39,7 @@ public class MinimapCamera : MonoBehaviour
     {
         if(player==null)
         {
-            player = GameManager.Instance.spawnManager.playerObject.transform;
+            player = GameManager.Instance.SpawnManager.playerObject.transform;
         }
         // 카메라는 플레이어를 따라가되, Y 위치는 고정 (탑다운)
         minimapCamera.transform.position = new Vector3(player.position.x, player.position.y, zFreez);

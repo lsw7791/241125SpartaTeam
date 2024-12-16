@@ -15,7 +15,7 @@ public class PlayerWeapon : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.player._playerWeapon = this;
+        GameManager.Instance.Player._playerWeapon = this;
         _weapon = this.gameObject;
         EquipManager.Instance.weaponObject = _weapon;
         _weaponCollider = _weapon.GetComponent<Collider2D>();  // 무기의 Collider2D 가져오기
@@ -39,7 +39,7 @@ public class PlayerWeapon : MonoBehaviour
     public void FireArrow()
     {
         //GameObject arrow = Instantiate(_attackObjects[0], _aoSpawnPoint.position, Quaternion.identity);
-        GameObject arrow = GameManager.Instance.spawnManager.projectilePool.SpawnFromPool("Arrow");
+        GameObject arrow = GameManager.Instance.SpawnManager.projectilePool.SpawnFromPool("Arrow");
         if (arrow == null)
         {
             Debug.LogError("Arrow could not be spawned from pool.");
@@ -63,7 +63,7 @@ public class PlayerWeapon : MonoBehaviour
 
         // 충돌 처리 - 화살이 충돌 시 데미지 적용
         arrow.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile);
-        outProjectile.Initialize(layerMask, GameManager.Instance.player.Stats.Damage);
+        outProjectile.Initialize(layerMask, GameManager.Instance.Player.Stats.Damage);
 
         Debug.Log("Fired Arrow!");
     }
@@ -73,7 +73,7 @@ public class PlayerWeapon : MonoBehaviour
     public void FireFireball()
     {
         //GameObject fireball = Instantiate(_attackObjects[1], _aoSpawnPoint.position, Quaternion.identity);
-        GameObject fireball = GameManager.Instance.spawnManager.projectilePool.SpawnFromPool("FireBall");
+        GameObject fireball = GameManager.Instance.SpawnManager.projectilePool.SpawnFromPool("FireBall");
         if (fireball == null)
         {
             Debug.LogError("Arrow could not be spawned from pool.");
@@ -97,7 +97,7 @@ public class PlayerWeapon : MonoBehaviour
 
         // 충돌 처리 - 파이어볼이 충돌 시 데미지 적용
         fireball.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile);
-        outProjectile.Initialize(layerMask, GameManager.Instance.player.Stats.Damage);
+        outProjectile.Initialize(layerMask, GameManager.Instance.Player.Stats.Damage);
 
         Debug.Log("Fired Fireball!");
     }
@@ -108,8 +108,8 @@ public class PlayerWeapon : MonoBehaviour
         if (collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
         {
             // 플레이어가 충돌한 오브젝트가 IDamageable을 구현한 경우
-            outTarget.TakeDamage(GameManager.Instance.player.Stats.Damage);  // 데미지 처리
-            Debug.Log($"Player dealt {GameManager.Instance.player.Stats.Damage} damage to {outTarget.GetType().Name}");
+            outTarget.TakeDamage(GameManager.Instance.Player.Stats.Damage);  // 데미지 처리
+            Debug.Log($"Player dealt {GameManager.Instance.Player.Stats.Damage} damage to {outTarget.GetType().Name}");
         }
         else
         {

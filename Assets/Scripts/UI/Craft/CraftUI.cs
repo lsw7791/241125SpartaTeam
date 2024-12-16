@@ -10,7 +10,7 @@ public class CraftUI : UIBase
 
     private void Start()
     {
-        List<CraftingData> craftingDataList = GameManager.Instance.dataManager.crafting.GetAllDatas();
+        List<CraftingData> craftingDataList = GameManager.Instance.DataManager.Crafting.GetAllDatas();
         PopulateCraftingUI(craftingDataList); // UI에 아이템을 채우기
     }
 
@@ -38,7 +38,7 @@ public class CraftUI : UIBase
             slotButton.onClick.AddListener(() =>
             {
                 // 아이템 선택 시 선택된 아이템 ID를 설정
-                GameManager.Instance.craftingManager.SelectItem(data.id);
+                GameManager.Instance.CraftingManager.SelectItem(data.id);
 
                 // 선택된 아이템을 보여주는 UI를 업데이트
                 CraftingUI craftingUI = UIManager.Instance.OpenUI<CraftingUI>();

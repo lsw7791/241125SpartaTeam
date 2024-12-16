@@ -4,32 +4,30 @@ using UnityEngine.UI;
 
 public class CharacterSlotUI : UIBase
 {
-    [SerializeField] private Transform slotParent;  // 슬롯 부모 오브젝트
-    [SerializeField] private GameObject slotPrefab;  // 슬롯 UI 프리팹
-    private CharacterList _characterList;
+    [SerializeField] private Transform _slotParent;  // 슬롯 부모 오브젝트
+    [SerializeField] private GameObject _slotPrefab;  // 슬롯 UI 프리팹
 
     void Start()
     {
-        _characterList = new CharacterList(new FilePlayerRepository());
-        slotPrefab = Resources.Load<GameObject>("Prefabs/UI/CharacterSlot");
+        _slotPrefab = Resources.Load<GameObject>("Prefabs/UI/CharacterSlot");
         LoadSlots();  // 슬롯 UI 갱신
     }
 
     public void LoadSlots()
     {
         // 기존 슬롯 UI 제거
-        foreach (Transform child in slotParent)
+        foreach (Transform child in _slotParent)
         {
             Destroy(child.gameObject);
         }
 
         // 캐릭터 슬롯 데이터 가져오기
-        var slots = _characterList.GetAllSlots();
+        var slots = GameManager.Instance.DataManager.CharacterList.GetAllLists();
 
         // 각 슬롯에 데이터를 표시
         foreach (var playerData in slots)
         {
-            GameObject newSlot = Instantiate(slotPrefab, slotParent);
+            GameObject newSlot = Instantiate(_slotPrefab, _slotParent);
             TextMeshProUGUI slotText = newSlot.GetComponentInChildren<TextMeshProUGUI>();
 
             if (slotText != null)

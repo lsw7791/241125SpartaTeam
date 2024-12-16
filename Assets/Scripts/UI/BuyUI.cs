@@ -17,7 +17,7 @@ public class BuyUI : UIBase
         _itemData = itemData; // 아이템 데이터 설정
 
         // 골드와 아이템 가격 비교
-        bool canBuy = GameManager.Instance.player.stats.Gold >= itemData.buy;
+        bool canBuy = GameManager.Instance.Player.stats.Gold >= itemData.buy;
 
         if (canBuy)
         {
@@ -66,19 +66,19 @@ public class BuyUI : UIBase
         // 총 금액 계산
         int totalCost = itemData.buy * quantity;
 
-        if (GameManager.Instance.player.stats.Gold >= totalCost)
+        if (GameManager.Instance.Player.stats.Gold >= totalCost)
         {
             // 골드 차감
-            GameManager.Instance.player.stats.Gold -= totalCost;
+            GameManager.Instance.Player.stats.Gold -= totalCost;
 
             ShopUI shopUI;
             shopUI = UIManager.Instance.GetUI<ShopUI>();
-            shopUI._hasGold.text = GameManager.Instance.player.stats.Gold.ToString();
+            shopUI._hasGold.text = GameManager.Instance.Player.stats.Gold.ToString();
             // 스프라이트 경로에서 Sprite 객체를 로드
             Sprite itemSprite = Resources.Load<Sprite>(itemData.spritePath);
 
             // 아이템을 인벤토리에 추가
-            GameManager.Instance.player.inventory.AddItem(
+            GameManager.Instance.Player.inventory.AddItem(
                 itemData.id,  // 아이템 ID를 문자열로 변환
                 itemData.name,           // 아이템 이름
                 quantity,                // 구매한 수량

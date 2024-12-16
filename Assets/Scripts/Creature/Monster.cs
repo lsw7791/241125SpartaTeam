@@ -17,10 +17,10 @@ public class Monster : MonoBehaviour, ICreature
     }
     public void Die()
     {
-        if (GameManager.Instance.spawnManager.monsterPool != null)
+        if (GameManager.Instance.SpawnManager.monsterPool != null)
         {
             // 몬스터의 종류를 구분해서 풀에 반환 (creatureId로 구별)
-            GameManager.Instance.spawnManager.monsterPool.ReturnMonster(id, gameObject);
+            GameManager.Instance.SpawnManager.monsterPool.ReturnMonster(id, gameObject);
         }
         else
         {
@@ -42,7 +42,7 @@ public class Monster : MonoBehaviour, ICreature
         }
         else
         {
-            Debug.Log($"Monster {GameManager.Instance.dataManager.creature.GetName(id)} remaining health: {currentHealth}");
+            Debug.Log($"Monster {GameManager.Instance.DataManager.Creature.GetName(id)} remaining health: {currentHealth}");
         }
     }
 
@@ -52,10 +52,10 @@ public class Monster : MonoBehaviour, ICreature
         // 드롭 위치의 랜덤 범위 설정 (x, z 축 기준)
         float dropRange = 1.5f;
 
-        foreach (int itemId in GameManager.Instance.dataManager.creature.GetDropItemIds(id))
+        foreach (int itemId in GameManager.Instance.DataManager.Creature.GetDropItemIds(id))
         {
             // 아이템 데이터와 프리팹 로드
-            var itemData = GameManager.Instance.dataManager.GetItemDataById(itemId);
+            var itemData = GameManager.Instance.DataManager.GetItemDataById(itemId);
             GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabPath);
 
             // 랜덤한 드롭 위치 생성
@@ -81,7 +81,7 @@ public class Monster : MonoBehaviour, ICreature
 
     public void ResetStatus()
     {
-        currentHealth = GameManager.Instance.dataManager.creature.GetHealth(id);  // 최대 체력으로 리셋
+        currentHealth = GameManager.Instance.DataManager.Creature.GetHealth(id);  // 최대 체력으로 리셋
         isDie = false;  // 죽지 않은 상태로 리셋
     }
 }

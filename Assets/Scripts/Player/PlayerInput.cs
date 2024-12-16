@@ -29,7 +29,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
-            GameManager.Instance.player._playerAnimationController.TriggerAttackAnimation();
+            GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
             //PerformAttack();
         }
     }
@@ -48,12 +48,12 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.started)
         {
-            GameManager.Instance.player._playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화
+            GameManager.Instance.Player._playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화
             PerformPaddingStart(); // 패딩 동작 시작
         }
         else if (context.canceled)
         {
-            GameManager.Instance.player._playerAnimationController.SetPaddingAnimation(false); // 애니메이션 비활성화
+            GameManager.Instance.Player._playerAnimationController.SetPaddingAnimation(false); // 애니메이션 비활성화
             PerformPaddingEnd(); // 패딩 동작 종료
         }
     }

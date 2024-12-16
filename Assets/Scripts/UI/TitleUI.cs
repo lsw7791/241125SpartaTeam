@@ -7,7 +7,7 @@ public class TitleUI : MonoBehaviour
     {
         Debug.Log("게임 시작");
         GameManager.Instance.sceneNum = 24;
-        GameManager.Instance.LoadScene(GameManager.Instance.dataManager.scene.GetMapTo(GameManager.Instance.sceneNum));
+        GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.sceneNum));
     }
     public void LoadGame()
     {
