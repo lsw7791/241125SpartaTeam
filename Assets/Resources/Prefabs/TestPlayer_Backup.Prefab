@@ -391,15 +391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5c6732db8ddf04893e6699342f0710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponObject: {fileID: 372932772457697975}
-  EquipedWeapon: {fileID: 4236947358380390992, guid: 58d9234989f304b2bbee8ad883c5179c, type: 3}
-  RWeaponID: 0
-  LWeaponID: 0
-  topID: 0
-  bottomID: 0
-  helmetID: 0
-  armorID: 0
-  capeID: 0
+  weaponObject: {fileID: 372932772457697975}
+  equipedWeapon: {fileID: 4011212795162534608, guid: 53518d4a7c3da4211b430172c5113972, type: 3}
 --- !u!1 &1700527193647500101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1801,7 +1794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b8e60a739ff1b4abab5b1099d667d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NickName: "\uCD98\uC2DD\uC774"
+  nickName: 
   stats:
     MaxHP: 100
     CurrentHP: 1

@@ -22,7 +22,7 @@ public class PlayerAnimationController : MonoBehaviour
     public void TriggerAttackAnimation()
     {
 
-        string weaponTag = EquipManager.Instance.EquipedWeapon?.tag ?? "Melee";
+        string weaponTag = EquipManager.Instance.equipedWeapon?.tag ?? "Melee";
 
         if (GameManager.Instance.player.stats.isDie) return;
 
