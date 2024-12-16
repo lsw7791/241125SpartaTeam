@@ -123,7 +123,7 @@ public class SpawnManager : MonoBehaviour
     {
         playerObject = Instantiate(Resources.Load<GameObject>("Prefabs/TestPlayer_Backup"));
         GameManager.Instance.player = playerObject.GetComponent<Player>();
-        //DontDestroyOnLoad(playerObject);
+        DontDestroyOnLoad(playerObject);
         return playerObject;
     }
     public GameObject SpawnPlayer(int mapNum)
@@ -135,7 +135,7 @@ public class SpawnManager : MonoBehaviour
             playerObject.transform.position = GameManager.Instance.dataManager.scene.GetMoveTransform(mapNum);
 
             // 씬 전환 시 파괴되지 않게 설정
-            //DontDestroyOnLoad(playerObject);
+            DontDestroyOnLoad(playerObject);
 
             return playerObject;
         }

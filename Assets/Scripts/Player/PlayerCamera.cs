@@ -26,6 +26,10 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+        }
         // 목표 위치는 플레이어의 위치 + 오프셋 (Z는 고정)
         Vector3 targetPosition = new Vector3(transform.position.x, transform.position.y, -10);
 
