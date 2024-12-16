@@ -31,10 +31,8 @@ public class SpawnManager : MonoBehaviour
         switch (mapNum)
         {
             case 1://마을
-                StageVillage();
                 break;
             case 2://숲
-                StageForest();
                 break;
             case 3://마인1
                 if (spawner1 == null) spawner1 = gameObject.AddComponent<Spawner>();
@@ -50,7 +48,7 @@ public class SpawnManager : MonoBehaviour
                 break;
             default:
                 break;
-        }
+        }   
     }
     public void SpawnMonsterPool()
     {
@@ -68,14 +66,6 @@ public class SpawnManager : MonoBehaviour
         monsterPool.InitializeMonsterPool(10, 5);  // Knight
         monsterPool.InitializeMonsterPool(11, 5);  // Necromancer
         monsterPool.InitializeMonsterPool(12, 5);  // Demon
-    }
-    public void StageVillage()
-    {
-
-    }
-    public void StageForest()
-    {
-
     }
     public void StageMine1()
     {
@@ -133,14 +123,26 @@ public class SpawnManager : MonoBehaviour
     {
         playerObject = Instantiate(Resources.Load<GameObject>("Prefabs/TestPlayer_Backup"));
         GameManager.Instance.player = playerObject.GetComponent<Player>();
+        //DontDestroyOnLoad(playerObject);
         return playerObject;
     }
     public GameObject SpawnPlayer(int mapNum)
     {
-        playerObject = Instantiate(Resources.Load<GameObject>("Prefabs/TestPlayer_Backup"));
-        GameManager.Instance.player = playerObject.GetComponent<Player>();
-        playerObject.transform.position = GameManager.Instance.dataManager.scene.GetMoveTransform(mapNum);
-        return playerObject;
+        if (GameManager.Instance.player == null)
+        {
+            playerObject = Instantiate(Resources.Load<GameObject>("Prefabs/TestPlayer_Backup"));
+            GameManager.Instance.player = playerObject.GetComponent<Player>();
+            playerObject.transform.position = GameManager.Instance.dataManager.scene.GetMoveTransform(mapNum);
+
+            // 씬 전환 시 파괴되지 않게 설정
+            //DontDestroyOnLoad(playerObject);
+
+            return playerObject;
+        }
+        else
+        {
+            return null;
+        }
     }
-    
+
 }
