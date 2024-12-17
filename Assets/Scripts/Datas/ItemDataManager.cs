@@ -27,7 +27,7 @@ public enum ItemType
 }
 
 public enum ItemUseType
-{
+{ // 인벤토리에서 슬롯을 눌렀을 때 구분할 타입
     Consumable,
     Equipment,
     Material,

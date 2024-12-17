@@ -69,4 +69,28 @@ public class Inventory
         }
         OnInventoryChanged?.Invoke();
     }
+
+    public void EquipItem(int itemID)
+    {
+        InventoryItem item = GetItem(itemID);
+
+        if (item != null && item.itemUseType == ItemUseType.Equipment)
+        { // 아이템이 장착 가능한 아이템인지 확인
+            if (item.IsEquipped)
+            { // 장착한 아이템인지 여부 확인
+                item.IsEquipped = false; // 장착 해제
+                // TODO :: 장비창에서 아이템 해제 or 다른 아이템 장착
+            }
+            else
+            {
+                item.IsEquipped = true; // 장착
+                // TODO :: 장비창에서 아이템 해제 or 다른 아이템 장착
+            }
+            // TODO :: 장비창에서 ItemType타입 부위가 null이 아니라면
+            // 이라는 조건 추가하기
+
+            OnInventoryChanged?.Invoke();
+            // UI 갱신
+        }
+    }
 }

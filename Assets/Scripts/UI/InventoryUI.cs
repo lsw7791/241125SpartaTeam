@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class InventoryUI : UIBase
 {
@@ -13,11 +14,8 @@ public class InventoryUI : UIBase
     [SerializeField] TMP_Text _playerName;
     [SerializeField] TMP_Text _hasGold;
 
-    //private void Awake()
-    //{
-    //    _playerName.text = GameManager.Instance.player.NickName;
-    //}
-    //인벤토리가 끄고 켤때마다가 아니라 실시간으로 업데이트되는 기능이 구현되어야함
+    public GameObject itemUseMenu;
+
     private void OnEnable()
     {
         Setup(GameManager.Instance.player.inventory);
@@ -46,10 +44,16 @@ public class InventoryUI : UIBase
         _slots.Clear();
 
         for (int i = 0; i < 12; i++) // 슬롯 수 고정 (필요시 수정 가능)
-        {
+        { // TODO :: 인벤토리를 껐다 켰다 하는 과정에서 렉이 걸릴 수 있음
+            // UIPool을 만들어서 불러와야겠음
+            // 그럼 TMPText 문제도 해결 되지 않을까 생각
             GameObject slot = Instantiate(slotPrefab, slotContainer);
+            slot.AddComponent<Button>();
+
             _slots.Add(slot);
         }
+
+        itemUseMenu.SetActive(false);
     }
 
     private void Refresh()
