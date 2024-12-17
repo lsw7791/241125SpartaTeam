@@ -56,4 +56,19 @@ public class CharacterList
 
         return _characterList[slotIndex];
     }
+
+    // RemoveCharacter 메서드 추가
+    public void RemoveCharacter(PlayerData characterToRemove)
+    {
+        if (_characterList.Contains(characterToRemove))
+        {
+            _characterList.Remove(characterToRemove);  // 리스트에서 캐릭터 제거
+            SaveListsData();  // 삭제 후 데이터 저장
+            Debug.Log($"캐릭터 {characterToRemove.NickName} 삭제 완료");
+        }
+        else
+        {
+            Debug.LogWarning("삭제하려는 캐릭터가 리스트에 존재하지 않습니다.");
+        }
+    }
 }
