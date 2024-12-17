@@ -8,12 +8,17 @@ public class Spawner : MonoBehaviour
 
     public List<int> creatureIds = new List<int>(); // 스폰할 몬스터 ID 목록
     public List<Vector2> spawnPoints = new List<Vector2>(); // 스폰 위치 목록
-    public float spawnInterval = 30f; // 스폰 간격
+    public float spawnInterval = 10f; // 스폰 간격
     public int sceneNumber;
     private List<GameObject> currentMonsters = new List<GameObject>();
-
+    private void Awake()
+    {
+        sceneNumber = GameManager.Instance.SceneNum;
+    }
     private void Start()
     {
+        if (monsterPool != null) Destroy(monsterPool);
+            if (monsterPool == null) monsterPool = GameManager.Instance.SpawnManager.GroupSpawn($"Monster{sceneNumber}").AddComponent<MonsterPool>();
         StartCoroutine(SpawnRoutine());
     }
 

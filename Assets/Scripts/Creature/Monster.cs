@@ -9,7 +9,12 @@ public class Monster : MonoBehaviour, ICreature
     [SerializeField]private int currentHealth;
     [SerializeField]private bool isDie;
     [SerializeField] public int id { get; private set; }
+    MonsterPool monsterPool;
     // 몬스터가 죽었을 때 호출되는 함수
+    private void Start()
+    {
+        monsterPool = GetComponentInParent<MonsterPool>();
+    }
     public void SetComponent(int value)
     {
         id = value;
@@ -17,10 +22,10 @@ public class Monster : MonoBehaviour, ICreature
     }
     public void Die()
     {
-        if (GameManager.Instance.SpawnManager.monsterPool != null)
+        if (monsterPool != null)
         {
             // 몬스터의 종류를 구분해서 풀에 반환 (creatureId로 구별)
-            GameManager.Instance.SpawnManager.monsterPool.ReturnMonster(id, gameObject);
+            monsterPool.ReturnMonster(id, gameObject);
         }
         else
         {
