@@ -53,6 +53,9 @@ public class CharacterCreationBtn : MonoBehaviour
         {
             Debug.Log($"캐릭터 닉네임: {character}");
         }
+        GameManager.Instance.SceneNum = 25;
+        GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
+        UIManager.Instance.ToggleUI<CharacterSlotUI>();
     }
 
       

@@ -10,9 +10,13 @@ public class CharacterSlotUI : UIBase
     void Start()
     {
         slotPrefab = Resources.Load<GameObject>("Prefabs/UI/CharacterSlot");
-        LoadSlots();  // ΩΩ∑‘ UI ∞ªΩ≈
     }
 
+    private void OnEnable()
+    {
+        LoadSlots();  // ΩΩ∑‘ UI ∞ªΩ≈
+
+    }
     public void LoadSlots()
     {
         // ±‚¡∏ ΩΩ∑‘ UI ¡¶∞≈
