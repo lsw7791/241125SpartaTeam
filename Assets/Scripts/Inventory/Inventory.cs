@@ -25,7 +25,7 @@ public class Inventory
         }
         else
         {
-            Items.Add(new InventoryItem(itemID, itemName, quantity, itemType, itemSprite));
+            Items.Add(new InventoryItem(itemID, itemName, quantity, itemType, itemSprite, ItemTypeNumber(itemType)));
             // 동일한 itemID 없거나 장비 아이템이라면 리스트에 추가
         }
 
@@ -92,5 +92,29 @@ public class Inventory
             OnInventoryChanged?.Invoke();
             // UI 갱신
         }
+    }
+
+    private EquipSlot ItemTypeNumber(ItemType itemType)
+    {
+        EquipSlot type = EquipSlot.None;
+
+        if ((int)itemType >= 5)
+        {
+            type = EquipSlot.Weapon;
+        }
+        else if((int)itemType == 6)
+        {
+            type = EquipSlot.Head;
+        }
+        else if ((int)itemType == 7)
+        {
+            type = EquipSlot.Armor;
+        }
+        else if ((int)itemType == 8)
+        {
+            type = EquipSlot.Shoes;
+        }
+
+        return type;
     }
 }

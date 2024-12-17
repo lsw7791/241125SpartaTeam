@@ -12,27 +12,6 @@ public class ItemUseUI : MonoBehaviour
 
     private List<GameObject> _useButton = new List<GameObject>();
 
-    private void Start()
-    {
-        //UseButtonClear();
-
-        //if (item.itemUseType == ItemUseType.Equipment)
-        //{
-        //    UseButton("착용").onClick.AddListener(() =>
-        //    {
-        //        Debug.Log("착용");
-        //    });
-        //    UseButton("강화").onClick.AddListener(() =>
-        //    {
-        //        Debug.Log("강화");
-        //    });
-        //    UseButton("버리기").onClick.AddListener(() =>
-        //    {
-        //        Debug.Log("버리기");
-        //    });
-        //}
-    }
-
     public void Initialize(InventoryItem inItem)
     {
         _useItemImage.sprite = inItem.ItemIcon;
@@ -41,17 +20,28 @@ public class ItemUseUI : MonoBehaviour
 
         if (inItem.itemUseType == ItemUseType.Equipment)
         {
-            UseButton("사용하기").onClick.AddListener(() =>
-            {
+            UseButton("착용하기").onClick.AddListener(() =>
+            { // 장비 타입
+                // TODO :: 착용 부위 타입으로 조건을 걸어서 착용하기
+                
                 GameManager.Instance.Player.inventory.EquipItem(inItem.ItemID);
+                //GameManager.Instance.Player.equipment.EquipNew(inItem);
                 Debug.Log("착용");
             });
             UseButton("강화하기").onClick.AddListener(() =>
-            {
+            { // 장비 타입
                 Debug.Log("강화");
             });
+            UseButton("조합하기").onClick.AddListener(() =>
+            { // 재료 타입
+                Debug.Log("조합");
+            });
+            UseButton("사용하기").onClick.AddListener(() =>
+            { // 포션 타입
+                Debug.Log("사용");
+            });
             UseButton("버리기").onClick.AddListener(() =>
-            {
+            { // 모든 아이템 타입
                 Debug.Log("버리기");
             });
         }

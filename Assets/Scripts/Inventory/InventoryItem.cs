@@ -1,5 +1,14 @@
 using UnityEngine;
 
+public enum EquipSlot
+{
+    None,
+    Head,    // 모자
+    Armor,    // 옷
+    Weapon,  // 무기
+    Shoes    // 신발
+}
+
 [System.Serializable]
 public class InventoryItem
 {
@@ -10,8 +19,9 @@ public class InventoryItem
     public ItemUseType itemUseType;
     public Sprite ItemIcon;  // 아이템 아이콘 (Sprite)
     public bool IsEquipped; // 장착 상태
+    public EquipSlot equipSlot; // 장비 부위
 
-    public InventoryItem(int itemID, string itemName, int quantity, ItemType itemType, Sprite itemIcon = null)
+    public InventoryItem(int itemID, string itemName, int quantity, ItemType itemType, Sprite itemIcon, EquipSlot slot)
     {
         ItemID = itemID;
         ItemName = itemName;
@@ -22,5 +32,6 @@ public class InventoryItem
         itemUseType = ItemUseType.Equipment;
         // TODO :: 현재 모두 장착 아이템인 상태
         // 장착 되는지 확인 후 UGS 변경 예정
+        equipSlot = slot;
     }
 }
