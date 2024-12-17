@@ -34,13 +34,13 @@ public class MonsterAI : MonoBehaviour
         monster = GetComponentInParent<Monster>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         initialPosition = transform.position;
-        playerTransform = GameManager.Instance.player.gameObject.transform;
+        playerTransform = GameManager.Instance.Player.gameObject.transform;
 
     }
 
     protected virtual void FixedUpdate()
     {
-        if(GameManager.Instance.player.stats.isDie)
+        if(GameManager.Instance.Player.stats.isDie)
         {
             playerTransform = null;
         }
@@ -59,7 +59,7 @@ public class MonsterAI : MonoBehaviour
         // 몬스터가 초기 위치에 거의 도달한 경우, 이동을 멈추고 방향 반전 안함
         if (Vector3.Distance(transform.position, initialPosition) > 0.1f)  // 0.1f는 거의 도달했다고 판단할 수 있는 최소 거리
         {
-            transform.Translate(direction * GameManager.Instance.dataManager.creature.GetMoveSpeed(monster.id) * Time.deltaTime, Space.World);
+            transform.Translate(direction * GameManager.Instance.DataManager.Creature.GetMoveSpeed(monster.id) * Time.deltaTime, Space.World);
             spriteRenderer.flipX = direction.x < 0;  // 이동 중에만 방향을 바꿈
         }
     }
@@ -69,7 +69,7 @@ public class MonsterAI : MonoBehaviour
         if (isMove)
         {
             Vector3 direction = (playerTransform.position - transform.position).normalized;
-            transform.Translate(direction * GameManager.Instance.dataManager.creature.GetMoveSpeed(monster.id) * Time.deltaTime, Space.World);
+            transform.Translate(direction * GameManager.Instance.DataManager.Creature.GetMoveSpeed(monster.id) * Time.deltaTime, Space.World);
 
             spriteRenderer.flipX = direction.x <= 0;
         }
@@ -79,7 +79,7 @@ public class MonsterAI : MonoBehaviour
     {
         if (collision.CompareTag("Weapon")) // 근거리
         {
-            monster.TakeDamage(GameManager.Instance.player.stats.Damage); // 데미지 처리
+            monster.TakeDamage(GameManager.Instance.Player.stats.Damage); // 데미지 처리
         }
     }
 

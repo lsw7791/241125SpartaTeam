@@ -13,7 +13,7 @@ public class PlayerAnimationController : MonoBehaviour
     }
     private void Start()
     {  
-        GameManager.Instance.player._playerAnimationController = this;
+        GameManager.Instance.Player._playerAnimationController = this;
     }
     public void SetMoveAnimation(bool isMoving)
     {
@@ -24,17 +24,17 @@ public class PlayerAnimationController : MonoBehaviour
 
         string weaponTag = EquipManager.Instance.equipedWeapon?.tag ?? "Melee";
 
-        if (GameManager.Instance.player.stats.isDie) return;
+        if (GameManager.Instance.Player.stats.isDie) return;
 
         switch (weaponTag)
         {
             case "Bow":
                 _animator.SetTrigger("Attack_Bow");
-                GameManager.Instance.player._playerWeapon.FireArrow();  // 화살 발사
+                GameManager.Instance.Player._playerWeapon.FireArrow();  // 화살 발사
                 break;
             case "Staff":
                 _animator.SetTrigger("Attack_Staff");
-                GameManager.Instance.player._playerWeapon.FireFireball();  // 파이어볼 발사
+                GameManager.Instance.Player._playerWeapon.FireFireball();  // 파이어볼 발사
                 break;
             default:
                 _animator.SetTrigger("Attack_Melee");
@@ -53,11 +53,11 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void ActivateWeaponCollider()
     {
-        GameManager.Instance.player._playerWeapon.ActivateWeaponCollider();
+        GameManager.Instance.Player._playerWeapon.ActivateWeaponCollider();
     }
     public void DeactivateWeaponCollider()
     {
-        GameManager.Instance.player._playerWeapon.DeactivateWeaponCollider();
+        GameManager.Instance.Player._playerWeapon.DeactivateWeaponCollider();
     }
     public void FlipRotation(Vector2 mouseWorldPos)
     {

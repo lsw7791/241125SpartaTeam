@@ -45,7 +45,7 @@ public class Mine : MonoBehaviour, ICreature
             PlayerWeapon playerWeapon = collision.collider.GetComponent<PlayerWeapon>();
 
             // 데미지를 받는 메서드 호출
-            TakeDamage(GameManager.Instance.player.Stats.Damage);
+            TakeDamage(GameManager.Instance.Player.Stats.Damage);
         }
     }
     public void TakeDamage(int damage)
@@ -63,9 +63,9 @@ public class Mine : MonoBehaviour, ICreature
     public void DropItems()
     {
 
-        foreach (int itemId in GameManager.Instance.dataManager.creature.GetDropItemIds(id))
+        foreach (int itemId in GameManager.Instance.DataManager.Creature.GetDropItemIds(id))
         {
-            var itemData = GameManager.Instance.dataManager.GetItemDataById(itemId);
+            var itemData = GameManager.Instance.DataManager.GetItemDataById(itemId);
 
             if (itemData != null)
             {
@@ -90,7 +90,7 @@ public class Mine : MonoBehaviour, ICreature
     }
     public void ResetStatus()
     {
-        currentHealth = GameManager.Instance.dataManager.creature.GetHealth(id);  // 최대 체력으로 리셋
+        currentHealth = GameManager.Instance.DataManager.Creature.GetHealth(id);  // 최대 체력으로 리셋
         isDie = false;  // 죽지 않은 상태로 리셋
     }
     public void SetComponent(int value)

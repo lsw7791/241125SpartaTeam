@@ -8,8 +8,8 @@ public class ShopNPC : NPCBase
     public override void Interact()
     {
         // ShopUI를 열고 해당 상점 타입 전달
-        ShopUI shopUI = GameManager.Instance.uIManager.GetUI<ShopUI>();
-        GameManager.Instance.uIManager.ToggleUI<ShopUI>();
+        ShopUI shopUI = UIManager.Instance.GetUI<ShopUI>();
+        UIManager.Instance.ToggleUI<ShopUI>();
         shopUI.SetShopType(shopType); // ShopUI 초기화
     }
 }

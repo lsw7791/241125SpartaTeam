@@ -8,8 +8,8 @@ public class SceneType16 : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            GameManager.Instance.sceneNum = 16;
-            GameManager.Instance.LoadScene(GameManager.Instance.dataManager.scene.GetMapTo(GameManager.Instance.sceneNum));
+            GameManager.Instance.SceneNum = 16;
+            GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
         }
     }
 }

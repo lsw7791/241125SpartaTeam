@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoSingleton<UIManager>
 {
-
     private Dictionary<string, UIBase> _uiList = new();
 
     public static float ScreenWidth = 1920;
     public static float ScreenHeight = 1080;
 
-
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     public T GetUI<T>() where T : UIBase
     {
         var uiName = typeof(T).Name;
@@ -27,6 +29,8 @@ public class UIManager : MonoBehaviour
         var uiName = typeof(T).Name;
 
         var newCanvasObject = new GameObject($"{uiName} Canvas");
+
+        newCanvasObject.transform.parent = this.transform;
 
         var canvas = newCanvasObject.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;

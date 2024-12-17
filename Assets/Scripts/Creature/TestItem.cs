@@ -18,7 +18,7 @@ public class TestItem : MonoBehaviour
         // 플레이어와의 충돌인지 확인
         if (collision.CompareTag("Player"))
         {
-            GameManager.Instance.player.AddItemToInventory(
+            GameManager.Instance.Player.AddItemToInventory(
                 itemData.id,
                 itemData.name,
                 1,

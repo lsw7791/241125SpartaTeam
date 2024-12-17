@@ -18,17 +18,17 @@ public class InventoryUI : UIBase
 
     private void OnEnable()
     {
-        Setup(GameManager.Instance.player.inventory);
-        _playerName.text = GameManager.Instance.player.nickName;
+        Setup(GameManager.Instance.Player.inventory);
+        _playerName.text = GameManager.Instance.Player.nickName;
     }
 
     public void Setup(Inventory inventory)
     {
         // 기존 이벤트 등록 제거
-        GameManager.Instance.player.inventory.OnInventoryChanged -= Refresh;
+        GameManager.Instance.Player.inventory.OnInventoryChanged -= Refresh;
 
         // 새 이벤트 등록
-        GameManager.Instance.player.inventory.OnInventoryChanged += Refresh;
+        GameManager.Instance.Player.inventory.OnInventoryChanged += Refresh;
 
         // 슬롯 생성 및 초기화
         InitializeSlots();
@@ -58,9 +58,9 @@ public class InventoryUI : UIBase
 
     private void Refresh()
     {
-        _hasGold.text = GameManager.Instance.player.stats.Gold.ToString();
+        _hasGold.text = GameManager.Instance.Player.stats.Gold.ToString();
 
-        var items = GameManager.Instance.player.inventory.GetItems(); // 아이템 리스트 받아오기
+        var items = GameManager.Instance.Player.inventory.GetItems(); // 아이템 리스트 받아오기
 
         for (int i = 0; i < _slots.Count; i++)
         {

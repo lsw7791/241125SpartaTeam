@@ -28,11 +28,11 @@ public class RangeAI : MonsterAI
                 break;
 
             case MonsterState.Chasing:
-                if (distanceToPlayer <= GameManager.Instance.dataManager.creature.GetAttackRange(monster.id))
+                if (distanceToPlayer <= GameManager.Instance.DataManager.Creature.GetAttackRange(monster.id))
                 {
                     currentState = MonsterState.Attacking;
                 }
-                else if (distanceToPlayer > GameManager.Instance.dataManager.creature.GetDetectionRange(monster.id))
+                else if (distanceToPlayer > GameManager.Instance.DataManager.Creature.GetDetectionRange(monster.id))
                 {
                     currentState = MonsterState.Returning;
                 }
@@ -47,14 +47,14 @@ public class RangeAI : MonsterAI
                 break;
 
             case MonsterState.Returning:
-                if (distanceToPlayer > GameManager.Instance.dataManager.creature.GetDetectionRange(monster.id))
+                if (distanceToPlayer > GameManager.Instance.DataManager.Creature.GetDetectionRange(monster.id))
                 {
                     ReturnToInitialPosition();
                 }
                 break;
         }
 
-        if (distanceToPlayer <= GameManager.Instance.dataManager.creature.GetDetectionRange(monster.id) && currentState != MonsterState.Attacking)
+        if (distanceToPlayer <= GameManager.Instance.DataManager.Creature.GetDetectionRange(monster.id) && currentState != MonsterState.Attacking)
         {
             currentState = MonsterState.Chasing;
         }
@@ -63,7 +63,7 @@ public class RangeAI : MonsterAI
     protected override void AttackPlayer()
     {
         base.AttackPlayer();
-        if (curTime >= GameManager.Instance.dataManager.creature.GetAttackSpeed(monster.id))
+        if (curTime >= GameManager.Instance.DataManager.Creature.GetAttackSpeed(monster.id))
         {
             curTime = 0f;
 
@@ -82,17 +82,17 @@ public class RangeAI : MonsterAI
         if (projectilePrefab != null && attackPoint != null)
         {
             //GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, Quaternion.identity);
-            GameObject projectile = GameManager.Instance.spawnManager.projectilePool.SpawnFromPool("TestEnemyRangeAttack");
+            GameObject projectile = GameManager.Instance.SpawnManager.projectilePool.SpawnFromPool("TestEnemyRangeAttack");
             projectile.transform.position = attackPoint.position;
             // 투사체에 방향을 부여
             if (projectile.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile))
             {
                 projectile.TryGetComponent<Rigidbody2D>(out var outRigidbody2D);
-                outProjectile.Initialize(layerMask, GameManager.Instance.dataManager.creature.GetAttack(monster.id));
+                outProjectile.Initialize(layerMask, GameManager.Instance.DataManager.Creature.GetAttack(monster.id));
                 // 플레이어 방향으로 투사체 발사
                 Vector3 direction = (playerTransform.position - attackPoint.position);
                 direction.Normalize();
-                outRigidbody2D.velocity = direction * GameManager.Instance.dataManager.creature.GetAttackSpeed(monster.id);
+                outRigidbody2D.velocity = direction * GameManager.Instance.DataManager.Creature.GetAttackSpeed(monster.id);
 
                 // 발사체가 타겟을 향하도록 회전
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;  // 각도 계산

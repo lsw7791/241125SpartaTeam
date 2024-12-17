@@ -29,7 +29,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
-            GameManager.Instance.player._playerAnimationController.TriggerAttackAnimation();
+            GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
             //PerformAttack();
         }
     }
@@ -48,12 +48,12 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.started)
         {
-            GameManager.Instance.player._playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화
+            GameManager.Instance.Player._playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화
             PerformPaddingStart(); // 패딩 동작 시작
         }
         else if (context.canceled)
         {
-            GameManager.Instance.player._playerAnimationController.SetPaddingAnimation(false); // 애니메이션 비활성화
+            GameManager.Instance.Player._playerAnimationController.SetPaddingAnimation(false); // 애니메이션 비활성화
             PerformPaddingEnd(); // 패딩 동작 종료
         }
     }
@@ -106,38 +106,38 @@ public class PlayerInput : MonoBehaviour
     // 인벤토리 토글
     private void ToggleInventory()
     {
-        GameManager.Instance.uIManager.ToggleUI<InventoryUI>();
+        UIManager.Instance.ToggleUI<InventoryUI>();
     }
 
     // 맵 토글
     private void ToggleMap()
     {
-        GameManager.Instance.uIManager.ToggleUI<MapUI>();
+        UIManager.Instance.ToggleUI<MapUI>();
     }
 
     // 퀘스트 토글
     private void ToggleCraft()
-    {
-        GameManager.Instance.uIManager.ToggleUI<CraftUI>();
+    {   
+        UIManager.Instance.ToggleUI<CraftUI>();
     }
 
     // 옵션 토글
     private void ToggleOption()
     {
-        if (GameManager.Instance.uIManager.ActiveUI())
+        if (UIManager.Instance.ActiveUI())
         {
-            GameManager.Instance.uIManager.CloseAllUIs(); // 모든 UI 닫기
+            UIManager.Instance.CloseAllUIs(); // 모든 UI 닫기
         }
         else
         {
-            GameManager.Instance.uIManager.ToggleUI<OptionUI>();
+            UIManager.Instance.ToggleUI<OptionUI>();
         }
     }
 
     // 스태터스 토글
     private void ToggleStatus()
     {
-        GameManager.Instance.uIManager.ToggleUI<StatusUI>();
+        UIManager.Instance.ToggleUI<StatusUI>();
     }
 
     // 채집 로직

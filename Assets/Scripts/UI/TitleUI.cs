@@ -6,12 +6,12 @@ public class TitleUI : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("게임 시작");
-        GameManager.Instance.sceneNum = 24;
-        GameManager.Instance.LoadScene(GameManager.Instance.dataManager.scene.GetMapTo(GameManager.Instance.sceneNum));
+        GameManager.Instance.SceneNum = 24;
+        GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
     public void LoadGame()
     {
         Debug.Log("게임 불러오기");
-        GameManager.Instance.uIManager.ToggleUI<CharacterSlotUI>();
+        UIManager.Instance.ToggleUI<CharacterSlotUI>();
     }
 }

@@ -29,7 +29,7 @@ public class CraftResultUI : UIBase
         }
         else
         {
-            GameManager.Instance.uIManager.CloseUI<CraftResultUI>();
+            UIManager.Instance.CloseUI<CraftResultUI>();
         }
     }
 
@@ -39,7 +39,7 @@ public class CraftResultUI : UIBase
 
         resultText.text = "제작에 성공하였습니다!";
         
-        GameManager.Instance.craftingManager.AddToInventory();
+        GameManager.Instance.CraftingManager.AddToInventory();
         Init(data, true);
     }
 
@@ -65,7 +65,7 @@ public class CraftResultUI : UIBase
         _productImage.sprite = itemSprite;
         _productText.text = craftingData.name;
 
-        List<int> craftItemList = GameManager.Instance.dataManager.crafting.GetCraftItemIds(craftingData.id);
+        List<int> craftItemList = GameManager.Instance.DataManager.Crafting.GetCraftItemIds(craftingData.id);
 
         for (int i = 0; i < craftItemList.Count; i++)
         {
@@ -74,19 +74,19 @@ public class CraftResultUI : UIBase
 
             if (craftItemList[i] != 0)
             {
-                int count = GameManager.Instance.dataManager.crafting.GetCraftCountIds(craftingData.id)[i];
+                int count = GameManager.Instance.DataManager.Crafting.GetCraftCountIds(craftingData.id)[i];
                 _craftItemImage[i].gameObject.SetActive(true);
-                var itemData = GameManager.Instance.dataManager.GetItemDataById(craftItemList[i]);
+                var itemData = GameManager.Instance.DataManager.GetItemDataById(craftItemList[i]);
 
                 _craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
 
                 if (inResult)
                 {
-                    _craftItemText[i].text = $"{GameManager.Instance.player.inventory.GetItemCount(itemData.id)} / {count}\n{itemData.name}";
+                    _craftItemText[i].text = $"{GameManager.Instance.Player.inventory.GetItemCount(itemData.id)} / {count}\n{itemData.name}";
                 }
                 else
                 {
-                    _craftItemText[i].text = $"{count -  GameManager.Instance.player.inventory.GetItemCount(itemData.id)}개 부족\n{itemData.name}";
+                    _craftItemText[i].text = $"{count -  GameManager.Instance.Player.inventory.GetItemCount(itemData.id)}개 부족\n{itemData.name}";
                 }
             }
         }

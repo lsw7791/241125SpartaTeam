@@ -1,11 +1,19 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 
 public class CharacterCreationBtn : MonoBehaviour
 {
-    [SerializeField] private TMP_InputField nicknameInputField; // 닉네임 입력
+    [SerializeField] private TMP_InputField nicknameInputField;
+
+    void Awake()
+    {
+            var repository = GameManager.Instance.Repository;
+            if (repository is FilePlayerRepository fileRepo)
+            {
+                fileRepo.Initialize(); // Initialize 호출
+            }
+    }
 
     public void OnCreateCharacterButtonClicked()
     {
@@ -17,8 +25,8 @@ public class CharacterCreationBtn : MonoBehaviour
             return;
         }
 
-        // 새로운 캐릭터 데이터 생성
-        PlayerData newPlayer = new PlayerData
+        // 캐릭터 데이터 생성
+        var newPlayer = new PlayerData
         {
             NickName = nickname,
             MaxHP = 100,
@@ -30,28 +38,22 @@ public class CharacterCreationBtn : MonoBehaviour
             CurrentATKSpeed = 1.0f,
             CurrentDef = 5,
             CurrentWeaponType = 1,
-            QuickSlotItems = new List<QuickSlotItem>(), // 초기화
-            Stats = new PlayerStatsData() // 기본 스탯 데이터
+            QuickSlotItems = new List<QuickSlotItem>(),
+            Stats = new PlayerStatsData()
         };
 
-        // 슬롯에 추가
-        GameManager.Instance.slotManager.AddCharacterToSlot(newPlayer);
+        // 캐릭터 리스트에 추가
+        GameManager.Instance.DataManager.CharacterList.AddCharacter(newPlayer);
 
-        // 입력 필드 초기화
-        nicknameInputField.text = "";
-
-        Debug.Log($"캐릭터 {nickname} 생성 완료!");
-
-        // **GameManager 초기화**
-        if (GameManager.Instance == null)
+        // 리스트 디버깅
+        var allCharacters = GameManager.Instance.DataManager.CharacterList.GetAllLists();
+        Debug.Log($"현재 캐릭터 리스트: {allCharacters.Count}개");
+        foreach (var character in allCharacters)
         {
-            GameObject gameManagerObj = new GameObject("GameManager");
-            gameManagerObj.AddComponent<GameManager>();
+            Debug.Log($"캐릭터 닉네임: {character}");
         }
 
-        GameManager.Instance.sceneNum = 23;
-        GameManager.Instance.LoadScene(GameManager.Instance.dataManager.scene.GetMapTo(GameManager.Instance.sceneNum));
-
+        // 슬롯 UI 갱신
     }
 
 }

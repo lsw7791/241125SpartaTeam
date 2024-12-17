@@ -33,14 +33,14 @@ public class ChargeAI : MonsterAI
         switch (currentState)
         {
             case MonsterState.Idle:
-                if (distanceToPlayer <= GameManager.Instance.dataManager.creature.GetDetectionRange(monster.id))
+                if (distanceToPlayer <= GameManager.Instance.DataManager.Creature.GetDetectionRange(monster.id))
                 {
                     currentState = MonsterState.Chasing;
                 }
                 break;
 
             case MonsterState.Chasing:
-                if (distanceToPlayer <= GameManager.Instance.dataManager.creature.GetAttackRange(monster.id))
+                if (distanceToPlayer <= GameManager.Instance.DataManager.Creature.GetAttackRange(monster.id))
                 {
                     curTime += Time.fixedDeltaTime;
                     // 대기 시간이 지난 후에 돌진 시작
@@ -51,7 +51,7 @@ public class ChargeAI : MonsterAI
                         StartCoroutine(ChargeAttack());
                     }
                 }
-                else if (distanceToPlayer > GameManager.Instance.dataManager.creature.GetDetectionRange(monster.id))
+                else if (distanceToPlayer > GameManager.Instance.DataManager.Creature.GetDetectionRange(monster.id))
                 {
                     currentState = MonsterState.Returning;
                 }
@@ -62,7 +62,7 @@ public class ChargeAI : MonsterAI
                 break;
 
             case MonsterState.Returning:
-                if (distanceToPlayer <= GameManager.Instance.dataManager.creature.GetDetectionRange(monster.id))
+                if (distanceToPlayer <= GameManager.Instance.DataManager.Creature.GetDetectionRange(monster.id))
                 {
                     currentState = MonsterState.Chasing;
                 }
@@ -92,7 +92,7 @@ public class ChargeAI : MonsterAI
                 break;
             }
 
-            transform.Translate(direction * GameManager.Instance.dataManager.creature.GetMoveSpeed(monster.id) * 20f * Time.deltaTime, Space.World);
+            transform.Translate(direction * GameManager.Instance.DataManager.Creature.GetMoveSpeed(monster.id) * 20f * Time.deltaTime, Space.World);
             spriteRenderer.flipX = direction.x < 0;
             elapsedTime += Time.fixedDeltaTime;
             yield return new WaitForSeconds(Time.fixedDeltaTime);

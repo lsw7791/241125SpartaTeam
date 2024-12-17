@@ -47,6 +47,7 @@ public class Player : MonoBehaviour,IDamageable
     public void AddItemToInventory(int itemID, string itemName, int quantity, ItemType itemType, Sprite itemSprite)
     { // 이템을 인벤토리에 추가
         inventory.AddItem(itemID, itemName, quantity, itemType, itemSprite);  // 스프라이트 포함
+        PlayerSaveLoad.SavePlayerData(this, null);
     }
 
     public void RemoveItemFromInventory(int itemID, int quantity)

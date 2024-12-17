@@ -1,66 +1,95 @@
-using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
-using UnityEditor.SceneManagement;
+using UnityEngine;
+
 public class GameManager : MonoSingleton<GameManager>
 {
-    public DataManager dataManager;
-    public CraftingManager craftingManager;
-    public SoundManager soundManager;
-    public UIManager uIManager;
-    public SpawnManager spawnManager;
-    public CharacterSlotManager slotManager;
+    public DataManager DataManager;
+    public CraftingManager CraftingManager;
+    public SoundManager SoundManager;
+    public SpawnManager SpawnManager;
     GameObject SoundManagerObject;
-    public Player player;
-    public int sceneNum;
-    public IInteractable InteractableObject { get; set; } // 현재 상호작용 가능한 객체
+    public Player Player;
+    private PlayerData _currentPlayer;
+    public int SceneNum;
+    public IInteractable InteractableObject { get; set; }
+    public IPlayerRepository Repository;
+
+    // CharacterList를 GameManager에서 관리
+
     protected override void Awake()
     {
         base.Awake();
+        Debug.Log("GameManager Awake 호출");
 
-        // 데이터 매니저와 슬롯 매니저 초기화
-        dataManager = new DataManager();
-        slotManager = new CharacterSlotManager();
+        // FilePlayerRepository를 사용해 CharacterList 초기화
+        Repository = new FilePlayerRepository();
+        // 데이터 매니저 초기화
+        DataManager = new DataManager();
+        Debug.Log("CharacterList 객체 생성 후");
 
         // 다른 매니저 초기화
-        if (craftingManager == null) craftingManager = gameObject.AddComponent<CraftingManager>();
+        if (CraftingManager == null) CraftingManager = gameObject.AddComponent<CraftingManager>();
         List<ItemInstance> items = new List<ItemInstance>();
         ItemManager.Instance.Initialize(items);
 
-        sceneNum = 24;
+        SceneNum = 24;
     }
 
-    private void Start()
-    {      
+    void Start()
+    {
+        // FilePlayerRepository 초기화는 Start()에서 호출
+        if (Repository is FilePlayerRepository fileRepo)
+        {
+            Debug.Log("FilePlayerRepository Initialize 호출");
+            fileRepo.Initialize();  // Initialize 호출
+        }
+
         SceneManager.sceneLoaded += OnSceneLoaded;
-        Instantiate(sceneNum);
+
+        Instantiate(SceneNum);
     }
+
+
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        spawnManager.playerObject.SetActive(false);
-        if (scene.name == dataManager.scene.GetMapTo(sceneNum))// TO Forest
+        SpawnManager.playerObject.SetActive(false);
+        if (scene.name == DataManager.Scene.GetMapTo(SceneNum)) // TO Forest
         {
-            Instantiate(sceneNum);
-        }       
+            Instantiate(SceneNum);
+        }
     }
+
     void Instantiate(int mapNum)
     {
         GameObject miniCamera = Instantiate(Resources.Load<GameObject>("Prefabs/Cameras/MinimapCamera"));
-        if(spawnManager==null)spawnManager = gameObject.AddComponent<SpawnManager>();
-        if(uIManager ==null) uIManager = gameObject.AddComponent<UIManager>();
-        if (soundManager == null) soundManager = gameObject.AddComponent<SoundManager>();
-        spawnManager.SpawnPlayer(mapNum);
-        spawnManager.Initialize(mapNum);
+        if (SpawnManager == null) SpawnManager = gameObject.AddComponent<SpawnManager>();
+        if (SoundManager == null) SoundManager = gameObject.AddComponent<SoundManager>();
+        SpawnManager.SpawnPlayer(mapNum);
+        SpawnManager.Initialize(mapNum);
     }
+
     public void LoadScene(string sceneName)
     {
         // 씬 전환
         SceneManager.LoadScene(sceneName);
     }
-    //GameObject ManagerSpawn(string inManagerName)
+
+    public PlayerData GetCurrentCharacter()
+    {
+        return _currentPlayer;
+    }
+
+    public void StartGame(PlayerData character)
+    {
+        _currentPlayer = character;
+        Debug.Log($"게임 시작: {character.NickName}");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
+    }
+
+    // 데이터 관련 메서드
+    //public void SavePlayerData(List<PlayerData> data)
     //{
-    //    GameObject outManager = new GameObject();
-    //    outManager.name = $"{inManagerName} Manager";
-    //    return outManager;
+    //    Repository.SavePlayerData(data);
     //}
 }

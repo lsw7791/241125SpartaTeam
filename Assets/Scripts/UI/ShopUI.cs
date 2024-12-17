@@ -22,7 +22,7 @@ public class ShopUI : UIBase
     private void Awake()
     {
         base.Awake();
-        _hasGold.text = $"{GameManager.Instance.player.stats.Gold}";
+        _hasGold.text = $"{GameManager.Instance.Player.stats.Gold}";
         itemPrefab = Resources.Load<GameObject>("Prefabs/UI/ShopSlot");
 
         // 버튼 클릭 이벤트 연결
@@ -63,7 +63,7 @@ public class ShopUI : UIBase
     public void SetupShopUI()
     {
         // 현재 상점 타입에 따라 아이템 불러오기
-        List<ItemData> items = GameManager.Instance.dataManager.shop.GetItems(shopType);
+        List<ItemData> items = GameManager.Instance.DataManager.Shop.GetItems(shopType);
 
         // 기존 아이템을 제거하고 새로운 아이템을 표시
         foreach (Transform child in itemsParent)
@@ -74,11 +74,8 @@ public class ShopUI : UIBase
         foreach (ItemData itemData in items)
         {
             GameObject itemObject = Instantiate(itemPrefab, itemsParent);
-            ShopSlot shopSlot = itemObject.GetComponent<ShopSlot>();
-            if (shopSlot != null)
-            {
-                shopSlot.Setup(itemData);
-            }
+            itemObject.TryGetComponent<ShopSlot>(out var shopslot);
+            shopslot.Setup(itemData);
         }
     }
 
