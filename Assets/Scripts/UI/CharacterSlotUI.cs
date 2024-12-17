@@ -7,10 +7,6 @@ public class CharacterSlotUI : UIBase
     [SerializeField] private Transform slotParent;  // ½½·Ô ºÎ¸ð ¿ÀºêÁ§Æ®
     [SerializeField] private GameObject slotPrefab;  // ½½·Ô UI ÇÁ¸®ÆÕ
 
-    void Start()
-    {
-        slotPrefab = Resources.Load<GameObject>("Prefabs/UI/CharacterSlot");
-    }
 
     private void OnEnable()
     {
