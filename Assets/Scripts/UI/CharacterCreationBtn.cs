@@ -53,6 +53,8 @@ public class CharacterCreationBtn : MonoBehaviour
             Debug.Log($"캐릭터 닉네임: {character}");
         }
 
+        GameManager.Instance.SceneNum = 23;
+        GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
         // 슬롯 UI 갱신
     }
 
