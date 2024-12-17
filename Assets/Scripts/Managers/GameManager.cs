@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -18,8 +18,12 @@ public class GameManager : MonoSingleton<GameManager>
         base.Awake();
         Debug.Log("GameManager Awake 호출");
 
+        // Repository 초기화
+        IPlayerRepository repository = new FilePlayerRepository();
+        repository.Initialize();
+
         // DataManager 초기화
-        DataManager = new DataManager();  // DataManager의 기본 생성자로 초기화
+        DataManager = new DataManager(repository);  // DataManager의 생성자에서 repository 전달
         Debug.Log("DataManager 객체 생성 후");
 
         // 다른 매니저 초기화
@@ -32,8 +36,15 @@ public class GameManager : MonoSingleton<GameManager>
 
     void Start()
     {
-
+        // 씬 로딩 후 호출되는 이벤트
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        // 마지막으로 저장된 캐릭터 로드
+        _currentPlayer = DataManager.GetLastPlayedCharacter();
+        if (_currentPlayer != null)
+        {
+            Debug.Log($"마지막으로 선택된 캐릭터: {_currentPlayer.NickName}");
+        }
 
         Instantiate(SceneNum);
     }
@@ -70,7 +81,7 @@ public class GameManager : MonoSingleton<GameManager>
     public void StartGame(PlayerData character)
     {
         _currentPlayer = character;
-        Debug.Log($"게임 시작: {character.NickName}");
+        Debug.Log($"게임 시작: {_currentPlayer.NickName}");
 
         // 캐릭터 생성 시 데이터를 즉시 저장
         DataManager.SaveCharacterData();
@@ -79,14 +90,14 @@ public class GameManager : MonoSingleton<GameManager>
         GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
 
-    // 캐릭터 슬롯 정보 로드
-   
     // 게임 종료 시 플레이어 정보 저장
     public void SavePlayerData()
     {
         if (_currentPlayer != null)
         {
             DataManager.SaveCharacterData();  // 현재 플레이어의 데이터를 저장
+            PlayerPrefs.SetString("LastCharacterNickName", _currentPlayer.NickName);
+            Debug.Log("플레이어 데이터 저장 완료");
         }
     }
 }

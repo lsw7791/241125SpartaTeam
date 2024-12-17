@@ -4,9 +4,11 @@ using UnityEngine;
 
 public interface IPlayerRepository
 {
+    void Initialize();             // Initialize 메서드 추가
     void SaveAllPlayerData(List<PlayerData> data); // 전체 데이터 저장
     List<PlayerData> LoadAllPlayerData();          // 전체 데이터 불러오기
 }
+
 
 public class FilePlayerRepository : IPlayerRepository
 {
@@ -29,22 +31,22 @@ public class FilePlayerRepository : IPlayerRepository
         }
     }
 
-
     // 전체 캐릭터 데이터 저장
     public void SaveAllPlayerData(List<PlayerData> data)
     {
         Debug.Log("PlayerData 저장 시작");
-        Debug.Log($"저장할 데이터 수: {data.Count}");
-        foreach (var playerData in data)
-        {
-            Debug.Log($"저장할 플레이어: {playerData.NickName}");
-        }
-
         var json = JsonUtility.ToJson(new SerializableListWrapper<PlayerData>(data));
         File.WriteAllText(filePath, json);
         Debug.Log($"PlayerData 저장 완료. 경로: {filePath}");
-    }
 
+        // PlayerPrefs에 마지막 캐릭터 정보 저장
+        if (data.Count > 0)
+        {
+            PlayerPrefs.SetString("LastCharacterNickName", data[0].NickName);
+            PlayerPrefs.Save();
+            Debug.Log("PlayerPrefs에 마지막 캐릭터 정보 저장 완료");
+        }
+    }
 
     // 전체 캐릭터 데이터 불러오기
     public List<PlayerData> LoadAllPlayerData()
@@ -55,18 +57,10 @@ public class FilePlayerRepository : IPlayerRepository
             return new List<PlayerData>();
         }
 
-        Debug.Log($"파일 존재 확인 완료. 경로: {filePath}");
-
-        // 데이터 파일에서 읽어서 반환
         var json = File.ReadAllText(filePath);
-        Debug.Log($"파일에서 읽은 JSON: {json}");
-
         var wrapper = JsonUtility.FromJson<SerializableListWrapper<PlayerData>>(json);
-        Debug.Log($"로드된 데이터 수: {wrapper.List.Count}");
-
         return wrapper.List;
     }
-
 }
 
 [System.Serializable]

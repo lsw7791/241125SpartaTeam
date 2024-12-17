@@ -7,7 +7,13 @@ public class CharacterList
 
     public CharacterList(IPlayerRepository repository)
     {
-        _characterList = GameManager.Instance.DataManager.Repository.LoadAllPlayerData();  // 모든 캐릭터 데이터 로드
+        if (repository == null)
+        {
+            Debug.LogError("IPlayerRepository가 초기화되지 않았습니다.");
+            return;
+        }
+
+        _characterList = repository.LoadAllPlayerData();  // 모든 캐릭터 데이터 로드
     }
 
     public bool AddCharacter(PlayerData newCharacter)
