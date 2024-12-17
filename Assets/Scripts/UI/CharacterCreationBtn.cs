@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 
+
 public class CharacterCreationBtn : MonoBehaviour
 {
     [SerializeField] private TMP_InputField nicknameInputField;
@@ -52,8 +53,16 @@ public class CharacterCreationBtn : MonoBehaviour
         {
             Debug.Log($"캐릭터 닉네임: {character}");
         }
+    }
+
+      
+    public void Exit()
+    {
+        GameManager.Instance.SceneNum = 25;
+        GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
+    }
 
         // 슬롯 UI 갱신
-    }
+    
 
 }
