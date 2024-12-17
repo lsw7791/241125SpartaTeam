@@ -45,14 +45,6 @@ public class CharacterCreationBtn : MonoBehaviour
 
         // 캐릭터 리스트에 추가
         GameManager.Instance.DataManager.CharacterList.AddCharacter(newPlayer);
-
-        // 리스트 디버깅
-        var allCharacters = GameManager.Instance.DataManager.CharacterList.GetAllLists();
-        Debug.Log($"현재 캐릭터 리스트: {allCharacters.Count}개");
-        foreach (var character in allCharacters)
-        {
-            Debug.Log($"캐릭터 닉네임: {character}");
-        }
         GameManager.Instance.SceneNum = 25;
         GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
         UIManager.Instance.ToggleUI<CharacterSlotUI>();

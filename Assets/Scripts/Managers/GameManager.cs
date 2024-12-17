@@ -84,7 +84,8 @@ public class GameManager : MonoSingleton<GameManager>
     {
         _currentPlayer = character;
         Debug.Log($"게임 시작: {character.NickName}");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
+        GameManager.Instance.SceneNum = 26;
+        GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
 
     // 데이터 관련 메서드

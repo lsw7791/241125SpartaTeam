@@ -43,8 +43,9 @@ public class CharacterSlotUI : UIBase
     // 슬롯 선택 시 해당 캐릭터로 게임 시작
     private void OnSlotSelected(PlayerData selectedCharacter)
     {
+        UIManager.Instance.ToggleUI<CharacterSlotUI>();
         Debug.Log($"캐릭터 {selectedCharacter.NickName} 선택됨!");
-        // 게임 시작 로직 (예: 게임 매니저로 캐릭터 데이터 전달)
+        GameManager.Instance.StartGame(selectedCharacter);
     }
 
 }
