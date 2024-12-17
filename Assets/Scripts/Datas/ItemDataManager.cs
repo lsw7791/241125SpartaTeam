@@ -26,6 +26,13 @@ public enum ItemType
     StaminaPotion      // 스태미나 포션
 }
 
+public enum ItemUseType
+{
+    Consumable,
+    Equipment,
+    Material,
+}
+
 // 아이템 데이터를 관리하는 매니저 클래스
 public class ItemDataManager : ItemData
 { // 아이템 데이터 관리 및 반환
