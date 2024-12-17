@@ -7,12 +7,12 @@ public class CharacterSlotUI : UIBase
     [SerializeField] private Transform slotParent;  // 슬롯 부모 오브젝트
     [SerializeField] private GameObject slotPrefab;  // 슬롯 UI 프리팹
 
-    void Start()
-    {
-        slotPrefab = Resources.Load<GameObject>("Prefabs/UI/CharacterSlot");
-        LoadSlots();  // 슬롯 UI 갱신
-    }
 
+    private void OnEnable()
+    {
+        LoadSlots();  // 슬롯 UI 갱신
+
+    }
     public void LoadSlots()
     {
         // 기존 슬롯 UI 제거
@@ -43,8 +43,9 @@ public class CharacterSlotUI : UIBase
     // 슬롯 선택 시 해당 캐릭터로 게임 시작
     private void OnSlotSelected(PlayerData selectedCharacter)
     {
+        UIManager.Instance.ToggleUI<CharacterSlotUI>();
         Debug.Log($"캐릭터 {selectedCharacter.NickName} 선택됨!");
-        // 게임 시작 로직 (예: 게임 매니저로 캐릭터 데이터 전달)
+        GameManager.Instance.StartGame(selectedCharacter);
     }
 
 }
