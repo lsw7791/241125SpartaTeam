@@ -3,38 +3,49 @@ using UnityEngine;
 
 public class CharacterList
 {
-    private List<PlayerData> _characterList = new List<PlayerData>();
+    private List<PlayerData> _characterList;
 
-    public CharacterList()
+    public CharacterList(IPlayerRepository repository)
     {
-        LoadListsData();  // 초기화 시 데이터 로드
+        if (repository == null)
+        {
+            Debug.LogError("IPlayerRepository가 초기화되지 않았습니다.");
+            return;
+        }
+
+        _characterList = repository.LoadAllPlayerData();  // 모든 캐릭터 데이터 로드
     }
 
-    // 캐릭터 추가
-    public bool AddCharacter(PlayerData newPlayer)
+    public bool AddCharacter(PlayerData newCharacter)
     {
-        // 캐릭터가 추가될 때마다 _characterList의 개수를 출력하여 디버깅
-        Debug.Log($"현재 캐릭터 개수: {_characterList.Count}");
-
         if (_characterList.Count >= 4)
         {
-            Debug.LogWarning("슬롯이 모두 가득 찼습니다.");
+            Debug.LogWarning("슬롯이 가득 찼습니다.");
             return false;
         }
 
-        _characterList.Add(newPlayer);
-        Debug.Log($"캐릭터 {newPlayer.NickName} 추가 완료!");
+        _characterList.Add(newCharacter);
+        SaveListsData();  // 추가 후 데이터 저장
         return true;
     }
 
-
-    // 모든 캐릭터 데이터 반환
-    public List<PlayerData> GetAllLists()
+    public List<PlayerData> GetAllCharacters()
     {
         return _characterList;
     }
 
-    // 특정 캐릭터 반환
+    public void SaveListsData()
+    {
+        GameManager.Instance.DataManager.Repository.SaveAllPlayerData(_characterList);  // 모든 캐릭터 데이터 저장
+        Debug.Log("캐릭터 리스트 저장 완료");
+    }
+
+    public void LoadAllCharacters()
+    {
+        _characterList = GameManager.Instance.DataManager.Repository.LoadAllPlayerData();
+        Debug.Log("캐릭터 리스트 로드 완료");
+    }
+
     public PlayerData GetCharacter(int slotIndex)
     {
         if (slotIndex < 0 || slotIndex >= _characterList.Count)
@@ -46,38 +57,18 @@ public class CharacterList
         return _characterList[slotIndex];
     }
 
-    // 캐릭터 초기화 (외부에서 로드한 데이터를 대체)
-    public void SetCharacters(List<PlayerData> players)
+    // RemoveCharacter 메서드 추가
+    public void RemoveCharacter(PlayerData characterToRemove)
     {
-        _characterList = new List<PlayerData>(players);
-        Debug.Log($"캐릭터 리스트 초기화 완료: {_characterList.Count}명 로드됨");
-    }
-
-    // 데이터 저장
-    public void SaveListsData()
-    {
-        var repository = GameManager.Instance.Repository;
-        if (repository == null)
+        if (_characterList.Contains(characterToRemove))
         {
-            Debug.LogError("저장소가 초기화되지 않았습니다.");
-            return;
+            _characterList.Remove(characterToRemove);  // 리스트에서 캐릭터 제거
+            SaveListsData();  // 삭제 후 데이터 저장
+            Debug.Log($"캐릭터 {characterToRemove.NickName} 삭제 완료");
         }
-
-        repository.SaveAllPlayerData(_characterList);  // PlayerData 리스트를 저장
-        Debug.Log("캐릭터 데이터 저장 완료!");
-    }
-
-    // 데이터 로드
-    public void LoadListsData()
-    {
-        var repository = GameManager.Instance.Repository;
-        if (repository == null)
+        else
         {
-            Debug.LogError("저장소가 초기화되지 않았습니다.");
-            return;
+            Debug.LogWarning("삭제하려는 캐릭터가 리스트에 존재하지 않습니다.");
         }
-
-        _characterList = repository.LoadAllPlayerData();  // PlayerData 리스트를 로드
-        Debug.Log($"캐릭터 데이터 로드 완료! {_characterList.Count}명의 캐릭터를 불러왔습니다.");
     }
 }

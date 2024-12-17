@@ -9,7 +9,7 @@ public class CharacterCreationBtn : MonoBehaviour
 
     void Awake()
     {
-            var repository = GameManager.Instance.Repository;
+            var repository = GameManager.Instance.DataManager.Repository;
             if (repository is FilePlayerRepository fileRepo)
             {
                 fileRepo.Initialize(); // Initialize »£√‚
