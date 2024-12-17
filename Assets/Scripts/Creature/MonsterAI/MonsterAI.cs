@@ -44,6 +44,10 @@ public class MonsterAI : MonoBehaviour
         {
             playerTransform = null;
         }
+        if(playerTransform==null)
+        {
+            playerTransform = GameManager.Instance.Player.gameObject.transform;
+        }
     }
 
     protected virtual void AttackPlayer()
@@ -52,16 +56,16 @@ public class MonsterAI : MonoBehaviour
     }
 
     protected void ReturnToInitialPosition()
-    {
-        // 몬스터가 초기 위치로 돌아가는 행동
-        Vector3 direction = (initialPosition - transform.position).normalized;
+    {   
+            // 몬스터가 초기 위치로 돌아가는 행동
+            Vector3 direction = (initialPosition - transform.position).normalized;
 
-        // 몬스터가 초기 위치에 거의 도달한 경우, 이동을 멈추고 방향 반전 안함
-        if (Vector3.Distance(transform.position, initialPosition) > 0.1f)  // 0.1f는 거의 도달했다고 판단할 수 있는 최소 거리
-        {
-            transform.Translate(direction * GameManager.Instance.DataManager.Creature.GetMoveSpeed(monster.id) * Time.deltaTime, Space.World);
-            spriteRenderer.flipX = direction.x < 0;  // 이동 중에만 방향을 바꿈
-        }
+            // 몬스터가 초기 위치에 거의 도달한 경우, 이동을 멈추고 방향 반전 안함
+            if (Vector3.Distance(transform.position, initialPosition) > 0.1f)  // 0.1f는 거의 도달했다고 판단할 수 있는 최소 거리
+            {
+                transform.Translate(direction * GameManager.Instance.DataManager.Creature.GetMoveSpeed(monster.id) * Time.deltaTime, Space.World);
+                spriteRenderer.flipX = direction.x < 0;  // 이동 중에만 방향을 바꿈
+            }
     }
 
     protected void ChasePlayer()

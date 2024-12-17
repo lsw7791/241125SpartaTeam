@@ -8,6 +8,10 @@ using UnityEngine.SceneManagement;
 public class SpawnManager : MonoBehaviour
 {
     public MonsterPool monsterPool;// 몬스터 풀
+    public MonsterPool monsterPool1;// 몬스터 풀
+    public MonsterPool monsterPool2;// 몬스터 풀
+    public MonsterPool monsterPool3;// 몬스터 풀
+
     public ProjectilePool projectilePool;// 몬스터 풀
 
     public GameObject playerObject;
@@ -27,8 +31,13 @@ public class SpawnManager : MonoBehaviour
         if (spawner3 != null) Destroy(spawner3);
 
         SpawnProjectilePool();
-        SpawnMonsterPool();
+        //SpawnMonsterPool();
+        if(monsterPool1==null) monsterPool1 = GroupSpawn("Monster1").AddComponent<MonsterPool>();
+        if (monsterPool2 == null) monsterPool2 = GroupSpawn("Monster2").AddComponent<MonsterPool>();
+        if (monsterPool3 == null) monsterPool3 = GroupSpawn("Monster3").AddComponent<MonsterPool>();
+
         SetPlayerPosition(mapNum);
+        Debug.Log($"맵 넘버 : {mapNum}");
         switch (mapNum)
         {
             case 1://마을
@@ -37,15 +46,18 @@ public class SpawnManager : MonoBehaviour
                 break;
             case 3://마인1
                 if (spawner1 == null) spawner1 = gameObject.AddComponent<Spawner>();
-                StageMine1();
+                spawner1.sceneNumber = GameManager.Instance.SceneNum;
+                StageMine1(monsterPool1);
                 break;
             case 4://마인2
-                if (spawner2 == null) spawner1 = gameObject.AddComponent<Spawner>();
-                StageMine2();
+                if (spawner2 == null) spawner2 = gameObject.AddComponent<Spawner>();
+                spawner2.sceneNumber = GameManager.Instance.SceneNum;
+                StageMine2(monsterPool2);
                 break;
             case 5://마인3
-                if (spawner3 == null) spawner1 = gameObject.AddComponent<Spawner>();
-                StageMine3();
+                if (spawner3 == null) spawner3 = gameObject.AddComponent<Spawner>();
+                spawner3.sceneNumber = GameManager.Instance.SceneNum;
+                StageMine3(monsterPool3);
                 break;           
             case 24: //캐릭터 셀렉션
                 playerObject.SetActive(false);
@@ -54,28 +66,28 @@ public class SpawnManager : MonoBehaviour
                 break;
         }   
     }
-    public void SpawnMonsterPool()
+    public void SpawnMonsterPool(MonsterPool pool)
     {
-        monsterPool = GroupSpawn("Monster").AddComponent<MonsterPool>();
+        pool = GroupSpawn("Monster").AddComponent<MonsterPool>();
         // 몬스터 풀 초기화 (각 몬스터 타입에 대해 풀을 생성)
-        monsterPool.InitializeMonsterPool(1, 5);  // Goblin
-        monsterPool.InitializeMonsterPool(2, 5);  // Lizard
-        monsterPool.InitializeMonsterPool(3, 5);  // Zombie
-        monsterPool.InitializeMonsterPool(4, 5);  // OrcShaman
-        monsterPool.InitializeMonsterPool(5, 5);  // BigZombie
-        monsterPool.InitializeMonsterPool(6, 5);  // Imp
-        monsterPool.InitializeMonsterPool(7, 5);  // Skelet
-        monsterPool.InitializeMonsterPool(8, 5);  // IceZombie
-        monsterPool.InitializeMonsterPool(9, 5);  // Ogre
-        monsterPool.InitializeMonsterPool(10, 5);  // Knight
-        monsterPool.InitializeMonsterPool(11, 5);  // Necromancer
-        monsterPool.InitializeMonsterPool(12, 5);  // Demon
+        pool.InitializeMonsterPool(2, 5);  // Lizard
+        pool.InitializeMonsterPool(3, 5);  // Zombie
+        pool.InitializeMonsterPool(1, 5);  // Goblin
+        pool.InitializeMonsterPool(4, 5);  // OrcShaman
+        pool.InitializeMonsterPool(5, 5);  // BigZombie
+        pool.InitializeMonsterPool(6, 5);  // Imp
+        pool.InitializeMonsterPool(7, 5);  // Skelet
+        pool.InitializeMonsterPool(8, 5);  // IceZombie
+        pool.InitializeMonsterPool(9, 5);  // Ogre
+        pool.InitializeMonsterPool(10, 5);  // Knight
+        pool.InitializeMonsterPool(11, 5);  // Necromancer
+        pool.InitializeMonsterPool(12, 5);  // Demon
     }
-    public void StageMine1()
+    public void StageMine1(MonsterPool pool)
     {
         if (spawner1 == null) spawner1 = gameObject.AddComponent<Spawner>();
 
-        spawner1.monsterPool = monsterPool; // 몬스터 풀 연결
+        spawner1.monsterPool = pool; // 몬스터 풀 연결
 
         // 스폰 위치 설정
         spawner1.spawnPoints = new List<Vector2>
@@ -94,21 +106,90 @@ public class SpawnManager : MonoBehaviour
 
         //monsterPool.GetMonster(7, new Vector2(47f, 14.5f));
 
-        GameObject stone1 = monsterPool.InitializeMine(13, new Vector2(29f, 23f));
-        GameObject stone2 = monsterPool.InitializeMine(13, new Vector2(33f, 23f));
-        GameObject stone3 = monsterPool.InitializeMine(13, new Vector2(36.5f, 27f));
-        GameObject stone4 = monsterPool.InitializeMine(13, new Vector2(39f, 27f));
+        GameObject stone1 = pool.InitializeMine(13, new Vector2(29f, 23f));
+        GameObject stone2 = pool.InitializeMine(13, new Vector2(33f, 23f));
+        GameObject stone3 = pool.InitializeMine(13, new Vector2(36.5f, 27f));
+        GameObject stone4 = pool.InitializeMine(13, new Vector2(39f, 27f));
 
-        GameObject copper1 = monsterPool.InitializeMine(14, new Vector2(53f, 21.5f));
-        GameObject copper2 = monsterPool.InitializeMine(14, new Vector2(53f, 19.5f));
+        GameObject copper1 = pool.InitializeMine(14, new Vector2(53f, 21.5f));
+        GameObject copper2 = pool.InitializeMine(14, new Vector2(53f, 19.5f));
     }
-    public void StageMine2()
+    public void StageMine2(MonsterPool pool)
     {
-       
+
+        if (spawner2 == null) spawner2 = gameObject.AddComponent<Spawner>();
+
+        spawner2.monsterPool = pool; // 몬스터 풀 연결
+
+        // 스폰 위치 설정
+        spawner2.spawnPoints = new List<Vector2>
+    {
+        new Vector2(33f, 25f),
+        new Vector2(36f, 25f),
+
+        new Vector2(30f, 19f),
+        new Vector2(33f, 19f),
+
+        new Vector2(22f, 18f),
+        new Vector2(25f, 18f),
+        new Vector2(22f, 15f),
+        new Vector2(25f, 15f),
+
+    };
+
+        // 몬스터 ID 설정 (위치와 매핑됨)
+        spawner2.creatureIds = new List<int> { 2, 2, 2, 2, 2, 8, 8,8 }; // Goblin, Lizard, Zombie, OrcShaman
+
+        //monsterPool.GetMonster(7, new Vector2(47f, 14.5f));
+
+        GameObject iron1 = pool.InitializeMine(15, new Vector2(45f, 28f));
+        GameObject gold1 = pool.InitializeMine(16, new Vector2(48f, 28f));
+        GameObject iron2 = pool.InitializeMine(15, new Vector2(51f, 28f));
+
+
     }
-    public void StageMine3()
+    public void StageMine3(MonsterPool pool)
     {
-       
+        if (spawner3 == null) spawner3 = gameObject.AddComponent<Spawner>();
+
+        spawner3.monsterPool = pool; // 몬스터 풀 연결
+
+        // 스폰 위치 설정
+        spawner3.spawnPoints = new List<Vector2>
+    {
+        new Vector2(50f, 19f),
+        new Vector2(52f, 19f),
+        new Vector2(50f, 17f),
+        new Vector2(52f, 17f),
+
+        new Vector2(35f, 14f),
+        new Vector2(38f, 14f),
+        new Vector2(35f, 16f),
+        new Vector2(38f, 16f),
+
+        new Vector2(33f, 23f),
+        new Vector2(36f, 23f),
+        new Vector2(33f, 21f),
+        new Vector2(36f, 21f)
+    };
+
+        // 몬스터 ID 설정 (위치와 매핑됨)
+        spawner3.creatureIds = new List<int> { 3, 3, 3, 9, 3, 3, 9, 9, 3, 9, 9, 9, }; // Goblin, Lizard, Zombie, OrcShaman
+
+        //monsterPool.GetMonster(7, new Vector2(47f, 14.5f));
+
+        GameObject stone1 = pool.InitializeMine(16, new Vector2(39f, 26f));
+        GameObject copper1 = pool.InitializeMine(16, new Vector2(37f, 26f));
+        GameObject iron1 = pool.InitializeMine(16, new Vector2(35f, 26f));
+        GameObject platium1 = pool.InitializeMine(16, new Vector2(33f, 26f));
+        GameObject Ignis1 = pool.InitializeMine(16, new Vector2(31f, 26f));
+
+
+        GameObject platium2 = pool.InitializeMine(17, new Vector2(36.5f, 27f));
+        GameObject platium3 = pool.InitializeMine(17, new Vector2(39f, 27f));
+
+        GameObject Ignis2 = pool.InitializeMine(18, new Vector2(20f, 25f));
+        GameObject Ignis3 = pool.InitializeMine(18, new Vector2(20f, 21f));
     }
     public void SpawnProjectilePool()
     {

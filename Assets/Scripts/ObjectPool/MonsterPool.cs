@@ -50,45 +50,44 @@ public class MonsterPool : MonoBehaviour
     {
         if (monsterPools.ContainsKey(creatureId) && monsterPools[creatureId].Count > 0)
         {
-            GameObject monsterObj = monsterPools[creatureId].Dequeue();
-            monsterObj.SetActive(true);  // 활성화
+            // 풀에서 몬스터를 가져옴
+            GameObject obj = monsterPools[creatureId].Dequeue();
+            obj.SetActive(true); // 활성화
 
-            // 몬스터의 데이터와 상태 초기화 (풀에서 가져올 때 리셋)
-            Monster monster = monsterObj.GetComponent<Monster>();
+            // 몬스터의 데이터 초기화
+            Monster monster = obj.GetComponent<Monster>();
             if (monster != null)
             {
-
-                monster.ResetStatus();  // 풀에서 반환된 몬스터 상태 리셋
+                monster.ResetStatus(); // 풀에서 가져온 몬스터의 상태 초기화
             }
 
-            monsterObj.transform.position = position;  // 위치 설정
-
-            return monsterObj;
+            obj.transform.position = position; // 위치 설정
+            return obj; // 활성화된 몬스터 반환
         }
         else
         {
-            // 풀에 몬스터가 없고, 최대 풀 크기를 초과하지 않는 경우에만 새로운 몬스터 생성
-            if (!monsterPools.ContainsKey(creatureId) || monsterPools[creatureId].Count < MAX_POOL_SIZE)
-            {
-                GameObject prefab = GetPrefabByCreatureId(creatureId);  // creatureId로 프리팹을 가져옴
-                if (prefab != null)
-                {
-                    GameObject newMonster = Instantiate(prefab, transform);
-                    newMonster.transform.position = position;  // 위치 설정
+            // 풀에 남은 몬스터가 없는 경우 새로운 몬스터 생성
+            GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/Monster"), transform);
+            obj.transform.position = position; // 위치 설정
+            obj.SetActive(true); // 활성화
 
-                    return newMonster;
-                }
-                else
-                {
-                    Debug.LogWarning("No prefab found for creatureId: " + creatureId);
-                    return null;
-                }
-            }
-            else
+            // 몬스터 데이터 초기화
+            Monster monster = obj.GetComponent<Monster>();
+            if (monster != null)
             {
-                Debug.LogWarning("Max pool size reached for creatureId: " + creatureId);
-                return null;  // 풀 크기 초과 시 null을 반환
+                // 자식 프리팹 로드
+                GameObject childPrefab = Resources.Load<GameObject>(GameManager.Instance.DataManager.Creature.GetPrefabsPath(creatureId));
+                if (childPrefab != null)
+                {
+                    GameObject child = Instantiate(childPrefab, transform); // 자식 프리팹 생성
+                    child.transform.SetParent(obj.transform); // obj를 부모로 설정
+                    child.transform.localPosition = Vector3.zero; // 자식 위치를 부모 중심에 설정
+                }
+
+                monster.SetComponent(creatureId); // 몬스터 데이터 초기화
             }
+
+            return obj; // 생성된 몬스터 반환
         }
     }
 
