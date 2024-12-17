@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -78,6 +78,7 @@ public class GameManager : MonoSingleton<GameManager>
         return _currentPlayer;
     }
 
+    // 캐릭터 선택 후 게임 시작
     public void StartGame(PlayerData character)
     {
         UIManager.Instance.ToggleUI<CharacterSlotUI>();
@@ -85,12 +86,54 @@ public class GameManager : MonoSingleton<GameManager>
         _currentPlayer = character;
         Debug.Log($"게임 시작: {_currentPlayer.NickName}");
 
+        // 선택된 캐릭터의 데이터를 게임에 로드
+        LoadPlayerData(character);
+
         // 캐릭터 생성 시 데이터를 즉시 저장
         DataManager.SaveCharacterData();
 
-        GameManager.Instance.SceneNum = 2;
-        GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
+        // 씬을 전환하여 게임 시작
+        SceneNum = 23;
+        LoadScene(DataManager.Scene.GetMapTo(SceneNum));
     }
+
+    // 플레이어 데이터 로드
+    private void LoadPlayerData(PlayerData playerData)
+    {
+        Player.nickName = playerData.NickName;
+        Player.Stats.MaxHP = playerData.MaxHP;   // MaxHP
+        Player.Stats.CurrentHP = playerData.CurrentHP;   // CurrentHP
+        Player.Stats.Damage = playerData.Damage;   // Damage
+        Player.Stats.Speed = playerData.Speed;   // Speed
+        Player.Stats.Def = playerData.Def;   // Defense
+        Player.Stats.ATKSpeed = playerData.ATKSpeed;   // AttackSpeed
+        Player.Stats.WeaponType = playerData.WeaponType;   // WeaponType
+
+        // 인벤토리 로드
+        LoadInventory(playerData);
+        LoadQuickSlots(playerData);
+    }
+
+    // 인벤토리 로드
+    private void LoadInventory(PlayerData playerData)
+    {
+        Player.Inventory.Clear();  // 기존 아이템을 비우고
+        foreach (var item in playerData.InventoryItems) // InventoryItems로 변경
+        {
+            Player.AddItemToInventory(item.ItemID, item.ItemName, item.Quantity, item.ItemType, item.ItemIcon);
+        }
+    }
+
+    // 퀵슬롯 로드
+    private void LoadQuickSlots(PlayerData playerData)
+    {
+        Player.QuickSlots.Slots.Clear();  // 기존 슬롯을 비우고
+        foreach (var item in playerData.QuickSlotItems)
+        {
+            Player.QuickSlots.AddQuickSlotItem(item.ItemID, item.SlotIndex);
+        }
+    }
+
 
     // 게임 종료 시 플레이어 정보 저장
     public void SavePlayerData()

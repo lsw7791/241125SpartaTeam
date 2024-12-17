@@ -4,7 +4,7 @@ public class Player : MonoBehaviour,IDamageable
 {
     public string nickName;
 
-    public PlayerStats stats;  // 플레이어의 스탯
+    public PlayerData stats;  // 플레이어의 스탯
     public Inventory inventory;  // 플레이어의 인벤토리
     public TopDownController _topDownController;
     public PlayerAnimationController _playerAnimationController;
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour,IDamageable
 
     public Player()
     {
-        stats = new PlayerStats();
+        stats = new PlayerData();
         stats.Initialize();
         inventory = new Inventory();
         QuickSlots = new QuickSlot();  // QuickSlot 객체 초기화
@@ -82,7 +82,7 @@ public class Player : MonoBehaviour,IDamageable
     }
 
     // 프로퍼티
-    public PlayerStats Stats => stats;
+    public PlayerData Stats => stats;
     public Inventory Inventory => inventory;  // 인벤토리 반환
     public string PlayerNickName { get => nickName; set => nickName = value; }
 }

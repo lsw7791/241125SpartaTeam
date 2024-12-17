@@ -30,7 +30,7 @@ public class SaveLoadTestBtn : MonoBehaviour
 
         // 로드된 데이터 출력
         Debug.Log($"NickName: {player.PlayerNickName}");
-        Debug.Log($"HP: {player.Stats.CurrentHP}, Stamina: {player.Stats.Stamina}");
+        Debug.Log($"HP: {player.Stats.CurrentHP}, Stamina: {player.Stats.CurrentStamina}");
         Debug.Log($"Gold: {player.Stats.Gold}");
         Debug.Log($"Inventory items: {player.Inventory.Items.Count}");
         foreach (var item in player.Inventory.Items)

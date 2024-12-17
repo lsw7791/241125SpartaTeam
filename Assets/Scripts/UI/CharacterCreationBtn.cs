@@ -2,18 +2,17 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 
-
 public class CharacterCreationBtn : MonoBehaviour
 {
     [SerializeField] private TMP_InputField nicknameInputField;
 
     void Awake()
     {
-            var repository = GameManager.Instance.DataManager.Repository;
-            if (repository is FilePlayerRepository fileRepo)
-            {
-                fileRepo.Initialize(); // Initialize 호출
-            }
+        var repository = GameManager.Instance.DataManager.Repository;
+        if (repository is FilePlayerRepository fileRepo)
+        {
+            fileRepo.Initialize(); // Initialize 호출
+        }
     }
 
     public void OnCreateCharacterButtonClicked()
@@ -30,18 +29,8 @@ public class CharacterCreationBtn : MonoBehaviour
         var newPlayer = new PlayerData
         {
             NickName = nickname,
-            MaxHP = 100,
-            CurrentHP = 100,
-            CurrentStamina = 50,
-            CurrentGold = 0,
-            CurrentDamage = 10,
-            CurrentSpeed = 5,
-            CurrentATKSpeed = 1.0f,
-            CurrentDef = 5,
-            CurrentWeaponType = 1,
-            QuickSlotItems = new List<QuickSlotItem>(),
-            Stats = new PlayerStatsData()
         };
+        newPlayer.Initialize();  // Initialize() 호출로 기본값 설정
 
         // 캐릭터 리스트에 추가
         GameManager.Instance.DataManager.CharacterList.AddCharacter(newPlayer);
@@ -50,14 +39,9 @@ public class CharacterCreationBtn : MonoBehaviour
         UIManager.Instance.ToggleUI<CharacterSlotUI>();
     }
 
-      
     public void Exit()
     {
         GameManager.Instance.SceneNum = 25;
         GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
-
-        // 슬롯 UI 갱신
-    
-
 }

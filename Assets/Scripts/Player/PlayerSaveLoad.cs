@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -6,55 +7,65 @@ public static class PlayerSaveLoad
 {
     private static string SavePath => Path.Combine(Application.persistentDataPath, "PlayerData.json");
 
-    // 저장
+    // 데이터 저장
     public static void SavePlayerData(Player player, IPlayerRepository repository)
     {
-        PlayerData data = new PlayerData
+        if (player == null)
         {
-            NickName = player.PlayerNickName,  // 닉네임 저장
-            MaxHP = player.Stats.MaxHP,
-            CurrentHP = player.Stats.CurrentHP,
-            CurrentStamina = player.Stats.Stamina,
-            CurrentGold = player.Stats.Gold,
-            CurrentDamage = player.Stats.Damage,
-            CurrentSpeed = player.Stats.Speed,
-            CurrentATKSpeed = player.Stats.AttackSpeed,
-            CurrentDef = player.Stats.Defense,
-            CurrentWeaponType = player.Stats.WeaponType,
-            QuickSlotItems = new List<QuickSlotItem>(),  // QuickSlotItems 리스트
+            Debug.LogWarning("플레이어 데이터 저장 실패: 플레이어가 null입니다.");
+            return;
+        }
 
-            Stats = new PlayerStatsData
+        try
+        {
+            PlayerData data = new PlayerData
             {
+                NickName = player.PlayerNickName,
                 MaxHP = player.Stats.MaxHP,
                 CurrentHP = player.Stats.CurrentHP,
-                Stamina = player.Stats.Stamina,
+                CurrentStamina = player.Stats.CurrentStamina,
+                Gold = player.Stats.Gold,
                 Damage = player.Stats.Damage,
                 Speed = player.Stats.Speed,
-                AttackSpeed = player.Stats.AttackSpeed,
-                Defense = player.Stats.Defense,
-                WeaponType = player.Stats.WeaponType
-            },
+                ATKSpeed = player.Stats.ATKSpeed,
+                Def = player.Stats.Def,
+                WeaponType = player.Stats.WeaponType,
+                QuickSlotItems = new List<QuickSlotItem>(), // QuickSlotItems 저장
+                InventoryItems = new List<InventoryItem>(), // Inventory 저장
+            };
 
-        };
+            // QuickSlotItems 저장
+            foreach (QuickSlotItem item in player.QuickSlots.Slots)
+            {
+                data.QuickSlotItems.Add(item);
+            }
 
-        // QuickSlotItems 저장 (QuickSlotItem 객체로 저장)
-        foreach (QuickSlotItem item in player.QuickSlots.Slots)  // QuickSlot을 사용하고 Slots로 접근
-        {
-            data.QuickSlotItems.Add(item);  // QuickSlotItem 객체 그대로 저장
+            // Inventory 아이템 저장
+            foreach (InventoryItem item in player.Inventory.Items)
+            {
+                data.InventoryItems.Add(new InventoryItem
+                {
+                    ItemID = item.ItemID,
+                    //ItemName = item.ItemName,
+                    //Quantity = item.Quantity,
+                    //ItemType = item.ItemType,
+                    //ItemIcon = null,
+                    // ItemUseType = item.ItemUseType,
+                    //IsEquipped = item.IsEquipped,
+                });
+            }
+
+            string json = data.ToJson();
+            File.WriteAllText(SavePath, json);
+            Debug.Log($"플레이어 데이터 저장 성공: {SavePath}");
         }
-
-        // 인벤토리 아이템도 저장
-        foreach (InventoryItem item in player.Inventory.Items)
+        catch (Exception ex)
         {
-            //data.Inventory.ItemIDs.Add(item.ItemID.ToString());  // InventoryItem에서 ItemID는 string으로 저장
+            Debug.LogError($"플레이어 데이터 저장 실패: {ex.Message}");
         }
-
-        string json = data.ToJson();
-        File.WriteAllText(SavePath, json);
-        Debug.Log($"플레이어 데이터 저장: {SavePath}");
     }
 
-    // 로드
+    // 데이터 로드
     public static void LoadPlayerData(Player player, IPlayerRepository repository)
     {
         if (!File.Exists(SavePath))
@@ -63,37 +74,63 @@ public static class PlayerSaveLoad
             return;
         }
 
-        string json = File.ReadAllText(SavePath);
-        PlayerData data = PlayerData.FromJson(json);
-
-        // PlayerStats 로드
-        player.Stats.MaxHP = data.MaxHP;
-        player.Stats.CurrentHP = data.CurrentHP;
-        player.Stats.Stamina = data.CurrentStamina;
-        player.Stats.Damage = data.CurrentDamage;
-        player.Stats.Speed = data.CurrentSpeed;
-        player.Stats.AttackSpeed = data.CurrentATKSpeed;
-        player.Stats.Defense = data.CurrentDef;
-        player.Stats.WeaponType = data.CurrentWeaponType;
-
-        // 닉네임 로드
-        player.PlayerNickName = data.NickName;  // NickName 로드 추가
-
-        // QuickSlotItems 로드
-        player.QuickSlots.Slots.Clear();  // 기존 슬롯 초기화
-        foreach (QuickSlotItem item in data.QuickSlotItems)
+        try
         {
-            player.QuickSlots.Slots.Add(item);  // QuickSlotItem 객체 그대로 추가
+            string json = File.ReadAllText(SavePath);
+            PlayerData data = PlayerData.FromJson(json);
+
+            // 데이터 초기화 및 적용
+            ApplyPlayerData(player, data);
+            Debug.Log("플레이어 데이터 로드 성공");
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"플레이어 데이터 로드 실패: {ex.Message}");
+        }
+    }
+
+    // 플레이어 데이터 적용
+    private static void ApplyPlayerData(Player player, PlayerData data)
+    {
+        if (data == null || player == null)
+        {
+            Debug.LogWarning("데이터 적용 실패: 데이터 또는 플레이어가 null입니다.");
+            return;
         }
 
-        // Inventory 아이템 로드
-        player.Inventory.Items.Clear();
-        //foreach (string itemID in data.Inventory.ItemIDs)
-        //{
-        //    // 예시로 itemSprite를 null로 설정
-        //    player.Inventory.AddItem(itemID, "Item Name", 1, "ItemType", null);  // ItemName과 ItemType은 예시로 설정
-        //}
+        // 스탯 적용
+        player.Stats.MaxHP = data.MaxHP;
+        player.Stats.CurrentHP = data.CurrentHP;
+        player.Stats.CurrentStamina = data.CurrentStamina;
+        player.Stats.Gold = data.Gold;
+        player.Stats.Damage = data.Damage;
+        player.Stats.Speed = data.Speed;
+        player.Stats.ATKSpeed = data.ATKSpeed;
+        player.Stats.Def = data.Def;
+        player.Stats.WeaponType = data.WeaponType;
 
-        Debug.Log("플레이어 데이터 로드 완료");
+        // 닉네임 적용
+        player.PlayerNickName = data.NickName;
+
+        // QuickSlotItems 적용
+        player.QuickSlots.Slots.Clear();
+        foreach (QuickSlotItem item in data.QuickSlotItems)
+        {
+            player.QuickSlots.Slots.Add(item);
+        }
+
+        // Inventory 적용
+        player.Inventory.Items.Clear();
+        foreach (InventoryItem itemData in data.InventoryItems)
+        {
+            player.Inventory.AddItem(
+                itemData.ItemID,
+                itemData.ItemName,
+                itemData.Quantity,
+                itemData.ItemType,
+                null // Sprite는 null로 설정
+                //itemData.EquipSlot
+            );
+        }
     }
 }

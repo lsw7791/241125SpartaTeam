@@ -18,17 +18,17 @@ public class InventorySlot : MonoBehaviour
             GameObject itemUseMenu = UIManager.Instance.GetUI<InventoryUI>().itemUseMenu;
             itemUseMenu.SetActive(true);
             itemUseMenu.TryGetComponent<ItemUseUI>(out var outUseUI);
-            outUseUI.Initialize(item);
+            //outUseUI.Initialize(item);
         });
     }
 
-    private void Update()
-    {
-        if (item != null)
-        {
-            UpdateSlot();
-        }
-    }
+    //private void Update()
+    //{
+    //    if (item != null)
+    //    {
+    //        UpdateSlot();
+    //    }
+    //}
 
     // 아이템 초기화
     public void Initialize(InventoryItem inItem)
@@ -46,19 +46,19 @@ public class InventorySlot : MonoBehaviour
         gameObject.SetActive(false);  // 빈 슬롯 이미지 설정
     }
 
-    private void UpdateSlot()
-    {
-        Initialize(item);
-        // 아이템 정보 초기화
+    //private void UpdateSlot()
+    //{
+    //    Initialize(item);
+    //    // 아이템 정보 초기화
 
-        if (item.IsEquipped)
-        { // 아이템이 장착 중일 때
-            count.text = "사용중";
-        }
-        else
-        {
-            int quantity = item.Quantity;
-            count.text = quantity.ToString();
-        }
-    }
+    //    if (item.IsEquipped)
+    //    { // 아이템이 장착 중일 때
+    //        count.text = "사용중";
+    //    }
+    //    else
+    //    {
+    //        int quantity = item.Quantity;
+    //        count.text = quantity.ToString();
+    //    }
+    //}
 }

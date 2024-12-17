@@ -4,30 +4,38 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    public string NickName;
-    public int MaxHP;
+    public string NickName;        // 캐릭터 이름
+    public int MaxHP;              // 최대 HP
     public int CurrentHP;
-    public int CurrentStamina;
-    public int CurrentGold;
-    public int CurrentDamage;
-    public int CurrentSpeed;
-    public float CurrentATKSpeed;
-    public int CurrentDef;
-    public int CurrentWeaponType;
-    public List<QuickSlotItem> QuickSlotItems = new List<QuickSlotItem>();  // QuickSlotItem 리스트로 수정
+    public int MaxStamina;              // 최대 HP
+    public int CurrentStamina;     // 현재 스태미나
+    public int Gold;        // 현재 금액
+    public int Damage;      // 현재 공격력
+    public int Speed;       // 현재 이동 속도
+    public float ATKSpeed;  // 현재 공격 속도
+    public int Def;         // 현재 방어력
+    public int WeaponType;  // 현재 무기 타입
+    public bool isDie;             // 사망 여부
 
-    // PlayerStats와 Inventory 추가
-    public PlayerStatsData Stats;  // PlayerStats의 데이터를 저장
+    public List<QuickSlotItem> QuickSlotItems = new List<QuickSlotItem>(); // 퀵슬롯 아이템 목록
+    public List<InventoryItem> InventoryItems = new List<InventoryItem>(); // 인벤토리 아이템 목록
 
-    // JSON 직렬화
-    public string ToJson()
+    public string ToJson() => JsonUtility.ToJson(this, true);  // JSON 직렬화
+    public static PlayerData FromJson(string json) => JsonUtility.FromJson<PlayerData>(json);  // JSON 역직렬화
+
+    // PlayerStats 초기화 메서드 (초기값 설정)
+    public void Initialize()
     {
-        return JsonUtility.ToJson(this, true);
-    }
-
-    // JSON 역직렬화
-    public static PlayerData FromJson(string json)
-    {
-        return JsonUtility.FromJson<PlayerData>(json);
+        MaxHP = 100;
+        CurrentHP = MaxHP;
+        MaxStamina = 100;
+        CurrentStamina = 100;
+        Gold = 0;
+        Damage = 10;
+        Speed = 1;
+        ATKSpeed = 1;
+        Def = 1;
+        WeaponType = 0;
+        isDie = false;
     }
 }

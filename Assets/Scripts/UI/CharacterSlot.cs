@@ -8,7 +8,6 @@ public class CharacterSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nicknameText;
     [SerializeField] private Button selectButton;
 
-    // ΩΩ∑‘ √ ±‚»≠
     public void InitializeSlot(PlayerData data, System.Action<PlayerData> onSelected)
     {
         SlotData = data;
