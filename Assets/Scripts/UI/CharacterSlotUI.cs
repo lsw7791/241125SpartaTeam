@@ -64,24 +64,17 @@ public class CharacterSlotUI : UIBase
     // 실행 버튼 클릭 시, 해당 캐릭터로 게임 시작
     private void OnExecuteButtonClicked()
     {
-        if (selectedCharacter != null)
-        {
-            UIManager.Instance.ToggleUI<CharacterSlotUI>();
-            Debug.Log($"게임 시작: {selectedCharacter.NickName}");
-            GameManager.Instance.StartGame(selectedCharacter);  // 게임 시작
-        }
+        Debug.Log($"게임 시작: {selectedCharacter.NickName}");
+        GameManager.Instance.StartGame(selectedCharacter);  // 게임 시작
     }
 
     // 삭제 버튼 클릭 시, 해당 캐릭터 삭제 및 슬롯 UI 제거
     private void OnDeleteButtonClicked()
     {
-        if (selectedCharacter != null)
-        {
-            GameManager.Instance.DataManager.CharacterList.RemoveCharacter(selectedCharacter);  // 캐릭터 삭제
-            selectedCharacter = null;  // 선택된 캐릭터 초기화
-            LoadSlots();  // 슬롯 UI 갱신
-            SetButtonsInteractable(false);  // 버튼 비활성화
-        }
+        GameManager.Instance.DataManager.CharacterList.RemoveCharacter(selectedCharacter);  // 캐릭터 삭제
+        selectedCharacter = null;  // 선택된 캐릭터 초기화
+        LoadSlots();  // 슬롯 UI 갱신
+        SetButtonsInteractable(false);  // 버튼 비활성화
     }
 
     // 뒤로가기 버튼 클릭 시, 슬롯 UI 닫기

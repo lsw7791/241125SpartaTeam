@@ -80,6 +80,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void StartGame(PlayerData character)
     {
+        UIManager.Instance.ToggleUI<CharacterSlotUI>();
+
         _currentPlayer = character;
         Debug.Log($"게임 시작: {_currentPlayer.NickName}");
 

@@ -49,16 +49,26 @@ public class SpawnManager : MonoBehaviour
                 spawner1.sceneNumber = GameManager.Instance.SceneNum;
                 StageMine1(monsterPool1);
                 break;
-            case 4://마인2
+            case 5://마인2
                 if (spawner2 == null) spawner2 = gameObject.AddComponent<Spawner>();
                 spawner2.sceneNumber = GameManager.Instance.SceneNum;
                 StageMine2(monsterPool2);
                 break;
-            case 5://마인3
+            case 6://마인1
+                if (spawner1 == null) spawner1 = gameObject.AddComponent<Spawner>();
+                spawner1.sceneNumber = GameManager.Instance.SceneNum;
+                StageMine1(monsterPool1);
+                break;
+            case 7://마인3
                 if (spawner3 == null) spawner3 = gameObject.AddComponent<Spawner>();
                 spawner3.sceneNumber = GameManager.Instance.SceneNum;
                 StageMine3(monsterPool3);
-                break;           
+                break;
+            case 8://마인3
+                if (spawner2 == null) spawner2 = gameObject.AddComponent<Spawner>();
+                spawner2.sceneNumber = GameManager.Instance.SceneNum;
+                StageMine2(monsterPool2);
+                break;
             case 24: //캐릭터 셀렉션
                 playerObject.SetActive(false);
                 break;
