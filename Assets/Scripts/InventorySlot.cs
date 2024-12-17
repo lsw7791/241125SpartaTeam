@@ -15,12 +15,10 @@ public class InventorySlot : MonoBehaviour
 
         slotButton.onClick.AddListener(() =>
         {
-            GameObject itemUseMenu = GameManager.Instance.uIManager.GetUI<InventoryUI>().itemUseMenu;
+            GameObject itemUseMenu = UIManager.Instance.GetUI<InventoryUI>().itemUseMenu;
             itemUseMenu.SetActive(true);
-            itemUseMenu.TryGetComponent<Image>(out var outIcon);
-
-            outIcon.sprite = item.ItemIcon;
-            GameManager.Instance.player.inventory.EquipItem(item.ItemID);
+            itemUseMenu.TryGetComponent<ItemUseUI>(out var outUseUI);
+            outUseUI.Initialize(item);
         });
     }
 
@@ -50,7 +48,7 @@ public class InventorySlot : MonoBehaviour
 
     private void UpdateSlot()
     {
-        //Initialize(item);
+        Initialize(item);
         // 아이템 정보 초기화
 
         if (item.IsEquipped)
