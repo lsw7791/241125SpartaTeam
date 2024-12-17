@@ -4,29 +4,23 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    public DataManager DataManager;
+    public DataManager DataManager; // DataManager만 사용하도록 변경
     public CraftingManager CraftingManager;
     public SoundManager SoundManager;
     public SpawnManager SpawnManager;
-    GameObject SoundManagerObject;
     public Player Player;
     private PlayerData _currentPlayer;
     public int SceneNum;
     public IInteractable InteractableObject { get; set; }
-    public IPlayerRepository Repository;
-
-    // CharacterList를 GameManager에서 관리
 
     protected override void Awake()
     {
         base.Awake();
         Debug.Log("GameManager Awake 호출");
 
-        // FilePlayerRepository를 사용해 CharacterList 초기화
-        Repository = new FilePlayerRepository();
-        // 데이터 매니저 초기화
-        DataManager = new DataManager();
-        Debug.Log("CharacterList 객체 생성 후");
+        // DataManager 초기화
+        DataManager = new DataManager();  // DataManager의 기본 생성자로 초기화
+        Debug.Log("DataManager 객체 생성 후");
 
         // 다른 매니저 초기화
         if (CraftingManager == null) CraftingManager = gameObject.AddComponent<CraftingManager>();
@@ -38,18 +32,11 @@ public class GameManager : MonoSingleton<GameManager>
 
     void Start()
     {
-        // FilePlayerRepository 초기화는 Start()에서 호출
-        if (Repository is FilePlayerRepository fileRepo)
-        {
-            Debug.Log("FilePlayerRepository Initialize 호출");
-            fileRepo.Initialize();  // Initialize 호출
-        }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         Instantiate(SceneNum);
     }
-
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -84,13 +71,22 @@ public class GameManager : MonoSingleton<GameManager>
     {
         _currentPlayer = character;
         Debug.Log($"게임 시작: {character.NickName}");
-        GameManager.Instance.SceneNum = 26;
+
+        // 캐릭터 생성 시 데이터를 즉시 저장
+        DataManager.SaveCharacterData();
+
+        GameManager.Instance.SceneNum = 2;
         GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
 
-    // 데이터 관련 메서드
-    //public void SavePlayerData(List<PlayerData> data)
-    //{
-    //    Repository.SavePlayerData(data);
-    //}
+    // 캐릭터 슬롯 정보 로드
+   
+    // 게임 종료 시 플레이어 정보 저장
+    public void SavePlayerData()
+    {
+        if (_currentPlayer != null)
+        {
+            DataManager.SaveCharacterData();  // 현재 플레이어의 데이터를 저장
+        }
+    }
 }

@@ -22,7 +22,7 @@ public class CharacterSlotUI : UIBase
         }
 
         // 캐릭터 슬롯 데이터 가져오기
-        var slots = GameManager.Instance.DataManager.CharacterList.GetAllLists();
+        var slots = GameManager.Instance.DataManager.CharacterList.GetAllCharacters();
 
         // 각 슬롯에 데이터를 표시
         foreach (var playerData in slots)

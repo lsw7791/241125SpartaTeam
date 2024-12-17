@@ -12,24 +12,41 @@ public class FilePlayerRepository : IPlayerRepository
 {
     private string filePath;
 
-    // Initialize 메서드 추가
     public void Initialize()
     {
         filePath = Path.Combine(Application.persistentDataPath, "PlayerData.json");
+
+        // 파일이 존재하지 않으면 빈 데이터 파일을 생성
         if (!File.Exists(filePath))
         {
-            // 파일이 존재하지 않으면 빈 JSON 배열을 저장
+            Debug.Log($"파일이 존재하지 않음. 경로: {filePath}");
             File.WriteAllText(filePath, JsonUtility.ToJson(new SerializableListWrapper<PlayerData>(new List<PlayerData>())));
+            Debug.Log("빈 데이터 파일 생성 완료.");
+        }
+        else
+        {
+            Debug.Log($"파일이 존재합니다. 경로: {filePath}");
         }
     }
 
+
+    // 전체 캐릭터 데이터 저장
     public void SaveAllPlayerData(List<PlayerData> data)
     {
+        Debug.Log("PlayerData 저장 시작");
+        Debug.Log($"저장할 데이터 수: {data.Count}");
+        foreach (var playerData in data)
+        {
+            Debug.Log($"저장할 플레이어: {playerData.NickName}");
+        }
+
         var json = JsonUtility.ToJson(new SerializableListWrapper<PlayerData>(data));
         File.WriteAllText(filePath, json);
-        Debug.Log("PlayerData 저장 완료");
+        Debug.Log($"PlayerData 저장 완료. 경로: {filePath}");
     }
 
+
+    // 전체 캐릭터 데이터 불러오기
     public List<PlayerData> LoadAllPlayerData()
     {
         if (!File.Exists(filePath))
@@ -38,21 +55,27 @@ public class FilePlayerRepository : IPlayerRepository
             return new List<PlayerData>();
         }
 
+        Debug.Log($"파일 존재 확인 완료. 경로: {filePath}");
+
+        // 데이터 파일에서 읽어서 반환
         var json = File.ReadAllText(filePath);
+        Debug.Log($"파일에서 읽은 JSON: {json}");
+
         var wrapper = JsonUtility.FromJson<SerializableListWrapper<PlayerData>>(json);
-        Debug.Log("PlayerData 로드 완료");
+        Debug.Log($"로드된 데이터 수: {wrapper.List.Count}");
+
         return wrapper.List;
     }
 
-    [System.Serializable]
-    public class SerializableListWrapper<T>
-    {
-        public List<T> List;
-
-        public SerializableListWrapper(List<T> list)
-        {
-            List = list;
-        }
-    }
 }
 
+[System.Serializable]
+public class SerializableListWrapper<T>
+{
+    public List<T> List;
+
+    public SerializableListWrapper(List<T> list)
+    {
+        List = list;
+    }
+}
