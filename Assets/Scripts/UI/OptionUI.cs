@@ -6,6 +6,7 @@ public class OptionUI : UIBase
 {
     public void OnclickedExitBtn()
     {
+        UIManager.Instance.ToggleUI<OptionUI>();
         GameManager.Instance.SceneNum = 25;
         GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }

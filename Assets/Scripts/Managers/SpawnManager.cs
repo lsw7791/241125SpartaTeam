@@ -57,6 +57,9 @@ public class SpawnManager : MonoBehaviour
             case 24: //캐릭터 셀렉션
                 playerObject.SetActive(false);
                 break;
+            case 25: //캐릭터 셀렉션
+                playerObject.SetActive(false);
+                break;
             default:
                 break;
         }   
