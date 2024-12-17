@@ -10,6 +10,7 @@ public class Player : MonoBehaviour,IDamageable
     public PlayerAnimationController _playerAnimationController;
     public PlayerWeapon _playerWeapon;
     public PlayerCamera _playerCamera;
+    public Equipment equipment;
 
     // QuickSlots 프로퍼티
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour,IDamageable
     private void Awake()
     {
         _topDownController = GetComponent<TopDownController>();
+        equipment = GetComponent<Equipment>();
     }
 
     // 데이터를 저장하는 메서드

@@ -79,12 +79,10 @@ public class Inventory
             if (item.IsEquipped)
             { // 장착한 아이템인지 여부 확인
                 item.IsEquipped = false; // 장착 해제
-                // TODO :: 장비창에서 아이템 해제 or 다른 아이템 장착
             }
             else
             {
                 item.IsEquipped = true; // 장착
-                // TODO :: 장비창에서 아이템 해제 or 다른 아이템 장착
             }
             // TODO :: 장비창에서 ItemType타입 부위가 null이 아니라면
             // 이라는 조건 추가하기
@@ -98,7 +96,7 @@ public class Inventory
     {
         EquipSlot type = EquipSlot.None;
 
-        if ((int)itemType >= 5)
+        if ((int)itemType <= 5)
         {
             type = EquipSlot.Weapon;
         }
