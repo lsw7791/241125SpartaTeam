@@ -40,14 +40,25 @@ public class SpawnManager : MonoBehaviour
                 if (spawner1 == null) spawner1 = gameObject.AddComponent<Spawner>();
                 StageMine1(spawner1);
                 break;
-            case 4://마인2
+            case 5://마인3
                 if (spawner2 == null) spawner2 = gameObject.AddComponent<Spawner>();
                 StageMine2(spawner2);
                 break;
-            case 5://마인3
+            case 6://마인3
+                if (spawner1 == null) spawner1 = gameObject.AddComponent<Spawner>();
+                StageMine1(spawner1);
+                break;
+            case 7://마인3
                 if (spawner3 == null) spawner3 = gameObject.AddComponent<Spawner>();
                 StageMine3(spawner3);
                 break;
+<<<<<<< Updated upstream
+=======
+            case 8://마인3
+                if (spawner2 == null) spawner2 = gameObject.AddComponent<Spawner>();
+                StageMine2(spawner2);
+                break;
+>>>>>>> Stashed changes
             case 24: //캐릭터 셀렉션
                 playerObject.SetActive(false);
                 break;
