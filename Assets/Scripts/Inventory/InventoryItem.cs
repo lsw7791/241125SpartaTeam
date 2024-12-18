@@ -18,20 +18,27 @@ public class InventoryItem
     public ItemType ItemType;  // 아이템 타입
     //public ItemUseType itemUseType;
     public Sprite ItemIcon;  // 아이템 아이콘 (Sprite)
+    public string SpritePath;    // 아이템 아이콘 경로
    // public bool IsEquipped; // 장착 상태
     //public EquipSlot equipSlot; // 장비 부위
     public InventoryItem() { }
-    public InventoryItem(int itemID)
+    public InventoryItem(int itemID, int quantity, string spritePath)
     {
         ItemID = itemID;
         //ItemName = itemName;
-        //Quantity = quantity;
+        Quantity = quantity;
+        SpritePath = spritePath;
+        ItemIcon = LoadSprite(SpritePath);
         //ItemType = itemType;
         //ItemIcon = itemIcon;  // 아이콘 설정
-       // IsEquipped = false;
+        // IsEquipped = false;
         //itemUseType = ItemUseType.Equipment;
         // TODO :: 현재 모두 장착 아이템인 상태
         // 장착 되는지 확인 후 UGS 변경 예정
         //equipSlot = slot;
+    }
+    private Sprite LoadSprite(string path)
+    {
+        return Resources.Load<Sprite>(path); // 경로로부터 스프라이트 로드
     }
 }

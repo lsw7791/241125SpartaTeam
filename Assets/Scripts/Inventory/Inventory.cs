@@ -1,8 +1,7 @@
-using System.Collections.Generic;
 using System;
-using UnityEngine;
+using System.Collections.Generic;
 
-[Serializable]
+[System.Serializable]
 public class Inventory
 {
     public List<InventoryItem> Items; // 플레이어의 인벤토리 아이템 목록
@@ -12,29 +11,39 @@ public class Inventory
     {
         Items = new List<InventoryItem>();
     }
+
     public void Clear()
     {
         Items.Clear();
         OnInventoryChanged?.Invoke();
     }
+
     // 아이템 추가 메서드
-    public void AddItem(int itemID, string itemName, int quantity, ItemType itemType, Sprite itemSprite)
+    public void AddItem(int itemID)
     {
+        // 아이템 데이터를 구글 시트에서 조회
+        var itemData = GameManager.Instance.DataManager.GetItemDataById(itemID);
+
+        // 아이템 ID로 기존 아이템 찾기
         InventoryItem existingItem = Items.Find(item => item.ItemID == itemID);
-        // 동일한 itemID를 가진 아이템 탐색
-        if (existingItem != null && (int)itemType > 10)
-        { // 인벤토리 내에 동일한 itemID가 있고 장비 아이템이 아니라면
-            existingItem.Quantity += quantity;
-            // 찾은 아이템이 있다면 수량 증가
+
+        if (existingItem != null)
+        {
+            existingItem.Quantity += 1;  // 수량 증가
         }
         else
         {
-            Items.Add(new InventoryItem(itemID));
-            // 동일한 itemID 없거나 장비 아이템이라면 리스트에 추가
+            // 아이템 ID로 아이템을 구글 시트에서 조회해서 추가
+            if (itemData != null)
+            {
+                // 구글 시트에서 받은 spritePath로 아이템을 추가
+                Items.Add(new InventoryItem(itemID, 1, itemData.spritePath));  // 아이템 생성시 경로로 아이콘 로드
+            }
         }
 
         OnInventoryChanged?.Invoke();
     }
+
 
     // 아이템 조회 메서드 추가
     public InventoryItem GetItem(int itemID)
@@ -42,16 +51,11 @@ public class Inventory
         return Items.Find(item => item.ItemID == itemID); // 해당 ID의 아이템 반환
     }
 
+    // 아이템 수량 조회
     public int GetItemCount(int itemID)
     {
         InventoryItem existingItem = Items.Find(item => item.ItemID == itemID);
-        // 동일한 itemID를 가진 아이템 탐색
-        if (existingItem != null)
-        { // 인벤토리 내에 동일한 itemID가 있고 장비 아이템이 아니라면
-            return existingItem.Quantity;
-            // 찾은 아이템이 있다면 수량 증가
-        }
-        return 0;
+        return existingItem?.Quantity ?? 0;
     }
 
     // 아이템 목록 반환
@@ -72,52 +76,4 @@ public class Inventory
         }
         OnInventoryChanged?.Invoke();
     }
-
-    // 아이템 장착 메서드
-    //public void EquipItem(int itemID)
-    //{
-    //    InventoryItem item = GetItem(itemID);
-
-    //    if (item != null && item.itemUseType == ItemUseType.Equipment)
-    //    { // 아이템이 장착 가능한 아이템인지 확인
-    //        if (item.IsEquipped)
-    //        { // 장착한 아이템인지 여부 확인
-    //            item.IsEquipped = false; // 장착 해제
-    //        }
-    //        else
-    //        {
-    //            item.IsEquipped = true; // 장착
-    //        }
-    //        // TODO :: 장비창에서 ItemType타입 부위가 null이 아니라면
-    //        // 이라는 조건 추가하기
-
-    //        OnInventoryChanged?.Invoke();
-    //        // UI 갱신
-    //    }
-    //}
-
-    //// 아이템 타입 번호를 결정하는 메서드
-    //private EquipSlot ItemTypeNumber(ItemType itemType)
-    //{
-    //    EquipSlot type = EquipSlot.None;
-
-    //    if ((int)itemType <= 5)
-    //    {
-    //        type = EquipSlot.Weapon;
-    //    }
-    //    else if ((int)itemType == 6)
-    //    {
-    //        type = EquipSlot.Head;
-    //    }
-    //    else if ((int)itemType == 7)
-    //    {
-    //        type = EquipSlot.Armor;
-    //    }
-    //    else if ((int)itemType == 8)
-    //    {
-    //        type = EquipSlot.Shoes;
-    //    }
-
-    //    return type;
-    //}
 }

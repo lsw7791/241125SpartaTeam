@@ -72,6 +72,7 @@ namespace MainData
 		public System.Single speed;
 		public System.String prefabPath;
 		public System.String spritePath;
+		public System.Collections.Generic.List<Int32> goldRange;
   
 
 #region fuctions

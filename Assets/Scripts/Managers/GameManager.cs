@@ -120,7 +120,7 @@ public class GameManager : MonoSingleton<GameManager>
         Player.Inventory.Clear();  // 기존 아이템을 비우고
         foreach (var item in playerData.InventoryItems) // InventoryItems로 변경
         {
-            Player.AddItemToInventory(item.ItemID, item.ItemName, item.Quantity, item.ItemType, item.ItemIcon);
+            Player.AddItemToInventory(item.ItemID, item.Quantity, item.SpritePath);
         }
     }
 

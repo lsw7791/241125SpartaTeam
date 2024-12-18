@@ -52,18 +52,18 @@ public class Monster : MonoBehaviour, ICreature
     }
 
     // 몬스터가 죽을 때 호출되는 드랍 아이템 생성 함수
+    // DropItems 메서드 수정
     public void DropItems()
     {
-        // 드롭 위치의 랜덤 범위 설정 (x, z 축 기준)
-        float dropRange = 1.5f;
+        float dropRange = 1.5f; // 드롭 위치의 랜덤 범위 설정
 
         foreach (int itemId in GameManager.Instance.DataManager.Creature.GetDropItemIds(id))
         {
-            // 아이템 데이터와 프리팹 로드
             var itemData = GameManager.Instance.DataManager.GetItemDataById(itemId);
+
+            // 아이템 데이터와 프리팹 로드
             GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabPath);
 
-            // 랜덤한 드롭 위치 생성
             Vector3 randomOffset = new Vector3(
                 Random.Range(-dropRange, dropRange),
                 Random.Range(-dropRange, dropRange),
@@ -71,15 +71,22 @@ public class Monster : MonoBehaviour, ICreature
             );
             Vector3 dropPosition = transform.position + randomOffset;
 
-            // 아이템 인스턴스 생성
             GameObject item = Instantiate(itemPrefab, dropPosition, Quaternion.identity);
-
-            // 아이템 스프라이트 로드
             Sprite itemSprite = Resources.Load<Sprite>(itemData.spritePath);
 
-            // 아이템 데이터 설정
             TestItem testItem = item.GetComponent<TestItem>();
-            testItem.SetData(itemData, itemSprite);
+
+            // goldRange가 List<int>로 있을 경우 처리
+            if (itemData.itemType == ItemType.Gold && itemData.goldRange != null && itemData.goldRange.Count == 2)
+            {
+                int minGold = itemData.goldRange[0]; // 최소 골드
+                int maxGold = itemData.goldRange[1]; // 최대 골드
+                testItem.SetData(itemData, itemSprite, minGold, maxGold);
+            }
+            else
+            {
+                testItem.SetData(itemData, itemSprite);
+            }
         }
     }
 
