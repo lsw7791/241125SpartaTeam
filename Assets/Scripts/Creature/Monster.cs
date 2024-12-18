@@ -10,6 +10,8 @@ public class Monster : MonoBehaviour, ICreature
     [SerializeField]private bool isDie;
     [SerializeField] public int id { get; private set; }
     MonsterPool monsterPool;
+    GameObject _childMonster;
+    public Vector2 DiePosition;
     // 몬스터가 죽었을 때 호출되는 함수
     private void Start()
     {
@@ -22,6 +24,8 @@ public class Monster : MonoBehaviour, ICreature
     }
     public void Die()
     {
+        DiePosition = (Vector2)GetComponentInChildren<Transform>().gameObject.transform.position;
+
         if (monsterPool != null)
         {
             // 몬스터의 종류를 구분해서 풀에 반환 (creatureId로 구별)
@@ -52,10 +56,9 @@ public class Monster : MonoBehaviour, ICreature
     }
 
     // 몬스터가 죽을 때 호출되는 드랍 아이템 생성 함수
-    // DropItems 메서드 수정
     public void DropItems()
     {
-        float dropRange = 1.5f; // 드롭 위치의 랜덤 범위 설정
+        float dropRange = 0.5f; // 드롭 위치의 랜덤 범위 설정
 
         foreach (int itemId in GameManager.Instance.DataManager.Creature.GetDropItemIds(id))
         {
@@ -64,19 +67,17 @@ public class Monster : MonoBehaviour, ICreature
             // 아이템 데이터와 프리팹 로드
             GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabPath);
 
-            Vector3 randomOffset = new Vector3(
+            Vector2 randomOffset = new Vector3(
                 Random.Range(-dropRange, dropRange),
-                Random.Range(-dropRange, dropRange),
-                transform.position.z
+                Random.Range(-dropRange, dropRange)
             );
-            Vector3 dropPosition = transform.position + randomOffset;
+            Vector2 dropPosition = DiePosition + randomOffset ;
 
             GameObject item = Instantiate(itemPrefab, dropPosition, Quaternion.identity);
             Sprite itemSprite = Resources.Load<Sprite>(itemData.spritePath);
 
             TestItem testItem = item.GetComponent<TestItem>();
 
-            // goldRange가 List<int>로 있을 경우 처리
             if (itemData.itemType == ItemType.Gold && itemData.goldRange != null && itemData.goldRange.Count == 2)
             {
                 int minGold = itemData.goldRange[0]; // 최소 골드
