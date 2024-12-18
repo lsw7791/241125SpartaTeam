@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a456df9e237724da5df66d990a27c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanDrag: 1
   rectTransform: {fileID: 0}
   craftingPanel: {fileID: 5767042917632990919}
 --- !u!1 &2078927917334603243

@@ -2429,6 +2429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d15722958bfa49198503938e31ff85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanDrag: 1
   rectTransform: {fileID: 3712293098154734666}
   slotContainer: {fileID: 8164360139419117570}
   slotPrefab: {fileID: 4481820763286981204, guid: 468ae4f84ac9dd94186859605a2c1a1d, type: 3}
@@ -4179,10 +4180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e750a1f3d98066409b1689241b45ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _headSlot: {fileID: 2159661381389884760}
-  _armorSlot: {fileID: 6726944007339968189}
-  _weaponSlot: {fileID: 8224920111232792051}
-  _shoesSlot: {fileID: 410328978277952157}
 --- !u!1 &7578598208072337145
 GameObject:
   m_ObjectHideFlags: 0
@@ -4557,8 +4554,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3e541115b51b74ca4a46e05a72864a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useMenu: {fileID: 8724579449739130081}
-  _useItemImage: {fileID: 6698765169113853857}
 --- !u!1 &8162682424979387607
 GameObject:
   m_ObjectHideFlags: 0
