@@ -2,24 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipManager : MonoBehaviour
+public class EquipManager : MonoSingleton<EquipManager>
 {
+    [Header("EquipPlace")]
     public GameObject WeaponPlace;
+    public GameObject HelmePlacet;
+    public GameObject TopPlace;
+    public GameObject ArmorPlace;
+    //public GameObject BottomPlace;
+    public GameObject CapePlace;
+    public GameObject ShieldPlace;
+
+    [Header("Equiped")]
     public GameObject EquipedWeapon;
     public GameObject EquipedHelmet;
     public GameObject EquipedTop;
     public GameObject EquipedArmor;
-    //public GameObject equipedBottom;
+    public GameObject EquipedBottom;
     public GameObject EquipedCape;
     public GameObject EquipedShield;
-
-    //[SerializeField] private int _rWeaponID;
-    //[SerializeField] private int _lWeaponID;
-    //[SerializeField] private int _topID;
-    //[SerializeField] private int _bottomID;
-    //[SerializeField] private int _helmetID;
-    //[SerializeField] private int _armorID;
-    //[SerializeField] private int _capeID;
 
 
     private SpriteRenderer _weaponSpriteRenderer; // WeaponObject¿« SpriteRenderer

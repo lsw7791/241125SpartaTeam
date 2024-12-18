@@ -17,7 +17,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         GameManager.Instance.Player._playerWeapon = this;
         _weapon = this.gameObject;
-        GameManager.Instance.EquipManager.EquipedWeapon = _weapon;
+        EquipManager.Instance.EquipedWeapon = _weapon;
         _weaponCollider = _weapon.GetComponent<Collider2D>();  // 무기의 Collider2D 가져오기
         _weaponCollider.enabled = false;  // 시작 시 콜라이더 비활성화
     }

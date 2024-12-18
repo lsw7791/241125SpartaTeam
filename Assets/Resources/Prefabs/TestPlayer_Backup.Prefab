@@ -2343,7 +2343,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &3100636040972228196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3378,8 +3378,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5c6732db8ddf04893e6699342f0710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponPlace: {fileID: 0}
-  EquipedWeapon: {fileID: 0}
+  WeaponPlace: {fileID: 7299855761867217578}
+  HelmePlacet: {fileID: 5289272713555914139}
+  TopPlace: {fileID: 8379907046904672669}
+  ArmorPlace: {fileID: 779401532715212309}
+  CapePlace: {fileID: 8449764841411958332}
+  ShieldPlace: {fileID: 2174797880281532938}
+  EquipedWeapon: {fileID: 4372660492950472785, guid: f3c3af2f3b999d64886c7122f3a58517, type: 3}
   EquipedHelmet: {fileID: 0}
   EquipedTop: {fileID: 0}
   EquipedArmor: {fileID: 0}
