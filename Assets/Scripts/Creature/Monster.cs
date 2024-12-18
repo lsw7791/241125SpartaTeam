@@ -50,7 +50,7 @@ public class Monster : MonoBehaviour, ICreature
         {
             currentHealth += value;
             //이미지 체력 업데이트
-            //monsterHealthBarUI.UpdateHealthBar();
+            monsterHealthBarUI.UpdateHealthBar();
             if (currentHealth <= 0)
             {
                 Die();  // 체력이 0 이하가 되면 죽음 처리
