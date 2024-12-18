@@ -20,12 +20,10 @@ public class Equipment : MonoBehaviour
         UnEquip(itemData.itemType);
 
         // 새 장비 장착
-        GameObject newEquip = new GameObject(itemData.name);
-        //GameObject newEquip = Instantiate(Resources.Load<GameObject>(itemData.prefabPath));
-        //newEquip.name = itemData.name;
-        newEquip.transform.SetParent(transform);
+        //GameObject newEquip = new GameObject(itemData.name);
+        EquipManager.Instance.weaponObject = Instantiate(Resources.Load<GameObject>(itemData.prefabPath));
 
-        Equip curEquip = newEquip.AddComponent<Equip>();
+        Equip curEquip = EquipManager.Instance.weaponObject.AddComponent<Equip>();
         equipItems[itemData.itemType] = curEquip;
 
         // UI 장비창 업데이트

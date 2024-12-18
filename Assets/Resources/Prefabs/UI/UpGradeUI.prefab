@@ -986,7 +986,7 @@ GameObject:
   - component: {fileID: 5012369560803702858}
   - component: {fileID: 8436177019143093595}
   - component: {fileID: 7024522665343338344}
-  - component: {fileID: 7428385290722605068}
+  - component: {fileID: 4006208238919494678}
   m_Layer: 5
   m_Name: UpGradeUI
   m_TagString: Untagged
@@ -1059,7 +1059,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7428385290722605068
+--- !u!114 &4006208238919494678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1068,23 +1068,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5766573042078032381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c472283d30ca53438ac510db3a636df, type: 3}
+  m_Script: {fileID: 11500000, guid: 5eaf6c6362dec354d89c2b96da91e8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTransform: {fileID: 0}
-  _productImage: {fileID: 2263718820036086120}
-  _productText: {fileID: 0}
-  _craftItemImage:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _craftItemText:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  craftResultButton: {fileID: 3702567423049171541}
 --- !u!1 &6075839602369662499
 GameObject:
   m_ObjectHideFlags: 0

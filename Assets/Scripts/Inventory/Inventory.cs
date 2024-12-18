@@ -85,16 +85,7 @@ public class Inventory
         InventoryItem item = GetItem(itemID);
 
         if (item != null && itemData.itemType <= ItemType.Mine)
-        { // 아이템이 장착 가능한 아이템인지 확인
-            //if (item.IsEquipped)
-            //{ // 장착한 아이템인지 여부 확인
-            //    item.IsEquipped = false; // 장착 해제
-            //}
-            //else
-            //{
-            //    item.IsEquipped = true; // 장착
-            //}
-
+        {
             OnInventoryChanged?.Invoke();
             // UI 갱신
         }
