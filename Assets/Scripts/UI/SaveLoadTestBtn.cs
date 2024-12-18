@@ -35,7 +35,9 @@ public class SaveLoadTestBtn : MonoBehaviour
         Debug.Log($"Inventory items: {player.Inventory.Items.Count}");
         foreach (var item in player.Inventory.Items)
         {
-            Debug.Log($"Item: {item.ItemName}, Quantity: {item.Quantity}");
+            var itemData = GameManager.Instance.DataManager.GetItemDataById(item.ItemID);
+
+            Debug.Log($"Item: {itemData.name}, Quantity: {item.Quantity}");
         }
     }
 }

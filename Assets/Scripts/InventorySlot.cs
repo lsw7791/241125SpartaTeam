@@ -19,7 +19,7 @@ public class InventorySlot : MonoBehaviour
             GameObject itemUseMenu = UIManager.Instance.GetUI<InventoryUI>().itemUseMenu;
             itemUseMenu.SetActive(true);
             itemUseMenu.TryGetComponent<ItemUseUI>(out var outUseUI);
-            //outUseUI.Initialize(item);  // 아이템 사용 UI 초기화
+            outUseUI.Initialize(item);  // 아이템 사용 UI 초기화
         });
     }
 
