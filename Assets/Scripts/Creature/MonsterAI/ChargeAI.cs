@@ -28,7 +28,7 @@ public class ChargeAI : MonsterAI
             return;
         }
 
-        float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+        float distanceToPlayer = Vector2.Distance(_monsterPosition.position, playerTransform.position);
 
         switch (currentState)
         {
@@ -83,7 +83,7 @@ public class ChargeAI : MonsterAI
 
         Debug.Log("돌진 시작!");
         float elapsedTime = 0f;
-        Vector3 direction = (chargeTargetPosition - transform.position).normalized;
+        Vector3 direction = (chargeTargetPosition - _monsterPosition.position).normalized;
 
         while (elapsedTime < chargeDuration)
         {
@@ -92,7 +92,7 @@ public class ChargeAI : MonsterAI
                 break;
             }
 
-            transform.Translate(direction * GameManager.Instance.DataManager.Creature.GetMoveSpeed(monster.id) * 20f * Time.deltaTime, Space.World);
+            _monsterPosition.Translate(direction * GameManager.Instance.DataManager.Creature.GetMoveSpeed(monster.id) * 20f * Time.deltaTime, Space.World);
             spriteRenderer.flipX = direction.x < 0;
             elapsedTime += Time.fixedDeltaTime;
             yield return new WaitForSeconds(Time.fixedDeltaTime);
@@ -107,7 +107,7 @@ public class ChargeAI : MonsterAI
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!isMove && transform.position.magnitude != 0)
+        if (!isMove && _monsterPosition.position.magnitude != 0)
         {
             // targetLayer에 포함되는 레이어인지 확인
             if (IsLayerMatched(layerMask.value, collision.gameObject.layer))

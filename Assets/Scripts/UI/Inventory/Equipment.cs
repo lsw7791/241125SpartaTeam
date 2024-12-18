@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,10 +21,11 @@ public class Equipment : MonoBehaviour
 
         // 새 장비 장착
         GameObject newEquip = new GameObject(itemData.name);
+        //GameObject newEquip = Instantiate(Resources.Load<GameObject>(itemData.prefabPath));
+        //newEquip.name = itemData.name;
         newEquip.transform.SetParent(transform);
 
         Equip curEquip = newEquip.AddComponent<Equip>();
-
         equipItems[itemData.itemType] = curEquip;
 
         // UI 장비창 업데이트

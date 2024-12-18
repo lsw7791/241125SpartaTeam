@@ -20,7 +20,7 @@ public class ItemUseUI : MonoBehaviour
         _useItemImage.sprite = inItem.ItemIcon;
         UseButtonClear();
 
-        if (itemData.itemType <= ItemType.Mine)
+        if (itemData.itemType < ItemType.Mine)
         {
             UseButton("착용하기").onClick.AddListener(() =>
             { // 장비 타입
