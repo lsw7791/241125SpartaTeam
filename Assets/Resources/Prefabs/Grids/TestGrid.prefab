@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6189156775736546733}
   - component: {fileID: 2600980648747691860}
   - component: {fileID: 7186872555489939621}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tiles_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3636487521532298156}
   - component: {fileID: 2924119284552919473}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TestGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 8096204171910085015}
   - component: {fileID: 54785109706661107}
   - component: {fileID: 8074219934812588823}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tiles_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2500,7 +2500,7 @@ GameObject:
   - component: {fileID: 2218773448620105236}
   - component: {fileID: 2684098550978440321}
   - component: {fileID: 783979483188485913}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tiles_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2936,7 +2936,7 @@ GameObject:
   - component: {fileID: 1962648723580842740}
   - component: {fileID: 4049186570569969068}
   - component: {fileID: 9082713029004977415}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tiles_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3057,7 +3057,7 @@ GameObject:
   - component: {fileID: 8682355046043304063}
   - component: {fileID: 4743926826431717607}
   - component: {fileID: 9213057361097703060}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tiles_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5116741972820331892}
   - component: {fileID: 710342693976093188}
   - component: {fileID: 8279666379208546737}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2182,7 +2182,7 @@ GameObject:
   - component: {fileID: 1775922072631331176}
   - component: {fileID: 1357879848315388718}
   - component: {fileID: 2606166527767172930}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90876,7 +90876,7 @@ GameObject:
   - component: {fileID: 5781463080624379914}
   - component: {fileID: 991654672383938318}
   - component: {fileID: 2948030776914700736}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90997,7 +90997,7 @@ GameObject:
   - component: {fileID: 714553954976013468}
   - component: {fileID: 1377396939774672765}
   - component: {fileID: 5770623054280421242}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92529,7 +92529,7 @@ GameObject:
   - component: {fileID: 8276978492406460135}
   - component: {fileID: 9167113784832228506}
   - component: {fileID: 7467190882562119886}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92648,7 +92648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3451321809976887663}
   - component: {fileID: 1649752631317651507}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stage3MineGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92701,7 +92701,7 @@ GameObject:
   - component: {fileID: 1675178649389470457}
   - component: {fileID: 4078805424276241341}
   - component: {fileID: 3010668090807742263}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100045,7 +100045,7 @@ GameObject:
   - component: {fileID: 2495865028892439651}
   - component: {fileID: 8937744727117667508}
   - component: {fileID: 1882886856022008725}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoToMine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100135,7 +100135,7 @@ GameObject:
   - component: {fileID: 6431715492211840196}
   - component: {fileID: 4871676137612789208}
   - component: {fileID: 178460457066229672}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Railroad
   m_TagString: Untagged
   m_Icon: {fileID: 0}

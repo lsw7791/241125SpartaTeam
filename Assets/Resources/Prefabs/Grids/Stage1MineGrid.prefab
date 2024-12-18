@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2190108204744268345}
   - component: {fileID: 1482614477840648155}
   - component: {fileID: 1773336302716122162}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 7128716374326652244}
   - component: {fileID: 3270425629856938571}
   - component: {fileID: 8882354733020601888}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7773,7 +7773,7 @@ GameObject:
   - component: {fileID: 5055907503210920546}
   - component: {fileID: 6790244415549285402}
   - component: {fileID: 5714519490119091369}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9794,7 +9794,7 @@ GameObject:
   - component: {fileID: 5954574049288785965}
   - component: {fileID: 2663940880146109622}
   - component: {fileID: 6786738172750396425}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OJ2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10096,7 +10096,7 @@ GameObject:
   - component: {fileID: 5811253432180361465}
   - component: {fileID: 6662815018225672348}
   - component: {fileID: 4675812932909788531}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: oj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11126,7 +11126,7 @@ GameObject:
   - component: {fileID: 7348014113786706872}
   - component: {fileID: 2492600123211749010}
   - component: {fileID: 2443531320179415220}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45571,7 +45571,7 @@ GameObject:
   - component: {fileID: 3923902628410358561}
   - component: {fileID: 4540912519577674410}
   - component: {fileID: 2343360181543889145}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47615,7 +47615,7 @@ GameObject:
   - component: {fileID: 6828377866245724332}
   - component: {fileID: 6376042011999079084}
   - component: {fileID: 6521314213661314429}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoToMine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47705,7 +47705,7 @@ GameObject:
   - component: {fileID: 4148315601271899618}
   - component: {fileID: 5613358907574122712}
   - component: {fileID: 5497857130793236116}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stage1MineGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47804,7 +47804,7 @@ GameObject:
   - component: {fileID: 245205462201995696}
   - component: {fileID: 5651547738399963475}
   - component: {fileID: 2884566146140572032}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoToForest
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 247650127346713067}
   - component: {fileID: 4209344585271645230}
   - component: {fileID: 6621796247459451284}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoToVillage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 4106185161303489109}
   - component: {fileID: 5036799096168713744}
   - component: {fileID: 6686726262032790533}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1592,7 +1592,7 @@ GameObject:
   - component: {fileID: 958825281251443279}
   - component: {fileID: 1435416003720486247}
   - component: {fileID: 8137952056426569327}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18186,7 +18186,7 @@ GameObject:
   - component: {fileID: 4708778193727134451}
   - component: {fileID: 8834262574520528767}
   - component: {fileID: 7532908149145090668}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18791,7 +18791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1473202061867542794}
   - component: {fileID: 5381280210118110337}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18846,7 +18846,7 @@ GameObject:
   - component: {fileID: 4334818469999424046}
   - component: {fileID: 2491966314111274861}
   - component: {fileID: 2229957154359650437}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19691,7 +19691,7 @@ GameObject:
   - component: {fileID: 1071834104897253219}
   - component: {fileID: 3511751634704088962}
   - component: {fileID: 331821770535374435}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20981,7 +20981,7 @@ GameObject:
   - component: {fileID: 5222606853039578843}
   - component: {fileID: 4916531609635899865}
   - component: {fileID: 3231519671198268995}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21102,7 +21102,7 @@ GameObject:
   - component: {fileID: 2159974855714475751}
   - component: {fileID: 2364356355195140410}
   - component: {fileID: 5967427913869584537}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23393,7 +23393,7 @@ GameObject:
   - component: {fileID: 1425563035581913671}
   - component: {fileID: 2944782902481989747}
   - component: {fileID: 5546954455285042634}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
