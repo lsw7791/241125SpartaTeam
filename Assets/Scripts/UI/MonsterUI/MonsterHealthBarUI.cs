@@ -42,12 +42,17 @@ public class MonsterHealthBarUI : MonoBehaviour
         return renderer.isVisible;
     }
     // 체력바 업데이트
-    private void UpdateHealthBar()
+    public void UpdateHealthBar()
     {
         if (healthBarForeground != null)
         {
+            // 현재 체력 비율 (0.0 ~ 1.0)
+            currentHealth = monster.currentHealth;
             float targetFill = currentHealth / maxHealth;
-            healthBarForeground.fillAmount = Mathf.Lerp(healthBarForeground.fillAmount, targetFill, Time.deltaTime * 10);
+            Debug.Log($"현재 체력 : {currentHealth}, 최대 체력 : {maxHealth}");
+            // 체력바의 fillAmount를 부드럽게 변화
+            //healthBarForeground.fillAmount = Mathf.Lerp(healthBarForeground.fillAmount, targetFill, Time.deltaTime );
+            healthBarForeground.fillAmount = targetFill;
         }
     }
 }
