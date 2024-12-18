@@ -10,6 +10,7 @@ public class CharacterSlotUI : UIBase
     [SerializeField] private Button _deleteButton;   // 삭제 버튼
     [SerializeField] private Button _backButton;     // 뒤로가기 버튼
 
+
     private PlayerData selectedCharacter;  // 선택된 캐릭터 데이터
 
     private void OnEnable()

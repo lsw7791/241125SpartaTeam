@@ -527,9 +527,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9b3f58354f7874cbc46f3726cbd38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanDrag: 1
   rectTransform: {fileID: 0}
   resultText: {fileID: 5779131816546698920}
-  resultImage: {fileID: 1794739195253204907}
   messageText: {fileID: 3567585221963215314}
   _productImage: {fileID: 1794739195253204907}
   _productText: {fileID: 6908199959146688601}

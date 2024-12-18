@@ -88,7 +88,7 @@ public class CraftingManager : MonoBehaviour
         ItemData itemData = GameManager.Instance.DataManager.GetItemDataById(selectedItemId);
         if (itemData != null)
         {
-            GameManager.Instance.Player.inventory.AddItem(selectedItemId, itemData.name, 1, itemData.itemType, Resources.Load<Sprite>(itemData.spritePath));
+            GameManager.Instance.Player.inventory.AddItem(selectedItemId);
             //Debug.Log($"아이템 ID {selectedItemId} 추가됨.");
         }
     }

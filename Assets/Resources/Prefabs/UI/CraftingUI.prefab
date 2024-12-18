@@ -526,6 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c472283d30ca53438ac510db3a636df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanDrag: 1
   rectTransform: {fileID: 0}
   _productImage: {fileID: 9192850700934046274}
   _productText: {fileID: 6252658002052106438}

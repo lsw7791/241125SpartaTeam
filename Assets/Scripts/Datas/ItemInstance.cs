@@ -22,5 +22,7 @@ public class ItemInstance
     public float drop;     // 드랍율(아이템 획득 확률)
     public string prefabsPath; // 아이템의 프리팹 경로
     public string imagePath;   // 아이템의 이미지 경로
+    public string goldRange; // 골드 범위 "min,max" 형태로 저장
+
 
 }
