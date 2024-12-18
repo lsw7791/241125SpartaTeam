@@ -5,47 +5,47 @@ using UnityEngine.UI;
 
 public class Equipment : MonoBehaviour
 {
-    //public Dictionary<EquipSlot, Equip> equipItems = new Dictionary<EquipSlot, Equip>();
-    //[SerializeField] private EquipmentUI _equipmentUI;
+    public Dictionary<ItemType, Equip> equipItems = new Dictionary<ItemType, Equip>();
+    [SerializeField] private EquipmentUI _equipmentUI;
 
-    //public void EquipNew(InventoryItem inItem)
-    //{
-    //    if (inItem.equipSlot == EquipSlot.None)
-    //    {
-    //        return;
-    //    }
+    public void EquipNew(InventoryItem inItem)
+    {
+        var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
 
-    //    // 기존 장비 해제
-    //    UnEquip(inItem.equipSlot);
+        if (itemData.itemType > ItemType.Mine)
+        {
+            return;
+        }
 
-    //    // 새 장비 장착
-    //    GameObject newEquip = new GameObject(inItem.ItemName);
-    //    newEquip.transform.SetParent(transform);
+        // 기존 장비 해제
+        UnEquip(itemData.itemType);
 
-    //    Equip curEquip = newEquip.AddComponent<Equip>();
-    //    Image newImage = curEquip.AddComponent<Image>();
-    //    newImage.sprite = inItem.ItemIcon;
+        // 새 장비 장착
+        GameObject newEquip = new GameObject(itemData.name);
+        newEquip.transform.SetParent(transform);
 
-    //    equipItems[inItem.equipSlot] = curEquip;
+        Equip curEquip = newEquip.AddComponent<Equip>();
 
-    //    // UI 장비창 업데이트
-    //    _equipmentUI.UpdateEquipmentSlot(inItem.equipSlot, inItem.ItemIcon);
-    //}
+        equipItems[itemData.itemType] = curEquip;
 
-    //public void UnEquip(EquipSlot slot)
-    //{
-    //    if (equipItems.ContainsKey(slot))
-    //    {
-    //        Destroy(equipItems[slot].gameObject);
-    //        equipItems.Remove(slot);
+        // UI 장비창 업데이트
+        _equipmentUI.UpdateEquipmentSlot(itemData.itemType, inItem.ItemIcon);
+    }
 
-    //        // UI 장비창 클리어
-    //        _equipmentUI.ClearEquipmentSlot(slot);
-    //    }
-    //}
+    public void UnEquip(ItemType slot)
+    {
+        if (equipItems.ContainsKey(slot))
+        {
+            Destroy(equipItems[slot].gameObject);
+            equipItems.Remove(slot);
 
-    //public void EquipmentUIReference(EquipmentUI equipmentUI)
-    //{
-    //    _equipmentUI = equipmentUI;
-    //}
+            // UI 장비창 클리어
+            _equipmentUI.ClearEquipmentSlot(slot);
+        }
+    }
+
+    public void EquipmentUIReference(EquipmentUI equipmentUI)
+    {
+        _equipmentUI = equipmentUI;
+    }
 }
