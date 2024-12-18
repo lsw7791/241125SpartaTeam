@@ -20,27 +20,37 @@ public class Equipment : MonoBehaviour
         UnEquip(itemData.itemType);
 
         // 새 장비 장착
-        GameObject newEquip = new GameObject(itemData.name);
-        //GameObject newEquip = Instantiate(Resources.Load<GameObject>(itemData.prefabPath));
-        //newEquip.name = itemData.name;
-        newEquip.transform.SetParent(transform);
+        //GameObject newEquip = new GameObject(itemData.name);
+        EquipManager.Instance.weaponObject = Instantiate(Resources.Load<GameObject>(itemData.prefabPath));
 
-        Equip curEquip = newEquip.AddComponent<Equip>();
+        Equip curEquip = EquipManager.Instance.weaponObject.AddComponent<Equip>();
         equipItems[itemData.itemType] = curEquip;
 
         // UI 장비창 업데이트
         _equipmentUI.UpdateEquipmentSlot(itemData.itemType, inItem.ItemIcon);
+
+        inItem.IsEquipped = true;
     }
 
-    public void UnEquip(ItemType slot)
+    public void UnEquip(ItemType itemType)
     {
-        if (equipItems.ContainsKey(slot))
+        if (equipItems.ContainsKey(itemType))
         {
-            Destroy(equipItems[slot].gameObject);
-            equipItems.Remove(slot);
+            Destroy(equipItems[itemType].gameObject);
+            equipItems.Remove(itemType);
 
             // UI 장비창 클리어
-            _equipmentUI.ClearEquipmentSlot(slot);
+            _equipmentUI.ClearEquipmentSlot(itemType);
+
+            // 인벤토리 상태 해제 처리
+            foreach (var item in GameManager.Instance.Player.inventory.Items)
+            {
+                var itemData = GameManager.Instance.DataManager.GetItemDataById(item.ItemID);
+                if (itemData != null && itemData.itemType == itemType)
+                {
+                    item.IsEquipped = false;
+                }
+            }
         }
     }
 
