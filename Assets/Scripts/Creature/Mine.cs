@@ -75,13 +75,11 @@ public class Mine : MonoBehaviour, ICreature
                 {
                     GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
 
-                    // 아이템 스프라이트 로드
-                    Sprite itemSprite = Resources.Load<Sprite>(itemData.spritePath);
                     // 아이템 데이터 설정
                     TestItem testItem = item.GetComponent<TestItem>();
                     if (testItem != null)
                     {
-                        testItem.SetData(itemData, itemSprite);  // 아이템 데이터와 스프라이트 설정
+                        testItem.SetData(itemData);  // 아이템 데이터와 스프라이트 설정
                     }
                 }
             }

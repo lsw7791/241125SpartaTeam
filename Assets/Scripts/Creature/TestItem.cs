@@ -9,19 +9,17 @@ public class TestItem : MonoBehaviour
     private int maxGold; // 최대 골드
 
     // 아이템 데이터를 설정하는 메서드 (골드용)
-    public void SetData(ItemData data, Sprite sprite, int minGold, int maxGold)
+    public void SetData(ItemData data, int minGold, int maxGold)
     {
         itemData = data;
-        itemSprite = sprite;
         this.minGold = minGold;
         this.maxGold = maxGold;
     }
 
     // 아이템 데이터를 설정하는 메서드 (일반 아이템용)
-    public void SetData(ItemData data, Sprite sprite)
+    public void SetData(ItemData data)
     {
         itemData = data;
-        itemSprite = sprite;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
