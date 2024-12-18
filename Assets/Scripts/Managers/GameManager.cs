@@ -7,6 +7,7 @@ public class GameManager : MonoSingleton<GameManager>
     public DataManager DataManager; // DataManager만 사용하도록 변경
     public CraftingManager CraftingManager;
     public SpawnManager SpawnManager;
+    public EquipManager EquipManager;
     public Player Player;
     private PlayerData _currentPlayer;
     public int SceneNum;
