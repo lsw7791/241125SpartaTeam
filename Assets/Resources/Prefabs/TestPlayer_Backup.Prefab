@@ -1797,16 +1797,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nickName: 
   stats:
+    NickName: 
     MaxHP: 100
     CurrentHP: 1
-    Stamina: 100
+    MaxStamina: 100
+    CurrentStamina: 100
     Gold: 1000
     Damage: 1000
     Speed: 5
-    AttackSpeed: 5
-    Defense: 5
+    ATKSpeed: 1
+    Def: 1
     WeaponType: 0
     isDie: 0
+    QuickSlotItems: []
+    InventoryItems: []
   inventory:
     Items: []
   _topDownController: {fileID: 0}
@@ -1838,6 +1842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6849e14560c8d4a44a75308f887c274e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _equipmentUI: {fileID: 0}
 --- !u!1 &3332842344908746626
 GameObject:
   m_ObjectHideFlags: 0
