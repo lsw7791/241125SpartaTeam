@@ -1676,10 +1676,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 290866459476260241, guid: 89f1ddb5fa5e34dfd80d0ac53f517499, type: 3}
-      propertyPath: _hairList.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5763870860667902814, guid: 89f1ddb5fa5e34dfd80d0ac53f517499, type: 3}
       propertyPath: m_Name
       value: TestPlayer_Backup
