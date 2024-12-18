@@ -24,7 +24,7 @@ public class Monster : MonoBehaviour, ICreature
     }
     public void Die()
     {
-        DiePosition = (Vector2)GetComponentInChildren<Transform>().gameObject.transform.position;
+        DiePosition = gameObject.transform.position;
 
         if (monsterPool != null)
         {
