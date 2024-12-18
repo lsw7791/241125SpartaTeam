@@ -7,7 +7,7 @@ public class PlayerCanvas : MonoBehaviour
 {
     [Header("Name Settings")]
     public string playerName = "Player"; // 기본 플레이어 이름
-    public TextMeshPro playerNameText;   // 이름을 표시할 TextMeshPro
+    public TMP_Text playerNameText;   // 이름을 표시할 TextMeshPro
 
     [Header("Position Settings")]
     public Vector3 nameOffset = new Vector3(0, 1.5f, 0); // 머리 위 위치
