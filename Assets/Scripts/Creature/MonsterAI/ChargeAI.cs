@@ -107,6 +107,10 @@ public class ChargeAI : MonsterAI
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.transform.TryGetComponent<IDamageable>(out var outTarget))
+        {
+            outTarget.TakeDamage(GameManager.Instance.DataManager.Creature.GetAttack(monster.id));
+        }
         if (!isMove && _monsterPosition.position.magnitude != 0)
         {
             // targetLayer에 포함되는 레이어인지 확인
