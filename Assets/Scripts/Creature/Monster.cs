@@ -81,7 +81,6 @@ public class Monster : MonoBehaviour, ICreature
             Vector2 dropPosition = DiePosition + randomOffset ;
 
             GameObject item = Instantiate(itemPrefab, dropPosition, Quaternion.identity);
-            Sprite itemSprite = Resources.Load<Sprite>(itemData.spritePath);
 
             TestItem testItem = item.GetComponent<TestItem>();
 
@@ -89,11 +88,11 @@ public class Monster : MonoBehaviour, ICreature
             {
                 int minGold = itemData.goldRange[0]; // √÷º“ ∞ÒµÂ
                 int maxGold = itemData.goldRange[1]; // √÷¥Î ∞ÒµÂ
-                testItem.SetData(itemData, itemSprite, minGold, maxGold);
+                testItem.SetData(itemData, minGold, maxGold);
             }
             else
             {
-                testItem.SetData(itemData, itemSprite);
+                testItem.SetData(itemData);
             }
         }
     }

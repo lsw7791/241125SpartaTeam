@@ -24,26 +24,23 @@ public class ItemUseUI : MonoBehaviour
         {
             UseButton("착용하기").onClick.AddListener(() =>
             { // 장비 타입
-                // TODO :: 착용 부위 타입으로 조건을 걸어서 착용하기
                 if (inItem.IsEquipped)
                 {
-                    GameManager.Instance.Player.inventory.EquipItem(inItem.ItemID);
-                    // 인벤에 착용중 표시 제거
                     GameManager.Instance.Player.equipment.UnEquip(itemData.itemType);
                     // 해제
                 }
                 else
                 {
-                    GameManager.Instance.Player.inventory.EquipItem(inItem.ItemID);
-                    // 인벤에 착용중 표시
                     GameManager.Instance.Player.equipment.EquipNew(inItem);
                     // 착용
+                    inItem.IsEquipped = true;
                 }
+                GameManager.Instance.Player.inventory.EquipItem(inItem.ItemID);
             });
-            //UseButton("강화하기").onClick.AddListener(() =>
-            //{ // 장비 타입
-            //    Debug.Log("강화");
-            //});
+            UseButton("강화하기").onClick.AddListener(() =>
+            { // 장비 타입
+                UIManager.Instance.ToggleUI<UpGradeUI>();
+            });
             //UseButton("조합하기").onClick.AddListener(() =>
             //{ // 재료 타입
             //    Debug.Log("조합");
@@ -52,10 +49,10 @@ public class ItemUseUI : MonoBehaviour
             //{ // 포션 타입
             //    Debug.Log("사용");
             //});
-            //UseButton("버리기").onClick.AddListener(() =>
-            //{ // 모든 아이템 타입
-            //    Debug.Log("버리기");
-            //});
+            UseButton("버리기").onClick.AddListener(() =>
+            { // 모든 아이템 타입
+                Debug.Log("버리기");
+            });
         }
     }
 
