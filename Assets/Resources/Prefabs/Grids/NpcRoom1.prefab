@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8731011659280325689}
   - component: {fileID: 6758692609655767097}
   - component: {fileID: 4599431941118420588}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoToVillage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 3114779330358056049}
   - component: {fileID: 500909229558865944}
   - component: {fileID: 3464889124964127522}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: oj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2000,7 +2000,7 @@ GameObject:
   m_Component:
   - component: {fileID: 812847291397029307}
   - component: {fileID: 1647975183726576539}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: NpcRoom1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2054,7 +2054,7 @@ GameObject:
   - component: {fileID: 6948858727701180274}
   - component: {fileID: 4999333364954130641}
   - component: {fileID: 6405192373084451807}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2993,7 +2993,7 @@ GameObject:
   - component: {fileID: 6231947063382054594}
   - component: {fileID: 3773606758451658561}
   - component: {fileID: 7689746225395048251}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3756,7 +3756,7 @@ GameObject:
   - component: {fileID: 7000458079433612659}
   - component: {fileID: 1076696814157515737}
   - component: {fileID: 7373391819765363589}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4524,7 +4524,7 @@ GameObject:
   - component: {fileID: 8496070468334611935}
   - component: {fileID: 5764081407444956878}
   - component: {fileID: 2212675032954318244}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6001,7 +6001,7 @@ GameObject:
   - component: {fileID: 2308853272098030848}
   - component: {fileID: 8311163330862619193}
   - component: {fileID: 631415713838961779}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8589,7 +8589,7 @@ GameObject:
   - component: {fileID: 4918762541158761776}
   - component: {fileID: 8280950549997120757}
   - component: {fileID: 5482475438274530154}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}

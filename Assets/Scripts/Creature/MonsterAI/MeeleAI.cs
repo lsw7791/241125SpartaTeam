@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class MeeleAI : MonsterAI
 {
-
+    private void Awake()
+    {
+        GetComponent<Collider2D>();
+    }
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -37,11 +40,6 @@ public class MeeleAI : MonsterAI
                     ChasePlayer();
                 }
                 break;
-
-            case MonsterState.Attacking:
-                AttackPlayer();
-                break;
-
             case MonsterState.Returning:
                 if (distanceToPlayer > GameManager.Instance.DataManager.Creature.GetDetectionRange(monster.id))
                 {
@@ -56,18 +54,25 @@ public class MeeleAI : MonsterAI
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.TryGetComponent<IDamageable>(out var outTarget))
+        {
+            outTarget.TakeDamage(GameManager.Instance.DataManager.Creature.GetAttack(monster.id));
+        }
+    }
     protected override void AttackPlayer()
     {
         base.AttackPlayer();
-        if (curTime >= GameManager.Instance.DataManager.Creature.GetAttackSpeed(monster.id))
-        {
-            curTime = 0f;
+        //if (curTime >= GameManager.Instance.DataManager.Creature.GetAttackSpeed(monster.id))
+        //{
+        //    curTime = 0f;
 
-            // 공격이 끝나면 상태를 Chasing으로 변경
-            currentState = MonsterState.Chasing;
+        //    // 공격이 끝나면 상태를 Chasing으로 변경
+        //    currentState = MonsterState.Chasing;
 
-            // 플레이어 공격 (간단한 공격 애니메이션 또는 로직 삽입)
+        //    // 플레이어 공격 (간단한 공격 애니메이션 또는 로직 삽입)
 
-        }
+        //}
     }
 }

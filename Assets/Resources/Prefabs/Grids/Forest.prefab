@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6395917554673967461}
   - component: {fileID: 2346695485329218323}
   - component: {fileID: 138041514664376471}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 3070107417335424123}
   - component: {fileID: 876346692464655346}
   - component: {fileID: 840724884870350310}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1003,7 +1003,7 @@ GameObject:
   - component: {fileID: 5501095455228202197}
   - component: {fileID: 851694283839110399}
   - component: {fileID: 2086262781225939836}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoToMine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1092,7 +1092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3258396871874148980}
   - component: {fileID: 570499752909907472}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1146,7 +1146,7 @@ GameObject:
   - component: {fileID: 611186361384118686}
   - component: {fileID: 304823093359244842}
   - component: {fileID: 6187010604474953633}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1694,7 +1694,7 @@ GameObject:
   - component: {fileID: 1146979393847382117}
   - component: {fileID: 7934860549749097634}
   - component: {fileID: 4801158116272580503}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104806,7 +104806,7 @@ GameObject:
   - component: {fileID: 8227075084744070083}
   - component: {fileID: 3367567154208762716}
   - component: {fileID: 2222146512705389416}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107218,7 +107218,7 @@ GameObject:
   - component: {fileID: 8887499883440794871}
   - component: {fileID: 7444563624814683108}
   - component: {fileID: 3654605948944036298}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108062,7 +108062,7 @@ GameObject:
   - component: {fileID: 9036943502232219307}
   - component: {fileID: 8448253388301648816}
   - component: {fileID: 2970215615954662169}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoToVillage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108152,7 +108152,7 @@ GameObject:
   - component: {fileID: 4688568653735749235}
   - component: {fileID: 2725646912544756182}
   - component: {fileID: 5594894364779751921}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

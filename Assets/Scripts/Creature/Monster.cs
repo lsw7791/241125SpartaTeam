@@ -10,7 +10,6 @@ public class Monster : MonoBehaviour, ICreature
     [SerializeField]private bool isDie;
     [SerializeField] public int id { get; private set; }
     MonsterPool monsterPool;
-    GameObject _childMonster;
     public Vector2 DiePosition;
     MonsterHealthBarUI monsterHealthBarUI;
     // 몬스터가 죽었을 때 호출되는 함수

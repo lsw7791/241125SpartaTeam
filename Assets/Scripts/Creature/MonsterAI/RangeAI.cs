@@ -8,6 +8,11 @@ public class RangeAI : MonsterAI
     [SerializeField]
     private Transform attackPoint;                   // 투사체 발사 위치
 
+    private void Awake()
+    {
+        attackPoint = this.transform;
+        projectilePrefab = Resources.Load<GameObject>("Prefabs/AttackObjects/TestEnemyRangeAttack");
+    }
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
