@@ -34,7 +34,7 @@ public class PlayerData
         Damage = 10;
         Speed = 1;
         ATKSpeed = 1;
-        Def = 1;
+        Def = 0;
         WeaponType = 0;
         isDie = false;
     }

@@ -43,16 +43,21 @@ public class Monster : MonoBehaviour, ICreature
     // 데미지를 입을 때 호출되는 함수
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        int value = GameManager.Instance.DataManager.Creature.GetDefense(id);
+        value -= damage;
+        if (value < 0)
+        {
+            currentHealth += value;
 
-        if (currentHealth <= 0)
-        {
-            Die();  // 체력이 0 이하가 되면 죽음 처리
-        }
-        else
-        {
-            Debug.Log($"Monster {GameManager.Instance.DataManager.Creature.GetName(id)} remaining health: {currentHealth}");
-        }
+            if (currentHealth <= 0)
+            {
+                Die();  // 체력이 0 이하가 되면 죽음 처리
+            }
+            else
+            {
+                Debug.Log($"Monster {GameManager.Instance.DataManager.Creature.GetName(id)} remaining health: {currentHealth}");
+            }
+        }     
     }
 
     // 몬스터가 죽을 때 호출되는 드랍 아이템 생성 함수

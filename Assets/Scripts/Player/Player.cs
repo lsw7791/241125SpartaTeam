@@ -1,3 +1,4 @@
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class Player : MonoBehaviour,IDamageable
@@ -65,12 +66,17 @@ public class Player : MonoBehaviour,IDamageable
     // 데미지 처리
     public void TakeDamage(int damage)
     {
-        stats.CurrentHP -= damage;
-
-        if (stats.CurrentHP <= 0)
+        int value = stats.Def;
+        value -= damage;
+        if(value <0)
         {
-            Die();
-        }
+            stats.CurrentHP += value;
+
+            if (stats.CurrentHP <= 0)
+            {
+                Die();
+            }
+        }  
     }
 
     // 플레이어 죽음 처리
