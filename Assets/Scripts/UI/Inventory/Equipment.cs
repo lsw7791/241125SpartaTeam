@@ -30,17 +30,29 @@ public class Equipment : MonoBehaviour
 
         // UI 장비창 업데이트
         _equipmentUI.UpdateEquipmentSlot(itemData.itemType, inItem.ItemIcon);
+
+        inItem.IsEquipped = true;
     }
 
-    public void UnEquip(ItemType slot)
+    public void UnEquip(ItemType itemType)
     {
-        if (equipItems.ContainsKey(slot))
+        if (equipItems.ContainsKey(itemType))
         {
-            Destroy(equipItems[slot].gameObject);
-            equipItems.Remove(slot);
+            Destroy(equipItems[itemType].gameObject);
+            equipItems.Remove(itemType);
 
             // UI 장비창 클리어
-            _equipmentUI.ClearEquipmentSlot(slot);
+            _equipmentUI.ClearEquipmentSlot(itemType);
+
+            // 인벤토리 상태 해제 처리
+            foreach (var item in GameManager.Instance.Player.inventory.Items)
+            {
+                var itemData = GameManager.Instance.DataManager.GetItemDataById(item.ItemID);
+                if (itemData != null && itemData.itemType == itemType)
+                {
+                    item.IsEquipped = false;
+                }
+            }
         }
     }
 
