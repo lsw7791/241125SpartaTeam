@@ -6,16 +6,18 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Monster : MonoBehaviour, ICreature
 {
-    [SerializeField]private int currentHealth;
+    public int currentHealth { get; private set; }
     [SerializeField]private bool isDie;
     [SerializeField] public int id { get; private set; }
     MonsterPool monsterPool;
     GameObject _childMonster;
     public Vector2 DiePosition;
+    MonsterHealthBarUI monsterHealthBarUI;
     // 몬스터가 죽었을 때 호출되는 함수
     private void Start()
     {
         monsterPool = GetComponentInParent<MonsterPool>();
+        monsterHealthBarUI = GetComponent<MonsterHealthBarUI>();
     }
     public void SetComponent(int value)
     {
@@ -48,7 +50,8 @@ public class Monster : MonoBehaviour, ICreature
         if (value < 0)
         {
             currentHealth += value;
-
+            //이미지 체력 업데이트
+            //monsterHealthBarUI.UpdateHealthBar();
             if (currentHealth <= 0)
             {
                 Die();  // 체력이 0 이하가 되면 죽음 처리
