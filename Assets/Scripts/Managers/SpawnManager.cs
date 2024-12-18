@@ -32,19 +32,22 @@ public class SpawnManager : MonoBehaviour
         Debug.Log($"맵 넘버 : {mapNum}");
         switch (mapNum)
         {
-            case 1://마을
+            case 1://숲
+                SoundManager.Instance.PlayStartBGMMystical();
                 break;
-            case 2://숲
+            case 2://마을
+                SoundManager.Instance.PlayStartBGMAsiaTravel();
                 break;
             case 3://마인1
+                SoundManager.Instance.PlayStartBGMSciFiMoodtimeflow();
                 if (spawner1 == null) spawner1 = gameObject.AddComponent<Spawner>();
                 StageMine1(spawner1);
                 break;
-            case 5://마인3
+            case 5://마인2
                 if (spawner2 == null) spawner2 = gameObject.AddComponent<Spawner>();
                 StageMine2(spawner2);
                 break;
-            case 6://마인3
+            case 6://마인1
                 if (spawner1 == null) spawner1 = gameObject.AddComponent<Spawner>();
                 StageMine1(spawner1);
                 break;
@@ -52,14 +55,18 @@ public class SpawnManager : MonoBehaviour
                 if (spawner3 == null) spawner3 = gameObject.AddComponent<Spawner>();
                 StageMine3(spawner3);
                 break;
-            case 8://마인3
+            case 8://마인2
                 if (spawner2 == null) spawner2 = gameObject.AddComponent<Spawner>();
                 StageMine2(spawner2);
+                break;
+            case 23://타이틀>하우스
+                SoundManager.Instance.PlayStartBGMAsiaTravel();        
                 break;
             case 24: //캐릭터 셀렉션
                 playerObject.SetActive(false);
                 break;
             case 25: //캐릭터 셀렉션
+                SoundManager.Instance.PlayStartBGMMystical();
                 playerObject.SetActive(false);
                 break;
             default:
