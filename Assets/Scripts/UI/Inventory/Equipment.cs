@@ -21,9 +21,9 @@ public class Equipment : MonoBehaviour
 
         // 새 장비 장착
         //GameObject newEquip = new GameObject(itemData.name);
-        EquipManager.Instance.EquipedWeapon = Instantiate(Resources.Load<GameObject>(itemData.prefabPath));
+        //EquipManager.Instance.EquipedWeapon = Instantiate(Resources.Load<GameObject>(itemData.prefabPath));
 
-        Equip curEquip = EquipManager.Instance.EquipedWeapon.AddComponent<Equip>();
+        Equip curEquip = GameManager.Instance.Player.Weapon.AddComponent<Equip>();
         equipItems[itemData.itemType] = curEquip;
 
         // UI 장비창 업데이트
@@ -36,7 +36,15 @@ public class Equipment : MonoBehaviour
     {
         if (equipItems.ContainsKey(itemType))
         {
-            Destroy(equipItems[itemType].gameObject);
+            // 장비 오브젝트의 SpriteRenderer를 null로 설정
+            Equip currentEquip = equipItems[itemType];
+            SpriteRenderer equipSpriteRenderer = currentEquip.GetComponentInChildren<SpriteRenderer>();
+
+            if (equipSpriteRenderer != null)
+            {
+                equipSpriteRenderer.sprite = null; // 스프라이트 해제
+            }
+
             equipItems.Remove(itemType);
 
             // UI 장비창 클리어
@@ -53,6 +61,7 @@ public class Equipment : MonoBehaviour
             }
         }
     }
+
 
     public void EquipmentUIReference(EquipmentUI equipmentUI)
     {

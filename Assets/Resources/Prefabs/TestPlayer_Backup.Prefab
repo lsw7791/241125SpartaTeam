@@ -1406,7 +1406,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -4
-  m_Sprite: {fileID: -6657482867516515422, guid: 07809dc50b5fe4b33beeb16bda911253, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2952,6 +2952,7 @@ MonoBehaviour:
   _playerWeapon: {fileID: 0}
   _playerCamera: {fileID: 0}
   equipment: {fileID: 0}
+  Weapon: {fileID: 7299855761867217578}
 --- !u!114 &8041635837307003536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3378,19 +3379,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5c6732db8ddf04893e6699342f0710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponPlace: {fileID: 7299855761867217578}
-  HelmePlacet: {fileID: 5289272713555914139}
-  TopPlace: {fileID: 8379907046904672669}
-  ArmorPlace: {fileID: 779401532715212309}
-  CapePlace: {fileID: 8449764841411958332}
-  ShieldPlace: {fileID: 2174797880281532938}
-  EquipedWeapon: {fileID: 4372660492950472785, guid: f3c3af2f3b999d64886c7122f3a58517, type: 3}
-  EquipedHelmet: {fileID: 0}
-  EquipedTop: {fileID: 0}
-  EquipedArmor: {fileID: 0}
-  EquipedBottom: {fileID: 0}
-  EquipedCape: {fileID: 0}
-  EquipedShield: {fileID: 0}
+  EquipmentSlots:
+  - Type: 1
+    EquipPlace: {fileID: 4542340725945293667}
+    EquipSpriteRenderer: {fileID: 0}
+  - Type: 2
+    EquipPlace: {fileID: 5699824304893289810}
+    EquipSpriteRenderer: {fileID: 0}
+  - Type: 4
+    EquipPlace: {fileID: 5289272713555914139}
+    EquipSpriteRenderer: {fileID: 0}
+  - Type: 5
+    EquipPlace: {fileID: 8379907046904672669}
+    EquipSpriteRenderer: {fileID: 0}
+  - Type: 7
+    EquipPlace: {fileID: 779401532715212309}
+    EquipSpriteRenderer: {fileID: 0}
+  - Type: 8
+    EquipPlace: {fileID: 8449764841411958332}
+    EquipSpriteRenderer: {fileID: 0}
+  - Type: 6
+    EquipPlace: {fileID: 2873738105872520361}
+    EquipSpriteRenderer: {fileID: 0}
 --- !u!1 &6552097119712053401
 GameObject:
   m_ObjectHideFlags: 0
@@ -4230,7 +4240,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -9
-  m_Sprite: {fileID: -1701842369826841683, guid: 07809dc50b5fe4b33beeb16bda911253, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4547,12 +4557,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -100
-  m_Sprite: {fileID: 21300000, guid: cdd52cb0284ac434287913c6465ccc81, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.71875, y: 0.34375}
+  m_Size: {x: 0.23, y: 0.11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

@@ -12,6 +12,7 @@ public class Player : MonoBehaviour,IDamageable
     public PlayerWeapon _playerWeapon;
     public PlayerCamera _playerCamera;
     public Equipment equipment;
+    public GameObject Weapon;
 
     // QuickSlots 프로퍼티
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경

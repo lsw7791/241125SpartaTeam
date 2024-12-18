@@ -20,7 +20,6 @@ public class EquipmentUI : MonoBehaviour
     {
         _equipmentSlots = new Dictionary<ItemType, Image>
         {
-            
             { ItemType.Helmet, _headSlot },
             { ItemType.Armor, _armorSlot },
             { ItemType.Weapon, _weaponSlot },
@@ -36,23 +35,29 @@ public class EquipmentUI : MonoBehaviour
         GameManager.Instance.Player.equipment.EquipmentUIReference(this);
     }
 
-    // 장비창에 아이템 아이콘 표시
+    // 장비창에 아이템 아이콘 표시 + EquipManager 연동
     public void UpdateEquipmentSlot(ItemType slot, Sprite itemIcon)
     {
         if (_equipmentSlots.TryGetValue(slot, out Image slotImage))
         {
             slotImage.sprite = itemIcon;
             slotImage.enabled = itemIcon != null; // 아이콘이 없으면 비활성화
+
+            // EquipManager에 해당 슬롯 업데이트 요청
+            EquipManager.Instance.UpdateEquipPlace(slot, itemIcon);
         }
     }
 
-    // 장비 해제 시 슬롯 비우기
+    // 장비 해제 시 슬롯 비우기 + EquipManager 연동
     public void ClearEquipmentSlot(ItemType slot)
     {
         if (_equipmentSlots.TryGetValue(slot, out Image slotImage))
         {
             slotImage.sprite = null;
             slotImage.enabled = false;
+
+            // EquipManager에 해당 슬롯 클리어 요청
+            EquipManager.Instance.UpdateEquipPlace(slot, null);
         }
     }
 }
