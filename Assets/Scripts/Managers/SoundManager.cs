@@ -34,8 +34,8 @@ public class SoundManager : MonoSingleton<SoundManager>
     }
     private void Start()
     {
-        _bgmSource.volume = 0.5f;
-        _sfxSource.volume = 0.5f;
+        _bgmSource.volume = 0.3f;
+        _sfxSource.volume = 0.3f;
         //PlayBGM(bgmClip); // BGM 시작 시 사용할 수 있도록 설정 (옵션)
     }
 
