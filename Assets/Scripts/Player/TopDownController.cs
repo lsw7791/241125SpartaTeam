@@ -9,13 +9,13 @@ public class TopDownController : MonoBehaviour
     private Vector2 moveInput; // 이동 입력값
     private Rigidbody2D rb;
     private Camera camera;
-    private TopDownAimRotation topDownAimRotation;
     private bool isDeath = false;
 
+    [SerializeField] private SpriteRenderer armRenderer;
+    [SerializeField] private Transform armPivot;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        topDownAimRotation = GetComponent<TopDownAimRotation>();
         camera = Camera.main;
     }
 
@@ -42,7 +42,7 @@ public class TopDownController : MonoBehaviour
             Vector2 direction =(Vector2)transform.position - mouseWorldPos;
             // 플레이어와 마우스 위치를 비교하여 좌우 반전
             GameManager.Instance.Player._playerAnimationController.FlipRotation(mouseWorldPos);
-            topDownAimRotation.RotateArm(direction);
+            RotateArm(direction);
             }
         }
     }
@@ -65,5 +65,11 @@ public class TopDownController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = moveInput * speed; // 이동 처리
+    }
+    public void RotateArm(Vector2 direction)
+    {
+        // 팔의 회전 계산
+        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        armPivot.rotation = Quaternion.Euler(0, 0, rotZ);  // 회전 적용
     }
 }
