@@ -677,6 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d0d94d77aa707f468bb05338ba55766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanDrag: 1
   rectTransform: {fileID: 0}
   _text: {fileID: 1035445351230925624}
   _buyBtnObj: {fileID: 330348398508131548}

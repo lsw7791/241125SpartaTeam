@@ -1,3 +1,4 @@
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class Player : MonoBehaviour,IDamageable
@@ -46,9 +47,9 @@ public class Player : MonoBehaviour,IDamageable
     }
 
     // 인벤토리 관련: 스프라이트 포함
-    public void AddItemToInventory(int itemID, string itemName, int quantity, ItemType itemType, Sprite itemSprite)
+    public void AddItemToInventory(int itemID, int quantity, string spritePath)
     { // 이템을 인벤토리에 추가
-        inventory.AddItem(itemID, itemName, quantity, itemType, itemSprite);  // 스프라이트 포함
+        inventory.AddItem(itemID);  // 스프라이트 포함
         PlayerSaveLoad.SavePlayerData(this, null);
     }
 
@@ -65,12 +66,17 @@ public class Player : MonoBehaviour,IDamageable
     // 데미지 처리
     public void TakeDamage(int damage)
     {
-        stats.CurrentHP -= damage;
-
-        if (stats.CurrentHP <= 0)
+        int value = stats.Def;
+        value -= damage;
+        if(value <0)
         {
-            Die();
-        }
+            stats.CurrentHP += value;
+
+            if (stats.CurrentHP <= 0)
+            {
+                Die();
+            }
+        }  
     }
 
     // 플레이어 죽음 처리

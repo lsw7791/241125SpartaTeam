@@ -6,7 +6,6 @@ public class GameManager : MonoSingleton<GameManager>
 {
     public DataManager DataManager; // DataManager만 사용하도록 변경
     public CraftingManager CraftingManager;
-    public SoundManager SoundManager;
     public SpawnManager SpawnManager;
     public Player Player;
     private PlayerData _currentPlayer;
@@ -47,6 +46,7 @@ public class GameManager : MonoSingleton<GameManager>
         }
 
         Instantiate(SceneNum);
+        SoundManager.Instance.PlayStartBGMMystical();
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -62,7 +62,6 @@ public class GameManager : MonoSingleton<GameManager>
     {
         GameObject miniCamera = Instantiate(Resources.Load<GameObject>("Prefabs/Cameras/MinimapCamera"));
         if (SpawnManager == null) SpawnManager = gameObject.AddComponent<SpawnManager>();
-        if (SoundManager == null) SoundManager = gameObject.AddComponent<SoundManager>();
         SpawnManager.SpawnPlayer(mapNum);
         SpawnManager.Initialize(mapNum);
     }
@@ -120,7 +119,7 @@ public class GameManager : MonoSingleton<GameManager>
         Player.Inventory.Clear();  // 기존 아이템을 비우고
         foreach (var item in playerData.InventoryItems) // InventoryItems로 변경
         {
-            Player.AddItemToInventory(item.ItemID, item.ItemName, item.Quantity, item.ItemType, item.ItemIcon);
+            Player.AddItemToInventory(item.ItemID, item.Quantity, item.SpritePath);
         }
     }
 

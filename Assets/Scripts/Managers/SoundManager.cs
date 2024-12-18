@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : MonoSingleton<SoundManager>
 {
     private GameObject _bgmObj;
     private GameObject _sfxObj;
@@ -11,19 +11,31 @@ public class SoundManager : MonoBehaviour
     public AudioSource _sfxSource;
 
     [Header("BGM")]
-    [SerializeField] private AudioClip bgmClip;
+    [SerializeField] private AudioClip asiaTravel118018;
+    [SerializeField] private AudioClip sciFiMoodtimeflow194382;
+    [SerializeField] private AudioClip mysticalStrangerThings133254;
 
     [Header("SFX")]
-    [SerializeField] private AudioClip collisionSfx;
-    [SerializeField] private AudioClip clickSfx;
-    [SerializeField] private AudioClip itemSfx;
+    [SerializeField] private AudioClip efekSound3220030;
+    [SerializeField] private AudioClip achievementVideoGameType1230515;
+    [SerializeField] private AudioClip fireTorchWhoosh2186586;
+    [SerializeField] private AudioClip gameStart6104;
+    [SerializeField] private AudioClip itemPickUp38258;
+    [SerializeField] private AudioClip punch140236;
+    [SerializeField] private AudioClip swordSoundEffect1234987;
+    [SerializeField] private AudioClip winning218995;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         SetAudioSource();
         SetAudioClip();
-        _bgmSource.volume = 0.5f;
-        _sfxSource.volume = 0.5f;
+
+    }
+    private void Start()
+    {
+        _bgmSource.volume = 0.3f;
+        _sfxSource.volume = 0.3f;
         //PlayBGM(bgmClip); // BGM 시작 시 사용할 수 있도록 설정 (옵션)
     }
 
@@ -42,11 +54,23 @@ public class SoundManager : MonoBehaviour
 
     private void SetAudioClip()
     {
-        // Resources 폴더에서 AudioClip을 불러옵니다.
-        bgmClip = Resources.Load<AudioClip>("Prefabs/Sounds/ambient-game-67014");
-        collisionSfx = Resources.Load<AudioClip>("Prefabs/Sounds/game-start-6104");
-        clickSfx = Resources.Load<AudioClip>("Prefabs/Sounds/game-start-6104");
-        itemSfx = Resources.Load<AudioClip>("Prefabs/Sounds/collect-ring-15982");
+        // Resources 폴더에서 AudioClip을 불러옵니다.//BGM
+        sciFiMoodtimeflow194382 = Resources.Load<AudioClip>("Sounds/BGM/sci-fi-moodtimeflow-194382");
+        asiaTravel118018 = Resources.Load<AudioClip>("Sounds/BGM/asia-travel-118018");
+        mysticalStrangerThings133254 = Resources.Load<AudioClip>("Sounds/BGM/80s-mystical-stranger-things-133254");
+
+
+        //SFX
+        efekSound3220030 = Resources.Load<AudioClip>("Sounds/SFX/1-efek-sound-3-220030");
+        achievementVideoGameType1230515 = Resources.Load<AudioClip>("Sounds/SFX/achievement-video-game-type-1-230515");
+        fireTorchWhoosh2186586 = Resources.Load<AudioClip>("Sounds/SFX/fire-torch-whoosh-2-186586");
+        gameStart6104 = Resources.Load<AudioClip>("Sounds/SFX/game-start-6104");
+        itemPickUp38258 = Resources.Load<AudioClip>("Sounds/SFX/item-pick-up-38258");
+        punch140236 = Resources.Load<AudioClip>("Sounds/SFX/punch-140236");
+        swordSoundEffect1234987 = Resources.Load<AudioClip>("Sounds/SFX/sword-sound-effect-1-234987");
+        winning218995 = Resources.Load<AudioClip>("Sounds/SFX/winning-218995");
+
+
     }
 
     public void PlayBGM(AudioClip clip)
@@ -66,14 +90,20 @@ public class SoundManager : MonoBehaviour
         _sfxSource.PlayOneShot(clip);
     }
 
-    // 미리 설정된 BGM을 재생하는 메서드
-    public void PlayStartBGM() => PlayBGM(bgmClip);
+    // 미리 설정된 BGM을 재생하는 메서드//BGM
+    public void PlayStartBGMAsiaTravel() => PlayBGM(asiaTravel118018);
+    public void PlayStartBGMSciFiMoodtimeflow() => PlayBGM(sciFiMoodtimeflow194382);
+    public void PlayStartBGMMystical() => PlayBGM(mysticalStrangerThings133254);
+
+
 
     // 미리 설정된 충돌 SFX를 재생하는 메서드
-    public void PlayCollsionSFX() => PlaySFX(collisionSfx);
+    public void PlayCollsionSFX() => PlaySFX(punch140236);
 
     // 미리 설정된 클릭 SFX를 재생하는 메서드
-    public void PlayClickSFX() => PlaySFX(clickSfx);
+    public void PlayClickSFX() => PlaySFX(gameStart6104);
+
+
 
     // BGM의 볼륨을 가져오는 메서드
     public float GetBGMVolume() => _bgmSource.volume;

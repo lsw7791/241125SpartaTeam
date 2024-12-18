@@ -7,9 +7,7 @@ using GoogleSheet.Core.Type;
 [UGS(typeof(ItemType))]
 public enum ItemType
 {
-    Sword = 1,         // ∞À
-    Bow,               // »∞
-    Staff,             // ¡ˆ∆Œ¿Ã
+    Weapon = 1,         // ∞À
     Shield,            // πÊ∆–
     Pickaxe,           // ∞Ó±™¿Ã
     Helmet,            // «Ô∏‰

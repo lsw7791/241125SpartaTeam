@@ -10,6 +10,8 @@ public class Monster : MonoBehaviour, ICreature
     [SerializeField]private bool isDie;
     [SerializeField] public int id { get; private set; }
     MonsterPool monsterPool;
+    GameObject _childMonster;
+    public Vector2 DiePosition;
     // 몬스터가 죽었을 때 호출되는 함수
     private void Start()
     {
@@ -22,6 +24,8 @@ public class Monster : MonoBehaviour, ICreature
     }
     public void Die()
     {
+        DiePosition = gameObject.transform.position;
+
         if (monsterPool != null)
         {
             // 몬스터의 종류를 구분해서 풀에 반환 (creatureId로 구별)
@@ -39,47 +43,56 @@ public class Monster : MonoBehaviour, ICreature
     // 데미지를 입을 때 호출되는 함수
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        int value = GameManager.Instance.DataManager.Creature.GetDefense(id);
+        value -= damage;
+        if (value < 0)
+        {
+            currentHealth += value;
 
-        if (currentHealth <= 0)
-        {
-            Die();  // 체력이 0 이하가 되면 죽음 처리
-        }
-        else
-        {
-            Debug.Log($"Monster {GameManager.Instance.DataManager.Creature.GetName(id)} remaining health: {currentHealth}");
-        }
+            if (currentHealth <= 0)
+            {
+                Die();  // 체력이 0 이하가 되면 죽음 처리
+            }
+            else
+            {
+                Debug.Log($"Monster {GameManager.Instance.DataManager.Creature.GetName(id)} remaining health: {currentHealth}");
+            }
+        }     
     }
 
     // 몬스터가 죽을 때 호출되는 드랍 아이템 생성 함수
     public void DropItems()
     {
-        // 드롭 위치의 랜덤 범위 설정 (x, z 축 기준)
-        float dropRange = 1.5f;
+        float dropRange = 0.5f; // 드롭 위치의 랜덤 범위 설정
 
         foreach (int itemId in GameManager.Instance.DataManager.Creature.GetDropItemIds(id))
         {
-            // 아이템 데이터와 프리팹 로드
             var itemData = GameManager.Instance.DataManager.GetItemDataById(itemId);
+
+            // 아이템 데이터와 프리팹 로드
             GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabPath);
 
-            // 랜덤한 드롭 위치 생성
-            Vector3 randomOffset = new Vector3(
+            Vector2 randomOffset = new Vector3(
                 Random.Range(-dropRange, dropRange),
-                Random.Range(-dropRange, dropRange),
-                transform.position.z
+                Random.Range(-dropRange, dropRange)
             );
-            Vector3 dropPosition = transform.position + randomOffset;
+            Vector2 dropPosition = DiePosition + randomOffset ;
 
-            // 아이템 인스턴스 생성
             GameObject item = Instantiate(itemPrefab, dropPosition, Quaternion.identity);
-
-            // 아이템 스프라이트 로드
             Sprite itemSprite = Resources.Load<Sprite>(itemData.spritePath);
 
-            // 아이템 데이터 설정
             TestItem testItem = item.GetComponent<TestItem>();
-            testItem.SetData(itemData, itemSprite);
+
+            if (itemData.itemType == ItemType.Gold && itemData.goldRange != null && itemData.goldRange.Count == 2)
+            {
+                int minGold = itemData.goldRange[0]; // 최소 골드
+                int maxGold = itemData.goldRange[1]; // 최대 골드
+                testItem.SetData(itemData, itemSprite, minGold, maxGold);
+            }
+            else
+            {
+                testItem.SetData(itemData, itemSprite);
+            }
         }
     }
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ProjectileCollisionHandler : MonoBehaviour
 {
-    private float _lifeTime = 10f;  // 투사체 생존 시간
+    private float _lifeTime = 1f;  // 투사체 생존 시간
     [SerializeField]
     private int _damage;      // 투사체 데미지
     [SerializeField]
@@ -18,7 +18,7 @@ public class ProjectileCollisionHandler : MonoBehaviour
         _damage = inDamage;
     }
 
-    private void Start()
+    private void OnEnable()
     {
         Invoke("DeSpenObject", _lifeTime);
         //Destroy(gameObject, _lifeTime);

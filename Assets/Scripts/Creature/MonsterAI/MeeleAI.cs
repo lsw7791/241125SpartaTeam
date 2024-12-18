@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MeeleAI : MonsterAI
 {
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -15,7 +16,7 @@ public class MeeleAI : MonsterAI
         }
 
         // 몬스터가 플레이어와의 거리를 계산
-        float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+        float distanceToPlayer = Vector2.Distance(_monsterPosition.position, playerTransform.position);
 
         switch (currentState)
         {

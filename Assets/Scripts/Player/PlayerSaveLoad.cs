@@ -124,11 +124,7 @@ public static class PlayerSaveLoad
         foreach (InventoryItem itemData in data.InventoryItems)
         {
             player.Inventory.AddItem(
-                itemData.ItemID,
-                itemData.ItemName,
-                itemData.Quantity,
-                itemData.ItemType,
-                null // Sprite는 null로 설정
+                itemData.ItemID
                 //itemData.EquipSlot
             );
         }

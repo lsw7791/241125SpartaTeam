@@ -10,6 +10,7 @@ public interface IDraggable
 
 public abstract class UIBase : MonoBehaviour, IDraggable, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
+    public bool CanDrag;
     public RectTransform rectTransform;
     private Vector2 offset;
 
@@ -51,7 +52,11 @@ public abstract class UIBase : MonoBehaviour, IDraggable, IPointerDownHandler, I
     public void OnDrag(PointerEventData eventData)
     {
         // 마우스의 위치에 offset을 더해서 UI의 위치를 계속해서 이동
-        rectTransform.position = eventData.position + offset;
+        if (CanDrag)
+        {
+            rectTransform.position = eventData.position + offset;
+        }
+
     }
 
     // 드래그 종료 시 호출

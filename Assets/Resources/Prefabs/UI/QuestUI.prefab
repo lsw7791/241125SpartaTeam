@@ -88,4 +88,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0b4aaf54c174831bb519df1d66551d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanDrag: 1
   rectTransform: {fileID: 0}

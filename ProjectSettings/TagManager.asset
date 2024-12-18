@@ -12,6 +12,7 @@ TagManager:
   - Mine
   - Minimap
   - NPC
+  - Coin
   layers:
   - Default
   - TransparentFX

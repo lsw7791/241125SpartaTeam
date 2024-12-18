@@ -16,6 +16,7 @@ public class PlayerData
     public int Def;         // 현재 방어력
     public int WeaponType;  // 현재 무기 타입
     public bool isDie;             // 사망 여부
+    public int MineDamage;
 
     public List<QuickSlotItem> QuickSlotItems = new List<QuickSlotItem>(); // 퀵슬롯 아이템 목록
     public List<InventoryItem> InventoryItems = new List<InventoryItem>(); // 인벤토리 아이템 목록
@@ -34,7 +35,8 @@ public class PlayerData
         Damage = 10;
         Speed = 1;
         ATKSpeed = 1;
-        Def = 1;
+        Def = 0;
+        MineDamage = 1;
         WeaponType = 0;
         isDie = false;
     }
