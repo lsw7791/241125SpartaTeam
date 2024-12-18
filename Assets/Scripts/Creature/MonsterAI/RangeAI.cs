@@ -20,7 +20,7 @@ public class RangeAI : MonsterAI
             return;
         }
 
-        float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+        float distanceToPlayer = Vector2.Distance(_monsterPosition.position, playerTransform.position);
 
         switch (currentState)
         {
