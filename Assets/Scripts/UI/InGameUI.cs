@@ -3,16 +3,27 @@ using UnityEngine.UI;
 
 public class InGameUI : MonoBehaviour
 {
-    [SerializeField] private Button _btnMap;
+    [SerializeField] private Button _btnCheat;
     [SerializeField] private Button _btnStatus;
     [SerializeField] private Button _btnInventory;
     [SerializeField] private Button _btnOption;
 
     private void Start()
     {
-        _btnMap.onClick.AddListener(() =>
+        _btnCheat.onClick.AddListener(() =>
         {
-            UIManager.Instance.ToggleUI<MapUI>();
+            UIManager.Instance.ToggleUI<CheatUI>();
+            // 치트 활성화
+            var playerStats = GameManager.Instance.Player.Stats;
+            playerStats.MaxHP = 999;
+            playerStats.CurrentHP = 999;
+            playerStats.MaxStamina = 999;
+            playerStats.CurrentStamina = 999;
+            playerStats.Damage = 999;
+            playerStats.Def = 999;
+            playerStats.isDie = false; 
+            playerStats.MineDamage = 999;
+
         });
 
         _btnStatus.onClick.AddListener(() =>

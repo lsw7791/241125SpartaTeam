@@ -7,7 +7,7 @@ public class Player : MonoBehaviour,IDamageable
 
     public PlayerData stats;  // 플레이어의 스탯
     public Inventory inventory;  // 플레이어의 인벤토리
-    public TopDownController _topDownController;
+    public PlayerInput PlayerInput;
     public PlayerAnimationController _playerAnimationController;
     public PlayerWeapon _playerWeapon;
     public PlayerCamera _playerCamera;
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour,IDamageable
 
     private void Awake()
     {
-        _topDownController = GetComponent<TopDownController>();
+        PlayerInput = GetComponent<PlayerInput>();
         equipment = GetComponent<Equipment>();
     }
 
@@ -83,10 +83,26 @@ public class Player : MonoBehaviour,IDamageable
     // 플레이어 죽음 처리
     public void Die()
     {
-        _topDownController.TriggerDeath();
+        TriggerDeath();
         //UIManager.Instance.deathUI.SetActive(true);
         Debug.Log($"{nickName} has died.");
     }
+    public void TriggerDeath()
+    {
+        GameManager.Instance.Player.stats.isDie = true;
+        PlayerInput.speed = 0f;
+        GameManager.Instance.Player._playerAnimationController.TriggerDeathAnimation(); // 죽음 애니메이션 실행
+        this.enabled = false;
+
+    }
+    public void Revive()
+    {
+        UIManager.Instance.ToggleUI<DeathUI>();
+        GameManager.Instance.Player.stats.isDie = false;
+        PlayerInput.speed = 3.5f;
+        this.enabled = true;
+    }
+
 
     // 프로퍼티
     public PlayerData Stats => stats;
