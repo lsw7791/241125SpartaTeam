@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class Inventory
@@ -88,6 +89,28 @@ public class Inventory
 
         if (item != null && itemData.itemType <= ItemType.Mine)
         {
+            OnInventoryChanged?.Invoke();
+            // UI 갱신
+        }
+    }
+
+    public void DropItem(int itemID)
+    {
+        var itemData = GameManager.Instance.DataManager.GetItemDataById(itemID);
+
+        InventoryItem item = GetItem(itemID);
+
+        if (item != null)
+        {
+            RemoveItem(itemID, 1);
+            // 아이템 데이터와 프리팹 로드
+            GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabPath);
+            GameObject dropItem = GameObject.Instantiate(itemPrefab, GameManager.Instance.Player.transform.position, Quaternion.identity);
+            if(dropItem.TryGetComponent<TestItem>(out var outItem))
+            {
+                outItem.isPlayerDrop = true;
+                outItem.itemData = itemData;
+            }
             OnInventoryChanged?.Invoke();
             // UI 갱신
         }

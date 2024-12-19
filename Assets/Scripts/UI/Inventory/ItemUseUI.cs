@@ -53,7 +53,21 @@ public class ItemUseUI : MonoBehaviour
             //});
             UseButton("버리기").onClick.AddListener(() =>
             { // 모든 아이템 타입
-                Debug.Log("버리기");
+                // TODO :: 버릴때 몇개를 버릴건지 정하는 코드 필요
+                if(inItem.IsEquipped)
+                {
+                    Debug.Log("착용중인 장비입니다.");
+                    return;
+                }
+                GameManager.Instance.Player.inventory.DropItem(inItem.ItemID);
+            });
+        }
+        else
+        {
+            UseButton("버리기").onClick.AddListener(() =>
+            { // 모든 아이템 타입
+                // TODO :: 버릴때 몇개를 버릴건지 정하는 코드 필요
+                GameManager.Instance.Player.inventory.DropItem(inItem.ItemID);
             });
         }
     }

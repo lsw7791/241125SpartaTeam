@@ -7,6 +7,20 @@ public class TestItem : MonoBehaviour
     public Sprite itemSprite; // 아이템의 스프라이트 (이미지)
     private int minGold; // 최소 골드
     private int maxGold; // 최대 골드
+    public bool isPlayerDrop = false;
+
+    private void Start()
+    {
+        if(isPlayerDrop)
+        {
+            Invoke("PlayerDropItem", 5);
+        }
+    }
+
+    private void PlayerDropItem()
+    {
+        isPlayerDrop = false;
+    }
 
     // 아이템 데이터를 설정하는 메서드 (골드용)
     public void SetData(ItemData data, int minGold, int maxGold)
@@ -24,7 +38,7 @@ public class TestItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !isPlayerDrop)
         {
             if (itemData.itemType == ItemType.Gold) // 골드 아이템인지 확인
             {
