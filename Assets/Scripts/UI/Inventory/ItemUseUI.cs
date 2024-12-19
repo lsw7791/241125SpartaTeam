@@ -39,7 +39,9 @@ public class ItemUseUI : MonoBehaviour
             });
             UseButton("강화하기").onClick.AddListener(() =>
             { // 장비 타입
+                UpGradeUI upGradeUI = UIManager.Instance.GetUI<UpGradeUI>();
                 UIManager.Instance.ToggleUI<UpGradeUI>();
+                upGradeUI.Initialize(inItem);
             });
             //UseButton("조합하기").onClick.AddListener(() =>
             //{ // 재료 타입

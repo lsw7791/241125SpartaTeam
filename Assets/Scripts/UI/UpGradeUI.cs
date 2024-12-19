@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpGradeUI : UIBase
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Image _useItemImage;
 
-    // Update is called once per frame
-    void Update()
+    public void Initialize(InventoryItem inItem)
     {
-        
+        var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
+
+        _useItemImage.sprite = inItem.ItemIcon;
     }
 }

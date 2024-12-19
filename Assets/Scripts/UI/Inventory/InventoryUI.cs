@@ -44,9 +44,7 @@ public class InventoryUI : UIBase
         _slots.Clear();
 
         for (int i = 0; i < 12; i++) // 슬롯 수 고정 (필요시 수정 가능)
-        { // TODO :: 인벤토리를 껐다 켰다 하는 과정에서 렉이 걸릴 수 있음
-            // UIPool을 만들어서 불러와야겠음
-            // 그럼 TMPText 문제도 해결 되지 않을까 생각
+        {
             GameObject slot = Instantiate(slotPrefab, slotContainer);
             slot.AddComponent<Button>();
 

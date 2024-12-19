@@ -1071,6 +1071,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eaf6c6362dec354d89c2b96da91e8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanDrag: 0
+  rectTransform: {fileID: 0}
+  _useItemImage: {fileID: 2263718820036086120}
 --- !u!1 &6075839602369662499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,7 +1765,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4006208238919494678}
         m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
         m_MethodName: Close
         m_Mode: 1
