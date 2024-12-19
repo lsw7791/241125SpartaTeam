@@ -41,7 +41,7 @@ public class ShopSlot : MonoBehaviour
     public void OnclickedSlot()
     {
         // BuyUI 활성화 및 아이템 데이터 전달
-        UIManager.Instance.ToggleUI<BuyUI>();
+        UIManager.Instance.SetSortingOrder<BuyUI>(2);
 
         // BuyUI에 아이템 데이터 전달
         BuyUI buyUI = UIManager.Instance.GetUI<BuyUI>();

@@ -104,16 +104,18 @@ public class PlayerWeapon : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
+        // 부모가 null인지 확인
+        if (collision.transform.parent != null &&
+            collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
         {
-            // 플레이어가 충돌한 오브젝트가 IDamageable을 구현한 경우
+            // 플레이어가 충돌한 오브젝트가 ICreature를 구현한 경우
             outTarget.TakeDamage(GameManager.Instance.Player.Stats.Damage);  // 데미지 처리
             Debug.Log($"Player dealt {GameManager.Instance.Player.Stats.Damage} damage to {outTarget.GetType().Name}");
         }
         else
         {
-            return;
+            Debug.Log("Collision object does not have a parent or does not implement ICreature.");
         }
     }
+
 }

@@ -40,10 +40,14 @@ public class CraftUI : UIBase
                 // 아이템 선택 시 선택된 아이템 ID를 설정
                 GameManager.Instance.CraftingManager.SelectItem(data.id);
 
-                // 선택된 아이템을 보여주는 UI를 업데이트
-                CraftingUI craftingUI = UIManager.Instance.OpenUI<CraftingUI>();
+                // 선택된 아이템을 보여주는 UI를 가져오고, 정렬 순서를 설정
+                CraftingUI craftingUI = UIManager.Instance.SetSortingOrder<CraftingUI>(2);
+
+                // 선택된 아이템 데이터를 UI에 초기화
                 craftingUI.Init(data);
             });
+
+
         }
     }
 

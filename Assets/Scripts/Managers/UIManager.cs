@@ -62,19 +62,39 @@ public class UIManager : MonoSingleton<UIManager>
     }
 
     public T OpenUI<T>() where T : UIBase
-    { // 생성
+    {
         T ui = GetUI<T>();
+
+        if (ui != null && !ui.gameObject.activeSelf)
+        {
+            ui.gameObject.SetActive(true); // 비활성화된 UI를 다시 활성화
+        }
+
         ui.Open();
         return ui;
     }
 
+
     public T CloseUI<T>() where T : UIBase
     {
-        T ui = GetUI<T>();
-        ui.Close();
+        if (IsExistUI<T>())
+        {
+            T ui = _uiList[typeof(T).Name] as T;
 
-        return ui;
+            if (ui != null && ui.gameObject.activeSelf)
+            {
+                ui.Close();
+
+                // 추가: UI 비활성화 후 초기화 수행
+                ui.gameObject.SetActive(false);
+            }
+
+            return ui;
+        }
+
+        return null;
     }
+
 
     public void CloseAllUIs()
     { // 활성화 되어있는 모든 PopupUI 비활성화
@@ -125,4 +145,16 @@ public class UIManager : MonoSingleton<UIManager>
             OpenUI<T>();
         }
     }
+    public T SetSortingOrder<T>(int order) where T : UIBase
+    {
+        T ui = GetUI<T>();
+        var canvas = ui.GetComponentInParent<Canvas>();
+        if (canvas != null)
+        {
+            canvas.sortingOrder = order;
+        }
+        return ui;
+    }
+
+
 }

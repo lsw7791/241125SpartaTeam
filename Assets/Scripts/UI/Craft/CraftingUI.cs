@@ -25,21 +25,28 @@ public class CraftingUI : UIBase
             Debug.Log("조합 버튼 클릭됨.");
 
             // TryCraftItem 메서드를 호출하여 아이템 조합 시도
-            if (GameManager.Instance.CraftingManager.TryCraftItem())
+            bool isSuccess = GameManager.Instance.CraftingManager.TryCraftItem();
+
+            // CraftingUI 닫기
+            UIManager.Instance.CloseUI<CraftingUI>();
+
+            // CraftResultUI 열기
+            CraftResultUI craftResultUI = UIManager.Instance.OpenUI<CraftResultUI>();
+
+            // CraftResultUI의 Sorting Order를 3으로 설정
+            UIManager.Instance.SetSortingOrder<CraftResultUI>(3);
+
+            // 결과 표시
+            if (isSuccess)
             {
-                // 조합 성공
-                UIManager.Instance.CloseUI<CraftingUI>();
-                CraftResultUI craftResultUI = UIManager.Instance.OpenUI<CraftResultUI>();
                 craftResultUI.ShowSuccess(craftingData);
             }
             else
             {
-                // 조합 실패
-                UIManager.Instance.CloseUI<CraftingUI>();
-                CraftResultUI craftResultUI = UIManager.Instance.OpenUI<CraftResultUI>();
                 craftResultUI.ShowFailure(craftingData);
             }
         });
+
     }
 
     public void Init(CraftingData inData)
