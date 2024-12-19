@@ -722,6 +722,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanDrag: 1
   rectTransform: {fileID: 0}
+  BGMSlider: {fileID: 7565648233055293993}
+  SFXSlider: {fileID: 33866522537443879}
 --- !u!1 &833263930817892417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,7 +1282,7 @@ GameObject:
   - component: {fileID: 1769534566836329958}
   - component: {fileID: 4108921793185560205}
   m_Layer: 0
-  m_Name: Slider Yellow (1)
+  m_Name: SliderBrightness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1655,7 +1657,7 @@ GameObject:
   - component: {fileID: 8995951826886732054}
   - component: {fileID: 33866522537443879}
   m_Layer: 0
-  m_Name: Slider Yellow (2)
+  m_Name: SliderSFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2650,7 +2652,7 @@ GameObject:
   - component: {fileID: 5351899003112819576}
   - component: {fileID: 7565648233055293993}
   m_Layer: 0
-  m_Name: Slider Yellow
+  m_Name: SliderBGM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
