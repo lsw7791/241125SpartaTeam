@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Equipment : MonoBehaviour
 {
-    public Dictionary<ItemType, Equip> equipItems = new Dictionary<ItemType, Equip>();
+    public Dictionary<ItemType, InventoryItem> equipItems = new Dictionary<ItemType, InventoryItem>();
     [SerializeField] private EquipmentUI _equipmentUI;
 
     public void EquipNew(InventoryItem inItem)
@@ -19,12 +19,7 @@ public class Equipment : MonoBehaviour
         // 기존 장비 해제
         UnEquip(itemData.itemType);
 
-        // 새 장비 장착
-        //GameObject newEquip = new GameObject(itemData.name);
-        //EquipManager.Instance.EquipedWeapon = Instantiate(Resources.Load<GameObject>(itemData.prefabPath));
-
-        Equip curEquip = GameManager.Instance.Player.Weapon.AddComponent<Equip>();
-        equipItems[itemData.itemType] = curEquip;
+        equipItems[itemData.itemType] = inItem;
 
         // UI 장비창 업데이트
         _equipmentUI.UpdateEquipmentSlot(itemData.itemType, inItem.ItemIcon);
@@ -37,14 +32,6 @@ public class Equipment : MonoBehaviour
     {
         if (equipItems.ContainsKey(itemType))
         {
-            // 장비 오브젝트의 SpriteRenderer를 null로 설정
-            Equip currentEquip = equipItems[itemType];
-            SpriteRenderer equipSpriteRenderer = currentEquip.GetComponentInChildren<SpriteRenderer>();
-
-            if (equipSpriteRenderer != null)
-            {
-                equipSpriteRenderer.sprite = null; // 스프라이트 해제
-            }
 
             equipItems.Remove(itemType);
 
