@@ -37,7 +37,7 @@ public class Inventory
             if (itemData != null)
             {
                 // 구글 시트에서 받은 spritePath로 아이템을 추가
-                Items.Add(new InventoryItem(itemID, 1, itemData.spritePath, false));  // 아이템 생성시 경로로 아이콘 로드
+                Items.Add(new InventoryItem(itemID, 1, itemData.spritePath, false, itemData.atkType));  // 아이템 생성시 경로로 아이콘 로드
             }
         }
 

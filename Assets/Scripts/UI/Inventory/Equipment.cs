@@ -28,6 +28,7 @@ public class Equipment : MonoBehaviour
 
         // UI 장비창 업데이트
         _equipmentUI.UpdateEquipmentSlot(itemData.itemType, inItem.ItemIcon);
+        GameManager.Instance.Player._playerWeapon.ATKType = inItem.ATKType;
 
         inItem.IsEquipped = true;
     }

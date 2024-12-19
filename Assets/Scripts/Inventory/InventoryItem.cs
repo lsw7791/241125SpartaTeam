@@ -20,9 +20,10 @@ public class InventoryItem
     public Sprite ItemIcon;  // 아이템 아이콘 (Sprite)
     public string SpritePath;    // 아이템 아이콘 경로
     public bool IsEquipped; // 장착 상태
+    public int ATKType;
     //public EquipSlot equipSlot; // 장비 부위
     public InventoryItem() { }
-    public InventoryItem(int itemID, int quantity, string spritePath, bool isEquipped)
+    public InventoryItem(int itemID, int quantity, string spritePath, bool isEquipped, int atkType)
     {
         ItemID = itemID;
         //ItemName = itemName;
@@ -30,6 +31,7 @@ public class InventoryItem
         SpritePath = spritePath;
         ItemIcon = LoadSprite(SpritePath);
         IsEquipped = isEquipped;
+        ATKType = atkType;
         //ItemType = itemType;
         //ItemIcon = itemIcon;  // 아이콘 설정
         // IsEquipped = false;

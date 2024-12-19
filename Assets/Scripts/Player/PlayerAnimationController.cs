@@ -21,26 +21,26 @@ public class PlayerAnimationController : MonoBehaviour
     }
     public void TriggerAttackAnimation()
     {
+        int atkType = GameManager.Instance.Player._playerWeapon.ATKType; // ATKType을 숫자로 가져옴
 
-        string weaponTag = GameManager.Instance.Player.Weapon?.tag ?? "Melee";
+        if (GameManager.Instance.Player.stats.isDie) return; // 사망 상태라면 실행하지 않음
 
-        if (GameManager.Instance.Player.stats.isDie) return;
-
-        switch (weaponTag)
+        switch (atkType)
         {
-            case "Bow":
+            case 2: // 화살 공격
                 _animator.SetTrigger("Attack_Bow");
-                GameManager.Instance.Player._playerWeapon.FireArrow();  // 화살 발사
+                GameManager.Instance.Player._playerWeapon.FireArrow(); // 화살 발사
                 break;
-            case "Staff":
+            case 3: // 스태프 공격
                 _animator.SetTrigger("Attack_Staff");
-                GameManager.Instance.Player._playerWeapon.FireFireball();  // 파이어볼 발사
+                GameManager.Instance.Player._playerWeapon.FireFireball(); // 파이어볼 발사
                 break;
-            default:
+            default: // 기본 근접 공격
                 _animator.SetTrigger("Attack_Melee");
                 break;
         }
     }
+
     public void SetPaddingAnimation(bool isPadding)
     {
         _animator.SetBool("Padding", isPadding);

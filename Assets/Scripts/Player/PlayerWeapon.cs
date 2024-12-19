@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerWeapon : MonoBehaviour
 {
+    public int ATKType;
     [SerializeField] GameObject _weapon; // 현재 무기를 나타내는 오브젝트
     private Collider2D _weaponCollider;
     [SerializeField] GameObject[] _attackObjects; // 0번: 화살, 1번: 파이어볼
