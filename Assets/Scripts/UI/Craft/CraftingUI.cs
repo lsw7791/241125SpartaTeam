@@ -28,13 +28,10 @@ public class CraftingUI : UIBase
             bool isSuccess = GameManager.Instance.CraftingManager.TryCraftItem();
 
             // CraftingUI 닫기
-            UIManager.Instance.CloseUI<CraftingUI>();
-
-            // CraftResultUI 열기
-            CraftResultUI craftResultUI = UIManager.Instance.OpenUI<CraftResultUI>();
 
             // CraftResultUI의 Sorting Order를 3으로 설정
-            UIManager.Instance.SetSortingOrder<CraftResultUI>(3);
+            UIManager.Instance.ToggleUI<CraftResultUI>();
+            CraftResultUI craftResultUI = UIManager.Instance.SetSortingOrder<CraftResultUI>(3);
 
             // 결과 표시
             if (isSuccess)
