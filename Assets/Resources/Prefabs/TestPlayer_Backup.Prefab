@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6be8427abb93941a3c27c79ec18ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ATKType: 0
   _weapon: {fileID: 5057688274015716384, guid: 011289f3fed617a43afc7f16f830160a, type: 3}
   _attackObjects:
   - {fileID: 4493029942455348064, guid: 59cef3b5f829fb4459773cf4797d18d2, type: 3}
@@ -1556,7 +1557,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1, y: 1}
+  m_SizeDelta: {x: 1.5, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6836509630310521832
 CanvasRenderer:
