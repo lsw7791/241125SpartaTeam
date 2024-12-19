@@ -21,7 +21,6 @@ public class InGameUI : MonoBehaviour
             playerStats.CurrentStamina = 999;
             playerStats.Damage = 999;
             playerStats.Def = 999;
-            playerStats.isDie = false; 
             playerStats.MineDamage = 999;
 
         });

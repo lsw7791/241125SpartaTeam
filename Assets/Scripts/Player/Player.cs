@@ -97,7 +97,6 @@ public class Player : MonoBehaviour,IDamageable
     }
     public void Revive()
     {
-        UIManager.Instance.ToggleUI<DeathUI>();
         GameManager.Instance.Player.stats.isDie = false;
         PlayerInput.speed = 3.5f;
         this.enabled = true;

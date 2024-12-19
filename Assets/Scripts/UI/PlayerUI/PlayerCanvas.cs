@@ -16,31 +16,15 @@ public class PlayerCanvas : MonoBehaviour
 
     private void Start()
     {
+        playerName = GameManager.Instance.Player.nickName;
         playerTransform = transform; // 플레이어 Transform 가져오기
-
         // TextMeshPro에 이름 설정
-        if (playerNameText != null)
-        {
-            playerNameText.text = playerName;
-        }
+        playerNameText.text = playerName;
     }
 
     private void LateUpdate()
     {
-        // 이름이 플레이어 머리 위에 고정되도록 위치 업데이트
-        if (playerNameText != null)
-        {
-            playerNameText.transform.position = playerTransform.position + nameOffset;
-        }
+        playerNameText.transform.position = playerTransform.position + nameOffset;
     }
 
-    // 외부에서 플레이어 이름 설정
-    public void SetPlayerName(string newName)
-    {
-        playerName = newName;
-        if (playerNameText != null)
-        {
-            playerNameText.text = playerName;
-        }
-    }
 }
