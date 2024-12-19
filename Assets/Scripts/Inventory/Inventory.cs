@@ -27,8 +27,8 @@ public class Inventory
         // 아이템 ID로 기존 아이템 찾기
         InventoryItem existingItem = Items.Find(item => item.ItemID == itemID);
 
-        if (existingItem != null)
-        {
+        if (existingItem != null && itemData.itemType > ItemType.Mine)
+        { // TODO :: 장비 타입을 구분할 조건이 필요
             existingItem.Quantity += 1;  // 수량 증가
         }
         else
