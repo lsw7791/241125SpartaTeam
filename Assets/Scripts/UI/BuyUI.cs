@@ -74,13 +74,9 @@ public class BuyUI : UIBase
             ShopUI shopUI;
             shopUI = UIManager.Instance.GetUI<ShopUI>();
             shopUI.HasGold.text = GameManager.Instance.Player.stats.Gold.ToString();
-            // 스프라이트 경로에서 Sprite 객체를 로드
-            Sprite itemSprite = Resources.Load<Sprite>(itemData.spritePath);
 
             // 아이템을 인벤토리에 추가
-            GameManager.Instance.Player.inventory.AddItem(
-                itemData.id  // 아이템 ID를 문자열로 변환
-            );
+            GameManager.Instance.Player.inventory.AddItem(itemData.id, quantity); // 수량 전달
 
             ToggleBuyButton(false); // 버튼 비활성화
             ToggleInputFieldParent(false); // 수량 입력 필드 부모 비활성화
@@ -92,4 +88,5 @@ public class BuyUI : UIBase
             _text.text = "골드가 부족합니다.";
         }
     }
+
 }
