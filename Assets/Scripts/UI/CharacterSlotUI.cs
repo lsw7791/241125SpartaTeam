@@ -56,7 +56,7 @@ public class CharacterSlotUI : UIBase
 
     private void OnExecuteButtonClicked()
     {
-        UIManager.Instance.ToggleUI<CharacterSlotUI>();
+        UIManager.Instance.CloseUI<CharacterSlotUI>();
         GameManager.Instance.StartGame(selectedCharacter);
     }
 
