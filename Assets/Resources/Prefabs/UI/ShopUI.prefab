@@ -1272,7 +1272,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 01233
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1388ddb6efd8d48dcb7f383a0e0bf289, type: 2}
   m_sharedMaterial: {fileID: 3522791461214794850, guid: 1388ddb6efd8d48dcb7f383a0e0bf289, type: 2}
@@ -1970,7 +1970,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7502318913977415695
@@ -2096,10 +2096,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanDrag: 1
   rectTransform: {fileID: 0}
-  ShopType: 0
-  ItemPrefab: {fileID: 1516887743320777312, guid: 91b368982cb38294bbbb507a7787e675, type: 3}
-  ItemsParent: {fileID: 5621669033154183260}
-  HasGold: {fileID: 1122358204525452684}
+  shopType: 0
+  itemPrefab: {fileID: 1516887743320777312, guid: 91b368982cb38294bbbb507a7787e675, type: 3}
+  itemsParent: {fileID: 5621669033154183260}
+  _hasGold: {fileID: 1122358204525452684}
   ScrollContent: {fileID: 5621669033154183260}
   scrollRect: {fileID: 2513788736605396974}
   WeaponButton: {fileID: 7804699325420710622}
