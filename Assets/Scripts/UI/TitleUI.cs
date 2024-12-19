@@ -14,8 +14,8 @@ public class TitleUI : MonoBehaviour
         Debug.Log("게임 불러오기");
         UIManager.Instance.ToggleUI<CharacterSlotUI>();
     }
-    //void OptionUIOn()
-    //{
-    //    UIManager.Instance.ToggleUI<OptionUI>();
-    //}
+    public void OptionUIOn()
+    {
+        UIManager.Instance.ToggleUI<OptionUI>();
+    }
 }

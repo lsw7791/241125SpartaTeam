@@ -56,22 +56,16 @@ public class CharacterSlotUI : UIBase
 
     private void OnExecuteButtonClicked()
     {
-        if (selectedCharacter != null)
-        {
-            Debug.Log($"게임 시작: {selectedCharacter.NickName}");
-            GameManager.Instance.StartGame(selectedCharacter);
-        }
+        UIManager.Instance.ToggleUI<CharacterSlotUI>();
+        GameManager.Instance.StartGame(selectedCharacter);
     }
 
     private void OnDeleteButtonClicked()
     {
-        if (selectedCharacter != null)
-        {
-            GameManager.Instance.DataManager.CharacterList.RemoveCharacter(selectedCharacter);
-            selectedCharacter = null; // 선택 초기화
-            LoadSlots(); // 슬롯 UI 갱신
-            SetButtonsInteractable(false); // 버튼 비활성화
-        }
+        GameManager.Instance.DataManager.CharacterList.RemoveCharacter(selectedCharacter);
+        selectedCharacter = null; // 선택 초기화
+        LoadSlots(); // 슬롯 UI 갱신
+        SetButtonsInteractable(false); // 버튼 비활성화
     }
 
     private void OnBackButtonClicked()
