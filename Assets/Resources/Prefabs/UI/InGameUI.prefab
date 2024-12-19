@@ -2097,6 +2097,7 @@ GameObject:
   - component: {fileID: 751778606838757164}
   - component: {fileID: 5207344824749854498}
   - component: {fileID: 4208656551092814691}
+  - component: {fileID: 7538401443277249195}
   m_Layer: 5
   m_Name: ConditonBG
   m_TagString: Untagged
@@ -2164,6 +2165,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7538401443277249195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7356775420955367274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86d1d91f6d5b834f8148282ecaf89b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: {fileID: 8877382267632045853}
+  _stamina: {fileID: 9209824716849500407}
 --- !u!1 &7554387009375583466
 GameObject:
   m_ObjectHideFlags: 0
