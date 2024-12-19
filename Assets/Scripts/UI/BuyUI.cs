@@ -73,7 +73,7 @@ public class BuyUI : UIBase
 
             ShopUI shopUI;
             shopUI = UIManager.Instance.GetUI<ShopUI>();
-            shopUI._hasGold.text = GameManager.Instance.Player.stats.Gold.ToString();
+            shopUI.HasGold.text = GameManager.Instance.Player.stats.Gold.ToString();
             // 스프라이트 경로에서 Sprite 객체를 로드
             Sprite itemSprite = Resources.Load<Sprite>(itemData.spritePath);
 

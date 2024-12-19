@@ -4,7 +4,7 @@ using UnityEngine;
 public class PotionNPC : ShopNPC
 {    private void Awake()
     {
-        shopType = ShopType.PotionShop;  // PotionShop 타입으로 설정
+        ShopType = ShopType.PotionShop;  // PotionShop 타입으로 설정
     }
 
     public override void Interact()

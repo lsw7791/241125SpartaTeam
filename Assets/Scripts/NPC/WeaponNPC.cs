@@ -5,7 +5,7 @@ public class WeaponNPC : ShopNPC
 {
     private void Awake()
     {
-        shopType = ShopType.WeaponShop;  // WeaponShop 타입으로 설정
+        ShopType = ShopType.WeaponShop;  // WeaponShop 타입으로 설정
     }
 
     public override void Interact()

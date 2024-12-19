@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class ShopUI : UIBase
 {
-    public ShopType shopType; // 상점 타입
-    public GameObject itemPrefab;
-    public Transform itemsParent;
-    public TMP_Text _hasGold;
+    public ShopType ShopType; // 상점 타입
+    public GameObject ItemPrefab;
+    public Transform ItemsParent;
+    public TMP_Text HasGold;
     public RectTransform ScrollContent;
 
     // ScrollRect 추가
@@ -22,8 +22,8 @@ public class ShopUI : UIBase
     private void Awake()
     {
         base.Awake();
-        _hasGold.text = $"{GameManager.Instance.Player.stats.Gold}";
-        itemPrefab = Resources.Load<GameObject>("Prefabs/UI/ShopSlot");
+        HasGold.text = $"{GameManager.Instance.Player.stats.Gold}";
+        ItemPrefab = Resources.Load<GameObject>("Prefabs/UI/ShopSlot");
 
         // 버튼 클릭 이벤트 연결
         WeaponButton.onClick.AddListener(() => ChangeShopType(ShopType.WeaponShop));
@@ -50,7 +50,7 @@ public class ShopUI : UIBase
     // 상점 타입을 설정하고 UI 업데이트
     public void SetShopType(ShopType newShopType)
     {
-        shopType = newShopType; // 새로운 상점 타입 설정
+        ShopType = newShopType; // 새로운 상점 타입 설정
         SetupShopUI(); // 상점 UI 설정
         UpdateButtons(); // 버튼 상태 업데이트
     }
@@ -63,17 +63,17 @@ public class ShopUI : UIBase
     public void SetupShopUI()
     {
         // 현재 상점 타입에 따라 아이템 불러오기
-        List<ItemData> items = GameManager.Instance.DataManager.Shop.GetItems(shopType);
+        List<ItemData> items = GameManager.Instance.DataManager.Shop.GetItems(ShopType);
 
         // 기존 아이템을 제거하고 새로운 아이템을 표시
-        foreach (Transform child in itemsParent)
+        foreach (Transform child in ItemsParent)
         {
             Destroy(child.gameObject);
         }
 
         foreach (ItemData itemData in items)
         {
-            GameObject itemObject = Instantiate(itemPrefab, itemsParent);
+            GameObject itemObject = Instantiate(ItemPrefab, ItemsParent);
             itemObject.TryGetComponent<ShopSlot>(out var shopslot);
             shopslot.Setup(itemData);
         }
@@ -82,7 +82,7 @@ public class ShopUI : UIBase
     // 상점 타입에 따른 버튼 상태 업데이트
     private void UpdateButtons()
     {
-        if (shopType == ShopType.PotionShop)
+        if (ShopType == ShopType.PotionShop)
         {
             WeaponButton.gameObject.SetActive(false);
             ArmorButton.gameObject.SetActive(false);
