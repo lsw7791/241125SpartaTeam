@@ -19,7 +19,8 @@ public class Inventory
     }
 
     // 아이템 추가 메서드
-    public void AddItem(int itemID)
+    // 아이템 추가 메서드
+    public void AddItem(int itemID, int quantity)
     {
         // 아이템 데이터를 구글 시트에서 조회
         var itemData = GameManager.Instance.DataManager.GetItemDataById(itemID);
@@ -29,7 +30,7 @@ public class Inventory
 
         if (existingItem != null && itemData.itemType > ItemType.Mine)
         { // TODO :: 장비 타입을 구분할 조건이 필요
-            existingItem.Quantity += 1;  // 수량 증가
+            existingItem.Quantity += quantity;  // 수량 증가
         }
         else
         {
@@ -37,12 +38,13 @@ public class Inventory
             if (itemData != null)
             {
                 // 구글 시트에서 받은 spritePath로 아이템을 추가
-                Items.Add(new InventoryItem(itemID, 1, itemData.spritePath, false, itemData.atkType));  // 아이템 생성시 경로로 아이콘 로드
+                Items.Add(new InventoryItem(itemID, quantity, itemData.spritePath, false, itemData.atkType));  // 수량을 설정하여 추가
             }
         }
 
         OnInventoryChanged?.Invoke();
     }
+
 
 
     // 아이템 조회 메서드 추가

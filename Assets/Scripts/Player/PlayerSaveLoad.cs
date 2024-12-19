@@ -124,7 +124,8 @@ public static class PlayerSaveLoad
         foreach (InventoryItem itemData in data.InventoryItems)
         {
             player.Inventory.AddItem(
-                itemData.ItemID
+                itemData.ItemID,
+                1
                 //itemData.EquipSlot
             );
         }

@@ -70,12 +70,16 @@ public class PlayerInput : MonoBehaviour
     // 공격
     public void OnAttack(InputAction.CallbackContext context)
     {
+        // UI가 활성화된 상태인지 확인
+        if (UIManager.Instance.ActiveUI())
+            return; // UI가 활성화된 경우 공격 입력 무시
+
         if (context.performed)
         {
             GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
-            //PerformAttack();
         }
     }
+
 
     // 구르기
     public void OnRoll(InputAction.CallbackContext context)
