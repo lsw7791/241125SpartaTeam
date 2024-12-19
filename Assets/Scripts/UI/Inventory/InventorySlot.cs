@@ -35,7 +35,8 @@ public class InventorySlot : MonoBehaviour
         item = inItem;
         itemImage.sprite = inItem.ItemIcon;  // 아이템 아이콘 설정
         itemImage.enabled = true;            // 이미지 표시
-        count.text = inItem.Quantity.ToString();  // 수량 표시
+        count.text = inItem.IsEquipped?"E":inItem.Quantity.ToString();// 수량 표시
+        
         gameObject.SetActive(true);          // 슬롯 활성화
     }
 
