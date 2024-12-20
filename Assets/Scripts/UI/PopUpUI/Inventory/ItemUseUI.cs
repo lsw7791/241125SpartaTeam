@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class ItemUseUI : MonoBehaviour
 {
@@ -61,6 +62,7 @@ public class ItemUseUI : MonoBehaviour
         {
             UseButton("사용하기").onClick.AddListener(() =>
             {
+                GameManager.Instance.Player.inventory. RemoveItem(inItem.ItemID, 1);
                 // 포션 효과 적용
                 GameManager.Instance.DataManager.Item.UsePotion(inItem.ItemID);
                 GameManager.Instance.Player.ConditionUI.UpdateSliders();
