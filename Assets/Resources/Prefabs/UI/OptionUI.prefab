@@ -616,7 +616,6 @@ GameObject:
   - component: {fileID: 5854144468629607923}
   - component: {fileID: 4887764912074014786}
   - component: {fileID: 4077865034242708901}
-  - component: {fileID: 2303705312642914563}
   m_Layer: 5
   m_Name: OptionUI
   m_TagString: Untagged
@@ -710,19 +709,6 @@ MonoBehaviour:
   SFXSlider: {fileID: 33866522537443879}
   BGMSwitchImage: {fileID: 807055047214421376}
   SFXSwitchImage: {fileID: 2712593756887693807}
---- !u!114 &2303705312642914563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670625175736521037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9304d18f1b9e9d54db548c2bb28b81c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  brightnessSlider: {fileID: 4108921793185560205}
 --- !u!1 &833263930817892417
 GameObject:
   m_ObjectHideFlags: 0
