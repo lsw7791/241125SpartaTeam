@@ -89,7 +89,14 @@ public class SoundManager : MonoSingleton<SoundManager>
         // SFX를 한 번만 재생
         _sfxSource.PlayOneShot(clip);
     }
-
+    public void SetMuteBGM()
+    {
+        _bgmSource.mute = !_bgmSource.mute;
+    }
+    public void SetMuteSFX()
+    {
+        _sfxSource.mute = !_sfxSource.mute;
+    }
     // 미리 설정된 BGM을 재생하는 메서드//BGM
     public void PlayStartBGMAsiaTravel() => PlayBGM(asiaTravel118018);
     public void PlayStartBGMSciFiMoodtimeflow() => PlayBGM(sciFiMoodtimeflow194382);

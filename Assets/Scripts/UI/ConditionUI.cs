@@ -5,15 +5,11 @@ public class ConditionUI : MonoBehaviour
 {
     [SerializeField] private Slider _hp;       // 체력 슬라이더
     [SerializeField] private Slider _stamina; // 스태미너 슬라이더
-
+    Player player;
     private void Start()
     {
+        GameManager.Instance.Player.ConditionUI = this;
         InitializeSliders();
-    }
-
-    private void Update()
-    {
-        UpdateSliders();
     }
 
     // 슬라이더를 초기화하는 메서드
@@ -30,7 +26,7 @@ public class ConditionUI : MonoBehaviour
     }
 
     // 슬라이더를 지속적으로 업데이트하는 메서드
-    private void UpdateSliders()
+    public void UpdateSliders()
     {
         var playerStats = GameManager.Instance.Player.stats;
         if (playerStats == null) return;
