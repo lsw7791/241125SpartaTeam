@@ -10,15 +10,19 @@ public class Spawner : MonoBehaviour
     public List<Vector2> spawnPoints = new List<Vector2>(); // 스폰 위치 목록
     public float spawnInterval = 10f; // 스폰 간격
     public int sceneNumber;
+    public int ActiveMonsterCount; // 최대 활성화 가능한 몬스터 개수
     private List<GameObject> currentMonsters = new List<GameObject>();
+
     private void Awake()
     {
         sceneNumber = GameManager.Instance.SceneNum;
     }
+
     private void Start()
     {
         if (monsterPool != null) Destroy(monsterPool);
-            if (monsterPool == null) monsterPool = GameManager.Instance.SpawnManager.GroupSpawn($"Monster{sceneNumber}").AddComponent<MonsterPool>();
+        if (monsterPool == null) monsterPool = GameManager.Instance.SpawnManager.GroupSpawn($"Monster{sceneNumber}").AddComponent<MonsterPool>();
+
         StartCoroutine(SpawnRoutine());
     }
 
@@ -28,41 +32,43 @@ public class Spawner : MonoBehaviour
         {
             if (sceneNumber == GameManager.Instance.SceneNum)
             {
-                for (int i = 0; i < spawnPoints.Count; i++)
+                // 활성화된 몬스터 개수를 기준으로 스폰
+                int activeCount = GetActiveMonsterCount();
+                if (activeCount < ActiveMonsterCount)
                 {
-                    // 위치와 몬스터 ID를 기반으로 체크 및 스폰
-                    if (i < creatureIds.Count) // 몬스터 ID가 위치 개수와 맞아야 함
-                    {
-                        CheckAndSpawnMonster(spawnPoints[i], creatureIds[i]);
-                    }
+                    SpawnMonster();
                 }
 
                 yield return new WaitForSeconds(spawnInterval);
             }
+            else
+            {
+                yield return null;
+            }
         }
     }
 
-    private void CheckAndSpawnMonster(Vector2 spawnPoint, int creatureId)
+    private void SpawnMonster()
     {
-        if (!IsMonsterActiveAtPosition(spawnPoint))
+        for (int i = 0; i < spawnPoints.Count; i++)
         {
-            GameObject monster = monsterPool.GetMonster(creatureId, spawnPoint);
+            if (currentMonsters.Count >= ActiveMonsterCount) break; // 최대 활성화 개수를 초과하면 중단
+
+            int creatureId = i < creatureIds.Count ? creatureIds[i] : creatureIds[0]; // ID 순환 사용
+            GameObject monster = monsterPool.GetMonster(creatureId, spawnPoints[i]);
+
             if (monster != null)
             {
-                currentMonsters.Add(monster); // 스폰된 몬스터 관리
+                monster.SetActive(true); // 몬스터 활성화
+                currentMonsters.Add(monster); // 현재 활성화된 몬스터 관리
             }
         }
     }
 
-    private bool IsMonsterActiveAtPosition(Vector2 position)
+    private int GetActiveMonsterCount()
     {
-        foreach (GameObject monster in currentMonsters)
-        {
-            if (monster != null && monster.activeInHierarchy && Vector2.Distance(monster.transform.position, position) < 1f)
-            {
-                return true; // 해당 위치에 활성화된 몬스터가 있음
-            }
-        }
-        return false; // 해당 위치에 몬스터가 없음
+        // 현재 활성화된 몬스터 개수를 계산
+        currentMonsters.RemoveAll(monster => monster == null || !monster.activeInHierarchy);
+        return currentMonsters.Count;
     }
 }

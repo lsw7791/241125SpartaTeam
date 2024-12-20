@@ -100,6 +100,7 @@ public class SpawnManager : MonoBehaviour
     //}
     public void StageMine(int stageMineNum,Spawner spawner)
     {
+        spawner.ActiveMonsterCount = GameManager.Instance.DataManager.MonsterSpawn.GetMonsterID(stageMineNum).Count;
         if (spawner == null) spawner = gameObject.AddComponent<Spawner>();
         // 스폰 위치 설정
         spawner.spawnPoints = CreateVector2ListFromString(GameManager.Instance.DataManager.MonsterSpawn.GetMonsterPosition(stageMineNum));
