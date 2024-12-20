@@ -7,6 +7,9 @@ public class OptionUI : UIBase
 {
     public Slider BGMSlider; // BGM 볼륨 조절 슬라이더
     public Slider SFXSlider; // SFX 볼륨 조절 슬라이더
+    public RectTransform BGMSwitchImage;
+    public RectTransform SFXSwitchImage;
+
 
     private void Start()
     {
@@ -32,7 +35,35 @@ public class OptionUI : UIBase
         SoundManager.Instance.SetSFXVolume(volume);
         PlayerPrefs.SetFloat("SFXVolume", volume); // 설정 저장
     }
+    public void SetBGMMute()
+    {
+        Debug.Log("BGM");
 
+        // 현재 Y축 회전 상태를 확인하여 180도 토글
+        Vector3 currentRotation = BGMSwitchImage.localEulerAngles;
+        BGMSwitchImage.localEulerAngles = new Vector3(
+            currentRotation.x,
+            (currentRotation.y == 0) ? 180 : 0, // 0과 180을 번갈아 설정
+            currentRotation.z
+        );
+
+        // BGM 음소거 처리
+        SoundManager.Instance.SetMuteBGM();
+    }
+
+    public void SetSFXMute()
+    {
+        // 현재 Y축 회전 상태를 확인하여 180도 토글
+        Vector3 currentRotation = SFXSwitchImage.localEulerAngles;
+        SFXSwitchImage.localEulerAngles = new Vector3(
+            currentRotation.x,
+            (currentRotation.y == 0) ? 180 : 0, // 0과 180을 번갈아 설정
+            currentRotation.z
+        );
+
+        // SFX 음소거 처리
+        SoundManager.Instance.SetMuteSFX();
+    }
     public void OnclickedExitBtn()
     {
         // 옵션 UI 닫기 및 씬 이동 처리

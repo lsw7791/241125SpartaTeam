@@ -11,7 +11,7 @@ public class PlayerData
     public int CurrentStamina;     // 현재 스태미나
     public int Gold;        // 현재 금액
     public int Damage;      // 현재 공격력
-    public int Speed;       // 현재 이동 속도
+    public int Speed;       // 이동 속도
     public float ATKSpeed;  // 현재 공격 속도
     public int Def;         // 현재 방어력
     public int WeaponType;  // 현재 무기 타입
@@ -33,7 +33,7 @@ public class PlayerData
         CurrentStamina = 100;
         Gold = 0;
         Damage = 10;
-        Speed = 1;
+        Speed = 3;
         ATKSpeed = 1;
         Def = 0;
         MineDamage = 1;

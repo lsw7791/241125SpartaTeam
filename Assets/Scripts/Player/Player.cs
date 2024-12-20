@@ -13,7 +13,7 @@ public class Player : MonoBehaviour,IDamageable
     public PlayerCamera _playerCamera;
     public Equipment equipment;
     public GameObject Weapon;
-
+    public ConditionUI ConditionUI;
     // QuickSlots 프로퍼티
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경
 
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour,IDamageable
         if(value <0)
         {
             stats.CurrentHP += value;
-
+            ConditionUI.UpdateSliders();
             if (stats.CurrentHP <= 0)
             {
                 Die();
@@ -86,6 +86,9 @@ public class Player : MonoBehaviour,IDamageable
         TriggerDeath();
         //UIManager.Instance.deathUI.SetActive(true);
         Debug.Log($"{nickName} has died.");
+        Revive();
+        GameManager.Instance.SceneNum = 23;
+        GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
     public void TriggerDeath()
     {
@@ -97,8 +100,10 @@ public class Player : MonoBehaviour,IDamageable
     }
     public void Revive()
     {
-        GameManager.Instance.Player.stats.isDie = false;
-        PlayerInput.speed = 3.5f;
+        stats.isDie = false;
+        stats.CurrentHP = 20;
+        ConditionUI.UpdateSliders();
+        PlayerInput.speed = stats.Speed;
         this.enabled = true;
     }
 

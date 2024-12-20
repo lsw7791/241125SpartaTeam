@@ -19,6 +19,10 @@ public class PlayerInput : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         camera = Camera.main;
     }
+    private void Start()
+    {
+        speed = GameManager.Instance.Player.stats.Speed;
+    }
     public void OnMove(InputAction.CallbackContext context)
     {
         if (isDeath) return;
