@@ -58,7 +58,7 @@ namespace MainData
 
 		public System.Int32 id;
 		public System.Collections.Generic.List<Int32> MonsterID;
-		public UnityEngine.Vector2 Position1;
+		public System.String MonsterPosition;
   
 
 #region fuctions

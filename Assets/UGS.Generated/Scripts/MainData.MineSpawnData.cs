@@ -57,10 +57,8 @@ namespace MainData
 /* Fields. */
 
 		public System.Int32 id;
-		public System.Collections.Generic.List<Int32> Monster1;
-		public System.Collections.Generic.List<Int32> Monster2;
-		public System.Collections.Generic.List<Int32> Monster3;
-		public System.Collections.Generic.List<Int32> Monster4;
+		public System.Collections.Generic.List<Int32> MineID;
+		public System.String MinePosition;
   
 
 #region fuctions

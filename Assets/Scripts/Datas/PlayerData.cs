@@ -11,7 +11,9 @@ public class PlayerData
     public int CurrentStamina;     // 현재 스태미나
     public int Gold;        // 현재 금액
     public int Damage;      // 일반 공격력
-    public int WeaponDamage; // 무기 공격력
+    public int PhysicalDamage; // 물리 공격력
+    public int MagicalDamage; // 마법 공격력
+
     public int Speed;       // 이동 속도
     public float ATKSpeed;  // 현재 공격 속도
     public int Def;         // 현재 방어력
@@ -34,12 +36,50 @@ public class PlayerData
         CurrentStamina = 100;
         Gold = 0;
         Damage = 10;
-        WeaponDamage = 0;
+        PhysicalDamage = 0;
+        MagicalDamage = 0;
         Speed = 3;
         ATKSpeed = 1;
         Def = 0;
         MineDamage = 1;
         WeaponType = 0;
         isDie = false;
+    }
+    public void PlayerStatsReset()
+    {
+        MaxHP = 100;
+        CurrentHP = MaxHP;
+        MaxStamina = 100;
+        CurrentStamina = 100;
+        Damage = 10;
+        PhysicalDamage = 0;
+        MagicalDamage = 0;
+        Speed = 3;
+        ATKSpeed = 1;
+        Def = 0;
+        MineDamage = 1;
+        WeaponType = 0;
+    }
+    public void PlayerStatsEquip(InventoryItem inItem)
+    {
+        var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
+        MaxHP += itemData.health;
+        MaxStamina += itemData.stamina;
+        Def += itemData.defense;
+        MineDamage += itemData.attackMine;
+        PhysicalDamage += itemData.attackM;
+        MagicalDamage += itemData.attack;
+        ATKSpeed += itemData.speed;
+    }
+    public void PlayerStatsUnEquip(InventoryItem inItem)
+    {
+        var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
+        MaxHP -= itemData.health;
+        MaxStamina -= itemData.stamina;
+        Def -= itemData.defense;
+        MineDamage -= itemData.attackMine;
+        PhysicalDamage -= itemData.attackM;
+        MagicalDamage -= itemData.attack;
+        ATKSpeed -= itemData.speed;
     }
 }

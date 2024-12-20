@@ -58,7 +58,7 @@ public class MeeleAI : MonsterAI
     {
         if (collision.transform.TryGetComponent<IDamageable>(out var outTarget))
         {
-            outTarget.TakeDamage(GameManager.Instance.DataManager.Creature.GetAttack(monster.id));
+            outTarget.TakeDamage(AttackMinusDef());
         }
     }
     protected override void AttackPlayer()

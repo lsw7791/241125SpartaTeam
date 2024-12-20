@@ -25,6 +25,7 @@ public class Equipment : MonoBehaviour
         GameManager.Instance.Player._playerWeapon.ATKType = inItem.ATKType;
 
         inItem.IsEquipped = true;
+        GameManager.Instance.Player.stats.PlayerStatsEquip(inItem);
     }
 
     public void UnEquip(ItemType inItemType)
@@ -44,9 +45,11 @@ public class Equipment : MonoBehaviour
                 if (itemData != null && itemData.itemType == inItemType)
                 {
                     item.IsEquipped = false;
+                    GameManager.Instance.Player.stats.PlayerStatsEquip(item);
                 }
             }
         }
+
     }
 
 
