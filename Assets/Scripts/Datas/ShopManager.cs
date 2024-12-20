@@ -11,7 +11,7 @@ public enum ShopType
 }
 
 
-public class ShopManager : MonoBehaviour
+public class ShopManager
 {
     public List<ItemData> GetItems(ShopType shopType)
     {
