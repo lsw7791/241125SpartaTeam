@@ -14,6 +14,8 @@ public class Player : MonoBehaviour,IDamageable
     public Equipment equipment;
     public GameObject Weapon;
     public ConditionUI ConditionUI;
+    public StatusUI StatusUI;
+
     // QuickSlots 프로퍼티
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경
 
@@ -103,7 +105,7 @@ public class Player : MonoBehaviour,IDamageable
         stats.isDie = false;
         stats.CurrentHP = 20;
         ConditionUI.UpdateSliders();
-        PlayerInput.speed = stats.Speed;
+        PlayerInput.speed = stats.MoveSpeed;
         this.enabled = true;
     }
 

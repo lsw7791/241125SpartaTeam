@@ -18,6 +18,7 @@ public class Equipment : MonoBehaviour
         // 기존 장비 해제
         UnEquip(itemData.itemType);
 
+
         _equipItems[itemData.itemType] = inItem;
 
         // UI 장비창 업데이트
@@ -32,7 +33,13 @@ public class Equipment : MonoBehaviour
     {
         if (_equipItems.ContainsKey(inItemType))
         {
+            // 장비를 찾음
+            InventoryItem unequippedItem = _equipItems[inItemType];
 
+            // 스탯 감소 처리
+            GameManager.Instance.Player.stats.PlayerStatsUnEquip(unequippedItem);
+
+            // 딕셔너리에서 제거
             _equipItems.Remove(inItemType);
 
             // UI 장비창 클리어
@@ -45,12 +52,11 @@ public class Equipment : MonoBehaviour
                 if (itemData != null && itemData.itemType == inItemType)
                 {
                     item.IsEquipped = false;
-                    GameManager.Instance.Player.stats.PlayerStatsEquip(item);
                 }
             }
         }
-
     }
+
 
 
     public void EquipmentUIReference(EquipmentUI inEquipmentUI)

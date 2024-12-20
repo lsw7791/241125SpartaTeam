@@ -21,7 +21,7 @@ public class PlayerInput : MonoBehaviour
     }
     private void Start()
     {
-        speed = GameManager.Instance.Player.stats.Speed;
+        speed = 5;
     }
     public void OnMove(InputAction.CallbackContext context)
     {

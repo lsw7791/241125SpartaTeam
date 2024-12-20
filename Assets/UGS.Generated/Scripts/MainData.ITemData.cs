@@ -69,7 +69,8 @@ namespace MainData
 		public System.Int32 attackMine;
 		public System.Int32 sell;
 		public System.Int32 buy;
-		public System.Single speed;
+		public System.Single moveSpeed;
+		public System.Single attackSpeed;
 		public System.String prefabPath;
 		public System.String spritePath;
 		public System.Collections.Generic.List<Int32> goldRange;

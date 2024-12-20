@@ -26,6 +26,7 @@ public class ItemUseUI : MonoBehaviour
                 if (inItem.IsEquipped)
                 {
                     GameManager.Instance.Player.equipment.UnEquip(itemData.itemType);
+
                     // «ÿ¡¶
                 }
                 else

@@ -26,7 +26,7 @@ public static class PlayerSaveLoad
                 CurrentStamina = player.Stats.CurrentStamina,
                 Gold = player.Stats.Gold,
                 Damage = player.Stats.Damage,
-                Speed = player.Stats.Speed,
+                MoveSpeed = player.Stats.MoveSpeed,
                 ATKSpeed = player.Stats.ATKSpeed,
                 Def = player.Stats.Def,
                 WeaponType = player.Stats.WeaponType,
@@ -104,7 +104,7 @@ public static class PlayerSaveLoad
         player.Stats.CurrentStamina = data.CurrentStamina;
         player.Stats.Gold = data.Gold;
         player.Stats.Damage = data.Damage;
-        player.Stats.Speed = data.Speed;
+        player.Stats.MoveSpeed = data.MoveSpeed;
         player.Stats.ATKSpeed = data.ATKSpeed;
         player.Stats.Def = data.Def;
         player.Stats.WeaponType = data.WeaponType;

@@ -14,7 +14,7 @@ public class PlayerData
     public int PhysicalDamage; // 물리 공격력
     public int MagicalDamage; // 마법 공격력
 
-    public int Speed;       // 이동 속도
+    public float MoveSpeed;       // 이동 속도
     public float ATKSpeed;  // 현재 공격 속도
     public int Def;         // 현재 방어력
     public int WeaponType;  // 현재 무기 타입
@@ -38,7 +38,7 @@ public class PlayerData
         Damage = 10;
         PhysicalDamage = 0;
         MagicalDamage = 0;
-        Speed = 3;
+        MoveSpeed = 3;
         ATKSpeed = 1;
         Def = 0;
         MineDamage = 1;
@@ -54,7 +54,7 @@ public class PlayerData
         Damage = 10;
         PhysicalDamage = 0;
         MagicalDamage = 0;
-        Speed = 3;
+        MoveSpeed = 3;
         ATKSpeed = 1;
         Def = 0;
         MineDamage = 1;
@@ -69,7 +69,9 @@ public class PlayerData
         MineDamage += itemData.attackMine;
         PhysicalDamage += itemData.attackM;
         MagicalDamage += itemData.attack;
-        ATKSpeed += itemData.speed;
+        ATKSpeed += itemData.attackSpeed;
+        MoveSpeed += itemData.moveSpeed;
+        GameManager.Instance.Player.StatusUI.Refresh();
     }
     public void PlayerStatsUnEquip(InventoryItem inItem)
     {
@@ -80,6 +82,8 @@ public class PlayerData
         MineDamage -= itemData.attackMine;
         PhysicalDamage -= itemData.attackM;
         MagicalDamage -= itemData.attack;
-        ATKSpeed -= itemData.speed;
+        ATKSpeed -= itemData.attackSpeed;
+        MoveSpeed -= itemData.moveSpeed;
+        GameManager.Instance.Player.StatusUI.Refresh();
     }
 }

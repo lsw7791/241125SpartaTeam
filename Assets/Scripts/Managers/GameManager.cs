@@ -27,8 +27,6 @@ public class GameManager : MonoSingleton<GameManager>
 
         // 다른 매니저 초기화
         if (CraftingManager == null) CraftingManager = gameObject.AddComponent<CraftingManager>();
-       // List<ItemInstance> items = new List<ItemInstance>();
-       // ItemManager.Instance.Initialize(items);
 
         SceneNum = 24;
     }
@@ -101,7 +99,7 @@ public class GameManager : MonoSingleton<GameManager>
         Player.Stats.MaxHP = playerData.MaxHP;   // MaxHP
         Player.Stats.CurrentHP = playerData.CurrentHP;   // CurrentHP
         Player.Stats.Damage = playerData.Damage;   // Damage
-        Player.Stats.Speed = playerData.Speed;   // Speed
+        Player.Stats.MoveSpeed = playerData.MoveSpeed;   // Speed
         Player.Stats.Def = playerData.Def;   // Defense
         Player.Stats.ATKSpeed = playerData.ATKSpeed;   // AttackSpeed
         Player.Stats.WeaponType = playerData.WeaponType;   // WeaponType
