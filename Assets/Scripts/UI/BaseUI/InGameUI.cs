@@ -22,7 +22,9 @@ public class InGameUI : MonoBehaviour
             playerStats.Damage = 999;
             playerStats.Def = 999;
             playerStats.MineDamage = 999;
-
+            playerStats.PhysicalDamage = 999;
+            playerStats.MagicalDamage = 999;
+            GameManager.Instance.Player.StatusUI.Refresh();
         });
 
         _btnStatus.onClick.AddListener(() =>

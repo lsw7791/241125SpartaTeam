@@ -19,7 +19,7 @@ public class ShopUI : UIBase
     public Button WeaponButton;
     public Button ArmorButton;
 
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         HasGold.text = $"{GameManager.Instance.Player.stats.Gold}";
