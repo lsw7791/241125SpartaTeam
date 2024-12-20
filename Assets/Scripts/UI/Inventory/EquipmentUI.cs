@@ -36,28 +36,26 @@ public class EquipmentUI : MonoBehaviour
     }
 
     // 장비창에 아이템 아이콘 표시 + EquipManager 연동
-    public void UpdateEquipmentSlot(ItemType slot, Sprite itemIcon)
+    public void UpdateEquipmentSlot(ItemType inSlot, Sprite itemIcon)
     {
-        if (_equipmentSlots.TryGetValue(slot, out Image slotImage))
-        {
-            slotImage.sprite = itemIcon;
-            slotImage.enabled = itemIcon != null; // 아이콘이 없으면 비활성화
-
-            // EquipManager에 해당 슬롯 업데이트 요청
-            EquipManager.Instance.UpdateEquipPlace(slot, itemIcon);
-        }
+        UpdateSlot(inSlot, itemIcon);
     }
 
     // 장비 해제 시 슬롯 비우기 + EquipManager 연동
-    public void ClearEquipmentSlot(ItemType slot)
+    public void ClearEquipmentSlot(ItemType inSlot)
     {
-        if (_equipmentSlots.TryGetValue(slot, out Image slotImage))
-        {
-            slotImage.sprite = null;
-            slotImage.enabled = false;
+        UpdateSlot(inSlot, null);
+    }
 
-            // EquipManager에 해당 슬롯 클리어 요청
-            EquipManager.Instance.UpdateEquipPlace(slot, null);
+    private void UpdateSlot(ItemType inSlot, Sprite itemIcon)
+    {
+        if (_equipmentSlots.TryGetValue(inSlot, out Image outSlotImage))
+        {
+            outSlotImage.sprite = itemIcon;
+            outSlotImage.enabled = itemIcon != null;
         }
+
+        // EquipManager에 해당 슬롯 클리어 요청
+        EquipManager.Instance.UpdateEquipPlace(inSlot, itemIcon);
     }
 }
