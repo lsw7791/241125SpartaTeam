@@ -156,7 +156,7 @@ public class SpawnManager : MonoBehaviour
         new Vector2(36f, 21f)
     };
         // 몬스터 ID 설정 (위치와 매핑됨)
-        spawner.creatureIds = new List<int> { 3, 3, 3, 9, 3, 3, 9, 9, 3, 9, 9, 9, }; // Goblin, Lizard, Zombie, OrcShaman
+        spawner.creatureIds = new List<int> { 3, 3, 3, 9, 3, 3, 9, 9, 3, 9, 9, 9 }; // Goblin, Lizard, Zombie, OrcShaman
         //monsterPool.GetMonster(7, new Vector2(47f, 14.5f));
         GameObject stone1 = minePool.InitializeMine(16, new Vector2(39f, 26f));
         GameObject copper1 = minePool.InitializeMine(16, new Vector2(37f, 26f));
