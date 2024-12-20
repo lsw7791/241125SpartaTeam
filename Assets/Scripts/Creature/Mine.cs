@@ -49,9 +49,13 @@ public class Mine : MonoBehaviour, ICreature
         }
     }
     public void TakeDamage(int damage)
-    {       
-        currentHealth -= damage;
+    {
+        int value = damage - GameManager.Instance.DataManager.Creature.GetDefense(id);
+        if (value > 0)
+        {
+        currentHealth -= value;
         if (currentHealth <= 0) Die();
+        }
     }
     public void Die()
     {

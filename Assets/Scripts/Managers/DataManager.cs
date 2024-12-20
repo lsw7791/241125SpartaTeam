@@ -11,9 +11,9 @@ public class DataManager
     public SceneDataManager Scene;             // 씬 데이터 관리
     public ShopManager Shop;                   // 상점 관리
     public CharacterList CharacterList;        // 캐릭터 리스트 관리
-
+    public MineSpawnDataManager MineSpawn;
+    public MonsterSpawnDataManager MonsterSpawn;
     public IPlayerRepository Repository;       // 플레이어 데이터 저장소 인터페이스
-
     public DataManager(IPlayerRepository repository)
     {
         Repository = repository;  // repository를 외부에서 전달받도록 수정
@@ -24,6 +24,8 @@ public class DataManager
         Scene = new SceneDataManager();
         Shop = new ShopManager();
         CharacterList = new CharacterList(Repository);  // CharacterList도 repository를 사용하여 초기화
+        MineSpawn = new MineSpawnDataManager();
+        MonsterSpawn = new MonsterSpawnDataManager();
     }
 
     // 모든 플레이어 데이터를 가져오기
