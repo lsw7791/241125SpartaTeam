@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Equipment : MonoBehaviour
 {
-    public Dictionary<ItemType, InventoryItem> equipItems = new Dictionary<ItemType, InventoryItem>();
-    [SerializeField] private EquipmentUI _equipmentUI;
+    private Dictionary<ItemType, InventoryItem> _equipItems = new Dictionary<ItemType, InventoryItem>();
+    private EquipmentUI _equipmentUI;
 
     public void EquipNew(InventoryItem inItem)
     {
@@ -19,7 +18,7 @@ public class Equipment : MonoBehaviour
         // 기존 장비 해제
         UnEquip(itemData.itemType);
 
-        equipItems[itemData.itemType] = inItem;
+        _equipItems[itemData.itemType] = inItem;
 
         // UI 장비창 업데이트
         _equipmentUI.UpdateEquipmentSlot(itemData.itemType, inItem.ItemIcon);
@@ -28,21 +27,21 @@ public class Equipment : MonoBehaviour
         inItem.IsEquipped = true;
     }
 
-    public void UnEquip(ItemType itemType)
+    public void UnEquip(ItemType inItemType)
     {
-        if (equipItems.ContainsKey(itemType))
+        if (_equipItems.ContainsKey(inItemType))
         {
 
-            equipItems.Remove(itemType);
+            _equipItems.Remove(inItemType);
 
             // UI 장비창 클리어
-            _equipmentUI.ClearEquipmentSlot(itemType);
+            _equipmentUI.ClearEquipmentSlot(inItemType);
 
             // 인벤토리 상태 해제 처리
             foreach (var item in GameManager.Instance.Player.inventory.Items)
             {
                 var itemData = GameManager.Instance.DataManager.GetItemDataById(item.ItemID);
-                if (itemData != null && itemData.itemType == itemType)
+                if (itemData != null && itemData.itemType == inItemType)
                 {
                     item.IsEquipped = false;
                 }
@@ -51,8 +50,8 @@ public class Equipment : MonoBehaviour
     }
 
 
-    public void EquipmentUIReference(EquipmentUI equipmentUI)
+    public void EquipmentUIReference(EquipmentUI inEquipmentUI)
     {
-        _equipmentUI = equipmentUI;
+        _equipmentUI = inEquipmentUI;
     }
 }

@@ -3,11 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class ItemUseUI : MonoBehaviour
 {
-    //private InventoryItem item;
     [SerializeField] private Transform _useMenu;
     [SerializeField] private Image _useItemImage;
 
@@ -55,7 +53,7 @@ public class ItemUseUI : MonoBehaviour
             { // 모든 아이템 타입
                 // TODO :: 버릴때 몇개를 버릴건지 정하는 코드 필요
                 if(inItem.IsEquipped)
-                {
+                { // TODO :: 동적 UI로 표시하기
                     Debug.Log("착용중인 장비입니다.");
                     return;
                 }
@@ -74,15 +72,18 @@ public class ItemUseUI : MonoBehaviour
 
     private void UseButtonClear()
     {
-        if (_useButton != null)
+        if (_useButton == null)
         {
-            foreach (GameObject button in _useButton)
-            {
-                Destroy(button);
-            }
-            _useButton.Clear();
+            return;
         }
+
+        foreach (GameObject button in _useButton)
+        {
+            Destroy(button);
+        }
+        _useButton.Clear();
     }
+
     private Button UseButton(string inButtonName)
     {
         GameObject newUseButton = Instantiate(Resources.Load<GameObject>($"{PathInfo.UIPath}ItemUseSlot"));
