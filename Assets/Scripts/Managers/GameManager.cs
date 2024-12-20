@@ -27,8 +27,8 @@ public class GameManager : MonoSingleton<GameManager>
 
         // 다른 매니저 초기화
         if (CraftingManager == null) CraftingManager = gameObject.AddComponent<CraftingManager>();
-        List<ItemInstance> items = new List<ItemInstance>();
-        ItemManager.Instance.Initialize(items);
+       // List<ItemInstance> items = new List<ItemInstance>();
+       // ItemManager.Instance.Initialize(items);
 
         SceneNum = 24;
     }

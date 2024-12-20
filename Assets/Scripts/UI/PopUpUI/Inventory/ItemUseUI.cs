@@ -45,10 +45,7 @@ public class ItemUseUI : MonoBehaviour
             //{ // 재료 타입
             //    Debug.Log("조합");
             //});
-            //UseButton("사용하기").onClick.AddListener(() =>
-            //{ // 포션 타입
-            //    Debug.Log("사용");
-            //});
+           
             UseButton("버리기").onClick.AddListener(() =>
             { // 모든 아이템 타입
                 // TODO :: 버릴때 몇개를 버릴건지 정하는 코드 필요
@@ -57,6 +54,20 @@ public class ItemUseUI : MonoBehaviour
                     Debug.Log("착용중인 장비입니다.");
                     return;
                 }
+                GameManager.Instance.Player.inventory.DropItem(inItem.ItemID);
+            });
+        }
+        else if(itemData.itemType > ItemType.Gold)
+        {
+            UseButton("사용하기").onClick.AddListener(() =>
+            {
+                // 포션 효과 적용
+                GameManager.Instance.DataManager.Item.UsePotion(inItem.ItemID);
+                GameManager.Instance.Player.ConditionUI.UpdateSliders();
+            });
+            UseButton("버리기").onClick.AddListener(() =>
+            { // 모든 아이템 타입
+                // TODO :: 버릴때 몇개를 버릴건지 정하는 코드 필요
                 GameManager.Instance.Player.inventory.DropItem(inItem.ItemID);
             });
         }

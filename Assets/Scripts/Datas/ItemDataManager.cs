@@ -20,8 +20,7 @@ public enum ItemType
     Ladder,            // 사다리
     Other,             // 기타
     Gold,              // 재화
-    HealthPotion,      // 체력 포션
-    StaminaPotion      // 스태미나 포션
+    Potion,      //포션
 }
 
 public enum ItemUseType
@@ -33,8 +32,8 @@ public enum ItemUseType
 
 // 아이템 데이터를 관리하는 매니저 클래스
 public class ItemDataManager : ItemData
-{ // 아이템 데이터 관리 및 반환
-    // 모든 아이템 데이터를 반환
+{
+    // 아이템 데이터 리스트를 반환
     public List<ItemData> GetItemDatas()
     {
         return ItemDataList;
@@ -47,7 +46,6 @@ public class ItemDataManager : ItemData
         {
             return ItemDataMap[id];
         }
-
         return null;
     }
 
@@ -57,27 +55,32 @@ public class ItemDataManager : ItemData
         return ItemDataList.FindAll(x => x.itemType == type);
     }
 
-    // 랜덤으로 아이템 드랍 데이터를 반환
-    public ItemData GetRandomDropItem(List<int> dropItemIds)
+    // 포션을 사용하여 플레이어의 HP와 스태미너를 증가시킴
+    public void UsePotion(int itemId)
     {
-        List<ItemData> validItems = new List<ItemData>();
+        // 포션 아이템 데이터를 가져옴
+        ItemData potionData = GetData(itemId);
 
-        // 드랍할 수 있는 아이템 데이터를 필터링
-        foreach (int id in dropItemIds)
+        // 아이템이 null이거나 포션이 아닌 경우
+        if (potionData == null || potionData.itemType != ItemType.Potion)
         {
-            if (ItemDataMap.ContainsKey(id))
-            {
-                validItems.Add(ItemDataMap[id]);
-            }
+            Debug.LogError("Invalid item ID or not a Potion.");
+            return;
         }
 
-        if (validItems.Count > 0)
-        {
-            // 랜덤으로 드랍 아이템 선택
-            int randomIndex = Random.Range(0, validItems.Count);
-            return validItems[randomIndex];
-        }
+        // 포션의 효과 (Health와 Stamina 값) 가져오기
+        int healthIncrease = potionData.health;
+        int staminaIncrease = potionData.stamina;
 
-        return null;
+        // 플레이어의 HP와 Stamina 업데이트
+        var playerStats = GameManager.Instance.Player.stats;
+
+        playerStats.CurrentHP = Mathf.Min(playerStats.MaxHP, playerStats.CurrentHP + healthIncrease);
+        playerStats.CurrentStamina = Mathf.Min(playerStats.MaxStamina, playerStats.CurrentStamina + staminaIncrease);
+
+        // 디버깅: 효과 적용 후 값 확인
+        Debug.Log($"Potion used: Health +{healthIncrease}, Stamina +{staminaIncrease}");
+        Debug.Log($"Player stats updated: HP = {playerStats.CurrentHP}, Stamina = {playerStats.CurrentStamina}");
     }
 }
+

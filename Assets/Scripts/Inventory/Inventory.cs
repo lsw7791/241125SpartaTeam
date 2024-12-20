@@ -106,7 +106,7 @@ public class Inventory
             // 아이템 데이터와 프리팹 로드
             GameObject itemPrefab = Resources.Load<GameObject>(itemData.prefabPath);
             GameObject dropItem = GameObject.Instantiate(itemPrefab, GameManager.Instance.Player.transform.position, Quaternion.identity);
-            if(dropItem.TryGetComponent<TestItem>(out var outItem))
+            if (dropItem.TryGetComponent<TestItem>(out var outItem))
             {
                 outItem.isPlayerDrop = true;
                 outItem.itemData = itemData;

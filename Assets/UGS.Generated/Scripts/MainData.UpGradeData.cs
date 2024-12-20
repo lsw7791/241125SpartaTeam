@@ -57,10 +57,11 @@ namespace MainData
 /* Fields. */
 
 		public System.Int32 id;
+		public System.Int32 enhence;
 		public System.Int32 tier;
 		public System.Single success;
-		public System.String fail;
-		public System.String Destruction;
+		public System.Single fail;
+		public System.Single Destruction;
   
 
 #region fuctions
