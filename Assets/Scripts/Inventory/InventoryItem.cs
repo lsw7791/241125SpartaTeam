@@ -22,6 +22,8 @@ public class InventoryItem
     public bool IsEquipped; // 장착 상태
     public int ATKType;
     //public EquipSlot equipSlot; // 장비 부위
+
+    public int enhenceCount;
     public InventoryItem() { }
     public InventoryItem(int itemID, int quantity, string spritePath, bool isEquipped, int atkType)
     {
@@ -39,6 +41,7 @@ public class InventoryItem
         // TODO :: 현재 모두 장착 아이템인 상태
         // 장착 되는지 확인 후 UGS 변경 예정
         //equipSlot = slot;
+        enhenceCount = 1;
     }
     private Sprite LoadSprite(string path)
     {

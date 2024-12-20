@@ -23,12 +23,12 @@ public enum ItemType
     Potion,      //포션
 }
 
-public enum ItemUseType
-{ // 인벤토리에서 슬롯을 눌렀을 때 구분할 타입
-    Consumable,
-    Equipment,
-    Material,
-}
+//public enum ItemUseType
+//{ // 인벤토리에서 슬롯을 눌렀을 때 구분할 타입
+//    Consumable,
+//    Equipment,
+//    Material,
+//}
 
 // 아이템 데이터를 관리하는 매니저 클래스
 public class ItemDataManager : ItemData

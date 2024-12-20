@@ -10,6 +10,7 @@ public class DataManager
     public CraftingDataManager Crafting;       // 제작 데이터 관리
     public SceneDataManager Scene;             // 씬 데이터 관리
     public ShopManager Shop;                   // 상점 관리
+    public UpGradeDataManager Upgrade;       // 제작 데이터 관리
     public CharacterList CharacterList;        // 캐릭터 리스트 관리
     public MineSpawnDataManager MineSpawn;
     public MonsterSpawnDataManager MonsterSpawn;
@@ -23,6 +24,7 @@ public class DataManager
         Crafting = new CraftingDataManager();
         Scene = new SceneDataManager();
         Shop = new ShopManager();
+        Upgrade = new UpGradeDataManager();
         CharacterList = new CharacterList(Repository);  // CharacterList도 repository를 사용하여 초기화
         MineSpawn = new MineSpawnDataManager();
         MonsterSpawn = new MonsterSpawnDataManager();

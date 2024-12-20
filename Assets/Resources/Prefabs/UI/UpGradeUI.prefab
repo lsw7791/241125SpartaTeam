@@ -1074,6 +1074,7 @@ MonoBehaviour:
   CanDrag: 0
   rectTransform: {fileID: 0}
   _useItemImage: {fileID: 2263718820036086120}
+  _craftResultButton: {fileID: 3702567423049171541}
 --- !u!1 &6075839602369662499
 GameObject:
   m_ObjectHideFlags: 0
