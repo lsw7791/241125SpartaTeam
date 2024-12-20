@@ -110,8 +110,8 @@ public class PlayerWeapon : MonoBehaviour
             collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
         {
             // 플레이어가 충돌한 오브젝트가 ICreature를 구현한 경우
-            outTarget.TakeDamage(GameManager.Instance.Player.Stats.Damage);  // 데미지 처리
-            Debug.Log($"Player dealt {GameManager.Instance.Player.Stats.Damage} damage to {outTarget.GetType().Name}");
+            outTarget.TakeDamage(GameManager.Instance.Player.Stats.Damage+ GameManager.Instance.Player.Stats.WeaponDamage);  // 데미지 처리
+            Debug.Log($"Player dealt {GameManager.Instance.Player.Stats.Damage + GameManager.Instance.Player.Stats.WeaponDamage} damage to {outTarget.GetType().Name}");
         }
         else
         {

@@ -16,8 +16,9 @@ public class EquipManager : MonoSingleton<EquipManager>
 
     private Dictionary<ItemType, EquipmentSlot> _slotMap;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         // 슬롯 타입과 EquipmentSlot 매핑
         _slotMap = new Dictionary<ItemType, EquipmentSlot>();
         foreach (var slot in EquipmentSlots)

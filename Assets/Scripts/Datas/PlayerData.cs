@@ -10,7 +10,8 @@ public class PlayerData
     public int MaxStamina;              // 최대 HP
     public int CurrentStamina;     // 현재 스태미나
     public int Gold;        // 현재 금액
-    public int Damage;      // 현재 공격력
+    public int Damage;      // 일반 공격력
+    public int WeaponDamage; // 무기 공격력
     public int Speed;       // 이동 속도
     public float ATKSpeed;  // 현재 공격 속도
     public int Def;         // 현재 방어력
@@ -33,6 +34,7 @@ public class PlayerData
         CurrentStamina = 100;
         Gold = 0;
         Damage = 10;
+        WeaponDamage = 0;
         Speed = 3;
         ATKSpeed = 1;
         Def = 0;
