@@ -64,7 +64,7 @@ public class PlayerWeapon : MonoBehaviour
 
         // 충돌 처리 - 화살이 충돌 시 데미지 적용
         arrow.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile);
-        outProjectile.Initialize(layerMask, GameManager.Instance.Player.Stats.Damage);
+        outProjectile.Initialize(layerMask, GameManager.Instance.Player.Stats.Damage+ GameManager.Instance.Player.Stats.PhysicalDamage);
 
         Debug.Log("Fired Arrow!");
     }
@@ -98,7 +98,7 @@ public class PlayerWeapon : MonoBehaviour
 
         // 충돌 처리 - 파이어볼이 충돌 시 데미지 적용
         fireball.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile);
-        outProjectile.Initialize(layerMask, GameManager.Instance.Player.Stats.Damage);
+        outProjectile.Initialize(layerMask, GameManager.Instance.Player.Stats.Damage+ GameManager.Instance.Player.Stats.MagicalDamage);
 
         Debug.Log("Fired Fireball!");
     }
@@ -110,8 +110,8 @@ public class PlayerWeapon : MonoBehaviour
             collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
         {
             // 플레이어가 충돌한 오브젝트가 ICreature를 구현한 경우
-            outTarget.TakeDamage(GameManager.Instance.Player.Stats.Damage+ GameManager.Instance.Player.Stats.WeaponDamage);  // 데미지 처리
-            Debug.Log($"Player dealt {GameManager.Instance.Player.Stats.Damage + GameManager.Instance.Player.Stats.WeaponDamage} damage to {outTarget.GetType().Name}");
+            outTarget.TakeDamage(GameManager.Instance.Player.Stats.Damage + GameManager.Instance.Player.Stats.PhysicalDamage);  // 데미지 처리
+            Debug.Log($"Player dealt {GameManager.Instance.Player.Stats.Damage + GameManager.Instance.Player.Stats.PhysicalDamage} damage to {outTarget.GetType().Name}");
         }
         else
         {

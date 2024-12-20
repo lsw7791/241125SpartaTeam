@@ -13,7 +13,6 @@ public class MonsterAI : MonoBehaviour
 {
     protected Monster monster;
     protected Rigidbody2D rb;
-
     [Header("Targeting")]
     [SerializeField]
     protected Transform playerTransform;                 // 추적할 플레이어
@@ -51,12 +50,17 @@ public class MonsterAI : MonoBehaviour
             playerTransform = GameManager.Instance.Player.gameObject.transform;
         }
     }
-
     protected virtual void AttackPlayer()
     {
         curTime += Time.deltaTime;
     }
-
+    protected int AttackMinusDef()
+    {
+        int value = GameManager.Instance.DataManager.Creature.GetAttack(monster.id) - GameManager.Instance.Player.stats.Def;
+        if(value < 0)
+        return 0;
+        else return value;
+    }
     protected void ReturnToInitialPosition()
     {   
             // 몬스터가 초기 위치로 돌아가는 행동
@@ -81,13 +85,13 @@ public class MonsterAI : MonoBehaviour
         }
     }
 
-    private  void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Weapon")) // 근거리
-        {
-            monster.TakeDamage(GameManager.Instance.Player.stats.Damage); // 데미지 처리
-        }
-    }
+    //private  void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Weapon")) // 근거리
+    //    {
+    //        monster.TakeDamage(GameManager.Instance.Player.stats.Damage+ GameManager.Instance.Player.stats.PhysicalDamage); // 데미지 처리
+    //    }
+    //}
 
     //private void Attack(Player inPlayer)
     //{

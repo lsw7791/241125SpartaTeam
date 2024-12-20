@@ -93,7 +93,7 @@ public class RangeAI : MonsterAI
             if (projectile.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile))
             {
                 projectile.TryGetComponent<Rigidbody2D>(out var outRigidbody2D);
-                outProjectile.Initialize(layerMask, GameManager.Instance.DataManager.Creature.GetAttack(monster.id));
+                outProjectile.Initialize(layerMask, AttackMinusDef());
                 // 플레이어 방향으로 투사체 발사
                 Vector3 direction = (playerTransform.position - attackPoint.position);
                 direction.Normalize();
