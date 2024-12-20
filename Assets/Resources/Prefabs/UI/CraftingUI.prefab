@@ -540,7 +540,7 @@ MonoBehaviour:
   - {fileID: 4274136206230225175}
   - {fileID: 6444731472106404723}
   - {fileID: 8710783639698621023}
-  craftResultButton: {fileID: 8114120984566302753}
+  _craftResultButton: {fileID: 8114120984566302753}
 --- !u!1 &2804474937593787061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,7 +1489,7 @@ GameObject:
   - component: {fileID: 6252658002052106438}
   - component: {fileID: 2755624252833971859}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: ProductText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

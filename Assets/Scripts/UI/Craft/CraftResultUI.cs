@@ -6,10 +6,8 @@ using System.Collections.Generic;
 
 public class CraftResultUI : UIBase
 {
-    [SerializeField] private TMP_Text resultText;
-    [SerializeField] private TMP_Text messageText;
-
-    [SerializeField] private CraftingData craftingData;
+    [SerializeField] private TMP_Text _resultText;
+    [SerializeField] private TMP_Text _messageText;
 
     [SerializeField] private Image _productImage;
     [SerializeField] private TMP_Text _productText;
@@ -17,15 +15,15 @@ public class CraftResultUI : UIBase
     [SerializeField] private Image[] _craftItemImage;
     [SerializeField] private TMP_Text[] _craftItemText;
 
-    private float maxTime;
+    private float _maxTime;
 
     private void Update()
     {
-        if(maxTime > 0)
+        if(_maxTime > 0)
         {
-            maxTime -= Time.deltaTime;
+            _maxTime -= Time.deltaTime;
 
-            messageText.text = $"{(int)maxTime}초 후 자동으로 창이 닫힙니다.";
+            _messageText.text = $"{(int)_maxTime}초 후 자동으로 창이 닫힙니다.";
         }
         else
         {
@@ -35,9 +33,9 @@ public class CraftResultUI : UIBase
 
     public void ShowSuccess(CraftingData data)
     {
-        maxTime = 10;
+        _maxTime = 10;
 
-        resultText.text = "제작에 성공하였습니다!";
+        _resultText.text = "제작에 성공하였습니다!";
         
         GameManager.Instance.CraftingManager.AddToInventory();
         Init(data, true);
@@ -45,49 +43,48 @@ public class CraftResultUI : UIBase
 
     public void ShowFailure(CraftingData data)
     {
-        maxTime = 10;
+        _maxTime = 10;
 
-        resultText.text = "제작에 실패하였습니다.\n부족한 재료를 확인해 주세요.";
+        _resultText.text = "제작에 실패하였습니다.\n부족한 재료를 확인해 주세요.";
 
         Init(data, false);
     }
 
     public void Init(CraftingData inData, bool inResult)
     {
-        craftingData = inData;
-
         for (int i = 0; i < _craftItemImage.Length; i++)
         {
             _craftItemImage[i].gameObject.SetActive(false);
         }
 
-        Sprite itemSprite = Resources.Load<Sprite>(craftingData.imagePath);
+        Sprite itemSprite = Resources.Load<Sprite>(inData.imagePath);
         _productImage.sprite = itemSprite;
-        _productText.text = craftingData.name;
+        _productText.text = inData.name;
 
-        List<int> craftItemList = GameManager.Instance.DataManager.Crafting.GetCraftItemIds(craftingData.id);
+        List<int> craftItemList = GameManager.Instance.DataManager.Crafting.GetCraftItemIds(inData.id);
 
         for (int i = 0; i < craftItemList.Count; i++)
         {
-            _craftItemImage[i].sprite = null;
-            _craftItemText[i].text = null;
-
-            if (craftItemList[i] != 0)
+            if (craftItemList[i] == 0)
             {
-                int count = GameManager.Instance.DataManager.Crafting.GetCraftCountIds(craftingData.id)[i];
-                _craftItemImage[i].gameObject.SetActive(true);
-                var itemData = GameManager.Instance.DataManager.GetItemDataById(craftItemList[i]);
+                return;
+            }
 
-                _craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
+            _craftItemImage[i].gameObject.SetActive(true);
+            var itemData = GameManager.Instance.DataManager.GetItemDataById(craftItemList[i]);
 
-                if (inResult)
-                {
-                    _craftItemText[i].text = $"{GameManager.Instance.Player.inventory.GetItemCount(itemData.id)} / {count}\n{itemData.name}";
-                }
-                else
-                {
-                    _craftItemText[i].text = $"{count -  GameManager.Instance.Player.inventory.GetItemCount(itemData.id)}개 부족\n{itemData.name}";
-                }
+            _craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
+
+            int craftItemCount = GameManager.Instance.DataManager.Crafting.GetCraftCountIds(inData.id)[i];
+            int inventoryItemCount = GameManager.Instance.Player.inventory.GetItemCount(itemData.id);
+
+            if (inResult)
+            {
+                _craftItemText[i].text = $"{inventoryItemCount} / {craftItemCount}\n{itemData.name}";
+            }
+            else
+            {
+                _craftItemText[i].text = $"{craftItemCount - inventoryItemCount}개 부족\n{itemData.name}";
             }
         }
     }

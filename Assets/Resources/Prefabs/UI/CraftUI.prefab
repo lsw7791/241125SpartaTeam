@@ -292,7 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanDrag: 1
   rectTransform: {fileID: 0}
-  craftingPanel: {fileID: 5767042917632990919}
+  _craftingPanel: {fileID: 5767042917632990919}
 --- !u!1 &2078927917334603243
 GameObject:
   m_ObjectHideFlags: 0
