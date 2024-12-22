@@ -24,7 +24,9 @@ public class InGameUI : MonoBehaviour
             playerStats.MineDamage = 999;
             playerStats.PhysicalDamage = 999;
             playerStats.MagicalDamage = 999;
+            UIManager.Instance.ToggleUI<StatusUI>();
             GameManager.Instance.Player.StatusUI.Refresh();
+            UIManager.Instance.ToggleUI<StatusUI>();
         });
 
         _btnStatus.onClick.AddListener(() =>

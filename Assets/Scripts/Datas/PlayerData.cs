@@ -71,7 +71,9 @@ public class PlayerData
         MagicalDamage += itemData.attack;
         ATKSpeed += itemData.attackSpeed;
         MoveSpeed += itemData.moveSpeed;
+        UIManager.Instance.ToggleUI<StatusUI>();
         GameManager.Instance.Player.StatusUI.Refresh();
+        UIManager.Instance.ToggleUI<StatusUI>();
     }
     public void PlayerStatsUnEquip(InventoryItem inItem)
     {
