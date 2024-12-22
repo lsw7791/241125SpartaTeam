@@ -58,10 +58,11 @@ namespace MainData
 
 		public System.Int32 id;
 		public System.Int32 enhence;
-		public System.Int32 tier;
-		public System.Single success;
-		public System.Single fail;
-		public System.Single Destruction;
+		public System.Collections.Generic.List<Int32> tier;
+		public System.String success;
+		public System.String fail;
+		public System.String Destruction;
+		public System.Collections.Generic.List<Int32> Cost;
   
 
 #region fuctions

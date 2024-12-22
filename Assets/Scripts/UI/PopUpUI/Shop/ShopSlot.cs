@@ -30,7 +30,7 @@ public class ShopSlot : MonoBehaviour
         icon.sprite = Resources.Load<Sprite>(itemData.spritePath); // 아이콘 경로로부터 이미지 로드
 
         // 구매 버튼 활성화 여부 설정
-        buyButton.interactable = GameManager.Instance.Player.stats.Gold >= itemData.buy;
+        buyButton.interactable = true;
 
         // 아이템 클릭 시 발생하는 이벤트 설정
         buyButton.onClick.AddListener(() => OnItemClick?.Invoke(itemData));
