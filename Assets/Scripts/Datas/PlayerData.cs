@@ -67,8 +67,8 @@ public class PlayerData
         MaxStamina += itemData.stamina;
         Def += itemData.defense;
         MineDamage += itemData.attackMine;
-        PhysicalDamage += itemData.attackM;
-        MagicalDamage += itemData.attack;
+        PhysicalDamage += itemData.attack;
+        MagicalDamage += itemData.attackM;
         ATKSpeed += itemData.attackSpeed;
         MoveSpeed += itemData.moveSpeed;
         UIManager.Instance.ToggleUI<StatusUI>();
