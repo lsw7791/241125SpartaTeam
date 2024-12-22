@@ -59,9 +59,9 @@ namespace MainData
 		public System.Int32 id;
 		public System.Int32 enhence;
 		public System.Collections.Generic.List<Int32> tier;
-		public System.String success;
-		public System.String fail;
-		public System.String Destruction;
+		public System.Collections.Generic.List<Int32> success;
+		public System.Collections.Generic.List<Int32> fail;
+		public System.Collections.Generic.List<Int32> Destruction;
 		public System.Collections.Generic.List<Int32> Cost;
   
 
