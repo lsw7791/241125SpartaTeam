@@ -126,7 +126,7 @@ public class UIManager : MonoSingleton<UIManager>
     }
 
     // UI 토글 통합
-    public void ToggleUI<T>() where T : UIBase
+    public T ToggleUI<T>() where T : UIBase
     {
         if (IsExistUI<T>())
         {
@@ -139,10 +139,13 @@ public class UIManager : MonoSingleton<UIManager>
             {
                 ui.Open();
             }
+
+            return ui;
         }
         else
         {
-            OpenUI<T>();
+            T ui = OpenUI<T>();
+            return ui;
         }
     }
     public T SetSortingOrder<T>(int order) where T : UIBase
