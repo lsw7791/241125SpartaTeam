@@ -90,7 +90,7 @@ public class GameManager : MonoSingleton<GameManager>
         DataManager.SaveCharacterData();
 
         // 씬을 전환하여 게임 시작
-        SceneNum = 23;
+        SceneNum = 2;
         LoadScene(DataManager.Scene.GetMapTo(SceneNum));
     }
 
