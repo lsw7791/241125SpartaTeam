@@ -10040,7 +10040,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -14
+  m_SortingOrder: -15
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -11106,7 +11106,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -15
+  m_SortingOrder: -16
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -47660,7 +47660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6828377866245724332}
   - component: {fileID: 6376042011999079084}
-  - component: {fileID: 6521314213661314429}
+  - component: {fileID: 8388291840927388440}
   m_Layer: 9
   m_Name: GoToMine2
   m_TagString: Untagged
@@ -47728,7 +47728,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &6521314213661314429
+--- !u!114 &8388291840927388440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47737,9 +47737,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5450710558526283545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 977b25a3670288143bdc56fc8a9392c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 554e07d1f9df2c04daba7a7a573ad530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  num: 5
 --- !u!1 &6882227389817406081
 GameObject:
   m_ObjectHideFlags: 0
@@ -47849,7 +47850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 245205462201995696}
   - component: {fileID: 5651547738399963475}
-  - component: {fileID: 2884566146140572032}
+  - component: {fileID: 7927873619432643885}
   m_Layer: 9
   m_Name: GoToForest
   m_TagString: Untagged
@@ -47917,7 +47918,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &2884566146140572032
+--- !u!114 &7927873619432643885
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47926,6 +47927,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7689440142990318556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f090795ddb0798c47aee7fec223a84a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 554e07d1f9df2c04daba7a7a573ad530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  num: 4

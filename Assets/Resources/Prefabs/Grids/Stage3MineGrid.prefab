@@ -92665,7 +92665,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.4481506, y: 2.7243004, z: -23.39335}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1775922072631331176}
@@ -100044,7 +100044,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2495865028892439651}
   - component: {fileID: 8937744727117667508}
-  - component: {fileID: 1882886856022008725}
+  - component: {fileID: 994110650248634149}
   m_Layer: 9
   m_Name: GoToMine2
   m_TagString: Untagged
@@ -100112,7 +100112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1882886856022008725
+--- !u!114 &994110650248634149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100121,9 +100121,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8711167277852228061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad759489fcc6cfe419479d13c9fd277a, type: 3}
+  m_Script: {fileID: 11500000, guid: 554e07d1f9df2c04daba7a7a573ad530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  num: 8
 --- !u!1 &8866519624491302356
 GameObject:
   m_ObjectHideFlags: 0

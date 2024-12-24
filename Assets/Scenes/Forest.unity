@@ -228,14 +228,6 @@ PrefabInstance:
       value: Forest
       objectReference: {fileID: 0}
     - target: {fileID: 3258396871874148980, guid: c25c5ba992cb45944af814c52115cc18, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3258396871874148980, guid: c25c5ba992cb45944af814c52115cc18, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3258396871874148980, guid: c25c5ba992cb45944af814c52115cc18, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}

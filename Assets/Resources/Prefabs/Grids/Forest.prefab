@@ -1002,7 +1002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5501095455228202197}
   - component: {fileID: 851694283839110399}
-  - component: {fileID: 2086262781225939836}
+  - component: {fileID: 3442353510436346918}
   m_Layer: 9
   m_Name: GoToMine1
   m_TagString: Untagged
@@ -1070,7 +1070,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &2086262781225939836
+--- !u!114 &3442353510436346918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1079,9 +1079,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 510333893900440745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4b8369eca885e84eb27db66559dd482, type: 3}
+  m_Script: {fileID: 11500000, guid: 554e07d1f9df2c04daba7a7a573ad530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  num: 3
 --- !u!1 &1606821063045308780
 GameObject:
   m_ObjectHideFlags: 0
@@ -108061,7 +108062,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9036943502232219307}
   - component: {fileID: 8448253388301648816}
-  - component: {fileID: 2970215615954662169}
+  - component: {fileID: 4561270767229783801}
   m_Layer: 9
   m_Name: GoToVillage
   m_TagString: Untagged
@@ -108129,7 +108130,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2970215615954662169
+--- !u!114 &4561270767229783801
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108138,9 +108139,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6605918277950039049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77d936d8884b0cc4aa2a306f63e3b59e, type: 3}
+  m_Script: {fileID: 11500000, guid: 554e07d1f9df2c04daba7a7a573ad530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  num: 2
 --- !u!1 &7108433563852556552
 GameObject:
   m_ObjectHideFlags: 0

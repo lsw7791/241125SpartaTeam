@@ -1328,7 +1328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4276005842765274285}
   - component: {fileID: 2636950422560201041}
-  - component: {fileID: 3149778335325913818}
+  - component: {fileID: 7163842370219059631}
   m_Layer: 9
   m_Name: GoToVillage
   m_TagString: Untagged
@@ -1396,7 +1396,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3149778335325913818
+--- !u!114 &7163842370219059631
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1405,9 +1405,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3829844921205053992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f2772b3e97906247b0f79c6beacbece, type: 3}
+  m_Script: {fileID: 11500000, guid: 554e07d1f9df2c04daba7a7a573ad530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  num: 16
 --- !u!1 &4636235041661116697
 GameObject:
   m_ObjectHideFlags: 0
