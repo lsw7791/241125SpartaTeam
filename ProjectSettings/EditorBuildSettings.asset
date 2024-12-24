@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Village.unity
     guid: 9b992c704bd10404889951b03897f191
   - enabled: 1
-    path: Assets/Scenes/Forest.unity
-    guid: cd670887ba8ff4d659a13541f7b1c213
-  - enabled: 1
     path: Assets/Scenes/Mine1.unity
     guid: be28b5419c856694c9f003aebb1150b0
   - enabled: 1
@@ -26,7 +23,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mine3.unity
     guid: 47550ae3f0088174889bb2d2061084cf
-  - enabled: 1
-    path: Assets/Scenes/WorkShop.unity
-    guid: f8ffd2f86da3569458125ab7c73029e2
   m_configObjects: {}

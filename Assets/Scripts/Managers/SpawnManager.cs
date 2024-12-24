@@ -33,9 +33,6 @@ public class SpawnManager : MonoBehaviour
         Debug.Log($"¸Ê ³Ñ¹ö : {mapNum}");
         switch (mapNum)
         {
-            case 1://½£
-                SoundManager.Instance.PlayStartBGMMystical();
-                break;
             case 2://¸¶À»
                 SoundManager.Instance.PlayStartBGMAsiaTravel();
                 break;
@@ -43,6 +40,9 @@ public class SpawnManager : MonoBehaviour
                 SoundManager.Instance.PlayStartBGMSciFiMoodtimeflow();
                 if (spawner1 == null) spawner1 = gameObject.AddComponent<Spawner>();
                 StageMine(1,spawner1);
+                break;
+            case 4:
+                SoundManager.Instance.PlayStartBGMAsiaTravel();
                 break;
             case 5://¸¶ÀÎ2
                 if (spawner2 == null) spawner2 = gameObject.AddComponent<Spawner>();
