@@ -27,24 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Mine3.unity
     guid: 47550ae3f0088174889bb2d2061084cf
   - enabled: 1
-    path: Assets/Scenes/NPCRoom1.unity
-    guid: a0dc1a10ff01d974894c6a94ecd1416d
-  - enabled: 1
-    path: Assets/Scenes/NPCRoom2.unity
-    guid: b33c986f79959054fa1e6cce5ce5c37c
-  - enabled: 1
-    path: Assets/Scenes/NPCRoom3.unity
-    guid: ce68025f289a99c4abaa594da2428e94
-  - enabled: 1
-    path: Assets/Scenes/NPCRoom4.unity
-    guid: 642df7c0be872e846aac901ea4166e0a
-  - enabled: 1
-    path: Assets/Scenes/House.unity
-    guid: 2ba506af1c2408d46b6e74d49f9319f2
-  - enabled: 1
-    path: Assets/Scenes/Potion.unity
-    guid: c0b5db9a280281f41bddaf4ef29219be
-  - enabled: 1
-    path: Assets/Scenes/Shop.unity
-    guid: 0219dc8f3c3209944a660f7d73a0596b
+    path: Assets/Scenes/WorkShop.unity
+    guid: f8ffd2f86da3569458125ab7c73029e2
   m_configObjects: {}
