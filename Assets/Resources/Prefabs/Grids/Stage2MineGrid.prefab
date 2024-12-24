@@ -131,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3116717008602588883}
   - component: {fileID: 4620295685743463446}
-  - component: {fileID: 5729557122179204229}
+  - component: {fileID: 3203735609159943939}
   m_Layer: 9
   m_Name: GoToMine3
   m_TagString: Untagged
@@ -199,7 +199,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 2.5}
   m_EdgeRadius: 0
---- !u!114 &5729557122179204229
+--- !u!114 &3203735609159943939
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,9 +208,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 449990475149653131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4be164820f1c8345b88dd52fcf4cfb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 554e07d1f9df2c04daba7a7a573ad530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  num: 7
 --- !u!1 &2075289009098928463
 GameObject:
   m_ObjectHideFlags: 0
@@ -36063,7 +36064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2619137460006929509}
   - component: {fileID: 5911540378357913185}
-  - component: {fileID: 3102682186414004970}
+  - component: {fileID: 4641958531185634661}
   m_Layer: 9
   m_Name: GoToMine1
   m_TagString: Untagged
@@ -36131,7 +36132,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3102682186414004970
+--- !u!114 &4641958531185634661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -36140,9 +36141,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2885517067342096160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 902665b13ce1cf549b4226d7df63551b, type: 3}
+  m_Script: {fileID: 11500000, guid: 554e07d1f9df2c04daba7a7a573ad530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  num: 6
 --- !u!1 &3026542454624704908
 GameObject:
   m_ObjectHideFlags: 0

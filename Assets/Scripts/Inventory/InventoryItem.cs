@@ -41,7 +41,7 @@ public class InventoryItem
         // TODO :: 현재 모두 장착 아이템인 상태
         // 장착 되는지 확인 후 UGS 변경 예정
         //equipSlot = slot;
-        enhenceCount = 1;
+        enhenceCount = 0;
     }
     private Sprite LoadSprite(string path)
     {

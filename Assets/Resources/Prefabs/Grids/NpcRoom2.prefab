@@ -42904,7 +42904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3594421089950030697}
   - component: {fileID: 5916321938823637079}
-  - component: {fileID: 6998108612555519316}
+  - component: {fileID: 4707968375210399922}
   m_Layer: 9
   m_Name: GoToVillage
   m_TagString: Untagged
@@ -42921,7 +42921,7 @@ Transform:
   m_GameObject: {fileID: 1177034696627347278}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 2.6, z: 0}
+  m_LocalPosition: {x: -4.5, y: 2.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42972,7 +42972,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6998108612555519316
+--- !u!114 &4707968375210399922
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42981,9 +42981,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1177034696627347278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bfb4cea378e1274595bd8813afe3aa8, type: 3}
+  m_Script: {fileID: 11500000, guid: 554e07d1f9df2c04daba7a7a573ad530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  num: 12
 --- !u!1 &1684961900769861488
 GameObject:
   m_ObjectHideFlags: 0

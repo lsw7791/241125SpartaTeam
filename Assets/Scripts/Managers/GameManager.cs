@@ -10,6 +10,7 @@ public class GameManager : MonoSingleton<GameManager>
     public Player Player;
     private PlayerData _currentPlayer;
     public int SceneNum;
+    public GameObject miniCamera;
     public IInteractable InteractableObject { get; set; }
 
     protected override void Awake()
@@ -45,6 +46,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         Instantiate(SceneNum);
         SoundManager.Instance.PlayStartBGMMystical();
+
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -58,7 +60,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     void Instantiate(int mapNum)
     {
-        GameObject miniCamera = Instantiate(Resources.Load<GameObject>("Prefabs/Cameras/MinimapCamera"));
+        miniCamera = Instantiate(Resources.Load<GameObject>("Prefabs/Cameras/MinimapCamera"));
         if (SpawnManager == null) SpawnManager = gameObject.AddComponent<SpawnManager>();
         SpawnManager.SpawnPlayer(mapNum);
         SpawnManager.Initialize(mapNum);
