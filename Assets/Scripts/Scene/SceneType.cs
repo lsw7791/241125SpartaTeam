@@ -18,11 +18,13 @@ public class SceneType : MonoBehaviour
             }
             else
             {
+
                 Transform playerTransform = collision.transform; // 충돌한 플레이어의 Transform 가져오기
-                playerTransform.position = GameManager.Instance.DataManager.Scene.GetMoveTransform(num);
                 Camera mainCamera = Camera.main;
-                mainCamera.transform.position = playerTransform.position;
-                GameManager.Instance.miniCamera.transform.position = playerTransform.position;
+                mainCamera.backgroundColor = Color.black;
+                mainCamera.transform.position = GameManager.Instance.DataManager.Scene.GetMoveTransform(num);
+                playerTransform.position = mainCamera.transform.position;
+                GameManager.Instance.miniCamera.transform.position = mainCamera.transform.position;
             }
         }
     }
