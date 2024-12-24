@@ -5,128 +5,124 @@ using UnityEngine.UI;
 
 public class UIManager : MonoSingleton<UIManager>
 {
-    private Dictionary<string, UIBase> _uiList = new();
-
-    public static float ScreenWidth = 1920;
-    public static float ScreenHeight = 1080;
+    private Dictionary<string, UIBase> _uiList = new(); // UI 객체 리스트
+    private Dictionary<string, Canvas> _uiCanvases = new(); // UI 캔버스 리스트
+    private int _sortingOrderCounter = 0; // sortingOrder를 관리할 카운터
 
     protected override void Awake()
     {
         base.Awake();
     }
+
+    // UI를 가져오고, 만약 존재하지 않으면 생성
     public T GetUI<T>() where T : UIBase
     {
         var uiName = typeof(T).Name;
-        // dic 체크
-        if (IsExistUI<T>()) // 있다 -> 반환
+
+        if (_uiList.ContainsKey(uiName))
+        {
             return _uiList[uiName] as T;
-        else // 없다 -> 새로 생성 반환
+        }
+        else
+        {
             return CreateUI<T>();
+        }
     }
 
+    // UI를 생성하는 메서드
     private T CreateUI<T>() where T : UIBase
     {
         var uiName = typeof(T).Name;
+        T uiPrefab = Resources.Load<T>($"{PathInfo.UIPath}{uiName}");
 
-        var newCanvasObject = new GameObject($"{uiName} Canvas");
+        if (uiPrefab == null)
+        {
+            Debug.LogError($"UI Prefab not found: {uiName}");
+            return null;
+        }
 
-        newCanvasObject.transform.parent = this.transform;
+        // 개별 캔버스 생성
+        var canvasObject = new GameObject($"{uiName}_Canvas");
+        Canvas uiCanvas = canvasObject.AddComponent<Canvas>();
+        uiCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
 
-        var canvas = newCanvasObject.AddComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvas.sortingOrder = 1;
+        // 초기 sortingOrder 설정 (현재 카운터 값 사용)
+        uiCanvas.sortingOrder = _sortingOrderCounter;
 
-        var canvasScaler = newCanvasObject.AddComponent<CanvasScaler>();
+        var canvasScaler = canvasObject.AddComponent<CanvasScaler>();
         canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        canvasScaler.referenceResolution = new Vector2(ScreenWidth, ScreenHeight);
+        canvasScaler.referenceResolution = new Vector2(1920, 1080);
 
-        newCanvasObject.gameObject.AddComponent<GraphicRaycaster>();
+        canvasObject.AddComponent<GraphicRaycaster>();
 
-        T uiRes = Resources.Load<T>($"{PathInfo.UIPath}{uiName}");
+        // UI 인스턴스를 캔버스에 추가
+        var uiInstance = Instantiate(uiPrefab, uiCanvas.transform);
+        uiInstance.name = uiInstance.name.Replace("(Clone)", "");
 
-        var outUi = Instantiate(uiRes, newCanvasObject.transform);
-        outUi.name = outUi.name.Replace("(Clone)", "");
+        // UI를 처음 생성할 때 비활성화 상태로 설정
+        uiInstance.gameObject.SetActive(false);
 
-        if (IsExistUI<T>())
-            _uiList[uiName] = outUi;
-        else
-            _uiList.Add(uiName, outUi);
+        // UIManager의 자식으로 캔버스를 설정
+        canvasObject.transform.SetParent(this.transform);
 
-        return outUi;
+        // 생성된 UI를 관리하는 리스트에 추가
+        _uiList[uiName] = uiInstance;
+        _uiCanvases[uiName] = uiCanvas;
+
+        // 최신 sortingOrder 값 갱신
+        _sortingOrderCounter++;
+
+        return uiInstance;
     }
 
-    public bool IsExistUI<T>() where T : UIBase
-    { // null 체크 반환
-        var uiName = typeof(T).Name;
-        return _uiList.ContainsKey(uiName) && _uiList[uiName] != null;
-    }
-
+    // UI를 여는 메서드
     public T OpenUI<T>() where T : UIBase
     {
         T ui = GetUI<T>();
 
         if (ui != null && !ui.gameObject.activeSelf)
         {
-            ui.gameObject.SetActive(true); // 비활성화된 UI를 다시 활성화
+            ui.gameObject.SetActive(true); // UI가 비활성화되어 있으면 활성화
         }
 
-        ui.Open();
+        // 캔버스 가져오기
+        Canvas uiCanvas = _uiCanvases[typeof(T).Name].GetComponent<Canvas>();
+
+        // 캔버스를 UIManager의 자식으로 설정
+        uiCanvas.transform.SetParent(this.transform, false); // 로컬 좌표를 유지한 채로 부모를 변경
+
+        // 새로운 sortingOrder 설정 (현재 카운터 값 사용)
+        uiCanvas.sortingOrder = _sortingOrderCounter;
+
+        ui.Open(); // UI를 여는 메서드 호출
         return ui;
     }
 
-
-    public T CloseUI<T>() where T : UIBase
+    // UI를 닫는 메서드
+    public void CloseUI<T>() where T : UIBase
     {
-        if (IsExistUI<T>())
+        if (_uiList.TryGetValue(typeof(T).Name, out var uiBase) && uiBase.gameObject.activeSelf)
         {
-            T ui = _uiList[typeof(T).Name] as T;
-
-            if (ui != null && ui.gameObject.activeSelf)
-            {
-                ui.Close();
-
-                // 추가: UI 비활성화 후 초기화 수행
-                ui.gameObject.SetActive(false);
-            }
-
-            return ui;
+            uiBase.Close(); // UI를 닫는 메서드 호출
+            uiBase.gameObject.SetActive(false); // UI를 비활성화
         }
-
-        return null;
     }
 
-
+    // 모든 UI를 닫는 메서드
     public void CloseAllUIs()
-    { // 활성화 되어있는 모든 PopupUI 비활성화
+    {
         foreach (var ui in _uiList.Values)
         {
-            if (ui?.gameObject.activeSelf == true)
+            if (ui.gameObject.activeSelf)
             {
                 ui.Close();
+                ui.gameObject.SetActive(false); // 모든 UI를 비활성화
             }
         }
     }
 
-    public bool ActiveUI()
-    { // 활성화된 UI가 하나라도 있는지 확인
-        foreach (var ui in _uiList.Values)
-        {
-            if (ui?.gameObject.activeSelf == true)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public void Clear()
-    {
-        _uiList.Clear();
-    }
-
-    // UI 토글 통합
-    public void ToggleUI<T>() where T : UIBase
+    // UI를 토글하는 메서드
+    public T ToggleUI<T>() where T : UIBase
     {
         if (IsExistUI<T>())
         {
@@ -139,22 +135,41 @@ public class UIManager : MonoSingleton<UIManager>
             {
                 ui.Open();
             }
+
+            // 이미 UI가 열려있으면 sortingOrder를 갱신 (한 번만 증가)
+            Canvas uiCanvas = _uiCanvases[typeof(T).Name];
+            uiCanvas.sortingOrder = _sortingOrderCounter;
+
+            // sortingOrder 카운터 갱신 (한 번만 증가)
+            _sortingOrderCounter++;
+
+            return ui;
         }
         else
         {
-            OpenUI<T>();
+            T ui = OpenUI<T>();
+            return ui;
         }
     }
-    public T SetSortingOrder<T>(int order) where T : UIBase
+
+    // UI가 존재하는지 확인하는 메서드
+    public bool IsExistUI<T>() where T : UIBase
     {
-        T ui = GetUI<T>();
-        var canvas = ui.GetComponentInParent<Canvas>();
-        if (canvas != null)
-        {
-            canvas.sortingOrder = order;
-        }
-        return ui;
+        var uiName = typeof(T).Name;
+        return _uiList.ContainsKey(uiName) && _uiList[uiName] != null;
     }
 
+    // 활성화된 UI가 있는지 확인하는 메서드
+    public bool ActiveUI()
+    {
+        foreach (var ui in _uiList.Values)
+        {
+            if (ui.gameObject.activeSelf)
+            {
+                return true; // 하나라도 활성화된 UI가 있으면 true 반환
+            }
+        }
 
+        return false; // 활성화된 UI가 없으면 false 반환
+    }
 }

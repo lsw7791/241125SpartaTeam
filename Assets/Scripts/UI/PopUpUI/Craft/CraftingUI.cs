@@ -24,7 +24,8 @@ public class CraftingUI : UIBase
 
             // CraftResultUI의 Sorting Order를 3으로 설정
             UIManager.Instance.ToggleUI<CraftResultUI>();
-            CraftResultUI craftResultUI = UIManager.Instance.SetSortingOrder<CraftResultUI>(3);
+            CraftResultUI craftResultUI = UIManager.Instance.OpenUI<CraftResultUI>();
+            craftResultUI.transform.SetAsLastSibling();
 
             // 결과 표시
             if (isSuccess)

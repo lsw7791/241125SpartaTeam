@@ -70,7 +70,7 @@ public class CharacterSlotUI : UIBase
 
     private void OnBackButtonClicked()
     {
-        UIManager.Instance.ToggleUI<CharacterSlotUI>();
+        UIManager.Instance.CloseUI<CharacterSlotUI>();
     }
 
     private void SetButtonsInteractable(bool isInteractable)

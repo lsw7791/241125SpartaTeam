@@ -75,13 +75,7 @@ public class PlayerInput : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext context)
     {
         // UI가 활성화된 상태인지 확인
-        if (UIManager.Instance.ActiveUI())
-            return; // UI가 활성화된 경우 공격 입력 무시
-
-        if (context.performed)
-        {
-            GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
-        }
+        GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
     }
 
 
@@ -174,16 +168,19 @@ public class PlayerInput : MonoBehaviour
 
     // 옵션 토글
     private void ToggleOption()
+{
+    // 활성화된 UI가 하나라도 있으면 모두 비활성화
+    if (UIManager.Instance.ActiveUI())
     {
-        if (UIManager.Instance.ActiveUI())
-        {
-            UIManager.Instance.CloseAllUIs(); // 모든 UI 닫기
-        }
-        else
-        {
-            UIManager.Instance.ToggleUI<OptionUI>();
-        }
+        UIManager.Instance.CloseAllUIs();
     }
+    else
+    {
+        // 그렇지 않으면 OptionUI를 토글
+        UIManager.Instance.ToggleUI<OptionUI>();
+    }
+}
+
 
     // 스태터스 토글
     private void ToggleStatus()
