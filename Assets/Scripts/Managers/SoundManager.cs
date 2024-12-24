@@ -11,19 +11,17 @@ public class SoundManager : MonoSingleton<SoundManager>
     public AudioSource _sfxSource;
 
     [Header("BGM")]
-    [SerializeField] private AudioClip asiaTravel118018;
-    [SerializeField] private AudioClip sciFiMoodtimeflow194382;
-    [SerializeField] private AudioClip mysticalStrangerThings133254;
+    [SerializeField] private AudioClip AsiaTravelBGM;
+    [SerializeField] private AudioClip MoodtimeflowBGM;
+    [SerializeField] private AudioClip MysticalBGM;
 
     [Header("SFX")]
-    [SerializeField] private AudioClip efekSound3220030;
-    [SerializeField] private AudioClip achievementVideoGameType1230515;
-    [SerializeField] private AudioClip fireTorchWhoosh2186586;
-    [SerializeField] private AudioClip gameStart6104;
-    [SerializeField] private AudioClip itemPickUp38258;
-    [SerializeField] private AudioClip punch140236;
-    [SerializeField] private AudioClip swordSoundEffect1234987;
-    [SerializeField] private AudioClip winning218995;
+    [SerializeField] private AudioClip ClearSFX;
+    [SerializeField] private AudioClip FireBallSFX;
+    [SerializeField] private AudioClip ItemPickUpSFX;
+    [SerializeField] private AudioClip PunchSFX;
+    [SerializeField] private AudioClip SwordSFX;
+    [SerializeField] private AudioClip WinningSFX;
 
     protected override void Awake()
     {
@@ -55,20 +53,18 @@ public class SoundManager : MonoSingleton<SoundManager>
     private void SetAudioClip()
     {
         // Resources 폴더에서 AudioClip을 불러옵니다.//BGM
-        sciFiMoodtimeflow194382 = Resources.Load<AudioClip>("Sounds/BGM/sci-fi-moodtimeflow-194382");
-        asiaTravel118018 = Resources.Load<AudioClip>("Sounds/BGM/asia-travel-118018");
-        mysticalStrangerThings133254 = Resources.Load<AudioClip>("Sounds/BGM/80s-mystical-stranger-things-133254");
+        MoodtimeflowBGM = Resources.Load<AudioClip>("Sounds/BGM/MoodtimeflowBGM");
+        AsiaTravelBGM = Resources.Load<AudioClip>("Sounds/BGM/AsiaTravelBGM");
+        MysticalBGM = Resources.Load<AudioClip>("Sounds/BGM/MysticalBGM");
 
 
         //SFX
-        efekSound3220030 = Resources.Load<AudioClip>("Sounds/SFX/1-efek-sound-3-220030");
-        achievementVideoGameType1230515 = Resources.Load<AudioClip>("Sounds/SFX/achievement-video-game-type-1-230515");
-        fireTorchWhoosh2186586 = Resources.Load<AudioClip>("Sounds/SFX/fire-torch-whoosh-2-186586");
-        gameStart6104 = Resources.Load<AudioClip>("Sounds/SFX/game-start-6104");
-        itemPickUp38258 = Resources.Load<AudioClip>("Sounds/SFX/item-pick-up-38258");
-        punch140236 = Resources.Load<AudioClip>("Sounds/SFX/punch-140236");
-        swordSoundEffect1234987 = Resources.Load<AudioClip>("Sounds/SFX/sword-sound-effect-1-234987");
-        winning218995 = Resources.Load<AudioClip>("Sounds/SFX/winning-218995");
+        ClearSFX = Resources.Load<AudioClip>("Sounds/SFX/ClearSFX");
+        FireBallSFX = Resources.Load<AudioClip>("Sounds/SFX/FireBallSFX");
+        ItemPickUpSFX = Resources.Load<AudioClip>("Sounds/SFX/ItemPickUpSFX");
+        PunchSFX = Resources.Load<AudioClip>("Sounds/SFX/PunchSFX");
+        SwordSFX = Resources.Load<AudioClip>("Sounds/SFX/SwordSFX");
+        WinningSFX = Resources.Load<AudioClip>("Sounds/SFX/WinningSFX");
 
 
     }
@@ -98,17 +94,17 @@ public class SoundManager : MonoSingleton<SoundManager>
         _sfxSource.mute = !_sfxSource.mute;
     }
     // 미리 설정된 BGM을 재생하는 메서드//BGM
-    public void PlayStartBGMAsiaTravel() => PlayBGM(asiaTravel118018);
-    public void PlayStartBGMSciFiMoodtimeflow() => PlayBGM(sciFiMoodtimeflow194382);
-    public void PlayStartBGMMystical() => PlayBGM(mysticalStrangerThings133254);
+    public void PlayStartBGMAsiaTravel() => PlayBGM(AsiaTravelBGM);
+    public void PlayStartBGMSciFiMoodtimeflow() => PlayBGM(MoodtimeflowBGM);
+    public void PlayStartBGMMystical() => PlayBGM(MysticalBGM);
 
 
 
     // 미리 설정된 충돌 SFX를 재생하는 메서드
-    public void PlayCollsionSFX() => PlaySFX(punch140236);
+    public void PlayCollsionSFX() => PlaySFX(PunchSFX);
 
     // 미리 설정된 클릭 SFX를 재생하는 메서드
-    public void PlayClickSFX() => PlaySFX(gameStart6104);
+    public void PlayClickSFX() => PlaySFX(ClearSFX);
 
 
 
