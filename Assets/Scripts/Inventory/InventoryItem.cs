@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.U2D;
 
 //public enum EquipSlot
 //{
@@ -45,6 +46,9 @@ public class InventoryItem
     }
     private Sprite LoadSprite(string path)
     {
-        return Resources.Load<Sprite>(path); // 경로로부터 스프라이트 로드
+        // SpriteAtlas 로드
+        SpriteAtlas atlas = Resources.Load<SpriteAtlas>(path); // 경로로 SpriteAtlas 로드
+
+        return atlas.GetSprite(path); // 아틀라스에서 이름이 path와 동일한 스프라이트 반환
     }
 }

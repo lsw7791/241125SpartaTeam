@@ -75,6 +75,10 @@ public class PlayerInput : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext context)
     {
         // UI가 활성화된 상태인지 확인
+        if (UIManager.Instance.ActiveUI())
+        {
+            return;
+        }
         GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
     }
 
