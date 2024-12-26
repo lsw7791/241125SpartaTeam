@@ -6,28 +6,29 @@ using UnityEngine.UI;
 public class UpGradeUI : UIBase
 {
     [SerializeField] private Image _useItemImage;
+    [SerializeField] private Image _backgroundImage;
 
     [SerializeField] private Button _upgradeResultButton; // 강화 버튼
 
     [SerializeField] private TMP_Text _productText;
     [SerializeField] private TMP_Text[] _probabilityText;
 
-    [SerializeField] private TMP_Text _ResultTestText;
+    [SerializeField] private TMP_Text _resultText;
     [SerializeField] private TMP_Text _costText;
 
-    InventoryItem item;
+    private InventoryItem _item;
 
     private void Start()
     {
         _upgradeResultButton.onClick.AddListener(() =>
         {
-            ShowUpgrade(item, item.enhenceCount);
+            ShowUpgrade(_item);
         });
     }
 
-    public void ShowUpgrade(InventoryItem inItem, int inEnhence)
+    public void ShowUpgrade(InventoryItem inItem)
     {
-        if (inEnhence >= 10)
+        if (inItem.enhenceCount >= 10)
         {
             UIManager.Instance.ToggleUI<UpGradeUI>();
             return;
@@ -35,79 +36,81 @@ public class UpGradeUI : UIBase
 
         // 아이템 데이터 검색
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
-        int tierData = itemData.tier - 1;
+        int tierIndex = itemData.tier - 1;
 
         // 강화 데이터 검색
-        var upgradeData = GameManager.Instance.DataManager.Upgrade.GetData(inEnhence);
+        var upgradeData = GameManager.Instance.DataManager.Upgrade.GetData(inItem.enhenceCount);
 
-        int a = Random.Range(0, 100); // TODO :: 가중치로 바꾸기 전 테스트용 랜덤 값
+        // 랜덤 가중치
+        int randomValue = Random.Range(0, 100);
 
-        if (upgradeData.success[tierData] > a)
+        if (randomValue < upgradeData.success[tierIndex])
         {
-            inItem.enhenceCount++;
-            _ResultTestText.text = "성공";
+            // TODO :: 강화된 능력치 출력
+            // TODO :: 강화수치 이미지 출력
+            if (inItem.IsEquipped)
+            {
+                GameManager.Instance.Player.stats.PlayerStatsUpdate(inItem, false);
+                inItem.enhenceCount++;
+                GameManager.Instance.Player.stats.PlayerStatsUpdate(inItem, true);
+            }
+            else
+            {
+                inItem.enhenceCount++;
+            }
+
+            _resultText.text = "강화에 성공하였습니다!";
+        }
+        else if (randomValue < upgradeData.success[tierIndex] + upgradeData.fail[tierIndex])
+        {
+            // TODO :: 유지된 능력치 출력
+            _resultText.text = "강화에 실패하였습니다.";
         }
         else
         {
-            _ResultTestText.text = "실패";
+            if (inItem.IsEquipped)
+            {
+                GameManager.Instance.Player.equipment.UnEquip(itemData.itemType);
+            }
+
+            // TODO :: 금간 장비 이미지? 깨진 이미지 출력
+            _resultText.text = "강화에 실패하였습니다. 장비가 파괴되었습니다.";
+
+            GameManager.Instance.Player.inventory.RemoveItem(inItem.ItemID, 1);
+            UIManager.Instance.ToggleUI<UpGradeUI>();
         }
 
-        // 강화 확률 표시
-
-        _productText.text = $"{itemData.name} (+{inItem.enhenceCount})";
-        _probabilityText[0].text = $"성공 확률\n{upgradeData.success[tierData]}%";
-        _probabilityText[1].text = $"유지 확률\n{upgradeData.fail[tierData]}%";
-        _probabilityText[2].text = $"파괴 확률\n{upgradeData.Destruction[tierData]}%";
-        _costText.text = $"강화 비용: {upgradeData.Cost[tierData]}";
-
-
-        if (inItem.enhenceCount == 10)
-        {
-            _productText.text = $"{itemData.name} (+Max)";
-            _probabilityText[0].text = $"성공 확률\n0%";
-            _probabilityText[1].text = $"유지 확률\n0%";
-            _probabilityText[2].text = $"파괴 확률\n0%";
-            _ResultTestText.text = "최고 레벨 입니다";
-            _costText.text = $"강화 비용: 0";
-            return;
-        }
+        UpdateUI(inItem);
     }
 
     public void Initialize(InventoryItem inItem)
     {
-        item = inItem;
-
-        var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
-        int tierData = itemData.tier - 1;
-        var upgradeData = GameManager.Instance.DataManager.Upgrade.GetData(inItem.enhenceCount);
-
+        _item = inItem;
         _useItemImage.sprite = inItem.ItemIcon;
-
-        CurrentEnhence(itemData, upgradeData);
+        UpdateUI(inItem);
     }
 
-    private void CurrentEnhence(ItemData inItemData, UpGradeData inUpGradeData)
+    private void UpdateUI(InventoryItem inItem) // UI 업데이트
     {
-        int tierData = inItemData.tier - 1;
+        var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
+        var upgradeData = GameManager.Instance.DataManager.Upgrade.GetData(inItem.enhenceCount);
+        int tierIndex = itemData.tier - 1;
 
-        if (item.enhenceCount == 10)
+        if (inItem.enhenceCount >= 10)
         {
-            _productText.text = $"{inItemData.name} (+Max)";
-            _probabilityText[0].text = $"성공 확률\n0%";
-            _probabilityText[1].text = $"유지 확률\n0%";
-            _probabilityText[2].text = $"파괴 확률\n0%";
-            _ResultTestText.text = "최고 레벨 입니다";
-            _costText.text = $"강화 비용: 0";
-            return;
+            _productText.text = $"{itemData.name} (+Max)";
+            _probabilityText[0].text = "성공 확률\n0%";
+            _probabilityText[1].text = "유지 확률\n0%";
+            _probabilityText[2].text = "파괴 확률\n0%";
+            _costText.text = $"강화 비용: 0\n/\n현재 소지금";
         }
         else
         {
-            _productText.text = $"{inItemData.name} (+{item.enhenceCount})";
-            _probabilityText[0].text = $"성공 확률\n{inUpGradeData.success[tierData]}%";
-            _probabilityText[1].text = $"유지 확률\n{inUpGradeData.fail[tierData]}%";
-            _probabilityText[2].text = $"파괴 확률\n{inUpGradeData.Destruction[tierData]}%";
-            _ResultTestText.text = "결과";
-            _costText.text = $"강화 비용: {inUpGradeData.Cost[tierData]}";
+            _productText.text = $"{itemData.name} (+{inItem.enhenceCount})";
+            _probabilityText[0].text = $"성공 확률\n{upgradeData.success[tierIndex]}%";
+            _probabilityText[1].text = $"유지 확률\n{upgradeData.fail[tierIndex]}%";
+            _probabilityText[2].text = $"파괴 확률\n{upgradeData.Destruction[tierIndex]}%";
+            _costText.text = $"강화 비용: {upgradeData.Cost[tierIndex]}\n/\n현재 소지금";
         }
     }
 }
