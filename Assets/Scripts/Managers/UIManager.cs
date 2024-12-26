@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoSingleton<UIManager>
 {
-    private Dictionary<string, UIBase> _uiList = new(); // UI 객체 리스트
+    public Dictionary<string, UIBase> UiList = new(); // UI 객체 리스트
     private Dictionary<string, Canvas> _uiCanvases = new(); // UI 캔버스 리스트
     private int _sortingOrderCounter = 0; // sortingOrder를 관리할 카운터
 
@@ -19,9 +19,9 @@ public class UIManager : MonoSingleton<UIManager>
     {
         var uiName = typeof(T).Name;
 
-        if (_uiList.ContainsKey(uiName))
+        if (UiList.ContainsKey(uiName))
         {
-            return _uiList[uiName] as T;
+            return UiList[uiName] as T;
         }
         else
         {
@@ -66,7 +66,7 @@ public class UIManager : MonoSingleton<UIManager>
         canvasObject.transform.SetParent(this.transform);
 
         // 생성된 UI를 관리하는 리스트에 추가
-        _uiList[uiName] = uiInstance;
+        UiList[uiName] = uiInstance;
         _uiCanvases[uiName] = uiCanvas;
 
         // 최신 sortingOrder 값 갱신
@@ -101,7 +101,7 @@ public class UIManager : MonoSingleton<UIManager>
     // UI를 닫는 메서드
     public void CloseUI<T>() where T : UIBase
     {
-        if (_uiList.TryGetValue(typeof(T).Name, out var uiBase) && uiBase.gameObject.activeSelf)
+        if (UiList.TryGetValue(typeof(T).Name, out var uiBase) && uiBase.gameObject.activeSelf)
         {
             uiBase.Close(); // UI를 닫는 메서드 호출
             uiBase.gameObject.SetActive(false); // UI를 비활성화
@@ -111,7 +111,7 @@ public class UIManager : MonoSingleton<UIManager>
     // 모든 UI를 닫는 메서드
     public void CloseAllUIs()
     {
-        foreach (var ui in _uiList.Values)
+        foreach (var ui in UiList.Values)
         {
             if (ui.gameObject.activeSelf)
             {
@@ -156,13 +156,13 @@ public class UIManager : MonoSingleton<UIManager>
     public bool IsExistUI<T>() where T : UIBase
     {
         var uiName = typeof(T).Name;
-        return _uiList.ContainsKey(uiName) && _uiList[uiName] != null;
+        return UiList.ContainsKey(uiName) && UiList[uiName] != null;
     }
 
     // 활성화된 UI가 있는지 확인하는 메서드
     public bool ActiveUI()
     {
-        foreach (var ui in _uiList.Values)
+        foreach (var ui in UiList.Values)
         {
             if (ui.gameObject.activeSelf)
             {

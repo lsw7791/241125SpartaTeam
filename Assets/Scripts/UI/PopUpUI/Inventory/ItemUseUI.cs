@@ -18,7 +18,7 @@ public class ItemUseUI : MonoBehaviour
 
         _useItemImage.sprite = inItem.ItemIcon;
         UseButtonClear();
-
+        // TODO :: ±â´Éº°·Î ³ª´²³ö¾ßµÊ
         if (itemData.itemType < ItemType.Mine)
         {
             UseButton("Âø¿ëÇÏ±â").onClick.AddListener(() =>

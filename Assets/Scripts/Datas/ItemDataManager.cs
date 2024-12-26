@@ -78,9 +78,6 @@ public class ItemDataManager : ItemData
         playerStats.CurrentHP = Mathf.Min(playerStats.MaxHP, playerStats.CurrentHP + healthIncrease);
         playerStats.CurrentStamina = Mathf.Min(playerStats.MaxStamina, playerStats.CurrentStamina + staminaIncrease);
 
-        // 디버깅: 효과 적용 후 값 확인
-        Debug.Log($"Potion used: Health +{healthIncrease}, Stamina +{staminaIncrease}");
-        Debug.Log($"Player stats updated: HP = {playerStats.CurrentHP}, Stamina = {playerStats.CurrentStamina}");
     }
 }
 
