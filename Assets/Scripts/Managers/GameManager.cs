@@ -16,15 +16,7 @@ public class GameManager : MonoSingleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
-        Debug.Log("GameManager Awake 호출");
-
-        // Repository 초기화
-        IPlayerRepository repository = new FilePlayerRepository();
-        repository.Initialize();
-
-        // DataManager 초기화
-        DataManager = new DataManager(repository);  // DataManager의 생성자에서 repository 전달
-        Debug.Log("DataManager 객체 생성 후");
+        DataManager = new DataManager();  
 
         // 다른 매니저 초기화
         if (CraftingManager == null) CraftingManager = gameObject.AddComponent<CraftingManager>();
@@ -106,31 +98,9 @@ public class GameManager : MonoSingleton<GameManager>
         Player.Stats.ATKSpeed = playerData.ATKSpeed;   // AttackSpeed
         Player.Stats.WeaponType = playerData.WeaponType;   // WeaponType
 
-        // 인벤토리 로드
-        LoadInventory(playerData);
-        LoadQuickSlots(playerData);
     }
 
     // 인벤토리 로드
-    private void LoadInventory(PlayerData playerData)
-    {
-        Player.Inventory.Clear();  // 기존 아이템을 비우고
-        foreach (var item in playerData.InventoryItems) // InventoryItems로 변경
-        {
-            Player.AddItemToInventory(item.ItemID, item.Quantity, item.SpritePath);
-        }
-    }
-
-    // 퀵슬롯 로드
-    private void LoadQuickSlots(PlayerData playerData)
-    {
-        Player.QuickSlots.Slots.Clear();  // 기존 슬롯을 비우고
-        foreach (var item in playerData.QuickSlotItems)
-        {
-            Player.QuickSlots.AddQuickSlotItem(item.ItemID, item.SlotIndex);
-        }
-    }
-
 
     // 게임 종료 시 플레이어 정보 저장
     public void SavePlayerData()

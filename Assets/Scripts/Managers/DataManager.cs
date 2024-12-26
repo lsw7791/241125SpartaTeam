@@ -15,10 +15,12 @@ public class DataManager
     public MineSpawnDataManager MineSpawn;
     public MonsterSpawnDataManager MonsterSpawn;
     public IPlayerRepository Repository;       // 플레이어 데이터 저장소 인터페이스
-    public DataManager(IPlayerRepository repository)
+   
+    public DataManager()
     {
-        Repository = repository;  // repository를 외부에서 전달받도록 수정
+        Repository = new FilePlayerRepository();  // repository를 외부에서 전달받도록 수정
         UnityGoogleSheet.LoadAllData();          // 구글 시트 데이터 로드
+        Repository.Initialize();
         Item = new ItemDataManager();
         Creature = new CreatureDataManager();
         Crafting = new CraftingDataManager();

@@ -30,33 +30,18 @@ public static class PlayerSaveLoad
                 ATKSpeed = player.Stats.ATKSpeed,
                 Def = player.Stats.Def,
                 WeaponType = player.Stats.WeaponType,
-                QuickSlotItems = new List<QuickSlotItem>(), // QuickSlotItems 저장
-                InventoryItems = new List<InventoryItem>(), // Inventory 저장
+                Items = player.Stats.Items,
             };
-
-            // QuickSlotItems 저장
-            foreach (QuickSlotItem item in player.QuickSlots.Slots)
-            {
-                data.QuickSlotItems.Add(item);
-            }
-
-            // Inventory 아이템 저장
-            foreach (InventoryItem item in player.Inventory.Items)
-            {
-                data.InventoryItems.Add(new InventoryItem
-                {
-                    ItemID = item.ItemID,
-                    //ItemName = item.ItemName,
-                    //Quantity = item.Quantity,
-                    //ItemType = item.ItemType,
-                    //ItemIcon = null,
-                    // ItemUseType = item.ItemUseType,
-                    //IsEquipped = item.IsEquipped,
-                });
-            }
-
+            // JSON 변환
             string json = data.ToJson();
+
+            // 디버그: 저장될 JSON 출력
+            Debug.Log($"플레이어 데이터 JSON: {json}");
+
+            // 파일로 저장
             File.WriteAllText(SavePath, json);
+
+            // 디버그: 저장 경로와 성공 메시지 출력
             Debug.Log($"플레이어 데이터 저장 성공: {SavePath}");
         }
         catch (Exception ex)
@@ -64,6 +49,7 @@ public static class PlayerSaveLoad
             Debug.LogError($"플레이어 데이터 저장 실패: {ex.Message}");
         }
     }
+
 
     // 데이터 로드
     public static void LoadPlayerData(Player player, IPlayerRepository repository)
@@ -77,7 +63,10 @@ public static class PlayerSaveLoad
         try
         {
             string json = File.ReadAllText(SavePath);
+
+            Debug.Log(json);
             PlayerData data = PlayerData.FromJson(json);
+
 
             // 데이터 초기화 및 적용
             ApplyPlayerData(player, data);
@@ -111,23 +100,5 @@ public static class PlayerSaveLoad
 
         // 닉네임 적용
         player.PlayerNickName = data.NickName;
-
-        // QuickSlotItems 적용
-        player.QuickSlots.Slots.Clear();
-        foreach (QuickSlotItem item in data.QuickSlotItems)
-        {
-            player.QuickSlots.Slots.Add(item);
-        }
-
-        // Inventory 적용
-        player.Inventory.Items.Clear();
-        foreach (InventoryItem itemData in data.InventoryItems)
-        {
-            player.Inventory.AddItem(
-                itemData.ItemID,
-                1
-                //itemData.EquipSlot
-            );
-        }
     }
 }

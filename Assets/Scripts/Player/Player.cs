@@ -24,9 +24,9 @@ public class Player : MonoBehaviour,IDamageable
 
     public Player()
     {
+        inventory = new Inventory();
         stats = new PlayerData();
         stats.Initialize();
-        inventory = new Inventory();
         QuickSlots = new QuickSlot();  // QuickSlot 객체 초기화
     }
 
@@ -34,6 +34,7 @@ public class Player : MonoBehaviour,IDamageable
     {
         PlayerInput = GetComponent<PlayerInput>();
         equipment = GetComponent<Equipment>();
+        LoadData(GameManager.Instance.DataManager.Repository);
     }
 
     // 데이터를 저장하는 메서드
@@ -53,7 +54,6 @@ public class Player : MonoBehaviour,IDamageable
     public void AddItemToInventory(int itemID, int quantity, string spritePath)
     { // 이템을 인벤토리에 추가
         inventory.AddItem(itemID, 1);  // 스프라이트 포함
-        PlayerSaveLoad.SavePlayerData(this, null);
     }
 
     public void RemoveItemFromInventory(int itemID, int quantity)
