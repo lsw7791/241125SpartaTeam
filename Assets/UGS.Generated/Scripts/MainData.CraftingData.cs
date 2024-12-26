@@ -63,6 +63,7 @@ namespace MainData
 		public System.Collections.Generic.List<Int32> matter;
 		public System.Collections.Generic.List<Int32> count;
 		public System.String imagePath;
+		public System.String atlasPath;
   
 
 #region fuctions
