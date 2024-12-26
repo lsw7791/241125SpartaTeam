@@ -33,7 +33,6 @@ public class ItemUseUI : MonoBehaviour
                 {
                     GameManager.Instance.Player.equipment.EquipNew(inItem);
                     // Âø¿ë
-                    inItem.IsEquipped = true;
                 }
                 GameManager.Instance.Player.inventory.EquipItem(inItem.ItemID);
             });

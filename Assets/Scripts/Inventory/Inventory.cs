@@ -74,7 +74,7 @@ public class Inventory
             item.Quantity -= quantity;
             if (item.Quantity <= 0)
             {
-                GameManager.Instance.Player.stats.RemoveItem(item); // PlayerData에서 제거
+                //GameManager.Instance.Player.stats.RemoveItem(item); // PlayerData에서 제거
                 Items.Remove(item); // 인벤토리에서 제거
             }
         }
@@ -91,9 +91,9 @@ public class Inventory
         if (item != null && itemData != null)
         {
             // 장착 시 플레이어 스탯 갱신
-            PlayerData playerData = GameManager.Instance.Player.stats;
-            playerData.PlayerStatsEquip(item);
-            item.IsEquipped = true;  // 아이템 장착 상태 업데이트
+            //PlayerData playerData = GameManager.Instance.Player.stats;
+            //playerData.PlayerStatsEquip(item);
+            //item.IsEquipped = true;  // 아이템 장착 상태 업데이트
             OnInventoryChanged?.Invoke();
         }
     }
@@ -107,9 +107,9 @@ public class Inventory
         if (item != null && itemData != null)
         {
             // 해제 시 플레이어 스탯 갱신
-            PlayerData playerData = GameManager.Instance.Player.stats;
-            playerData.PlayerStatsUnEquip(item);
-            item.IsEquipped = false;  // 아이템 해제 상태 업데이트
+            //PlayerData playerData = GameManager.Instance.Player.stats;
+            //playerData.PlayerStatsUnEquip(item);
+            //item.IsEquipped = false;  // 아이템 해제 상태 업데이트
             OnInventoryChanged?.Invoke();
         }
     }
