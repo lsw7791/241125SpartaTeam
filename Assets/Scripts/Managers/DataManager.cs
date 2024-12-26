@@ -14,6 +14,7 @@ public class DataManager
     public CharacterList CharacterList;        // 캐릭터 리스트 관리
     public MineSpawnDataManager MineSpawn;
     public MonsterSpawnDataManager MonsterSpawn;
+    public StatDataManager PlayerStat;
     public IPlayerRepository Repository;       // 플레이어 데이터 저장소 인터페이스
     public DataManager(IPlayerRepository repository)
     {
@@ -28,6 +29,7 @@ public class DataManager
         CharacterList = new CharacterList(Repository);  // CharacterList도 repository를 사용하여 초기화
         MineSpawn = new MineSpawnDataManager();
         MonsterSpawn = new MonsterSpawnDataManager();
+        PlayerStat = new StatDataManager();
     }
 
     // 모든 플레이어 데이터를 가져오기

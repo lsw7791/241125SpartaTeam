@@ -46,9 +46,18 @@ public class UpGradeUI : UIBase
 
         if (randomValue < upgradeData.success[tierIndex])
         {
-            inItem.enhenceCount++;
             // TODO :: 강화된 능력치 출력
             // TODO :: 강화수치 이미지 출력
+            if (inItem.IsEquipped)
+            {
+                GameManager.Instance.Player.stats.PlayerStatsUpdate(inItem, false);
+                inItem.enhenceCount++;
+                GameManager.Instance.Player.stats.PlayerStatsUpdate(inItem, true);
+            }
+            else
+            {
+                inItem.enhenceCount++;
+            }
 
             _resultText.text = "강화에 성공하였습니다!";
         }

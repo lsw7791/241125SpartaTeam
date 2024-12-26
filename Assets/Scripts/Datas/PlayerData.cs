@@ -30,34 +30,26 @@ public class PlayerData
     // PlayerStats 초기화 메서드 (초기값 설정)
     public void Initialize()
     {
-        MaxHP = 100;
-        CurrentHP = MaxHP;
-        MaxStamina = 100;
-        CurrentStamina = 100;
         Gold = 0;
-        Damage = 10;
-        PhysicalDamage = 0;
-        MagicalDamage = 0;
-        MoveSpeed = 3;
-        ATKSpeed = 1;
-        Def = 0;
-        MineDamage = 1;
-        WeaponType = 0;
         isDie = false;
+
+        PlayerStatsReset();
     }
     public void PlayerStatsReset()
     {
-        MaxHP = 100;
+        var PlayerStats = GameManager.Instance.DataManager.PlayerStat.GetData(1);
+
+        MaxHP = PlayerStats.maxHP;
         CurrentHP = MaxHP;
-        MaxStamina = 100;
-        CurrentStamina = 100;
-        Damage = 10;
-        PhysicalDamage = 0;
-        MagicalDamage = 0;
-        MoveSpeed = 3;
-        ATKSpeed = 1;
-        Def = 0;
-        MineDamage = 1;
+        MaxStamina = PlayerStats.maxStamina;
+        CurrentStamina = MaxStamina;
+        Damage = PlayerStats.damage;
+        PhysicalDamage = PlayerStats.physicalDamage;
+        MagicalDamage = PlayerStats.magicalDamage;
+        MoveSpeed = PlayerStats.moveSpeed;
+        ATKSpeed = PlayerStats.atkSpeed;
+        Def = PlayerStats.def;
+        MineDamage = PlayerStats.mineDamage;
         WeaponType = 0;
     }
     public void PlayerStatsUpdate(InventoryItem inItem, bool isEquip)
