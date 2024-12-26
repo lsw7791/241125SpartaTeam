@@ -60,36 +60,19 @@ public class PlayerData
         MineDamage = 1;
         WeaponType = 0;
     }
-    public void PlayerStatsEquip(InventoryItem inItem)
+    public void PlayerStatsUpdate(InventoryItem inItem, bool isEquip)
     {
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
         int enhenceCount = inItem.enhenceCount + 1;
 
-        MaxHP += itemData.health * enhenceCount;
-        MaxStamina += itemData.stamina * enhenceCount;
-        Def += itemData.defense * enhenceCount;
-        MineDamage += itemData.attackMine * enhenceCount;
-        PhysicalDamage += itemData.attack * enhenceCount;
-        MagicalDamage += itemData.attackM * enhenceCount;
-        ATKSpeed += itemData.attackSpeed * enhenceCount;
-        MoveSpeed += itemData.moveSpeed * enhenceCount;
-        UIManager.Instance.ToggleUI<StatusUI>();
-        GameManager.Instance.Player.StatusUI.Refresh();
-        UIManager.Instance.ToggleUI<StatusUI>();
-    }
-    public void PlayerStatsUnEquip(InventoryItem inItem)
-    {
-        var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
-        int enhenceCount = inItem.enhenceCount + 1;
-
-        MaxHP -= itemData.health * enhenceCount;
-        MaxStamina -= itemData.stamina * enhenceCount;
-        Def -= itemData.defense * enhenceCount;
-        MineDamage -= itemData.attackMine * enhenceCount;
-        PhysicalDamage -= itemData.attack * enhenceCount;
-        MagicalDamage -= itemData.attackM * enhenceCount;
-        ATKSpeed -= itemData.attackSpeed * enhenceCount;
-        MoveSpeed -= itemData.moveSpeed * enhenceCount;
+        MaxHP += isEquip ? itemData.health * enhenceCount : itemData.health * enhenceCount * -1;
+        MaxStamina += isEquip ? itemData.stamina * enhenceCount : itemData.stamina * enhenceCount * -1;
+        Def += isEquip ? itemData.defense * enhenceCount : itemData.defense * enhenceCount * -1;
+        MineDamage += isEquip ? itemData.attackMine * enhenceCount : itemData.attackMine * enhenceCount * -1;
+        PhysicalDamage += isEquip ? itemData.attack * enhenceCount : itemData.attack * enhenceCount * -1;
+        MagicalDamage += isEquip ? itemData.attackM * enhenceCount : itemData.attackM * enhenceCount * -1;
+        ATKSpeed += isEquip ? itemData.attackSpeed * enhenceCount : itemData.attackSpeed * enhenceCount * -1;
+        MoveSpeed += isEquip ? itemData.moveSpeed * enhenceCount : itemData.moveSpeed * enhenceCount * -1;
         GameManager.Instance.Player.StatusUI.Refresh();
     }
 }
