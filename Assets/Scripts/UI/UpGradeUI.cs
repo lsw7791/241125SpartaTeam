@@ -68,8 +68,16 @@ public class UpGradeUI : UIBase
         }
         else
         {
+            if (inItem.IsEquipped)
+            {
+                GameManager.Instance.Player.equipment.UnEquip(itemData.itemType);
+            }
+
             // TODO :: 금간 장비 이미지? 깨진 이미지 출력
             _resultText.text = "강화에 실패하였습니다. 장비가 파괴되었습니다.";
+
+            GameManager.Instance.Player.inventory.RemoveItem(inItem.ItemID, 1);
+            UIManager.Instance.ToggleUI<UpGradeUI>();
         }
 
         UpdateUI(inItem);
