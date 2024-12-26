@@ -63,14 +63,16 @@ public class PlayerData
     public void PlayerStatsEquip(InventoryItem inItem)
     {
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
-        MaxHP += itemData.health;
-        MaxStamina += itemData.stamina;
-        Def += itemData.defense;
-        MineDamage += itemData.attackMine;
-        PhysicalDamage += itemData.attack;
-        MagicalDamage += itemData.attackM;
-        ATKSpeed += itemData.attackSpeed;
-        MoveSpeed += itemData.moveSpeed;
+        int enhenceCount = inItem.enhenceCount + 1;
+
+        MaxHP += itemData.health * enhenceCount;
+        MaxStamina += itemData.stamina * enhenceCount;
+        Def += itemData.defense * enhenceCount;
+        MineDamage += itemData.attackMine * enhenceCount;
+        PhysicalDamage += itemData.attack * enhenceCount;
+        MagicalDamage += itemData.attackM * enhenceCount;
+        ATKSpeed += itemData.attackSpeed * enhenceCount;
+        MoveSpeed += itemData.moveSpeed * enhenceCount;
         UIManager.Instance.ToggleUI<StatusUI>();
         GameManager.Instance.Player.StatusUI.Refresh();
         UIManager.Instance.ToggleUI<StatusUI>();
@@ -78,14 +80,16 @@ public class PlayerData
     public void PlayerStatsUnEquip(InventoryItem inItem)
     {
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
-        MaxHP -= itemData.health;
-        MaxStamina -= itemData.stamina;
-        Def -= itemData.defense;
-        MineDamage -= itemData.attackMine;
-        PhysicalDamage -= itemData.attackM;
-        MagicalDamage -= itemData.attack;
-        ATKSpeed -= itemData.attackSpeed;
-        MoveSpeed -= itemData.moveSpeed;
+        int enhenceCount = inItem.enhenceCount + 1;
+
+        MaxHP -= itemData.health * enhenceCount;
+        MaxStamina -= itemData.stamina * enhenceCount;
+        Def -= itemData.defense * enhenceCount;
+        MineDamage -= itemData.attackMine * enhenceCount;
+        PhysicalDamage -= itemData.attack * enhenceCount;
+        MagicalDamage -= itemData.attackM * enhenceCount;
+        ATKSpeed -= itemData.attackSpeed * enhenceCount;
+        MoveSpeed -= itemData.moveSpeed * enhenceCount;
         GameManager.Instance.Player.StatusUI.Refresh();
     }
 }

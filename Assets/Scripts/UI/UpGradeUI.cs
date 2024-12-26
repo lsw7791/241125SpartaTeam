@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UpGradeUI : UIBase
 {
     [SerializeField] private Image _useItemImage;
+    [SerializeField] private Image _backgroundImage;
 
     [SerializeField] private Button _upgradeResultButton; // 강화 버튼
 
@@ -48,17 +49,18 @@ public class UpGradeUI : UIBase
             inItem.enhenceCount++;
             // TODO :: 강화된 능력치 출력
             // TODO :: 강화수치 이미지 출력
-            _resultText.text = "성공";
+
+            _resultText.text = "강화에 성공하였습니다!";
         }
         else if (randomValue < upgradeData.success[tierIndex] + upgradeData.fail[tierIndex])
         {
             // TODO :: 유지된 능력치 출력
-            _resultText.text = "유지";
+            _resultText.text = "강화에 실패하였습니다.";
         }
         else
         {
             // TODO :: 금간 장비 이미지? 깨진 이미지 출력
-            _resultText.text = "파괴";
+            _resultText.text = "강화에 실패하였습니다. 장비가 파괴되었습니다.";
         }
 
         UpdateUI(inItem);
