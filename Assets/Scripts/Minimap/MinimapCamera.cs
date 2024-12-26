@@ -35,7 +35,7 @@ public class MinimapCamera : MonoBehaviour
             minimapCamera.targetTexture = minimapTexture;
         }
     }
-    private void Update()
+    private void LateUpdate()
     {
         if(player==null)
         {

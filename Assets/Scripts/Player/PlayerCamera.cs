@@ -24,7 +24,7 @@ public class PlayerCamera : MonoBehaviour
         }
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (mainCamera == null)
         {
