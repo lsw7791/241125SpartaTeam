@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using MainData;
 using System.Collections.Generic;
+using UnityEngine.U2D;
 
 public class CraftResultUI : UIBase
 {
@@ -14,9 +15,8 @@ public class CraftResultUI : UIBase
 
     [SerializeField] private Image[] _craftItemImage;
     [SerializeField] private TMP_Text[] _craftItemText;
-
+    public SpriteAtlas craftingAtlas;
     private float _maxTime;
-
     private void Update()
     {
         if(_maxTime > 0)
@@ -57,7 +57,8 @@ public class CraftResultUI : UIBase
             _craftItemImage[i].gameObject.SetActive(false);
         }
 
-        Sprite itemSprite = Resources.Load<Sprite>(inData.imagePath);
+        //Sprite itemSprite = Resources.Load<Sprite>(inData.imagePath);
+        Sprite itemSprite = craftingAtlas.GetSprite(inData.atlasPath);
         _productImage.sprite = itemSprite;
         _productText.text = inData.name;
 

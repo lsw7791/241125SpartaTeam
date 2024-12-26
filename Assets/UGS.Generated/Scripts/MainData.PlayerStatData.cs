@@ -17,39 +17,39 @@ using UnityEngine;
 namespace MainData
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class CraftingData : ITable
+    public partial class PlayerStatData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<CraftingData> loadedList, Dictionary<int, CraftingData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<PlayerStatData> loadedList, Dictionary<int, PlayerStatData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1Daaes6kJu0aN1dc6gYH59jZtRFLFk24qEeAlCETDpTw"; // it is file id
-        static string sheetID = "810405307"; // it is sheet id
+        static string sheetID = "124811709"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, CraftingData> CraftingDataMap = new Dictionary<int, CraftingData>();  
-        public static List<CraftingData> CraftingDataList = new List<CraftingData>();   
+        public static Dictionary<int, PlayerStatData> PlayerStatDataMap = new Dictionary<int, PlayerStatData>();  
+        public static List<PlayerStatData> PlayerStatDataList = new List<PlayerStatData>();   
 
         /// <summary>
-        /// Get CraftingData List 
+        /// Get PlayerStatData List 
         /// Auto Load
         /// </summary>
-        public static List<CraftingData> GetList()
+        public static List<PlayerStatData> GetList()
         {{
            if (isLoaded == false) Load();
-           return CraftingDataList;
+           return PlayerStatDataList;
         }}
 
         /// <summary>
-        /// Get CraftingData Dictionary, keyType is your sheet A1 field type.
+        /// Get PlayerStatData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, CraftingData>  GetDictionary()
+        public static Dictionary<int, PlayerStatData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return CraftingDataMap;
+           return PlayerStatDataMap;
         }}
 
     
@@ -57,13 +57,15 @@ namespace MainData
 /* Fields. */
 
 		public System.Int32 id;
-		public System.String name;
-		public System.Int32 tier;
-		public System.Int32 gold;
-		public System.Collections.Generic.List<Int32> matter;
-		public System.Collections.Generic.List<Int32> count;
-		public System.String imagePath;
-		public System.String atlasPath;
+		public System.Int32 maxHP;
+		public System.Int32 maxStamina;
+		public System.Int32 damage;
+		public System.Int32 physicalDamage;
+		public System.Int32 magicalDamage;
+		public System.Int32 mineDamage;
+		public System.Int32 atkSpeed;
+		public System.Int32 moveSpeed;
+		public System.Int32 def;
   
 
 #region fuctions
@@ -74,7 +76,7 @@ namespace MainData
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("CraftingData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("PlayerStatData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -90,7 +92,7 @@ namespace MainData
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<CraftingData>, Dictionary<int, CraftingData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<PlayerStatData>, Dictionary<int, PlayerStatData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -118,14 +120,14 @@ namespace MainData
                
 
 
-    public static (List<CraftingData> list, Dictionary<int, CraftingData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, CraftingData> Map = new Dictionary<int, CraftingData>();
-            List<CraftingData> List = new List<CraftingData>();     
+    public static (List<PlayerStatData> list, Dictionary<int, PlayerStatData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, PlayerStatData> Map = new Dictionary<int, PlayerStatData>();
+            List<PlayerStatData> List = new List<PlayerStatData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(CraftingData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(PlayerStatData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["CraftingData"];
+            var sheet = jsonObject["PlayerStatData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -144,7 +146,7 @@ namespace MainData
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            CraftingData instance = new CraftingData();
+                            PlayerStatData instance = new PlayerStatData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -185,8 +187,8 @@ namespace MainData
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            CraftingDataList = List;
-                            CraftingDataMap = Map;
+                            PlayerStatDataList = List;
+                            PlayerStatDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -196,10 +198,10 @@ namespace MainData
 
  
 
-        public static void Write(CraftingData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(PlayerStatData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(CraftingData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(PlayerStatData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

@@ -543,6 +543,7 @@ MonoBehaviour:
   - {fileID: 5371018117952792741}
   - {fileID: 8297068979380777768}
   - {fileID: 7470761111818209043}
+  craftingAtlas: {fileID: 4343727234628468602, guid: 416e6d882253a504aa4b6b3c81ee0630, type: 2}
 --- !u!1 &1703242913467661402
 GameObject:
   m_ObjectHideFlags: 0
