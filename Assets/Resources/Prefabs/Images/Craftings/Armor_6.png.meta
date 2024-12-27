@@ -145,7 +145,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Body
+      name: Armor_6
       rect:
         serializedVersion: 2
         x: 10
@@ -218,7 +218,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Body: 676671511496910333
+      Armor_6: 676671511496910333
       Left: 46321824140090289
       Right: 8510608192026770805
   mipmapLimitGroupName: 

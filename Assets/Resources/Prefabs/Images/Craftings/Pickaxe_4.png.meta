@@ -827,7 +827,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Weapon and Craft Materials V1.0_0
+      name: Pickaxe_4
       rect:
         serializedVersion: 2
         x: 0
@@ -835,7 +835,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -858,7 +858,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Weapon and Craft Materials V1.0_0: -1900702418
+      Pickaxe_4: -1900702418
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

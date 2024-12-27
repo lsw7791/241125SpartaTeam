@@ -166,7 +166,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Body
+      name: Armor_3
       rect:
         serializedVersion: 2
         x: 10
@@ -218,7 +218,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Body: 1589403714872849932
+      Armor_3: 1589403714872849932
       Left: 4425119332354987815
       Right: 889668667309676848
   mipmapLimitGroupName: 

@@ -145,7 +145,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Body
+      name: Top_5
       rect:
         serializedVersion: 2
         x: 10
@@ -218,9 +218,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Body: -7736556782503057505
       Left: 1468843896871262044
       Right: 6707769398717036949
+      Top_5: -7736556782503057505
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
