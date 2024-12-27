@@ -153,6 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   craftingAtlas: {fileID: 4343727234628468602, guid: 416e6d882253a504aa4b6b3c81ee0630, type: 2}
   ItemAtlas: {fileID: 4343727234628468602, guid: 78ce2304d23dc51498ff74af963a85b2, type: 2}
+  UIAtlas: {fileID: 4343727234628468602, guid: 64e8da28e77ee6148811ba03a92db84a, type: 2}
+  BackgroundAtlas: {fileID: 4343727234628468602, guid: cf83c6468da5670499e8a250246bb538, type: 2}
 --- !u!1 &8543080288358453347
 GameObject:
   m_ObjectHideFlags: 0

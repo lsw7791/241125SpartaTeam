@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 9112834048955794283}
   - component: {fileID: 5534951055165484065}
   - component: {fileID: 49209621672283014}
+  - component: {fileID: 2501912828734309071}
   m_Layer: 5
   m_Name: CharacterSlotUI
   m_TagString: Untagged
@@ -338,7 +339,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5dfba027ddc1d1f488d235ad923ac044, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -367,6 +368,19 @@ MonoBehaviour:
   _executeButton: {fileID: 810491938629073307}
   _deleteButton: {fileID: 7435470727193757022}
   _backButton: {fileID: 6124756162704973874}
+--- !u!114 &2501912828734309071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2571152250458531546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e83da4684ca694dae213ad668ae299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UGSNumber: 5
 --- !u!1 &2960796264279155450
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +629,7 @@ GameObject:
   - component: {fileID: 2009553552794240773}
   - component: {fileID: 6970768466579008659}
   - component: {fileID: 6124756162704973874}
+  - component: {fileID: 5313708126074001816}
   m_Layer: 5
   m_Name: ExitBtn
   m_TagString: Untagged
@@ -670,7 +685,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 27a94cb32962c47bbaca9f3c8535421e, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -724,6 +739,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5313708126074001816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7248230449392898335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74e5eae711ea0f4784ad6128c733673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UGSNumber: 21
 --- !u!1 &8026251448539164633
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,6 +764,7 @@ GameObject:
   - component: {fileID: 6555765642222724223}
   - component: {fileID: 7726678203944254152}
   - component: {fileID: 810491938629073307}
+  - component: {fileID: 6418747814862975887}
   m_Layer: 5
   m_Name: ExecuteButton
   m_TagString: Untagged
@@ -791,7 +820,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 27a94cb32962c47bbaca9f3c8535421e, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -845,6 +874,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6418747814862975887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026251448539164633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74e5eae711ea0f4784ad6128c733673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UGSNumber: 21
 --- !u!1 &8144078389778480223
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +899,7 @@ GameObject:
   - component: {fileID: 7440791612269642943}
   - component: {fileID: 8260284303268134358}
   - component: {fileID: 7435470727193757022}
+  - component: {fileID: 7727121015476751605}
   m_Layer: 5
   m_Name: DeleteButton
   m_TagString: Untagged
@@ -912,7 +955,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 27a94cb32962c47bbaca9f3c8535421e, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -966,3 +1009,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7727121015476751605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144078389778480223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74e5eae711ea0f4784ad6128c733673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UGSNumber: 21

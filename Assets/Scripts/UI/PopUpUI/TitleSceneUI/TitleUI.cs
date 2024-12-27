@@ -1,8 +1,20 @@
+using MainData;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class TitleUI : MonoBehaviour
 {
+
+    private void Start()
+    {
+
+        Image[] targetImage  = GetComponentsInChildren<Image>();
+
+        for(int i=0;i< targetImage.Length;i++)
+        {
+            targetImage[i].sprite = UIManager.Instance.UIAtlas.GetSprite(GameManager.Instance.DataManager.UIDataManager.GetAtlasData(3));  // 새로운 스프라이트로 변경
+        }
+    }
     public void StartGame()
     {
         Debug.Log("게임 시작");

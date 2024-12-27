@@ -11,6 +11,8 @@ public class UIManager : MonoSingleton<UIManager>
     private int _sortingOrderCounter = 0; // sortingOrder를 관리할 카운터
     public SpriteAtlas craftingAtlas;
     public SpriteAtlas ItemAtlas;
+    public SpriteAtlas UIAtlas;
+    public SpriteAtlas BackgroundAtlas;
     protected override void Awake()
     {
         base.Awake();

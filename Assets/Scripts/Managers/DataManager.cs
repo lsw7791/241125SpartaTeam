@@ -16,7 +16,7 @@ public class DataManager
     public MonsterSpawnDataManager MonsterSpawn;
     public StatDataManager PlayerStat;
     public IPlayerRepository Repository;       // 플레이어 데이터 저장소 인터페이스
-   
+   public UIDataManager UIDataManager;
     public DataManager()
     {
         Repository = new FilePlayerRepository();  // repository를 외부에서 전달받도록 수정
@@ -32,10 +32,11 @@ public class DataManager
         MineSpawn = new MineSpawnDataManager();
         MonsterSpawn = new MonsterSpawnDataManager();
         PlayerStat = new StatDataManager();
-    }
+        UIDataManager= new UIDataManager();
+}
 
-    // 모든 플레이어 데이터를 가져오기
-    public List<PlayerData> GetAllPlayerData()
+// 모든 플레이어 데이터를 가져오기
+public List<PlayerData> GetAllPlayerData()
     {
         return CharacterList.GetAllCharacters();
     }

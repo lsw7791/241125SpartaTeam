@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 3870578824442817976}
   - component: {fileID: 3534219944391597016}
   - component: {fileID: 8669484851314234092}
+  - component: {fileID: -7382385138650562331}
   m_Layer: 5
   m_Name: CheatUI
   m_TagString: Untagged
@@ -201,7 +202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3d39f746e04364b98ab32e6cff1690f5, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -225,3 +226,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanDrag: 0
   rectTransform: {fileID: 0}
+--- !u!114 &-7382385138650562331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3275638793881925232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74e5eae711ea0f4784ad6128c733673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UGSNumber: 2
