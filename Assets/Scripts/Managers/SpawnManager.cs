@@ -30,7 +30,6 @@ public class SpawnManager : MonoBehaviour
         //if (monsterPool3 == null) monsterPool3 = GroupSpawn("Monster3").AddComponent<MonsterPool>();
         SetPlayerPosition(mapNum);
         SpawnMInePool();
-        Debug.Log($"¸Ê ³Ñ¹ö : {mapNum}");
         switch (mapNum)
         {
             case 2://¸¶À»
