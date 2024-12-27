@@ -64,8 +64,8 @@ public class CraftingUI : UIBase
             _craftItemImage[i].gameObject.SetActive(true);
             var itemData = GameManager.Instance.DataManager.GetItemDataById(craftItemList[i]);
 
-            _craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
-
+            //_craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
+            _craftItemImage[i].sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
             int craftItemCount = GameManager.Instance.DataManager.Crafting.GetCraftCountIds(_craftingData.id)[i];
             int inventoryItemCount = GameManager.Instance.Player.inventory.GetItemCount(itemData.id);
 

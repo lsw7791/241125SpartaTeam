@@ -857,6 +857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7d81e6eebb4764fa0bb04f00426cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  craftingAtlas: {fileID: 0}
+  ItemAtlas: {fileID: 0}
 --- !u!1 &1147841620
 GameObject:
   m_ObjectHideFlags: 0
