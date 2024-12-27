@@ -29,4 +29,17 @@ public class InventoryItem
         // Resources 폴더에서 경로를 통해 Sprite 로드
         return Resources.Load<Sprite>(path);
     }
+
+    public Color TierColoer(int inTier)
+    {
+        Color[] Colors = {
+        Color.white,
+        Color.red,
+        Color.blue,
+        Color.green,
+        Color.yellow,
+        Color.black,
+        };
+        return Colors[inTier];
+    }
 }

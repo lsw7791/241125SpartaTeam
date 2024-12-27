@@ -27,6 +27,7 @@ public class Equipment : MonoBehaviour
 
         inItem.IsEquipped = true;
         GameManager.Instance.Player.stats.PlayerStatsUpdate(inItem, true);
+        //GameManager.Instance.Player.inventory.EquipItem(inItem.ItemID);
     }
 
     public void UnEquip(ItemType inItemType)
@@ -38,6 +39,7 @@ public class Equipment : MonoBehaviour
 
             // ½ºÅÈ °¨¼Ò Ã³¸®
             GameManager.Instance.Player.stats.PlayerStatsUpdate(unequippedItem, false);
+            //GameManager.Instance.Player.inventory.UnEquipItem(unequippedItem.ItemID);
 
             // µñ¼Å³Ê¸®¿¡¼­ Á¦°Å
             _equipItems.Remove(inItemType);

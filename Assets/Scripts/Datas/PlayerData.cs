@@ -32,42 +32,8 @@ public class PlayerData
         Gold = 0;
         isDie = false;
         Items = new List<InventoryItem>();
+        PlayerStatsReset();
     }
-
-    //// 아이템 장착 시 스탯 업데이트
-    //public void PlayerStatsEquip(InventoryItem inItem)
-    //{
-    //    var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
-    //    MaxHP += itemData.health;
-    //    MaxStamina += itemData.stamina;
-    //    Def += itemData.defense;
-    //    MineDamage += itemData.attackMine;
-    //    PhysicalDamage += itemData.attack;
-    //    MagicalDamage += itemData.attackM;
-    //    ATKSpeed += itemData.attackSpeed;
-    //    MoveSpeed += itemData.moveSpeed;
-
-    //    // UI 갱신
-    //    UIManager.Instance.ToggleUI<StatusUI>();
-    //    GameManager.Instance.Player.StatusUI.Refresh();
-    //    UIManager.Instance.ToggleUI<StatusUI>();
-    //}
-
-    //// 아이템 해제 시 스탯 업데이트
-    //public void PlayerStatsUnEquip(InventoryItem inItem)
-    //{
-    //    var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
-    //    MaxHP -= itemData.health;
-    //    MaxStamina -= itemData.stamina;
-    //    Def -= itemData.defense;
-    //    MineDamage -= itemData.attackMine;
-    //    PhysicalDamage -= itemData.attack;
-    //    MagicalDamage -= itemData.attackM;
-    //    ATKSpeed -= itemData.attackSpeed;
-    //    MoveSpeed -= itemData.moveSpeed;
-
-    //    PlayerStatsReset();
-    //}
     public void PlayerStatsReset()
     {
         var PlayerStats = GameManager.Instance.DataManager.PlayerStat.GetData(1);

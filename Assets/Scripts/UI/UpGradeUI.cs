@@ -7,6 +7,7 @@ public class UpGradeUI : UIBase
 {
     [SerializeField] private Image _useItemImage;
     [SerializeField] private Image _backgroundImage;
+    [SerializeField] private TMP_Text _enhenceCountText;
 
     [SerializeField] private Button _upgradeResultButton; // 강화 버튼
 
@@ -95,6 +96,8 @@ public class UpGradeUI : UIBase
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
         var upgradeData = GameManager.Instance.DataManager.Upgrade.GetData(inItem.enhenceCount);
         int tierIndex = itemData.tier - 1;
+        _enhenceCountText.text = $"{inItem.enhenceCount}";
+        _backgroundImage.color = inItem.TierColoer(tierIndex);
 
         if (inItem.enhenceCount >= 10)
         {

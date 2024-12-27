@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 [System.Serializable]
@@ -37,7 +38,7 @@ public class Inventory
             {
                 InventoryItem newItem = new InventoryItem(itemID, quantity, itemData.spritePath, false, itemData.atkType);
                 Items.Add(newItem); // 새 아이템 추가
-                GameManager.Instance.Player.stats.AddItem(newItem); // PlayerData에도 추가
+                //GameManager.Instance.Player.stats.AddItem(newItem); // PlayerData에도 추가
             }
         }
 
@@ -94,6 +95,10 @@ public class Inventory
             //PlayerData playerData = GameManager.Instance.Player.stats;
             //playerData.PlayerStatsEquip(item);
             //item.IsEquipped = true;  // 아이템 장착 상태 업데이트
+
+            //GameManager.Instance.Player.stats.PlayerStatsUpdate(item, true);
+            //item.IsEquipped = true;
+            //GameManager.Instance.Player.stats.AddItem(item); // PlayerData에도 추가
             OnInventoryChanged?.Invoke();
         }
     }
@@ -110,6 +115,12 @@ public class Inventory
             //PlayerData playerData = GameManager.Instance.Player.stats;
             //playerData.PlayerStatsUnEquip(item);
             //item.IsEquipped = false;  // 아이템 해제 상태 업데이트
+
+            // 스탯 감소 처리
+            //GameManager.Instance.Player.stats.PlayerStatsUpdate(item, false);
+            //item.IsEquipped = false;
+            //GameManager.Instance.Player.stats.RemoveItem(item); // PlayerData에서 제거
+
             OnInventoryChanged?.Invoke();
         }
     }
