@@ -64,13 +64,13 @@ public static class PlayerSaveLoad
         {
             string json = File.ReadAllText(SavePath);
 
-            Debug.Log(json);
             PlayerData data = PlayerData.FromJson(json);
 
 
             // 데이터 초기화 및 적용
             ApplyPlayerData(player, data);
             Debug.Log("플레이어 데이터 로드 성공");
+            Debug.Log(json);
         }
         catch (Exception ex)
         {

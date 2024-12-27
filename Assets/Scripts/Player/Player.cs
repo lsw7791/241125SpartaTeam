@@ -37,12 +37,6 @@ public class Player : MonoBehaviour,IDamageable
         LoadData(GameManager.Instance.DataManager.Repository);
     }
 
-    // 데이터를 저장하는 메서드
-    public void SaveData(IPlayerRepository repository)
-    {
-        PlayerSaveLoad.SavePlayerData(this, repository);
-        OnPlayerDataSaved?.Invoke(); // 저장 완료 후 이벤트 발생
-    }
 
     // 데이터를 로드하는 메서드
     public void LoadData(IPlayerRepository repository)
