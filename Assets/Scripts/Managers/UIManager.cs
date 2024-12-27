@@ -164,7 +164,7 @@ public class UIManager : MonoSingleton<UIManager>
     }
 
     // 활성화된 UI가 있는지 확인하는 메서드
-    public bool ActiveUI()
+    public bool IsActiveUI()
     {
         foreach (var ui in UiList.Values)
         {
@@ -175,5 +175,17 @@ public class UIManager : MonoSingleton<UIManager>
         }
 
         return false; // 활성화된 UI가 없으면 false 반환
+    }
+
+    public T ActiveUI<T>() where T : UIBase
+    {
+        if (!IsExistUI<T>())
+        {
+            return null;
+        }
+
+        T ui = GetUI<T>();
+
+        return ui;
     }
 }

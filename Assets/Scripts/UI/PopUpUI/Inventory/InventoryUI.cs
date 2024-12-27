@@ -37,6 +37,7 @@ public class InventoryUI : UIBase
 
     private void InitializeSlots()
     {
+        var items = GameManager.Instance.Player.inventory.GetItems(); // 아이템 리스트 받아오기
         foreach (var slot in _slots)
         {
             Destroy(slot);

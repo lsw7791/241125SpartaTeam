@@ -16,7 +16,16 @@ public class ItemUseUI : MonoBehaviour
     {
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
 
-        _useItemImage.sprite = inItem.ItemIcon;
+        bool isSprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
+
+        if (isSprite)
+        {
+            _useItemImage.sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
+        }
+        else
+        {
+            _useItemImage.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
+        }
         UseButtonClear();
         // TODO :: ±â´Éº°·Î ³ª´²³ö¾ßµÊ
         if (itemData.itemType < ItemType.Mine)

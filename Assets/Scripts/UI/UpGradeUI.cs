@@ -86,8 +86,9 @@ public class UpGradeUI : UIBase
 
     public void Initialize(InventoryItem inItem)
     {
+        var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
         _item = inItem;
-        _useItemImage.sprite = inItem.ItemIcon;
+        _useItemImage.sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
         UpdateUI(inItem);
     }
 
