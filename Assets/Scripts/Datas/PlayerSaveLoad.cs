@@ -63,14 +63,15 @@ public static class PlayerSaveLoad
         try
         {
             string json = File.ReadAllText(SavePath);
-
             PlayerData data = PlayerData.FromJson(json);
-
 
             // 데이터 초기화 및 적용
             ApplyPlayerData(player, data);
+
+            // 디버그: 데이터 적용 후 출력
             Debug.Log("플레이어 데이터 로드 성공");
-            Debug.Log(json);
+            string loadedJson = JsonUtility.ToJson(data, true);
+            Debug.Log($"로딩된 데이터: {loadedJson}");
         }
         catch (Exception ex)
         {
@@ -78,8 +79,9 @@ public static class PlayerSaveLoad
         }
     }
 
+
     // 플레이어 데이터 적용
-    private static void ApplyPlayerData(Player player, PlayerData data)
+    public static void ApplyPlayerData(Player player, PlayerData data)
     {
         if (data == null || player == null)
         {
