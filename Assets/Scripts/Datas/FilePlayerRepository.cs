@@ -1,14 +1,12 @@
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
 public interface IPlayerRepository
 {
-    void Initialize();             // Initialize 메서드 추가
-    void SaveAllPlayerData(List<PlayerData> data); // 전체 데이터 저장
-    List<PlayerData> LoadAllPlayerData();          // 전체 데이터 불러오기
+    void Initialize();                  // 초기화
+    void SaveCurrentPlayer(PlayerData data); // 현재 플레이 캐릭터 저장
+    PlayerData LoadCurrentPlayer();    // 현재 플레이 캐릭터 로드
 }
-
 
 public class FilePlayerRepository : IPlayerRepository
 {
@@ -16,14 +14,12 @@ public class FilePlayerRepository : IPlayerRepository
 
     public void Initialize()
     {
-        filePath = Path.Combine(Application.persistentDataPath, "PlayerData.json");
+        filePath = Path.Combine(Application.persistentDataPath, "CurrentPlayerData.json");
 
-        // 파일이 존재하지 않으면 빈 데이터 파일을 생성
         if (!File.Exists(filePath))
         {
             Debug.Log($"파일이 존재하지 않음. 경로: {filePath}");
-            File.WriteAllText(filePath, JsonUtility.ToJson(new SerializableListWrapper<PlayerData>(new List<PlayerData>())));
-            Debug.Log("빈 데이터 파일 생성 완료.");
+            File.WriteAllText(filePath, string.Empty); // 빈 파일 생성
         }
         else
         {
@@ -31,45 +27,22 @@ public class FilePlayerRepository : IPlayerRepository
         }
     }
 
-    // 전체 캐릭터 데이터 저장
-    public void SaveAllPlayerData(List<PlayerData> data)
+    public void SaveCurrentPlayer(PlayerData data)
     {
-        Debug.Log("PlayerData 저장 시작");
-        var json = JsonUtility.ToJson(new SerializableListWrapper<PlayerData>(data));
+        var json = JsonUtility.ToJson(data);
         File.WriteAllText(filePath, json);
-        Debug.Log($"PlayerData 저장 완료. 경로: {filePath}");
-
-        // PlayerPrefs에 마지막 캐릭터 정보 저장
-        if (data.Count > 0)
-        {
-            PlayerPrefs.SetString("LastCharacterNickName", data[0].NickName);
-            PlayerPrefs.Save();
-            Debug.Log("PlayerPrefs에 마지막 캐릭터 정보 저장 완료");
-        }
+        Debug.Log($"현재 플레이 캐릭터 저장 완료. 경로: {filePath}");
     }
 
-    // 전체 캐릭터 데이터 불러오기
-    public List<PlayerData> LoadAllPlayerData()
+    public PlayerData LoadCurrentPlayer()
     {
-        if (!File.Exists(filePath))
+        if (!File.Exists(filePath) || string.IsNullOrWhiteSpace(File.ReadAllText(filePath)))
         {
-            Debug.LogWarning("저장된 데이터가 없습니다.");
-            return new List<PlayerData>();
+            Debug.LogWarning("저장된 현재 플레이 캐릭터 데이터가 없습니다.");
+            return null;
         }
 
         var json = File.ReadAllText(filePath);
-        var wrapper = JsonUtility.FromJson<SerializableListWrapper<PlayerData>>(json);
-        return wrapper.List;
-    }
-}
-
-[System.Serializable]
-public class SerializableListWrapper<T>
-{
-    public List<T> List;
-
-    public SerializableListWrapper(List<T> list)
-    {
-        List = list;
+        return JsonUtility.FromJson<PlayerData>(json);
     }
 }

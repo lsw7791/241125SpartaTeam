@@ -78,9 +78,6 @@ public class GameManager : MonoSingleton<GameManager>
         // 선택된 캐릭터의 데이터를 게임에 로드
         LoadPlayerData(character);
 
-        // 캐릭터 생성 시 데이터를 즉시 저장
-        DataManager.SaveCharacterData();
-
         // 씬을 전환하여 게임 시작
         SceneNum = 2;
         LoadScene(DataManager.Scene.GetMapTo(SceneNum));
@@ -98,18 +95,5 @@ public class GameManager : MonoSingleton<GameManager>
         Player.Stats.ATKSpeed = playerData.ATKSpeed;   // AttackSpeed
         Player.Stats.WeaponType = playerData.WeaponType;   // WeaponType
 
-    }
-
-    // 인벤토리 로드
-
-    // 게임 종료 시 플레이어 정보 저장
-    public void SavePlayerData()
-    {
-        if (_currentPlayer != null)
-        {
-            DataManager.SaveCharacterData();  // 현재 플레이어의 데이터를 저장
-            PlayerPrefs.SetString("LastCharacterNickName", _currentPlayer.NickName);
-            Debug.Log("플레이어 데이터 저장 완료");
-        }
     }
 }

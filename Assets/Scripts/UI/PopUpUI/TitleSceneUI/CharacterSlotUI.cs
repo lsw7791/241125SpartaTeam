@@ -11,12 +11,9 @@ public class CharacterSlotUI : UIBase
     [SerializeField] private Button _backButton;     // 뒤로가기 버튼
 
     private PlayerData _selectedCharacter;          // 선택된 캐릭터 데이터
-    private CharacterList _characterList;           // 캐릭터 리스트 참조
 
     private void OnEnable()
     {
-        _characterList = GameManager.Instance.DataManager.CharacterList; // 캐릭터 리스트 초기화
-        _characterList.LoadAllCharacters();
         LoadSlots(); // 슬롯 로드
 
         // 버튼 리스너 등록
@@ -33,7 +30,8 @@ public class CharacterSlotUI : UIBase
         ClearSlots();
 
         // 캐릭터 데이터 로드 및 슬롯 생성
-        var characters = _characterList.GetAllCharacters();
+        var characters = GameManager.Instance.DataManager.CharacterList.GetAllCharacters();
+
         foreach (var character in characters)
         {
             CreateSlot(character);
@@ -88,7 +86,7 @@ public class CharacterSlotUI : UIBase
             return;
         }
 
-        _characterList.RemoveCharacter(_selectedCharacter); // 캐릭터 삭제
+        GameManager.Instance.DataManager.CharacterList.RemoveCharacter(_selectedCharacter); // 캐릭터 삭제
         _selectedCharacter = null; // 선택 초기화
         LoadSlots(); // 슬롯 UI 갱신
         SetButtonsInteractable(false); // 버튼 비활성화
