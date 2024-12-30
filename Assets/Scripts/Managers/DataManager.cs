@@ -16,7 +16,7 @@ public class DataManager
     public MonsterSpawnDataManager MonsterSpawn;
     public StatDataManager PlayerStat;
     public IPlayerRepository Repository;       // 플레이어 데이터 저장소 인터페이스
-   
+   public UIDataManager UIDataManager;
     public DataManager()
     {
         Repository = new FilePlayerRepository();  // repository를 외부에서 전달받도록 수정
@@ -29,16 +29,34 @@ public class DataManager
         Shop = new ShopManager();
         Upgrade = new UpGradeDataManager();
         CharacterList = new CharacterList(Repository);  // CharacterList도 repository를 사용하여 초기화
-        CharacterList.GetAllCharacters();
         MineSpawn = new MineSpawnDataManager();
         MonsterSpawn = new MonsterSpawnDataManager();
         PlayerStat = new StatDataManager();
+        UIDataManager= new UIDataManager();
+}
+
+// 모든 플레이어 데이터를 가져오기
+public List<PlayerData> GetAllPlayerData()
+    {
+        return CharacterList.GetAllCharacters();
+    }
+
+    // 새로운 캐릭터 추가
+    public void AddCharacter(PlayerData newCharacter)
+    {
+        CharacterList.AddCharacter(newCharacter);
     }
 
     // 캐릭터 데이터 저장
     public void SaveCharacterData()
     {
         CharacterList.SaveListsData();  // 캐릭터 리스트 데이터 저장
+    }
+
+    // 캐릭터 데이터 로드
+    public void LoadCharacterData()
+    {
+        CharacterList.LoadAllCharacters();
     }
 
     // PlayerPrefs에서 마지막 캐릭터 데이터 불러오기

@@ -179,7 +179,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Body
+      name: Top_3
       rect:
         serializedVersion: 2
         x: 10
@@ -231,9 +231,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Body: -8439029293663886290
       Left: 7410614344859572497
       Right: -7657487650210245680
+      Top_3: -8439029293663886290
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

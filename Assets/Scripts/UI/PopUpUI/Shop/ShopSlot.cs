@@ -1,6 +1,7 @@
 using MainData;
 using TMPro;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class ShopSlot : MonoBehaviour
@@ -17,7 +18,7 @@ public class ShopSlot : MonoBehaviour
     public delegate void ItemClickHandler(ItemData itemData);
     public event ItemClickHandler OnItemClick; // 아이템 클릭 시 발생하는 이벤트
 
-   
+
     // 아이템 데이터를 슬롯에 설정
     public void Setup(ItemData itemData)
     {
@@ -27,8 +28,9 @@ public class ShopSlot : MonoBehaviour
         itemNameText.text = itemData.name;
         itemPriceText.text = $"{itemData.buy} Gold";
         itemDescText.text = itemData.desc;
-        icon.sprite = Resources.Load<Sprite>(itemData.spritePath); // 아이콘 경로로부터 이미지 로드
-
+        //icon.sprite = Resources.Load<Sprite>(itemData.spritePath); // 아이콘 경로로부터 이미지 로드
+        icon.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
+        //Sprite itemSprite = craftingAtlas.GetSprite(inData.atlasPath);
         // 구매 버튼 활성화 여부 설정
         buyButton.interactable = true;
 

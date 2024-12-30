@@ -64,8 +64,17 @@ public class PlayerData
         MagicalDamage += isEquip ? itemData.attackM * enhenceCount : itemData.attackM * enhenceCount * -1;
         ATKSpeed += isEquip ? itemData.attackSpeed * enhenceCount : itemData.attackSpeed * enhenceCount * -1;
         MoveSpeed += isEquip ? itemData.moveSpeed * enhenceCount : itemData.moveSpeed * enhenceCount * -1;
-        StatusUI statusUI = UIManager.Instance.GetUI<StatusUI>();
-        statusUI.Refresh();
+
+        if (UIManager.Instance.IsExistUI<StatusUI>())
+        {
+            GameManager.Instance.Player.StatusUI.Refresh();
+        }
+        else
+        {
+            StatusUI statusUI = UIManager.Instance.GetUI<StatusUI>();
+            statusUI.gameObject.SetActive(false);
+            statusUI.Refresh();
+        }
     }
 
     // 아이템 추가 메서드

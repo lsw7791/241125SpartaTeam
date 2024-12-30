@@ -1,6 +1,7 @@
 using Constants;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class UIManager : MonoSingleton<UIManager>
@@ -8,7 +9,10 @@ public class UIManager : MonoSingleton<UIManager>
     public Dictionary<string, UIBase> UiList = new(); // UI 객체 리스트
     private Dictionary<string, Canvas> _uiCanvases = new(); // UI 캔버스 리스트
     private int _sortingOrderCounter = 0; // sortingOrder를 관리할 카운터
-
+    public SpriteAtlas craftingAtlas;
+    public SpriteAtlas ItemAtlas;
+    public SpriteAtlas UIAtlas;
+    public SpriteAtlas BackgroundAtlas;
     protected override void Awake()
     {
         base.Awake();
@@ -160,7 +164,7 @@ public class UIManager : MonoSingleton<UIManager>
     }
 
     // 활성화된 UI가 있는지 확인하는 메서드
-    public bool ActiveUI()
+    public bool IsActiveUI()
     {
         foreach (var ui in UiList.Values)
         {
@@ -171,5 +175,17 @@ public class UIManager : MonoSingleton<UIManager>
         }
 
         return false; // 활성화된 UI가 없으면 false 반환
+    }
+
+    public T ActiveUI<T>() where T : UIBase
+    {
+        if (!IsExistUI<T>())
+        {
+            return null;
+        }
+
+        T ui = GetUI<T>();
+
+        return ui;
     }
 }

@@ -15,7 +15,6 @@ public class CraftResultUI : UIBase
 
     [SerializeField] private Image[] _craftItemImage;
     [SerializeField] private TMP_Text[] _craftItemText;
-    public SpriteAtlas craftingAtlas;
     private float _maxTime;
     private void Update()
     {
@@ -58,7 +57,7 @@ public class CraftResultUI : UIBase
         }
 
         //Sprite itemSprite = Resources.Load<Sprite>(inData.imagePath);
-        Sprite itemSprite = craftingAtlas.GetSprite(inData.atlasPath);
+        Sprite itemSprite = UIManager.Instance.craftingAtlas.GetSprite(inData.atlasPath);
         _productImage.sprite = itemSprite;
         _productText.text = inData.name;
 
@@ -74,8 +73,8 @@ public class CraftResultUI : UIBase
             _craftItemImage[i].gameObject.SetActive(true);
             var itemData = GameManager.Instance.DataManager.GetItemDataById(craftItemList[i]);
 
-            _craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
-
+            //_craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
+            _craftItemImage[i].sprite = UIManager.Instance.craftingAtlas.GetSprite(inData.atlasPath);
             int craftItemCount = GameManager.Instance.DataManager.Crafting.GetCraftCountIds(inData.id)[i];
             int inventoryItemCount = GameManager.Instance.Player.inventory.GetItemCount(itemData.id);
 

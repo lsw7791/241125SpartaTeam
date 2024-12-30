@@ -75,6 +75,7 @@ namespace MainData
 		public System.String spritePath;
 		public System.Collections.Generic.List<Int32> goldRange;
 		public System.Int32 atkType;
+		public System.String atlasPath;
   
 
 #region fuctions

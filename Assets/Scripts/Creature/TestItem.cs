@@ -4,7 +4,7 @@ using MainData;
 public class TestItem : MonoBehaviour
 {
     public ItemData itemData; // 아이템 데이터 저장
-    public Sprite itemSprite; // 아이템의 스프라이트 (이미지)
+    //public Sprite itemSprite; // 아이템의 스프라이트 (이미지)
     private int minGold; // 최소 골드
     private int maxGold; // 최대 골드
     public bool isPlayerDrop = false;
@@ -52,7 +52,7 @@ public class TestItem : MonoBehaviour
                 GameManager.Instance.Player.AddItemToInventory(
                     itemData.id,
                     1,
-                    itemData.spritePath
+                    itemData.atlasPath
                 );
             }
 

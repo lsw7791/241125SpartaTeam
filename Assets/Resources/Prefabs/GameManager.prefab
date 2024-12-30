@@ -46,10 +46,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bgmSource: {fileID: 0}
   _sfxSource: {fileID: 0}
-  bgmClip: {fileID: 0}
-  collisionSfx: {fileID: 0}
-  clickSfx: {fileID: 0}
-  itemSfx: {fileID: 0}
+  AsiaTravelBGM: {fileID: 0}
+  MoodtimeflowBGM: {fileID: 0}
+  MysticalBGM: {fileID: 0}
+  ClearSFX: {fileID: 0}
+  FireBallSFX: {fileID: 0}
+  ItemPickUpSFX: {fileID: 0}
+  PunchSFX: {fileID: 0}
+  SwordSFX: {fileID: 0}
+  WinningSFX: {fileID: 0}
 --- !u!1 &6600429633410187734
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,12 +102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0160c3d31b14749876a83d15bf4b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  craftingManager: {fileID: 0}
-  soundManager: {fileID: 0}
-  uIManager: {fileID: 0}
-  spawnManager: {fileID: 0}
-  player: {fileID: 0}
-  sceneNum: 0
+  CraftingManager: {fileID: 0}
+  SpawnManager: {fileID: 0}
+  Player: {fileID: 0}
+  SceneNum: 0
+  miniCamera: {fileID: 0}
 --- !u!1 &7682924926377630938
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7d81e6eebb4764fa0bb04f00426cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  craftingAtlas: {fileID: 4343727234628468602, guid: 416e6d882253a504aa4b6b3c81ee0630, type: 2}
+  ItemAtlas: {fileID: 4343727234628468602, guid: 78ce2304d23dc51498ff74af963a85b2, type: 2}
+  UIAtlas: {fileID: 4343727234628468602, guid: 64e8da28e77ee6148811ba03a92db84a, type: 2}
+  BackgroundAtlas: {fileID: 4343727234628468602, guid: cf83c6468da5670499e8a250246bb538, type: 2}
 --- !u!1 &8543080288358453347
 GameObject:
   m_ObjectHideFlags: 0
