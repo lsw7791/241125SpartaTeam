@@ -10,7 +10,6 @@ public class Player : MonoBehaviour,IDamageable
     public PlayerInput PlayerInput;
     public PlayerAnimationController _playerAnimationController;
     public PlayerWeapon _playerWeapon;
-    public PlayerCamera _playerCamera;
     public Equipment equipment;
     public GameObject Weapon;
     public ConditionUI ConditionUI;
