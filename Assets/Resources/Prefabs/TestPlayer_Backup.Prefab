@@ -2922,14 +2922,15 @@ MonoBehaviour:
     CurrentStamina: 100
     Gold: 1000
     Damage: 1000
-    Speed: 5
+    PhysicalDamage: 0
+    MagicalDamage: 0
+    MoveSpeed: 0
     ATKSpeed: 1
     Def: 0
     WeaponType: 0
     isDie: 0
     MineDamage: 1
-    QuickSlotItems: []
-    InventoryItems: []
+    Items: []
   inventory:
     Items: []
   PlayerInput: {fileID: 0}
@@ -2938,6 +2939,8 @@ MonoBehaviour:
   _playerCamera: {fileID: 0}
   equipment: {fileID: 0}
   Weapon: {fileID: 1123440809906398237}
+  ConditionUI: {fileID: 0}
+  StatusUI: {fileID: 0}
 --- !u!114 &7252967140961143558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2962,7 +2965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6849e14560c8d4a44a75308f887c274e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _equipmentUI: {fileID: 0}
 --- !u!1 &5551050084829585446
 GameObject:
   m_ObjectHideFlags: 0
