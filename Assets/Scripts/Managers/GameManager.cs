@@ -11,6 +11,7 @@ public class GameManager : MonoSingleton<GameManager>
     private PlayerData _currentPlayer;
     public int SceneNum;
     public GameObject miniCamera;
+    public RewardedAds rewardedAds;
     public IInteractable InteractableObject { get; set; }
 
     protected override void Awake()
@@ -20,6 +21,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         // 다른 매니저 초기화
         if (CraftingManager == null) CraftingManager = gameObject.AddComponent<CraftingManager>();
+        if (rewardedAds == null) rewardedAds = gameObject.GetComponentInChildren<RewardedAds>();
 
         SceneNum = 24;
     }

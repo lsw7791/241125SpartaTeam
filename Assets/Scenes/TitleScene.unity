@@ -547,6 +547,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1162181435633247318, guid: 619b7bb9050178a4bbf4c716a1e770c3, type: 3}
+      propertyPath: _iOSAdUnitId
+      value: Rewarded_iOS
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162181435633247318, guid: 619b7bb9050178a4bbf4c716a1e770c3, type: 3}
+      propertyPath: _androidAdUnitId
+      value: Rewarded_Android
+      objectReference: {fileID: 0}
     - target: {fileID: 6600429633410187734, guid: 619b7bb9050178a4bbf4c716a1e770c3, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -590,6 +598,14 @@ PrefabInstance:
     - target: {fileID: 6658137706730719903, guid: 619b7bb9050178a4bbf4c716a1e770c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541446798107928906, guid: 619b7bb9050178a4bbf4c716a1e770c3, type: 3}
+      propertyPath: _iOSGameId
+      value: 5764395
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541446798107928906, guid: 619b7bb9050178a4bbf4c716a1e770c3, type: 3}
+      propertyPath: _androidGameId
+      value: 5764394
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
