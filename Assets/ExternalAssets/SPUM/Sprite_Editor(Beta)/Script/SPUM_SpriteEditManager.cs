@@ -160,61 +160,61 @@ public class SPUM_SpriteEditManager : MonoBehaviour
         string path = AssetDatabase.GetAssetPath(_sprite.sprite.texture);
         
 
-        TextureImporter ti = (TextureImporter)AssetImporter.GetAtPath(path);
-        if(ti.spritesheet.Length > 1 )
-        {
-            ti.isReadable = true;
-            List<SpriteMetaData> newData = new List<SpriteMetaData>();
-            for(var i = 0 ; i < ti.spritesheet.Length;i++)
-            {
-                SpriteMetaData tD = ti.spritesheet[i];
-                tD.alignment = (int)SpriteAlignment.Custom;
-                if( _sprite.sprite.name == tD.name)
-                {
-                    float tXSize = tD.rect.size.x;
-                    float tYSize = tD.rect.size.y;
+        //TextureImporter ti = (TextureImporter)AssetImporter.GetAtPath(path);
+        //if(ti.spritesheet.Length > 1 )
+        //{
+        //    ti.isReadable = true;
+        //    List<SpriteMetaData> newData = new List<SpriteMetaData>();
+        //    for(var i = 0 ; i < ti.spritesheet.Length;i++)
+        //    {
+        //        SpriteMetaData tD = ti.spritesheet[i];
+        //        tD.alignment = (int)SpriteAlignment.Custom;
+        //        if( _sprite.sprite.name == tD.name)
+        //        {
+        //            float tXSize = tD.rect.size.x;
+        //            float tYSize = tD.rect.size.y;
 
-                    float tX = _sprite.transform.localPosition.x / 0.015625f;
-                    float tY = _sprite.transform.localPosition.y / 0.015625f;
+        //            float tX = _sprite.transform.localPosition.x / 0.015625f;
+        //            float tY = _sprite.transform.localPosition.y / 0.015625f;
 
-                    float ttX = tX / tXSize * 0.5f;
-                    float ttY = tY / tYSize * 0.5f;
+        //            float ttX = tX / tXSize * 0.5f;
+        //            float ttY = tY / tYSize * 0.5f;
 
-                    float rX = 0.5f-ttX;
-                    float rY = 0.5f-ttY;
-                    tD.pivot = new Vector2(rX,rY);
-                    ti.spritesheet[i]  = tD;
-                }
-                newData.Add(tD);
-            }
+        //            float rX = 0.5f-ttX;
+        //            float rY = 0.5f-ttY;
+        //            tD.pivot = new Vector2(rX,rY);
+        //            ti.spritesheet[i]  = tD;
+        //        }
+        //        newData.Add(tD);
+        //    }
 
-            ti.spritesheet = newData.ToArray();
-            AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+        //    ti.spritesheet = newData.ToArray();
+        //    AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
             
-            ti.isReadable = false;
-        }
-        else
-        {
-            float tXSize = _sprite.sprite.rect.size.x;
-            float tYSize = _sprite.sprite.rect.size.y;
+        //    ti.isReadable = false;
+        //}
+        //else
+        //{
+        //    float tXSize = _sprite.sprite.rect.size.x;
+        //    float tYSize = _sprite.sprite.rect.size.y;
 
-            float tX = _sprite.transform.localPosition.x / 0.015625f;
-            float tY = _sprite.transform.localPosition.y / 0.015625f;
+        //    float tX = _sprite.transform.localPosition.x / 0.015625f;
+        //    float tY = _sprite.transform.localPosition.y / 0.015625f;
 
-            float ttX = tX / tXSize * 0.5f;
-            float ttY = tY / tYSize * 0.5f;
+        //    float ttX = tX / tXSize * 0.5f;
+        //    float ttY = tY / tYSize * 0.5f;
 
-            float rX = 0.5f-ttX;
-            float rY = 0.5f-ttY;
+        //    float rX = 0.5f-ttX;
+        //    float rY = 0.5f-ttY;
 
-            Vector2 newPivot = new Vector2(rX,rY);
-            ti.spritePivot = newPivot;
-            TextureImporterSettings texSettings = new TextureImporterSettings();
-            ti.ReadTextureSettings(texSettings);
-            texSettings.spriteAlignment = (int)SpriteAlignment.Custom;
-            ti.SetTextureSettings(texSettings);
-            ti.SaveAndReimport();
-        }
+        //    Vector2 newPivot = new Vector2(rX,rY);
+        //    ti.spritePivot = newPivot;
+        //    TextureImporterSettings texSettings = new TextureImporterSettings();
+        //    ti.ReadTextureSettings(texSettings);
+        //    texSettings.spriteAlignment = (int)SpriteAlignment.Custom;
+        //    ti.SetTextureSettings(texSettings);
+        //    ti.SaveAndReimport();
+        //}
 
         _sprite.transform.localPosition = new Vector3(0,0,0);
     }

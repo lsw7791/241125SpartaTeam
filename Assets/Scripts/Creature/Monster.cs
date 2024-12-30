@@ -7,7 +7,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class Monster : MonoBehaviour, ICreature
 {
     public int currentHealth { get; private set; }
-    [SerializeField]private bool isDie;
+   // private bool _isDie;
     [SerializeField] public int id { get; private set; }
     MonsterPool monsterPool;
     public Vector2 DiePosition;
@@ -37,7 +37,7 @@ public class Monster : MonoBehaviour, ICreature
             Debug.LogWarning("MonsterPool is not found.");
         }
 
-        isDie = true;  // 몬스터 죽음 처리
+       // _isDie = true;  // 몬스터 죽음 처리
         DropItems();  // 아이템 드랍 함수 호출
     }
 
@@ -101,6 +101,6 @@ public class Monster : MonoBehaviour, ICreature
     public void ResetStatus()
     {
         currentHealth = GameManager.Instance.DataManager.Creature.GetHealth(id);  // 최대 체력으로 리셋
-        isDie = false;  // 죽지 않은 상태로 리셋
+       // _isDie = false;  // 죽지 않은 상태로 리셋
     }
 }

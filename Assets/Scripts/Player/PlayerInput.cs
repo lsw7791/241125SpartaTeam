@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
     public float speed = 5f;   // 이동 속도
     private Vector2 moveInput; // 이동 입력값
     private Rigidbody2D rb;
-    private Camera camera;
+    private Camera _camera;
     private bool isDeath = false;
 
     [SerializeField] private SpriteRenderer armRenderer;
@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        camera = Camera.main;
+        _camera = Camera.main;
     }
     private void Start()
     {
@@ -36,12 +36,12 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
-            if (camera == null)
-                camera = Camera.main;
-            if (camera != null)
+            if (_camera == null)
+                _camera = Camera.main;
+            if (_camera != null)
             {
                 Vector2 mouseScreenPos = context.ReadValue<Vector2>(); // 마우스 화면 좌표
-                Vector2 mouseWorldPos = camera.ScreenToWorldPoint(mouseScreenPos); // 월드 좌표로 변환
+                Vector2 mouseWorldPos = _camera.ScreenToWorldPoint(mouseScreenPos); // 월드 좌표로 변환
                 Vector2 direction = (Vector2)transform.position - mouseWorldPos;
                 // 플레이어와 마우스 위치를 비교하여 좌우 반전
                 GameManager.Instance.Player._playerAnimationController.FlipRotation(mouseWorldPos);

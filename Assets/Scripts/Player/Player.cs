@@ -20,7 +20,7 @@ public class Player : MonoBehaviour,IDamageable
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot °´Ã¼·Î º¯°æ
 
     public delegate void PlayerDataSavedHandler();
-    public event PlayerDataSavedHandler OnPlayerDataSaved;
+    //public event PlayerDataSavedHandler OnPlayerDataSaved;
 
     public Player()
     {

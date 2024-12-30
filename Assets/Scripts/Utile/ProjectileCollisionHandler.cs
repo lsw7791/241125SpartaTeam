@@ -5,8 +5,8 @@ public class ProjectileCollisionHandler : MonoBehaviour
     private float _lifeTime = 10f;  // 투사체 생존 시간
     [SerializeField]
     private int _damage;      // 투사체 데미지
-    [SerializeField]
-    private int _mineDamage = 100;      // 채광 데미지
+   // [SerializeField]
+   // private int _mineDamage = 100;      // 채광 데미지
                                         // TODO :: 광석도 값 받아오기
 
     [SerializeField]
