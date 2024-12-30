@@ -18,7 +18,6 @@ public class StatusUI : UIBase
     protected override void Awake()
     {
         base.Awake(); 
-        GameManager.Instance.Player.StatusUI = this;
         Refresh();
     }
 

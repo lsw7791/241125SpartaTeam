@@ -60,6 +60,9 @@ public class UpGradeUI : UIBase
                 inItem.enhenceCount++;
             }
 
+            InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
+            inventoryUI.Setup(GameManager.Instance.Player.inventory);
+
             _resultText.text = "강화에 성공하였습니다!";
         }
         else if (randomValue < upgradeData.success[tierIndex] + upgradeData.fail[tierIndex])

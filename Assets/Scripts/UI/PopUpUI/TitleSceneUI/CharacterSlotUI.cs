@@ -16,6 +16,7 @@ public class CharacterSlotUI : UIBase
     private void OnEnable()
     {
         _characterList = GameManager.Instance.DataManager.CharacterList; // 캐릭터 리스트 초기화
+        _characterList.LoadAllCharacters();
         LoadSlots(); // 슬롯 로드
 
         // 버튼 리스너 등록
