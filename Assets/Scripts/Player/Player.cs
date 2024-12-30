@@ -26,12 +26,12 @@ public class Player : MonoBehaviour,IDamageable
     {
         inventory = new Inventory();
         stats = new PlayerData();
-        stats.Initialize();
         QuickSlots = new QuickSlot();  // QuickSlot ∞¥√º √ ±‚»≠
     }
 
     private void Awake()
     {
+        stats.Initialize();
         PlayerInput = GetComponent<PlayerInput>();
         equipment = GetComponent<Equipment>();
         LoadData(GameManager.Instance.DataManager.Repository);
