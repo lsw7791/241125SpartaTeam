@@ -22,7 +22,26 @@ public class PlayerWeapon : MonoBehaviour
         _weaponCollider = _weapon.GetComponent<Collider2D>();  // 무기의 Collider2D 가져오기
         _weaponCollider.enabled = false;  // 시작 시 콜라이더 비활성화
     }
+    public void TriggerAttack()
+    {
+        if (GameManager.Instance.Player.stats.isDie) return; // 사망 상태라면 실행하지 않음
+        if (GameManager.Instance.Player.UseStamina(5)) return;// 스테미너 없으면 리턴
 
+        switch (ATKType)
+        {
+            case 2: // 화살 공격
+                GameManager.Instance.Player._playerAnimationController.SetTriggerAnimator("Attack_Bow");
+                FireArrow(); // 화살 발사
+                break;
+            case 3: // 스태프 공격
+                GameManager.Instance.Player._playerAnimationController.SetTriggerAnimator("Attack_Staff");
+                FireFireball(); // 파이어볼 발사
+                break;
+            default: // 기본 근접 공격
+                GameManager.Instance.Player._playerAnimationController.SetTriggerAnimator("Attack_Melee");
+                break;
+        }
+    }
     // 공격 시 무기의 콜라이더를 활성화하는 메서드
     public void ActivateWeaponCollider()
     {

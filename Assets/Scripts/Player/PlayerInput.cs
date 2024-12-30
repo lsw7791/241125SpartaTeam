@@ -79,7 +79,7 @@ public class PlayerInput : MonoBehaviour
         {
             return;
         }
-        GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
+        GameManager.Instance.Player._playerWeapon.TriggerAttack();
     }
 
 

@@ -41,7 +41,10 @@ public class PlayerAnimationController : MonoBehaviour
                 break;
         }
     }
-
+    public void SetTriggerAnimator(string name)
+    {
+        _animator.SetTrigger(name);
+    }
     public void SetPaddingAnimation(bool isPadding)
     {
         _animator.SetBool("Padding", isPadding);
