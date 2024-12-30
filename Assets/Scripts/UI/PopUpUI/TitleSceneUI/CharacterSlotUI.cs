@@ -32,11 +32,14 @@ public class CharacterSlotUI : UIBase
         // 캐릭터 데이터 로드 및 슬롯 생성
         var characters = GameManager.Instance.DataManager.CharacterList.GetAllCharacters();
 
+        Debug.Log($"로드된 캐릭터 수: {characters.Count}");
         foreach (var character in characters)
         {
+            Debug.Log($"로드된 캐릭터: {character.NickName}, HP: {character.CurrentHP}");
             CreateSlot(character);
         }
     }
+
 
     private void CreateSlot(PlayerData playerData)
     {
@@ -48,8 +51,16 @@ public class CharacterSlotUI : UIBase
         {
             // 슬롯 초기화
             slotComponent.InitializeSlot(playerData, OnSlotSelected);
+
+            // 디버그 로그 추가
+            Debug.Log($"슬롯 생성 완료: {playerData.NickName}, HP: {playerData.CurrentHP}");
+        }
+        else
+        {
+            Debug.LogWarning("CharacterSlot 컴포넌트를 찾을 수 없습니다.");
         }
     }
+
 
     private void ClearSlots()
     {
@@ -63,7 +74,10 @@ public class CharacterSlotUI : UIBase
     {
         _selectedCharacter = playerData;
         SetButtonsInteractable(true); // 버튼 활성화
-        Debug.Log($"캐릭터 {_selectedCharacter.NickName} 선택됨.");
+
+        // 선택된 캐릭터 데이터를 JSON으로 출력
+        string characterJson = JsonUtility.ToJson(_selectedCharacter, true);
+        Debug.Log($"캐릭터 선택됨: {_selectedCharacter.NickName}\n데이터: {characterJson}");
     }
 
     private void OnExecuteButtonClicked()

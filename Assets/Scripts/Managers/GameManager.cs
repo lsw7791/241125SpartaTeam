@@ -94,6 +94,7 @@ public class GameManager : MonoSingleton<GameManager>
         Player.Stats.Def = playerData.Def;   // Defense
         Player.Stats.ATKSpeed = playerData.ATKSpeed;   // AttackSpeed
         Player.Stats.WeaponType = playerData.WeaponType;   // WeaponType
+        Player.stats.Gold = playerData.Gold;
 
     }
 }

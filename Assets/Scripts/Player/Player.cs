@@ -34,30 +34,13 @@ public class Player : MonoBehaviour,IDamageable
     {
         PlayerInput = GetComponent<PlayerInput>();
         equipment = GetComponent<Equipment>();
-        LoadData(GameManager.Instance.DataManager.Repository);
     }
 
-
-    // 데이터를 로드하는 메서드
-    public void LoadData(IPlayerRepository repository)
-    {
-        PlayerSaveLoad.LoadPlayerData(this, repository);
-    }
 
     // 인벤토리 관련: 스프라이트 포함
     public void AddItemToInventory(int itemID, int quantity, string spritePath)
     { // 이템을 인벤토리에 추가
         inventory.AddItem(itemID, 1);  // 스프라이트 포함
-    }
-
-    public void RemoveItemFromInventory(int itemID, int quantity)
-    { // 지정된 수량만큼 제거
-        inventory.RemoveItem(itemID, quantity);  // 아이템 제거
-    }
-
-    public InventoryItem GetItemFromInventory(int itemID)
-    { // 특정 아이템을 검색
-        return inventory.GetItem(itemID);  // 아이템 조회
     }
 
     // 데미지 처리

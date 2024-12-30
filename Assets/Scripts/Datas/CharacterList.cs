@@ -30,6 +30,7 @@ public class CharacterList
             Debug.LogWarning("ΩΩ∑‘¿Ã ∞°µÊ √°Ω¿¥œ¥Ÿ.");
             return false;
         }
+        Debug.Log(_characterList);
 
         _characterList.Add(newCharacter);
         SaveCharacterList();
