@@ -4,52 +4,52 @@ using UnityEngine.UI;
 
 public class CharacterSlotUI : UIBase
 {
-    [SerializeField] private Transform _slotParent;  // 슬롯 부모 오브젝트
-    [SerializeField] private GameObject _slotPrefab; // 슬롯 프리팹
-    [SerializeField] private Button _executeButton;  // 실행 버튼
-    [SerializeField] private Button _deleteButton;   // 삭제 버튼
-    [SerializeField] private Button _backButton;     // 뒤로가기 버튼
+    [SerializeField] private Transform _slotParent;
+    [SerializeField] private GameObject _slotPrefab;
+    [SerializeField] private Button _executeButton;
+    [SerializeField] private Button _deleteButton;
+    [SerializeField] private Button _backButton;
 
-    private PlayerData _selectedCharacter;          // 선택된 캐릭터 데이터
-    private CharacterList _characterList;           // 캐릭터 리스트 참조
+    private PlayerData _selectedCharacter;
 
     private void OnEnable()
     {
-        _characterList = GameManager.Instance.DataManager.CharacterList; // 캐릭터 리스트 초기화
-        _characterList.LoadAllCharacters();
-        LoadSlots(); // 슬롯 로드
+        LoadSlots();
 
-        // 버튼 리스너 등록
         _executeButton.onClick.AddListener(OnExecuteButtonClicked);
         _deleteButton.onClick.AddListener(OnDeleteButtonClicked);
         _backButton.onClick.AddListener(OnBackButtonClicked);
 
-        SetButtonsInteractable(false); // 버튼 초기 상태 비활성화
+        SetButtonsInteractable(false);
     }
 
     private void LoadSlots()
     {
-        // 기존 슬롯 제거
         ClearSlots();
 
-        // 캐릭터 데이터 로드 및 슬롯 생성
-        var characters = _characterList.GetAllCharacters();
+        var characters = GameManager.Instance.DataManager.CharacterList.GetAllCharacters();
+        Debug.Log($"로드된 캐릭터 수: {characters.Count}");
+
         foreach (var character in characters)
         {
+            Debug.Log($"로드된 캐릭터: {JsonUtility.ToJson(character, true)}");
             CreateSlot(character);
         }
     }
 
     private void CreateSlot(PlayerData playerData)
     {
-        // 슬롯 프리팹 생성
         GameObject newSlot = Instantiate(_slotPrefab, _slotParent);
         var slotComponent = newSlot.GetComponent<CharacterSlot>();
 
         if (slotComponent != null)
         {
-            // 슬롯 초기화
             slotComponent.InitializeSlot(playerData, OnSlotSelected);
+            Debug.Log($"슬롯 생성 완료: {playerData.NickName}");
+        }
+        else
+        {
+            Debug.LogWarning("CharacterSlot 컴포넌트를 찾을 수 없습니다.");
         }
     }
 
@@ -64,9 +64,16 @@ public class CharacterSlotUI : UIBase
     private void OnSlotSelected(PlayerData playerData)
     {
         _selectedCharacter = playerData;
-        SetButtonsInteractable(true); // 버튼 활성화
-        Debug.Log($"캐릭터 {_selectedCharacter.NickName} 선택됨.");
+        SetButtonsInteractable(true);
+
+        // 선택된 캐릭터 데이터 출력
+        string characterJson = JsonUtility.ToJson(_selectedCharacter, true);
+        Debug.Log($"캐릭터 선택됨: {_selectedCharacter.NickName}\n데이터: {characterJson}");
+
+        // 불러온 데이터를 Player 객체에 적용
+        PlayerSaveLoad.ApplyPlayerData(GameManager.Instance.Player, _selectedCharacter);
     }
+
 
     private void OnExecuteButtonClicked()
     {
@@ -76,8 +83,9 @@ public class CharacterSlotUI : UIBase
             return;
         }
 
+        Debug.Log($"게임 시작: {_selectedCharacter.NickName}");
         UIManager.Instance.CloseUI<CharacterSlotUI>();
-        GameManager.Instance.StartGame(_selectedCharacter); // 게임 시작
+        GameManager.Instance.StartGame(_selectedCharacter);
     }
 
     private void OnDeleteButtonClicked()
@@ -88,10 +96,11 @@ public class CharacterSlotUI : UIBase
             return;
         }
 
-        _characterList.RemoveCharacter(_selectedCharacter); // 캐릭터 삭제
-        _selectedCharacter = null; // 선택 초기화
-        LoadSlots(); // 슬롯 UI 갱신
-        SetButtonsInteractable(false); // 버튼 비활성화
+        Debug.Log($"캐릭터 삭제 시도: {_selectedCharacter.NickName}");
+        GameManager.Instance.DataManager.CharacterList.RemoveCharacter(_selectedCharacter);
+        _selectedCharacter = null;
+        LoadSlots();
+        SetButtonsInteractable(false);
     }
 
     private void OnBackButtonClicked()

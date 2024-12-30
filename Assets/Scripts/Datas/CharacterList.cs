@@ -1,74 +1,88 @@
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class CharacterList
 {
     private List<PlayerData> _characterList;
+    private readonly string _listFilePath;
 
-    public CharacterList(IPlayerRepository repository)
+    public CharacterList()
     {
-        if (repository == null)
-        {
-            Debug.LogError("IPlayerRepository가 초기화되지 않았습니다.");
-            _characterList = new List<PlayerData>(); // 기본 리스트 초기화
-            return;
-        }
+        _listFilePath = Path.Combine(Application.persistentDataPath, "CharacterList.json");
 
-        _characterList = repository.LoadAllPlayerData(); // 모든 캐릭터 데이터 로드
+        if (File.Exists(_listFilePath))
+        {
+            var json = File.ReadAllText(_listFilePath);
+            Debug.Log($"로드된 JSON 데이터: {json}");
+            _characterList = JsonUtility.FromJson<SerializableListWrapper<PlayerData>>(json)?.List ?? new List<PlayerData>();
+        }
+        else
+        {
+            Debug.LogWarning("CharacterList.json 파일이 존재하지 않습니다. 새로 생성합니다.");
+            _characterList = new List<PlayerData>();
+            SaveCharacterList();
+        }
     }
 
     public bool AddCharacter(PlayerData newCharacter)
     {
-        if (_characterList.Count >= 4) // 최대 4개의 슬롯
+        if (_characterList.Count >= 4)
         {
             Debug.LogWarning("슬롯이 가득 찼습니다.");
             return false;
         }
 
+        Debug.Log($"캐릭터 추가 전 리스트: {_characterList.Count}개");
+        Debug.Log($"추가할 캐릭터: {JsonUtility.ToJson(newCharacter, true)}");
+
         _characterList.Add(newCharacter);
-        SaveListsData(); // 추가 후 데이터 저장
+        SaveCharacterList();
+
+        Debug.Log($"캐릭터 추가 후 리스트: {_characterList.Count}개");
         return true;
     }
 
     public List<PlayerData> GetAllCharacters()
     {
-        return new List<PlayerData>(_characterList); // 리스트 복사 반환
-    }
-
-    public void SaveListsData()
-    {
-        GameManager.Instance.DataManager.Repository.SaveAllPlayerData(_characterList); // 모든 캐릭터 데이터 저장
-        Debug.Log("캐릭터 리스트 저장 완료");
-    }
-
-    public void LoadAllCharacters()
-    {
-        _characterList = GameManager.Instance.DataManager.Repository.LoadAllPlayerData();
-        Debug.Log("캐릭터 리스트 로드 완료");
-    }
-
-    public PlayerData GetCharacter(int slotIndex)
-    {
-        if (slotIndex < 0 || slotIndex >= _characterList.Count)
+        Debug.Log($"전체 캐릭터 수: {_characterList.Count}");
+        foreach (var character in _characterList)
         {
-            Debug.LogWarning("잘못된 슬롯 인덱스입니다.");
-            return null;
+            Debug.Log($"캐릭터 데이터: {JsonUtility.ToJson(character, true)}");
         }
-
-        return _characterList[slotIndex];
+        return new List<PlayerData>(_characterList);
     }
 
     public void RemoveCharacter(PlayerData characterToRemove)
     {
         if (_characterList.Contains(characterToRemove))
         {
-            _characterList.Remove(characterToRemove); // 리스트에서 캐릭터 제거
-            SaveListsData(); // 삭제 후 데이터 저장
-            Debug.Log($"캐릭터 {characterToRemove.NickName} 삭제 완료");
+            Debug.Log($"삭제할 캐릭터: {JsonUtility.ToJson(characterToRemove, true)}");
+            _characterList.Remove(characterToRemove);
+            SaveCharacterList();
+            Debug.Log($"캐릭터 {characterToRemove.NickName} 삭제 완료. 남은 캐릭터 수: {_characterList.Count}");
         }
         else
         {
             Debug.LogWarning("삭제하려는 캐릭터가 리스트에 존재하지 않습니다.");
         }
+    }
+
+    private void SaveCharacterList()
+    {
+        var json = JsonUtility.ToJson(new SerializableListWrapper<PlayerData>(_characterList));
+        File.WriteAllText(_listFilePath, json);
+        Debug.Log($"캐릭터 리스트 저장 완료: {json}");
+    }
+}
+
+[System.Serializable]
+public class SerializableListWrapper<T>
+{
+    public List<T> List;
+
+    public SerializableListWrapper(List<T> list)
+    {
+        List = list;
     }
 }
