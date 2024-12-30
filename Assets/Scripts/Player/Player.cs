@@ -66,7 +66,7 @@ public class Player : MonoBehaviour,IDamageable
         //UIManager.Instance.deathUI.SetActive(true);
         Debug.Log($"{nickName} has died.");
         Revive();
-        GameManager.Instance.SceneNum = 23;
+        GameManager.Instance.SceneNum = 2;
         GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
     public void TriggerDeath()
