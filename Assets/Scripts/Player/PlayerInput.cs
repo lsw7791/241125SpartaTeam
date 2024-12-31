@@ -13,6 +13,8 @@ public class PlayerInput : MonoBehaviour
 
     [SerializeField] private SpriteRenderer armRenderer;
     [SerializeField] private Transform armPivot;
+    public event Action<QuestAction> OnQuestActionTriggered;
+
 
     private void Awake()
     {
@@ -28,8 +30,13 @@ public class PlayerInput : MonoBehaviour
         if (isDeath) return;
         moveInput = context.ReadValue<Vector2>();
         bool isMoving = moveInput.sqrMagnitude > 0; // 벡터 크기로 이동 여부 판단
+
+
+        // GameManager.Instance.DataManager.QuestManager.MainQuest.CompleteQuest(1);
+
         GameManager.Instance.Player._playerAnimationController.SetMoveAnimation(isMoving);
     }
+
 
     // 마우스 위치에 따른 회전 처리
     public void OnLook(InputAction.CallbackContext context)
@@ -125,14 +132,21 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    // 퀘스트 토글
     public void OnCraft(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            ToggleCraft();
+            // UI 토글
+            UIManager.Instance.ToggleUI<CraftUI>();
+
+            // 2번 퀘스트 완료 처리
+            if (!GameManager.Instance.QuestManager.MainQuest.IsQuestCompleted(2))  // 퀘스트가 완료되지 않았다면
+            {
+                GameManager.Instance.QuestManager.MainQuest.CompleteQuest(2);  // 퀘스트 완료 처리
+            }
         }
     }
+
 
     // 옵션 토글
     public void OnOption(InputAction.CallbackContext context)
@@ -165,10 +179,7 @@ public class PlayerInput : MonoBehaviour
     }
 
     // 퀘스트 토글
-    private void ToggleCraft()
-    {   
-        UIManager.Instance.ToggleUI<CraftUI>();
-    }
+   
 
     // 옵션 토글
     private void ToggleOption()

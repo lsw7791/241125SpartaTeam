@@ -1,49 +1,88 @@
+using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
-using MainData;
 
-public class MainQuest : MonoBehaviour
+public enum QuestAction
 {
-    [SerializeField] TMP_Text _questName;
-    [SerializeField] TMP_Text _questDesc;
-    [SerializeField] Button _completeBtn;
-    private int _currentQuestId = 1; // 기본적으로 1번 퀘스트부터 시작
+    Move,
+    Craft,
+    Action,
+    Inventory,
+    Status,
+    Option,
+    Attack
+}
 
-    void Start()
+public class MainQuest
+{
+    public int CurrentQuestId { get; private set; } = 1;
+    public Dictionary<int, bool> QuestCompletionStatus { get; private set; } = new Dictionary<int, bool>();
+    public delegate void QuestUpdated(int questId);
+    public event QuestUpdated OnQuestUpdated;
+
+    public MainQuest()
     {
-        _completeBtn.onClick.AddListener(OnQuestComplete); // 버튼 클릭 시 퀘스트 완료
-        ShowQuest(_currentQuestId); // 첫 번째 퀘스트 표시
+        // 초기 퀘스트 완료 상태 설정
+        for (int i = 1; i <= 7; i++)
+        {
+            QuestCompletionStatus[i] = false;
+        }
     }
 
-    void ShowQuest(int questId)
+    public void Start()
     {
-        MainQuestManager questManager = GameManager.Instance.DataManager.MainQuest;
-        MainQuestData questData = questManager.GetData(questId);
+        GameManager.Instance.Player.PlayerInput.OnQuestActionTriggered += HandleQuestAction;
+        StartQuest(CurrentQuestId);
+    }
 
-        if (questData != null)
+    public void OnDestroy()
+    {
+        GameManager.Instance.Player.PlayerInput.OnQuestActionTriggered -= HandleQuestAction;
+    }
+
+    public bool IsQuestCompleted(int questId)
+    {
+        return QuestCompletionStatus.ContainsKey(questId) && QuestCompletionStatus[questId];
+    }
+
+    private void HandleQuestAction(QuestAction action)
+    {
+        if (CurrentQuestId > 7) return;
+
+        switch (CurrentQuestId)
         {
-            _questName.text = questData.name;
-            _questDesc.text = questData.desc;
+            case 1 when action == QuestAction.Move:
+            case 2 when action == QuestAction.Craft:
+            case 3 when action == QuestAction.Action:
+            case 4 when action == QuestAction.Inventory:
+            case 5 when action == QuestAction.Status:
+            case 6 when action == QuestAction.Option:
+            case 7 when action == QuestAction.Attack:
+                CompleteQuest(CurrentQuestId);
+                break;
+        }
+    }
+
+    public void CompleteQuest(int questId)
+    {
+        Debug.Log($"퀘스트 {questId} 완료!");
+        QuestCompletionStatus[questId] = true;
+        CurrentQuestId++;
+
+        OnQuestUpdated?.Invoke(CurrentQuestId); // UI 갱신 호출
+
+        if (CurrentQuestId > 7)
+        {
+            Debug.Log("모든 필수 퀘스트 완료!");
         }
         else
         {
-            Debug.LogError("퀘스트 데이터가 없습니다. ID: " + questId);
+            StartQuest(CurrentQuestId);
         }
     }
 
-    void OnQuestComplete()
+    public void StartQuest(int questId)
     {
-        // 현재 퀘스트 완료 후, 다음 퀘스트로 넘어감
-        _currentQuestId++;
-        if(_currentQuestId == 6)
-        {
-            this.gameObject.SetActive(false);
-        }
-        ShowQuest(_currentQuestId);  // 다음 퀘스트 표시
-
-        // 퀘스트 진행 상태를 저장 (예: PlayerPrefs 또는 데이터베이스)
-        PlayerPrefs.SetInt("CurrentQuestId", _currentQuestId);
-        PlayerPrefs.Save();
+        Debug.Log($"퀘스트 {questId} 시작!");
+        OnQuestUpdated?.Invoke(questId); // UI 갱신 호출
     }
 }

@@ -6,6 +6,7 @@ public class GameManager : MonoSingleton<GameManager>
 {
     public DataManager DataManager; // DataManager만 사용하도록 변경
     public CraftingManager CraftingManager;
+    public QuestManager QuestManager;
     public SpawnManager SpawnManager;
     public Player Player;
     private PlayerData _currentPlayer;
@@ -22,7 +23,7 @@ public class GameManager : MonoSingleton<GameManager>
         // 다른 매니저 초기화
         if (CraftingManager == null) CraftingManager = gameObject.AddComponent<CraftingManager>();
         if (rewardedAds == null) rewardedAds = gameObject.GetComponentInChildren<RewardedAds>();
-
+        QuestManager = new QuestManager();
 
         SceneNum = 24;
     }
