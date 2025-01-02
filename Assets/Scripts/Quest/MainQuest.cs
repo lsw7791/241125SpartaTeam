@@ -15,7 +15,7 @@ public enum QuestAction
 
 public class MainQuest : MainQuestData
 {
-    public int CurrentQuestId { get; private set; } = 1;
+    public int CurrentQuestId = 1;
     public Dictionary<int, bool> QuestCompletionStatus { get; private set; } = new Dictionary<int, bool>();
     public delegate void QuestUpdated(int questId);
     public event QuestUpdated OnQuestUpdated;
@@ -36,7 +36,6 @@ public class MainQuest : MainQuestData
     public void Start()
     {
         GameManager.Instance.Player.PlayerInput.OnQuestActionTriggered += HandleQuestAction;
-        StartQuest(CurrentQuestId);
     }
 
     public void OnDestroy()
@@ -71,10 +70,10 @@ public class MainQuest : MainQuestData
     {
         Debug.Log($"퀘스트 {questId} 완료!");
         QuestCompletionStatus[questId] = true;
-
+        //CurrentQuestId++;
         OnQuestUpdated?.Invoke(CurrentQuestId); // UI 갱신 호출
 
-        if (CurrentQuestId > 7)
+        if (CurrentQuestId > 8)
         {
             Debug.Log("모든 필수 퀘스트 완료!");
         }

@@ -28,16 +28,22 @@ public class PlayerInput : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         if (isDeath) return;
+
         moveInput = context.ReadValue<Vector2>();
         bool isMoving = moveInput.sqrMagnitude > 0; // 벡터 크기로 이동 여부 판단
 
-        if (GameManager.Instance.DataManager.MainQuest.IsQuestCompleted(1))  // 퀘스트가 완료되지 않았다면
+        // Dictionary에서 QuestID 1에 해당하는 값 확인
+        if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(1) &&
+            !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[1])
         {
+            // QuestCompletionStatus[1]이 false일 때만 CompleteQuest(1) 호출
             GameManager.Instance.DataManager.MainQuest.CompleteQuest(1);
         }
 
         GameManager.Instance.Player._playerAnimationController.SetMoveAnimation(isMoving);
     }
+
+
 
 
     // 마우스 위치에 따른 회전 처리
@@ -84,10 +90,11 @@ public class PlayerInput : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext context)
     {
         // UI가 활성화된 상태인지 확인
-        if (UIManager.Instance.IsActiveUI())
-        {
-            return;
-        }
+        //if (UIManager.Instance.IsActiveUI())
+        //{
+        //    return;
+        //}
+        
         GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
     }
 
@@ -141,10 +148,12 @@ public class PlayerInput : MonoBehaviour
             // UI 토글
             UIManager.Instance.ToggleUI<CraftUI>();
 
-            // 2번 퀘스트 완료 처리
-            if (GameManager.Instance.DataManager.MainQuest.IsQuestCompleted(2))  // 퀘스트가 완료되지 않았다면
+            // Dictionary에서 QuestID 1에 해당하는 값 확인
+            if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(2) &&
+                !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[2])
             {
-                GameManager.Instance.DataManager.MainQuest.CompleteQuest(2);  // 퀘스트 완료 처리
+                // QuestCompletionStatus[1]이 false일 때만 CompleteQuest(1) 호출
+                GameManager.Instance.DataManager.MainQuest.CompleteQuest(2);
             }
         }
     }
@@ -164,7 +173,13 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
-            ToggleStatus();
+            UIManager.Instance.ToggleUI<StatusUI>();
+
+            if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(5) &&
+               !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[5])
+            {
+                GameManager.Instance.DataManager.MainQuest.CompleteQuest(5);
+            }
         }
     }
 
@@ -181,29 +196,28 @@ public class PlayerInput : MonoBehaviour
     }
 
     // 퀘스트 토글
-   
+
 
     // 옵션 토글
     private void ToggleOption()
-{
-    // 활성화된 UI가 하나라도 있으면 모두 비활성화
-    if (UIManager.Instance.IsActiveUI())
     {
-        UIManager.Instance.CloseAllUIs();
+        // 활성화된 UI가 있으면 모든 UI를 닫는다.
+        if (UIManager.Instance.IsActiveUI())
+        {
+            UIManager.Instance.CloseAllUIs(); // 모든 UI를 닫음
+            UIManager.Instance.ToggleUI<MainQuestUI>();
+        }
+        else
+        {
+            // 활성화된 UI가 없으면 OptionUI를 토글
+            UIManager.Instance.ToggleUI<OptionUI>();
+        }
     }
-    else
-    {
-        // 그렇지 않으면 OptionUI를 토글
-        UIManager.Instance.ToggleUI<OptionUI>();
-    }
-}
 
 
-    // 스태터스 토글
-    private void ToggleStatus()
-    {
-        UIManager.Instance.ToggleUI<StatusUI>();
-    }
+
+
+
 
     // 채집 로직
     private void PerformAction()

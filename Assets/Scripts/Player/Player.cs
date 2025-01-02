@@ -33,6 +33,7 @@ public class Player : MonoBehaviour,IDamageable
         stats.Initialize();
         PlayerInput = GetComponent<PlayerInput>();
         equipment = GetComponent<Equipment>();
+
     }
 
     private void FixedUpdate()
