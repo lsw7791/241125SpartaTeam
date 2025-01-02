@@ -71,7 +71,6 @@ public class MainQuest : MainQuestData
     {
         Debug.Log($"퀘스트 {questId} 완료!");
         QuestCompletionStatus[questId] = true;
-        CurrentQuestId++;
 
         OnQuestUpdated?.Invoke(CurrentQuestId); // UI 갱신 호출
 

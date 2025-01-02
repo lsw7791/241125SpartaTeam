@@ -31,8 +31,10 @@ public class PlayerInput : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
         bool isMoving = moveInput.sqrMagnitude > 0; // 벡터 크기로 이동 여부 판단
 
-
-        // GameManager.Instance.DataManager.QuestManager.MainQuest.CompleteQuest(1);
+        if (GameManager.Instance.DataManager.MainQuest.IsQuestCompleted(1))  // 퀘스트가 완료되지 않았다면
+        {
+            GameManager.Instance.DataManager.MainQuest.CompleteQuest(1);
+        }
 
         GameManager.Instance.Player._playerAnimationController.SetMoveAnimation(isMoving);
     }
@@ -86,7 +88,7 @@ public class PlayerInput : MonoBehaviour
         {
             return;
         }
-        GameManager.Instance.Player._playerWeapon.TriggerAttack();
+        GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
     }
 
 
@@ -139,6 +141,11 @@ public class PlayerInput : MonoBehaviour
             // UI 토글
             UIManager.Instance.ToggleUI<CraftUI>();
 
+            // 2번 퀘스트 완료 처리
+            if (GameManager.Instance.DataManager.MainQuest.IsQuestCompleted(2))  // 퀘스트가 완료되지 않았다면
+            {
+                GameManager.Instance.DataManager.MainQuest.CompleteQuest(2);  // 퀘스트 완료 처리
+            }
         }
     }
 

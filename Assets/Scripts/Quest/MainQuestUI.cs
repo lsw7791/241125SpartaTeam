@@ -21,7 +21,7 @@ public class MainQuestUI : UIBase
         }
 
         _mainQuest = GameManager.Instance.DataManager.MainQuest;
-        _currentQuestId = _mainQuest.CurrentQuestId;
+        _currentQuestId = GameManager.Instance.DataManager.MainQuest.CurrentQuestId;
 
         _mainQuest.OnQuestUpdated += UpdateUI; // 퀘스트 업데이트 이벤트 연결
         UpdateUI(_mainQuest.CurrentQuestId);   // 초기 UI 설정
@@ -61,9 +61,7 @@ public class MainQuestUI : UIBase
 
     private void OnCompleteButtonPressed()
     {
-        if (_mainQuest.IsQuestCompleted(_currentQuestId))
-        {
-            _mainQuest.CompleteQuest(_currentQuestId); // 퀘스트 진행
-        }
+        _currentQuestId++;
+        UpdateUI(_currentQuestId); // 퀘스트 진행
     }
 }
