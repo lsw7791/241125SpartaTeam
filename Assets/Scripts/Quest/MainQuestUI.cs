@@ -13,14 +13,14 @@ public class MainQuestUI : UIBase
 
     void OnEnable()
     {
-        var questManager = GameManager.Instance?.QuestManager;
-        if (questManager == null || questManager.MainQuest == null)
+        var mainQuest = GameManager.Instance.DataManager.MainQuest;
+        if (mainQuest == null || GameManager.Instance.DataManager.MainQuest == null)
         {
             Debug.LogError("QuestManager 또는 MainQuest가 초기화되지 않았습니다.");
             return; // 초기화되지 않은 상태에서 실행 중단
         }
 
-        _mainQuest = questManager.MainQuest;
+        _mainQuest = GameManager.Instance.DataManager.MainQuest;
         _currentQuestId = _mainQuest.CurrentQuestId;
 
         _mainQuest.OnQuestUpdated += UpdateUI; // 퀘스트 업데이트 이벤트 연결
@@ -43,7 +43,7 @@ public class MainQuestUI : UIBase
         _currentQuestId = questId;
 
         // 퀘스트 데이터 가져오기
-        var questData = GameManager.Instance.QuestManager.GetData(questId);
+        var questData = _mainQuest.GetData(questId);
 
         if (questData != null)
         {

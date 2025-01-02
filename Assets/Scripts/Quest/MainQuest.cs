@@ -1,18 +1,19 @@
 using System.Collections.Generic;
+using MainData;
 using UnityEngine;
 
 public enum QuestAction
 {
     Move,
-    Craft,
     Action,
     Inventory,
     Status,
     Option,
-    Attack
+    Attack,
+    Craft
 }
 
-public class MainQuest
+public class MainQuest : MainQuestData
 {
     public int CurrentQuestId { get; private set; } = 1;
     public Dictionary<int, bool> QuestCompletionStatus { get; private set; } = new Dictionary<int, bool>();
@@ -28,6 +29,10 @@ public class MainQuest
         }
     }
 
+    public MainQuestData GetData(int id)
+    {
+        return MainQuestDataMap[id];
+    }
     public void Start()
     {
         GameManager.Instance.Player.PlayerInput.OnQuestActionTriggered += HandleQuestAction;

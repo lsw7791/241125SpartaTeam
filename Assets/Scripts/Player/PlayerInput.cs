@@ -139,11 +139,6 @@ public class PlayerInput : MonoBehaviour
             // UI 토글
             UIManager.Instance.ToggleUI<CraftUI>();
 
-            // 2번 퀘스트 완료 처리
-            if (!GameManager.Instance.QuestManager.MainQuest.IsQuestCompleted(2))  // 퀘스트가 완료되지 않았다면
-            {
-                GameManager.Instance.QuestManager.MainQuest.CompleteQuest(2);  // 퀘스트 완료 처리
-            }
         }
     }
 
