@@ -10,7 +10,8 @@ public enum QuestAction
     Status,
     Option,
     Attack,
-    Craft
+    Craft,
+    End
 }
 
 public class MainQuest : MainQuestData
@@ -23,7 +24,7 @@ public class MainQuest : MainQuestData
     public MainQuest()
     {
         // 초기 퀘스트 완료 상태 설정
-        for (int i = 1; i <= 7; i++)
+        for (int i = 1; i <= 8; i++)
         {
             QuestCompletionStatus[i] = false;
         }
@@ -61,6 +62,7 @@ public class MainQuest : MainQuestData
             case 5 when action == QuestAction.Status:
             case 6 when action == QuestAction.Option:
             case 7 when action == QuestAction.Attack:
+            case 8 when action == QuestAction.End:
                 CompleteQuest(CurrentQuestId);
                 break;
         }

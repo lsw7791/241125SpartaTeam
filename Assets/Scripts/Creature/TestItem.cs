@@ -45,12 +45,6 @@ public class TestItem : MonoBehaviour
                 int randomGold = Random.Range(minGold, maxGold + 1); // 골드 범위에서 랜덤 값
                 GameManager.Instance.Player.Stats.Gold += randomGold; // 플레이어 골드 추가
                 Debug.Log($"{randomGold} 골드를 획득했습니다! 현재 골드: {GameManager.Instance.Player.Stats.Gold}");
-                if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(8) &&
-            !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[8])
-                {
-                    // QuestCompletionStatus[1]이 false일 때만 CompleteQuest(1) 호출
-                    GameManager.Instance.DataManager.MainQuest.CompleteQuest(8);
-                }
             }
             else
             {
@@ -60,6 +54,12 @@ public class TestItem : MonoBehaviour
                     1,
                     itemData.atlasPath
                 );
+                if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(8) &&
+           !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[8])
+                {
+                    // QuestCompletionStatus[1]이 false일 때만 CompleteQuest(1) 호출
+                    GameManager.Instance.DataManager.MainQuest.CompleteQuest(8);
+                }
             }
 
             Destroy(gameObject); // 아이템 제거

@@ -10,18 +10,20 @@ public class MainQuestUI : UIBase
 
     private MainQuest _mainQuest;
 
-    void OnEnable()
+    protected override void Awake()
     {
+        base.Awake();
         var mainQuest = GameManager.Instance.DataManager.MainQuest;
-        
+
         _mainQuest = GameManager.Instance.DataManager.MainQuest;
 
         _mainQuest.OnQuestUpdated += UpdateUI; // 퀘스트 업데이트 이벤트 연결
         UpdateUI(_mainQuest.CurrentQuestId);   // 초기 UI 설정
 
         _completeBtn.onClick.AddListener(OnCompleteButtonPressed);
-    }
 
+    }
+    
     void OnDestroy()
     {
         if (_mainQuest != null)
@@ -56,7 +58,7 @@ public class MainQuestUI : UIBase
         GameManager.Instance.DataManager.MainQuest.CurrentQuestId++;
         Debug.Log(GameManager.Instance.DataManager.MainQuest.CurrentQuestId);
 
-        if (GameManager.Instance.DataManager.MainQuest.CurrentQuestId > 9)
+        if (GameManager.Instance.DataManager.MainQuest.CurrentQuestId > 8)
         {
             Destroy(gameObject); 
         }
