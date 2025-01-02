@@ -10,12 +10,11 @@ public class Player : MonoBehaviour,IDamageable
     public PlayerInput PlayerInput;
     public PlayerAnimationController _playerAnimationController;
     public PlayerWeapon _playerWeapon;
-    public PlayerCamera _playerCamera;
     public Equipment equipment;
     public GameObject Weapon;
     public ConditionUI ConditionUI;
     public StatusUI StatusUI;
-
+    private float staminaRechargeTimer = 0f;
     // QuickSlots 프로퍼티
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경
 
@@ -36,7 +35,22 @@ public class Player : MonoBehaviour,IDamageable
         equipment = GetComponent<Equipment>();
     }
 
+    private void FixedUpdate()
+    {
+        // FixedUpdate의 시간 간격은 Time.fixedDeltaTime으로 고정되어 있음
+        staminaRechargeTimer += Time.fixedDeltaTime;
 
+        // 1초마다 실행
+        if (staminaRechargeTimer >= 1f)
+        {
+            if (stats.MaxStamina > stats.CurrentStamina)
+            {
+                stats.CurrentStamina += 5;
+                ConditionUI._stamina.value = stats.CurrentStamina; // UI 업데이트
+            }
+            staminaRechargeTimer = 0f; // 타이머 초기화
+        }
+    }
     // 인벤토리 관련: 스프라이트 포함
     public void AddItemToInventory(int itemID, int quantity, string spritePath)
     { // 이템을 인벤토리에 추가
@@ -66,7 +80,7 @@ public class Player : MonoBehaviour,IDamageable
         //UIManager.Instance.deathUI.SetActive(true);
         Debug.Log($"{nickName} has died.");
         Revive();
-        GameManager.Instance.SceneNum = 23;
+        GameManager.Instance.SceneNum = 2;
         GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
     public void TriggerDeath()
@@ -86,7 +100,19 @@ public class Player : MonoBehaviour,IDamageable
         this.enabled = true;
     }
 
-
+    public bool UseStamina(int value)
+    {
+        if(stats.CurrentStamina<= value)
+        {
+            return true;
+        }
+        else
+        {
+            stats.CurrentStamina -= value;
+            ConditionUI._stamina.value = stats.CurrentStamina;
+            return false;
+        }
+    }
     // 프로퍼티
     public PlayerData Stats => stats;
     public Inventory Inventory => inventory;  // 인벤토리 반환

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class ConditionUI : MonoBehaviour
 {
     [SerializeField] private Slider _hp;       // 체력 슬라이더
-    [SerializeField] private Slider _stamina; // 스태미너 슬라이더
+    public Slider _stamina; // 스태미너 슬라이더
     Player player;
     private void Start()
     {
