@@ -17,7 +17,7 @@ public class DataManager
     public StatDataManager PlayerStat;
     public IPlayerRepository Repository;       // 플레이어 데이터 저장소 인터페이스
     public UIDataManager UIDataManager;
-    public MainQuestManager MainQuest;
+    public MainQuest MainQuest;
 
     public DataManager()
     {
@@ -35,7 +35,7 @@ public class DataManager
         MonsterSpawn = new MonsterSpawnDataManager();
         PlayerStat = new StatDataManager();
         UIDataManager= new UIDataManager();
-        MainQuest = new MainQuestManager();
+        MainQuest = new MainQuest();    
 }
 
     // PlayerPrefs에서 마지막 캐릭터 데이터 불러오기

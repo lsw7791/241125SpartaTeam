@@ -39,6 +39,11 @@ public class ItemUseUI : MonoBehaviour
                 else
                 {
                     GameManager.Instance.Player.equipment.EquipNew(inItem);
+                    if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(4) &&
+                                   !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[4])
+                    {
+                        GameManager.Instance.DataManager.MainQuest.CompleteQuest(4);
+                    }
                     // Âø¿ë
                 }
                 GameManager.Instance.Player.inventory.EquipItem(inItem.ItemID);

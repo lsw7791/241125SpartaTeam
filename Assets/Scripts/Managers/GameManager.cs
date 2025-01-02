@@ -23,7 +23,6 @@ public class GameManager : MonoSingleton<GameManager>
         if (CraftingManager == null) CraftingManager = gameObject.AddComponent<CraftingManager>();
         //if (rewardedAds == null) rewardedAds = gameObject.GetComponentInChildren<RewardedAds>();
 
-
         SceneNum = 24;
     }
 

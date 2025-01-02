@@ -38,6 +38,13 @@ public class CraftResultUI : UIBase
         
         GameManager.Instance.CraftingManager.AddToInventory();
         Init(data, true);
+        // Dictionary에서 QuestID 1에 해당하는 값 확인
+        if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(3) &&
+            !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[3])
+        {
+            // QuestCompletionStatus[1]이 false일 때만 CompleteQuest(1) 호출
+            GameManager.Instance.DataManager.MainQuest.CompleteQuest(3);
+        }
     }
 
     public void ShowFailure(CraftingData data)
