@@ -11,7 +11,7 @@ public class IronSourceInitializer : MonoSingleton<IronSourceInitializer>
     {
         ironSourceBanner = new IronSourceBanner();
         // App Key로 SDK 초기화
-        string appKey = "209e92305"; // 본인의 App Key로 변경
+        string appKey = "5767171"; // 본인의 App Key로 변경
         IronSource.Agent.init(appKey);
 
         // 보상형 비디오 광고 로드

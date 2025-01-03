@@ -10,8 +10,8 @@ public class LevelPlaySample : MonoBehaviour
     private LevelPlayInterstitialAd interstitialAd;
     
 #if UNITY_ANDROID
-    string appKey = "85460dcd";
-    string bannerAdUnitId = "thnfvcsog13bhn08";
+    string appKey = "5767171";
+    string bannerAdUnitId = "Banner_Android";
     string interstitialAdUnitId = "aeyqi3vqlv6o8sh9";
 #elif UNITY_IPHONE
     string appKey = "8545d445";

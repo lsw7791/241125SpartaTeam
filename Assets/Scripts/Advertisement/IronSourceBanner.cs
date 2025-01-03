@@ -8,7 +8,7 @@ public class IronSourceBanner : MonoBehaviour
     public void CreateBannerAd()
     {
         //Create banner instance
-        bannerAd = new LevelPlayBannerAd("bannerAdUnitId");
+        bannerAd = new LevelPlayBannerAd("Rewarded_Android");
         //Subscribe BannerAd events
         bannerAd.OnAdLoaded += BannerOnAdLoadedEvent;
         bannerAd.OnAdLoadFailed += BannerOnAdLoadFailedEvent;

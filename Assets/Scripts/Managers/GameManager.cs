@@ -32,6 +32,7 @@ public class GameManager : MonoSingleton<GameManager>
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         _currentPlayer = DataManager.nowPlayer;
+
         Instantiate(SceneNum);
         SoundManager.Instance.PlayStartBGMMystical();
 
