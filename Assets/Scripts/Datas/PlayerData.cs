@@ -22,10 +22,6 @@ public class PlayerData
     public int MineDamage;         // 광물 공격력
     public List<InventoryItem> Items;  // 플레이어가 소유한 아이템 목록
 
-    // JSON 직렬화
-    public string ToJson() => JsonUtility.ToJson(this, true);
-    public static PlayerData FromJson(string json) => JsonUtility.FromJson<PlayerData>(json);
-
     // PlayerStats 초기화 메서드 (초기값 설정)
     public void Initialize()
     {
@@ -33,6 +29,7 @@ public class PlayerData
         isDie = false;
         Items = new List<InventoryItem>();
         PlayerStatsReset();
+
     }
     public void PlayerStatsReset()
     {
@@ -55,19 +52,24 @@ public class PlayerData
     {
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
         int enhenceCount = inItem.enhenceCount + 1;
+        PlayerData nowPlayer = GameManager.Instance.DataManager.nowPlayer;
 
-        MaxHP += isEquip ? itemData.health * enhenceCount : itemData.health * enhenceCount * -1;
-        MaxStamina += isEquip ? itemData.stamina * enhenceCount : itemData.stamina * enhenceCount * -1;
-        Def += isEquip ? itemData.defense * enhenceCount : itemData.defense * enhenceCount * -1;
-        MineDamage += isEquip ? itemData.attackMine * enhenceCount : itemData.attackMine * enhenceCount * -1;
-        PhysicalDamage += isEquip ? itemData.attack * enhenceCount : itemData.attack * enhenceCount * -1;
-        MagicalDamage += isEquip ? itemData.attackM * enhenceCount : itemData.attackM * enhenceCount * -1;
-        ATKSpeed += isEquip ? itemData.attackSpeed * enhenceCount : itemData.attackSpeed * enhenceCount * -1;
-        MoveSpeed += isEquip ? itemData.moveSpeed * enhenceCount : itemData.moveSpeed * enhenceCount * -1;
+        int equip = isEquip ? 1 : -1;
+
+        nowPlayer.MaxHP += itemData.health * enhenceCount * equip;
+        nowPlayer.MaxStamina += itemData.stamina * enhenceCount * equip;
+        nowPlayer.Def += itemData.defense * enhenceCount * equip;
+        nowPlayer.MineDamage += itemData.attackMine * enhenceCount * equip;
+        nowPlayer.PhysicalDamage += itemData.attack * enhenceCount * equip;
+        nowPlayer.MagicalDamage += itemData.attackM * enhenceCount * equip;
+        nowPlayer.ATKSpeed += itemData.attackSpeed * enhenceCount * equip;
+        nowPlayer.MoveSpeed += itemData.moveSpeed * enhenceCount * equip;
 
         if (UIManager.Instance.IsExistUI<StatusUI>())
         {
-            GameManager.Instance.Player.StatusUI.Refresh();
+            StatusUI statusUI = UIManager.Instance.GetUI<StatusUI>();
+
+            statusUI.Refresh();
         }
         else
         {

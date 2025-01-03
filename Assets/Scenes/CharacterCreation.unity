@@ -623,7 +623,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1500509316}
-        m_TargetAssemblyTypeName: CharacterCreationBtn, Assembly-CSharp
+        m_TargetAssemblyTypeName: CharacterCreation, Assembly-CSharp
         m_MethodName: OnCreateCharacterButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -681,7 +681,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1500509311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38c212ce9bbe3a147909c3ecf5ad9712, type: 3}
+  m_Script: {fileID: 11500000, guid: 9225af5409da38745a3febabbbfc0cad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nicknameInputField: {fileID: 3413078299229887383}
@@ -903,7 +903,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1500509316}
-        m_TargetAssemblyTypeName: CharacterCreationBtn, Assembly-CSharp
+        m_TargetAssemblyTypeName: CharacterCreation, Assembly-CSharp
         m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
