@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3157ef725d87d40af2beb470853a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDie: 0
   DiePosition: {x: 0, y: 0}
 --- !u!114 &1877034676883437894
 MonoBehaviour:
@@ -61,6 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
+  currentHealth: 0
   healthBarForeground: {fileID: 3501507015515682155}
   healthBarBackground: {fileID: 2329033837157029260}
 --- !u!1001 &3675588203705176565
@@ -71,9 +71,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7664479807908521730}
     m_Modifications:
+    - target: {fileID: 258277391941444766, guid: bfc6cdeb2cc396b40a888deae683cae9, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 258277391941444766, guid: bfc6cdeb2cc396b40a888deae683cae9, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 800215854474641310, guid: bfc6cdeb2cc396b40a888deae683cae9, type: 3}
       propertyPath: m_Name
       value: MonsterUICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 860372178379840311, guid: bfc6cdeb2cc396b40a888deae683cae9, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1314632025289987465, guid: bfc6cdeb2cc396b40a888deae683cae9, type: 3}
       propertyPath: m_Pivot.x
@@ -154,6 +166,18 @@ PrefabInstance:
     - target: {fileID: 1314632025289987465, guid: bfc6cdeb2cc396b40a888deae683cae9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862232669070448743, guid: bfc6cdeb2cc396b40a888deae683cae9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862232669070448743, guid: bfc6cdeb2cc396b40a888deae683cae9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976020515951274032, guid: bfc6cdeb2cc396b40a888deae683cae9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

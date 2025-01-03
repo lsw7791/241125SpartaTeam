@@ -9,7 +9,8 @@ public class MonsterHealthBarUI : MonoBehaviour
     Monster monster;
     [Header("Health Settings")]
     public float maxHealth; // 최대 체력
-    private float currentHealth;  // 현재 체력
+
+    [SerializeField]private float currentHealth;  // 현재 체력
 
     [Header("Health Bar")]
     public Image healthBarForeground; // 체력바 (초록색 부분)
@@ -48,10 +49,7 @@ public class MonsterHealthBarUI : MonoBehaviour
         {
             // 현재 체력 비율 (0.0 ~ 1.0)
             currentHealth = monster.currentHealth;
-            float targetFill = currentHealth / maxHealth;
-            // 체력바의 fillAmount를 부드럽게 변화
-            //healthBarForeground.fillAmount = Mathf.Lerp(healthBarForeground.fillAmount, targetFill, Time.deltaTime );
-            healthBarForeground.fillAmount = targetFill;
+            healthBarForeground.fillAmount = currentHealth / maxHealth;
         }
     }
 }
