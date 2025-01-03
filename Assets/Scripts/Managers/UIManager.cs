@@ -16,7 +16,6 @@ public class UIManager : MonoSingleton<UIManager>
     protected override void Awake()
     {
         base.Awake();
-        ToggleUI<QuestIcon>();
     }
 
     // UI를 가져오고, 만약 존재하지 않으면 생성
@@ -57,6 +56,7 @@ public class UIManager : MonoSingleton<UIManager>
         var canvasScaler = canvasObject.AddComponent<CanvasScaler>();
         canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         canvasScaler.referenceResolution = new Vector2(1920, 1080);
+        canvasScaler.matchWidthOrHeight = 1; 
 
         canvasObject.AddComponent<GraphicRaycaster>();
 

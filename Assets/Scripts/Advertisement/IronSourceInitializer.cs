@@ -6,9 +6,10 @@ using com.unity3d.mediation;
 
 public class IronSourceInitializer : MonoSingleton<IronSourceInitializer>
 {
-    private IronSourceBanner ironSourceBanner;
+    [SerializeField]private IronSourceBanner ironSourceBanner;
     void Start()
     {
+        ironSourceBanner = new IronSourceBanner();
         // App Key로 SDK 초기화
         string appKey = "209e92305"; // 본인의 App Key로 변경
         IronSource.Agent.init(appKey);

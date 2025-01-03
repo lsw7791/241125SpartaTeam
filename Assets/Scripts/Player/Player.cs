@@ -34,6 +34,7 @@ public class Player : MonoBehaviour, IDamageable
         inventory = new Inventory();
         stats = GameManager.Instance.DataManager.nowPlayer;
         QuickSlots = new QuickSlot();  // QuickSlot ∞¥√º √ ±‚»≠
+
     }
 
     private void Awake()
@@ -41,7 +42,6 @@ public class Player : MonoBehaviour, IDamageable
         //stats.Initialize();
         PlayerInput = GetComponent<PlayerInput>();
         equipment = GetComponent<Equipment>();
-
     }
 
     private void FixedUpdate()
