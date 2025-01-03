@@ -24,13 +24,13 @@ public class Player : MonoBehaviour,IDamageable
     public Player()
     {
         inventory = new Inventory();
-        stats = new PlayerData();
+        stats = GameManager.Instance.DataManager.nowPlayer;
         QuickSlots = new QuickSlot();  // QuickSlot ∞¥√º √ ±‚»≠
     }
 
     private void Awake()
     {
-        stats.Initialize();
+        //stats.Initialize();
         PlayerInput = GetComponent<PlayerInput>();
         equipment = GetComponent<Equipment>();
 

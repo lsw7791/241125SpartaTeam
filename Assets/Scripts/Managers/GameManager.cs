@@ -31,13 +31,7 @@ public class GameManager : MonoSingleton<GameManager>
         // 씬 로딩 후 호출되는 이벤트
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        // 마지막으로 저장된 캐릭터 로드
-        _currentPlayer = DataManager.GetLastPlayedCharacter();
-        if (_currentPlayer != null)
-        {
-            Debug.Log($"마지막으로 선택된 캐릭터: {_currentPlayer.NickName}");
-        }
-
+        _currentPlayer = DataManager.nowPlayer;
         Instantiate(SceneNum);
         SoundManager.Instance.PlayStartBGMMystical();
 
@@ -86,7 +80,7 @@ public class GameManager : MonoSingleton<GameManager>
     }
 
     // 플레이어 데이터 로드
-    private void LoadPlayerData(PlayerData playerData)
+    public void LoadPlayerData(PlayerData playerData)
     {
         Player.nickName = playerData.NickName;
         Player.Stats.MaxHP = playerData.MaxHP;   // MaxHP
@@ -98,5 +92,10 @@ public class GameManager : MonoSingleton<GameManager>
         Player.Stats.WeaponType = playerData.WeaponType;   // WeaponType
         Player.stats.Gold = playerData.Gold;
 
+    }
+
+    public void GameEnd()
+    {
+        Application.Quit();
     }
 }

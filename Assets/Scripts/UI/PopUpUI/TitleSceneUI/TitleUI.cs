@@ -21,10 +21,11 @@ public class TitleUI : MonoBehaviour
         GameManager.Instance.SceneNum = 24;
         GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
-    public void LoadGame()
+    public void LoadGame(bool inIsNewGame)
     {
         Debug.Log("게임 불러오기");
-        UIManager.Instance.ToggleUI<CharacterSlotUI>();
+        CharacterSelectUI selectUI = UIManager.Instance.ToggleUI<CharacterSelectUI>();
+        selectUI.isNewGame = inIsNewGame;
     }
     public void OptionUIOn()
     {

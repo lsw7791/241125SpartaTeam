@@ -37,12 +37,11 @@ public class Inventory
             {
                 InventoryItem newItem = new InventoryItem(itemID, quantity, itemData.atlasPath, false, itemData.atkType);
                 Items.Add(newItem); // 새 아이템 추가
-                GameManager.Instance.Player.stats.AddItem(newItem); // PlayerData에도 추가
+                GameManager.Instance.GetCurrentCharacter().AddItem(newItem); // PlayerData에도 추가
             }
         }
 
         OnInventoryChanged?.Invoke();
-        PlayerSaveLoad.SavePlayerData(GameManager.Instance.Player, GameManager.Instance.DataManager.Repository);
     }
 
 
@@ -74,7 +73,7 @@ public class Inventory
             item.Quantity -= quantity;
             if (item.Quantity <= 0)
             {
-                GameManager.Instance.Player.stats.RemoveItem(item); // PlayerData에서 제거
+                GameManager.Instance.GetCurrentCharacter().RemoveItem(item); // PlayerData에서 제거
                 Items.Remove(item); // 인벤토리에서 제거
             }
         }
