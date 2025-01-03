@@ -23,13 +23,15 @@ public class StatusUI : UIBase
 
     public void Refresh()
     {
-        _maxHP.text = GameManager.Instance.Player.stats.MaxHP.ToString();
-        _maxStamina.text = GameManager.Instance.Player.stats.MaxStamina.ToString();
-        _aTKPhysic.text = GameManager.Instance.Player.stats.PhysicalDamage.ToString();
-        _aTKMagic.text = GameManager.Instance.Player.stats.MagicalDamage.ToString();
-        _aTKMine.text = GameManager.Instance.Player.stats.MineDamage.ToString();
-        _def.text = GameManager.Instance.Player.stats.Def.ToString();
-        _atkSpd.text = GameManager.Instance.Player.stats.ATKSpeed.ToString();
-        _spd.text = GameManager.Instance.Player.stats.MoveSpeed.ToString();
+        PlayerData nowPlayerData = GameManager.Instance.DataManager.nowPlayer;
+
+        _maxHP.text = nowPlayerData.MaxHP.ToString();
+        _maxStamina.text = nowPlayerData.MaxStamina.ToString();
+        _aTKPhysic.text = nowPlayerData.PhysicalDamage.ToString();
+        _aTKMagic.text = nowPlayerData.MagicalDamage.ToString();
+        _aTKMine.text = nowPlayerData.MineDamage.ToString();
+        _def.text = nowPlayerData.Def.ToString();
+        _atkSpd.text = nowPlayerData.ATKSpeed.ToString();
+        _spd.text = nowPlayerData.MoveSpeed.ToString();
     }
 }
