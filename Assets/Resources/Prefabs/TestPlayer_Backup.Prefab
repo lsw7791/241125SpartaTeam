@@ -2478,6 +2478,7 @@ GameObject:
   - component: {fileID: 7252967140961143558}
   - component: {fileID: 3069066758985392373}
   - component: {fileID: 6080320500081737818}
+  - component: {fileID: 6224302043780271791}
   m_Layer: 7
   m_Name: TestPlayer_Backup
   m_TagString: Player
@@ -2842,7 +2843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35b06f6500834c7bba01057967c155d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   armRenderer: {fileID: 5214768893705585844}
   armPivot: {fileID: 4670122765740139655}
 --- !u!114 &3360327573478076815
@@ -2928,6 +2928,7 @@ MonoBehaviour:
     MoveSpeed: 0
     ATKSpeed: 1
     Def: 0
+    CurrentDef: 0
     WeaponType: 0
     isDie: 0
     MineDamage: 1
@@ -2978,6 +2979,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448cb27020de2b646b44db4dee60b945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  moveInput: {x: 0, y: 0}
+--- !u!114 &6224302043780271791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5486746758406949837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31e5a1080eb93f442b86144c18afee4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rollDistance: 5
+  rollSpeed: 10
+  isRolling: 0
 --- !u!1 &5551050084829585446
 GameObject:
   m_ObjectHideFlags: 0

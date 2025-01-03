@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour
 {
     private Camera _camera;
     private PlayerMove playerMove;
+    private PlayerRoll playerRoll;
     [SerializeField] private SpriteRenderer armRenderer;
     [SerializeField] private Transform armPivot;
     public event Action<QuestAction> OnQuestActionTriggered;
@@ -15,6 +16,7 @@ public class PlayerInput : MonoBehaviour
     {
         _camera = Camera.main;
         playerMove = GetComponent<PlayerMove>();
+        playerRoll = GetComponent<PlayerRoll>();
     }
      //상호작용
     public void OnMove(InputAction.CallbackContext context)
@@ -237,7 +239,8 @@ public class PlayerInput : MonoBehaviour
     // 구르기 로직
     private void PerformRoll()
     {
-        // 구르기 로직 추가
+        if (playerRoll.isRolling) return;
+        StartCoroutine(playerRoll.Roll());
     }
 
     // 패딩(막기) 로직
