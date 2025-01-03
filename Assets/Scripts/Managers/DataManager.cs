@@ -55,6 +55,7 @@ public class DataManager
     {
         string data = JsonUtility.ToJson(GameManager.Instance._currentPlayer);
         File.WriteAllText(path + nowSlot.ToString(), data);
+        //Debug.Log($" {path + nowSlot.ToString()}");
     }
 
     public void LoadData()
