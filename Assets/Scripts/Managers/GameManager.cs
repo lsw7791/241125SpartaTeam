@@ -95,8 +95,6 @@ public class GameManager : MonoSingleton<GameManager>
         Player.Stats.ATKSpeed = playerData.ATKSpeed;   // AttackSpeed
         Player.Stats.WeaponType = playerData.WeaponType;   // WeaponType
         Player.stats.Gold = playerData.Gold;
-
-        Debug.Log($"GameManager - {playerData.NickName} - {playerData.ATKSpeed}");
     }
 
     public void GameEnd()

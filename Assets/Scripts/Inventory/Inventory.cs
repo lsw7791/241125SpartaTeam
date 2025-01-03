@@ -36,7 +36,7 @@ public class Inventory
             if (itemData != null)
             {
                 InventoryItem newItem = new InventoryItem(itemID, quantity, itemData.atlasPath, false, itemData.atkType);
-                Items.Add(newItem); // 새 아이템 추가
+                //Items.Add(newItem); // 새 아이템 추가
                 GameManager.Instance._currentPlayer.AddItem(newItem); // PlayerData에도 추가
             }
         }
