@@ -16,7 +16,6 @@ public class UIManager : MonoSingleton<UIManager>
     protected override void Awake()
     {
         base.Awake();
-        ToggleUI<QuestIcon>();
     }
 
     // UI를 가져오고, 만약 존재하지 않으면 생성
