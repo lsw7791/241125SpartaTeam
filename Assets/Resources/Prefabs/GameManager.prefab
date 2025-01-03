@@ -108,7 +108,6 @@ MonoBehaviour:
   Player: {fileID: 0}
   SceneNum: 0
   miniCamera: {fileID: 0}
-  rewardedAds: {fileID: 0}
 --- !u!1 &7220011513426877148
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,10 +117,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 62709011081100286}
-  - component: {fileID: 1758180549839977167}
-  - component: {fileID: 7084790151644432164}
+  - component: {fileID: 5677017876842710115}
   m_Layer: 0
-  m_Name: AdManager
+  m_Name: IronSourceInitializer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +140,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6658137706730719903}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1758180549839977167
+--- !u!114 &5677017876842710115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,26 +149,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7220011513426877148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfdc4561b6939494db8ff1db843baef4, type: 3}
+  m_Script: {fileID: 11500000, guid: f2fff4e85cb49b246b1311bb346f70b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _androidGameId: 
-  _iOSGameId: 
-  _testMode: 1
---- !u!114 &7084790151644432164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7220011513426877148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cdb8f655296f464cbda5cdc6a7220a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _androidAdUnitId: Rewarded_Android
-  _iOSAdUnitId: Rewarded_iOS
 --- !u!1 &7682924926377630938
 GameObject:
   m_ObjectHideFlags: 0
