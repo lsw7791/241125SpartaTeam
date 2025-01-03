@@ -69,7 +69,7 @@ public class Player : MonoBehaviour, IDamageable
     // 데미지 처리
     public void TakeDamage(int damage)
     {
-        int value = stats.Def;
+        int value = stats.CurrentDef;
         value -= damage;
         if(value <0)
         {
@@ -113,13 +113,13 @@ public class Player : MonoBehaviour, IDamageable
     {
         if(stats.CurrentStamina<= value)
         {
-            return true;
+            return false;
         }
         else
         {
             stats.CurrentStamina -= value;
             ConditionUI._stamina.value = stats.CurrentStamina;
-            return false;
+            return true;
         }
     }
     // 프로퍼티

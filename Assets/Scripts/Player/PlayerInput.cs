@@ -9,7 +9,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private SpriteRenderer armRenderer;
     [SerializeField] private Transform armPivot;
     public event Action<QuestAction> OnQuestActionTriggered;
-
+    bool playerPadding = false;
 
     private void Awake()
     {
@@ -105,6 +105,7 @@ public class PlayerInput : MonoBehaviour
         {
             GameManager.Instance.Player._playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화
             PerformPaddingStart(); // 패딩 동작 시작
+            //TODO : 파티클 시스템 추가
         }
         else if (context.canceled)
         {
@@ -242,14 +243,23 @@ public class PlayerInput : MonoBehaviour
     // 패딩(막기) 로직
     private void PerformPaddingStart()
     {
-        // 막기 동작 시작 시 실행할 로직
-        Debug.Log("Padding started!");
+        if(GameManager.Instance.Player.UseStamina(10) ==true)
+        {
+            playerPadding = true;
+            // 막기 동작 시작 시 실행할 로직
+            GameManager.Instance.Player.stats.CurrentDef *= 2;
+            Debug.Log("Padding started!");
+        }
+
     }
 
     private void PerformPaddingEnd()
     {
         // 막기 동작 종료 시 실행할 로직
+        int value = GameManager.Instance.Player.stats.Def;
+        GameManager.Instance.Player.stats.CurrentDef = value;
         Debug.Log("Padding ended!");
+        playerPadding=false;
     }
     public void RotateArm(Vector2 direction)
     {
