@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
-
+/*
 public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     //[SerializeField] Button _showAdButton;
@@ -85,3 +85,4 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         //_showAdButton.onClick.RemoveAllListeners();
     }
 }
+*/

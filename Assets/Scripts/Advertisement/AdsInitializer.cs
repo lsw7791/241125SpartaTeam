@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
-
+/*
 public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
 {
     [SerializeField] string _androidGameId;
@@ -39,3 +39,4 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
         Debug.Log($"Unity Ads Initialization Failed: {error.ToString()} - {message}");
     }
 }
+*/
