@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -8,7 +9,7 @@ public class GameManager : MonoSingleton<GameManager>
     public CraftingManager CraftingManager;
     public SpawnManager SpawnManager;
     public Player Player;
-    private PlayerData _currentPlayer;
+    public PlayerData _currentPlayer;
     public int SceneNum;
     public GameObject miniCamera;
     //public RewardedAds rewardedAds;
@@ -32,6 +33,7 @@ public class GameManager : MonoSingleton<GameManager>
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         _currentPlayer = DataManager.nowPlayer;
+
         Instantiate(SceneNum);
         SoundManager.Instance.PlayStartBGMMystical();
 
@@ -51,6 +53,8 @@ public class GameManager : MonoSingleton<GameManager>
         miniCamera = Instantiate(Resources.Load<GameObject>("Prefabs/Cameras/MinimapCamera"));
         if (SpawnManager == null) SpawnManager = gameObject.AddComponent<SpawnManager>();
         SpawnManager.SpawnPlayer(mapNum);
+
+        Player.stats = _currentPlayer;
         SpawnManager.Initialize(mapNum);
     }
 
@@ -60,10 +64,10 @@ public class GameManager : MonoSingleton<GameManager>
         SceneManager.LoadScene(sceneName);
     }
 
-    public PlayerData GetCurrentCharacter()
-    {
-        return _currentPlayer;
-    }
+    //public PlayerData GetCurrentCharacter()
+    //{
+    //    return _currentPlayer;
+    //}
 
     // 캐릭터 선택 후 게임 시작
     public void StartGame(PlayerData character)
@@ -92,6 +96,7 @@ public class GameManager : MonoSingleton<GameManager>
         Player.Stats.WeaponType = playerData.WeaponType;   // WeaponType
         Player.stats.Gold = playerData.Gold;
 
+        Debug.Log($"GameManager - {playerData.NickName} - {playerData.ATKSpeed}");
     }
 
     public void GameEnd()

@@ -1,5 +1,6 @@
 using System.IO;
 using TMPro;
+using UnityEngine;
 
 public class CharacterSelectUI : UIBase
 {
@@ -37,6 +38,7 @@ public class CharacterSelectUI : UIBase
 
             GameManager.Instance.StartGame(GameManager.Instance.DataManager.nowPlayer);
             UIManager.Instance.ToggleUI<CharacterSelectUI>();
+            GameManager.Instance.Player.Inventory.Items = GameManager.Instance._currentPlayer.Items;
         }
         else
         {

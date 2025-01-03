@@ -53,16 +53,14 @@ public class DataManager
 
     public void SaveData()
     {
-        string data = JsonUtility.ToJson(GameManager.Instance.GetCurrentCharacter());
+        string data = JsonUtility.ToJson(GameManager.Instance._currentPlayer);
         File.WriteAllText(path + nowSlot.ToString(), data);
-        Debug.Log($"저장 경로: {path + nowSlot.ToString()}");
     }
 
     public void LoadData()
     {
         string data = File.ReadAllText(path + nowSlot.ToString());
         nowPlayer = JsonUtility.FromJson<PlayerData>(data);
-        Debug.Log($"저장 경로: {path + nowSlot.ToString()}");
     }
     public void DataClear()
     {

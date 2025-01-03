@@ -32,7 +32,7 @@ public class Player : MonoBehaviour, IDamageable
     public Player()
     {
         inventory = new Inventory();
-        stats = GameManager.Instance.DataManager.nowPlayer;
+        //stats = GameManager.Instance.DataManager.nowPlayer;
         QuickSlots = new QuickSlot();  // QuickSlot ∞¥√º √ ±‚»≠
 
     }
