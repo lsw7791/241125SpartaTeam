@@ -2477,6 +2477,7 @@ GameObject:
   - component: {fileID: 661741943856788073}
   - component: {fileID: 7252967140961143558}
   - component: {fileID: 3069066758985392373}
+  - component: {fileID: 6080320500081737818}
   m_Layer: 7
   m_Name: TestPlayer_Backup
   m_TagString: Player
@@ -2936,11 +2937,11 @@ MonoBehaviour:
   PlayerInput: {fileID: 0}
   _playerAnimationController: {fileID: 0}
   _playerWeapon: {fileID: 0}
-  _playerCamera: {fileID: 0}
   equipment: {fileID: 0}
   Weapon: {fileID: 1123440809906398237}
   ConditionUI: {fileID: 0}
   StatusUI: {fileID: 0}
+  playerState: 0
 --- !u!114 &7252967140961143558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2963,6 +2964,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6849e14560c8d4a44a75308f887c274e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6080320500081737818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5486746758406949837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448cb27020de2b646b44db4dee60b945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5551050084829585446

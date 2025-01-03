@@ -4,13 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    public float speed = 5f;   // 이동 속도
-    private Vector2 moveInput; // 이동 입력값
-    private Rigidbody2D rb;
     private Camera _camera;
-    private bool isDeath = false;
-
+    private PlayerMove playerMove;
     [SerializeField] private SpriteRenderer armRenderer;
     [SerializeField] private Transform armPivot;
     public event Action<QuestAction> OnQuestActionTriggered;
@@ -18,19 +13,17 @@ public class PlayerInput : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         _camera = Camera.main;
+        playerMove = GetComponent<PlayerMove>();
     }
-    private void Start()
-    {
-        speed = 5;
-    }
+     //상호작용
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (isDeath) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
 
-        moveInput = context.ReadValue<Vector2>();
-        bool isMoving = moveInput.sqrMagnitude > 0; // 벡터 크기로 이동 여부 판단
+        playerMove.moveInput = context.ReadValue<Vector2>();
+        bool isMoving = playerMove.moveInput.sqrMagnitude > 0; // 벡터 크기로 이동 여부 판단
 
         // Dictionary에서 QuestID 1에 해당하는 값 확인
         if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(1) &&
@@ -49,6 +42,8 @@ public class PlayerInput : MonoBehaviour
     // 마우스 위치에 따른 회전 처리
     public void OnLook(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
         if (context.performed)
         {
             if (_camera == null)
@@ -64,11 +59,6 @@ public class PlayerInput : MonoBehaviour
             }
         }
     }
-    private void FixedUpdate()
-    {
-        rb.velocity = moveInput * speed; // 이동 처리
-    }
-    // 상호작용
     public void OnInteraction(InputAction.CallbackContext context)
     {
         if (context.performed)

@@ -1,8 +1,15 @@
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-public class Player : MonoBehaviour,IDamageable
+public class Player : MonoBehaviour, IDamageable
 {
+    public enum PlayerState
+    { 
+    IDle,
+    Attack,
+    Die,
+    UIOpen
+    }
     public string nickName;
 
     public PlayerData stats;  // 플레이어의 스탯
@@ -15,6 +22,7 @@ public class Player : MonoBehaviour,IDamageable
     public ConditionUI ConditionUI;
     public StatusUI StatusUI;
     private float staminaRechargeTimer = 0f;
+    public PlayerState playerState = PlayerState.IDle;
     // QuickSlots 프로퍼티
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경
 
@@ -77,6 +85,7 @@ public class Player : MonoBehaviour,IDamageable
     // 플레이어 죽음 처리
     public void Die()
     {
+        playerState = PlayerState.Die;
         TriggerDeath();
         //UIManager.Instance.deathUI.SetActive(true);
         Debug.Log($"{nickName} has died.");
@@ -86,18 +95,17 @@ public class Player : MonoBehaviour,IDamageable
     }
     public void TriggerDeath()
     {
-        GameManager.Instance.Player.stats.isDie = true;
-        PlayerInput.speed = 0f;
-        GameManager.Instance.Player._playerAnimationController.TriggerDeathAnimation(); // 죽음 애니메이션 실행
+        stats.isDie = true;
+        _playerAnimationController.TriggerDeathAnimation(); // 죽음 애니메이션 실행
         this.enabled = false;
 
     }
     public void Revive()
     {
+        playerState = PlayerState.IDle;
         stats.isDie = false;
         stats.CurrentHP = 20;
         ConditionUI.UpdateSliders();
-        PlayerInput.speed = stats.MoveSpeed;
         this.enabled = true;
     }
 
