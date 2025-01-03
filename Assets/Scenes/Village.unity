@@ -2758,7 +2758,7 @@ GameObject:
   - component: {fileID: 8687871624611750835}
   - component: {fileID: 2124221041995167214}
   - component: {fileID: 4995932524969386963}
-  - component: {fileID: 2972832780634608424}
+  - component: {fileID: 8687871624611750836}
   m_Layer: 5
   m_Name: ButtonReward1000G
   m_TagString: Untagged
@@ -2899,18 +2899,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2972832780634608424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2447005303377342997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d48d563907102042b76324b4a799ca7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2978055748289609635
 GameObject:
   m_ObjectHideFlags: 0
@@ -3928,9 +3916,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2972832780634608424}
-        m_TargetAssemblyTypeName: ButtonReward, Assembly-CSharp
-        m_MethodName: Button1000Gold
+      - m_Target: {fileID: 8687871624611750836}
+        m_TargetAssemblyTypeName: ItronSourceButtonClick, Assembly-CSharp
+        m_MethodName: ShowBannerAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5753,6 +5741,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2447005303377342997}
   m_CullTransparentMesh: 1
+--- !u!114 &8687871624611750836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447005303377342997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1a880f01929cb4db0a364b27390fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8792584219386218400
 GameObject:
   m_ObjectHideFlags: 0

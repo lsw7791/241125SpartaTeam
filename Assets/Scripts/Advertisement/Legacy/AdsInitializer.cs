@@ -40,3 +40,10 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     }
 }
 */
+
+class test1 : MonoBehaviour 
+{
+
+
+
+}
