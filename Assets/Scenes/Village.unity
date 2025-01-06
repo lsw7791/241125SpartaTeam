@@ -175,6 +175,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: village
       objectReference: {fileID: 0}
+    - target: {fileID: 4109587222499680811, guid: 66f0ab533919a4e2592a94febeba779b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542050988705735186, guid: 66f0ab533919a4e2592a94febeba779b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520328654237185177, guid: 66f0ab533919a4e2592a94febeba779b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

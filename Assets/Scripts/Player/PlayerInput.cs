@@ -18,7 +18,7 @@ public class PlayerInput : MonoBehaviour
         playerMove = GetComponent<PlayerMove>();
         playerRoll = GetComponent<PlayerRoll>();
     }
-     //상호작용
+    //상호작용
     public void OnMove(InputAction.CallbackContext context)
     {
         if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
@@ -239,8 +239,17 @@ public class PlayerInput : MonoBehaviour
     // 구르기 로직
     private void PerformRoll()
     {
+        Debug.Log("PerformRoll");
+
+        // 이미 구르고 있으면 구르기 시작하지 않음
         if (playerRoll.isRolling) return;
-        StartCoroutine(playerRoll.Roll());
+        if (GameManager.Instance.Player.UseStamina(10) == true)
+        {
+            // 구르기 시작
+            playerRoll.StartRolling();
+        }
+        // 구르기 시작 후, Roll은 Update에서 진행됩니다.
+        // Update에서 계속해서 Roll()을 호출하게 됩니다.
     }
 
     // 패딩(막기) 로직
@@ -250,7 +259,7 @@ public class PlayerInput : MonoBehaviour
         {
             playerPadding = true;
             // 막기 동작 시작 시 실행할 로직
-            GameManager.Instance.Player.stats.CurrentDef *= 2;
+            GameManager.Instance.Player.IncreaseDefense(2);
             Debug.Log("Padding started!");
         }
 
@@ -260,7 +269,7 @@ public class PlayerInput : MonoBehaviour
     {
         // 막기 동작 종료 시 실행할 로직
         int value = GameManager.Instance.Player.stats.Def;
-        GameManager.Instance.Player.stats.CurrentDef = value;
+        GameManager.Instance.Player.ResetDefense();
         Debug.Log("Padding ended!");
         playerPadding=false;
     }
