@@ -4,7 +4,7 @@ using UnityEngine;
 public class Equipment : MonoBehaviour
 {
     private Dictionary<ItemType, InventoryItem> _equipItems = new Dictionary<ItemType, InventoryItem>();
-    private EquipmentUI _equipmentUI;
+    public EquipmentUI _equipmentUI;
 
     public void EquipNew(InventoryItem inItem)
     {
