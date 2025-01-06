@@ -14,7 +14,7 @@ public class GameManager : MonoSingleton<GameManager>
     public GameObject miniCamera;
     //public RewardedAds rewardedAds;
     public IInteractable InteractableObject { get; set; }
-
+    public AttackEffect attackEffect;
     protected override void Awake()
     {
         base.Awake();
@@ -25,6 +25,7 @@ public class GameManager : MonoSingleton<GameManager>
         //if (rewardedAds == null) rewardedAds = gameObject.GetComponentInChildren<RewardedAds>();
 
         SceneNum = 24;
+        attackEffect = GetComponentInChildren<AttackEffect>();
     }
 
     void Start()
