@@ -33,12 +33,13 @@ public abstract class UIBase : MonoBehaviour, IDraggable, IPointerDownHandler, I
 
     protected virtual void OpenProcedure()
     { // 생성 시 추가 변경사항
+        GameManager.Instance.Player.playerState = Player.PlayerState.UIOpen;
 
     }
 
     protected virtual void CloseProcedure()
     { // 비활성화 시 추가 변경 사항
-
+        GameManager.Instance.Player.playerState = Player.PlayerState.Idle;
     }
 
     // 드래그 시작 시 호출

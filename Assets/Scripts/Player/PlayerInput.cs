@@ -86,7 +86,10 @@ public class PlayerInput : MonoBehaviour
         //{
         //    return;
         //}
-        
+        //Debug.Log(GameManager.Instance.Player.playerState);
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
+
         GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
     }
 
@@ -120,7 +123,7 @@ public class PlayerInput : MonoBehaviour
     public void OnInventory(InputAction.CallbackContext context)
     {
         if (context.performed)
-        {
+        {        
             ToggleInventory();
         }
     }
@@ -181,7 +184,7 @@ public class PlayerInput : MonoBehaviour
         {
             ToggleInfo();
         }
-        }
+    }
     // 인벤토리 토글
     private void ToggleInventory()
     {

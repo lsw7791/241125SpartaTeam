@@ -5,10 +5,11 @@ public class Player : MonoBehaviour, IDamageable
 {
     public enum PlayerState
     { 
-    IDle,
+    Idle,
     Attack,
     Die,
-    UIOpen
+    UIOpen,
+    GetDamaged
     }
     public string nickName;
 
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour, IDamageable
     public ConditionUI ConditionUI;
     public StatusUI StatusUI;
     private float staminaRechargeTimer = 0f;
-    public PlayerState playerState = PlayerState.IDle;
+    public PlayerState playerState = PlayerState.Idle;
     // QuickSlots 프로퍼티
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경
 
@@ -102,7 +103,7 @@ public class Player : MonoBehaviour, IDamageable
     }
     public void Revive()
     {
-        playerState = PlayerState.IDle;
+        playerState = PlayerState.Idle;
         stats.isDie = false;
         stats.CurrentHP = 20;
         ConditionUI.UpdateSliders();
