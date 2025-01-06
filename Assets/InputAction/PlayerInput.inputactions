@@ -130,6 +130,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Info",
+                    "type": "Button",
+                    "id": "3170d7ce-5cbf-47c0-9155-2f463e65baea",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -405,6 +414,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Status",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "abb4ff12-5f42-49c1-90ca-3c33e612f3ee",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Info",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

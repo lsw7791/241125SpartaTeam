@@ -175,7 +175,13 @@ public class PlayerInput : MonoBehaviour
             }
         }
     }
-
+    public void OnInfo(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            ToggleInfo();
+        }
+        }
     // 인벤토리 토글
     private void ToggleInventory()
     {
@@ -198,7 +204,7 @@ public class PlayerInput : MonoBehaviour
         if (UIManager.Instance.IsActiveUI())
         {
             UIManager.Instance.CloseAllUIs(); // 모든 UI를 닫음
-            UIManager.Instance.ToggleUI<MainQuestUI>();
+            //UIManager.Instance.ToggleUI<MainQuestUI>();
         }
         else
         {
@@ -206,7 +212,20 @@ public class PlayerInput : MonoBehaviour
             UIManager.Instance.ToggleUI<OptionUI>();
         }
     }
-
+    private void ToggleInfo()
+    {
+        // 활성화된 UI가 있으면 모든 UI를 닫는다.
+        if (UIManager.Instance.IsActiveUI())
+        {
+            UIManager.Instance.CloseAllUIs(); // 모든 UI를 닫음
+            //UIManager.Instance.ToggleUI<MainQuestUI>();
+        }
+        else
+        {
+            // 활성화된 UI가 없으면 OptionUI를 토글
+            UIManager.Instance.ToggleUI<InfoUI>();
+        }
+    }
 
 
 
