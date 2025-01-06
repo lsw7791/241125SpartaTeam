@@ -122,6 +122,17 @@ public class Player : MonoBehaviour, IDamageable
             return true;
         }
     }
+
+    public void IncreaseDefense(int value)
+    {
+        stats.CurrentDef *= value;
+    }
+
+    // 방어력 복구
+    public void ResetDefense()
+    {
+        stats.CurrentDef = stats.Def; // 방어력을 원래대로 복구
+    }
     // 프로퍼티
     public PlayerData Stats => stats;
     public Inventory Inventory => inventory;  // 인벤토리 반환

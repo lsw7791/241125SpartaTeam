@@ -13,6 +13,7 @@ TagManager:
   - Minimap
   - NPC
   - Coin
+  - Wall
   layers:
   - Default
   - TransparentFX
