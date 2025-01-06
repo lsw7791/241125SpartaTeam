@@ -90,6 +90,7 @@ public class UIManager : MonoSingleton<UIManager>
             ui.gameObject.SetActive(true); // UI가 비활성화되어 있으면 활성화
         }
 
+
         // 캔버스 가져오기
         Canvas uiCanvas = _uiCanvases[typeof(T).Name].GetComponent<Canvas>();
 
@@ -140,7 +141,6 @@ public class UIManager : MonoSingleton<UIManager>
             {
                 ui.Open();
             }
-
             // 이미 UI가 열려있으면 sortingOrder를 갱신 (한 번만 증가)
             Canvas uiCanvas = _uiCanvases[typeof(T).Name];
             uiCanvas.sortingOrder = _sortingOrderCounter;
@@ -155,6 +155,7 @@ public class UIManager : MonoSingleton<UIManager>
             T ui = OpenUI<T>();
             return ui;
         }
+            //Debug.Log(GameManager.Instance.Player.playerState);
     }
 
     // UI가 존재하는지 확인하는 메서드

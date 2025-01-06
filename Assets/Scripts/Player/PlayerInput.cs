@@ -11,12 +11,14 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private Transform armPivot;
     public event Action<QuestAction> OnQuestActionTriggered;
     bool playerPadding = false;
-
+    private Padding padding;
     private void Awake()
     {
         _camera = Camera.main;
         playerMove = GetComponent<PlayerMove>();
         playerRoll = GetComponent<PlayerRoll>();
+        padding = GetComponentInChildren<Padding>();
+        padding.gameObject.SetActive(false);
     }
     //상호작용
     public void OnMove(InputAction.CallbackContext context)
@@ -86,7 +88,10 @@ public class PlayerInput : MonoBehaviour
         //{
         //    return;
         //}
-        
+        //Debug.Log(GameManager.Instance.Player.playerState);
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
+
         GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
     }
 
@@ -107,12 +112,14 @@ public class PlayerInput : MonoBehaviour
         {
             GameManager.Instance.Player._playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화
             PerformPaddingStart(); // 패딩 동작 시작
-            //TODO : 파티클 시스템 추가
+            padding.gameObject.SetActive(true);
+            padding.InsertSprite();
         }
         else if (context.canceled)
         {
             GameManager.Instance.Player._playerAnimationController.SetPaddingAnimation(false); // 애니메이션 비활성화
             PerformPaddingEnd(); // 패딩 동작 종료
+            padding.gameObject.SetActive(false);
         }
     }
 
@@ -120,7 +127,7 @@ public class PlayerInput : MonoBehaviour
     public void OnInventory(InputAction.CallbackContext context)
     {
         if (context.performed)
-        {
+        {        
             ToggleInventory();
         }
     }
@@ -175,7 +182,13 @@ public class PlayerInput : MonoBehaviour
             }
         }
     }
-
+    public void OnInfo(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            ToggleInfo();
+        }
+    }
     // 인벤토리 토글
     private void ToggleInventory()
     {
@@ -198,7 +211,7 @@ public class PlayerInput : MonoBehaviour
         if (UIManager.Instance.IsActiveUI())
         {
             UIManager.Instance.CloseAllUIs(); // 모든 UI를 닫음
-            UIManager.Instance.ToggleUI<MainQuestUI>();
+            //UIManager.Instance.ToggleUI<MainQuestUI>();
         }
         else
         {
@@ -206,7 +219,20 @@ public class PlayerInput : MonoBehaviour
             UIManager.Instance.ToggleUI<OptionUI>();
         }
     }
-
+    private void ToggleInfo()
+    {
+        // 활성화된 UI가 있으면 모든 UI를 닫는다.
+        if (UIManager.Instance.IsActiveUI())
+        {
+            UIManager.Instance.CloseAllUIs(); // 모든 UI를 닫음
+            //UIManager.Instance.ToggleUI<MainQuestUI>();
+        }
+        else
+        {
+            // 활성화된 UI가 없으면 OptionUI를 토글
+            UIManager.Instance.ToggleUI<InfoUI>();
+        }
+    }
 
 
 

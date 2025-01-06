@@ -27,6 +27,15 @@ public class ProjectileCollisionHandler : MonoBehaviour
     private void DeSpenObject()
     {
         // TODO :: ID로 구현
+        //ParticleSystem particleSystem = GameManager.Instance.EffectParticle;
+
+        //particleSystem.transform.position = gameObject.transform.position;
+        //ParticleSystem.EmissionModule em = particleSystem.emission;
+        //em.SetBurst(0, new ParticleSystem.Burst(0, Mathf.Ceil(attackData.size * 5)));
+        //ParticleSystem.MainModule mm = particleSystem.main;
+        //mm.startSpeedMultiplier = attackData.size * 10f;
+        //particleSystem.Play();
+        GameManager.Instance.attackEffect.ApplyAttackEffect(gameObject.transform.position);
         gameObject.SetActive(false);
     }
 
@@ -45,7 +54,6 @@ public class ProjectileCollisionHandler : MonoBehaviour
             }
             // 벽도 레이어를 추가해 발사체 제거
             DeSpenObject();      // 투사체 파괴
-
             //Destroy(gameObject);
         }
     }

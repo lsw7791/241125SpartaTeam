@@ -38,7 +38,7 @@ public class PlayerAnimationController : MonoBehaviour
                 _animator.SetTrigger("Attack_Melee");
                 break;
         }
-        GameManager.Instance.Player.playerState = Player.PlayerState.IDle;
+        GameManager.Instance.Player.playerState = Player.PlayerState.Idle;
     }
     public void SetTriggerAnimator(string name)
     {

@@ -10,7 +10,7 @@ public class EquipmentUI : MonoBehaviour
     [SerializeField] private Image _weaponSlot;
     [SerializeField] private Image _shoesSlot;
 
-    [SerializeField] private Image _shieldSlot;
+    [SerializeField] public Image _shieldSlot;
     [SerializeField] private Image _topSlot;
     [SerializeField] private Image _capeSlot;
 
