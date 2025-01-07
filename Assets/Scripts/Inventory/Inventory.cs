@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [System.Serializable]
 public class Inventory
@@ -20,6 +21,9 @@ public class Inventory
 
     public void SaveEquipInIt()
     {
+        GameManager.Instance.Player._playerWeapon.ATKType = 0;
+        GameManager.Instance.Player.Stats.WeaponType = 0;
+
         foreach (InventoryItem item in Items)
         {
             if (item.IsEquipped)
