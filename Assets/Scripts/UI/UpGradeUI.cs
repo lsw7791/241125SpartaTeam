@@ -79,7 +79,7 @@ public class UpGradeUI : UIBase
         {
             if (inItem.IsEquipped)
             {
-                GameManager.Instance.Player.inventory.UnEquip(inItem);
+                GameManager.Instance.Player.inventory.UnEquip(itemData.itemType);
             }
 
             // TODO :: 금간 장비 이미지? 깨진 이미지 출력

@@ -34,7 +34,7 @@ public class ItemUseUI : MonoBehaviour
 
                 if (inItem.IsEquipped)
                 {
-                    GameManager.Instance.Player.inventory.UnEquip(inItem);
+                    GameManager.Instance.Player.inventory.UnEquip(itemData.itemType);
                     InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
                     inventoryUI.ClearEquipmentSlot(itemData.itemType);
                     // «ÿ¡¶
