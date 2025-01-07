@@ -132,14 +132,14 @@ public class PlayerInput : MonoBehaviour
     }
 
     // 인벤토리 토글
-    public void OnQuest(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            SoundManager.Instance.PlayBookSFX();
-            UIManager.Instance.ToggleUI<MainQuestUI>();
-        }
-    } 
+    //public void OnQuest(InputAction.CallbackContext context)
+    //{
+    //    if (context.performed)
+    //    {
+    //        SoundManager.Instance.PlayBookSFX();
+    //        UIManager.Instance.ToggleUI<MainQuestUI>();
+    //    }
+   // } 
     public void OnInventory(InputAction.CallbackContext context)
     {
         if (context.performed)
