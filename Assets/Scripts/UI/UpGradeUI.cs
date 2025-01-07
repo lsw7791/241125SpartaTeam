@@ -90,6 +90,8 @@ public class UpGradeUI : UIBase
         }
 
         UpdateUI(inItem);
+        GameManager.Instance.DataManager.SaveData(GameManager.Instance.Player.inventory);
+        GameManager.Instance.DataManager.SaveData(GameManager.Instance.Player.stats);
     }
 
     public void Initialize(InventoryItem inItem)
