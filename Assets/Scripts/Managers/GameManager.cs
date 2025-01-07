@@ -80,7 +80,7 @@ public class GameManager : MonoSingleton<GameManager>
         if (selectUI.isNewGame)
         {
             Player.stats.Initialize();
-            //Player.equipment.SaveEquipInIt();
+            nowPlayer.CurrentQuestId = DataManager.MainQuest.CurrentQuestId;
         }
 
         Player.inventory.SaveEquipInIt();

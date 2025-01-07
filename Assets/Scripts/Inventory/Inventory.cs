@@ -1,7 +1,7 @@
+using MainData;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 [System.Serializable]
 public class Inventory
@@ -177,9 +177,6 @@ public class Inventory
 
         _equipItems[itemData.itemType] = inItem;
 
-        // UI 장비창 업데이트
-        //_equipmentUI.UpdateEquipmentSlot(itemData.itemType, UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath));
-
         if (itemData.itemType == ItemType.Weapon)
         {
             GameManager.Instance.Player._playerWeapon.ATKType = inItem.ATKType;
@@ -193,10 +190,13 @@ public class Inventory
 
     public void UnEquip(InventoryItem inItem)
     {
-        GameManager.Instance.Player._playerWeapon.ATKType = 0;
-        GameManager.Instance.Player.Stats.WeaponType = 0;
-
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
+
+        if (itemData.itemType == ItemType.Weapon)
+        {
+            GameManager.Instance.Player._playerWeapon.ATKType = 0;
+            GameManager.Instance.Player.Stats.WeaponType = 0;
+        }
 
         if (_equipItems.ContainsKey(itemData.itemType))
         {
@@ -209,9 +209,6 @@ public class Inventory
             //saveItemList.Remove(inItem);
             // 딕셔너리에서 제거
             _equipItems.Remove(itemData.itemType);
-
-            // UI 장비창 클리어
-            //_equipmentUI.ClearEquipmentSlot(itemData.itemType);
 
             inItem.IsEquipped = false;
         }

@@ -23,6 +23,8 @@ public class PlayerData
     public bool isDie;             // 사망 여부
     public int MineDamage;         // 광물 공격력
 
+    public int CurrentQuestId;     // 현재 퀘스트 진행도
+
     // PlayerStats 초기화 메서드 (초기값 설정)
     public void Initialize()
     {

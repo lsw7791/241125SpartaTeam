@@ -21,9 +21,13 @@ public class MainQuestUI : UIBase
         UpdateUI(_mainQuest.CurrentQuestId);   // 초기 UI 설정
 
         _completeBtn.onClick.AddListener(OnCompleteButtonPressed);
-
     }
-    
+
+    private void OnEnable()
+    {
+        UpdateUI(GameManager.Instance.Player.stats.CurrentQuestId);
+    }
+
     void OnDestroy()
     {
         if (_mainQuest != null)
@@ -56,6 +60,7 @@ public class MainQuestUI : UIBase
     private void OnCompleteButtonPressed()
     {
         GameManager.Instance.DataManager.MainQuest.CurrentQuestId++;
+        GameManager.Instance.Player.stats.CurrentQuestId++;
         Debug.Log(GameManager.Instance.DataManager.MainQuest.CurrentQuestId);
 
         if (GameManager.Instance.DataManager.MainQuest.CurrentQuestId > 8)
