@@ -5,28 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TitleScene.unity
     guid: 30bc4de71fe5ee84bbc91f9835e1b140
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/CharacterCreation.unity
     guid: 2fa3c624dadb40142a052a92471203a5
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Village.unity
     guid: 9b992c704bd10404889951b03897f191
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Mine1.unity
     guid: be28b5419c856694c9f003aebb1150b0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Mine2.unity
     guid: 73ac46e543aa9ac4f9beb969ce8b68df
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Mine3.unity
     guid: 47550ae3f0088174889bb2d2061084cf
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/WorkShop.unity
     guid: f8ffd2f86da3569458125ab7c73029e2
-  - enabled: 1
+  - enabled: 0
     path: Assets/LevelPlay/Samples/UnityLevelPlaySample/Scenes/LevelPlaySample.unity
     guid: bd1eb3e1953724de08fadd7cbbc6d358
   m_configObjects: {}
