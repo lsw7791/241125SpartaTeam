@@ -22,7 +22,7 @@ public class PlayerAnimationController : MonoBehaviour
         int atkType = GameManager.Instance.Player._playerWeapon.ATKType; // ATKType을 숫자로 가져옴
 
         if (GameManager.Instance.Player.stats.isDie) return; // 사망 상태라면 실행하지 않음
-        if(GameManager.Instance.Player.UseStamina(5)) return;// 스테미너 없으면 리턴
+        if(!GameManager.Instance.Player.UseStamina(5)) return;// 스테미너 없으면 리턴
 
         switch (atkType)
         {
