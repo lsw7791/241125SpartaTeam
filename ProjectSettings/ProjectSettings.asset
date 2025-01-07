@@ -916,11 +916,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: d4290b5e-7845-4d19-98c4-3ba4cc82a679
+  cloudProjectId: 7f88423c-1152-4b43-85b5-0635394aeb54
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 241125SpartaTeam
-  organizationId: lsw7791
+  projectName: SpartaTeam241125
+  organizationId: tmddn7052
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

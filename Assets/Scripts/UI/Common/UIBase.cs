@@ -21,12 +21,14 @@ public abstract class UIBase : MonoBehaviour, IDraggable, IPointerDownHandler, I
 
     public virtual void Open()
     {
+        SoundManager.Instance.PlayButton2SFX();
         gameObject.SetActive(true);
         OpenProcedure();
     }
 
     public virtual void Close()
     {
+        SoundManager.Instance.PlayButton2SFX();
         gameObject.SetActive(false);
         CloseProcedure();
     }
