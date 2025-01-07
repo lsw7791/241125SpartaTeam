@@ -12,7 +12,10 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] RectTransform _aoSpawnPoint; // 발사 위치
 
     [SerializeField]
-    protected LayerMask layerMask; // 적군 레이어마스크
+    protected LayerMask _layerMask; // 적군 레이어마스크
+
+    [SerializeField]
+    protected LayerMask _obstacleLayer; //  장애물 레이어마스크
 
     private void Start()
     {
@@ -83,7 +86,7 @@ public class PlayerWeapon : MonoBehaviour
 
         // 충돌 처리 - 화살이 충돌 시 데미지 적용
         arrow.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile);
-        outProjectile.Initialize(layerMask, GameManager.Instance.Player.Stats.Damage+ GameManager.Instance.Player.Stats.PhysicalDamage);
+        outProjectile.Initialize(_layerMask, _obstacleLayer, GameManager.Instance.Player.Stats.Damage+ GameManager.Instance.Player.Stats.PhysicalDamage);
 
         Debug.Log("Fired Arrow!");
     }
@@ -117,7 +120,7 @@ public class PlayerWeapon : MonoBehaviour
 
         // 충돌 처리 - 파이어볼이 충돌 시 데미지 적용
         fireball.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile);
-        outProjectile.Initialize(layerMask, GameManager.Instance.Player.Stats.Damage+ GameManager.Instance.Player.Stats.MagicalDamage);
+        outProjectile.Initialize(_layerMask, _obstacleLayer, GameManager.Instance.Player.Stats.Damage+ GameManager.Instance.Player.Stats.MagicalDamage);
 
         Debug.Log("Fired Fireball!");
     }

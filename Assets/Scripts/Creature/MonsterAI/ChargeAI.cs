@@ -76,12 +76,14 @@ public class ChargeAI : MonsterAI
 
     private IEnumerator ChargeAttack()
     {
-        Debug.Log("돌진 준비 중...");
+        WaitForSeconds delayTime = new WaitForSeconds(Time.fixedDeltaTime);
+
+        //Debug.Log("돌진 준비 중...");
         isMove = false; // 이동 통제
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(2f); // 준비 시간 대기
 
-        Debug.Log("돌진 시작!");
+        //Debug.Log("돌진 시작!");
         float elapsedTime = 0f;
         Vector3 direction = (chargeTargetPosition - _monsterPosition.position).normalized;
 
@@ -95,10 +97,10 @@ public class ChargeAI : MonsterAI
             _monsterPosition.Translate(direction * GameManager.Instance.DataManager.Creature.GetMoveSpeed(monster.id) * 20f * Time.deltaTime, Space.World);
             spriteRenderer.flipX = direction.x < 0;
             elapsedTime += Time.fixedDeltaTime;
-            yield return new WaitForSeconds(Time.fixedDeltaTime);
+            yield return delayTime;
         }
 
-        Debug.Log("돌진 종료!");
+        //Debug.Log("돌진 종료!");
         rb.velocity = Vector2.zero;
         isMove = true; // 이동 재개
         curTime = 0f;
@@ -114,10 +116,10 @@ public class ChargeAI : MonsterAI
         if (!isMove && _monsterPosition.position.magnitude != 0)
         {
             // targetLayer에 포함되는 레이어인지 확인
-            if (IsLayerMatched(layerMask.value, collision.gameObject.layer))
+            if (IsLayerMatched(_layerMask.value, collision.gameObject.layer))
             {
                 StopCoroutine(ChargeAttack());
-                Debug.Log("돌진 종료!");
+                //Debug.Log("돌진 종료!");
                 rb.velocity = Vector2.zero;
                 isMove = true; // 이동 재개
                 curTime = 0f;

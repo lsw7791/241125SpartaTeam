@@ -19,8 +19,13 @@ public class MonsterAI : MonoBehaviour
     protected Vector3 initialPosition;                   // 몬스터의 초기 위치
     protected SpriteRenderer spriteRenderer;
     protected bool isMove = true;
+
     [SerializeField]
-    protected LayerMask layerMask; // 적군 레이어마스크
+    protected LayerMask _layerMask; // 적군 레이어마스크
+
+    [SerializeField]
+    protected LayerMask _obstacleLayer; //  장애물 레이어마스크
+
     protected Transform _monsterPosition;
 
     [Header("Attack")]

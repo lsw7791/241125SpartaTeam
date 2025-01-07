@@ -11,10 +11,13 @@ public class ProjectileCollisionHandler : MonoBehaviour
 
     [SerializeField]
     private LayerMask _targetLayer; // 감지 대상 레이어마스크
+    [SerializeField]
+    private LayerMask _obstacleLayer; //  장애물 레이어마스크
 
-    public void Initialize(LayerMask inTargetLayer, int inDamage)
+    public void Initialize(LayerMask inTargetLayer, LayerMask inObstacleLayer, int inDamage)
     {
         _targetLayer = inTargetLayer; // 타겟 레이어 설정
+        _obstacleLayer = inObstacleLayer;
         _damage = inDamage;
     }
 
@@ -55,6 +58,10 @@ public class ProjectileCollisionHandler : MonoBehaviour
             // 벽도 레이어를 추가해 발사체 제거
             DeSpenObject();      // 투사체 파괴
             //Destroy(gameObject);
+        }
+        else if(IsLayerMatched(_obstacleLayer.value, collision.gameObject.layer))
+        {
+            DeSpenObject();      // 투사체 파괴
         }
     }
 

@@ -146,9 +146,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
-  layerMask:
+  _layerMask:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 128
+  _obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 1536
   curTime: 0
   projectilePrefab: {fileID: 0}
   attackPoint: {fileID: 0}

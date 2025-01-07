@@ -146,9 +146,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
-  layerMask:
+  _layerMask:
     serializedVersion: 2
     m_Bits: 640
+  _obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
   curTime: 0
   chargeDelay: 1
   chargeDuration: 4
