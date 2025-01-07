@@ -7,6 +7,7 @@ public class CharacterCreation : MonoBehaviour
 
     public void OnCreateCharacterButtonClicked()
     {
+        SoundManager.Instance.PlayButton2SFX();
         DataManager dataManager = GameManager.Instance.DataManager;
 
         string nickname = nicknameInputField.text;
@@ -26,6 +27,7 @@ public class CharacterCreation : MonoBehaviour
 
     public void Exit()
     {
+        SoundManager.Instance.PlayButton2SFX();
         GameManager.Instance.SceneNum = 25;
         GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
