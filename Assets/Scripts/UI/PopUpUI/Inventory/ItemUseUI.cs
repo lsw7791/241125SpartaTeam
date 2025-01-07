@@ -33,7 +33,8 @@ public class ItemUseUI : MonoBehaviour
                 if (inItem.IsEquipped)
                 {
                     GameManager.Instance.Player.inventory.UnEquip(inItem);
-
+                    InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
+                    inventoryUI.ClearEquipmentSlot(itemData.itemType);
                     // ÇØÁ¦
                 }
                 else
@@ -44,6 +45,8 @@ public class ItemUseUI : MonoBehaviour
                     {
                         GameManager.Instance.DataManager.MainQuest.CompleteQuest(4);
                     }
+                    InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
+                    inventoryUI.UpdateEquipmentSlot(itemData.itemType, UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath));
                     // Âø¿ë
                 }
                 GameManager.Instance.Player.inventory.EquipItem(inItem.ItemID);

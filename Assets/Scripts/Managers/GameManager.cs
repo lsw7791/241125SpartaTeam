@@ -83,7 +83,6 @@ public class GameManager : MonoSingleton<GameManager>
             //Player.equipment.SaveEquipInIt();
         }
 
-
         Player.inventory.SaveEquipInIt();
 
         // 씬을 전환하여 게임 시작

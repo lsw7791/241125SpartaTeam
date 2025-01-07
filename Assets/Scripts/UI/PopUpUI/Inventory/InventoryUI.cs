@@ -15,6 +15,37 @@ public class InventoryUI : UIBase
     [SerializeField] TMP_Text _hasGold;
 
     public GameObject itemUseMenu;
+    
+    [Header("Equipment Slots")]
+    [SerializeField] private Image _headSlot;
+    [SerializeField] private Image _armorSlot;
+    [SerializeField] private Image _weaponSlot;
+    [SerializeField] private Image _shoesSlot;
+
+    [SerializeField] public Image _shieldSlot;
+    [SerializeField] private Image _topSlot;
+    [SerializeField] private Image _capeSlot;
+
+    private Dictionary<ItemType, Image> _equipmentSlots;
+
+    protected override void Awake()
+    {
+        _equipmentSlots = new Dictionary<ItemType, Image>
+        {
+            { ItemType.Helmet, _headSlot },
+            { ItemType.Armor, _armorSlot },
+            { ItemType.Weapon, _weaponSlot },
+            { ItemType.Bottom, _shoesSlot },
+            { ItemType.Shield, _shieldSlot },
+            { ItemType.Top, _topSlot },
+            { ItemType.Cape, _capeSlot },
+        };
+    }
+
+    private void Start()
+    {
+        
+    }
 
     private void OnEnable()
     {
@@ -76,4 +107,37 @@ public class InventoryUI : UIBase
         }
     }
 
+    // 장비창에 아이템 아이콘 표시 + EquipManager 연동
+    public void UpdateEquipmentSlot(ItemType inSlot, Sprite itemIcon)
+    {
+        UpdateSlot(inSlot, itemIcon);
+    }
+
+    // 장비 해제 시 슬롯 비우기 + EquipManager 연동
+    public void ClearEquipmentSlot(ItemType inSlot)
+    {
+        UpdateSlot(inSlot, null);
+    }
+
+    private void UpdateSlot(ItemType inSlot, Sprite itemIcon)
+    {
+        if (_equipmentSlots.TryGetValue(inSlot, out Image outSlotImage))
+        {
+            outSlotImage.sprite = itemIcon;
+            outSlotImage.enabled = itemIcon != null;
+        }
+
+        // EquipManager에 해당 슬롯 클리어 요청
+        EquipManager.Instance.UpdateEquipPlace(inSlot, itemIcon);
+    }
+
+    public void EquipmentUIReset()
+    {
+        List<ItemType> keys = new List<ItemType>(_equipmentSlots.Keys);
+
+        for (int i = 0; i < _equipmentSlots.Count; i++)
+        {
+            UpdateSlot(keys[i], null);
+        }
+    }
 }

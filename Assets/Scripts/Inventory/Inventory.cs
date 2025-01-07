@@ -24,6 +24,9 @@ public class Inventory
         GameManager.Instance.Player._playerWeapon.ATKType = 0;
         GameManager.Instance.Player.Stats.WeaponType = 0;
 
+        InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
+        inventoryUI.EquipmentUIReset();
+
         foreach (InventoryItem item in Items)
         {
             if (item.IsEquipped)
@@ -33,7 +36,7 @@ public class Inventory
                 _equipItems[itemData.itemType] = item;
 
                 // UI 장비창 업데이트
-                //_equipmentUI.UpdateEquipmentSlot(itemData.itemType, UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath));
+                inventoryUI.UpdateEquipmentSlot(itemData.itemType, UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath));
 
                 if (itemData.itemType == ItemType.Weapon)
                 {
