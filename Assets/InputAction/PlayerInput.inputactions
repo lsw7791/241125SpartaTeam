@@ -24,15 +24,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Action",
-                    "type": "Button",
-                    "id": "29adbac8-eebd-4383-b67f-75f078b4de41",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Attack",
                     "type": "Button",
                     "id": "3e198973-b993-4211-b055-b1c978770472",
@@ -214,17 +205,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interaction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5241059a-8df5-4d1c-a06f-62dbfa046093",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
