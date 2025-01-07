@@ -64,10 +64,10 @@ public class UpGradeUI : UIBase
             inventoryUI.Setup(GameManager.Instance.Player.inventory);
 
             _resultText.text = "강화에 성공하였습니다!";
-            if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(6) &&
-               !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[6])
+            if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(5) &&
+               !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[5])
             {
-                GameManager.Instance.DataManager.MainQuest.CompleteQuest(6);
+                GameManager.Instance.DataManager.MainQuest.CompleteQuest(5);
             }
         }
         else if (randomValue < upgradeData.success[tierIndex] + upgradeData.fail[tierIndex])
