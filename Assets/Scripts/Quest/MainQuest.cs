@@ -72,13 +72,12 @@ public class MainQuest : MainQuestData
 
     public void CompleteQuest(int questId)
     {
-        Debug.Log($"퀘스트 {questId} 완료!");
         QuestCompletionStatus[questId] = true;
         OnQuestUpdated?.Invoke(CurrentQuestId); // UI 갱신 호출
 
         if (CurrentQuestId > 8)
         {
-            Debug.Log("모든 필수 퀘스트 완료!");
+           //
         }
         else
         {

@@ -413,12 +413,16 @@ PrefabInstance:
       value: 324
       objectReference: {fileID: 0}
     - target: {fileID: 7433898189057183523, guid: 58ddc57fd89b6db4da19efbac85f9677, type: 3}
+      propertyPath: m_text
+      value: 'Milestone: Path of the Blacksmith'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433898189057183523, guid: 58ddc57fd89b6db4da19efbac85f9677, type: 3}
       propertyPath: m_fontSize
-      value: 180
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 7433898189057183523, guid: 58ddc57fd89b6db4da19efbac85f9677, type: 3}
       propertyPath: m_fontSizeBase
-      value: 180
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 7497382579752930484, guid: 58ddc57fd89b6db4da19efbac85f9677, type: 3}
       propertyPath: m_SizeDelta.x
