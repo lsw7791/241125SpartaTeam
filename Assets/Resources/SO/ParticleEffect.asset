@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleSystemPrefab: {fileID: 635979878217997331, guid: 5c26bfc675b98fb47a22264b15d8826a, type: 3}
   speedMultiplier: 10
-  sizeMultiplier: 5
+  sizeMultiplier: 1
   particleSize: 1
