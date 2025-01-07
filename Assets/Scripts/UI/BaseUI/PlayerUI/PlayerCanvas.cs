@@ -31,12 +31,13 @@ public class PlayerCanvas : MonoBehaviour
             playerTransform = transform; // 플레이어 Transform 가져오기
                                          // TextMeshPro에 이름 설정
             playerNameText.text = playerName;
+            playerNameText.transform.position = playerTransform.position + nameOffset;
         }
     }
 
-    private void LateUpdate()
-    {
-        playerNameText.transform.position = playerTransform.position + nameOffset;
-    }
+    //private void LateUpdate()
+    //{
+    //    playerNameText.transform.position = playerTransform.position + nameOffset;
+    //}
 
 }
