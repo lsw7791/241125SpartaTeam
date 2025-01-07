@@ -32,7 +32,7 @@ public class EquipmentUI : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.Instance.Player.equipment.EquipmentUIReference(this);
+        //GameManager.Instance.Player.equipment.EquipmentUIReference(this);
     }
 
     // 장비창에 아이템 아이콘 표시 + EquipManager 연동

@@ -368,6 +368,7 @@ MonoBehaviour:
   - {fileID: 5033828783433442973}
   - {fileID: 4693067817656604556}
   - {fileID: 1884225924184268907}
+  slotSelectButtonText: {fileID: 1419419935746899072}
 --- !u!1 &2960796264279155450
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +877,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7726678203944254152}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2603415209709695626}
+        m_TargetAssemblyTypeName: CharacterSelectUI, Assembly-CSharp
+        m_MethodName: SlotSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6418747814862975887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,7 +1024,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8260284303268134358}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2603415209709695626}
+        m_TargetAssemblyTypeName: CharacterSelectUI, Assembly-CSharp
+        m_MethodName: SlotDelete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7727121015476751605
 MonoBehaviour:
   m_ObjectHideFlags: 0

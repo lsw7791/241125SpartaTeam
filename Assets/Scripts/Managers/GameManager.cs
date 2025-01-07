@@ -9,12 +9,19 @@ public class GameManager : MonoSingleton<GameManager>
     public CraftingManager CraftingManager;
     public SpawnManager SpawnManager;
     public Player Player;
-    public PlayerData _currentPlayer;
     public int SceneNum;
     public GameObject miniCamera;
     //public RewardedAds rewardedAds;
     public IInteractable InteractableObject { get; set; }
     public AttackEffect attackEffect;
+
+    public PlayerData nowPlayer = new PlayerData();
+    // 저장 경로를 통해 가져온 현재 유저 데이터
+    public Inventory nowInventory = new Inventory();
+    // 저장 경로를 통해 가져온 현재 인벤토리 데이터
+    //public Equipment nowEquipment = new Equipment();
+    // 저장 경로를 통해 가져온 현재 장착 데이터
+
     protected override void Awake()
     {
         base.Awake();
@@ -32,8 +39,6 @@ public class GameManager : MonoSingleton<GameManager>
     {
         // 씬 로딩 후 호출되는 이벤트
         SceneManager.sceneLoaded += OnSceneLoaded;
-
-        _currentPlayer = DataManager.nowPlayer;
 
         Instantiate(SceneNum);
         SoundManager.Instance.PlayStartBGMMystical();
@@ -55,7 +60,6 @@ public class GameManager : MonoSingleton<GameManager>
         if (SpawnManager == null) SpawnManager = gameObject.AddComponent<SpawnManager>();
         SpawnManager.SpawnPlayer(mapNum);
 
-        Player.stats = _currentPlayer;
         SpawnManager.Initialize(mapNum);
     }
 
@@ -65,43 +69,24 @@ public class GameManager : MonoSingleton<GameManager>
         SceneManager.LoadScene(sceneName);
     }
 
-    //public PlayerData GetCurrentCharacter()
-    //{
-    //    return _currentPlayer;
-    //}
-
     // 캐릭터 선택 후 게임 시작
-    public void StartGame(PlayerData character)
+    public void StartGame()
     {
-        _currentPlayer = character;
-        Debug.Log($"게임 시작: {_currentPlayer.NickName}");
+        Player.stats = nowPlayer;
+        Player.inventory = nowInventory;
+        //Player.equipment = nowEquipment;
 
-        // 선택된 캐릭터의 데이터를 게임에 로드
-        LoadPlayerData(character);
+        CharacterSelectUI selectUI = UIManager.Instance.GetUI<CharacterSelectUI>();
+        if (selectUI.isNewGame)
+        {
+            Player.stats.Initialize();
+            nowPlayer.CurrentQuestId = DataManager.MainQuest.CurrentQuestId;
+        }
+
+        Player.inventory.SaveEquipInIt();
 
         // 씬을 전환하여 게임 시작
         SceneNum = 2;
         LoadScene(DataManager.Scene.GetMapTo(SceneNum));
-    }
-
-    // 플레이어 데이터 로드
-    public void LoadPlayerData(PlayerData playerData)
-    {
-        Player.nickName = playerData.NickName;
-        Player.Stats.MaxHP = playerData.MaxHP;   // MaxHP
-        Player.Stats.CurrentHP = playerData.CurrentHP;   // CurrentHP
-        Player.Stats.Damage = playerData.Damage;   // Damage
-        Player.Stats.MoveSpeed = playerData.MoveSpeed;   // Speed
-        Player.Stats.Def = playerData.Def;   // Defense
-        Player.Stats.ATKSpeed = playerData.ATKSpeed;   // AttackSpeed
-        Player.Stats.WeaponType = playerData.WeaponType;   // WeaponType
-        Player.stats.Gold = playerData.Gold;
-
-        Debug.Log($"GameManager - {playerData.NickName} - {playerData.ATKSpeed}");
-    }
-
-    public void GameEnd()
-    {
-        Application.Quit();
     }
 }

@@ -11,7 +11,8 @@ public enum QuestAction
     Option,
     Attack,
     Craft,
-    End
+    End,
+    Info
 }
 
 public class MainQuest : MainQuestData
@@ -56,13 +57,14 @@ public class MainQuest : MainQuestData
         switch (CurrentQuestId)
         {
             case 1 when action == QuestAction.Move:
-            case 2 when action == QuestAction.Craft:
-            case 3 when action == QuestAction.Action:
-            case 4 when action == QuestAction.Inventory:
-            case 5 when action == QuestAction.Status:
-            case 6 when action == QuestAction.Option:
-            case 7 when action == QuestAction.Attack:
-            case 8 when action == QuestAction.End:
+            case 2 when action == QuestAction.Info:
+            case 3 when action == QuestAction.Craft:
+            case 4 when action == QuestAction.Action:
+            case 5 when action == QuestAction.Inventory:
+            case 6 when action == QuestAction.Status:
+            case 7 when action == QuestAction.Option:
+            case 8 when action == QuestAction.Attack:
+            case 9 when action == QuestAction.End:
                 CompleteQuest(CurrentQuestId);
                 break;
         }
@@ -75,7 +77,7 @@ public class MainQuest : MainQuestData
         //CurrentQuestId++;
         OnQuestUpdated?.Invoke(CurrentQuestId); // UI 갱신 호출
 
-        if (CurrentQuestId > 8)
+        if (CurrentQuestId > 9)
         {
             Debug.Log("모든 필수 퀘스트 완료!");
         }

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ public class Player : MonoBehaviour, IDamageable
     public PlayerInput PlayerInput;
     public PlayerAnimationController _playerAnimationController;
     public PlayerWeapon _playerWeapon;
-    public Equipment equipment;
+    //public Equipment equipment;
     public GameObject Weapon;
     public ConditionUI ConditionUI;
     public StatusUI StatusUI;
@@ -42,7 +43,12 @@ public class Player : MonoBehaviour, IDamageable
     {
         //stats.Initialize();
         PlayerInput = GetComponent<PlayerInput>();
-        equipment = GetComponent<Equipment>();
+        //equipment = new Equipment();
+        _playerWeapon = Weapon.GetComponent<PlayerWeapon>();
+    }
+
+    private void Start()
+    {
     }
 
     private void FixedUpdate()

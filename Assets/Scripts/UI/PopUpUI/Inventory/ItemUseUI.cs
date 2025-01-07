@@ -32,18 +32,21 @@ public class ItemUseUI : MonoBehaviour
             { // 장비 타입
                 if (inItem.IsEquipped)
                 {
-                    GameManager.Instance.Player.equipment.UnEquip(itemData.itemType);
-
+                    GameManager.Instance.Player.inventory.UnEquip(inItem);
+                    InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
+                    inventoryUI.ClearEquipmentSlot(itemData.itemType);
                     // 해제
                 }
                 else
                 {
-                    GameManager.Instance.Player.equipment.EquipNew(inItem);
+                    GameManager.Instance.Player.inventory.EquipNew(inItem);
                     if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(4) &&
                                    !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[4])
                     {
                         GameManager.Instance.DataManager.MainQuest.CompleteQuest(4);
                     }
+                    InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
+                    inventoryUI.UpdateEquipmentSlot(itemData.itemType, UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath));
                     // 착용
                 }
                 GameManager.Instance.Player.inventory.EquipItem(inItem.ItemID);

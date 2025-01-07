@@ -1,3 +1,4 @@
+using MainData;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,42 @@ public class Inventory
     public List<InventoryItem> Items; // 플레이어의 인벤토리 아이템 목록
     public event Action OnInventoryChanged; // 인벤토리 변경 이벤트
 
+    private Dictionary<ItemType, InventoryItem> _equipItems = new Dictionary<ItemType, InventoryItem>();
+    // 리스트로 생각해보기
+    //public EquipmentUI _equipmentUI;
+    //UI는 따로 빼기
+
     public Inventory()
     {
         Items = new List<InventoryItem>();
+    }
+
+    public void SaveEquipInIt()
+    {
+        GameManager.Instance.Player._playerWeapon.ATKType = 0;
+        GameManager.Instance.Player.Stats.WeaponType = 0;
+
+        InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
+        inventoryUI.EquipmentUIReset();
+
+        foreach (InventoryItem item in Items)
+        {
+            if (item.IsEquipped)
+            {
+                var itemData = GameManager.Instance.DataManager.GetItemDataById(item.ItemID);
+
+                _equipItems[itemData.itemType] = item;
+
+                // UI 장비창 업데이트
+                inventoryUI.UpdateEquipmentSlot(itemData.itemType, UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath));
+
+                if (itemData.itemType == ItemType.Weapon)
+                {
+                    GameManager.Instance.Player._playerWeapon.ATKType = item.ATKType;
+                    GameManager.Instance.Player.Stats.WeaponType = item.ATKType;
+                }
+            }
+        }
     }
 
     // 인벤토리 초기화
@@ -37,7 +71,6 @@ public class Inventory
             {
                 InventoryItem newItem = new InventoryItem(itemID, quantity, itemData.atlasPath, false, itemData.atkType);
                 Items.Add(newItem); // 새 아이템 추가
-                GameManager.Instance._currentPlayer.AddItem(newItem); // PlayerData에도 추가
             }
         }
 
@@ -73,7 +106,6 @@ public class Inventory
             item.Quantity -= quantity;
             if (item.Quantity <= 0)
             {
-                GameManager.Instance._currentPlayer.RemoveItem(item); // PlayerData에서 제거
                 Items.Remove(item); // 인벤토리에서 제거
             }
         }
@@ -89,36 +121,6 @@ public class Inventory
 
         if (item != null && itemData != null)
         {
-            // 장착 시 플레이어 스탯 갱신
-            //PlayerData playerData = GameManager.Instance.Player.stats;
-            //playerData.PlayerStatsEquip(item);
-            //item.IsEquipped = true;  // 아이템 장착 상태 업데이트
-
-            //GameManager.Instance.Player.stats.PlayerStatsUpdate(item, true);
-            //item.IsEquipped = true;
-            //GameManager.Instance.Player.stats.AddItem(item); // PlayerData에도 추가
-            OnInventoryChanged?.Invoke();
-        }
-    }
-
-    // 아이템 해제 메서드
-    public void UnEquipItem(int itemID)
-    {
-        var itemData = GameManager.Instance.DataManager.GetItemDataById(itemID);
-        InventoryItem item = GetItem(itemID);
-
-        if (item != null && itemData != null)
-        {
-            // 해제 시 플레이어 스탯 갱신
-            //PlayerData playerData = GameManager.Instance.Player.stats;
-            //playerData.PlayerStatsUnEquip(item);
-            //item.IsEquipped = false;  // 아이템 해제 상태 업데이트
-
-            // 스탯 감소 처리
-            //GameManager.Instance.Player.stats.PlayerStatsUpdate(item, false);
-            //item.IsEquipped = false;
-            //GameManager.Instance.Player.stats.RemoveItem(item); // PlayerData에서 제거
-
             OnInventoryChanged?.Invoke();
         }
     }
@@ -158,5 +160,57 @@ public class Inventory
         Inventory loadedInventory = JsonUtility.FromJson<Inventory>(json);
         Items = loadedInventory.Items;  // 불러온 아이템 리스트로 교체
         OnInventoryChanged?.Invoke();
+    }
+
+    public void EquipNew(InventoryItem inItem)
+    {
+        var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
+
+        if (itemData.itemType > ItemType.Mine)
+        {
+            return;
+        }
+
+        // 기존 장비 해제
+        UnEquip(inItem);
+
+
+        _equipItems[itemData.itemType] = inItem;
+
+        if (itemData.itemType == ItemType.Weapon)
+        {
+            GameManager.Instance.Player._playerWeapon.ATKType = inItem.ATKType;
+            GameManager.Instance.Player.Stats.WeaponType = inItem.ATKType;
+        }
+
+        inItem.IsEquipped = true;
+        GameManager.Instance.Player.stats.PlayerStatsUpdate(inItem, true);
+        //saveItemList.Add(inItem);
+    }
+
+    public void UnEquip(InventoryItem inItem)
+    {
+        var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
+
+        if (itemData.itemType == ItemType.Weapon)
+        {
+            GameManager.Instance.Player._playerWeapon.ATKType = 0;
+            GameManager.Instance.Player.Stats.WeaponType = 0;
+        }
+
+        if (_equipItems.ContainsKey(itemData.itemType))
+        {
+            // 장비를 찾음
+            InventoryItem unequippedItem = _equipItems[itemData.itemType];
+
+            // 스탯 감소 처리
+            GameManager.Instance.Player.stats.PlayerStatsUpdate(unequippedItem, false);
+
+            //saveItemList.Remove(inItem);
+            // 딕셔너리에서 제거
+            _equipItems.Remove(itemData.itemType);
+
+            inItem.IsEquipped = false;
+        }
     }
 }

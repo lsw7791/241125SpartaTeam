@@ -3124,6 +3124,13 @@ MonoBehaviour:
   _playerName: {fileID: 7063067393598566005}
   _hasGold: {fileID: 4119868856570306244}
   itemUseMenu: {fileID: 7982305234216284985}
+  _headSlot: {fileID: 2154654627405950414}
+  _armorSlot: {fileID: 5705463437144065169}
+  _weaponSlot: {fileID: 2418646347077065968}
+  _shoesSlot: {fileID: 1240800539190370176}
+  _shieldSlot: {fileID: 2454807106427354632}
+  _topSlot: {fileID: 5391227112106315242}
+  _capeSlot: {fileID: 6584251041347526131}
 --- !u!1 &5624774858430571782
 GameObject:
   m_ObjectHideFlags: 0
@@ -5183,7 +5190,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7442772896090921151}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e750a1f3d98066409b1689241b45ffa, type: 3}
   m_Name: 
