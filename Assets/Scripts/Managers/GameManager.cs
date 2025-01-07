@@ -42,7 +42,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         Instantiate(SceneNum);
         SoundManager.Instance.PlayStartBGMMystical();
-
+        
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)

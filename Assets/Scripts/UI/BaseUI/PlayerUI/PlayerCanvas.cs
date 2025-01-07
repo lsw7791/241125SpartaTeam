@@ -24,6 +24,7 @@ public class PlayerCanvas : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("»£√‚µ ");
         CharacterSelectUI selectUI = UIManager.Instance.GetUI<CharacterSelectUI>();
         if (selectUI.isNewGame)
         {
