@@ -12,6 +12,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         get
         {
+            // 인스턴스가 없을 때만 찾거나 생성
             if (instance == null)
             {
                 // 씬에서 이미 존재하는 인스턴스를 찾음
@@ -42,6 +43,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
         }
         else
         {
+            // 초기화 과정에서 인스턴스를 설정
             instance = this as T;
             DontDestroyOnLoad(gameObject); // 씬 전환 시에도 파괴되지 않도록 설정
         }

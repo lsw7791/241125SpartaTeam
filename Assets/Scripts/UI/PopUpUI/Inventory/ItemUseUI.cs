@@ -32,13 +32,13 @@ public class ItemUseUI : MonoBehaviour
             { // 장비 타입
                 if (inItem.IsEquipped)
                 {
-                    GameManager.Instance.Player.equipment.UnEquip(itemData.itemType);
+                    GameManager.Instance.Player.inventory.UnEquip(inItem);
 
                     // 해제
                 }
                 else
                 {
-                    GameManager.Instance.Player.equipment.EquipNew(inItem);
+                    GameManager.Instance.Player.inventory.EquipNew(inItem);
                     if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(4) &&
                                    !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[4])
                     {

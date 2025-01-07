@@ -4,33 +4,30 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    public float speed = 5f;   // 이동 속도
-    private Vector2 moveInput; // 이동 입력값
-    private Rigidbody2D rb;
     private Camera _camera;
-    private bool isDeath = false;
-
+    private PlayerMove playerMove;
+    private PlayerRoll playerRoll;
     [SerializeField] private SpriteRenderer armRenderer;
     [SerializeField] private Transform armPivot;
     public event Action<QuestAction> OnQuestActionTriggered;
-
-
+    bool playerPadding = false;
+    private Padding padding;
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         _camera = Camera.main;
+        playerMove = GetComponent<PlayerMove>();
+        playerRoll = GetComponent<PlayerRoll>();
+        padding = GetComponentInChildren<Padding>();
+        padding.gameObject.SetActive(false);
     }
-    private void Start()
-    {
-        speed = 5;
-    }
+    //상호작용
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (isDeath) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
 
-        moveInput = context.ReadValue<Vector2>();
-        bool isMoving = moveInput.sqrMagnitude > 0; // 벡터 크기로 이동 여부 판단
+        playerMove.moveInput = context.ReadValue<Vector2>();
+        bool isMoving = playerMove.moveInput.sqrMagnitude > 0; // 벡터 크기로 이동 여부 판단
 
         // Dictionary에서 QuestID 1에 해당하는 값 확인
         if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(1) &&
@@ -49,6 +46,8 @@ public class PlayerInput : MonoBehaviour
     // 마우스 위치에 따른 회전 처리
     public void OnLook(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
         if (context.performed)
         {
             if (_camera == null)
@@ -64,11 +63,6 @@ public class PlayerInput : MonoBehaviour
             }
         }
     }
-    private void FixedUpdate()
-    {
-        rb.velocity = moveInput * speed; // 이동 처리
-    }
-    // 상호작용
     public void OnInteraction(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -94,7 +88,10 @@ public class PlayerInput : MonoBehaviour
         //{
         //    return;
         //}
-        
+        //Debug.Log(GameManager.Instance.Player.playerState);
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
+
         GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
     }
 
@@ -115,11 +112,14 @@ public class PlayerInput : MonoBehaviour
         {
             GameManager.Instance.Player._playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화
             PerformPaddingStart(); // 패딩 동작 시작
+            padding.gameObject.SetActive(true);
+            //padding.InsertSprite();
         }
         else if (context.canceled)
         {
             GameManager.Instance.Player._playerAnimationController.SetPaddingAnimation(false); // 애니메이션 비활성화
             PerformPaddingEnd(); // 패딩 동작 종료
+            padding.gameObject.SetActive(false);
         }
     }
 
@@ -127,7 +127,7 @@ public class PlayerInput : MonoBehaviour
     public void OnInventory(InputAction.CallbackContext context)
     {
         if (context.performed)
-        {
+        {        
             ToggleInventory();
         }
     }
@@ -182,7 +182,13 @@ public class PlayerInput : MonoBehaviour
             }
         }
     }
-
+    public void OnInfo(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            ToggleInfo();
+        }
+    }
     // 인벤토리 토글
     private void ToggleInventory()
     {
@@ -205,7 +211,7 @@ public class PlayerInput : MonoBehaviour
         if (UIManager.Instance.IsActiveUI())
         {
             UIManager.Instance.CloseAllUIs(); // 모든 UI를 닫음
-            UIManager.Instance.ToggleUI<MainQuestUI>();
+            //UIManager.Instance.ToggleUI<MainQuestUI>();
         }
         else
         {
@@ -213,7 +219,20 @@ public class PlayerInput : MonoBehaviour
             UIManager.Instance.ToggleUI<OptionUI>();
         }
     }
-
+    private void ToggleInfo()
+    {
+        // 활성화된 UI가 있으면 모든 UI를 닫는다.
+        if (UIManager.Instance.IsActiveUI())
+        {
+            UIManager.Instance.CloseAllUIs(); // 모든 UI를 닫음
+            //UIManager.Instance.ToggleUI<MainQuestUI>();
+        }
+        else
+        {
+            // 활성화된 UI가 없으면 OptionUI를 토글
+            UIManager.Instance.ToggleUI<InfoUI>();
+        }
+    }
 
 
 
@@ -246,20 +265,39 @@ public class PlayerInput : MonoBehaviour
     // 구르기 로직
     private void PerformRoll()
     {
-        // 구르기 로직 추가
+        Debug.Log("PerformRoll");
+
+        // 이미 구르고 있으면 구르기 시작하지 않음
+        if (playerRoll.isRolling) return;
+        if (GameManager.Instance.Player.UseStamina(10) == true)
+        {
+            // 구르기 시작
+            playerRoll.StartRolling();
+        }
+        // 구르기 시작 후, Roll은 Update에서 진행됩니다.
+        // Update에서 계속해서 Roll()을 호출하게 됩니다.
     }
 
     // 패딩(막기) 로직
     private void PerformPaddingStart()
     {
-        // 막기 동작 시작 시 실행할 로직
-        Debug.Log("Padding started!");
+        if(GameManager.Instance.Player.UseStamina(10) ==true)
+        {
+            playerPadding = true;
+            // 막기 동작 시작 시 실행할 로직
+            GameManager.Instance.Player.IncreaseDefense(2);
+            Debug.Log("Padding started!");
+        }
+
     }
 
     private void PerformPaddingEnd()
     {
         // 막기 동작 종료 시 실행할 로직
+        int value = GameManager.Instance.Player.stats.Def;
+        GameManager.Instance.Player.ResetDefense();
         Debug.Log("Padding ended!");
+        playerPadding=false;
     }
     public void RotateArm(Vector2 direction)
     {

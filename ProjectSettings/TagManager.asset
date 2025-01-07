@@ -13,6 +13,8 @@ TagManager:
   - Minimap
   - NPC
   - Coin
+  - Wall
+  - Particle
   layers:
   - Default
   - TransparentFX

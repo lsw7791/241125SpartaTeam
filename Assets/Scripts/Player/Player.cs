@@ -1,8 +1,17 @@
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-public class Player : MonoBehaviour,IDamageable
+public class Player : MonoBehaviour, IDamageable
 {
+    public enum PlayerState
+    { 
+    Idle,
+    Attack,
+    Die,
+    UIOpen,
+    GetDamaged
+    }
     public string nickName;
 
     public PlayerData stats;  // 플레이어의 스탯
@@ -10,11 +19,12 @@ public class Player : MonoBehaviour,IDamageable
     public PlayerInput PlayerInput;
     public PlayerAnimationController _playerAnimationController;
     public PlayerWeapon _playerWeapon;
-    public Equipment equipment;
+    //public Equipment equipment;
     public GameObject Weapon;
     public ConditionUI ConditionUI;
     public StatusUI StatusUI;
     private float staminaRechargeTimer = 0f;
+    public PlayerState playerState = PlayerState.Idle;
     // QuickSlots 프로퍼티
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경
 
@@ -24,7 +34,7 @@ public class Player : MonoBehaviour,IDamageable
     public Player()
     {
         inventory = new Inventory();
-       // stats = GameManager.Instance.DataManager.nowPlayer;
+        //stats = GameManager.Instance.DataManager.nowPlayer;
         QuickSlots = new QuickSlot();  // QuickSlot 객체 초기화
 
     }
@@ -33,7 +43,12 @@ public class Player : MonoBehaviour,IDamageable
     {
         //stats.Initialize();
         PlayerInput = GetComponent<PlayerInput>();
-        equipment = GetComponent<Equipment>();
+        //equipment = new Equipment();
+        _playerWeapon = Weapon.GetComponent<PlayerWeapon>();
+    }
+
+    private void Start()
+    {
     }
 
     private void FixedUpdate()
@@ -61,7 +76,7 @@ public class Player : MonoBehaviour,IDamageable
     // 데미지 처리
     public void TakeDamage(int damage)
     {
-        int value = stats.Def;
+        int value = stats.CurrentDef;
         value -= damage;
         if(value <0)
         {
@@ -77,6 +92,7 @@ public class Player : MonoBehaviour,IDamageable
     // 플레이어 죽음 처리
     public void Die()
     {
+        playerState = PlayerState.Die;
         TriggerDeath();
         //UIManager.Instance.deathUI.SetActive(true);
         Debug.Log($"{nickName} has died.");
@@ -86,18 +102,17 @@ public class Player : MonoBehaviour,IDamageable
     }
     public void TriggerDeath()
     {
-        GameManager.Instance.Player.stats.isDie = true;
-        PlayerInput.speed = 0f;
-        GameManager.Instance.Player._playerAnimationController.TriggerDeathAnimation(); // 죽음 애니메이션 실행
+        stats.isDie = true;
+        _playerAnimationController.TriggerDeathAnimation(); // 죽음 애니메이션 실행
         this.enabled = false;
 
     }
     public void Revive()
     {
+        playerState = PlayerState.Idle;
         stats.isDie = false;
         stats.CurrentHP = 20;
         ConditionUI.UpdateSliders();
-        PlayerInput.speed = stats.MoveSpeed;
         this.enabled = true;
     }
 
@@ -105,14 +120,25 @@ public class Player : MonoBehaviour,IDamageable
     {
         if(stats.CurrentStamina<= value)
         {
-            return true;
+            return false;
         }
         else
         {
             stats.CurrentStamina -= value;
             ConditionUI._stamina.value = stats.CurrentStamina;
-            return false;
+            return true;
         }
+    }
+
+    public void IncreaseDefense(int value)
+    {
+        stats.CurrentDef *= value;
+    }
+
+    // 방어력 복구
+    public void ResetDefense()
+    {
+        stats.CurrentDef = stats.Def; // 방어력을 원래대로 복구
     }
     // 프로퍼티
     public PlayerData Stats => stats;

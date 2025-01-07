@@ -1,14 +1,11 @@
 using MainData;
-using System.Collections.Generic;
 using UGS;
 using UnityEngine;
 using System.IO;
 
 public class DataManager
 {
-    public PlayerData nowPlayer = new PlayerData();
-
-    public string path; // 경로
+    public string savePath; // 경로
     public int nowSlot; // 현재 슬롯번호
 
     public ItemDataManager Item;               // 아이템 데이터 관리
@@ -37,7 +34,7 @@ public class DataManager
         PlayerStat = new StatDataManager();
         UIDataManager= new UIDataManager();
         MainQuest = new MainQuest();
-        path = Application.persistentDataPath + "/save";
+        savePath = Application.persistentDataPath;
     }
 
     // 특정 아이템 데이터 조회
@@ -51,22 +48,50 @@ public class DataManager
         return itemData;
     }
 
-    public void SaveData()
+    public void SaveData<T>(T inData)
     {
-        string data = JsonUtility.ToJson(GameManager.Instance.GetCurrentCharacter());
-        File.WriteAllText(path + nowSlot.ToString(), data);
-        Debug.Log($"저장 경로: {path + nowSlot.ToString()}");
+        string json = JsonUtility.ToJson(inData);
+        File.WriteAllText(savePath + $"/{typeof(T).ToString()}{nowSlot.ToString()}.txt", json);
     }
 
-    public void LoadData()
+    public T GetLoadData<T>()
     {
-        string data = File.ReadAllText(path + nowSlot.ToString());
-        nowPlayer = JsonUtility.FromJson<PlayerData>(data);
-        Debug.Log($"저장 경로: {path + nowSlot.ToString()}");
+        if (IsData<T>())
+        {
+            string outLoadJson = File.ReadAllText(savePath + $"/{typeof(T).ToString()}{nowSlot.ToString()}.txt");
+            return JsonUtility.FromJson<T>(outLoadJson);
+        }
+        else
+        {
+            return default(T);
+        }
     }
+
     public void DataClear()
     {
         nowSlot = -1;
-        nowPlayer = new PlayerData();
+        GameManager.Instance.nowPlayer = new PlayerData();
+        GameManager.Instance.nowInventory = new Inventory();
+        //GameManager.Instance.nowEquipment = new Equipment();
+    }
+
+    public void DeleteData<T>()
+    {
+        if (IsData<T>())
+        {
+            File.Delete(savePath + $"/{typeof(T).ToString()}{nowSlot.ToString()}.txt");
+        }
+    }
+
+    public bool IsData<T>()
+    {
+        if (File.Exists(savePath + $"/{typeof(T).ToString()}{nowSlot.ToString()}.txt"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

@@ -18,6 +18,7 @@ public class PlayerAnimationController : MonoBehaviour
     }
     public void TriggerAttackAnimation()
     {
+        GameManager.Instance.Player.playerState = Player.PlayerState.Attack;
         int atkType = GameManager.Instance.Player._playerWeapon.ATKType; // ATKType을 숫자로 가져옴
 
         if (GameManager.Instance.Player.stats.isDie) return; // 사망 상태라면 실행하지 않음
@@ -37,6 +38,7 @@ public class PlayerAnimationController : MonoBehaviour
                 _animator.SetTrigger("Attack_Melee");
                 break;
         }
+        GameManager.Instance.Player.playerState = Player.PlayerState.Idle;
     }
     public void SetTriggerAnimator(string name)
     {

@@ -17,17 +17,17 @@ public class PlayerData
     public float MoveSpeed;        // 이동 속도
     public float ATKSpeed;         // 현재 공격 속도
     public int Def;                // 현재 방어력
+    public int CurrentDef;         // 현재 방어력
+
     public int WeaponType;         // 현재 무기 타입
     public bool isDie;             // 사망 여부
     public int MineDamage;         // 광물 공격력
-    public List<InventoryItem> Items;  // 플레이어가 소유한 아이템 목록
 
     // PlayerStats 초기화 메서드 (초기값 설정)
     public void Initialize()
     {
         Gold = 0;
         isDie = false;
-        Items = new List<InventoryItem>();
         PlayerStatsReset();
 
     }
@@ -45,6 +45,7 @@ public class PlayerData
         MoveSpeed = PlayerStats.moveSpeed;
         ATKSpeed = PlayerStats.atkSpeed;
         Def = PlayerStats.def;
+        CurrentDef = Def;
         MineDamage = PlayerStats.mineDamage;
         WeaponType = 0;
     }
@@ -52,12 +53,13 @@ public class PlayerData
     {
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
         int enhenceCount = inItem.enhenceCount + 1;
-        PlayerData nowPlayer = GameManager.Instance.DataManager.nowPlayer;
+        PlayerData nowPlayer = GameManager.Instance.nowPlayer;
 
         int equip = isEquip ? 1 : -1;
 
         nowPlayer.MaxHP += itemData.health * enhenceCount * equip;
         nowPlayer.MaxStamina += itemData.stamina * enhenceCount * equip;
+        nowPlayer.CurrentDef += itemData.defense * enhenceCount * equip;
         nowPlayer.Def += itemData.defense * enhenceCount * equip;
         nowPlayer.MineDamage += itemData.attackMine * enhenceCount * equip;
         nowPlayer.PhysicalDamage += itemData.attack * enhenceCount * equip;
@@ -78,19 +80,4 @@ public class PlayerData
             statusUI.Refresh();
         }
     }
-
-    // 아이템 추가 메서드
-    public void AddItem(InventoryItem newItem)
-    {
-        // 인벤토리에 아이템을 추가하고 스탯을 갱신
-        Items.Add(newItem);
-    }
-
-    // 아이템 제거 메서드
-    public void RemoveItem(InventoryItem item)
-    {
-        // 아이템 제거 후 스탯을 갱신
-        Items.Remove(item);
-    }
-
 }
