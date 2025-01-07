@@ -37,48 +37,95 @@ public class UIManager : MonoSingleton<UIManager>
     private T CreateUI<T>() where T : UIBase
     {
         var uiName = typeof(T).Name;
-        T uiPrefab = Resources.Load<T>($"{PathInfo.UIPath}{uiName}");
 
-        if (uiPrefab == null)
+        // MainQuestUI인 경우 리스트에 추가하지 않고, 바로 생성만 하고 비활성화
+        if (uiName == "MainQuestUI")
         {
-            Debug.LogError($"UI Prefab not found: {uiName}");
-            return null;
+            T uiPrefab = Resources.Load<T>($"{PathInfo.UIPath}{uiName}");
+
+            if (uiPrefab == null)
+            {
+                Debug.LogError($"UI Prefab not found: {uiName}");
+                return null;
+            }
+
+            // 개별 캔버스 생성
+            var canvasObject = new GameObject($"{uiName}_Canvas");
+            Canvas uiCanvas = canvasObject.AddComponent<Canvas>();
+            uiCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+
+            // 초기 sortingOrder 설정 (현재 카운터 값 사용)
+            uiCanvas.sortingOrder = _sortingOrderCounter;
+
+            var canvasScaler = canvasObject.AddComponent<CanvasScaler>();
+            canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            canvasScaler.referenceResolution = new Vector2(1920, 1080);
+            canvasScaler.matchWidthOrHeight = 1;
+
+            canvasObject.AddComponent<GraphicRaycaster>();
+
+            // UI 인스턴스를 캔버스에 추가
+            var uiInstance = Instantiate(uiPrefab, uiCanvas.transform);
+            uiInstance.name = uiInstance.name.Replace("(Clone)", "");
+
+            // UI를 처음 생성할 때 비활성화 상태로 설정
+            uiInstance.gameObject.SetActive(false);
+
+            // UIManager의 자식으로 캔버스를 설정
+            canvasObject.transform.SetParent(this.transform);
+
+            // 최신 sortingOrder 값 갱신
+            _sortingOrderCounter++;
+
+            return uiInstance;
         }
+        else
+        {
+            // MainQuestUI가 아닌 경우에는 UiList에 추가하여 관리
+            T uiPrefab = Resources.Load<T>($"{PathInfo.UIPath}{uiName}");
 
-        // 개별 캔버스 생성
-        var canvasObject = new GameObject($"{uiName}_Canvas");
-        Canvas uiCanvas = canvasObject.AddComponent<Canvas>();
-        uiCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            if (uiPrefab == null)
+            {
+                Debug.LogError($"UI Prefab not found: {uiName}");
+                return null;
+            }
 
-        // 초기 sortingOrder 설정 (현재 카운터 값 사용)
-        uiCanvas.sortingOrder = _sortingOrderCounter;
+            // 개별 캔버스 생성
+            var canvasObject = new GameObject($"{uiName}_Canvas");
+            Canvas uiCanvas = canvasObject.AddComponent<Canvas>();
+            uiCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
 
-        var canvasScaler = canvasObject.AddComponent<CanvasScaler>();
-        canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        canvasScaler.referenceResolution = new Vector2(1920, 1080);
-        canvasScaler.matchWidthOrHeight = 1; 
+            // 초기 sortingOrder 설정 (현재 카운터 값 사용)
+            uiCanvas.sortingOrder = _sortingOrderCounter;
 
-        canvasObject.AddComponent<GraphicRaycaster>();
+            var canvasScaler = canvasObject.AddComponent<CanvasScaler>();
+            canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            canvasScaler.referenceResolution = new Vector2(1920, 1080);
+            canvasScaler.matchWidthOrHeight = 1;
 
-        // UI 인스턴스를 캔버스에 추가
-        var uiInstance = Instantiate(uiPrefab, uiCanvas.transform);
-        uiInstance.name = uiInstance.name.Replace("(Clone)", "");
+            canvasObject.AddComponent<GraphicRaycaster>();
 
-        // UI를 처음 생성할 때 비활성화 상태로 설정
-        uiInstance.gameObject.SetActive(false);
+            // UI 인스턴스를 캔버스에 추가
+            var uiInstance = Instantiate(uiPrefab, uiCanvas.transform);
+            uiInstance.name = uiInstance.name.Replace("(Clone)", "");
 
-        // UIManager의 자식으로 캔버스를 설정
-        canvasObject.transform.SetParent(this.transform);
+            // UI를 처음 생성할 때 비활성화 상태로 설정
+            uiInstance.gameObject.SetActive(false);
 
-        // 생성된 UI를 관리하는 리스트에 추가
-        UiList[uiName] = uiInstance;
-        _uiCanvases[uiName] = uiCanvas;
+            // UIManager의 자식으로 캔버스를 설정
+            canvasObject.transform.SetParent(this.transform);
 
-        // 최신 sortingOrder 값 갱신
-        _sortingOrderCounter++;
+            // 생성된 UI를 관리하는 리스트에 추가
+            UiList[uiName] = uiInstance;
+            _uiCanvases[uiName] = uiCanvas;
 
-        return uiInstance;
+            // 최신 sortingOrder 값 갱신
+            _sortingOrderCounter++;
+
+            return uiInstance;
+        }
     }
+
 
     // UI를 여는 메서드
     public T OpenUI<T>() where T : UIBase
