@@ -122,19 +122,6 @@ public class Inventory
         }
     }
 
-    // 아이템 해제 메서드
-    public void UnEquipItem(int itemID)
-    {
-        var itemData = GameManager.Instance.DataManager.GetItemDataById(itemID);
-        InventoryItem item = GetItem(itemID);
-
-        if (item != null && itemData != null)
-        {
-
-            OnInventoryChanged?.Invoke();
-        }
-    }
-
     // 아이템 드롭 메서드
     public void DropItem(int itemID)
     {
@@ -203,6 +190,9 @@ public class Inventory
 
     public void UnEquip(InventoryItem inItem)
     {
+        GameManager.Instance.Player._playerWeapon.ATKType = 0;
+        GameManager.Instance.Player.Stats.WeaponType = 0;
+
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
 
         if (_equipItems.ContainsKey(itemData.itemType))
