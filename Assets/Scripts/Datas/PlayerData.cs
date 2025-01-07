@@ -32,7 +32,7 @@ public class PlayerData
     public void Initialize()
     {
         Gold = 0;
-        CurrentQuestId = 0;
+        CurrentQuestId = 1;
         isDie = false;
         PlayerStatsReset();
     }
