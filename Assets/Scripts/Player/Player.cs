@@ -118,7 +118,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public bool UseStamina(int value)
     {
-        if(stats.CurrentStamina<= value)
+        if (stats.CurrentStamina <= value)
         {
             return false;
         }
