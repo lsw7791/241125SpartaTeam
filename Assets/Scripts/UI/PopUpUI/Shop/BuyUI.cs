@@ -94,5 +94,4 @@ public class BuyUI : UIBase
             _text.text = "골드가 부족합니다.";
         }
     }
-
 }

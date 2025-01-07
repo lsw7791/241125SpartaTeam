@@ -1598,8 +1598,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 914742438351928770}
-        m_TargetAssemblyTypeName: InformUI, Assembly-CSharp
-        m_MethodName: CloseInfoMain
+        m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -7,12 +7,6 @@ public class InfoUI : UIBase
     public GameObject InfoBackground;
     public GameObject InputBackground;
 
-    public void CloseInfoMain()
-    {
-        SoundManager.Instance.PlayButton1SFX();
-
-        gameObject.SetActive(false);
-    }
     public void GameInfoOpen()
     {
         SoundManager.Instance.PlayButton1SFX();

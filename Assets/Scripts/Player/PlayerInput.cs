@@ -22,6 +22,8 @@ public class PlayerInput : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
+
         //if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
 
         playerMove.moveInput = context.ReadValue<Vector2>();

@@ -163,6 +163,14 @@ public class Player : MonoBehaviour, IDamageable
         _playerRB.velocity = Vector2.zero; // Rigidbody 속도 초기화
         GameManager.Instance.Player.ResetDefense(); // 방어력 초기화
     }
+    public void PlayerStateUIOpen()
+    {
+        playerState = PlayerState.UIOpen;
+    }
+    public void PlayerStateIdle()
+    {
+        playerState = PlayerState.Idle;
+    }
     // 프로퍼티
     public PlayerData Stats => stats;
     public Inventory Inventory => inventory;  // 인벤토리 반환
