@@ -45,6 +45,7 @@ public class CraftResultUI : UIBase
             // QuestCompletionStatus[1]이 false일 때만 CompleteQuest(1) 호출
             GameManager.Instance.DataManager.MainQuest.CompleteQuest(3);
         }
+
     }
 
     public void ShowFailure(CraftingData data)

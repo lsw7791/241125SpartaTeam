@@ -24,7 +24,7 @@ public class PlayerInput : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
-        if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
+        //if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
 
         playerMove.moveInput = context.ReadValue<Vector2>();
         bool isMoving = playerMove.moveInput.sqrMagnitude > 0; // 벡터 크기로 이동 여부 판단
@@ -231,7 +231,7 @@ public class PlayerInput : MonoBehaviour
         // 활성화된 UI가 있으면 모든 UI를 닫는다.
         if (UIManager.Instance.IsActiveUI())
         {
-            UIManager.Instance.CloseAllUIs(); // 모든 UI를 닫음
+            //UIManager.Instance.CloseAllUIs(); // 모든 UI를 닫음
             //UIManager.Instance.ToggleUI<MainQuestUI>();
         }
         else
