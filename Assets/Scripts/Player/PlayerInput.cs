@@ -231,7 +231,7 @@ public class PlayerInput : MonoBehaviour
         // 활성화된 UI가 있으면 모든 UI를 닫는다.
         if (UIManager.Instance.IsActiveUI())
         {
-            UIManager.Instance.CloseAllUIs(); // 모든 UI를 닫음
+            //UIManager.Instance.CloseAllUIs(); // 모든 UI를 닫음
             //UIManager.Instance.ToggleUI<MainQuestUI>();
         }
         else
