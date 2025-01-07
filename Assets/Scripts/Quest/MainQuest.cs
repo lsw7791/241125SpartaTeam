@@ -12,12 +12,13 @@ public enum QuestAction
     Attack,
     Craft,
     End,
-    Info
+    Info,
+    MileStone
 }
 
 public class MainQuest : MainQuestData
 {
-    public int CurrentQuestId = 1;
+    public int CurrentQuestId;
     public Dictionary<int, bool> QuestCompletionStatus { get; private set; } = new Dictionary<int, bool>();
     public delegate void QuestUpdated(int questId);
     public event QuestUpdated OnQuestUpdated;
@@ -25,7 +26,7 @@ public class MainQuest : MainQuestData
     public MainQuest()
     {
         // 초기 퀘스트 완료 상태 설정
-        for (int i = 1; i <= 8; i++)
+        for (int i = 1; i <= 9; i++)
         {
             QuestCompletionStatus[i] = false;
         }
@@ -52,20 +53,19 @@ public class MainQuest : MainQuestData
 
     private void HandleQuestAction(QuestAction action)
     {
-        if (CurrentQuestId > 7) return;
+        if (CurrentQuestId > 8) return;
 
         switch (CurrentQuestId)
         {
-            case 1 when action == QuestAction.Move:
-            case 2 when action == QuestAction.Info:
-            case 3 when action == QuestAction.Craft:
-            case 4 when action == QuestAction.Action:
-            case 5 when action == QuestAction.Inventory:
-            case 6 when action == QuestAction.Status:
-            case 7 when action == QuestAction.Option:
-            case 8 when action == QuestAction.Attack:
-            case 9 when action == QuestAction.End:
-                CompleteQuest(CurrentQuestId);
+            case 0 when action == QuestAction.Move:
+            case 1 when action == QuestAction.Info:
+            case 2 when action == QuestAction.Craft:
+            case 3 when action == QuestAction.Action:
+            case 4 when action == QuestAction.Inventory:
+            case 5 when action == QuestAction.Status:
+            case 6 when action == QuestAction.Option:
+            case 7 when action == QuestAction.Attack:
+            case 8 when action == QuestAction.MileStone:
                 break;
         }
     }
@@ -74,10 +74,9 @@ public class MainQuest : MainQuestData
     {
         Debug.Log($"퀘스트 {questId} 완료!");
         QuestCompletionStatus[questId] = true;
-        //CurrentQuestId++;
         OnQuestUpdated?.Invoke(CurrentQuestId); // UI 갱신 호출
 
-        if (CurrentQuestId > 9)
+        if (CurrentQuestId > 8)
         {
             Debug.Log("모든 필수 퀘스트 완료!");
         }
@@ -89,7 +88,6 @@ public class MainQuest : MainQuestData
 
     public void StartQuest(int questId)
     {
-        Debug.Log($"퀘스트 {questId} 시작!");
         OnQuestUpdated?.Invoke(questId); // UI 갱신 호출
     }
 }

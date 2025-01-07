@@ -81,10 +81,10 @@ public class BuyUI : UIBase
             ToggleBuyButton(false); // 버튼 비활성화
             ToggleInputFieldParent(false); // 수량 입력 필드 부모 비활성화
             _text.text = "구매가 완료되었습니다.";
-            if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(7) &&
-               !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[7])
+            if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(6) &&
+               !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[6])
             {
-                GameManager.Instance.DataManager.MainQuest.CompleteQuest(7);
+                GameManager.Instance.DataManager.MainQuest.CompleteQuest(6);
             }
         }
         else

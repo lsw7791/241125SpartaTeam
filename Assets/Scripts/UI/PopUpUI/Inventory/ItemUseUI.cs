@@ -40,10 +40,10 @@ public class ItemUseUI : MonoBehaviour
                 else
                 {
                     GameManager.Instance.Player.inventory.EquipNew(inItem);
-                    if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(4) &&
-                                   !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[4])
+                    if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(3) &&
+                                   !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[3])
                     {
-                        GameManager.Instance.DataManager.MainQuest.CompleteQuest(4);
+                        GameManager.Instance.DataManager.MainQuest.CompleteQuest(3);
                     }
                     InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
                     inventoryUI.UpdateEquipmentSlot(itemData.itemType, UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath));

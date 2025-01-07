@@ -54,11 +54,11 @@ public class TestItem : MonoBehaviour
                     1,
                     itemData.atlasPath
                 );
-                if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(8) &&
-           !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[8])
+                if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(7) &&
+           !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[7])
                 {
                     // QuestCompletionStatus[1]이 false일 때만 CompleteQuest(1) 호출
-                    GameManager.Instance.DataManager.MainQuest.CompleteQuest(8);
+                    GameManager.Instance.DataManager.MainQuest.CompleteQuest(7);
                 }
             }
 

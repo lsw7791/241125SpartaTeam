@@ -30,11 +30,11 @@ public class PlayerInput : MonoBehaviour
         bool isMoving = playerMove.moveInput.sqrMagnitude > 0; // 벡터 크기로 이동 여부 판단
 
         // Dictionary에서 QuestID 1에 해당하는 값 확인
-        if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(1) &&
-            !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[1])
+        if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(0) &&
+            !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[0])
         {
             // QuestCompletionStatus[1]이 false일 때만 CompleteQuest(1) 호출
-            GameManager.Instance.DataManager.MainQuest.CompleteQuest(1);
+            GameManager.Instance.DataManager.MainQuest.CompleteQuest(0);
         }
 
         GameManager.Instance.Player._playerAnimationController.SetMoveAnimation(isMoving);
@@ -175,10 +175,10 @@ public class PlayerInput : MonoBehaviour
         {
             UIManager.Instance.ToggleUI<StatusUI>();
 
-            if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(5) &&
-               !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[5])
+            if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(4) &&
+               !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[4])
             {
-                GameManager.Instance.DataManager.MainQuest.CompleteQuest(5);
+                GameManager.Instance.DataManager.MainQuest.CompleteQuest(4);
             }
         }
     }
@@ -188,11 +188,11 @@ public class PlayerInput : MonoBehaviour
         {
             ToggleInfo();
 
-            if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(2) &&
-                !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[2])
+            if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(1) &&
+                !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[1])
             {
                 // QuestCompletionStatus[1]이 false일 때만 CompleteQuest(1) 호출
-                GameManager.Instance.DataManager.MainQuest.CompleteQuest(2);
+                GameManager.Instance.DataManager.MainQuest.CompleteQuest(1);
             }
         }
     }
