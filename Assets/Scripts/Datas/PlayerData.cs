@@ -26,7 +26,7 @@ public class PlayerData
     public int CurrentQuestId;     // 현재 퀘스트 진행도
 
     // 현재 있던 스테이지
-    public int nowMapNumber;
+    public int nowMapNumber = 2;
 
     // PlayerStats 초기화 메서드 (초기값 설정)
     public void Initialize()
@@ -35,7 +35,6 @@ public class PlayerData
         CurrentQuestId = 0;
         isDie = false;
         PlayerStatsReset();
-
     }
     public void PlayerStatsReset()
     {
