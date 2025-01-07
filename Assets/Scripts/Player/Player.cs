@@ -27,6 +27,7 @@ public class Player : MonoBehaviour, IDamageable
     public delegate void PlayerDataSavedHandler();
     //public event PlayerDataSavedHandler OnPlayerDataSaved;
     public Rigidbody2D _playerRB;
+
     public Player()
     {
         inventory = new Inventory();

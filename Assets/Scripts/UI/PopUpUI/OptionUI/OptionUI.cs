@@ -75,6 +75,9 @@ public class OptionUI : UIBase
         DataManager dataManager = GameManager.Instance.DataManager;
 
         UIManager.Instance.CloseUI<OptionUI>();
+
+        GameManager.Instance.Player.stats.nowMapNumber = GameManager.Instance.SceneNum;
+
         dataManager.SaveData(GameManager.Instance.Player.stats);
         dataManager.SaveData(GameManager.Instance.Player.inventory);
         //dataManager.SaveData(GameManager.Instance.Player.equipment);
