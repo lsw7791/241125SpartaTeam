@@ -49,6 +49,7 @@ public class CharacterSelectUI : UIBase
 
     public void SlotSelect()
     {
+        SoundManager.Instance.PlayButton2SFX();
         DataManager dataManager = GameManager.Instance.DataManager;
 
         if (_savefile[dataManager.nowSlot])
@@ -72,6 +73,7 @@ public class CharacterSelectUI : UIBase
 
     public void SlotDelete()
     {
+        SoundManager.Instance.PlayButton2SFX();
         DataManager dataManager = GameManager.Instance.DataManager;
 
         if (_savefile[dataManager.nowSlot])

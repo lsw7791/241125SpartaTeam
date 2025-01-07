@@ -37,6 +37,7 @@ public class BuyUI : UIBase
 
     private void ToggleBuyButton(bool isActive)
     {
+        SoundManager.Instance.PlayButton1SFX();
         _buyBtnObj.SetActive(isActive);
         _buyBtn.interactable = isActive;
     }

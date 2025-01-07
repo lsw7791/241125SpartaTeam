@@ -26,8 +26,10 @@ public class SoundManager : MonoSingleton<SoundManager>
     [SerializeField] private AudioClip DefenseSFX;
     [SerializeField] private AudioClip RollSFX;
     [SerializeField] private AudioClip BookSFX;
-    [SerializeField] private AudioClip ButtonSFX;
-
+    [SerializeField] private AudioClip Button1SFX;
+    [SerializeField] private AudioClip Button2SFX;
+    [SerializeField] private AudioClip SuccessSFX; 
+    [SerializeField] private AudioClip FailSFX;
 
 
     protected override void Awake()
@@ -76,7 +78,10 @@ public class SoundManager : MonoSingleton<SoundManager>
         DefenseSFX = Resources.Load<AudioClip>("Sounds/SFX/DefenseSFX");
         RollSFX = Resources.Load<AudioClip>("Sounds/SFX/RollSFX");
         BookSFX = Resources.Load<AudioClip>("Sounds/SFX/BookSFX");
-        ButtonSFX = Resources.Load<AudioClip>("Sounds/SFX/ButtonSFX");
+        Button1SFX = Resources.Load<AudioClip>("Sounds/SFX/Button1SFX");
+        Button2SFX = Resources.Load<AudioClip>("Sounds/SFX/Button2SFX");
+        SuccessSFX = Resources.Load<AudioClip>("Sounds/SFX/SuccessSFX");
+        FailSFX = Resources.Load<AudioClip>("Sounds/SFX/FailSFX");
     }
 
     // 미리 설정된 BGM을 재생하는 메서드
@@ -95,8 +100,11 @@ public class SoundManager : MonoSingleton<SoundManager>
     public void PlayDefenseSFX() => PlaySFX(DefenseSFX);
     public void PlayRollSFX() => PlaySFX(RollSFX);
     public void PlayBookSFX() => PlaySFX(BookSFX);
-    public void PlayButtonSFX() => PlaySFX(ButtonSFX);
+    public void PlayButton1SFX() => PlaySFX(Button1SFX);//NormalButton
+    public void PlayButton2SFX() => PlaySFX(Button2SFX);//SystemButton
 
+    public void PlaySuccessSFX() => PlaySFX(SuccessSFX);
+    public void PlayFailSFX() => PlaySFX(FailSFX);
 
 
 

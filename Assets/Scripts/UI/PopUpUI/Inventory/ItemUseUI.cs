@@ -30,6 +30,8 @@ public class ItemUseUI : MonoBehaviour
         {
             UseButton("착용하기").onClick.AddListener(() =>
             { // 장비 타입
+                SoundManager.Instance.PlayButton1SFX();
+
                 if (inItem.IsEquipped)
                 {
                     GameManager.Instance.Player.inventory.UnEquip(inItem);
@@ -76,6 +78,7 @@ public class ItemUseUI : MonoBehaviour
         {
             UseButton("사용하기").onClick.AddListener(() =>
             {
+                SoundManager.Instance.PlayButton1SFX();
                 GameManager.Instance.Player.inventory. RemoveItem(inItem.ItemID, 1);
                 // 포션 효과 적용
                 GameManager.Instance.DataManager.Item.UsePotion(inItem.ItemID);

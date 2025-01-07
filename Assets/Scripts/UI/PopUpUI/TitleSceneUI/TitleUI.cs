@@ -17,26 +17,26 @@ public class TitleUI : MonoBehaviour
     }
     public void StartGame()
     {
-        SoundManager.Instance.PlayButtonSFX();
+        SoundManager.Instance.PlayButton2SFX();
         Debug.Log("게임 시작");
         GameManager.Instance.SceneNum = 24;
         GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
     public void LoadGame(bool inIsNewGame)
     {
-        SoundManager.Instance.PlayButtonSFX();
+        SoundManager.Instance.PlayButton2SFX();
         Debug.Log("게임 불러오기");
         CharacterSelectUI selectUI = UIManager.Instance.ToggleUI<CharacterSelectUI>();
         selectUI.GameStart();
     }
     public void OptionUIOn()
     {
-        SoundManager.Instance.PlayButtonSFX();
+        SoundManager.Instance.PlayButton2SFX();
         UIManager.Instance.ToggleUI<OptionUI>();
     }
     public void ExitGame()
     {
-        SoundManager.Instance.PlayButtonSFX();
+        SoundManager.Instance.PlayButton2SFX();
         // 게임이 빌드된 환경에서만 작동하도록 처리
 #if UNITY_EDITOR
         // 에디터에서 실행 중일 때는 플레이 모드를 중지합니다.
