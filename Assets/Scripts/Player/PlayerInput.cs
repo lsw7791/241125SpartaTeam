@@ -71,14 +71,14 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    // 채집
-    public void OnAction(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            PerformAction();
-        }
-    }
+    //// 채집
+    //public void OnAction(InputAction.CallbackContext context)
+    //{
+    //    if (context.performed)
+    //    {
+    //        PerformAction();
+    //    }
+    //}
 
     // 공격
     public void OnAttack(InputAction.CallbackContext context)
@@ -251,11 +251,11 @@ public class PlayerInput : MonoBehaviour
 
 
 
-    // 채집 로직
-    private void PerformAction()
-    {
-        // 채집 로직 추가
-    }
+    //// 채집 로직
+    //private void PerformAction()
+    //{
+    //    // 채집 로직 추가
+    //}
 
     // 공격 로직
     private void PerformAttack()

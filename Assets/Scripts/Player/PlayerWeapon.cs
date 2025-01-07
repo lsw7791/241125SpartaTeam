@@ -88,7 +88,7 @@ public class PlayerWeapon : MonoBehaviour
         arrow.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile);
         outProjectile.Initialize(_layerMask, _obstacleLayer, GameManager.Instance.Player.Stats.Damage+ GameManager.Instance.Player.Stats.PhysicalDamage);
 
-        Debug.Log("Fired Arrow!");
+        //Debug.Log("Fired Arrow!");
     }
 
 
@@ -122,7 +122,7 @@ public class PlayerWeapon : MonoBehaviour
         fireball.TryGetComponent<ProjectileCollisionHandler>(out var outProjectile);
         outProjectile.Initialize(_layerMask, _obstacleLayer, GameManager.Instance.Player.Stats.Damage+ GameManager.Instance.Player.Stats.MagicalDamage);
 
-        Debug.Log("Fired Fireball!");
+        //Debug.Log("Fired Fireball!");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

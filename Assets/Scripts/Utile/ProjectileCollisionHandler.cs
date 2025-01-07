@@ -55,9 +55,7 @@ public class ProjectileCollisionHandler : MonoBehaviour
             {
                 outEnemy.TakeDamage(_damage); // 데미지 처리
             }
-            // 벽도 레이어를 추가해 발사체 제거
             DeSpenObject();      // 투사체 파괴
-            //Destroy(gameObject);
         }
         else if(IsLayerMatched(_obstacleLayer.value, collision.gameObject.layer))
         {
