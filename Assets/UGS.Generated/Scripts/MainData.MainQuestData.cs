@@ -59,6 +59,7 @@ namespace MainData
 		public System.Int32 id;
 		public System.String name;
 		public System.String desc;
+		public System.Int32 reward;
   
 
 #region fuctions
