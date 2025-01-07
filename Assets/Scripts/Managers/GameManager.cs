@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using System;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -96,5 +95,7 @@ public class GameManager : MonoSingleton<GameManager>
         // 씬을 전환하여 게임 시작
         SceneNum = nowPlayer.nowMapNumber;
         LoadScene(DataManager.Scene.GetMapTo(SceneNum));
+
+        Player.playerNameText.text = Player.stats.NickName;
     }
 }
