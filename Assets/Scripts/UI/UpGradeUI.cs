@@ -92,6 +92,7 @@ public class UpGradeUI : UIBase
         UpdateUI(inItem);
         GameManager.Instance.DataManager.SaveData(GameManager.Instance.Player.inventory);
         GameManager.Instance.DataManager.SaveData(GameManager.Instance.Player.stats);
+        GameManager.Instance.Player.stats.nowMapNumber = GameManager.Instance.SceneNum;
     }
 
     public void Initialize(InventoryItem inItem)

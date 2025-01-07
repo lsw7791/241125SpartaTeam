@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IDamageable
@@ -23,6 +24,9 @@ public class Player : MonoBehaviour, IDamageable
     public PlayerState playerState = PlayerState.Idle;
     public PlayerRoll playerRoll;
     // QuickSlots 프로퍼티
+
+    private bool isDamage = false;
+
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경
     public delegate void PlayerDataSavedHandler();
     //public event PlayerDataSavedHandler OnPlayerDataSaved;
@@ -73,10 +77,22 @@ public class Player : MonoBehaviour, IDamageable
     // 데미지 처리
     public void TakeDamage(int damage)
     {
+        if (!isDamage)
+        {
+            StartCoroutine(DamageDelay(damage));
+        }
+    }
+
+    IEnumerator DamageDelay(int inDamage)
+    {
+        isDamage = true;
+
+        WaitForSeconds delayTime = new WaitForSeconds(1f);
+
         SoundManager.Instance.PlayPunchSFX();
         int value = stats.CurrentDef;
-        value -= damage;
-        if(value <0)
+        value -= inDamage;
+        if (value < 0)
         {
             stats.CurrentHP += value;
             ConditionUI.UpdateSliders();
@@ -84,7 +100,11 @@ public class Player : MonoBehaviour, IDamageable
             {
                 Die();
             }
-        }  
+        }
+
+        yield return delayTime;
+
+        isDamage = false;
     }
 
     // 플레이어 죽음 처리

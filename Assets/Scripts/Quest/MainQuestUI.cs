@@ -77,5 +77,6 @@ public class MainQuestUI : UIBase
         UpdateUI(GameManager.Instance.DataManager.MainQuest.CurrentQuestId);
         GameManager.Instance.DataManager.SaveData(GameManager.Instance.Player.inventory);
         GameManager.Instance.DataManager.SaveData(GameManager.Instance.Player.stats);
+        GameManager.Instance.Player.stats.nowMapNumber = GameManager.Instance.SceneNum;
     }
 }

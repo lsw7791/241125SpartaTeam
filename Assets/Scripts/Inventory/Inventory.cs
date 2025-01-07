@@ -77,6 +77,7 @@ public class Inventory
         OnInventoryChanged?.Invoke();
         GameManager.Instance.DataManager.SaveData(this);
         GameManager.Instance.DataManager.SaveData(GameManager.Instance.Player.stats);
+        GameManager.Instance.Player.stats.nowMapNumber = GameManager.Instance.SceneNum;
     }
 
 
