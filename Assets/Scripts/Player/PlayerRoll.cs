@@ -12,7 +12,7 @@ public class PlayerRoll : MonoBehaviour
     private Vector2 rollDirection; // 구르는 방향
     private Vector2 startPosition; // 구르기 시작 위치
     private float rollStartTime; // 구르기 시작 시간
-    private float traveledDistance = 0f; // 이동한 거리
+    public float traveledDistance = 0f; // 이동한 거리
 
     private void Awake()
     {

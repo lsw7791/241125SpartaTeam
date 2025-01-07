@@ -6,7 +6,6 @@ public class PlayerInput : MonoBehaviour
 {
     private Camera _camera;
     private PlayerMove playerMove;
-    private PlayerRoll playerRoll;
     [SerializeField] private SpriteRenderer armRenderer;
     [SerializeField] private Transform armPivot;
     public event Action<QuestAction> OnQuestActionTriggered;
@@ -16,7 +15,6 @@ public class PlayerInput : MonoBehaviour
     {
         _camera = Camera.main;
         playerMove = GetComponent<PlayerMove>();
-        playerRoll = GetComponent<PlayerRoll>();
         padding = GetComponentInChildren<Padding>();
         padding.gameObject.SetActive(false);
     }
@@ -103,6 +101,7 @@ public class PlayerInput : MonoBehaviour
         {
             if (GameManager.Instance.Player.UseStamina(20) == true)
             {
+                SoundManager.Instance.PlayRollSFX();
                 PerformRoll();
             }
         }
@@ -118,7 +117,8 @@ public class PlayerInput : MonoBehaviour
                 GameManager.Instance.Player._playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화
             PerformPaddingStart(); // 패딩 동작 시작
             padding.gameObject.SetActive(true);
-            //padding.InsertSprite();
+                SoundManager.Instance.PlayDefenseSFX();
+                //padding.InsertSprite();
             }
         }
         else if (context.canceled)
@@ -134,6 +134,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
+            SoundManager.Instance.PlayBookSFX();
             UIManager.Instance.ToggleUI<MainQuestUI>();
         }
     } 
@@ -141,6 +142,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {        
+        SoundManager.Instance.PlayBookSFX();
             ToggleInventory();
         }
     }
@@ -150,6 +152,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
+        SoundManager.Instance.PlayBookSFX();
             ToggleMap();
         }
     }
@@ -158,6 +161,8 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
+            SoundManager.Instance.PlayBookSFX();
+
             // UI 토글
             UIManager.Instance.ToggleUI<CraftUI>();
            
@@ -170,6 +175,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
+        SoundManager.Instance.PlayBookSFX();
             ToggleOption();
         }
     }
@@ -179,6 +185,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
+        SoundManager.Instance.PlayBookSFX();
             UIManager.Instance.ToggleUI<StatusUI>();
 
             if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(4) &&
@@ -192,6 +199,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
+            SoundManager.Instance.PlayBookSFX();
             ToggleInfo();
 
             if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(1) &&
@@ -271,9 +279,9 @@ public class PlayerInput : MonoBehaviour
         Debug.Log("PerformRoll");
 
         // 이미 구르고 있으면 구르기 시작하지 않음
-        if (playerRoll.isRolling) return;
+        if (GameManager.Instance.Player.playerRoll.isRolling) return;
             // 구르기 시작
-            playerRoll.StartRolling();
+            GameManager.Instance.Player.playerRoll.StartRolling();
         // 구르기 시작 후, Roll은 Update에서 진행됩니다.
         // Update에서 계속해서 Roll()을 호출하게 됩니다.
     }

@@ -28,13 +28,16 @@ public class PlayerAnimationController : MonoBehaviour
         {
             case 2: // 화살 공격
                 _animator.SetTrigger("Attack_Bow");
+                SoundManager.Instance.PlayArrowSFX();
                 GameManager.Instance.Player._playerWeapon.FireArrow(); // 화살 발사
                 break;
             case 3: // 스태프 공격
                 _animator.SetTrigger("Attack_Staff");
+                SoundManager.Instance.PlayFireBallSFX();
                 GameManager.Instance.Player._playerWeapon.FireFireball(); // 파이어볼 발사
                 break;
             default: // 기본 근접 공격
+                SoundManager.Instance.PlaySwordSFX();
                 _animator.SetTrigger("Attack_Melee");
                 break;
         }

@@ -22,6 +22,13 @@ public class SoundManager : MonoSingleton<SoundManager>
     [SerializeField] private AudioClip PunchSFX;
     [SerializeField] private AudioClip SwordSFX;
     [SerializeField] private AudioClip WinningSFX;
+    [SerializeField] private AudioClip ArrowSFX;
+    [SerializeField] private AudioClip DefenseSFX;
+    [SerializeField] private AudioClip RollSFX;
+    [SerializeField] private AudioClip BookSFX;
+    [SerializeField] private AudioClip ButtonSFX;
+
+
 
     protected override void Awake()
     {
@@ -65,9 +72,34 @@ public class SoundManager : MonoSingleton<SoundManager>
         PunchSFX = Resources.Load<AudioClip>("Sounds/SFX/PunchSFX");
         SwordSFX = Resources.Load<AudioClip>("Sounds/SFX/SwordSFX");
         WinningSFX = Resources.Load<AudioClip>("Sounds/SFX/WinningSFX");
-
-
+        ArrowSFX = Resources.Load<AudioClip>("Sounds/SFX/ArrowSFX");
+        DefenseSFX = Resources.Load<AudioClip>("Sounds/SFX/DefenseSFX");
+        RollSFX = Resources.Load<AudioClip>("Sounds/SFX/RollSFX");
+        BookSFX = Resources.Load<AudioClip>("Sounds/SFX/BookSFX");
+        ButtonSFX = Resources.Load<AudioClip>("Sounds/SFX/ButtonSFX");
     }
+
+    // 미리 설정된 BGM을 재생하는 메서드
+    public void PlayStartBGMAsiaTravel() => PlayBGM(AsiaTravelBGM);
+    public void PlayStartBGMSciFiMoodtimeflow() => PlayBGM(MoodtimeflowBGM);
+    public void PlayStartBGMMystical() => PlayBGM(MysticalBGM);
+
+    // 미리 설정된 SFX를 재생하는 메서드 SoundManager.Instance.PlayClearSFX();
+    public void PlayClearSFX() => PlaySFX(ClearSFX);
+    public void PlayFireBallSFX() => PlaySFX(FireBallSFX);
+    public void PlayItemPickUpSFX() => PlaySFX(ItemPickUpSFX);
+    public void PlayPunchSFX() => PlaySFX(PunchSFX);
+    public void PlaySwordSFX() => PlaySFX(SwordSFX);
+    public void PlayWinningSFX() => PlaySFX(WinningSFX);
+    public void PlayArrowSFX() => PlaySFX(ArrowSFX);
+    public void PlayDefenseSFX() => PlaySFX(DefenseSFX);
+    public void PlayRollSFX() => PlaySFX(RollSFX);
+    public void PlayBookSFX() => PlaySFX(BookSFX);
+    public void PlayButtonSFX() => PlaySFX(ButtonSFX);
+
+
+
+
 
     public void PlayBGM(AudioClip clip)
     {
@@ -93,18 +125,8 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         _sfxSource.mute = !_sfxSource.mute;
     }
-    // 미리 설정된 BGM을 재생하는 메서드//BGM
-    public void PlayStartBGMAsiaTravel() => PlayBGM(AsiaTravelBGM);
-    public void PlayStartBGMSciFiMoodtimeflow() => PlayBGM(MoodtimeflowBGM);
-    public void PlayStartBGMMystical() => PlayBGM(MysticalBGM);
 
 
-
-    // 미리 설정된 충돌 SFX를 재생하는 메서드
-    public void PlayCollsionSFX() => PlaySFX(PunchSFX);
-
-    // 미리 설정된 클릭 SFX를 재생하는 메서드
-    public void PlayClickSFX() => PlaySFX(ClearSFX);
 
 
 

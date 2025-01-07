@@ -40,6 +40,7 @@ public class TestItem : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !isPlayerDrop)
         {
+            SoundManager.Instance.PlayItemPickUpSFX();
             if (itemData.itemType == ItemType.Gold) // 골드 아이템인지 확인
             {
                 int randomGold = Random.Range(minGold, maxGold + 1); // 골드 범위에서 랜덤 값

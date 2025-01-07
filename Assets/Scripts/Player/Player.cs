@@ -25,12 +25,12 @@ public class Player : MonoBehaviour, IDamageable
     public StatusUI StatusUI;
     private float staminaRechargeTimer = 0f;
     public PlayerState playerState = PlayerState.Idle;
+    public PlayerRoll playerRoll;
     // QuickSlots 프로퍼티
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경
-
     public delegate void PlayerDataSavedHandler();
     //public event PlayerDataSavedHandler OnPlayerDataSaved;
-
+    public Rigidbody2D _playerRB;
     public Player()
     {
         inventory = new Inventory();
@@ -45,6 +45,8 @@ public class Player : MonoBehaviour, IDamageable
         PlayerInput = GetComponent<PlayerInput>();
         //equipment = new Equipment();
         _playerWeapon = Weapon.GetComponent<PlayerWeapon>();
+        _playerRB = GetComponent<Rigidbody2D>();
+        playerRoll = GetComponent<PlayerRoll>();
     }
 
     private void Start()
@@ -76,6 +78,7 @@ public class Player : MonoBehaviour, IDamageable
     // 데미지 처리
     public void TakeDamage(int damage)
     {
+        SoundManager.Instance.PlayPunchSFX();
         int value = stats.CurrentDef;
         value -= damage;
         if(value <0)
@@ -139,6 +142,13 @@ public class Player : MonoBehaviour, IDamageable
     public void ResetDefense()
     {
         stats.CurrentDef = stats.Def; // 방어력을 원래대로 복구
+    }
+    public void StopRolling()
+    {
+        playerRoll.isRolling = false;
+        playerRoll.traveledDistance = 0f; // 이동 거리 초기화
+        _playerRB.velocity = Vector2.zero; // Rigidbody 속도 초기화
+        GameManager.Instance.Player.ResetDefense(); // 방어력 초기화
     }
     // 프로퍼티
     public PlayerData Stats => stats;

@@ -72,6 +72,8 @@ public class MainQuest : MainQuestData
 
     public void CompleteQuest(int questId)
     {
+        SoundManager.Instance.PlayClearSFX();
+        Debug.Log($"퀘스트 {questId} 완료!");
         QuestCompletionStatus[questId] = true;
         OnQuestUpdated?.Invoke(CurrentQuestId); // UI 갱신 호출
 

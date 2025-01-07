@@ -10,6 +10,7 @@ public class SceneType : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
+            GameManager.Instance.Player.StopRolling();
             GameManager.Instance.SceneNum = num;
             string currentSceneName = SceneManager.GetActiveScene().name;//현재 씬 이름 가져오기
             if(currentSceneName != GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum))
