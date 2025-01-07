@@ -1058,6 +1058,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8719709472531484014}
     m_Modifications:
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.9490197
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.77647066
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.6117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294100636
+      objectReference: {fileID: 0}
     - target: {fileID: 7983957003698984190, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1200,6 +1216,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8719709472531484014}
     m_Modifications:
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.9490197
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.77647066
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.6117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294100636
+      objectReference: {fileID: 0}
     - target: {fileID: 7983957003698984190, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1346,6 +1378,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8719709472531484014}
     m_Modifications:
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.9490197
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.77647066
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.6117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294100636
+      objectReference: {fileID: 0}
     - target: {fileID: 7983957003698984190, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1492,6 +1540,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8719709472531484014}
     m_Modifications:
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.9490197
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.77647066
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.6117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471388937506824294, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294100636
+      objectReference: {fileID: 0}
     - target: {fileID: 7983957003698984190, guid: 06519e5f36be86b42bbd064df7031969, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
