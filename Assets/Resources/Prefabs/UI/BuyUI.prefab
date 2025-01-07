@@ -1190,7 +1190,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4793711550251861914}
-        m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
+        m_TargetAssemblyTypeName: BuyUI, Assembly-CSharp
         m_MethodName: Close
         m_Mode: 1
         m_Arguments:

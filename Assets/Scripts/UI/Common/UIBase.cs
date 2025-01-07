@@ -21,27 +21,28 @@ public abstract class UIBase : MonoBehaviour, IDraggable, IPointerDownHandler, I
 
     public virtual void Open()
     {
-        SoundManager.Instance.PlayButton2SFX();
         gameObject.SetActive(true);
         OpenProcedure();
     }
 
     public virtual void Close()
     {
-        SoundManager.Instance.PlayButton2SFX();
         gameObject.SetActive(false);
         CloseProcedure();
     }
 
     protected virtual void OpenProcedure()
     { // 생성 시 추가 변경사항
-        GameManager.Instance.Player.playerState = Player.PlayerState.UIOpen;
+        GameManager.Instance.Player.PlayerStateUIOpen();
 
     }
 
     protected virtual void CloseProcedure()
     { // 비활성화 시 추가 변경 사항
-        GameManager.Instance.Player.playerState = Player.PlayerState.Idle;
+        if(!UIManager.Instance.IsActiveUI())
+        {
+        GameManager.Instance.Player.PlayerStateIdle();
+        }
     }
 
     // 드래그 시작 시 호출
