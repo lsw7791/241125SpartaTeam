@@ -149,11 +149,11 @@ public class PlayerInput : MonoBehaviour
             UIManager.Instance.ToggleUI<CraftUI>();
 
             // Dictionary에서 QuestID 1에 해당하는 값 확인
-            if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(2) &&
-                !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[2])
+            if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(3) &&
+                !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[3])
             {
                 // QuestCompletionStatus[1]이 false일 때만 CompleteQuest(1) 호출
-                GameManager.Instance.DataManager.MainQuest.CompleteQuest(2);
+                GameManager.Instance.DataManager.MainQuest.CompleteQuest(3);
             }
         }
     }
@@ -187,6 +187,13 @@ public class PlayerInput : MonoBehaviour
         if (context.performed)
         {
             ToggleInfo();
+
+            if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(2) &&
+                !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[2])
+            {
+                // QuestCompletionStatus[1]이 false일 때만 CompleteQuest(1) 호출
+                GameManager.Instance.DataManager.MainQuest.CompleteQuest(2);
+            }
         }
     }
     // 인벤토리 토글
