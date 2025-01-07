@@ -25,7 +25,7 @@ public class TitleUI : MonoBehaviour
     {
         Debug.Log("게임 불러오기");
         CharacterSelectUI selectUI = UIManager.Instance.ToggleUI<CharacterSelectUI>();
-        selectUI.isNewGame = inIsNewGame;
+        selectUI.GameStart();
     }
     public void OptionUIOn()
     {

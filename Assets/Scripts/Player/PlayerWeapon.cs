@@ -16,7 +16,7 @@ public class PlayerWeapon : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.Player._playerWeapon = this;
+        //GameManager.Instance.Player._playerWeapon = this;
         _weapon = this.gameObject;
         GameManager.Instance.Player.Weapon = _weapon;
         _weaponCollider = _weapon.GetComponent<Collider2D>();  // 무기의 Collider2D 가져오기

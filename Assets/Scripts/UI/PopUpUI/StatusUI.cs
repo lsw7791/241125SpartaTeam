@@ -23,7 +23,7 @@ public class StatusUI : UIBase
 
     public void Refresh()
     {
-        PlayerData nowPlayerData = GameManager.Instance.DataManager.nowPlayer;
+        PlayerData nowPlayerData = GameManager.Instance.nowPlayer;
 
         _maxHP.text = nowPlayerData.MaxHP.ToString();
         _maxStamina.text = nowPlayerData.MaxStamina.ToString();

@@ -7,16 +7,18 @@ public class CharacterCreation : MonoBehaviour
 
     public void OnCreateCharacterButtonClicked()
     {
+        DataManager dataManager = GameManager.Instance.DataManager;
+
         string nickname = nicknameInputField.text;
 
         var newPlayer = new PlayerData
         {
             NickName = nickname,
         };
-        GameManager.Instance.DataManager.nowPlayer = newPlayer;
-        GameManager.Instance.DataManager.nowPlayer.Initialize();
-        GameManager.Instance.DataManager.SaveData();
-        GameManager.Instance.StartGame(newPlayer);
+        dataManager.SaveData(newPlayer);
+        dataManager.SaveData(new Inventory());
+        //dataManager.SaveData(new Equipment());
+        GameManager.Instance.StartGame();
     }
 
     public void Exit()

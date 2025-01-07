@@ -2521,7 +2521,6 @@ GameObject:
   - component: {fileID: 4972870029221609179}
   - component: {fileID: 661741943856788073}
   - component: {fileID: 7252967140961143558}
-  - component: {fileID: 3069066758985392373}
   - component: {fileID: 6080320500081737818}
   - component: {fileID: 6224302043780271791}
   m_Layer: 7
@@ -3000,7 +2999,8 @@ MonoBehaviour:
   PlayerInput: {fileID: 0}
   _playerAnimationController: {fileID: 0}
   _playerWeapon: {fileID: 0}
-  equipment: {fileID: 0}
+  equipment:
+    _equipmentUI: {fileID: 0}
   Weapon: {fileID: 1123440809906398237}
   ConditionUI: {fileID: 0}
   StatusUI: {fileID: 0}
@@ -3017,19 +3017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2e5107b621a134a97fdee8796155b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3069066758985392373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5486746758406949837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6849e14560c8d4a44a75308f887c274e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _equipmentUI: {fileID: 0}
 --- !u!114 &6080320500081737818
 MonoBehaviour:
   m_ObjectHideFlags: 0

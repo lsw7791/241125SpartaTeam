@@ -113,7 +113,7 @@ public class PlayerInput : MonoBehaviour
             GameManager.Instance.Player._playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화
             PerformPaddingStart(); // 패딩 동작 시작
             padding.gameObject.SetActive(true);
-            padding.InsertSprite();
+            //padding.InsertSprite();
         }
         else if (context.canceled)
         {

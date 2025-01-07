@@ -72,10 +72,15 @@ public class OptionUI : UIBase
 
     public void OnclickedMainMenuBtn()
     {
+        DataManager dataManager = GameManager.Instance.DataManager;
+
         UIManager.Instance.CloseUI<OptionUI>();
-        GameManager.Instance.DataManager.SaveData();
+        dataManager.SaveData(GameManager.Instance.Player.stats);
+        dataManager.SaveData(GameManager.Instance.Player.inventory);
+        //dataManager.SaveData(GameManager.Instance.Player.equipment);
+        dataManager.DataClear();
         GameManager.Instance.SceneNum = 25;
-        GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
+        GameManager.Instance.LoadScene(dataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
     public void OptionUIOn()
     {
