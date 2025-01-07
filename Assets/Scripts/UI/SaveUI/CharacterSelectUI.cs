@@ -51,6 +51,11 @@ public class CharacterSelectUI : UIBase
     {
         DataManager dataManager = GameManager.Instance.DataManager;
 
+        if(dataManager.nowSlot == -1)
+        {
+            return;
+        }
+
         if (_savefile[dataManager.nowSlot])
         {
             isNewGame = false;
@@ -73,6 +78,11 @@ public class CharacterSelectUI : UIBase
     public void SlotDelete()
     {
         DataManager dataManager = GameManager.Instance.DataManager;
+
+        if (dataManager.nowSlot == -1)
+        {
+            return;
+        }
 
         if (_savefile[dataManager.nowSlot])
         {
