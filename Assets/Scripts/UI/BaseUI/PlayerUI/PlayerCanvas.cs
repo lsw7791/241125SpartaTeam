@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerCanvas : MonoBehaviour
 {
     [Header("Name Settings")]
-    public string playerName = "Player"; // 기본 플레이어 이름
+    public string playerName = "▼"; // 기본 플레이어 이름
     public TMP_Text playerNameText;   // 이름을 표시할 TextMeshPro
 
     [Header("Position Settings")]
@@ -16,10 +16,22 @@ public class PlayerCanvas : MonoBehaviour
 
     private void Start()
     {
-        playerName = GameManager.Instance.Player.nickName;
-        playerTransform = transform; // 플레이어 Transform 가져오기
-        // TextMeshPro에 이름 설정
-        playerNameText.text = playerName;
+        //playerName = GameManager.Instance.Player.stats.NickName;
+        //playerTransform = transform; // 플레이어 Transform 가져오기
+        //// TextMeshPro에 이름 설정
+        //playerNameText.text = playerName;
+    }
+
+    private void OnEnable()
+    {
+        CharacterSelectUI selectUI = UIManager.Instance.GetUI<CharacterSelectUI>();
+        if (selectUI.isNewGame)
+        {
+            playerName = GameManager.Instance.Player.stats.NickName;
+            playerTransform = transform; // 플레이어 Transform 가져오기
+                                         // TextMeshPro에 이름 설정
+            playerNameText.text = playerName;
+        }
     }
 
     private void LateUpdate()

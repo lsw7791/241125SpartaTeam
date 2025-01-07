@@ -81,12 +81,20 @@ public class GameManager : MonoSingleton<GameManager>
         {
             Player.stats.Initialize();
             nowPlayer.CurrentQuestId = DataManager.MainQuest.CurrentQuestId;
+
+            Player.inventory.SaveEquipInIt();
+
+            // 씬을 전환하여 게임 시작
+            SceneNum = 2;
+            LoadScene(DataManager.Scene.GetMapTo(SceneNum));
+
+            return;
         }
 
         Player.inventory.SaveEquipInIt();
 
         // 씬을 전환하여 게임 시작
-        SceneNum = 2;
+        SceneNum = nowPlayer.nowMapNumber;
         LoadScene(DataManager.Scene.GetMapTo(SceneNum));
     }
 }

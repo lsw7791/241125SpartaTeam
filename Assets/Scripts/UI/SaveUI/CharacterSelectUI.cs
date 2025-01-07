@@ -52,6 +52,11 @@ public class CharacterSelectUI : UIBase
         SoundManager.Instance.PlayButton2SFX();
         DataManager dataManager = GameManager.Instance.DataManager;
 
+        if(dataManager.nowSlot == -1)
+        {
+            return;
+        }
+
         if (_savefile[dataManager.nowSlot])
         {
             isNewGame = false;
@@ -75,6 +80,11 @@ public class CharacterSelectUI : UIBase
     {
         SoundManager.Instance.PlayButton2SFX();
         DataManager dataManager = GameManager.Instance.DataManager;
+
+        if (dataManager.nowSlot == -1)
+        {
+            return;
+        }
 
         if (_savefile[dataManager.nowSlot])
         {

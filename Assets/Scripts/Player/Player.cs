@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IDamageable
@@ -12,14 +10,12 @@ public class Player : MonoBehaviour, IDamageable
     UIOpen,
     GetDamaged
     }
-    public string nickName;
 
     public PlayerData stats;  // 플레이어의 스탯
     public Inventory inventory;  // 플레이어의 인벤토리
     public PlayerInput PlayerInput;
     public PlayerAnimationController _playerAnimationController;
     public PlayerWeapon _playerWeapon;
-    //public Equipment equipment;
     public GameObject Weapon;
     public ConditionUI ConditionUI;
     public StatusUI StatusUI;
@@ -31,6 +27,7 @@ public class Player : MonoBehaviour, IDamageable
     public delegate void PlayerDataSavedHandler();
     //public event PlayerDataSavedHandler OnPlayerDataSaved;
     public Rigidbody2D _playerRB;
+
     public Player()
     {
         inventory = new Inventory();
@@ -41,9 +38,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        //stats.Initialize();
         PlayerInput = GetComponent<PlayerInput>();
-        //equipment = new Equipment();
         _playerWeapon = Weapon.GetComponent<PlayerWeapon>();
         _playerRB = GetComponent<Rigidbody2D>();
         playerRoll = GetComponent<PlayerRoll>();
@@ -97,8 +92,6 @@ public class Player : MonoBehaviour, IDamageable
     {
         playerState = PlayerState.Die;
         TriggerDeath();
-        //UIManager.Instance.deathUI.SetActive(true);
-        Debug.Log($"{nickName} has died.");
         Revive();
         GameManager.Instance.SceneNum = 2;
         GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
@@ -153,5 +146,4 @@ public class Player : MonoBehaviour, IDamageable
     // 프로퍼티
     public PlayerData Stats => stats;
     public Inventory Inventory => inventory;  // 인벤토리 반환
-    public string PlayerNickName { get => nickName; set => nickName = value; }
 }

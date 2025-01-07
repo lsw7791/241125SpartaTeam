@@ -50,7 +50,7 @@ public class InventoryUI : UIBase
     private void OnEnable()
     {
         Setup(GameManager.Instance.Player.inventory);
-        _playerName.text = GameManager.Instance.Player.nickName;
+        _playerName.text = GameManager.Instance.Player.stats.NickName;
     }
 
     public void Setup(Inventory inventory)
