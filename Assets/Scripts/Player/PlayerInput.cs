@@ -101,7 +101,10 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
-            PerformRoll();
+            if (GameManager.Instance.Player.UseStamina(20) == true)
+            {
+                PerformRoll();
+            }
         }
     }
 
@@ -110,10 +113,13 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.started)
         {
-            GameManager.Instance.Player._playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화
+            if (GameManager.Instance.Player.UseStamina(15) == true)
+            {
+                GameManager.Instance.Player._playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화
             PerformPaddingStart(); // 패딩 동작 시작
             padding.gameObject.SetActive(true);
             //padding.InsertSprite();
+            }
         }
         else if (context.canceled)
         {
@@ -276,11 +282,8 @@ public class PlayerInput : MonoBehaviour
 
         // 이미 구르고 있으면 구르기 시작하지 않음
         if (playerRoll.isRolling) return;
-        if (GameManager.Instance.Player.UseStamina(10) == true)
-        {
             // 구르기 시작
             playerRoll.StartRolling();
-        }
         // 구르기 시작 후, Roll은 Update에서 진행됩니다.
         // Update에서 계속해서 Roll()을 호출하게 됩니다.
     }
@@ -288,14 +291,10 @@ public class PlayerInput : MonoBehaviour
     // 패딩(막기) 로직
     private void PerformPaddingStart()
     {
-        if(GameManager.Instance.Player.UseStamina(10) ==true)
-        {
             playerPadding = true;
             // 막기 동작 시작 시 실행할 로직
             GameManager.Instance.Player.IncreaseDefense(2);
             Debug.Log("Padding started!");
-        }
-
     }
 
     private void PerformPaddingEnd()
