@@ -15,6 +15,8 @@ public class CharacterCreation : MonoBehaviour
         {
             NickName = nickname,
         };
+        newPlayer.Initialize();
+
         dataManager.SaveData(newPlayer);
         dataManager.SaveData(new Inventory());
         //dataManager.SaveData(new Equipment());
