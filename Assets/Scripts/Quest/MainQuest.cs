@@ -26,7 +26,7 @@ public class MainQuest : MainQuestData
     public MainQuest()
     {
         // 초기 퀘스트 완료 상태 설정
-        for (int i = 1; i <= 9; i++)
+        for (int i = 0; i <= 8; i++)
         {
             QuestCompletionStatus[i] = false;
         }

@@ -28,6 +28,10 @@ public class MainQuestUI : UIBase
         UpdateUI(GameManager.Instance.Player.stats.CurrentQuestId);
     }
 
+    private void OnDisable()
+    {
+        UIManager.Instance.ToggleUI<QuestIcon>();
+    }
     void OnDestroy()
     {
         if (_mainQuest != null)
@@ -59,6 +63,8 @@ public class MainQuestUI : UIBase
 
     private void OnCompleteButtonPressed()
     {
+        int reward = _mainQuest.GetData(GameManager.Instance.DataManager.MainQuest.CurrentQuestId).reward;
+        GameManager.Instance.Player.stats.Gold += reward;
         GameManager.Instance.DataManager.MainQuest.CurrentQuestId++;
         GameManager.Instance.Player.stats.CurrentQuestId++;
         Debug.Log(GameManager.Instance.DataManager.MainQuest.CurrentQuestId);
@@ -69,7 +75,7 @@ public class MainQuestUI : UIBase
         }
 
         UpdateUI(GameManager.Instance.DataManager.MainQuest.CurrentQuestId);
-
-        GameManager.Instance.Player.stats.Gold = _mainQuest.reward;
+        GameManager.Instance.DataManager.SaveData(GameManager.Instance.Player.inventory);
+        GameManager.Instance.DataManager.SaveData(GameManager.Instance.Player.stats);
     }
 }
