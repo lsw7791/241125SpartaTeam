@@ -69,5 +69,7 @@ public class MainQuestUI : UIBase
         }
 
         UpdateUI(GameManager.Instance.DataManager.MainQuest.CurrentQuestId);
+
+        GameManager.Instance.Player.stats.Gold = _mainQuest.reward;
     }
 }
