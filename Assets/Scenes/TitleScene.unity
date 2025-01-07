@@ -419,6 +419,8 @@ MonoBehaviour:
   textComponent: {fileID: 1408320857}
   fullText: 
   typingDuration: 5
+  scaleFactor: {x: 0, y: 0, z: 0}
+  scaleDuration: 1
 --- !u!114 &1408320860
 MonoBehaviour:
   m_ObjectHideFlags: 0
