@@ -1114,7 +1114,7 @@ GameObject:
   - component: {fileID: 235420598992722437}
   m_Layer: 7
   m_Name: P_Weapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3488,7 +3488,7 @@ GameObject:
   - component: {fileID: 2625547896594737027}
   m_Layer: 7
   m_Name: P_Weapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
