@@ -13,10 +13,13 @@ public class MineHealthBarUI : MonoBehaviour
     [Header("Health Bar")]
     public Image healthBarForeground; // 체력바 (초록색 부분)
     public Image healthBarBackground; // 체력바 배경 (옵션)
+    private void Awake()
+    {
+        mine = GetComponent<Mine>();     
+        maxHealth = GameManager.Instance.DataManager.Creature.GetHealth(mine.id);
+    }
     private void Start()
     {
-        mine = GetComponent<Mine>();
-        maxHealth = GameManager.Instance.DataManager.Creature.GetHealth(mine.id);
         currentHealth = mine.currentHealth;
         UpdateHealthBar();
     }
@@ -45,10 +48,13 @@ public class MineHealthBarUI : MonoBehaviour
         {
             // 현재 체력 비율 (0.0 ~ 1.0)
             currentHealth = mine.currentHealth;
+            maxHealth = GameManager.Instance.DataManager.Creature.GetHealth(mine.id);
             healthBarForeground.fillAmount = currentHealth / maxHealth;
-            Debug.Log($"healthBarForeground.fillAmount ={healthBarForeground.fillAmount}");
-            Debug.Log($"maxHealth = {maxHealth}");
             Debug.Log($"currentHealth = {currentHealth}");
+            Debug.Log($"maxHealth = {maxHealth}");
+            Debug.Log($"healthBarForeground.fillAmount = {healthBarForeground.fillAmount}");
+
+
         }
     }
 }

@@ -34,7 +34,7 @@ public class Mine : MonoBehaviour, ICreature
             {
                 minefull.ObjectSetActive(true);
                 isDie = false;
-                //ResetStatus();
+                ResetStatus();
             }
         }
     }
@@ -44,9 +44,9 @@ public class Mine : MonoBehaviour, ICreature
         if (value > 0)
         {
             currentHealth -= value;
+            mineHealthBarUI.UpdateHealthBar();
         if (currentHealth <= 0) Die();
         }
-        mineHealthBarUI.UpdateHealthBar();
     }
     public void Die()
     {
@@ -85,7 +85,11 @@ public class Mine : MonoBehaviour, ICreature
     {
         currentHealth = GameManager.Instance.DataManager.Creature.GetHealth(id);  // 최대 체력으로 리셋
         isDie = false;  // 죽지 않은 상태로 리셋
-        //mineHealthBarUI.UpdateHealthBar();
+        if(mineHealthBarUI==null)
+        {
+            mineHealthBarUI = GetComponent<MineHealthBarUI>();
+        }
+        mineHealthBarUI.UpdateHealthBar();
     }
     public void SetComponent(int value)
     {
