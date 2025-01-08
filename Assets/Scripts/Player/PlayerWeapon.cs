@@ -142,11 +142,6 @@ public class PlayerWeapon : MonoBehaviour
                 outTarget.TakeDamage(GameManager.Instance.Player.Stats.MineDamage);  // 데미지 처리
             }
 
-        }
-        else
-        {
-            Debug.Log("Collision object does not have a parent or does not implement ICreature.");
-        }
+        }    
     }
-
 }

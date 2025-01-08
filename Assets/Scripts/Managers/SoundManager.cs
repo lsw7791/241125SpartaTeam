@@ -10,6 +10,9 @@ public class SoundManager : MonoSingleton<SoundManager>
     public AudioSource _bgmSource;
     public AudioSource _sfxSource;
 
+    private float lastSFXTime = 0f;
+    public float minSFXInterval = 0.2f; // 최소 간격 (0.2초)
+
     [Header("BGM")]
     [SerializeField] private AudioClip AsiaTravelBGM;
     [SerializeField] private AudioClip MoodtimeflowBGM;
@@ -132,8 +135,12 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void PlaySFX(AudioClip clip)
     {
-        // SFX를 한 번만 재생
-        _sfxSource.PlayOneShot(clip);
+        // SFX를 재생할 최소 간격을 두고 재생
+        if (Time.time - lastSFXTime >= minSFXInterval)
+        {
+            _sfxSource.PlayOneShot(clip);
+            lastSFXTime = Time.time; // 마지막 재생 시간 갱신
+        }
     }
     public void SetMuteBGM()
     {
