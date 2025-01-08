@@ -100,7 +100,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         if (nowPlayer.CurrentQuestId < 9)
         {
-            StartCoroutine(UIManager.Instance.DelayToggleUI(1f)); // 3초 후에 UI 토글을 호출하는 코루틴 시작
+            StartCoroutine(UIManager.Instance.DelayToggleQuestUI(1f)); // 3초 후에 UI 토글을 호출하는 코루틴 시작
         }
 
         Player.playerNameText.text = Player.stats.NickName;
