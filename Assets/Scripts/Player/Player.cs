@@ -11,7 +11,8 @@ public class Player : MonoBehaviour, IDamageable
     Attack,
     Die,
     UIOpen,
-    GetDamaged
+    GetDamaged,
+    MoveMap
     }
 
     public PlayerData stats;  // 플레이어의 스탯
