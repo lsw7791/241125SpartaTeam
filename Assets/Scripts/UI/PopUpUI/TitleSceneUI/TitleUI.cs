@@ -20,7 +20,7 @@ public class TitleUI : MonoBehaviour
         SoundManager.Instance.PlayButton2SFX();
         Debug.Log("게임 시작");
         GameManager.Instance.SceneNum = 24;
-        GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
+        UIManager.Instance.fadeManager.LoadSceneWithFade(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
     public void LoadGame(bool inIsNewGame)
     {

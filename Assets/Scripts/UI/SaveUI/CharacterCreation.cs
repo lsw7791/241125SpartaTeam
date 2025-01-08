@@ -30,6 +30,6 @@ public class CharacterCreation : MonoBehaviour
     {
         SoundManager.Instance.PlayButton2SFX();
         GameManager.Instance.SceneNum = 25;
-        GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
+        UIManager.Instance.fadeManager.LoadSceneWithFade(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
 }
