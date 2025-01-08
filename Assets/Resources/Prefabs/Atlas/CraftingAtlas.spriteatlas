@@ -116,6 +116,7 @@ SpriteAtlas:
     - {fileID: 21300000, guid: 27428f826bad840f9bdbc88d5dcbfa6c, type: 3}
     - {fileID: 21300000, guid: 69a11d8cb1f7e46718b2f15d0878ae0e, type: 3}
     - {fileID: 21300000, guid: 920510d3994f1469f8f88fd76b9f7277, type: 3}
+    - {fileID: 1432965541, guid: 650e07e3712db7147b633809ebeb983d, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -137,6 +138,7 @@ SpriteAtlas:
     - 12938363957ba4667b071ac8210b411f: -1900702418
     - 75431863f8fcc4741a4528d0b7487741: -7650184365866704765
     - 920510d3994f1469f8f88fd76b9f7277: 21300000
+    - 650e07e3712db7147b633809ebeb983d: 1432965541
     - ea99b7f3996d5411a87d09eaaed5817e: -1900702418
     - 94c82904d23614e79941d4272d81cf71: -1900702418
     - b1c6b014ee8384bde8873e80c5b3784c: 21300000
@@ -210,6 +212,7 @@ SpriteAtlas:
   - {fileID: -1900702418, guid: 12938363957ba4667b071ac8210b411f, type: 3}
   - {fileID: -7650184365866704765, guid: 75431863f8fcc4741a4528d0b7487741, type: 3}
   - {fileID: 21300000, guid: 920510d3994f1469f8f88fd76b9f7277, type: 3}
+  - {fileID: 1432965541, guid: 650e07e3712db7147b633809ebeb983d, type: 3}
   - {fileID: -1900702418, guid: ea99b7f3996d5411a87d09eaaed5817e, type: 3}
   - {fileID: -1900702418, guid: 94c82904d23614e79941d4272d81cf71, type: 3}
   - {fileID: 21300000, guid: b1c6b014ee8384bde8873e80c5b3784c, type: 3}
@@ -282,6 +285,7 @@ SpriteAtlas:
   - Pickaxe_3
   - Top_6
   - SwordC
+  - MileStone
   - Sword_2
   - Bow_3
   - StaffA
