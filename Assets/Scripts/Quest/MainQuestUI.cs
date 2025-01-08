@@ -26,11 +26,14 @@ public class MainQuestUI : UIBase
     private void OnEnable()
     {
         UpdateUI(GameManager.Instance.Player.stats.CurrentQuestId);
+        QuestIcon questicon = UIManager.Instance.GetUI<QuestIcon>();
+        questicon.mainQuestUI = this;
+        UIManager.Instance.CloseUI<QuestIcon>();
     }
 
     private void OnDisable()
     {
-        UIManager.Instance.ToggleUI<QuestIcon>();
+       // UIManager.Instance.ToggleUI<QuestIcon>();
     }
     void OnDestroy()
     {

@@ -5,12 +5,15 @@ using DG.Tweening;
 public class QuestIcon : UIBase
 {
     public float scaleDuration = 1f;  
-    public float scaleFactor = 1.5f;  
+    public float scaleFactor = 1.5f;
+
+    public MainQuestUI mainQuestUI;
+
     // 클릭 시 실행될 메서드
     public void OnQuestIconClick()
     {
         UIManager.Instance.ToggleUI<MainQuestUI>();
-        UIManager.Instance.ToggleUI<QuestIcon>();
+        UIManager.Instance.CloseUI<QuestIcon>();
     }
 
     private void Start()
