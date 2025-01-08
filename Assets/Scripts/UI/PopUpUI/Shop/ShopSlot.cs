@@ -20,7 +20,7 @@ public class ShopSlot : MonoBehaviour
 
 
     // 아이템 데이터를 슬롯에 설정
-    public void Setup(ItemData itemData)
+    public void Setup(ItemData itemData, ShopType shopType)
     {
         currentItemData = itemData;
 
@@ -28,16 +28,25 @@ public class ShopSlot : MonoBehaviour
         itemNameText.text = itemData.name;
         itemPriceText.text = $"{itemData.buy} Gold";
         itemDescText.text = itemData.desc;
-        //icon.sprite = Resources.Load<Sprite>(itemData.spritePath); // 아이콘 경로로부터 이미지 로드
-        icon.sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
-        //Sprite itemSprite = craftingAtlas.GetSprite(inData.atlasPath);
+
+        // ShopType에 따른 아이콘 경로 설정
+        if (shopType == ShopType.PotionShop)
+        {
+            icon.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
+        }
+        else
+        {
+            icon.sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
+        }
+
         // 구매 버튼 활성화 여부 설정
         buyButton.interactable = true;
 
         // 아이템 클릭 시 발생하는 이벤트 설정
         buyButton.onClick.AddListener(() => OnItemClick?.Invoke(itemData));
     }
-  
+
+
 
     // 슬롯 클릭 시 호출 (아이템 클릭 시 BuyUI 활성화)
     public void OnclickedSlot()
