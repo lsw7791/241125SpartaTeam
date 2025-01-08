@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b492d79343f74f84e9c02e9d37d01f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mine: {fileID: 0}
 --- !u!58 &4593936131315293820
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -268,6 +269,7 @@ MonoBehaviour:
   currentHealth: 0
   isDie: 0
   id: 0
+  mineHealthBarUI: {fileID: 0}
 --- !u!114 &1931825199217230572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +294,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5614292182956319593}
     m_Modifications:
+    - target: {fileID: 258277391941444766, guid: 43896a45b24c2e343aaeb2aaca215022, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 258277391941444766, guid: 43896a45b24c2e343aaeb2aaca215022, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -398,6 +404,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1314632025289987465, guid: 43896a45b24c2e343aaeb2aaca215022, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862232669070448743, guid: 43896a45b24c2e343aaeb2aaca215022, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862232669070448743, guid: 43896a45b24c2e343aaeb2aaca215022, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

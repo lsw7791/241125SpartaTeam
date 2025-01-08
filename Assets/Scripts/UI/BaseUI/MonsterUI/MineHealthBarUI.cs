@@ -6,17 +6,19 @@ using UnityEngine.UI;
 public class MineHealthBarUI : MonoBehaviour
 {
     Mine mine;
+    [Header("Health Settings")]
+    public float maxHealth; // 최대 체력
+    [SerializeField] private float currentHealth;  // 현재 체력
+
     [Header("Health Bar")]
     public Image healthBarForeground; // 체력바 (초록색 부분)
     public Image healthBarBackground; // 체력바 배경 (옵션)
-    [SerializeField] private float currentHealth;  // 현재 체력
-    public float maxHealth; // 최대 체력
     private void Start()
     {
         mine = GetComponent<Mine>();
-        UpdateHealthBar();
         maxHealth = GameManager.Instance.DataManager.Creature.GetHealth(mine.id);
         currentHealth = mine.currentHealth;
+        UpdateHealthBar();
     }
     void Update()
     {
