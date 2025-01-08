@@ -60,6 +60,7 @@ namespace MainData
 		public ItemType itemType;
 		public System.String name;
 		public System.String desc;
+		public System.String addDesc;
 		public System.Int32 tier;
 		public System.Int32 health;
 		public System.Int32 stamina;

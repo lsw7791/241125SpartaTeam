@@ -100,7 +100,8 @@ public class ItemUseUI : MonoBehaviour
         }
         UseButton("아이템 정보").onClick.AddListener(() =>
         { // 모든 아이템 타입
-
+            ItemDescriptionUI itemDescriptionUI = UIManager.Instance.ToggleUI<ItemDescriptionUI>();
+            itemDescriptionUI.Initialize(inItem);
         });
     }
 

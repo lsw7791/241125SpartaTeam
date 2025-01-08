@@ -1,18 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using MainData;
+using System.Text;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class ItemDescriptionUI : MonoBehaviour
+public class ItemDescriptionUI : UIBase
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Image _useItemImage;
+    [SerializeField] private Image _backgroundImage;
+    [SerializeField] private TMP_Text _CountText;
+    [SerializeField] private TMP_Text _productText;
+
+    [SerializeField] private TMP_Text _descriptionText;
+    StringBuilder descText = new();
+
+    public void Initialize(InventoryItem inItem)
     {
-        
+        var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
+        _useItemImage.sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
+        int tierIndex = itemData.tier - 1;
+        _CountText.text = itemData.itemType < ItemType.Mine ? $"{inItem.enhenceCount}°­" : $"{inItem.Quantity}°³";
+        _backgroundImage.color = inItem.TierColoer(tierIndex);
+        _descriptionText.text = $"{descText.ToString()}";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private string ItemStats(ItemData inItemData)
+    {//itemData.desc}\n{ItemStats(inItem)}\n{itemData.addDesc
+        descText.Append($"{inItemData.desc}");
+        return "";
     }
 }
