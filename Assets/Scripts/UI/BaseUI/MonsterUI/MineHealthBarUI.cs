@@ -16,10 +16,10 @@ public class MineHealthBarUI : MonoBehaviour
     private void Awake()
     {
         mine = GetComponent<Mine>();     
-        maxHealth = GameManager.Instance.DataManager.Creature.GetHealth(mine.id);
     }
     private void Start()
     {
+        maxHealth = GameManager.Instance.DataManager.Creature.GetHealth(mine.id);
         currentHealth = mine.currentHealth;
         UpdateHealthBar();
     }
