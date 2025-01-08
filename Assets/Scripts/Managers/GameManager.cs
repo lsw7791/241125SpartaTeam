@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using System;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -87,6 +86,8 @@ public class GameManager : MonoSingleton<GameManager>
             SceneNum = 2;
             LoadScene(DataManager.Scene.GetMapTo(SceneNum));
 
+            Player.playerNameText.text = Player.stats.NickName;
+
             return;
         }
 
@@ -95,9 +96,17 @@ public class GameManager : MonoSingleton<GameManager>
         // 씬을 전환하여 게임 시작
         SceneNum = nowPlayer.nowMapNumber;
         LoadScene(DataManager.Scene.GetMapTo(SceneNum));
+
         if (nowPlayer.CurrentQuestId < 9)
         {
             UIManager.Instance.ToggleUI<QuestIcon>();
         }
+
+        Player.playerNameText.text = Player.stats.NickName;
+
+        InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
+        //inventoryUI.EquipmentUIReset();
+        inventoryUI.EquipmentRefresh();
+
     }
 }

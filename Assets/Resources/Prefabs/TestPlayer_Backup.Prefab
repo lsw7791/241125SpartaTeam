@@ -1114,7 +1114,7 @@ GameObject:
   - component: {fileID: 235420598992722437}
   m_Layer: 7
   m_Name: P_Weapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2671,22 +2671,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3307698145195660049}
         m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
-        m_MethodName: OnAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 29adbac8-eebd-4383-b67f-75f078b4de41
-    m_ActionName: Player/Action[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3307698145195660049}
-        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
@@ -2875,22 +2859,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3170d7ce-5cbf-47c0-9155-2f463e65baea
     m_ActionName: Player/Info[/Keyboard/p]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3307698145195660049}
-        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
-        m_MethodName: OnQuest
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f8dc2eae-6c99-4440-be17-bfc11d358d48
-    m_ActionName: Player/Quest[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -3023,6 +2991,7 @@ MonoBehaviour:
   StatusUI: {fileID: 0}
   playerState: 0
   playerRoll: {fileID: 0}
+  playerNameText: {fileID: 3986470208599983264}
   _playerRB: {fileID: 0}
 --- !u!114 &7252967140961143558
 MonoBehaviour:
@@ -3488,7 +3457,7 @@ GameObject:
   - component: {fileID: 2625547896594737027}
   m_Layer: 7
   m_Name: P_Weapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3982,14 +3951,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7038070085220442957}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cea6f85c3badc24eab9c149112dffe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: Player
   playerNameText: {fileID: 3986470208599983264}
-  nameOffset: {x: 0, y: 1.5, z: 0}
 --- !u!1 &7089957840858456283
 GameObject:
   m_ObjectHideFlags: 0

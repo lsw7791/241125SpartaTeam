@@ -7,10 +7,10 @@ public class Mine : MonoBehaviour, ICreature
     
     GameManager gameManager;   // 게임 매니저
     MineFull minefull;
-    [SerializeField] private int currentHealth;
+    [SerializeField] public int currentHealth;
     [SerializeField] private bool isDie;
     [SerializeField] public int id;
-
+    [SerializeField] private MineHealthBarUI mineHealthBarUI;
     private void Awake()
     {
         gameManager = GameManager.Instance;  // 게임 매니저 인스턴스 가져오기
@@ -18,6 +18,7 @@ public class Mine : MonoBehaviour, ICreature
     }
     private void Start()
     {
+        mineHealthBarUI = GetComponent<MineHealthBarUI>();
         // 30초마다 ObjectSetActive 호출
         StartCoroutine(ActivateObjectEvery30Seconds());
     }
@@ -33,19 +34,8 @@ public class Mine : MonoBehaviour, ICreature
             {
                 minefull.ObjectSetActive(true);
                 isDie = false;
-                ResetStatus();
+                //ResetStatus();
             }
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if(collision.collider.CompareTag("Weapon"))
-        {
-            // Weapon 스크립트에서 id 값을 가져오기
-            PlayerWeapon playerWeapon = collision.collider.GetComponent<PlayerWeapon>();
-
-            // 데미지를 받는 메서드 호출
-            TakeDamage(GameManager.Instance.Player.Stats.MineDamage);
         }
     }
     public void TakeDamage(int damage)
@@ -53,9 +43,10 @@ public class Mine : MonoBehaviour, ICreature
         int value = damage - GameManager.Instance.DataManager.Creature.GetDefense(id);
         if (value > 0)
         {
-        currentHealth -= value;
+            currentHealth -= value;
         if (currentHealth <= 0) Die();
         }
+        mineHealthBarUI.UpdateHealthBar();
     }
     public void Die()
     {
@@ -94,6 +85,7 @@ public class Mine : MonoBehaviour, ICreature
     {
         currentHealth = GameManager.Instance.DataManager.Creature.GetHealth(id);  // 최대 체력으로 리셋
         isDie = false;  // 죽지 않은 상태로 리셋
+        //mineHealthBarUI.UpdateHealthBar();
     }
     public void SetComponent(int value)
     {

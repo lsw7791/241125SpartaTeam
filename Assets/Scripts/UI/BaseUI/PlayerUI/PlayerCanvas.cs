@@ -9,10 +9,10 @@ public class PlayerCanvas : MonoBehaviour
     public string playerName = "▼"; // 기본 플레이어 이름
     public TMP_Text playerNameText;   // 이름을 표시할 TextMeshPro
 
-    [Header("Position Settings")]
-    public Vector3 nameOffset = new Vector3(0, 1.5f, 0); // 머리 위 위치
+    //[Header("Position Settings")]
+    //public Vector3 nameOffset = new Vector3(0, 1.5f, 0); // 머리 위 위치
 
-    private Transform playerTransform;
+    //private Transform playerTransform;
 
     private void Start()
     {
@@ -35,6 +35,13 @@ public class PlayerCanvas : MonoBehaviour
             playerNameText.transform.position = playerTransform.position + nameOffset;
         }
     }
+
+    //private void PlayerName()
+    //{
+    //    playerName = GameManager.Instance.Player.stats.NickName;
+    //    playerNameText.text = playerName;
+    //}
+
 
     //private void LateUpdate()
     //{

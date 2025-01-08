@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IDamageable
@@ -25,6 +27,8 @@ public class Player : MonoBehaviour, IDamageable
     public PlayerRoll playerRoll;
     // QuickSlots 프로퍼티
 
+    public TMP_Text playerNameText;   // 이름을 표시할 TextMeshPro
+
     private bool isDamage = false;
 
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경
@@ -46,10 +50,6 @@ public class Player : MonoBehaviour, IDamageable
         _playerWeapon = Weapon.GetComponent<PlayerWeapon>();
         _playerRB = GetComponent<Rigidbody2D>();
         playerRoll = GetComponent<PlayerRoll>();
-    }
-
-    private void Start()
-    {
     }
 
     private void FixedUpdate()
