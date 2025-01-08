@@ -45,6 +45,13 @@ public class ItemUseUI : MonoBehaviour
                     GameManager.Instance.Player.inventory.Equip(inItem);
                     InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
                     inventoryUI.UpdateEquipmentSlot(itemData.itemType, UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath));
+
+                    if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(3) &&
+           !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[3])
+                    {
+                        // QuestCompletionStatus[1]이 false일 때만 CompleteQuest(1) 호출
+                        GameManager.Instance.DataManager.MainQuest.CompleteQuest(3);
+                    }
                 }
                 GameManager.Instance.Player.inventory.EquipItem(inItem.ItemID);
             });
@@ -53,6 +60,12 @@ public class ItemUseUI : MonoBehaviour
             {
                 UpGradeUI upGradeUI = UIManager.Instance.ToggleUI<UpGradeUI>();
                 upGradeUI.Initialize(inItem);
+                if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(5) &&
+           !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[5])
+                {
+                    // QuestCompletionStatus[1]이 false일 때만 CompleteQuest(1) 호출
+                    GameManager.Instance.DataManager.MainQuest.CompleteQuest(5);
+                }
             });
 
             UseButton("버리기").onClick.AddListener(() =>

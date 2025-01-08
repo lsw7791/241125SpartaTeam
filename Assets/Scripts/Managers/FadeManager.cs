@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class FadeManager : MonoBehaviour
 {
     public Image fadePanel; // Panel의 Image 컴포넌트
-    public float fadeDuration = 1f; // 페이드 지속 시간
+    public float fadeDuration = 3f; // 페이드 지속 시간
 
     private void Awake()
     {
@@ -22,7 +22,6 @@ public class FadeManager : MonoBehaviour
     {
         // 화면 어둡게 (페이드 인)
         yield return StartCoroutine(Fade(1f));
-
         // 씬 로드
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         while (!operation.isDone)

@@ -114,7 +114,7 @@ public class Player : MonoBehaviour, IDamageable
         TriggerDeath();
         Revive();
         GameManager.Instance.SceneNum = 2;
-        GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
+        UIManager.Instance.fadeManager.LoadSceneWithFade(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
     public void TriggerDeath()
     {
