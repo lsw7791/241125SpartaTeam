@@ -31,7 +31,7 @@ public class SpawnManager : MonoBehaviour
                 SoundManager.Instance.PlayStartBGMCalmPiano();
                 break;
             case 3://∏∂¿Œ1
-                SoundManager.Instance.PlayStartBGMSciFiMoodtimeflow();
+                SoundManager.Instance.PlayStartBGMShootingStar();
                 if (spawner1 == null) spawner1 = gameObject.AddComponent<Spawner>();
                 StageMine(1,spawner1);
                 break;
