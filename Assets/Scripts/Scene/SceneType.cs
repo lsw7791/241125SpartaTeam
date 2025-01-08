@@ -15,7 +15,9 @@ public class SceneType : MonoBehaviour
             string currentSceneName = SceneManager.GetActiveScene().name;//현재 씬 이름 가져오기
             if(currentSceneName != GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum))
             {
-            GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
+                // 페이드 효과와 씬 로드
+                UIManager.Instance.fadeManager.LoadSceneWithFade(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
+                //GameManager.Instance.LoadScene(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
             }
             else
             {
