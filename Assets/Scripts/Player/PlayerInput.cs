@@ -279,7 +279,6 @@ public class PlayerInput : MonoBehaviour
     // 구르기 로직
     private void PerformRoll()
     {
-        Debug.Log("PerformRoll");
 
         // 이미 구르고 있으면 구르기 시작하지 않음
         if (GameManager.Instance.Player.playerRoll.isRolling) return;
@@ -296,7 +295,6 @@ public class PlayerInput : MonoBehaviour
             playerPadding = true;
             // 막기 동작 시작 시 실행할 로직
             GameManager.Instance.Player.IncreaseDefense(2);
-            Debug.Log("Padding started!");
     }
 
     private void PerformPaddingEnd()
@@ -304,7 +302,6 @@ public class PlayerInput : MonoBehaviour
         // 막기 동작 종료 시 실행할 로직
         int value = GameManager.Instance.Player.stats.Def;
         GameManager.Instance.Player.ResetDefense();
-        Debug.Log("Padding ended!");
         playerPadding=false;
     }
     public void RotateArm(Vector2 direction)

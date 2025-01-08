@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5263754499334456331}
   - component: {fileID: 2919486474257064339}
   - component: {fileID: 3036942837251297233}
+  - component: {fileID: 7847269579271046978}
   m_Layer: 5
   m_Name: DeathUI
   m_TagString: Untagged
@@ -37,8 +38,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchoredPosition: {x: -23.23639, y: 0}
+  m_SizeDelta: {x: 622.7487, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5263754499334456331
 CanvasRenderer:
@@ -91,6 +92,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UGSNumber: 2
+--- !u!114 &7847269579271046978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936555416237082694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33b838ca9d69b84e82235af92c51f1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanDrag: 0
+  rectTransform: {fileID: 0}
 --- !u!1 &5188610253809041327
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +184,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBD80\uD65C \u314B\u314B"
+  m_Text: "\uC815\uC2E0 \uCC28\uB9AC\uAE30"
 --- !u!1 &6728845613789855572
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,8 +219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 65}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: -0, y: 65}
+  m_SizeDelta: {x: 507.6815, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6176546778624363631
 CanvasRenderer:
@@ -235,7 +250,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u314B"
+  m_text: "\uCE90\uB9AD\uD130\uAC00 \uC0AC\uB9DD\uD558\uC5EC\n\uB9C8\uC744\uB85C
+    \uB3CC\uC544\uC654\uC2B5\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1388ddb6efd8d48dcb7f383a0e0bf289, type: 2}
   m_sharedMaterial: {fileID: 3522791461214794850, guid: 1388ddb6efd8d48dcb7f383a0e0bf289, type: 2}
@@ -341,8 +357,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -78}
-  m_SizeDelta: {x: 200, y: 100}
+  m_AnchoredPosition: {x: -8.8138, y: -96}
+  m_SizeDelta: {x: 381.0835, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3111997693138694372
 CanvasRenderer:
@@ -425,7 +441,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5709082477484045904}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7847269579271046978}
+        m_TargetAssemblyTypeName: DeathUI, Assembly-CSharp
+        m_MethodName: ReStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7847269579271046978}
+        m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3336902879337723120
 MonoBehaviour:
   m_ObjectHideFlags: 0
