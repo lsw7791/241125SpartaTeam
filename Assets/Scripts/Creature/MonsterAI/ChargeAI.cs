@@ -128,6 +128,11 @@ public class ChargeAI : MonsterAI
         }
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        
+    }
+
     // 레이어가 일치하는지 확인하는 메소드
     private bool IsLayerMatched(LayerMask layerMask, int objectLayer)
     {
