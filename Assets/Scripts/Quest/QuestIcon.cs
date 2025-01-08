@@ -12,8 +12,8 @@ public class QuestIcon : UIBase
     // 클릭 시 실행될 메서드
     public void OnQuestIconClick()
     {
-        mainQuestUI = UIManager.Instance.ToggleUI<MainQuestUI>();
-        UIManager.Instance.ToggleUI<QuestIcon>();
+        UIManager.Instance.ToggleUI<MainQuestUI>();
+        UIManager.Instance.CloseUI<QuestIcon>();
     }
 
     private void Start()
