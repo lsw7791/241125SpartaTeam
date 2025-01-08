@@ -82,9 +82,15 @@ public class CraftResultUI : UIBase
             var itemData = GameManager.Instance.DataManager.GetItemDataById(craftItemList[i]);
 
             //_craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
-            if(inData.id == 61)
+            if(inData.id == 106)
             {
                 _craftItemImage[i].sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
+                if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(8) &&
+            !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[8])
+                {
+                    // QuestCompletionStatus[1]이 false일 때만 CompleteQuest(1) 호출
+                    GameManager.Instance.DataManager.MainQuest.CompleteQuest(8);
+                }
             }
             else
             {

@@ -1,6 +1,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using System;
+using System.Collections;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -99,7 +100,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         if (nowPlayer.CurrentQuestId < 9)
         {
-            UIManager.Instance.ToggleUI<QuestIcon>();
+            StartCoroutine(UIManager.Instance.DelayToggleUI(1f)); // 3초 후에 UI 토글을 호출하는 코루틴 시작
         }
 
         Player.playerNameText.text = Player.stats.NickName;
@@ -109,4 +110,5 @@ public class GameManager : MonoSingleton<GameManager>
         inventoryUI.EquipmentRefresh();
 
     }
+   
 }
