@@ -29,7 +29,7 @@ public class ShopSlot : MonoBehaviour
         itemPriceText.text = $"{itemData.buy} Gold";
         itemDescText.text = itemData.desc;
         //icon.sprite = Resources.Load<Sprite>(itemData.spritePath); // 아이콘 경로로부터 이미지 로드
-        icon.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
+        icon.sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
         //Sprite itemSprite = craftingAtlas.GetSprite(inData.atlasPath);
         // 구매 버튼 활성화 여부 설정
         buyButton.interactable = true;
