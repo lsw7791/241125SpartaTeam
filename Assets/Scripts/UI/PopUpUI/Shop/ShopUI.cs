@@ -75,9 +75,10 @@ public class ShopUI : UIBase
         {
             GameObject itemObject = Instantiate(ItemPrefab, ItemsParent);
             itemObject.TryGetComponent<ShopSlot>(out var shopslot);
-            shopslot.Setup(itemData);
+            shopslot.Setup(itemData, ShopType);  // ShopType을 전달
         }
     }
+
 
     // 상점 타입에 따른 버튼 상태 업데이트
     private void UpdateButtons()
