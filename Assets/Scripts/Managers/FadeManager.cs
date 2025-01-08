@@ -28,7 +28,10 @@ public class FadeManager : MonoBehaviour
         {
             yield return null;
         }
-
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.Die)
+        {
+            UIManager.Instance.ToggleUI<DeathUI>();
+        }
         // »≠∏È π‡∞‘ (∆‰¿ÃµÂ æ∆øÙ)
         yield return StartCoroutine(Fade(0f));
     }

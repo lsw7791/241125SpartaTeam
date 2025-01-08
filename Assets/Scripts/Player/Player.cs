@@ -30,7 +30,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public TMP_Text playerNameText;   // 이름을 표시할 TextMeshPro
 
-    private bool isDamage = false;
+    public bool isDamage = false;
 
     public QuickSlot QuickSlots { get; private set; }  // QuickSlot 객체로 변경
     public delegate void PlayerDataSavedHandler();
@@ -78,6 +78,11 @@ public class Player : MonoBehaviour, IDamageable
     // 데미지 처리
     public void TakeDamage(int damage)
     {
+        if(playerState == PlayerState.Die)
+        {
+            return;
+        }
+
         if (!isDamage)
         {
             StartCoroutine(DamageDelay(damage));
@@ -113,9 +118,10 @@ public class Player : MonoBehaviour, IDamageable
     {
         playerState = PlayerState.Die;
         TriggerDeath();
-        Revive();
+
         GameManager.Instance.SceneNum = 2;
         UIManager.Instance.fadeManager.LoadSceneWithFade(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
+
     }
     public void TriggerDeath()
     {

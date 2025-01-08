@@ -135,24 +135,35 @@ public class UIManager : MonoSingleton<UIManager>
     {
         T ui = GetUI<T>();
 
-        if (ui != null && !ui.gameObject.activeSelf)
+        // UiList에 UI가 없으면 바로 리턴
+        if (ui == null)
         {
-            ui.gameObject.SetActive(true); // UI가 비활성화되어 있으면 활성화
+            return null;
         }
 
+        // UI가 비활성화되어 있으면 활성화
+        if (!ui.gameObject.activeSelf)
+        {
+            ui.gameObject.SetActive(true);
+        }
 
-        // 캔버스 가져오기
-        Canvas uiCanvas = _uiCanvases[typeof(T).Name].GetComponent<Canvas>();
+        // 캔버스를 가져오기
+        if (_uiCanvases.ContainsKey(typeof(T).Name))
+        {
+            Canvas uiCanvas = _uiCanvases[typeof(T).Name].GetComponent<Canvas>();
 
-        // 캔버스를 UIManager의 자식으로 설정
-        uiCanvas.transform.SetParent(this.transform, false); // 로컬 좌표를 유지한 채로 부모를 변경
+            // 캔버스를 UIManager의 자식으로 설정
+            uiCanvas.transform.SetParent(this.transform, false); // 로컬 좌표를 유지한 채로 부모를 변경
 
-        // 새로운 sortingOrder 설정 (현재 카운터 값 사용)
-        uiCanvas.sortingOrder = _sortingOrderCounter;
+            // 새로운 sortingOrder 설정 (현재 카운터 값 사용)
+            uiCanvas.sortingOrder = _sortingOrderCounter;
+        }
+       
 
         ui.Open(); // UI를 여는 메서드 호출
         return ui;
     }
+
 
     // UI를 닫는 메서드
     public void CloseUI<T>() where T : UIBase
