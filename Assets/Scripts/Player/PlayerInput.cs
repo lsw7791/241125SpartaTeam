@@ -65,6 +65,8 @@ public class PlayerInput : MonoBehaviour
     }
     public void OnInteraction(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
         if (context.performed)
         {
             Interact();
@@ -99,6 +101,8 @@ public class PlayerInput : MonoBehaviour
     // 구르기
     public void OnRoll(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
         if (context.performed)
         {
             if (GameManager.Instance.Player.UseStamina(20) == true)
@@ -114,6 +118,8 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.started)
         {
+            if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
+            if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
             if (GameManager.Instance.Player.UseStamina(15) == true)
             {
                 GameManager.Instance.Player._playerAnimationController.SetPaddingAnimation(true); // 애니메이션 활성화

@@ -87,7 +87,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         isDamage = true;
 
-        WaitForSeconds delayTime = new WaitForSeconds(1f);
+        WaitForSeconds delayTime = new WaitForSeconds(2f);
 
         SoundManager.Instance.PlayPunchSFX();
         int value = stats.CurrentDef;
@@ -127,6 +127,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         playerState = PlayerState.Idle;
         stats.isDie = false;
+        isDamage = false;
         stats.CurrentHP = 20;
         ConditionUI.UpdateSliders();
         this.enabled = true;
