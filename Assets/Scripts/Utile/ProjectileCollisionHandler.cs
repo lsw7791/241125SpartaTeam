@@ -47,9 +47,12 @@ public class ProjectileCollisionHandler : MonoBehaviour
         // targetLayer에 포함되는 레이어인지 확인
         if (IsLayerMatched(_targetLayer.value, collision.gameObject.layer))
         {
-            if (collision.TryGetComponent<IDamageable>(out var outPlayer))
+            if (collision.TryGetComponent<Player>(out var outPlayer))
             { // 레이어를 거치고 왔기 때문에 몬스터와 플레이어의 혼동은 없음
-                outPlayer.TakeDamage(_damage); // 데미지 처리
+                if (!outPlayer.stats.isDie)
+                {
+                    outPlayer.TakeDamage(_damage); // 데미지 처리
+                }
             }
             else if (collision.transform.parent.TryGetComponent<ICreature>(out var outEnemy))
             {

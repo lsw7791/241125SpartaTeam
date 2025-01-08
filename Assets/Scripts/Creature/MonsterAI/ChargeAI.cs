@@ -109,9 +109,12 @@ public class ChargeAI : MonsterAI
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.TryGetComponent<IDamageable>(out var outTarget))
+        if (collision.transform.TryGetComponent<Player>(out var outPlayer))
         {
-            outTarget.TakeDamage(AttackMinusDef());
+            if (!outPlayer.stats.isDie)
+            {
+                outPlayer.TakeDamage(AttackMinusDef());
+            }
         }
         if (!isMove && _monsterPosition.position.magnitude != 0)
         {
