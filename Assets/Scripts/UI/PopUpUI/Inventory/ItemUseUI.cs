@@ -98,6 +98,10 @@ public class ItemUseUI : MonoBehaviour
                 GameManager.Instance.Player.inventory.DropItem(inItem.ItemID);
             });
         }
+        UseButton("아이템 정보").onClick.AddListener(() =>
+        { // 모든 아이템 타입
+
+        });
     }
 
     private void UseButtonClear()
