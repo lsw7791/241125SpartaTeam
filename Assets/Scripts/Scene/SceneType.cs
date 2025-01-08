@@ -10,7 +10,7 @@ public class SceneType : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            GameManager.Instance.Player.playerState = Player.PlayerState.UIOpen;
+            GameManager.Instance.Player.playerRoll.isRolling = true;
             GameManager.Instance.Player.StopRolling();
             GameManager.Instance.SceneNum = num;
             string currentSceneName = SceneManager.GetActiveScene().name;//현재 씬 이름 가져오기
@@ -31,7 +31,7 @@ public class SceneType : MonoBehaviour
                 playerTransform.position = mainCamera.transform.position;
                 GameManager.Instance.miniCamera.transform.position = mainCamera.transform.position;
             }
-            GameManager.Instance.Player.playerState = Player.PlayerState.Idle;
+            //GameManager.Instance.Player.playerState = Player.PlayerState.Idle;
         }
     }
 }
