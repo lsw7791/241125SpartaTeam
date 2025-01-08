@@ -41,7 +41,7 @@ public class GameManager : MonoSingleton<GameManager>
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         Instantiate(SceneNum);
-        SoundManager.Instance.PlayStartBGMMystical();
+        SoundManager.Instance.PlayStartBGMRelaxingPiano();
         
     }
 

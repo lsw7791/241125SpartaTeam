@@ -14,6 +14,9 @@ public class SoundManager : MonoSingleton<SoundManager>
     [SerializeField] private AudioClip AsiaTravelBGM;
     [SerializeField] private AudioClip MoodtimeflowBGM;
     [SerializeField] private AudioClip MysticalBGM;
+    [SerializeField] private AudioClip RelaxingPianoBGM;
+    [SerializeField] private AudioClip CalmPianoBGM;
+
 
     [Header("SFX")]
     [SerializeField] private AudioClip ClearSFX;
@@ -65,6 +68,8 @@ public class SoundManager : MonoSingleton<SoundManager>
         MoodtimeflowBGM = Resources.Load<AudioClip>("Sounds/BGM/MoodtimeflowBGM");
         AsiaTravelBGM = Resources.Load<AudioClip>("Sounds/BGM/AsiaTravelBGM");
         MysticalBGM = Resources.Load<AudioClip>("Sounds/BGM/MysticalBGM");
+        RelaxingPianoBGM = Resources.Load<AudioClip>("Sounds/BGM/RelaxingPianoBGM");
+        CalmPianoBGM = Resources.Load<AudioClip>("Sounds/BGM/CalmPianoBGM");
 
 
         //SFX
@@ -88,6 +93,8 @@ public class SoundManager : MonoSingleton<SoundManager>
     public void PlayStartBGMAsiaTravel() => PlayBGM(AsiaTravelBGM);
     public void PlayStartBGMSciFiMoodtimeflow() => PlayBGM(MoodtimeflowBGM);
     public void PlayStartBGMMystical() => PlayBGM(MysticalBGM);
+    public void PlayStartBGMRelaxingPiano() => PlayBGM(RelaxingPianoBGM);
+    public void PlayStartBGMCalmPiano() => PlayBGM(CalmPianoBGM);
 
     // 미리 설정된 SFX를 재생하는 메서드 SoundManager.Instance.PlayClearSFX();
     public void PlayClearSFX() => PlaySFX(ClearSFX);
