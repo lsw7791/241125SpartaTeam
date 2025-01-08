@@ -8,7 +8,7 @@ public class PlayerRoll : MonoBehaviour
     private Collider2D playerCollider; // 2D 플레이어의 콜라이더
     private Rigidbody2D rb; // 2D Rigidbody
     public bool isRolling = false; // 구르는 중인지 여부
-
+    [SerializeField]public bool canRoll = true;
     private Vector2 rollDirection; // 구르는 방향
     private Vector2 startPosition; // 구르기 시작 위치
     private float rollStartTime; // 구르기 시작 시간
@@ -24,6 +24,7 @@ public class PlayerRoll : MonoBehaviour
     public void StartRolling()
     {
         if (isRolling) return; // 이미 구르고 있으면 시작하지 않음
+        if (!canRoll) return;
         isRolling = true;
 
         // 방어력 증가
@@ -48,7 +49,7 @@ public class PlayerRoll : MonoBehaviour
     private void FixedUpdate()
     {
         if (!isRolling) return; // 구르기가 진행 중이지 않으면 실행하지 않음
-
+        if (!canRoll) return;
         // 이동할 거리 계산 (구르기 시작 시간과 현재 시간을 기반으로 이동할 거리 계산)
         traveledDistance = (Time.time - rollStartTime) * rollSpeed;
 

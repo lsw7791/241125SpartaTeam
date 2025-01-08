@@ -23,6 +23,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
         if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.MoveMap) return;
 
         //if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
 
@@ -93,6 +94,7 @@ public class PlayerInput : MonoBehaviour
         //Debug.Log(GameManager.Instance.Player.playerState);
         if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
         if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.MoveMap) return;
 
         GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
     }
@@ -103,6 +105,8 @@ public class PlayerInput : MonoBehaviour
     {
         if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
         if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.MoveMap) return;
+         
         if (context.performed)
         {
             if (GameManager.Instance.Player.UseStamina(20) == true)
@@ -279,8 +283,9 @@ public class PlayerInput : MonoBehaviour
 
         // 이미 구르고 있으면 구르기 시작하지 않음
         if (GameManager.Instance.Player.playerRoll.isRolling) return;
-            // 구르기 시작
-            GameManager.Instance.Player.playerRoll.StartRolling();
+        if (!GameManager.Instance.Player.playerRoll.canRoll) return;
+        // 구르기 시작
+        GameManager.Instance.Player.playerRoll.StartRolling();
         // 구르기 시작 후, Roll은 Update에서 진행됩니다.
         // Update에서 계속해서 Roll()을 호출하게 됩니다.
     }
