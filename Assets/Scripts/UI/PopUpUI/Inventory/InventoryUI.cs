@@ -44,13 +44,14 @@ public class InventoryUI : UIBase
 
     private void Start()
     {
-        
+
     }
 
     private void OnEnable()
     {
         Setup(GameManager.Instance.Player.inventory);
         _playerName.text = GameManager.Instance.Player.stats.NickName;
+        EquipmentRefresh();
     }
 
     public void Setup(Inventory inventory)
@@ -64,6 +65,7 @@ public class InventoryUI : UIBase
         // 슬롯 생성 및 초기화
         InitializeSlots();
         Refresh(); // 초기 UI 갱신
+        EquipmentRefresh();
     }
 
     private void InitializeSlots()
@@ -138,6 +140,21 @@ public class InventoryUI : UIBase
         for (int i = 0; i < _equipmentSlots.Count; i++)
         {
             UpdateSlot(keys[i], null);
+        }
+    }
+    public void EquipmentRefresh()
+    {
+        EquipmentUIReset();
+
+        var items = GameManager.Instance.Player.inventory.GetItems(); // 아이템 리스트 받아오기
+
+        foreach (InventoryItem item in items)
+        {
+            if (item.IsEquipped)
+            {
+                var itemData = GameManager.Instance.DataManager.GetItemDataById(item.ItemID);
+                UpdateSlot(itemData.itemType, UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath));
+            }
         }
     }
 }

@@ -41,7 +41,7 @@ public class ItemUseUI : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.Instance.Player.inventory.EquipNew(inItem);
+                    GameManager.Instance.Player.inventory.Equip(inItem);
                     if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(3) &&
                                    !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[3])
                     {

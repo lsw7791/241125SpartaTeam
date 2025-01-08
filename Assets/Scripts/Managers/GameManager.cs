@@ -87,6 +87,8 @@ public class GameManager : MonoSingleton<GameManager>
             SceneNum = 2;
             LoadScene(DataManager.Scene.GetMapTo(SceneNum));
 
+            Player.playerNameText.text = Player.stats.NickName;
+
             return;
         }
 
@@ -97,5 +99,9 @@ public class GameManager : MonoSingleton<GameManager>
         LoadScene(DataManager.Scene.GetMapTo(SceneNum));
 
         Player.playerNameText.text = Player.stats.NickName;
+
+        InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
+        //inventoryUI.EquipmentUIReset();
+        inventoryUI.EquipmentRefresh();
     }
 }
