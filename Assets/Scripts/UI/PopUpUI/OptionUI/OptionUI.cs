@@ -85,7 +85,10 @@ public class OptionUI : UIBase
         dataManager.DataClear();
 
         QuestIcon questUI = UIManager.Instance.GetUI<QuestIcon>();
-        questUI.mainQuestUI.gameObject.SetActive(false);
+        if (questUI != null)
+        {
+            questUI.mainQuestUI.gameObject.SetActive(false);
+        }
 
         GameManager.Instance.SceneNum = 25;
         UIManager.Instance.fadeManager.LoadSceneWithFade(dataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));

@@ -23,7 +23,7 @@ public class CharacterCreation : MonoBehaviour
         dataManager.SaveData(new Inventory());
         //dataManager.SaveData(new Equipment());
         GameManager.Instance.StartGame();
-        UIManager.Instance.ToggleUI<QuestIcon>();
+        StartCoroutine(UIManager.Instance.DelayToggleQuestUI(1f));
     }
 
     public void Exit()

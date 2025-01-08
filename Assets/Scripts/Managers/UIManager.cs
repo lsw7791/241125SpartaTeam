@@ -240,7 +240,7 @@ public class UIManager : MonoSingleton<UIManager>
 
         return ui;
     }
-    public IEnumerator DelayToggleUI(float delayTime)
+    public IEnumerator DelayToggleQuestUI(float delayTime)
     {
         // 지정된 시간(초)만큼 기다립니다.
         yield return new WaitForSeconds(delayTime);
