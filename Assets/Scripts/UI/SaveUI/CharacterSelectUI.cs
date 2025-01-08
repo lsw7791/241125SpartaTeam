@@ -71,7 +71,7 @@ public class CharacterSelectUI : UIBase
         {
             isNewGame = true;
             GameManager.Instance.SceneNum = 24;
-            GameManager.Instance.LoadScene(dataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
+            UIManager.Instance.fadeManager.LoadSceneWithFade(dataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
             UIManager.Instance.ToggleUI<CharacterSelectUI>();
         }
     }

@@ -62,11 +62,11 @@ public class GameManager : MonoSingleton<GameManager>
         SpawnManager.Initialize(mapNum);
     }
 
-    public void LoadScene(string sceneName)
-    {
-        // 씬 전환
-        SceneManager.LoadScene(sceneName);
-    }
+    //public void LoadScene(string sceneName)
+    //{
+    //    // 씬 전환
+    //    SceneManager.LoadScene(sceneName);
+    //}
 
     // 캐릭터 선택 후 게임 시작
     public void StartGame()
@@ -84,7 +84,7 @@ public class GameManager : MonoSingleton<GameManager>
 
             // 씬을 전환하여 게임 시작
             SceneNum = 2;
-            LoadScene(DataManager.Scene.GetMapTo(SceneNum));
+            UIManager.Instance.fadeManager.LoadSceneWithFade(DataManager.Scene.GetMapTo(SceneNum));
 
             Player.playerNameText.text = Player.stats.NickName;
 
@@ -95,7 +95,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         // 씬을 전환하여 게임 시작
         SceneNum = nowPlayer.nowMapNumber;
-        LoadScene(DataManager.Scene.GetMapTo(SceneNum));
+        UIManager.Instance.fadeManager.LoadSceneWithFade(DataManager.Scene.GetMapTo(SceneNum));
 
         if (nowPlayer.CurrentQuestId < 9)
         {
