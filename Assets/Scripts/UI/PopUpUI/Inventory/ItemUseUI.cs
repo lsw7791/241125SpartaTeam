@@ -24,12 +24,14 @@ public class ItemUseUI : MonoBehaviour
         {
             _useItemImage.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
         }
+
         UseButtonClear();
-        // TODO :: 기능별로 나눠놔야됨
+
+        // 버튼 기능 설정 (아이템 종류별로 다르게 처리)
         if (itemData.itemType < ItemType.Mine)
         {
             UseButton("착용하기").onClick.AddListener(() =>
-            { // 장비 타입
+            {
                 SoundManager.Instance.PlayButton1SFX();
 
                 if (inItem.IsEquipped)
@@ -37,73 +39,88 @@ public class ItemUseUI : MonoBehaviour
                     GameManager.Instance.Player.inventory.UnEquip(itemData.itemType);
                     InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
                     inventoryUI.ClearEquipmentSlot(itemData.itemType);
-                    // 해제
                 }
                 else
                 {
                     GameManager.Instance.Player.inventory.Equip(inItem);
-                    if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(3) &&
-                                   !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[3])
-                    {
-                        GameManager.Instance.DataManager.MainQuest.CompleteQuest(3);
-                    }
                     InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
                     inventoryUI.UpdateEquipmentSlot(itemData.itemType, UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath));
-                    // 착용
                 }
                 GameManager.Instance.Player.inventory.EquipItem(inItem.ItemID);
             });
+
             UseButton("강화하기").onClick.AddListener(() =>
-            { // 장비 타입
+            {
                 UpGradeUI upGradeUI = UIManager.Instance.ToggleUI<UpGradeUI>();
                 upGradeUI.Initialize(inItem);
             });
-            //UseButton("조합하기").onClick.AddListener(() =>
-            //{ // 재료 타입
-            //    Debug.Log("조합");
-            //});
-           
+
             UseButton("버리기").onClick.AddListener(() =>
-            { // 모든 아이템 타입
-                // TODO :: 버릴때 몇개를 버릴건지 정하는 코드 필요
-                if(inItem.IsEquipped)
-                { // TODO :: 동적 UI로 표시하기
+            {
+                if (inItem.IsEquipped)
+                {
                     Debug.Log("착용중인 장비입니다.");
                     return;
                 }
+
                 GameManager.Instance.Player.inventory.DropItem(inItem.ItemID);
+
+                // 아이템 수량 확인 후 0이면 UI 비활성화
+                if (inItem.Quantity <= 0)
+                {
+                    // 아이템 수량이 0이면 ItemUseUI 비활성화
+                    gameObject.SetActive(false);
+                }
             });
         }
-        else if(itemData.itemType > ItemType.Gold)
+        else if (itemData.itemType > ItemType.Gold)
         {
             UseButton("사용하기").onClick.AddListener(() =>
             {
                 SoundManager.Instance.PlayButton1SFX();
-                GameManager.Instance.Player.inventory. RemoveItem(inItem.ItemID, 1);
-                // 포션 효과 적용
+                GameManager.Instance.Player.inventory.RemoveItem(inItem.ItemID, 1);
                 GameManager.Instance.DataManager.Item.UsePotion(inItem.ItemID);
                 GameManager.Instance.Player.ConditionUI.UpdateSliders();
+
+                // 아이템 사용 후 수량이 0이면 UI 비활성화
+                if (inItem.Quantity <= 0)
+                {
+                    gameObject.SetActive(false);
+                }
             });
+
             UseButton("버리기").onClick.AddListener(() =>
-            { // 모든 아이템 타입
-                // TODO :: 버릴때 몇개를 버릴건지 정하는 코드 필요
+            {
                 GameManager.Instance.Player.inventory.DropItem(inItem.ItemID);
+
+                // 아이템 수량 확인 후 0이면 UI 비활성화
+                if (inItem.Quantity <= 0)
+                {
+                    gameObject.SetActive(false);
+                }
             });
         }
         else
         {
             UseButton("버리기").onClick.AddListener(() =>
-            { // 모든 아이템 타입
-                // TODO :: 버릴때 몇개를 버릴건지 정하는 코드 필요
+            {
                 GameManager.Instance.Player.inventory.DropItem(inItem.ItemID);
+
+                // 아이템 수량 확인 후 0이면 UI 비활성화
+                if (inItem.Quantity <= 0)
+                {
+                    gameObject.SetActive(false);
+                }
             });
         }
+
         UseButton("아이템 정보").onClick.AddListener(() =>
-        { // 모든 아이템 타입
+        {
             ItemDescriptionUI itemDescriptionUI = UIManager.Instance.ToggleUI<ItemDescriptionUI>();
             itemDescriptionUI.Initialize(inItem);
         });
     }
+
 
     private void UseButtonClear()
     {
