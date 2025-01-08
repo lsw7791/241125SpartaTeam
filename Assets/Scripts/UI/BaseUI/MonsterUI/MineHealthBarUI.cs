@@ -50,9 +50,9 @@ public class MineHealthBarUI : MonoBehaviour
             currentHealth = mine.currentHealth;
             maxHealth = GameManager.Instance.DataManager.Creature.GetHealth(mine.id);
             healthBarForeground.fillAmount = currentHealth / maxHealth;
-            Debug.Log($"currentHealth = {currentHealth}");
-            Debug.Log($"maxHealth = {maxHealth}");
-            Debug.Log($"healthBarForeground.fillAmount = {healthBarForeground.fillAmount}");
+            //Debug.Log($"currentHealth = {currentHealth}");
+            //Debug.Log($"maxHealth = {maxHealth}");
+            //Debug.Log($"healthBarForeground.fillAmount = {healthBarForeground.fillAmount}");
 
 
         }

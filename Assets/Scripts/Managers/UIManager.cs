@@ -13,9 +13,11 @@ public class UIManager : MonoSingleton<UIManager>
     public SpriteAtlas ItemAtlas;
     public SpriteAtlas UIAtlas;
     public SpriteAtlas BackgroundAtlas;
+    public FadeManager fadeManager;
     protected override void Awake()
     {
         base.Awake();
+        fadeManager = GetComponentInChildren<FadeManager>();
     }
 
     // UI를 가져오고, 만약 존재하지 않으면 생성
