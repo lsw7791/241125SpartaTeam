@@ -15,7 +15,10 @@ public class InventoryUI : UIBase
     [SerializeField] TMP_Text _hasGold;
 
     public GameObject itemUseMenu;
-    
+    public RectTransform ScrollContent;
+    public ScrollRect scrollRect;
+
+
     [Header("Equipment Slots")]
     [SerializeField] private Image _headSlot;
     [SerializeField] private Image _armorSlot;
@@ -40,6 +43,8 @@ public class InventoryUI : UIBase
             { ItemType.Top, _topSlot },
             { ItemType.Cape, _capeSlot },
         };
+        scrollRect.onValueChanged.AddListener(LimitScrollPosition);
+
     }
 
     private void Start()
@@ -51,6 +56,8 @@ public class InventoryUI : UIBase
     {
         Setup(GameManager.Instance.Player.inventory);
         _playerName.text = GameManager.Instance.Player.stats.NickName;
+
+        ScrollContent.anchoredPosition = new Vector2(ScrollContent.anchoredPosition.x, 0);
         EquipmentRefresh();
     }
 
@@ -70,14 +77,15 @@ public class InventoryUI : UIBase
 
     private void InitializeSlots()
     {
-        var items = GameManager.Instance.Player.inventory.GetItems(); // 아이템 리스트 받아오기
+        var item = GameManager.Instance.Player.inventory; // 아이템 리스트 받아오기
+        var items = item.GetItems(); // 아이템 리스트 받아오기
         foreach (var slot in _slots)
         {
             Destroy(slot);
         }
         _slots.Clear();
 
-        for (int i = 0; i < 12; i++) // 슬롯 수 고정 (필요시 수정 가능)
+        for (int i = 0; i < item.Items.Count; i++) // 슬롯 수 고정 (필요시 수정 가능)
         {
             GameObject slot = Instantiate(slotPrefab, slotContainer);
             slot.AddComponent<Button>();
@@ -142,6 +150,20 @@ public class InventoryUI : UIBase
             UpdateSlot(keys[i], null);
         }
     }
+    private void LimitScrollPosition(Vector2 normalizedPosition)
+    {
+        // 현재 ScrollContent의 위치 가져오기
+        Vector2 currentPos = ScrollContent.anchoredPosition;
+
+        // y값이 0 이하로 내려가지 않도록 제한
+        if (currentPos.y < 0)
+        {
+            currentPos.y = 0;
+            ScrollContent.anchoredPosition = currentPos;
+        }
+    }
+
+
     public void EquipmentRefresh()
     {
         EquipmentUIReset();

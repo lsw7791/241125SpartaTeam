@@ -22,11 +22,26 @@ public class PlayerCanvas : MonoBehaviour
         //playerNameText.text = playerName;
     }
 
+    //private void OnEnable()
+    //{
+    //    Debug.Log("호출됨");
+    //    CharacterSelectUI selectUI = UIManager.Instance.GetUI<CharacterSelectUI>();
+    //    if (selectUI.isNewGame)
+    //    {
+    //        playerName = GameManager.Instance.Player.stats.NickName;
+    //        playerTransform = transform; // 플레이어 Transform 가져오기
+    //                                     // TextMeshPro에 이름 설정
+    //        playerNameText.text = playerName;
+    //        playerNameText.transform.position = playerTransform.position + nameOffset;
+    //    }
+    //}
+
     //private void PlayerName()
     //{
     //    playerName = GameManager.Instance.Player.stats.NickName;
     //    playerNameText.text = playerName;
     //}
+
 
     //private void LateUpdate()
     //{

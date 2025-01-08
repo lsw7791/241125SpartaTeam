@@ -18,7 +18,7 @@ public enum QuestAction
 
 public class MainQuest : MainQuestData
 {
-    public int CurrentQuestId;
+    public int CurrentQuestId =0;
     public Dictionary<int, bool> QuestCompletionStatus { get; private set; } = new Dictionary<int, bool>();
     public delegate void QuestUpdated(int questId);
     public event QuestUpdated OnQuestUpdated;

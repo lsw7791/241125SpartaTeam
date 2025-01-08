@@ -419,6 +419,8 @@ MonoBehaviour:
   textComponent: {fileID: 1408320857}
   fullText: 
   typingDuration: 5
+  scaleFactor: {x: 0, y: 0, z: 0}
+  scaleDuration: 1
 --- !u!114 &1408320860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,6 +552,10 @@ PrefabInstance:
     - target: {fileID: 4407146081628093887, guid: 58ddc57fd89b6db4da19efbac85f9677, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291716163532296882, guid: 58ddc57fd89b6db4da19efbac85f9677, type: 3}
+      propertyPath: m_SortingOrder
+      value: -20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

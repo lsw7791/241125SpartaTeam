@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b492d79343f74f84e9c02e9d37d01f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mine: {fileID: 0}
 --- !u!58 &3361300903417517218
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -184,6 +185,7 @@ MonoBehaviour:
   currentHealth: 0
   isDie: 0
   id: 0
+  mineHealthBarUI: {fileID: 0}
 --- !u!114 &423415198854377133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +294,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4954004172510956965}
     m_Modifications:
+    - target: {fileID: 258277391941444766, guid: 43896a45b24c2e343aaeb2aaca215022, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 258277391941444766, guid: 43896a45b24c2e343aaeb2aaca215022, type: 3}
       propertyPath: m_Color.b
       value: 0

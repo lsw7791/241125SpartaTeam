@@ -41,7 +41,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         Instantiate(SceneNum);
         SoundManager.Instance.PlayStartBGMMystical();
-
+        
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -80,7 +80,6 @@ public class GameManager : MonoSingleton<GameManager>
         {
             Player.stats.Initialize();
             nowPlayer.CurrentQuestId = DataManager.MainQuest.CurrentQuestId;
-
             Player.inventory.SaveEquipInIt();
 
             // 씬을 전환하여 게임 시작
@@ -98,10 +97,16 @@ public class GameManager : MonoSingleton<GameManager>
         SceneNum = nowPlayer.nowMapNumber;
         LoadScene(DataManager.Scene.GetMapTo(SceneNum));
 
+        if (nowPlayer.CurrentQuestId < 9)
+        {
+            UIManager.Instance.ToggleUI<QuestIcon>();
+        }
+
         Player.playerNameText.text = Player.stats.NickName;
 
         InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
         //inventoryUI.EquipmentUIReset();
         inventoryUI.EquipmentRefresh();
+
     }
 }
