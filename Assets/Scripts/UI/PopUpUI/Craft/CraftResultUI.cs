@@ -82,7 +82,15 @@ public class CraftResultUI : UIBase
             var itemData = GameManager.Instance.DataManager.GetItemDataById(craftItemList[i]);
 
             //_craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
-            _craftItemImage[i].sprite = UIManager.Instance.craftingAtlas.GetSprite(inData.atlasPath);
+            if(inData.id == 61)
+            {
+                _craftItemImage[i].sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
+            }
+            else
+            {
+                _craftItemImage[i].sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
+            }
+            //_craftItemImage[i].sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
             int craftItemCount = GameManager.Instance.DataManager.Crafting.GetCraftCountIds(inData.id)[i];
             int inventoryItemCount = GameManager.Instance.Player.inventory.GetItemCount(itemData.id);
 
