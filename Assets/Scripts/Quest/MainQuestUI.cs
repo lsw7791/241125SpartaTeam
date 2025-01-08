@@ -74,7 +74,8 @@ public class MainQuestUI : UIBase
 
         if (GameManager.Instance.DataManager.MainQuest.CurrentQuestId > 8)
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
+            UIManager.Instance.ToggleUI<EndingUI>();
         }
 
         UpdateUI(GameManager.Instance.DataManager.MainQuest.CurrentQuestId);

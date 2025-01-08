@@ -24,6 +24,7 @@ public class CraftingUI : UIBase
 
             // CraftResultUI의 Sorting Order를 3으로 설정
             UIManager.Instance.ToggleUI<CraftResultUI>();
+            UIManager.Instance.ToggleUI<CraftingUI>();
             CraftResultUI craftResultUI = UIManager.Instance.OpenUI<CraftResultUI>();
             craftResultUI.transform.SetAsLastSibling();
 
@@ -65,7 +66,7 @@ public class CraftingUI : UIBase
             var itemData = GameManager.Instance.DataManager.GetItemDataById(craftItemList[i]);
 
             //_craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
-            if(_craftingData.id == 61)
+            if(_craftingData.id == 106)
             {
                 _craftItemImage[i].sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
 

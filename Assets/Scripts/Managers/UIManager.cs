@@ -1,4 +1,5 @@
 using Constants;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
@@ -238,5 +239,13 @@ public class UIManager : MonoSingleton<UIManager>
         T ui = GetUI<T>();
 
         return ui;
+    }
+    public IEnumerator DelayToggleUI(float delayTime)
+    {
+        // 지정된 시간(초)만큼 기다립니다.
+        yield return new WaitForSeconds(delayTime);
+
+        // 3초 후 UI를 토글합니다.
+        UIManager.Instance.ToggleUI<QuestIcon>();
     }
 }
