@@ -56,7 +56,7 @@ public class ItemDescriptionUI : UIBase
     {
         if (inIsStat)
         {
-            descText.Append($"{inStatName} : {inItemData * inEnhenceCount}\n");
+            descText.Append($"{inStatName} : {inItemData * (inEnhenceCount + 1)}\n");
         }
     }
 }
