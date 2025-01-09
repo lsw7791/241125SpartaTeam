@@ -84,10 +84,13 @@ public class OptionUI : UIBase
         //dataManager.SaveData(GameManager.Instance.Player.equipment);
         dataManager.DataClear();
 
-        QuestIcon questUI = UIManager.Instance.GetUI<QuestIcon>();
-        if (questUI != null)
+        if (GameManager.Instance.Player.stats.CurrentQuestId < 9)
         {
-            questUI.mainQuestUI.gameObject.SetActive(false);
+            QuestIcon questUI = UIManager.Instance.GetUI<QuestIcon>();
+            if (questUI != null)
+            {
+                questUI.mainQuestUI.gameObject.SetActive(false);
+            }
         }
 
         GameManager.Instance.SceneNum = 25;
