@@ -53,11 +53,7 @@ public class Monster : MonoBehaviour, ICreature
             if (currentHealth <= 0)
             {
                 Die();  // 체력이 0 이하가 되면 죽음 처리
-            }
-            else
-            {
-                Debug.Log($"Monster {GameManager.Instance.DataManager.Creature.GetName(id)} remaining health: {currentHealth}");
-            }
+            }    
         }     
     }
 

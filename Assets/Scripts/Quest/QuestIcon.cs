@@ -14,6 +14,7 @@ public class QuestIcon : UIBase
     {
         UIManager.Instance.ToggleUI<MainQuestUI>();
         UIManager.Instance.CloseUI<QuestIcon>();
+        GameManager.Instance.Player.playerState = Player.PlayerState.Idle;
     }
 
     private void Start()

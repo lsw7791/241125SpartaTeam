@@ -24,7 +24,6 @@ public class CraftingManager : MonoBehaviour
     {
         if (selectedItemId == -1)
         {
-            Debug.LogWarning("아이템을 선택해주세요.");
             return false;
         }
 
@@ -47,14 +46,12 @@ public class CraftingManager : MonoBehaviour
 
         if (missingMaterials.Count > 0)
         {
-            Debug.Log("재료가 부족합니다: " + string.Join(", ", missingMaterials));
             return false;
         }
 
         // 재료 소비 및 아이템 생성
         ConsumeMaterials(requiredMaterials);
 
-        Debug.Log($"아이템 ID {selectedItemId} 제작 성공!");
         return true;
     }
 
@@ -66,7 +63,6 @@ public class CraftingManager : MonoBehaviour
             if (material.Value > 0)
             {
                 GameManager.Instance.Player.inventory.RemoveItem(material.Key, material.Value);
-                Debug.Log($"{material.Value}개 {material.Key} 아이템 사용됨.");
             }
         }
     } 

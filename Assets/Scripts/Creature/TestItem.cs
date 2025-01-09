@@ -45,7 +45,7 @@ public class TestItem : MonoBehaviour
             {
                 int randomGold = Random.Range(minGold, maxGold + 1); // °ñµå ¹üÀ§¿¡¼­ ·£´ý °ª
                 GameManager.Instance.Player.Stats.Gold += randomGold; // ÇÃ·¹ÀÌ¾î °ñµå Ãß°¡
-                Debug.Log($"{randomGold} °ñµå¸¦ È¹µæÇß½À´Ï´Ù! ÇöÀç °ñµå: {GameManager.Instance.Player.Stats.Gold}");
+              
             }
             else
             {

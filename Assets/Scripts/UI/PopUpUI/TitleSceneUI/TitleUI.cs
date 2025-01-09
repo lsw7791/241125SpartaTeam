@@ -18,14 +18,14 @@ public class TitleUI : MonoBehaviour
     public void StartGame()
     {
         SoundManager.Instance.PlayButton2SFX();
-        Debug.Log("게임 시작");
+
         GameManager.Instance.SceneNum = 24;
         UIManager.Instance.fadeManager.LoadSceneWithFade(GameManager.Instance.DataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
     }
     public void LoadGame(bool inIsNewGame)
     {
         SoundManager.Instance.PlayButton2SFX();
-        Debug.Log("게임 불러오기");
+
         CharacterSelectUI selectUI = UIManager.Instance.ToggleUI<CharacterSelectUI>();
         selectUI.GameStart();
     }
