@@ -6,14 +6,13 @@ using UnityEngine.InputSystem;
 public class PlayerWeapon : MonoBehaviour
 {
     public int ATKType;
-    [SerializeField] GameObject _weapon; // 현재 무기를 나타내는 오브젝트
+    [SerializeField] private GameObject _weapon; // 현재 무기를 나타내는 오브젝트
     private Collider2D _weaponCollider;
-    [SerializeField] GameObject[] _attackObjects; // 0번: 화살, 1번: 파이어볼
-    [SerializeField] RectTransform _aoSpawnPoint; // 발사 위치
+    [SerializeField] private GameObject[] _attackObjects; // 0번: 화살, 1번: 파이어볼
+    [SerializeField] private RectTransform _aoSpawnPoint; // 발사 위치
 
     [SerializeField]
     protected LayerMask _layerMask; // 적군 레이어마스크
-
     [SerializeField]
     protected LayerMask _obstacleLayer; //  장애물 레이어마스크
 
@@ -21,7 +20,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         //GameManager.Instance.Player._playerWeapon = this;
         _weapon = this.gameObject;
-        GameManager.Instance.Player.Weapon = _weapon;
+        GameManager.Instance.Player.weaponObject = _weapon;
         _weaponCollider = _weapon.GetComponent<Collider2D>();  // 무기의 Collider2D 가져오기
         _weaponCollider.enabled = false;  // 시작 시 콜라이더 비활성화
     }

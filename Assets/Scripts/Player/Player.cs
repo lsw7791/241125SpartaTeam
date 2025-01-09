@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -6,13 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour, IDamageable
 {
     public enum PlayerState
-    { 
-    Idle,
-    Attack,
-    Die,
-    UIOpen,
-    GetDamaged,
-    MoveMap
+    {
+        Idle,
+        Attack,
+        Die,
+        UIOpen,
+        GetDamaged,
+        MoveMap
     }
 
     public PlayerData stats;  // 플레이어의 스탯
@@ -20,10 +19,10 @@ public class Player : MonoBehaviour, IDamageable
     public PlayerInput PlayerInput;
     public PlayerAnimationController _playerAnimationController;
     public PlayerWeapon _playerWeapon;
-    public GameObject Weapon;
+    public GameObject weaponObject;
     public ConditionUI ConditionUI;
     public StatusUI StatusUI;
-    private float staminaRechargeTimer = 0f;
+    private float _staminaRechargeTimer = 0f;
     public PlayerState playerState = PlayerState.Idle;
     public PlayerRoll playerRoll;
     // QuickSlots 프로퍼티
@@ -40,15 +39,13 @@ public class Player : MonoBehaviour, IDamageable
     public Player()
     {
         inventory = new Inventory();
-        //stats = GameManager.Instance.DataManager.nowPlayer;
         QuickSlots = new QuickSlot();  // QuickSlot 객체 초기화
-
     }
 
     private void Awake()
     {
         PlayerInput = GetComponent<PlayerInput>();
-        _playerWeapon = Weapon.GetComponent<PlayerWeapon>();
+        _playerWeapon = weaponObject.GetComponent<PlayerWeapon>();
         _playerRB = GetComponent<Rigidbody2D>();
         playerRoll = GetComponent<PlayerRoll>();
     }
@@ -56,17 +53,17 @@ public class Player : MonoBehaviour, IDamageable
     private void FixedUpdate()
     {
         // FixedUpdate의 시간 간격은 Time.fixedDeltaTime으로 고정되어 있음
-        staminaRechargeTimer += Time.fixedDeltaTime;
+        _staminaRechargeTimer += Time.fixedDeltaTime;
 
         // 1초마다 실행
-        if (staminaRechargeTimer >= 1f)
+        if (_staminaRechargeTimer >= 1f)
         {
             if (stats.MaxStamina > stats.CurrentStamina)
             {
                 stats.CurrentStamina += 5;
                 ConditionUI._stamina.value = stats.CurrentStamina; // UI 업데이트
             }
-            staminaRechargeTimer = 0f; // 타이머 초기화
+            _staminaRechargeTimer = 0f; // 타이머 초기화
         }
     }
     // 인벤토리 관련: 스프라이트 포함

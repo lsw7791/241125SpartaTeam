@@ -950,7 +950,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uACF5\uACA9\uB825 + 10 -> \uACF5\uACA9\uB825 + 15(+5)"
+  m_text: "\uAC15\uD654\uC5D0 \uB3C4\uC804\uD574\uBCF4\uC138\uC694."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1388ddb6efd8d48dcb7f383a0e0bf289, type: 2}
   m_sharedMaterial: {fileID: 3522791461214794850, guid: 1388ddb6efd8d48dcb7f383a0e0bf289, type: 2}

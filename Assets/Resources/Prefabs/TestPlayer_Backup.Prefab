@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ATKType: 0
-  _weapon: {fileID: 5057688274015716384, guid: 011289f3fed617a43afc7f16f830160a, type: 3}
+  _weaponObject: {fileID: 0}
   _attackObjects:
   - {fileID: 4493029942455348064, guid: 59cef3b5f829fb4459773cf4797d18d2, type: 3}
   - {fileID: 2718856006269825222, guid: 77e1c58752a0bd041a500203bfb9030f, type: 3}
@@ -2986,12 +2986,13 @@ MonoBehaviour:
   PlayerInput: {fileID: 0}
   _playerAnimationController: {fileID: 0}
   _playerWeapon: {fileID: 0}
-  Weapon: {fileID: 1123440809906398237}
+  weaponObject: {fileID: 1123440809906398237}
   ConditionUI: {fileID: 0}
   StatusUI: {fileID: 0}
   playerState: 0
   playerRoll: {fileID: 0}
   playerNameText: {fileID: 3986470208599983264}
+  isDamage: 0
   _playerRB: {fileID: 0}
 --- !u!114 &7252967140961143558
 MonoBehaviour:
