@@ -561,6 +561,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2004198867510486060, guid: 54a1999ca71c5f04c957c5aa9c5c815a, type: 3}
+      propertyPath: m_Name
+      value: ColliderOBJ
+      objectReference: {fileID: 0}
     - target: {fileID: 3451321809976887663, guid: 54a1999ca71c5f04c957c5aa9c5c815a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -606,7 +610,8 @@ PrefabInstance:
       value: Stage3MineGrid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6465039029934108664, guid: 54a1999ca71c5f04c957c5aa9c5c815a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54a1999ca71c5f04c957c5aa9c5c815a, type: 3}

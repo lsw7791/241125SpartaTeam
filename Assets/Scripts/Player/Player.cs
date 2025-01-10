@@ -56,11 +56,11 @@ public class Player : MonoBehaviour, IDamageable
         _staminaRechargeTimer += Time.fixedDeltaTime;
 
         // 1초마다 실행
-        if (_staminaRechargeTimer >= 1f)
+        if (_staminaRechargeTimer >= 0.5f)
         {
             if (stats.MaxStamina > stats.CurrentStamina)
             {
-                stats.CurrentStamina += 5;
+                stats.CurrentStamina += 3;
                 ConditionUI._stamina.value = stats.CurrentStamina; // UI 업데이트
             }
             _staminaRechargeTimer = 0f; // 타이머 초기화
