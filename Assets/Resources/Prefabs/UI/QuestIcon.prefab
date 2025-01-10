@@ -151,7 +151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4046860610996597594
 RectTransform:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 276, y: -6.795}
+  m_AnchoredPosition: {x: 286, y: -3}
   m_SizeDelta: {x: 440.03, y: 86.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737395674992935520
@@ -199,8 +199,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD544\uC218 \uD018\uC2A4\uD2B8\uC785\uB2C8\uB2E4.\n\uD074\uB9AD\uD558\uC5EC
-    \uD018\uC2A4\uD2B8\uB97C \uC2DC\uC791\uD558\uC138\uC694!"
+  m_text: "    *\uD544\uC218 \uD018\uC2A4\uD2B8\uC785\uB2C8\uB2E4.*\n\uD3B8\uC9C0\uB97C
+    \uBC1B\uACE0 \uD018\uC2A4\uD2B8\uB97C \uC2DC\uC791\uD574\uC8FC\uC138\uC694!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 41e2b3db1cc4a6546b06464180591dde, type: 2}
   m_sharedMaterial: {fileID: -8974265367408443884, guid: 41e2b3db1cc4a6546b06464180591dde, type: 2}
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -13.948364, z: -114.805786, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
