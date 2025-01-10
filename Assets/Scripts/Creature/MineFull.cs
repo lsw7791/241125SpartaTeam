@@ -5,9 +5,11 @@ using UnityEngine;
 public class MineFull : MonoBehaviour
 {
     [SerializeField]private Mine mine;
+    public DamageUIController damageUIController;
     private void Awake()
     {
         mine = GetComponentInParent<Mine>();
+        damageUIController = GetComponentInChildren<DamageUIController>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -11,6 +11,7 @@ public class Mine : MonoBehaviour, ICreature
     [SerializeField] private bool isDie;
     [SerializeField] public int id;
     [SerializeField] private MineHealthBarUI mineHealthBarUI;
+    [SerializeField] private DamageUIController damageUIController;
     private void Awake()
     {
         gameManager = GameManager.Instance;  // 게임 매니저 인스턴스 가져오기
@@ -18,6 +19,7 @@ public class Mine : MonoBehaviour, ICreature
     }
     private void Start()
     {
+        damageUIController = minefull.damageUIController;
         mineHealthBarUI = GetComponent<MineHealthBarUI>();
         // 30초마다 ObjectSetActive 호출
         StartCoroutine(ActivateObjectEvery30Seconds());
@@ -45,7 +47,9 @@ public class Mine : MonoBehaviour, ICreature
         {
             currentHealth -= value;
             mineHealthBarUI.UpdateHealthBar();
-        if (currentHealth <= 0) Die();
+            Vector3 position = transform.position + Vector3.up; // 머리 위
+            damageUIController.ShowDamage(position, damage);
+            if (currentHealth <= 0) Die();
         }
     }
     public void Die()

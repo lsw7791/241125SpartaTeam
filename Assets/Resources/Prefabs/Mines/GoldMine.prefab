@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 876243754099968414}
   - component: {fileID: 434963654633313506}
   - component: {fileID: 3361300903417517218}
+  - component: {fileID: 7545144132133907257}
   m_Layer: 10
   m_Name: MIneFull
   m_TagString: Mine
@@ -100,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mine: {fileID: 0}
+  damageUIController: {fileID: 0}
 --- !u!58 &3361300903417517218
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -135,6 +137,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
+--- !u!114 &7545144132133907257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3806597434529015211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e59f4820a65bf42b9069bbc994c3fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTextPrefab: {fileID: 8042465277893912965, guid: eeae881774e0c2041977472d163d0bd4, type: 3}
 --- !u!1 &7370978927638959767
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +201,7 @@ MonoBehaviour:
   isDie: 0
   id: 0
   mineHealthBarUI: {fileID: 0}
+  damageUIController: {fileID: 0}
 --- !u!114 &423415198854377133
 MonoBehaviour:
   m_ObjectHideFlags: 0

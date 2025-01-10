@@ -11,11 +11,13 @@ public class Monster : MonoBehaviour, ICreature
     MonsterPool monsterPool;
     public Vector2 DiePosition;
     MonsterHealthBarUI monsterHealthBarUI;
+    private DamageUIController damageUIController;
     // 몬스터가 죽었을 때 호출되는 함수
     private void Start()
     {
         monsterPool = GetComponentInParent<MonsterPool>();
         monsterHealthBarUI = GetComponent<MonsterHealthBarUI>();
+        damageUIController = GetComponent<DamageUIController>();
     }
     public void SetComponent(int value)
     {
@@ -50,6 +52,8 @@ public class Monster : MonoBehaviour, ICreature
             currentHealth += value;
             //이미지 체력 업데이트
             monsterHealthBarUI.UpdateHealthBar();
+            Vector3 position = transform.position + Vector3.up; // 머리 위
+            damageUIController.ShowDamage(position, damage);
             if (currentHealth <= 0)
             {
                 Die();  // 체력이 0 이하가 되면 죽음 처리

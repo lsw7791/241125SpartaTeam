@@ -25,6 +25,7 @@ public class Player : MonoBehaviour, IDamageable
     private float _staminaRechargeTimer = 0f;
     public PlayerState playerState = PlayerState.Idle;
     public PlayerRoll playerRoll;
+    DamageUIController damageUIController;
     // QuickSlots 프로퍼티
 
     public TMP_Text playerNameText;   // 이름을 표시할 TextMeshPro
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour, IDamageable
         _playerWeapon = weaponObject.GetComponent<PlayerWeapon>();
         _playerRB = GetComponent<Rigidbody2D>();
         playerRoll = GetComponent<PlayerRoll>();
+        damageUIController = GetComponent<DamageUIController>();
     }
 
     private void FixedUpdate()
@@ -99,6 +101,8 @@ public class Player : MonoBehaviour, IDamageable
         {
             stats.CurrentHP += value;
             ConditionUI.UpdateSliders();
+            Vector3 position = transform.position + Vector3.up; // 머리 위
+            damageUIController.ShowDamage(position, inDamage);
             if (stats.CurrentHP <= 0)
             {
                 Die();

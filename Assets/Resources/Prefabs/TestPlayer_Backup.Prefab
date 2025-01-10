@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ATKType: 0
-  _weaponObject: {fileID: 0}
+  _weapon: {fileID: 0}
   _attackObjects:
   - {fileID: 4493029942455348064, guid: 59cef3b5f829fb4459773cf4797d18d2, type: 3}
   - {fileID: 2718856006269825222, guid: 77e1c58752a0bd041a500203bfb9030f, type: 3}
@@ -2526,6 +2526,7 @@ GameObject:
   - component: {fileID: 7252967140961143558}
   - component: {fileID: 6080320500081737818}
   - component: {fileID: 6224302043780271791}
+  - component: {fileID: 4486654806695616415}
   m_Layer: 7
   m_Name: TestPlayer_Backup
   m_TagString: Player
@@ -2891,7 +2892,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35b06f6500834c7bba01057967c155d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armRenderer: {fileID: 5214768893705585844}
   armPivot: {fileID: 4670122765740139655}
 --- !u!114 &3360327573478076815
 MonoBehaviour:
@@ -3036,6 +3036,19 @@ MonoBehaviour:
   isRolling: 0
   canRoll: 1
   traveledDistance: 0
+--- !u!114 &4486654806695616415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5486746758406949837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e59f4820a65bf42b9069bbc994c3fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTextPrefab: {fileID: 8042465277893912965, guid: eeae881774e0c2041977472d163d0bd4, type: 3}
 --- !u!1 &5551050084829585446
 GameObject:
   m_ObjectHideFlags: 0

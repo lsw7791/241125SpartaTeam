@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 381736242571911785}
   - component: {fileID: 1317310121138268632}
   - component: {fileID: 4593936131315293820}
+  - component: {fileID: 7242167683684148413}
   m_Layer: 10
   m_Name: MIneFull
   m_TagString: Mine
@@ -219,6 +220,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
+--- !u!114 &7242167683684148413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614315104029566059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e59f4820a65bf42b9069bbc994c3fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTextPrefab: {fileID: 8042465277893912965, guid: eeae881774e0c2041977472d163d0bd4, type: 3}
 --- !u!1 &4091610807057348963
 GameObject:
   m_ObjectHideFlags: 0
