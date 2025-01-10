@@ -6,11 +6,14 @@ public class PlayerInput : MonoBehaviour
 {
     private Camera _camera;
     private PlayerMove playerMove;
-    [SerializeField] private SpriteRenderer armRenderer;
+    //[SerializeField] private SpriteRenderer armRenderer;
     [SerializeField] private Transform armPivot;
     public event Action<QuestAction> OnQuestActionTriggered;
     bool playerPadding = false;
     private Padding padding;
+
+    private Vector2 mousePos;
+
     private void Awake()
     {
         _camera = Camera.main;
@@ -57,10 +60,7 @@ public class PlayerInput : MonoBehaviour
             {
                 Vector2 mouseScreenPos = context.ReadValue<Vector2>(); // 마우스 화면 좌표
                 Vector2 mouseWorldPos = _camera.ScreenToWorldPoint(mouseScreenPos); // 월드 좌표로 변환
-                Vector2 direction = (Vector2)transform.position - mouseWorldPos;
-                // 플레이어와 마우스 위치를 비교하여 좌우 반전
-                GameManager.Instance.Player._playerAnimationController.FlipRotation(mouseWorldPos);
-                RotateArm(direction);
+                mousePos = mouseWorldPos;
             }
         }
     }
@@ -74,29 +74,17 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    //// 채집
-    //public void OnAction(InputAction.CallbackContext context)
-    //{
-    //    if (context.performed)
-    //    {
-    //        PerformAction();
-    //    }
-    //}
-
     // 공격
     public void OnAttack(InputAction.CallbackContext context)
     {
-        // UI가 활성화된 상태인지 확인
-        //if (UIManager.Instance.IsActiveUI())
-        //{
-        //    return;
-        //}
-        //Debug.Log(GameManager.Instance.Player.playerState);
         if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
         if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
         if (GameManager.Instance.Player.playerState == Player.PlayerState.MoveMap) return;
 
         GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
+        //Vector2 direction = (Vector2)transform.position - mousePos;
+        // 플레이어와 마우스 위치를 비교하여 좌우 반전
+        playerMove.FlipRotation(mousePos);
     }
 
 
@@ -304,10 +292,10 @@ public class PlayerInput : MonoBehaviour
         GameManager.Instance.Player.ResetDefense();
         playerPadding=false;
     }
-    public void RotateArm(Vector2 direction)
-    {
-        // 팔의 회전 계산
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        armPivot.rotation = Quaternion.Euler(0, 0, rotZ);  // 회전 적용
-    }
+    //public void RotateArm(Vector2 direction)
+    //{
+    //    // 팔의 회전 계산
+    //    float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+    //    armPivot.rotation = Quaternion.Euler(0, 0, rotZ);  // 회전 적용
+    //}
 }

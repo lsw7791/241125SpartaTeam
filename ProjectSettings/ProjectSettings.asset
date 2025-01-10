@@ -44,8 +44,8 @@ PlayerSettings:
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
   defaultScreenHeight: 1080
-  defaultScreenWidthWeb: 960
-  defaultScreenHeightWeb: 600
+  defaultScreenWidthWeb: 1980
+  defaultScreenHeightWeb: 1080
   m_StereoRenderingPath: 0
   m_ActiveColorSpace: 1
   unsupportedMSAAFallback: 0
@@ -804,7 +804,7 @@ PlayerSettings:
     Stadia: DOTWEEN
     Standalone: DOTWEEN;UNITY_VISUAL_SCRIPTING;ES3_TMPRO;ES3_UGUI;LEVELPLAY_DEPENDENCIES_INSTALLED
     VisionOS: DOTWEEN;UNITY_VISUAL_SCRIPTING;ES3_TMPRO;ES3_UGUI
-    WebGL: DOTWEEN;UNITY_VISUAL_SCRIPTING;ES3_TMPRO;ES3_UGUI
+    WebGL: DOTWEEN;UNITY_VISUAL_SCRIPTING;ES3_TMPRO;ES3_UGUI;LEVELPLAY_DEPENDENCIES_INSTALLED
     Windows Store Apps: DOTWEEN;UNITY_VISUAL_SCRIPTING;ES3_TMPRO;ES3_UGUI
     XboxOne: DOTWEEN;UNITY_VISUAL_SCRIPTING;ES3_TMPRO;ES3_UGUI
     iPhone: DOTWEEN;UNITY_VISUAL_SCRIPTING;ES3_TMPRO;ES3_UGUI
