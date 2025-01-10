@@ -25,7 +25,15 @@ public class PlayerInput : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
-        if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen)
+        {
+            QuestIcon questIcon = UIManager.Instance.GetUI<QuestIcon>();
+            if (questIcon.gameObject.activeSelf)
+            {
+                questIcon._questText.SetActive(true);
+            }
+            return;
+        }
         if (GameManager.Instance.Player.playerState == Player.PlayerState.MoveMap) return;
 
         //if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;

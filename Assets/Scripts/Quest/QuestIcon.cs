@@ -1,6 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
-using DG.Tweening;  
+using DG.Tweening;
 
 public class QuestIcon : UIBase
 {
@@ -8,6 +7,9 @@ public class QuestIcon : UIBase
     public float scaleFactor = 1.5f;
 
     public MainQuestUI mainQuestUI;
+
+
+    public GameObject _questText;
 
     // 클릭 시 실행될 메서드
     public void OnQuestIconClick()
@@ -20,6 +22,11 @@ public class QuestIcon : UIBase
     private void Start()
     {
         StartScaling();
+    }
+
+    private void OnEnable()
+    {
+        _questText.SetActive(false);
     }
 
     private void StartScaling()

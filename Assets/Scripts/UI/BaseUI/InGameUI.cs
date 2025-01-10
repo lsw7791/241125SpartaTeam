@@ -3,31 +3,32 @@ using UnityEngine.UI;
 
 public class InGameUI : MonoBehaviour
 {
-    [SerializeField] private Button _btnCheat;
+    //[SerializeField] private Button _btnCheat;
     [SerializeField] private Button _btnStatus;
     [SerializeField] private Button _btnInventory;
     [SerializeField] private Button _btnOption;
+    [SerializeField] private Button _btnCraft;
 
     private void Start()
     {
-        _btnCheat.onClick.AddListener(() =>
-        {
-            UIManager.Instance.ToggleUI<CheatUI>();
-            // 치트 활성화
-            var playerStats = GameManager.Instance.Player.Stats;
-            playerStats.MaxHP = 999;
-            playerStats.CurrentHP = 999;
-            playerStats.MaxStamina = 999;
-            playerStats.CurrentStamina = 999;
-            playerStats.Damage = 999;
-            playerStats.Def = 999;
-            playerStats.MineDamage = 999;
-            playerStats.PhysicalDamage = 999;
-            playerStats.MagicalDamage = 999;
-            StatusUI statusUI = UIManager.Instance.GetUI<StatusUI>();
-            statusUI.Refresh();
-            UIManager.Instance.ToggleUI<StatusUI>();
-        });
+        //_btnCheat.onClick.AddListener(() =>
+        //{
+        //    UIManager.Instance.ToggleUI<CheatUI>();
+        //    // 치트 활성화
+        //    var playerStats = GameManager.Instance.Player.Stats;
+        //    playerStats.MaxHP = 999;
+        //    playerStats.CurrentHP = 999;
+        //    playerStats.MaxStamina = 999;
+        //    playerStats.CurrentStamina = 999;
+        //    playerStats.Damage = 999;
+        //    playerStats.Def = 999;
+        //    playerStats.MineDamage = 999;
+        //    playerStats.PhysicalDamage = 999;
+        //    playerStats.MagicalDamage = 999;
+        //    StatusUI statusUI = UIManager.Instance.GetUI<StatusUI>();
+        //    statusUI.Refresh();
+        //    UIManager.Instance.ToggleUI<StatusUI>();
+        //});
 
         _btnStatus.onClick.AddListener(() =>
         {
@@ -42,6 +43,11 @@ public class InGameUI : MonoBehaviour
         _btnOption.onClick.AddListener(() =>
         {
             UIManager.Instance.ToggleUI<OptionUI>();
+        });
+
+        _btnCraft.onClick.AddListener(() =>
+        {
+            UIManager.Instance.ToggleUI<CraftUI>();
         });
     }
 }
