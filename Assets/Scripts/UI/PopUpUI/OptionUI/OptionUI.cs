@@ -8,6 +8,8 @@ public class OptionUI : UIBase
 {
     public Slider BGMSlider; // BGM 볼륨 조절 슬라이더
     public Slider SFXSlider; // SFX 볼륨 조절 슬라이더
+    public Slider BrightSlider; // 볼륨 조절 슬라이더
+
     public RectTransform BGMSwitchImage;
     public RectTransform SFXSwitchImage;
 
@@ -17,10 +19,12 @@ public class OptionUI : UIBase
         // 초기 슬라이더 값 설정
         BGMSlider.value = SoundManager.Instance.GetBGMVolume();
         SFXSlider.value = SoundManager.Instance.GetSFXVolume();
+        BrightSlider.value = UIManager.Instance.brightnessUI.GetBrightnessA();
 
         // 슬라이더 이벤트 등록
         BGMSlider.onValueChanged.AddListener(SetBGMVolume);
         SFXSlider.onValueChanged.AddListener(SetSFXVolume);
+        BrightSlider.onValueChanged.AddListener(SetBrightness);
     }
 
     public void SetBGMVolume(float volume)
@@ -35,6 +39,11 @@ public class OptionUI : UIBase
         // SoundManager를 통해 SFX 볼륨 설정
         SoundManager.Instance.SetSFXVolume(volume);
         PlayerPrefs.SetFloat("SFXVolume", volume); // 설정 저장
+    }
+    public void SetBrightness(float value)
+    {
+        UIManager.Instance.brightnessUI.SetBrightness(value);
+        PlayerPrefs.SetFloat("Brightness", value); // 설정 저장
     }
     public void SetBGMMute()
     {
