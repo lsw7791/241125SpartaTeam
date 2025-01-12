@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5200240446899444128}
   - component: {fileID: 1971822380270352036}
+  - component: {fileID: -4394844403965700250}
+  - component: {fileID: -1026594876444795633}
   m_Layer: 0
   m_Name: MileStone
   m_TagString: Untagged
@@ -84,3 +86,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-4394844403965700250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007795674710861050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199feb99bf32419439cba96d18e69709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1026594876444795633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007795674710861050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c275bd9b15f980046b6e4a19d95fc869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerDrop: 0

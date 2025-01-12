@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 876083896940868615}
   - component: {fileID: -4184946225789799335}
   - component: {fileID: -1740437940217472955}
+  - component: {fileID: 3963548168518879141}
   m_Layer: 0
   m_Name: Sword_4
   m_TagString: Untagged
@@ -134,3 +135,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16
+--- !u!114 &3963548168518879141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4575258677910036308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199feb99bf32419439cba96d18e69709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

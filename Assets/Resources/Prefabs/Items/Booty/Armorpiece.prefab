@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8924330141752953694}
   - component: {fileID: 5763491126534169382}
   - component: {fileID: -3202374473802491417}
+  - component: {fileID: 3353124952643915544}
   m_Layer: 0
   m_Name: Armorpiece
   m_TagString: Untagged
@@ -98,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c275bd9b15f980046b6e4a19d95fc869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 0}
   isPlayerDrop: 0
 --- !u!70 &-3202374473802491417
 CapsuleCollider2D:
@@ -135,3 +135,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.16, y: 0.16}
   m_Direction: 0
+--- !u!114 &3353124952643915544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3562978457356630660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199feb99bf32419439cba96d18e69709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

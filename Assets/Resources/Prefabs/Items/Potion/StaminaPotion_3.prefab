@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2390250567522291335}
   - component: {fileID: 6933618939056844439}
   - component: {fileID: 8540821491126530771}
+  - component: {fileID: -8629992677140934149}
   m_Layer: 0
   m_Name: StaminaPotion_3
   m_TagString: Untagged
@@ -98,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c275bd9b15f980046b6e4a19d95fc869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 0}
   isPlayerDrop: 0
 --- !u!70 &8540821491126530771
 CapsuleCollider2D:
@@ -135,3 +135,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.125, y: 0.3984375}
   m_Direction: 0
+--- !u!114 &-8629992677140934149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9101462440713414286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199feb99bf32419439cba96d18e69709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

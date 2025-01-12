@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4192020727739155012}
   - component: {fileID: 3874832588870814343}
   - component: {fileID: -4114231943317169792}
+  - component: {fileID: -6907466462759408947}
   m_Layer: 0
   m_Name: Cape_5
   m_TagString: Untagged
@@ -134,3 +135,15 @@ CircleCollider2D:
   m_Offset: {x: 0.01562497, y: -0.140625}
   serializedVersion: 2
   m_Radius: 0.359375
+--- !u!114 &-6907466462759408947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5699991547771936355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199feb99bf32419439cba96d18e69709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

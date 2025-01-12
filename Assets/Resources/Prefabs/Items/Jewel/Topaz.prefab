@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5753698213402417326}
   - component: {fileID: -1889940927009183298}
   - component: {fileID: -7013193763931997392}
+  - component: {fileID: 2482173758052103218}
   m_Layer: 0
   m_Name: Topaz
   m_TagString: Untagged
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c275bd9b15f980046b6e4a19d95fc869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 0}
+  isPlayerDrop: 0
 --- !u!70 &-7013193763931997392
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,3 +135,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.32, y: 0.32}
   m_Direction: 0
+--- !u!114 &2482173758052103218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2332371408240489786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199feb99bf32419439cba96d18e69709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
