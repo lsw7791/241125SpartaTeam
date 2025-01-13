@@ -40,6 +40,9 @@
 - 미니맵 컨트롤 : 0, 9
 - 제작 : J
 - 옵션 : ESC
+
+![Stats](https://github.com/user-attachments/assets/c1060034-d83b-44fc-82d4-0b606bfdb51b)
+
 - 캐릭터 스텟 : K
 - 게임 설명 : P
 3. 퀘스트
@@ -56,17 +59,30 @@
 
 - 퀘스트 목록 (위)
 4. 몬스터
-  TODO : 움짤
+
+![MonsterKill](https://github.com/user-attachments/assets/c3e406ad-c53a-4258-9db1-01a96898f243)
+
+  
 5. 마인
-  TODO : 움짤
+
+![MineKill](https://github.com/user-attachments/assets/4542b12c-f69c-4e12-a123-edeea3618773)
+
 6. 인벤토리
 - 장착
-  TODO : 움짤
+ 
+![EquipInfo](https://github.com/user-attachments/assets/78dcb045-a598-4b83-b392-6eaf9612e876)
+  
 - 조합
-  TODO : 움짤
+ 
+![Craft](https://github.com/user-attachments/assets/15902a81-50a2-4787-a218-886f3ed5df56)
+
 - 강화
-  TODO : 움짤
+  
+![Enhence](https://github.com/user-attachments/assets/f7c313da-5150-4e05-9ad7-4dbfb21c9ab7)
+
  7. 상점
+
+![UseShop](https://github.com/user-attachments/assets/62225116-0588-4ee5-9a57-448677b7d8c3)
 
 ![434343](https://github.com/user-attachments/assets/7662619b-feee-4446-9d4e-0cc0aa5d03e7)
 
