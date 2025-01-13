@@ -50,11 +50,10 @@
   - 무기나 방어구 제작
   
 - 옵션 : ESC
-
+   - 사운드 (BGM, SFX), 밝기 조절
+     
 ![Brightness](https://github.com/user-attachments/assets/c5f07745-2f1d-4c7f-bd3a-16f7f631281c)
   
-  - 사운드 (BGM, SFX), 밝기 조절
-
 ![Stats](https://github.com/user-attachments/assets/c1060034-d83b-44fc-82d4-0b606bfdb51b)
 
 - 캐릭터 스텟 : K
