@@ -24,26 +24,26 @@ public class PlayerWeapon : MonoBehaviour
         _weaponCollider = _weapon.GetComponent<Collider2D>();  // 무기의 Collider2D 가져오기
         _weaponCollider.enabled = false;  // 시작 시 콜라이더 비활성화
     }
-    public void TriggerAttack()
-    {
-        if (GameManager.Instance.Player.stats.isDie) return; // 사망 상태라면 실행하지 않음
-        if (GameManager.Instance.Player.UseStamina(5)) return;// 스테미너 없으면 리턴
+    //public void TriggerAttack()
+    //{
+    //    if (GameManager.Instance.Player.stats.isDie) return; // 사망 상태라면 실행하지 않음
+    //    if (GameManager.Instance.Player.UseStamina(5)) return;// 스테미너 없으면 리턴
 
-        switch (ATKType)
-        {
-            case 2: // 화살 공격
-                GameManager.Instance.Player._playerAnimationController.SetTriggerAnimator("Attack_Bow");
-                FireArrow(); // 화살 발사
-                break;
-            case 3: // 스태프 공격
-                GameManager.Instance.Player._playerAnimationController.SetTriggerAnimator("Attack_Staff");
-                FireFireball(); // 파이어볼 발사
-                break;
-            default: // 기본 근접 공격
-                GameManager.Instance.Player._playerAnimationController.SetTriggerAnimator("Attack_Melee");
-                break;
-        }
-    }
+    //    switch (ATKType)
+    //    {
+    //        case 2: // 화살 공격
+    //            GameManager.Instance.Player._playerAnimationController.SetTriggerAnimator("Attack_Bow");
+    //            FireArrow(); // 화살 발사
+    //            break;
+    //        case 3: // 스태프 공격
+    //            GameManager.Instance.Player._playerAnimationController.SetTriggerAnimator("Attack_Staff");
+    //            FireFireball(); // 파이어볼 발사
+    //            break;
+    //        default: // 기본 근접 공격
+    //            GameManager.Instance.Player._playerAnimationController.SetTriggerAnimator("Attack_Melee");
+    //            break;
+    //    }
+    //}
     // 공격 시 무기의 콜라이더를 활성화하는 메서드
     public void ActivateWeaponCollider()
     {
@@ -124,23 +124,23 @@ public class PlayerWeapon : MonoBehaviour
         //Debug.Log("Fired Fireball!");
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // 부모가 null인지 확인
         if (collision.transform.parent != null &&
             collision.transform.parent.TryGetComponent<ICreature>(out var outTarget))
         {
             // 플레이어가 충돌한 오브젝트가 ICreature를 구현한 경우
-            if(collision.gameObject.CompareTag("Monster"))
+            if (collision.gameObject.CompareTag("Monster"))
             {
                 outTarget.TakeDamage(GameManager.Instance.Player.Stats.Damage + GameManager.Instance.Player.Stats.PhysicalDamage);  // 데미지 처리
                 Debug.Log($"Player dealt {GameManager.Instance.Player.Stats.Damage + GameManager.Instance.Player.Stats.PhysicalDamage} damage to {outTarget.GetType().Name}");
             }
-            else if(collision.gameObject.CompareTag("Mine"))
+            else if (collision.gameObject.CompareTag("Mine"))
             {
                 outTarget.TakeDamage(GameManager.Instance.Player.Stats.MineDamage);  // 데미지 처리
             }
 
-        }    
+        }
     }
 }

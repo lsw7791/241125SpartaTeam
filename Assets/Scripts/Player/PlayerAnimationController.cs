@@ -18,6 +18,11 @@ public class PlayerAnimationController : MonoBehaviour
     }
     public void TriggerAttackAnimation()
     {
+        if (GameManager.Instance.Player.playerState == Player.PlayerState.Attack)
+        {
+            return;
+        }
+
         GameManager.Instance.Player.playerState = Player.PlayerState.Attack;
         int atkType = GameManager.Instance.Player._playerWeapon.ATKType; // ATKType을 숫자로 가져옴
 
