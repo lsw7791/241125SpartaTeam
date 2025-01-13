@@ -54,9 +54,10 @@
      
 ![Brightness](https://github.com/user-attachments/assets/c5f07745-2f1d-4c7f-bd3a-16f7f631281c)
   
+- 캐릭터 스텟 : K
+  
 ![Stats](https://github.com/user-attachments/assets/c1060034-d83b-44fc-82d4-0b606bfdb51b)
 
-- 캐릭터 스텟 : K
 - 게임 설명 : P
     - 스토리, 목표, 조작키 등을 볼 수 있다.
       
