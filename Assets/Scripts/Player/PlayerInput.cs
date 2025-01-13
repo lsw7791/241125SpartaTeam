@@ -85,6 +85,11 @@ public class PlayerInput : MonoBehaviour
     // 공격
     public void OnAttack(InputAction.CallbackContext context)
     {
+        if(!context.started)
+        {
+            return;
+        }
+
         if (GameManager.Instance.Player.playerState == Player.PlayerState.UIOpen) return;
         if (GameManager.Instance.Player.playerState == Player.PlayerState.Die) return;
         if (GameManager.Instance.Player.playerState == Player.PlayerState.MoveMap) return;
