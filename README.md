@@ -58,6 +58,8 @@
 
 - 캐릭터 스텟 : K
 - 게임 설명 : P
+    - 스토리, 목표, 조작키 등을 볼 수 있다.
+      
 3. 퀘스트
 
 ![444](https://github.com/user-attachments/assets/d773b716-0863-4f61-913d-922462282918)
@@ -82,14 +84,16 @@
 
 6. 인벤토리
 - 장착
- 
+
 ![EquipInfo](https://github.com/user-attachments/assets/78dcb045-a598-4b83-b392-6eaf9612e876)
   
 - 조합
- 
+   - 재료를 모아서 무기나 방어구를 조합 할 수 있다.
+  
 ![Craft](https://github.com/user-attachments/assets/15902a81-50a2-4787-a218-886f3ed5df56)
 
 - 강화
+    - 강화를 통해 더 좋은 무기를 만들 수 있으며 잘못하면 무기가 파괴된다.
   
 ![Enhence](https://github.com/user-attachments/assets/f7c313da-5150-4e05-9ad7-4dbfb21c9ab7)
 
@@ -104,10 +108,12 @@
 ![4444](https://github.com/user-attachments/assets/4479bf4a-8482-46e5-9d24-3b77741c50d6)
 
 - 무기 & 방어구, 포션 상점 (내부)
-
+  - 전투에 필요한 무기나 포션등을 살 수 있다.
+    
 ![333](https://github.com/user-attachments/assets/68bd6422-4c67-4d8b-8f4a-736fd7231ace)
 
 - 여관 (내부)
+  - 플레이어의 체력을 Max수치로 회복시켜준다.
 
 ![55](https://github.com/user-attachments/assets/bab6c7cc-d778-4278-bdb2-6691c86652c8)
 
