@@ -127,6 +127,7 @@
 ![4334](https://github.com/user-attachments/assets/287c20f9-6d3b-4aa0-a24e-d1c41f16b84d)
 
 - SingleTon과 MonoBehaviour를 같이 상속 받을 수 없으므로 사용 > 어디서든 접근이 편하다.
+  
 2. 플레이어
 - InputSystem
   - 인풋은 Invoke Unity Event를 통하여 구현하였다.
@@ -135,17 +136,25 @@
 ![555](https://github.com/user-attachments/assets/d16df0ed-1f3f-44a7-b10a-3fa2ba52099f)
 
 
-
-   - Inventory
-   - 강화 > 가중치
-   - 장착
-   - 조합
-4. 몬스터
-몬스터 스포너
-상태
-마인
+- Inventory
+  - 강화 > 가중치
+  - 장착
+  - 조합
+    
+4. SpawnManager
+- Monster
+  - MonsterAI
+    - AI 종류 > MeeleAI.cs, RangeAI.cs, ChargeAI.cs
+    - MonsterState > 상태에 따라 패턴을 다르게 관리를 해줌
+- Mine
+  - MineFull.cs > 마인의 체력이 0이되면 MineFull이 SetActive(false)
+  - Mine.cs > 30초마다 코루틴으로 죽어있으면 다시 살려줌
 5. UGS
+- DataManager.cs > 여기 생성자에서 구글 시트 데이터 로드해주고 데이터 테이블을 생성해줌
+- UGS를 통해 고정된 데이터를 쉽게 관리함
 6. 상점 NPC
+-
+-
 7. 최적화
    - ObjectPool
    - Atlas
