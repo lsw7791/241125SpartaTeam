@@ -123,19 +123,30 @@
 
 ## 기술스택
 1. 모노싱글톤
+
+![4334](https://github.com/user-attachments/assets/287c20f9-6d3b-4aa0-a24e-d1c41f16b84d)
+
+- SingleTon과 MonoBehaviour를 같이 상속 받을 수 없으므로 사용 > 어디서든 접근이 편하다.
 2. 플레이어
    - InputSystem
+     - 인풋은 Invoke Unity Event를 통하여 구현하였다.
+   
+     ![333](https://github.com/user-attachments/assets/d2c5b9ac-c6a3-4b8f-8748-be489afeee21)
+![555](https://github.com/user-attachments/assets/d16df0ed-1f3f-44a7-b10a-3fa2ba52099f)
+
+
+
    - Inventory
    - 강화 > 가중치
    - 장착
    - 조합
-3. 몬스터
+4. 몬스터
 몬스터 스포너
 상태
 마인
-4. UGS
-5. 상점 NPC
-6. 최적화
+5. UGS
+6. 상점 NPC
+7. 최적화
    - ObjectPool
    - Atlas
 ## 프로젝트 와이어프레임 (전체적인)
