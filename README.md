@@ -22,7 +22,9 @@
 ## 게임 기능
 1. 캐릭터 생성 및 저장
 2. 플레이어 입력
+
 ![4343](https://github.com/user-attachments/assets/8b380d23-1022-402b-9930-2dfee94752cb)
+
 좌우이동 : WASD
 상호작용 : E
 왼쪽 마우스 : 공격
