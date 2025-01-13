@@ -9,11 +9,72 @@ public class TestItem : MonoBehaviour
     private int maxGold; // √÷¥Î ∞ÒµÂ
     public bool isPlayerDrop = false;
 
+    private int _maxBounce = 10;
+
+    private float _xForce = 5;
+    private float _yForce = 10;
+    private float _gravity = 0.1f;
+
+    private Vector2 _direction;
+    private int _curBounce = 0;
+    private bool _isGrouned = true;
+    
+    private float _maxHeight;
+    private float _curHeight;
+
+    [SerializeField] private Transform ItemImage;
+
     private void Start()
     {
         if(isPlayerDrop)
         {
             Invoke("PlayerDropItem", 5);
+        }
+    }
+
+    private void OnEnable()
+    {
+        _curBounce = 0;
+
+        _curHeight = Random.Range(_yForce - 1, _yForce);
+        _maxHeight = _curHeight;
+        Bounce(new Vector2(Random.Range(-_xForce,_xForce),Random.Range(-_xForce,_xForce)));
+    }
+
+    private void Update()
+    {
+        if (!_isGrouned)
+        {
+            _curHeight -= _gravity * Time.deltaTime;
+
+            if (ItemImage != null)
+            {
+                ItemImage.position += new Vector3(0, _curHeight, 0) * Time.deltaTime;
+            }
+            transform.position += (Vector3)_direction * Time.deltaTime;
+
+            BounceHit();
+        }
+    }
+
+    private void Bounce(Vector2 inDirection)
+    {
+        _isGrouned = false;
+        _maxHeight /= 1.5f;
+        _direction = inDirection;
+        _curHeight = _maxHeight;
+        _curBounce++;
+    }
+
+    private void BounceHit()
+    {
+        if(_curBounce < _maxBounce)
+        {
+            Bounce(_direction / 1.5f);
+        }
+        else
+        {
+            _isGrouned = true;
         }
     }
 
