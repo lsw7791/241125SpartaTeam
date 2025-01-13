@@ -48,7 +48,8 @@
   - 미니맵
 - 제작 : J
   - 무기나 방어구 제작
-  - 옵션 : ESC
+  
+- 옵션 : ESC
 
 ![Brightness](https://github.com/user-attachments/assets/c5f07745-2f1d-4c7f-bd3a-16f7f631281c)
   
