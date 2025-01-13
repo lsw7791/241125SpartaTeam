@@ -52,12 +52,36 @@
  ![433333](https://github.com/user-attachments/assets/49a9f5e6-8446-4098-ab4f-2185c090c41d)
 
 - 퀘스트 목록 (위)
-4. 몬스터 & 마인
-5. 인벤토리
+4. 몬스터
+  TODO : 움짤
+5. 마인
+  TODO : 움짤
+6. 인벤토리
 - 장착
+  TODO : 움짤
 - 조합
+  TODO : 움짤
 - 강화
-6. 상점
+  TODO : 움짤
+ 7. 상점
+
+![434343](https://github.com/user-attachments/assets/7662619b-feee-4446-9d4e-0cc0aa5d03e7)
+
+- 왼쪽 (무기&방어구, 포션 상점)    오른쪽 (여관)
+  
+![4444](https://github.com/user-attachments/assets/4479bf4a-8482-46e5-9d24-3b77741c50d6)
+
+- 무기 & 방어구, 포션 상점 (내부)
+
+![333](https://github.com/user-attachments/assets/68bd6422-4c67-4d8b-8f4a-736fd7231ace)
+
+- 여관 (내부)
+
+![55](https://github.com/user-attachments/assets/bab6c7cc-d778-4278-bdb2-6691c86652c8)
+
+- NPC 이용
+ 슬롯 클릭 > 수량 입력 > 구매
+
 ## 기술스택
 1. 모노싱글톤
 2. 플레이어
