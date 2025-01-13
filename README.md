@@ -33,14 +33,26 @@
 
 - 좌우이동 : WASD
 - 상호작용 : E
-  - NPC와 상호작용
+ - NPC와 상호작용
 - 왼쪽 마우스 : 공격
+ - 근거리
+ - 화살
+ - 마법
 - 오른쪽 마우스 : 방패로 막기(누르고 있기)
+ - 스태미너 소모 후 방어력 2배 증가
 - 구르기 : Space
+ - 스태미너 소모 후 무적상태
 - 인벤토리 : I
+ - 플레이어가 먹은 아이템 저장
 - 미니맵 컨트롤 : 0, 9
+ - 미니맵
 - 제작 : J
+ - 무기나 방어구 제작
 - 옵션 : ESC
+
+![Brightness](https://github.com/user-attachments/assets/c5f07745-2f1d-4c7f-bd3a-16f7f631281c)
+  
+ - 사운드 (BGM, SFX), 밝기 조절
 
 ![Stats](https://github.com/user-attachments/assets/c1060034-d83b-44fc-82d4-0b606bfdb51b)
 
