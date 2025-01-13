@@ -22,6 +22,7 @@
 ## 게임 기능
 1. 캐릭터 생성 및 저장
 
+![Create](https://github.com/user-attachments/assets/66df57ad-5daf-4da0-bb9e-9b098fc02a28)
 
 
    - (생성) 비어있음 > 캐릭터 생성 > 이름 입력 > 생성
