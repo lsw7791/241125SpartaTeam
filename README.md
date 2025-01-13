@@ -21,6 +21,9 @@
 - 링크 : https://tkql0.itch.io/milestone-blacksmith-road
 ## 게임 기능
 1. 캐릭터 생성 및 저장
+   TODO: 움짤 넣기
+   - (생성) 비어있음 > 캐릭터 생성 > 이름 입력 > 생성
+   - (저장) ESC > 옵션 > 메인메뉴(자동저장)
 2. 플레이어 입력
 
 ![4343](https://github.com/user-attachments/assets/8b380d23-1022-402b-9930-2dfee94752cb)
@@ -36,13 +39,25 @@
 - 옵션 : ESC
 - 캐릭터 스텟 : K
 - 게임 설명 : P
-4. 퀘스트
-5. 몬스터 & 마인
-6. 인벤토리
+3. 퀘스트
+
+![444](https://github.com/user-attachments/assets/d773b716-0863-4f61-913d-922462282918)
+
+- 게임 시작 시 "퀘스트 도착!" 클릭
+
+![3323232](https://github.com/user-attachments/assets/09f91079-1801-46a4-be07-7e17a5a54751)
+
+- 설명 창 보고 게임 진행
+
+ ![433333](https://github.com/user-attachments/assets/49a9f5e6-8446-4098-ab4f-2185c090c41d)
+
+- 퀘스트 목록 (위)
+4. 몬스터 & 마인
+5. 인벤토리
 - 장착
 - 조합
 - 강화
-5. 상점
+6. 상점
 ## 기술스택
 1. 모노싱글톤
 2. 플레이어
