@@ -128,8 +128,8 @@
 
 - SingleTon과 MonoBehaviour를 같이 상속 받을 수 없으므로 사용 > 어디서든 접근이 편하다.
 2. 플레이어
-   - InputSystem
-     - 인풋은 Invoke Unity Event를 통하여 구현하였다.
+- InputSystem
+  - 인풋은 Invoke Unity Event를 통하여 구현하였다.
    
      ![333](https://github.com/user-attachments/assets/d2c5b9ac-c6a3-4b8f-8748-be489afeee21)
 ![555](https://github.com/user-attachments/assets/d16df0ed-1f3f-44a7-b10a-3fa2ba52099f)
