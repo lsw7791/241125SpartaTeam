@@ -1,5 +1,6 @@
 using MainData;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,12 +22,49 @@ public class BuyUI : UIBase
 
         if (canBuy)
         {
+            if(itemData.itemType==ItemType.Use)
+            {
+                // 총 금액 계산
+                int totalCost = itemData.buy;
+
+                if (GameManager.Instance.Player.stats.Gold >= totalCost)
+                {
+                    // 골드 차감
+                    GameManager.Instance.Player.stats.Gold -= totalCost;
+
+                    ShopUI shopUI;
+                    shopUI = UIManager.Instance.GetUI<ShopUI>();
+                    shopUI.HasGold.text = GameManager.Instance.Player.stats.Gold.ToString();
+
+                    // 체력 Max로 회복
+                    int MaxHP = GameManager.Instance.Player.stats.MaxHP;
+                    GameManager.Instance.Player.stats.CurrentHP = MaxHP;
+                    GameManager.Instance.Player.ConditionUI.UpdateSliders();
+                    ToggleBuyButton(false); // 버튼 비활성화
+                    ToggleInputFieldParent(false); // 수량 입력 필드 부모 비활성화
+                    _text.text = "감사합니다. 또 이용해주세요!";
+                    if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(6) &&
+                       !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[6])
+                    {
+                        GameManager.Instance.DataManager.MainQuest.CompleteQuest(6);
+                    }
+                }
+                else
+                {
+                    // 골드가 부족하면 경고 메시지
+                    _text.text = "골드가 부족합니다.";
+                }
+                
+            }
+            else
+            {
             _text.text = "수량을 입력해주세요.";
-            ToggleBuyButton(true); // 버튼 활성화
+            ToggleBuyButton(true); // 버튼 활성화          
             ToggleInputFieldParent(true); // 수량 입력 필드 부모 활성화
 
             _buyBtn.onClick.RemoveAllListeners(); // 기존 이벤트 제거
             _buyBtn.onClick.AddListener(() => PurchaseItem(itemData)); // 구매 이벤트 추가
+            }
         }
         else
         {

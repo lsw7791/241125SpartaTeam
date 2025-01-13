@@ -76,6 +76,7 @@ SpriteAtlas:
     - {fileID: 21300000, guid: 93978dcbff65c754c82f146ed36c1c45, type: 3}
     - {fileID: 21300000, guid: 62f18fcec2277ce4dbb7fc6bf2060b65, type: 3}
     - {fileID: 21300000, guid: 96fa194c9b381d34290ee0eb1e4da604, type: 3}
+    - {fileID: 1656617552992376732, guid: 21971abefc33c5640808902ba497b6d7, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -109,6 +110,7 @@ SpriteAtlas:
     - 090181dc7fe03444e820f399e8512667: -1758522970
     - 46a2f2edf53e8b0408655719923bb012: 21300000
     - e2cbc81e180724a10a2d90e6369021f0: 1617257729
+    - 21971abefc33c5640808902ba497b6d7: 1656617552992376732
     - 62f18fcec2277ce4dbb7fc6bf2060b65: 21300000
     - 8231fbcfd34f049c8aeb99c15e659bbd: 21300000
   m_MasterAtlas: {fileID: 0}
@@ -142,6 +144,7 @@ SpriteAtlas:
   - {fileID: -1758522970, guid: 090181dc7fe03444e820f399e8512667, type: 3}
   - {fileID: 21300000, guid: 46a2f2edf53e8b0408655719923bb012, type: 3}
   - {fileID: 1617257729, guid: e2cbc81e180724a10a2d90e6369021f0, type: 3}
+  - {fileID: 1656617552992376732, guid: 21971abefc33c5640808902ba497b6d7, type: 3}
   - {fileID: 21300000, guid: 62f18fcec2277ce4dbb7fc6bf2060b65, type: 3}
   - {fileID: 21300000, guid: 8231fbcfd34f049c8aeb99c15e659bbd, type: 3}
   m_PackedSpriteNamesToIndex:
@@ -160,7 +163,7 @@ SpriteAtlas:
   - Healthpotion_3
   - Sapphire
   - Ladder_4
-  - tooth
+  - Tooth
   - Bone
   - StaminaPotion_2
   - Healthpotion_2
@@ -174,6 +177,7 @@ SpriteAtlas:
   - Ignis
   - Healthpotion_1
   - Platinum
+  - White Sleep_0
   - Armorpiece
   - Ladder_5
   m_RenderDataMap: {}

@@ -7,7 +7,8 @@ public enum ShopType
 {
     PotionShop,
     WeaponShop,
-    ArmorShop 
+    ArmorShop,
+    TarvenShop
 }
 
 
@@ -37,6 +38,13 @@ public class ShopManager
 
             case ShopType.ArmorShop:
                 for (int i = 31; i <= 60; i++) // 방어구 아이템 ID 설정
+                {
+                    ItemData itemData = GameManager.Instance.DataManager.GetItemDataById(i);
+                    items.Add(itemData);
+                }
+                break;
+                case ShopType.TarvenShop:
+                for (int i = 107; i <= 107; i++) // 방어구 아이템 ID 설정
                 {
                     ItemData itemData = GameManager.Instance.DataManager.GetItemDataById(i);
                     items.Add(itemData);

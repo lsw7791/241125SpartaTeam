@@ -34,9 +34,13 @@ public class ShopSlot : MonoBehaviour
         {
             icon.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
         }
-        else
+        else if(shopType == ShopType.WeaponShop || shopType == ShopType.ArmorShop)
         {
             icon.sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
+        }
+        else if(shopType == ShopType.TarvenShop)
+        {
+            icon.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
         }
 
         // 구매 버튼 활성화 여부 설정

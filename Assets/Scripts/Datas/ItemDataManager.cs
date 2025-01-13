@@ -21,6 +21,7 @@ public enum ItemType
     Other,             // 기타
     Gold,              // 재화
     Potion,      //포션
+    Use // 바로 사용하게 해버리기
 }
 
 //public enum ItemUseType
