@@ -605,6 +605,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5952847890310509289, guid: 54a1999ca71c5f04c957c5aa9c5c815a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 45.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952847890310509289, guid: 54a1999ca71c5f04c957c5aa9c5c815a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 30.89
+      objectReference: {fileID: 0}
     - target: {fileID: 7926377269994580032, guid: 54a1999ca71c5f04c957c5aa9c5c815a, type: 3}
       propertyPath: m_Name
       value: Stage3MineGrid
