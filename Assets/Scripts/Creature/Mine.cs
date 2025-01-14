@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mine : MonoBehaviour, ICreature
+public class Mine : MonoBehaviour, ICreature, IDamageable
 {
     
     GameManager gameManager;   // 게임 매니저

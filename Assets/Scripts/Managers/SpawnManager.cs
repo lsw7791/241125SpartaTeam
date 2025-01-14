@@ -68,30 +68,7 @@ public class SpawnManager : MonoBehaviour
                 break;
         }
     }
-    //public void StageMine1(Spawner spawner)
-    //{
-    //    if (spawner == null) spawner = gameObject.AddComponent<Spawner>();
-    //    // 스폰 위치 설정
-    //    spawner.spawnPoints = new List<Vector2>
-    //{
-    //    new Vector2(24.5f, 13.5f),
-    //    new Vector2(26f, 13.5f),
-    //    new Vector2(25f, 12.5f),
-    //    new Vector2(26.5f, 12.5f),
-    //    new Vector2(45f, 12.5f),
-    //    new Vector2(46f, 13.5f),
-    //    new Vector2(47f, 14.5f)
-    //};
-    //    // 몬스터 ID 설정 (위치와 매핑됨)
-    //    spawner.creatureIds = new List<int> { 1, 1, 1, 1, 7, 7, 7 }; // Goblin, Lizard, Zombie, OrcShaman
-    //    //monsterPool.GetMonster(7, new Vector2(47f, 14.5f));
-    //    GameObject stone1 = minePool.InitializeMine(13, new Vector2(29f, 23f));
-    //    GameObject stone2 = minePool.InitializeMine(13, new Vector2(33f, 23f));
-    //    GameObject stone3 = minePool.InitializeMine(13, new Vector2(36.5f, 27f));
-    //    GameObject stone4 = minePool.InitializeMine(13, new Vector2(39f, 27f));
-    //    GameObject copper1 = minePool.InitializeMine(14, new Vector2(53f, 21.5f));
-    //    GameObject copper2 = minePool.InitializeMine(14, new Vector2(53f, 19.5f));
-    //}
+
     public void StageMine(int stageMineNum,Spawner spawner)
     {
         spawner.ActiveMonsterCount = GameManager.Instance.DataManager.MonsterSpawn.GetMonsterID(stageMineNum).Count;
@@ -117,60 +94,6 @@ public class SpawnManager : MonoBehaviour
             }
         }
     }
-    //public void StageMine2(Spawner spawner)
-    //{
-    //    if (spawner == null) spawner = gameObject.AddComponent<Spawner>();
-    //    // 스폰 위치 설정
-    //    spawner.spawnPoints = new List<Vector2>
-    //{
-    //    new Vector2(33f, 25f),
-    //    new Vector2(36f, 25f),
-    //    new Vector2(30f, 19f),
-    //    new Vector2(33f, 19f),
-    //    new Vector2(22f, 18f),
-    //    new Vector2(25f, 18f),
-    //    new Vector2(22f, 15f),
-    //    new Vector2(25f, 15f),
-    //};
-    //    // 몬스터 ID 설정 (위치와 매핑됨)
-    //    spawner.creatureIds = new List<int> { 2, 2, 2, 2, 2, 8, 8, 8 }; // Goblin, Lizard, Zombie, OrcShaman
-    //    //monsterPool.GetMonster(7, new Vector2(47f, 14.5f));
-    //    GameObject iron1 = minePool.InitializeMine(15, new Vector2(45f, 28f));
-    //    GameObject gold1 = minePool.InitializeMine(16, new Vector2(48f, 28f));
-    //    GameObject iron2 = minePool.InitializeMine(15, new Vector2(51f, 28f));
-    //}
-    //public void StageMine3(Spawner spawner)
-    //{
-    //    if (spawner == null) spawner = gameObject.AddComponent<Spawner>();
-    //    // 스폰 위치 설정
-    //    spawner.spawnPoints = new List<Vector2>
-    //{
-    //    new Vector2(50f, 19f),
-    //    new Vector2(52f, 19f),
-    //    new Vector2(50f, 17f),
-    //    new Vector2(52f, 17f),
-    //    new Vector2(35f, 14f),
-    //    new Vector2(38f, 14f),
-    //    new Vector2(35f, 16f),
-    //    new Vector2(38f, 16f),
-    //    new Vector2(33f, 23f),
-    //    new Vector2(36f, 23f),
-    //    new Vector2(33f, 21f),
-    //    new Vector2(36f, 21f)
-    //};
-    //    // 몬스터 ID 설정 (위치와 매핑됨)
-    //    spawner.creatureIds = new List<int> { 3, 3, 3, 9, 3, 3, 9, 9, 3, 9, 9, 9 }; // Goblin, Lizard, Zombie, OrcShaman
-    //    //monsterPool.GetMonster(7, new Vector2(47f, 14.5f));
-    //    GameObject stone1 = minePool.InitializeMine(16, new Vector2(39f, 26f));
-    //    GameObject copper1 = minePool.InitializeMine(16, new Vector2(37f, 26f));
-    //    GameObject iron1 = minePool.InitializeMine(16, new Vector2(35f, 26f));
-    //    GameObject platium1 = minePool.InitializeMine(16, new Vector2(33f, 26f));
-    //    GameObject Ignis1 = minePool.InitializeMine(16, new Vector2(31f, 26f));
-    //    GameObject platium2 = minePool.InitializeMine(17, new Vector2(36.5f, 27f));
-    //    GameObject platium3 = minePool.InitializeMine(17, new Vector2(39f, 27f));
-    //    GameObject Ignis2 = minePool.InitializeMine(18, new Vector2(20f, 25f));
-    //    GameObject Ignis3 = minePool.InitializeMine(18, new Vector2(20f, 21f));
-    //}
     public void SpawnProjectilePool()
     {
         projectilePool.InitializeProjectilePool("Arrow", 5);

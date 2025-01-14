@@ -37,12 +37,6 @@ public class Player : MonoBehaviour, IDamageable
     //public event PlayerDataSavedHandler OnPlayerDataSaved;
     public Rigidbody2D _playerRB;
 
-    public Player()
-    {
-        inventory = new Inventory();
-        QuickSlots = new QuickSlot();  // QuickSlot ∞¥√º √ ±‚»≠
-    }
-
     private void Awake()
     {
         PlayerInput = GetComponent<PlayerInput>();
