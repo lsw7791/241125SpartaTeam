@@ -1,4 +1,5 @@
 using MainData;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,8 @@ public class UpGradeUI : UIBase
     [SerializeField] private TMP_Text _resultText;
     [SerializeField] private TMP_Text _costText;
 
+    private int[] _upgradeIndex;
+
     private InventoryItem _item;
 
     private void Start()
@@ -25,6 +28,22 @@ public class UpGradeUI : UIBase
         {
             ShowUpgrade(_item);
         });
+    }
+
+    private void Init(InventoryItem inItem)
+    {
+        // 아이템 데이터 검색
+        var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
+        int tierIndex = itemData.tier - 1;
+
+        // 강화 데이터 검색
+        var upgradeData = GameManager.Instance.DataManager.Upgrade.GetData(inItem.enhenceCount);
+
+        _upgradeIndex = new int[] {
+            upgradeData.success[tierIndex],
+            upgradeData.fail[tierIndex],
+            upgradeData.Destruction[tierIndex]
+        };
     }
 
     public void ShowUpgrade(InventoryItem inItem)
@@ -37,15 +56,14 @@ public class UpGradeUI : UIBase
 
         // 아이템 데이터 검색
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
-        int tierIndex = itemData.tier - 1;
 
-        // 강화 데이터 검색
-        var upgradeData = GameManager.Instance.DataManager.Upgrade.GetData(inItem.enhenceCount);
+        Init(inItem);
+        int totalRange = _upgradeIndex.Sum();
 
         // 랜덤 가중치
-        int randomValue = Random.Range(0, 100);
+        int randomValue = Random.Range(0, totalRange);
 
-        if (randomValue < upgradeData.success[tierIndex])
+        if (randomValue < _upgradeIndex[0])
         {
             // TODO :: 강화된 능력치 출력
             // TODO :: 강화수치 이미지 출력
@@ -70,7 +88,7 @@ public class UpGradeUI : UIBase
                 GameManager.Instance.DataManager.MainQuest.CompleteQuest(5);
             }
         }
-        else if (randomValue < upgradeData.success[tierIndex] + upgradeData.fail[tierIndex])
+        else if (randomValue < _upgradeIndex[0] + _upgradeIndex[1])
         {
             // TODO :: 유지된 능력치 출력
             _resultText.text = "강화에 실패하였습니다.";
