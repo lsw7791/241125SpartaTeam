@@ -605,6 +605,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage2MineGrid
       objectReference: {fileID: 0}
+    - target: {fileID: 5975541360707633530, guid: f7f4c5ee43813114689b762c0c582fd3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 54.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975541360707633530, guid: f7f4c5ee43813114689b762c0c582fd3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540365973576606068, guid: f7f4c5ee43813114689b762c0c582fd3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540365973576606068, guid: f7f4c5ee43813114689b762c0c582fd3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 30.71
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
