@@ -59,14 +59,12 @@ public class UpGradeUI : UIBase
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
         int tierIndex = itemData.tier - 1;
 
-        int coin = GameManager.Instance.Player.stats.Gold;
-
-        if (upgradeData.Cost[tierIndex] > coin)
+        if (upgradeData.Cost[tierIndex] > GameManager.Instance.Player.stats.Gold)
         {
             _resultText.text = "소지금이 부족하여 강화를 진행할 수 없습니다...";
             return;
         }
-        coin -= upgradeData.Cost[tierIndex];
+        GameManager.Instance.Player.stats.Gold -= upgradeData.Cost[tierIndex];
 
         Init(inItem);
         int totalRange = _upgradeIndex.Sum();
@@ -151,7 +149,7 @@ public class UpGradeUI : UIBase
             _probabilityText[0].text = "성공 확률\n0%";
             _probabilityText[1].text = "유지 확률\n0%";
             _probabilityText[2].text = "파괴 확률\n0%";
-            _costText.text = $"강화 비용: {upgradeData.Cost[tierIndex]}\n/\n현재 소지금: {coin}";
+            _costText.text = $"강화 비용: 0\n/\n현재 소지금: {coin}";
         }
         else
         {
