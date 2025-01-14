@@ -76,6 +76,8 @@ public class GameManager : MonoSingleton<GameManager>
         Player.inventory = nowInventory;
         //Player.equipment = nowEquipment;
 
+        UIManager.Instance.GetUI<InventoryUI>().Setup(Player.inventory);
+
         CharacterSelectUI selectUI = UIManager.Instance.GetUI<CharacterSelectUI>();
         if (selectUI.isNewGame)
         {
