@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class Monster : MonoBehaviour, ICreature
+public class Monster : MonoBehaviour, ICreature, IDamageable
 {
     public int currentHealth { get; private set; }
    // private bool _isDie;
