@@ -53,9 +53,20 @@ public class UpGradeUI : UIBase
             UIManager.Instance.ToggleUI<UpGradeUI>();
             return;
         }
+        var upgradeData = GameManager.Instance.DataManager.Upgrade.GetData(inItem.enhenceCount);
 
         // 아이템 데이터 검색
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
+        int tierIndex = itemData.tier - 1;
+
+        int coin = GameManager.Instance.Player.stats.Gold;
+
+        if (upgradeData.Cost[tierIndex] > coin)
+        {
+            _resultText.text = "소지금이 부족하여 강화를 진행할 수 없습니다...";
+            return;
+        }
+        coin -= upgradeData.Cost[tierIndex];
 
         Init(inItem);
         int totalRange = _upgradeIndex.Sum();
@@ -132,13 +143,15 @@ public class UpGradeUI : UIBase
         _enhenceCountText.text = $"{inItem.enhenceCount}";
         _backgroundImage.color = inItem.TierColoer(tierIndex);
 
+        int coin = GameManager.Instance.Player.stats.Gold;
+
         if (inItem.enhenceCount >= 10)
         {
             _productText.text = $"{itemData.name} (+Max)";
             _probabilityText[0].text = "성공 확률\n0%";
             _probabilityText[1].text = "유지 확률\n0%";
             _probabilityText[2].text = "파괴 확률\n0%";
-            _costText.text = $"강화 비용: 0\n/\n현재 소지금";
+            _costText.text = $"강화 비용: {upgradeData.Cost[tierIndex]}\n/\n현재 소지금: {coin}";
         }
         else
         {
@@ -146,7 +159,7 @@ public class UpGradeUI : UIBase
             _probabilityText[0].text = $"성공 확률\n{upgradeData.success[tierIndex]}%";
             _probabilityText[1].text = $"유지 확률\n{upgradeData.fail[tierIndex]}%";
             _probabilityText[2].text = $"파괴 확률\n{upgradeData.Destruction[tierIndex]}%";
-            _costText.text = $"강화 비용: {upgradeData.Cost[tierIndex]}\n/\n현재 소지금";
+            _costText.text = $"강화 비용: {upgradeData.Cost[tierIndex]}\n/\n현재 소지금 : {coin}";
         }
     }
 }
