@@ -46,6 +46,7 @@ public class CraftResultUI : UIBase
             GameManager.Instance.DataManager.MainQuest.CompleteQuest(2);
         }
 
+        UIManager.Instance.GetUI<InventoryUI>().Setup(GameManager.Instance.Player.inventory);
     }
 
     public void ShowFailure(CraftingData data)
