@@ -179,7 +179,8 @@
    - ParticleSystem
 ## 프로젝트 와이어프레임 (전체적인)
 ![image](https://github.com/user-attachments/assets/2472737a-6511-46ea-8823-a10d13da21e6)
-![image](https://github.com/user-attachments/assets/7beaa73e-a210-459d-9541-5d9ecd9d0593)
+![image](https://github.com/user-attachments/assets/64db3e87-4709-4891-8009-afe0b54debff)
+
 
 ## 유저 테스트
 - 프로젝트 개선
