@@ -170,10 +170,7 @@
 - DataManager.cs > 여기 생성자에서 구글 시트 데이터 로드해주고 데이터 테이블을 생성해줌
 - UGS를 통해 고정된 데이터를 쉽게 관리함
 - Item, MainQuest, Crafting, UI, Scene, PlayerStat, MonsterSpawn, Upgrade, Creatrue 데이터를 관리
-6. 상점 NPC
-- 
--
-7. 최적화
+6. 최적화
    - ObjectPool
    - Atlas
    - ParticleSystem
