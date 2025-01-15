@@ -1,8 +1,10 @@
 # 241125SpartaTeam
+
  스파르타 국비지원학원에서 Unity 6기 최종 프로젝트
  TopDownCotroller형식의 2D게임으로 제작이 가능한 대장장이RPG입니다.
 
 ## 목차
+
 1. [게임 소개](#게임-소개)
 2. [게임 영상](#게임-영상)
 3. [팀원 소개](#팀원-소개)
@@ -15,6 +17,7 @@
 10. [트러블 슈팅](#트러블-슈팅)
 
 ## 게임개요
+
 ## 게임소개
 
 마인스톤 : 대장장이의 길
@@ -25,6 +28,7 @@
 - 조합
    장비가 없다구요? 저기 몬스터 보이시죠? 이젠 제 장비입니다.
    몬스터를 쓰러뜨리고 얻은 부산물로 나아갈 길을 만들어 보세요!
+  
 - 강화
    강화로 해결되지 않는다면 강화가 부족한 건 아닐지 생각해보자.
    너무나도 많은 강화로 몬스터를 쓰러뜨려보세요!
@@ -32,17 +36,28 @@
 ## 게임영상
 
 ## 팀원소개
+
 - 이준형(팀장) : 맵 제작, 초반 기획
 - 이상운(부팀장) : UGS, 인벤토리, 퀘스트, 플레이어, NPC
 - 김준식 : UI, 강화, 조합, 장착, 몬스터 AI, 저장 불러오기
 - 백승우 : UGS, 카메라, 미니맵, 몬스터, 맵이동
-- 
+
+ [목차로 이동](#목차)
+  
 ## 기획
+
 - 개발 일정
 
+-  [목차로 이동](#목차)
+
 ## 게임 맛보기
+
 - 링크 : https://tkql0.itch.io/milestone-blacksmith-road
+
+ [목차로 이동](#목차)
+  
 ## 게임 기능
+
 1. 캐릭터 생성 및 저장
 
 ![Create](https://github.com/user-attachments/assets/66df57ad-5daf-4da0-bb9e-9b098fc02a28)
@@ -145,7 +160,10 @@
 - NPC 이용
  슬롯 클릭 > 수량 입력 > 구매
 
+ [목차로 이동](#목차)
+
 ## 기술스택
+
 1. 모노싱글톤
 
 ![4334](https://github.com/user-attachments/assets/287c20f9-6d3b-4aa0-a24e-d1c41f16b84d)
@@ -176,20 +194,28 @@
 - Mine
   - MineFull.cs > 마인의 체력이 0이되면 MineFull이 SetActive(false)
   - Mine.cs > 30초마다 코루틴으로 죽어있으면 다시 살려줌
+    
 5. UGS
 - DataManager.cs > 여기 생성자에서 구글 시트 데이터 로드해주고 데이터 테이블을 생성해줌
 - UGS를 통해 고정된 데이터를 쉽게 관리함
 - Item, MainQuest, Crafting, UI, Scene, PlayerStat, MonsterSpawn, Upgrade, Creatrue 데이터를 관리
+  
 6. 최적화
    - ObjectPool
    - Atlas
    - ParticleSystem
+
+ [목차로 이동](#목차)
+ 
 ## 프로젝트 와이어프레임 (전체적인)
+
 ![image](https://github.com/user-attachments/assets/2472737a-6511-46ea-8823-a10d13da21e6)
 ![image](https://github.com/user-attachments/assets/64db3e87-4709-4891-8009-afe0b54debff)
 
-
+ [목차로 이동](#목차)
+ 
 ## 유저 테스트 피드백
+
 - 프로젝트 개선
   - 장비의 밸런스 패치
   - 맵 버그 및 편의성 개선
@@ -205,6 +231,9 @@
   - 공격 모션 
   - 무기 밸런스
   - 조합 편의성
-    
+  - 
+[목차로 이동](#목차)
+
 ## 트러블 슈팅
- [목차로 이동](#목차)
+
+[목차로 이동](#목차)
