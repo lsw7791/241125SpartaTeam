@@ -35,6 +35,8 @@
 
 ## 게임영상
 
+https://www.youtube.com/watch?v=kkB7tFbIqdA
+
  [목차로 이동](#목차)
 
 ## 팀원소개
