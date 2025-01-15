@@ -171,13 +171,15 @@
 - UGS를 통해 고정된 데이터를 쉽게 관리함
 - Item, MainQuest, Crafting, UI, Scene, PlayerStat, MonsterSpawn, Upgrade, Creatrue 데이터를 관리
 6. 상점 NPC
--
+- 
 -
 7. 최적화
    - ObjectPool
    - Atlas
    - ParticleSystem
 ## 프로젝트 와이어프레임 (전체적인)
+![image](https://github.com/user-attachments/assets/2472737a-6511-46ea-8823-a10d13da21e6)
+![image](https://github.com/user-attachments/assets/7beaa73e-a210-459d-9541-5d9ecd9d0593)
 
 ## 유저 테스트
 - 프로젝트 개선
