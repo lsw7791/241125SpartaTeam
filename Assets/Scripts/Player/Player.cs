@@ -40,7 +40,7 @@ public class Player : MonoBehaviour, IDamageable
     private void Awake()
     {
         PlayerInput = GetComponent<PlayerInput>();
-        _playerWeapon = weaponObject.GetComponent<PlayerWeapon>();
+        //_playerWeapon = weaponObject.GetComponent<PlayerWeapon>();
         _playerRB = GetComponent<Rigidbody2D>();
         playerRoll = GetComponent<PlayerRoll>();
         damageUIController = GetComponent<DamageUIController>();
