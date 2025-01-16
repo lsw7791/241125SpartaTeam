@@ -30,7 +30,33 @@ public abstract class UIBase : MonoBehaviour, IDraggable, IPointerDownHandler, I
         gameObject.SetActive(false);
         CloseProcedure();
     }
+    public void OnclickedMainMenuBtn()
+    {
+        DataManager dataManager = GameManager.Instance.DataManager;
 
+        UIManager.Instance.CloseUI<OptionUI>();
+
+        GameManager.Instance.Player.stats.nowMapNumber = GameManager.Instance.SceneNum;
+
+        dataManager.SaveData(GameManager.Instance.Player.stats);
+        dataManager.SaveData(GameManager.Instance.Player.inventory);
+        //dataManager.SaveData(GameManager.Instance.Player.equipment);
+        dataManager.DataClear();
+
+        if (GameManager.Instance.Player.stats.CurrentQuestId < 9)
+        {
+            QuestIcon questUI = UIManager.Instance.GetUI<QuestIcon>();
+
+            if (questUI.mainQuestUI != null)
+            {
+                questUI.mainQuestUI.gameObject.SetActive(false);
+            }
+            questUI.Close();
+        }
+
+        GameManager.Instance.SceneNum = 25;
+        UIManager.Instance.fadeManager.LoadSceneWithFade(dataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
+    }
     protected virtual void OpenProcedure()
     { // 생성 시 추가 변경사항
         GameManager.Instance.Player.PlayerStateUIOpen();

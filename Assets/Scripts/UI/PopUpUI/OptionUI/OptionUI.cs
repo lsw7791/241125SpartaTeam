@@ -79,34 +79,6 @@ public class OptionUI : UIBase
         // 옵션 UI 닫기 및 씬 이동 처리
         UIManager.Instance.CloseUI<OptionUI>();
     }
-
-    public void OnclickedMainMenuBtn()
-    {
-        DataManager dataManager = GameManager.Instance.DataManager;
-
-        UIManager.Instance.CloseUI<OptionUI>();
-
-        GameManager.Instance.Player.stats.nowMapNumber = GameManager.Instance.SceneNum;
-
-        dataManager.SaveData(GameManager.Instance.Player.stats);
-        dataManager.SaveData(GameManager.Instance.Player.inventory);
-        //dataManager.SaveData(GameManager.Instance.Player.equipment);
-        dataManager.DataClear();
-
-        if (GameManager.Instance.Player.stats.CurrentQuestId < 9)
-        {
-            QuestIcon questUI = UIManager.Instance.GetUI<QuestIcon>();
-
-            if (questUI.mainQuestUI != null)
-            {
-                questUI.mainQuestUI.gameObject.SetActive(false);
-            }
-            questUI.Close();
-        }
-
-        GameManager.Instance.SceneNum = 25;
-        UIManager.Instance.fadeManager.LoadSceneWithFade(dataManager.Scene.GetMapTo(GameManager.Instance.SceneNum));
-    }
     public void OptionUIOn()
     {
         // 옵션 UI 토글

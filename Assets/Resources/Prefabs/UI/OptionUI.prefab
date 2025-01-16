@@ -1305,7 +1305,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4077865034242708901}
-        m_TargetAssemblyTypeName: OptionUI, Assembly-CSharp
+        m_TargetAssemblyTypeName: UIBase, Assembly-CSharp
         m_MethodName: OnclickedMainMenuBtn
         m_Mode: 1
         m_Arguments:
