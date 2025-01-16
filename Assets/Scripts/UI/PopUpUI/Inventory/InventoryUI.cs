@@ -104,7 +104,7 @@ public class InventoryUI : UIBase
 
         for (int i = 0; i < _slots.Count; i++)
         {
-            var slotComponent = _slots[i].GetComponent<InventorySlot>();
+            _slots[i].TryGetComponent<InventorySlot>(out var slotComponent);
 
             if (i < items.Count)
             {

@@ -1,6 +1,8 @@
+using MainData;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [System.Serializable]
 public class Inventory
@@ -20,7 +22,7 @@ public class Inventory
 
     public void SaveEquipInIt()
     {
-        GameManager.Instance.Player._playerWeapon.ATKType = 0;
+        //GameManager.Instance.Player._playerWeapon.ATKType = 0;
         GameManager.Instance.Player.Stats.WeaponType = 0;
 
         //InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
@@ -40,10 +42,26 @@ public class Inventory
 
                 if (itemData.itemType == ItemType.Weapon)
                 {
-                    GameManager.Instance.Player._playerWeapon.ATKType = item.ATKType;
+                    //GameManager.Instance.Player._playerWeapon.ATKType = item.ATKType;
                     GameManager.Instance.Player.Stats.WeaponType = item.ATKType;
+
+                    WeaponPosition(item);
                 }
             }
+        }
+    }
+
+    public void WeaponPosition(InventoryItem inItem)
+    {
+        if(inItem.ATKType == 2)
+        {
+            GameManager.Instance.Player.weaponObject.transform.localPosition = new Vector3(0.1f, 0, 0);
+            GameManager.Instance.Player.weaponObject.transform.localRotation = Quaternion.Euler(0, 180, 45);
+        }
+        else
+        {
+            GameManager.Instance.Player.weaponObject.transform.localPosition = new Vector3(0, 0.3f, 0);
+            GameManager.Instance.Player.weaponObject.transform.localRotation = Quaternion.Euler(0, 0, 45);
         }
     }
 
@@ -199,6 +217,8 @@ public class Inventory
         {
             GameManager.Instance.Player._playerWeapon.ATKType = inItem.ATKType;
             GameManager.Instance.Player.Stats.WeaponType = inItem.ATKType;
+
+            WeaponPosition(inItem);
         }
 
         inItem.IsEquipped = true;

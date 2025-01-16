@@ -65,16 +65,16 @@ public class PlayerAnimationController : MonoBehaviour
     {
         GameManager.Instance.Player._playerWeapon.ActivateWeaponCollider();
         SoundManager.Instance.PlaySwordSFX();
+        _attacktEffect.SetActive(true);
     }
     public void DeactivateWeaponCollider()
     {
         GameManager.Instance.Player._playerWeapon.DeactivateWeaponCollider();
-        _attacktEffect.SetActive(true);
+        _attacktEffect.SetActive(false);
     }
 
     public void OnAttackAnimationEnd()
     {
         GameManager.Instance.Player.playerState = Player.PlayerState.Idle;
-        _attacktEffect.SetActive(false);
     }
 }

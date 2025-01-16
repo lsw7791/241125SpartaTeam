@@ -18,17 +18,26 @@ public class PlayerWeapon : MonoBehaviour
 
     private void Start()
     {
-        //GameManager.Instance.Player._playerWeapon = this;
-        _weapon = this.gameObject;
+        GameManager.Instance.Player._playerWeapon = this;
+        _weapon = transform.GetChild(0).gameObject;
         GameManager.Instance.Player.weaponObject = _weapon;
-        _weaponCollider = _weapon.GetComponent<BoxCollider2D>();  // 무기의 Collider2D 가져오기
+        _weaponCollider = GetComponent<BoxCollider2D>();  // 무기의 Collider2D 가져오기
         _weaponCollider.enabled = false;  // 시작 시 콜라이더 비활성화
     }
-    
+
     // 공격 시 무기의 콜라이더를 활성화하는 메서드
     public void ActivateWeaponCollider()
     {
         _weaponCollider.enabled = true;  // 공격 시 콜라이더 활성화
+
+        if(GameManager.Instance.Player.stats.WeaponType == 0)
+        {
+            _weaponCollider.size = new Vector2(0.3f, 0.3f);
+        }
+        else
+        {
+            _weaponCollider.size = new Vector2(0.1f, 0.7f);
+        }
     }
 
     // 무기 콜라이더 비활성화
