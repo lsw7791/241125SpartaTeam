@@ -416,7 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -624,7 +624,7 @@ Canvas:
   m_GameObject: {fileID: 9024936390795374815}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -633,10 +633,10 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &3656342444607141694
 MonoBehaviour:
@@ -690,7 +690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b282ed9f0307c824faa996b65cee88cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BPanel: {fileID: 0}
 --- !u!1001 &6526533788963123939
 PrefabInstance:
   m_ObjectHideFlags: 0
