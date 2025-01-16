@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 3284312622395281143}
   - component: {fileID: 3393991383715078440}
   - component: {fileID: 7047552014271824271}
+  - component: {fileID: 7579645360434906984}
   m_Layer: 5
   m_Name: MainQuestUI
   m_TagString: Untagged
@@ -230,6 +231,19 @@ MonoBehaviour:
   _questName: {fileID: 221325911168458553}
   _questDesc: {fileID: 9206878871109070993}
   _completeBtn: {fileID: 8899341359681605038}
+--- !u!114 &7579645360434906984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4614500519157664772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74e5eae711ea0f4784ad6128c733673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UGSNumber: 2
 --- !u!1 &4676273689335885428
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +256,7 @@ GameObject:
   - component: {fileID: 6041836687712031541}
   - component: {fileID: 7496152214090486541}
   - component: {fileID: 8899341359681605038}
+  - component: {fileID: 3974936786169975710}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -351,6 +366,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3974936786169975710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4676273689335885428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74e5eae711ea0f4784ad6128c733673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UGSNumber: 32
 --- !u!1 &5346429615773836967
 GameObject:
   m_ObjectHideFlags: 0
