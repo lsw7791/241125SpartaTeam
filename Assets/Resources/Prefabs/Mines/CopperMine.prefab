@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mine: {fileID: 0}
+  damageUIController: {fileID: 0}
 --- !u!58 &4593936131315293820
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -284,6 +285,7 @@ MonoBehaviour:
   isDie: 0
   id: 0
   mineHealthBarUI: {fileID: 0}
+  damageUIController: {fileID: 0}
 --- !u!114 &1931825199217230572
 MonoBehaviour:
   m_ObjectHideFlags: 0

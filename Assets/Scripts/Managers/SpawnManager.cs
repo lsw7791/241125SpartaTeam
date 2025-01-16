@@ -9,6 +9,8 @@ public class SpawnManager : MonoBehaviour
     public Spawner spawner1;
     public Spawner spawner2;
     public Spawner spawner3;
+    public Spawner spawner4;
+
     public void Initialize(int mapNum)
     {
         if (projectilePool == null)
@@ -18,6 +20,8 @@ public class SpawnManager : MonoBehaviour
         if (spawner1 != null) Destroy(spawner1);
         if (spawner2 != null) Destroy(spawner2);
         if (spawner3 != null) Destroy(spawner3);
+        if (spawner4 != null) Destroy(spawner4);
+
         SpawnProjectilePool();
         //SpawnMonsterPool();
         //if(monsterPool1==null) monsterPool1 = GroupSpawn("Monster1").AddComponent<MonsterPool>();
@@ -46,6 +50,7 @@ public class SpawnManager : MonoBehaviour
                 if (spawner1 == null) spawner1 = gameObject.AddComponent<Spawner>();
                 StageMine(1,spawner1);
                 break;
+            case 30:// 마인 4> 3
             case 7://마인3
                 if (spawner3 == null) spawner3 = gameObject.AddComponent<Spawner>();
                 StageMine(3,spawner3);
@@ -63,6 +68,10 @@ public class SpawnManager : MonoBehaviour
             case 25: //캐릭터 셀렉션
                 SoundManager.Instance.PlayStartBGMRelaxingPiano();
                 playerObject.SetActive(false);
+                break;
+                case 29: // 마인3 > 4
+                if (spawner4 == null) spawner4 = gameObject.AddComponent<Spawner>();
+                StageMine(4, spawner4);
                 break;
             default:
                 break;
