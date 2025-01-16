@@ -47,17 +47,23 @@ public class SellUI : UIBase
     {
         // 수량 입력값을 가져오기
         int quantity;
+
         if (!int.TryParse(_quantityInputField.text, out quantity))
         {
             // 숫자가 아닌 입력인 경우
             _text.text = "숫자로 입력해주세요.";
             return;
         }
-        //else if(GameManager.Instance.Player.Inventory.)
+
+        if (GameManager.Instance.Player.inventory.GetItemCount(itemData.id) < quantity)
+        {
+            quantity = GameManager.Instance.Player.inventory.GetItemCount(itemData.id);
+        }
+
         quantity = Mathf.Max(quantity, 1); // 수량이 1 이상이 되도록
 
         // 총 금액 계산
-        int totalCost = itemData.buy * quantity;
+        int totalCost = itemData.sell * quantity;
             // 골드 입금
             GameManager.Instance.Player.stats.Gold += totalCost;
 
