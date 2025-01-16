@@ -3019,6 +3019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveInput: {x: 0, y: 0}
+  _playerObject: {fileID: 1769087924927798683}
 --- !u!114 &6224302043780271791
 MonoBehaviour:
   m_ObjectHideFlags: 0
