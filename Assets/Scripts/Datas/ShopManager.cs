@@ -2,13 +2,15 @@ using MainData;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public enum ShopType
 {
     PotionShop,
     WeaponShop,
     ArmorShop,
-    TarvenShop
+    TarvenShop,
+    BuyShop
 }
 
 
@@ -49,6 +51,15 @@ public class ShopManager
                     ItemData itemData = GameManager.Instance.DataManager.GetItemDataById(i);
                     items.Add(itemData);
                 }
+                break;
+            case ShopType.BuyShop:
+                
+                    foreach (InventoryItem item in GameManager.Instance.Player.Inventory.Items)
+                    {
+                        ItemData itemData = GameManager.Instance.DataManager.GetItemDataById(item.ItemID);
+                        items.Add(itemData);
+                    }
+                        //ItemData itemData = GameManager.Instance.DataManager.GetItemDataById(i);
                 break;
         }
 
