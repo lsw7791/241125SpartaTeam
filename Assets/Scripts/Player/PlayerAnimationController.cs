@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerAnimationController : MonoBehaviour
 {
     private Animator _animator;
+    [SerializeField] private GameObject _attacktEffect;
 
     private void Awake()
     {
@@ -42,7 +43,6 @@ public class PlayerAnimationController : MonoBehaviour
                 GameManager.Instance.Player._playerWeapon.FireFireball(); // 파이어볼 발사
                 break;
             default: // 기본 근접 공격
-                SoundManager.Instance.PlaySwordSFX();
                 _animator.SetTrigger("Attack_Melee");
                 break;
         }
@@ -64,14 +64,17 @@ public class PlayerAnimationController : MonoBehaviour
     public void ActivateWeaponCollider()
     {
         GameManager.Instance.Player._playerWeapon.ActivateWeaponCollider();
+        SoundManager.Instance.PlaySwordSFX();
     }
     public void DeactivateWeaponCollider()
     {
         GameManager.Instance.Player._playerWeapon.DeactivateWeaponCollider();
+        _attacktEffect.SetActive(true);
     }
 
     public void OnAttackAnimationEnd()
     {
         GameManager.Instance.Player.playerState = Player.PlayerState.Idle;
+        _attacktEffect.SetActive(false);
     }
 }
