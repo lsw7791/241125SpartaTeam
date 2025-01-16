@@ -23,7 +23,7 @@ SpriteAtlas:
     platformSettings:
     - serializedVersion: 3
       m_BuildTarget: DefaultTexturePlatform
-      m_MaxTextureSize: 256
+      m_MaxTextureSize: 512
       m_ResizeAlgorithm: 0
       m_TextureFormat: 4
       m_TextureCompression: 1
@@ -75,6 +75,7 @@ SpriteAtlas:
     - {fileID: 21300000, guid: 92ce80d01649943119d63a5dbebb9e55, type: 3}
     - {fileID: 21300000, guid: de14242464674984b921d7eaaea45793, type: 3}
     - {fileID: 21300000, guid: b73c67f49501f4b18aa9be67657d3b52, type: 3}
+    - {fileID: 4717104774431673990, guid: 2204c5120d209e24b8d8473101c0670f, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -83,6 +84,7 @@ SpriteAtlas:
     - 098d8f310aaa34d5c82439c55d4db5a7: 21300000
     - 7b5f8d41367cc4bc98ae7de558a1696b: 21300000
     - 1c4488e16194f48b8827e91c6cc04ba7: 21300000
+    - 2204c5120d209e24b8d8473101c0670f: 4717104774431673990
     - c1d7bb22393fc49688d5ded3da34d137: 21300000
     - f18767325b17b436ca16934062a8f100: 21300000
     - 69406713d8eb5421a94194dbc9b76588: 21300000
@@ -115,6 +117,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 098d8f310aaa34d5c82439c55d4db5a7, type: 3}
   - {fileID: 21300000, guid: 7b5f8d41367cc4bc98ae7de558a1696b, type: 3}
   - {fileID: 21300000, guid: 1c4488e16194f48b8827e91c6cc04ba7, type: 3}
+  - {fileID: 4717104774431673990, guid: 2204c5120d209e24b8d8473101c0670f, type: 3}
   - {fileID: 21300000, guid: c1d7bb22393fc49688d5ded3da34d137, type: 3}
   - {fileID: 21300000, guid: f18767325b17b436ca16934062a8f100, type: 3}
   - {fileID: 21300000, guid: 69406713d8eb5421a94194dbc9b76588, type: 3}
@@ -146,6 +149,7 @@ SpriteAtlas:
   - ImageBoxBlackCircle
   - ItemBox
   - QuitIcon
+  - Button Violet_0
   - ValueBar
   - ButtonRed
   - TopPatternPanelLong
