@@ -399,7 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6882227389817406081, guid: 32fd00fdb330b6b40935231db1b641c8, type: 3}
       propertyPath: m_Name
-      value: Stage1MineGrid
+      value: Mine1Grid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
