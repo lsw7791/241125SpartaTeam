@@ -9,9 +9,12 @@ public class ItemMagnet : MonoBehaviour
 
     private Transform _TatgetPosition;
 
+    private TestItem _item;
+
     private void OnEnable()
     {
         _TatgetPosition = GameManager.Instance.Player.transform;
+        _item = GetComponent<TestItem>();
     }
 
     private void Start()
@@ -28,7 +31,7 @@ public class ItemMagnet : MonoBehaviour
 
     private void Update()
     {
-        if (!_TatgetPosition)
+        if (!_TatgetPosition || _item.isPlayerDrop)
         { // 타겟이 초기화 되어있다면 리턴
             return;
         }
