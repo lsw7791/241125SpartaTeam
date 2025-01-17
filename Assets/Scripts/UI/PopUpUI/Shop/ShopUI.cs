@@ -83,15 +83,15 @@ public class ShopUI : UIBase
     // 상점 타입에 따른 버튼 상태 업데이트
     private void UpdateButtons()
     {
-        if (ShopType == ShopType.PotionShop)
-        {
-            WeaponButton.gameObject.SetActive(false);
-            ArmorButton.gameObject.SetActive(false);
-        }
-        else
+        if (ShopType == ShopType.ArmorShop || ShopType == ShopType.WeaponShop)
         {
             WeaponButton.gameObject.SetActive(true);
             ArmorButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            WeaponButton.gameObject.SetActive(false);
+            ArmorButton.gameObject.SetActive(false);
         }
     }
 

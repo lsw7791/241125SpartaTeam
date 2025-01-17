@@ -577,7 +577,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4007702521249984762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3790,6 +3790,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1f2b3054989ec41873f6208fd0a295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcName: 
+  defaultDialogue: []
+  ShopType: 0
 --- !u!1 &1352009685005778108
 GameObject:
   m_ObjectHideFlags: 0
@@ -6187,9 +6190,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'E
-
-'
+  m_text: "\uB9E4\uC785\uC0C1\uC778(E)\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1388ddb6efd8d48dcb7f383a0e0bf289, type: 2}
   m_sharedMaterial: {fileID: 3522791461214794850, guid: 1388ddb6efd8d48dcb7f383a0e0bf289, type: 2}
@@ -6216,8 +6217,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1
-  m_fontSizeBase: 1
+  m_fontSize: 0.5
+  m_fontSizeBase: 0.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

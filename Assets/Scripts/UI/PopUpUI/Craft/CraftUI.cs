@@ -31,8 +31,8 @@ public class CraftUI : UIBase
 
             if (slotButton != null)
             {
-                itemImage.sprite = Resources.Load<Sprite>(data.imagePath);
-
+                //itemImage.sprite = Resources.Load<Sprite>(data.imagePath);
+                itemImage.sprite = UIManager.Instance.ItemAtlas.GetSprite(data.atlasPath);
                 slotButton.onClick.AddListener(() =>
                 {
                     // 아이템 선택 시 선택된 아이템 ID를 설정

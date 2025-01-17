@@ -49,8 +49,10 @@ public class CraftingUI : UIBase
             _craftItemImage[i].gameObject.SetActive(false);
         }
 
-        Sprite itemSprite = Resources.Load<Sprite>(_craftingData.imagePath);
-        _productImage.sprite = itemSprite;
+        //Sprite itemSprite = Resources.Load<Sprite>(_craftingData.imagePath);
+        Sprite itemSprite = UIManager.Instance.ItemAtlas.GetSprite(_craftingData.atlasPath);
+
+        _productImage.sprite = UIManager.Instance.ItemAtlas.GetSprite(inData.atlasPath); // 아이템 아이콘 설정
         _productText.text = _craftingData.name;
 
         List<int> craftItemList = GameManager.Instance.DataManager.Crafting.GetCraftItemIds(_craftingData.id);
@@ -68,7 +70,7 @@ public class CraftingUI : UIBase
             //_craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
             if(_craftingData.id == 106)
             {
-                _craftItemImage[i].sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
+                _craftItemImage[i].sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
 
             }
             else

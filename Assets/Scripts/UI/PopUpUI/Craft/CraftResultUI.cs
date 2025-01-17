@@ -66,8 +66,9 @@ public class CraftResultUI : UIBase
         }
 
         //Sprite itemSprite = Resources.Load<Sprite>(inData.imagePath);
-        Sprite itemSprite = UIManager.Instance.craftingAtlas.GetSprite(inData.atlasPath);
+        Sprite itemSprite = UIManager.Instance.ItemAtlas.GetSprite(inData.atlasPath);
         _productImage.sprite = itemSprite;
+        
         _productText.text = inData.name;
 
         List<int> craftItemList = GameManager.Instance.DataManager.Crafting.GetCraftItemIds(inData.id);
@@ -85,7 +86,7 @@ public class CraftResultUI : UIBase
             //_craftItemImage[i].sprite = Resources.Load<Sprite>(itemData.spritePath);
             if(inData.id == 106)
             {
-                _craftItemImage[i].sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
+                _craftItemImage[i].sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
                 if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(8) &&
             !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[8])
                 {

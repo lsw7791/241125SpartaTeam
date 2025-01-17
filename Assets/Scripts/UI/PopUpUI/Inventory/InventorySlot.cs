@@ -41,18 +41,16 @@ public class InventorySlot : MonoBehaviour
         _backgroundImage.color = inItem.TierColoer(tierIndex);
 
         item = inItem;
-        itemImage.sprite = inItem.ItemIcon;  // 아이템 아이콘 설정
-        bool isSprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
+        itemImage.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath); // 아이템 아이콘 설정
+        bool isSprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
 
         if(isSprite)
         {
-            itemImage.sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
             _enhenceCountImage.SetActive(true);
             _enhenceCount.text = $"{item.enhenceCount}";
         }
         else
         {
-            itemImage.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
             _enhenceCountImage.SetActive(false);
         }
 

@@ -36,23 +36,9 @@ public class ShopSlot : MonoBehaviour
         }
         itemDescText.text = itemData.desc;
 
-        // ShopType에 따른 아이콘 경로 설정
-        if (shopType == ShopType.PotionShop)
-        {
+        //아이콘 경로 설정
             icon.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
-        }
-        else if(shopType == ShopType.WeaponShop || shopType == ShopType.ArmorShop)
-        {
-            icon.sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
-        }
-        else if(shopType == ShopType.TarvenShop)
-        {
-            icon.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
-        }
-        else if(shopType == ShopType.BuyShop)
-        {
-            icon.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
-        }
+        
         // 구매 버튼 활성화 여부 설정
         buyButton.interactable = true;
 

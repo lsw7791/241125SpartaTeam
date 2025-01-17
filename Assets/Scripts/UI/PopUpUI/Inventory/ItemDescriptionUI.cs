@@ -17,7 +17,7 @@ public class ItemDescriptionUI : UIBase
     public void Initialize(InventoryItem inItem)
     {
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
-        _useItemImage.sprite = itemData.itemType < ItemType.Mine ? UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath)
+        _useItemImage.sprite = itemData.itemType < ItemType.Mine ? UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath)
             : UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
         int tierIndex = itemData.tier - 1;
         _productNameText.text = $"{itemData.name}";

@@ -129,7 +129,7 @@ public class UpGradeUI : UIBase
     {
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
         _item = inItem;
-        _useItemImage.sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
+        _useItemImage.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
         UpdateUI(inItem);
     }
 

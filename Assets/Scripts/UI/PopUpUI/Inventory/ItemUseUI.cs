@@ -14,16 +14,9 @@ public class ItemUseUI : MonoBehaviour
     {
         var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
 
-        bool isSprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
+        bool isSprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
 
-        if (isSprite)
-        {
-            _useItemImage.sprite = UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath);
-        }
-        else
-        {
-            _useItemImage.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
-        }
+        _useItemImage.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
 
         UseButtonClear();
 
@@ -44,7 +37,7 @@ public class ItemUseUI : MonoBehaviour
                 {
                     GameManager.Instance.Player.inventory.Equip(inItem);
                     InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
-                    inventoryUI.UpdateEquipmentSlot(itemData.itemType, UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath));
+                    inventoryUI.UpdateEquipmentSlot(itemData.itemType, UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath));
 
                     if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(3) &&
            !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[3])
