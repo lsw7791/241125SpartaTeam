@@ -1,4 +1,5 @@
 using MainData;
+using System.ComponentModel;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -45,6 +46,12 @@ public class SellUI : UIBase
     }
     public void PurchaseItem(ItemData itemData)
     {
+        bool isEquip = GameManager.Instance.Player.inventory.IsItemEquipped(itemData);
+        if (isEquip)
+        {
+            _text.text = "착용중인 장비입니다.";
+            return;
+        }
         // 수량 입력값을 가져오기
         int quantity;
 
