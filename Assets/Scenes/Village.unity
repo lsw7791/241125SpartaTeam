@@ -1011,7 +1011,8 @@ PrefabInstance:
       value: ShopGird
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5369293899322362666, guid: 0ca7d49109445471f85f763c3d86ce29, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ca7d49109445471f85f763c3d86ce29, type: 3}

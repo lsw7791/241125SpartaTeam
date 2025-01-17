@@ -134,6 +134,7 @@ public class InventoryUI : UIBase
         if (_equipmentSlots.TryGetValue(inSlot, out Image outSlotImage))
         {
             outSlotImage.sprite = itemIcon;
+
             outSlotImage.enabled = itemIcon != null;
         }
 
@@ -175,7 +176,7 @@ public class InventoryUI : UIBase
             if (item.IsEquipped)
             {
                 var itemData = GameManager.Instance.DataManager.GetItemDataById(item.ItemID);
-                UpdateSlot(itemData.itemType, UIManager.Instance.craftingAtlas.GetSprite(itemData.atlasPath));
+                UpdateSlot(itemData.itemType, UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath));
             }
         }
     }

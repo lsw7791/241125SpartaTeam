@@ -73,7 +73,6 @@ namespace MainData
 		public System.Single moveSpeed;
 		public System.Single attackSpeed;
 		public System.String prefabPath;
-		public System.String spritePath;
 		public System.Collections.Generic.List<Int32> goldRange;
 		public System.Int32 atkType;
 		public System.String atlasPath;

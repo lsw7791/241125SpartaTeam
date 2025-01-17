@@ -10,7 +10,6 @@ public class UIManager : MonoSingleton<UIManager>
     public Dictionary<string, UIBase> UiList = new(); // UI 객체 리스트
     private Dictionary<string, Canvas> _uiCanvases = new(); // UI 캔버스 리스트
     private int _sortingOrderCounter = 0; // sortingOrder를 관리할 카운터
-    public SpriteAtlas craftingAtlas;
     public SpriteAtlas ItemAtlas;
     public SpriteAtlas UIAtlas;
     public SpriteAtlas BackgroundAtlas;

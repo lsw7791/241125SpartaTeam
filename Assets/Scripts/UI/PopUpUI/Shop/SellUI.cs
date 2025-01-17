@@ -1,4 +1,5 @@
 using MainData;
+using System.ComponentModel;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,12 +19,12 @@ public class SellUI : UIBase
     {
         _itemData = itemData; // 아이템 데이터 설정
 
-                _text.text = "수량을 입력해주세요.";
-                ToggleBuyButton(true); // 버튼 활성화          
-                ToggleInputFieldParent(true); // 수량 입력 필드 부모 활성화
+        _text.text = "수량을 입력해주세요.";
+        ToggleBuyButton(true); // 버튼 활성화          
+        ToggleInputFieldParent(true); // 수량 입력 필드 부모 활성화
 
-                _buyBtn.onClick.RemoveAllListeners(); // 기존 이벤트 제거
-                _buyBtn.onClick.AddListener(() => PurchaseItem(itemData)); // 구매 이벤트 추가
+        _buyBtn.onClick.RemoveAllListeners(); // 기존 이벤트 제거
+        _buyBtn.onClick.AddListener(() => PurchaseItem(itemData)); // 구매 이벤트 추가
 
     }
 
@@ -45,6 +46,12 @@ public class SellUI : UIBase
     }
     public void PurchaseItem(ItemData itemData)
     {
+        bool isEquip = GameManager.Instance.Player.inventory.IsItemEquipped(itemData);
+        if (isEquip)
+        {
+            _text.text = "착용중인 장비입니다.";
+            return;
+        }
         // 수량 입력값을 가져오기
         int quantity;
 
@@ -64,24 +71,25 @@ public class SellUI : UIBase
 
         // 총 금액 계산
         int totalCost = itemData.sell * quantity;
-            // 골드 입금
-            GameManager.Instance.Player.stats.Gold += totalCost;
+        // 골드 입금
+        GameManager.Instance.Player.stats.Gold += totalCost;
 
-            ShopUI shopUI;
-            shopUI = UIManager.Instance.GetUI<ShopUI>();
-            shopUI.HasGold.text = GameManager.Instance.Player.stats.Gold.ToString();
+        ShopUI shopUI;
+        shopUI = UIManager.Instance.GetUI<ShopUI>();
+        shopUI.HasGold.text = GameManager.Instance.Player.stats.Gold.ToString();
 
-            // 아이템을 인벤토리에서 제거
-            GameManager.Instance.Player.inventory.RemoveItem(itemData.id, quantity); // 수량 전달
+        // 아이템을 인벤토리에서 제거
+        GameManager.Instance.Player.inventory.RemoveItem(itemData.id, quantity); // 수량 전달
+        shopUI.SetupShopUI();
 
-            ToggleBuyButton(false); // 버튼 비활성화
-            ToggleInputFieldParent(false); // 수량 입력 필드 부모 비활성화
-            _text.text = "판매가 완료되었습니다.";
-            if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(6) &&
-               !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[6])
-            {
-                GameManager.Instance.DataManager.MainQuest.CompleteQuest(6);
-            }
+        ToggleBuyButton(false); // 버튼 비활성화
+        ToggleInputFieldParent(false); // 수량 입력 필드 부모 비활성화
+        _text.text = "판매가 완료되었습니다.";
+        if (GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus.ContainsKey(6) &&
+           !GameManager.Instance.DataManager.MainQuest.QuestCompletionStatus[6])
+        {
+            GameManager.Instance.DataManager.MainQuest.CompleteQuest(6);
         }
     }
+}
 

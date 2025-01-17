@@ -1,6 +1,7 @@
 using MainData;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -244,5 +245,14 @@ public class Inventory
 
             equippedItem.IsEquipped = false;
         }
+    }
+    public bool IsItemEquipped(InventoryItem inItem)
+    {
+        return inItem.IsEquipped;
+    }
+    public bool IsItemEquipped(ItemData itemData)
+    {
+        InventoryItem inItem = GetItem(itemData.id);
+        return inItem.IsEquipped;
     }
 }
