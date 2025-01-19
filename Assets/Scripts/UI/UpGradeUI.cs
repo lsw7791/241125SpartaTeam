@@ -85,8 +85,12 @@ public class UpGradeUI : UIBase
             else
             {
                 _item.enhenceCount++;
+
+                if (_item.enhenceCount >= 10)
+                {
+                    totalRange = RangeIndex();
+                }
             }
-            totalRange = RangeIndex();
 
             InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
             inventoryUI.Setup(GameManager.Instance.Player.inventory);
@@ -132,7 +136,6 @@ public class UpGradeUI : UIBase
         _item = inItem;
         _useItemImage.sprite = UIManager.Instance.ItemAtlas.GetSprite(itemData.atlasPath);
         UpdateUI(inItem);
-        totalRange = RangeIndex();
     }
 
     private void UpdateUI(InventoryItem inItem) // UI 업데이트
@@ -155,6 +158,7 @@ public class UpGradeUI : UIBase
         }
         else
         {
+            totalRange = RangeIndex();
             _productText.text = $"{itemData.name} (+{inItem.enhenceCount})";
             _probabilityText[0].text = $"성공 확률\n{upgradeData.success[tierIndex]}%";
             _probabilityText[1].text = $"유지 확률\n{upgradeData.fail[tierIndex]}%";
