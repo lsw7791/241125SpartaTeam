@@ -7,6 +7,7 @@ using TMPro;
 public class CraftUI : UIBase
 {
     [SerializeField] private Transform _craftingPanel; // 조합창의 부모 패널
+    public ScrollRect scrollRect;
 
     [Header("DescriptionUI")]
     public GameObject itemObject;

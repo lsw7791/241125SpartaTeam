@@ -1,12 +1,10 @@
 using MainData;
-using System.Security.Cryptography;
 using System.Text;
-using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CraftSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class CraftSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IScrollHandler
 {
     [SerializeField] private Image _itemImage; // 슬롯에 표시될 아이템 이미지 텍스트
     private CraftingData _item;  // 슬롯에 할당된 아이템
@@ -46,6 +44,16 @@ public class CraftSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         CraftUI craftUI = UIManager.Instance.GetUI<CraftUI>();
 
         craftUI.itemObject.SetActive(false);
+    }
+
+    public void OnScroll(PointerEventData eventData)
+    {
+        CraftUI craftUI = UIManager.Instance.GetUI<CraftUI>();
+
+        if (craftUI.scrollRect != null)
+        {
+            craftUI.scrollRect.OnScroll(eventData);
+        }
     }
 
     private string ItemStats(CraftingData inItem)
