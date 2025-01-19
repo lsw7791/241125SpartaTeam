@@ -2,10 +2,17 @@ using MainData;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 public class CraftUI : UIBase
 {
     [SerializeField] private Transform _craftingPanel; // 조합창의 부모 패널
+
+    [Header("DescriptionUI")]
+    public GameObject itemObject;
+    public Image itemImage; // 슬롯에 표시될 아이템 이미지
+    public TMP_Text itemName;  // 아이템 이름 텍스트
+    public TMP_Text itemDescription;
 
     private void Start()
     {
@@ -26,13 +33,17 @@ public class CraftUI : UIBase
         foreach (var data in inDataList)
         {
             GameObject newSlot = SlotObject(data);
-            Image itemImage = newSlot.AddComponent<Image>();
+            //CraftSlot craftSlot = newSlot.AddComponent<CraftSlot>();
+            //Image itemImage = newSlot.AddComponent<Image>();
             Button slotButton = newSlot.AddComponent<Button>();
 
             if (slotButton != null)
             {
+                newSlot.TryGetComponent<CraftSlot>(out var outCraftSlot);
+
+                outCraftSlot.Initialize(data);
                 //itemImage.sprite = Resources.Load<Sprite>(data.imagePath);
-                itemImage.sprite = UIManager.Instance.ItemAtlas.GetSprite(data.atlasPath);
+                //itemImage.sprite = UIManager.Instance.ItemAtlas.GetSprite(data.atlasPath);
                 slotButton.onClick.AddListener(() =>
                 {
                     // 아이템 선택 시 선택된 아이템 ID를 설정
@@ -51,8 +62,11 @@ public class CraftUI : UIBase
 
     private GameObject SlotObject(CraftingData inData)
     {
-        GameObject outSlot = new GameObject();
-        outSlot.transform.parent = _craftingPanel;
+        //GameObject outSlot = new GameObject();
+        var slotPrefab = Resources.Load<GameObject>("Prefabs/Items/CraftSlot");
+
+        GameObject outSlot = Instantiate(slotPrefab, _craftingPanel);
+        //outSlot.transform.parent = _craftingPanel;
         outSlot.name = $"{inData.name} Slot";
         return outSlot;
     }
