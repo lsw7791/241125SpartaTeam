@@ -132,7 +132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerDrop: 0
-  _isGrouned: 1
   ItemImage: {fileID: 2496872019323063642}
 --- !u!58 &5223212384279379227
 CircleCollider2D:

@@ -95,8 +95,7 @@ public class PlayerInput : MonoBehaviour
         if (GameManager.Instance.Player.playerState == Player.PlayerState.MoveMap) return;
 
         GameManager.Instance.Player._playerAnimationController.TriggerAttackAnimation();
-        //Vector2 direction = (Vector2)transform.position - mousePos;
-        // 플레이어와 마우스 위치를 비교하여 좌우 반전
+
         playerMove.FlipRotation(mousePos);
     }
 

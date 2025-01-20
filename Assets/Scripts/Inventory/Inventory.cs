@@ -1,9 +1,7 @@
 using MainData;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 [System.Serializable]
 public class Inventory
@@ -88,8 +86,19 @@ public class Inventory
         {
             if (itemData != null)
             {
-                InventoryItem newItem = new InventoryItem(itemID, quantity, itemData.atlasPath, false, itemData.atkType);
-                Items.Add(newItem); // 새 아이템 추가
+                if(quantity > 1)
+                {
+                    for(int i = 0; i < quantity; i++)
+                    {
+                        InventoryItem newItem = new InventoryItem(itemID, 1, itemData.atlasPath, false, itemData.atkType);
+                        Items.Add(newItem); // 새 아이템 추가
+                    }
+                }
+                else
+                {
+                    InventoryItem newItem = new InventoryItem(itemID, 1, itemData.atlasPath, false, itemData.atkType);
+                    Items.Add(newItem); // 새 아이템 추가
+                }
             }
         }
 

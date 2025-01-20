@@ -1,4 +1,3 @@
-using MainData;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -22,41 +21,45 @@ public class UpGradeUI : UIBase
 
     private InventoryItem _item;
 
+    int totalRange = 0;
+
     private void Start()
     {
         _upgradeResultButton.onClick.AddListener(() =>
         {
-            ShowUpgrade(_item);
+            ShowUpgrade();
         });
     }
 
-    private void Init(InventoryItem inItem)
+    private int RangeIndex()
     {
         // 아이템 데이터 검색
-        var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
+        var itemData = GameManager.Instance.DataManager.GetItemDataById(_item.ItemID);
         int tierIndex = itemData.tier - 1;
 
         // 강화 데이터 검색
-        var upgradeData = GameManager.Instance.DataManager.Upgrade.GetData(inItem.enhenceCount);
+        var upgradeData = GameManager.Instance.DataManager.Upgrade.GetData(_item.enhenceCount);
 
         _upgradeIndex = new int[] {
             upgradeData.success[tierIndex],
             upgradeData.fail[tierIndex],
             upgradeData.Destruction[tierIndex]
         };
+
+        return _upgradeIndex.Sum();
     }
 
-    public void ShowUpgrade(InventoryItem inItem)
+    public void ShowUpgrade()
     {
-        if (inItem.enhenceCount >= 10)
+        if (_item.enhenceCount >= 10)
         {
             UIManager.Instance.ToggleUI<UpGradeUI>();
             return;
         }
-        var upgradeData = GameManager.Instance.DataManager.Upgrade.GetData(inItem.enhenceCount);
+        var upgradeData = GameManager.Instance.DataManager.Upgrade.GetData(_item.enhenceCount);
 
         // 아이템 데이터 검색
-        var itemData = GameManager.Instance.DataManager.GetItemDataById(inItem.ItemID);
+        var itemData = GameManager.Instance.DataManager.GetItemDataById(_item.ItemID);
         int tierIndex = itemData.tier - 1;
 
         if (upgradeData.Cost[tierIndex] > GameManager.Instance.Player.stats.Gold)
@@ -66,9 +69,6 @@ public class UpGradeUI : UIBase
         }
         GameManager.Instance.Player.stats.Gold -= upgradeData.Cost[tierIndex];
 
-        Init(inItem);
-        int totalRange = _upgradeIndex.Sum();
-
         // 랜덤 가중치
         int randomValue = Random.Range(0, totalRange);
 
@@ -76,15 +76,20 @@ public class UpGradeUI : UIBase
         {
             // TODO :: 강화된 능력치 출력
             // TODO :: 강화수치 이미지 출력
-            if (inItem.IsEquipped)
+            if (_item.IsEquipped)
             {
-                GameManager.Instance.Player.stats.PlayerStatsUpdate(inItem, false);
-                inItem.enhenceCount++;
-                GameManager.Instance.Player.stats.PlayerStatsUpdate(inItem, true);
+                GameManager.Instance.Player.stats.PlayerStatsUpdate(_item, false);
+                _item.enhenceCount++;
+                GameManager.Instance.Player.stats.PlayerStatsUpdate(_item, true);
             }
             else
             {
-                inItem.enhenceCount++;
+                _item.enhenceCount++;
+
+                if (_item.enhenceCount < 10)
+                {
+                    totalRange = RangeIndex();
+                }
             }
 
             InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
@@ -104,7 +109,7 @@ public class UpGradeUI : UIBase
         }
         else
         {
-            if (inItem.IsEquipped)
+            if (_item.IsEquipped)
             {
                 GameManager.Instance.Player.inventory.UnEquip(itemData.itemType);
             }
@@ -115,11 +120,11 @@ public class UpGradeUI : UIBase
 
             InventoryUI inventoryUI = UIManager.Instance.GetUI<InventoryUI>();
             inventoryUI.ClearEquipmentSlot(itemData.itemType);
-            GameManager.Instance.Player.inventory.RemoveItem(inItem.ItemID, 1);
+            GameManager.Instance.Player.inventory.RemoveItem(_item.ItemID, 1);
             UIManager.Instance.ToggleUI<UpGradeUI>();
         }
 
-        UpdateUI(inItem);
+        UpdateUI(_item);
         GameManager.Instance.DataManager.SaveData(GameManager.Instance.Player.inventory);
         GameManager.Instance.DataManager.SaveData(GameManager.Instance.Player.stats);
         GameManager.Instance.Player.stats.nowMapNumber = GameManager.Instance.SceneNum;
@@ -153,6 +158,7 @@ public class UpGradeUI : UIBase
         }
         else
         {
+            totalRange = RangeIndex();
             _productText.text = $"{itemData.name} (+{inItem.enhenceCount})";
             _probabilityText[0].text = $"성공 확률\n{upgradeData.success[tierIndex]}%";
             _probabilityText[1].text = $"유지 확률\n{upgradeData.fail[tierIndex]}%";
