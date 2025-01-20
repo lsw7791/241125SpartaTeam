@@ -86,7 +86,7 @@ public class UpGradeUI : UIBase
             {
                 _item.enhenceCount++;
 
-                if (_item.enhenceCount >= 10)
+                if (_item.enhenceCount < 10)
                 {
                     totalRange = RangeIndex();
                 }
